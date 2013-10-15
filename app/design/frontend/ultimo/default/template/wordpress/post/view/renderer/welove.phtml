@@ -1,0 +1,23 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php 
+	$post = $this->getPost();
+	if ($post) {
+		$parent_cats = $post->getParentCategories();
+		$load_template = "welove_things.phtml";
+		foreach ($parent_cats as $cat) {
+			if (false !== strpos($cat->name, "People")) {
+				$load_template = "welove_people.phtml";
+				break;
+			}
+		}
+		include $load_template;
+		
+	}
+?>

@@ -1,0 +1,7 @@
+Order deny,allow
+Deny from all
+
+AddType font/ttf .ttf
+AddType font/eot .eot
+AddType font/otf .otf
+AddType application/x-font-woff .woff

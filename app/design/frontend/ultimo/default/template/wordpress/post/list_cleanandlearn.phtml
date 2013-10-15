@@ -1,0 +1,71 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php
+
+// get helper
+$helper = Mage::helper('wordpress/category');                                                                      
+
+// id of current category
+$iCurrentCategoryId = $helper->getCurrentContext();
+
+?>
+
+<div class="block block-related block-related-posts">
+
+    <?php // for the clean and learn intro page ?>
+    <?php if($iCurrentCategoryId == 176) { ?>
+    <div class="block-title clean-and-learn-index-related">
+        <p>More to explore in</p>
+        <strong>Both Washing &amp; Cleaning</strong>                        
+    </div>
+    <?php } ?>
+    
+    <?php // for the clean and learn washing intro page ?>
+    <?php if($iCurrentCategoryId == 177) { ?>
+    <div class="block-title">
+        <p>Most popular posts for</p>
+        <strong>Washing</strong>                        
+    </div>
+    <?php } ?>
+    
+    <?php // for the clean and learn cleaning intro page ?>
+    <?php if($iCurrentCategoryId == 183) { ?>
+    <div class="block-title">
+        <p>Most popular posts for</p>
+        <strong>Cleaning</strong>                        
+    </div>
+    <?php } ?>
+    
+    <?php // for the clean and learn specialty resources intro page ?>
+    <?php if($iCurrentCategoryId == 203) { ?>
+    <div class="block-title">
+        <p>Most popular posts in</p>
+        <strong>Specialty Resources</strong>                        
+    </div>
+    <?php } ?>
+
+    <?php $posts = $this->getPosts() ?>
+    <?php if (count($posts) > 0): ?>
+            <?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+                    <?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
+            <?php endif; ?>
+            <div class="post-list">
+                    <ul id="post-list">
+                            <?php foreach($posts as $post): ?>
+                                    <li class="item">
+                                            <?php echo $this->getPostRenderer($post)->toHtml() ?>
+                                    </li>
+                            <?php endforeach; ?>
+                    </ul>
+                    <script type="text/javascript">decorateList($('post-list'));</script>
+                    <?php echo $this->getPagerHtml() ?>
+            </div>
+    <?php endif; ?>
+
+</div>

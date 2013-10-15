@@ -1,0 +1,46 @@
+<div class="find-store-top">
+	
+	<div class="success-message">
+		<h1>Find a Store</h1>
+		<p>Enter your address below.</p>
+	</div>
+
+	<div class="find-a-store-form">
+	<form action="" method="post" id="store_locator_form" class="custom" onsubmit="return false">
+    	
+        <button type="submit" title="GO" class="button btn-inline float-right"><span>FIND A STORE</span></button>
+        
+        <div class="float-left postal">
+        	<label for="address" class="">City or Zip / Postal Code</label>
+	        <input type="text" name="address" id="address" title="Zip Code/Postal Code" class="input-text validate-zip">
+        </div> 
+        <!--<div class="float-left spacer">or</div>
+        <div class="float-left city">
+        	<label for="city" class="">City</label>
+	        <input type="text" name="city" title="City" class="input-text">
+        </div>	-->
+        
+        <div class="float-left radius">
+        	<label for="radius" class="">Radius</label>
+        	<select name="radius" id="radius" form="find-a-store">
+        		<option value="5">5 miles</option>
+        		<option value="10">10 miles</option>
+        		<option value="20">20 miles</option>
+        		<option value="50">50 miles</option>
+        	</select>
+        </div>
+        <div style="clear:both"></div>
+    </form>
+    </div>
+</div>
+
+<div id="find-store-map-area" style="visibility:hidden"></div>
+
+<div id="storelocator-results" style="visibility:hidden">
+		<div id="storelocator-container">
+			<div id="find-store-map-results">
+			</div>
+		</div>
+	<div id="pager-top" class="pager"><?php echo $this->getPagerHtml();?></div>
+    <div id="pager-bottom" class="pager"><?php echo $this->getPagerHtml();?></div>
+</div>

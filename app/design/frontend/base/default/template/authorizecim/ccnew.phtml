@@ -1,0 +1,268 @@
+<?php
+/** COPYRIGHT authorizeCIM 2011-2012 Eric Levine */
+?>
+<?php $_code="authorizecimsoap"; ?>
+<?php 
+if (!Mage::getSingleton('customer/session')->isLoggedIn()){
+         header("Location: /customer/account/login/");
+         exit();
+}
+
+$custID=Mage::getSingleton('customer/session')->getCustomerId();
+$token=Mage::app()->getRequest()->getParam("cprofile");
+
+	$_ccType='';
+	$_ccExpMonth='';
+	$_ccExpYear='';
+
+if($token>'') { }
+?>
+
+<?php if(strlen($token)>5):
+
+	$orderTable=Mage::getSingleton('core/resource')->getTableName('sales_flat_order'); 
+	$orderPaymentTable=Mage::getSingleton('core/resource')->getTableName('sales_flat_order_payment'); 
+	$sql = "SELECT * FROM $orderPaymentTable p, $orderTable q WHERE q.customer_id=".$custID." AND q.entity_id=p.parent_id AND po_number LIKE '".$token."%' AND cc_type > '' ORDER BY p.entity_id desc Limit 1;";
+
+	$results = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($sql);
+	foreach($results as $data2) {
+		$poall = $data2['po_number'];
+		$poparts = preg_split('/-/',$poall);
+		$cimcustid=$poparts[0];
+		$cimprofid=$poparts[1];
+		$token = $data2['po_number'];
+		$last4 = $data2['cc_last4'];
+		$_ccType = $data2['cc_type'];
+		$_ccExpMonth = $data2['cc_exp_month'];
+		$_ccExpYear = $data2['cc_exp_year'];
+	}
+?>
+<?php endif; ?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $uurl=Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)."authorizecim/index/post"; ?>
+<form class="custom" action="<?php echo $uurl; ?>" method="post" id="form-validate">
+    <div class="fieldset">	
+    <?php echo $this->getBlockHtml('formkey')?>
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+    <input type="hidden" name="cprofile" value="<?php echo $token ?>" />
+
+	<?php if(strlen($token)>5): ?>
+    <h2 class="legend"><?php echo $this->__('Update Credit Card') ?></h2>
+<?php else: ?>
+    <h2 class="legend"><?php echo $this->__('New Credit Card') ?></h2>
+<?php endif; ?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:block;">
+<span id="detailsection" style="display:block;"><?php /* <table><tr><td> */ ?>
+
+
+    <li class="fields">
+    <div class="customer-name">
+    <div class="field name-firstname">
+        <label for="firstname" class="required"><em>*</em>First Name</label>
+        <div class="input-box">
+            <input id="firstname" name="firstname" value="" title="First Name" maxlength="255" class="input-text required-entry" type="text">
+        </div>
+    </div>
+    <div class="field name-lastname">
+        <label for="lastname" class="required"><em>*</em>Last Name</label>
+        <div class="input-box">
+            <input id="lastname" name="lastname" value="" title="Last Name" maxlength="255" class="input-text required-entry" type="text">
+        </div>
+    </div>
+</div>
+            </li>
+            <li class="wide">
+                <label for="company">Company</label>
+                <div class="input-box">
+                    <input name="company" id="company" title="Company" value="" class="input-text " type="text">
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="telephone" class="required"><em>*</em>Telephone</label>
+                    <div class="input-box">
+                        <input name="telephone" value="" title="Telephone" class="input-text   required-entry" id="telephone" type="text">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="fax">Fax</label>
+                    <div class="input-box">
+                        <input name="fax" id="fax" title="Fax" value="" class="input-text " type="text">
+                    </div>
+                </div>
+            </li>
+        
+
+                    <li class="wide">
+                <label for="street_1" class="required"><em>*</em>Street Address</label>
+                <div class="input-box">
+                    <input name="street1" value="" title="Street Address" id="street_1" class="input-text  required-entry" type="text">
+                </div>
+            </li>
+                            <li class="wide">
+                <div class="input-box">
+                    <input name="street2" value="" title="Street Address 2" id="street_2" class="input-text " type="text">
+                </div>
+            </li>
+                                <li class="fields">
+                <div class="field">
+                    <label for="city" class="required"><em>*</em>City</label>
+                    <div class="input-box">
+                        <input name="city" value="" title="City" class="input-text  required-entry" id="city" type="text">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="region_id" class="required"><em>*</em>State/Province</label>
+                    <div class="input-box">
+                        <select defaultvalue="0" id="region_id" name="region_id" title="State/Province" class="validate-select required-entry" style="">
+                           <option value="">Please select region, state or province</option>
+                        <option title="Alabama" value="Alabama">Alabama</option><option title="Alaska" value="Alaska">Alaska</option><option title="American Samoa" value="American Samoa">American Samoa</option><option title="Arizona" value="Arizona">Arizona</option><option title="Arkansas" value="Arkansas">Arkansas</option><option title="Armed Forces Africa" value="Armed Forces Africa">Armed Forces Africa</option><option title="Armed Forces Americas" value="Armed Forces Americas">Armed Forces Americas</option><option title="Armed Forces Canada" value="Armed Forces Canada">Armed Forces Canada</option><option title="Armed Forces Europe" value="Armed Forces Europe">Armed Forces Europe</option><option title="Armed Forces Middle East" value="Armed Forces Middle East">Armed Forces Middle East</option><option title="Armed Forces Pacific" value="Armed Forces Pacific">Armed Forces Pacific</option><option title="California" value="California">California</option><option title="Colorado" value="Colorado">Colorado</option><option title="Connecticut" value="Connecticut">Connecticut</option><option title="Delaware" value="Delaware">Delaware</option><option title="District of Columbia" value="District of Columbia">District of Columbia</option><option title="Federated States Of Micronesia" value="Federated States Of Micronesia">Federated States Of Micronesia</option><option title="Florida" value="Florida">Florida</option><option title="Georgia" value="Georgia">Georgia</option><option title="Guam" value="Guam">Guam</option><option title="Hawaii" value="Hawaii">Hawaii</option><option title="Idaho" value="Idaho">Idaho</option><option title="Illinois" value="Illinois">Illinois</option><option title="Indiana" value="Indiana">Indiana</option><option title="Iowa" value="Iowa">Iowa</option><option title="Kansas" value="Kansas">Kansas</option><option title="Kentucky" value="Kentucky">Kentucky</option><option title="Louisiana" value="Louisiana">Louisiana</option><option title="Maine" value="Maine">Maine</option><option title="Marshall Islands" value="Marshall Islands">Marshall Islands</option><option title="Maryland" value="Maryland">Maryland</option><option title="Massachusetts" value="Massachusetts">Massachusetts</option><option title="Michigan" value="Michigan">Michigan</option><option title="Minnesota" value="Minnesota">Minnesota</option><option title="Mississippi" value="Mississippi">Mississippi</option><option title="Missouri" value="Missouri">Missouri</option><option title="Montana" value="Montana">Montana</option><option title="Nebraska" value="Nebraska">Nebraska</option><option title="Nevada" value="Nevada">Nevada</option><option title="New Hampshire" value="New Hampshire">New Hampshire</option><option title="New Jersey" value="New Jersey">New Jersey</option><option title="New Mexico" value="New Mexico">New Mexico</option><option title="New York" value="New York">New York</option><option title="North Carolina" value="North Carolina">North Carolina</option><option title="North Dakota" value="North Dakota">North Dakota</option><option title="Northern Mariana Islands" value="Northern Mariana Islands">Northern Mariana Islands</option><option title="Ohio" value="Ohio">Ohio</option><option title="Oklahoma" value="Oklahoma">Oklahoma</option><option title="Oregon" value="Oregon">Oregon</option><option title="Palau" value="Palau">Palau</option><option title="Pennsylvania" value="Pennsylvania">Pennsylvania</option><option title="Puerto Rico" value="Puerto Rico">Puerto Rico</option><option title="Rhode Island" value="Rhode Island">Rhode Island</option><option title="South Carolina" value="South Carolina">South Carolina</option><option title="South Dakota" value="South Dakota">South Dakota</option><option title="Tennessee" value="Tennessee">Tennessee</option><option title="Texas" value="Texas">Texas</option><option title="Utah" value="Utah">Utah</option><option title="Vermont" value="Vermont">Vermont</option><option title="Virgin Islands" value="Virgin Islands">Virgin Islands</option><option title="Virginia" value="Virginia">Virginia</option><option title="Washington" value="Washington">Washington</option><option title="West Virginia" value="West Virginia">West Virginia</option><option title="Wisconsin" value="Wisconsin">Wisconsin</option><option title="Wyoming" value="Wyoming">Wyoming</option></select>
+                        <script type="text/javascript">
+                        //<![CDATA[
+                            $('region_id').setAttribute('defaultValue',  "0");
+                        //]]>
+                        </script>
+                        <input style="display: none;" id="region" name="region" value="" title="State/Province" class="input-text required-entry" type="text">
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="zip" class="required"><em>*</em>Zip/Postal Code</label>
+                    <div class="input-box">
+                        <input name="postcode" value="" title="Zip/Postal Code" id="zip" class="input-text validate-zip-international  required-entry" type="text">
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="country" class="required"><em>*</em>Country</label>
+                    <div class="input-box">
+                        <select name="country_id" id="country" class="validate-select" title="Country"><option value=""> </option><option value="AF">Afghanistan</option><option value="AX">Åland Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="VG">British Virgin Islands</option><option value="BN">Brunei</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="CV">Cape Verde</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CX">Christmas Island</option><option value="CC">Cocos [Keeling] Islands</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo - Brazzaville</option><option value="CD">Congo - Kinshasa</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">Côte d’Ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="TF">French Southern Territories</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="HM">Heard Island and McDonald Islands</option><option value="HN">Honduras</option><option value="HK">Hong Kong SAR China</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Laos</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macau SAR China</option><option value="MK">Macedonia</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia</option><option value="MD">Moldova</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar [Burma]</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="AN">Netherlands Antilles</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="MP">Northern Mariana Islands</option><option value="KP">North Korea</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestinian Territories</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn Islands</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">Réunion</option><option value="RO">Romania</option><option value="RU">Russia</option><option value="RW">Rwanda</option><option value="BL">Saint Barthélemy</option><option value="SH">Saint Helena</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and the Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">São Tomé and Príncipe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and the South Sandwich Islands</option><option value="KR">South Korea</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SJ">Svalbard and Jan Mayen</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syria</option><option value="TW">Taiwan</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US" selected="selected">United States</option><option value="UY">Uruguay</option><option value="UM">U.S. Minor Outlying Islands</option><option value="VI">U.S. Virgin Islands</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VA">Vatican City</option><option value="VE">Venezuela</option><option value="VN">Vietnam</option><option value="WF">Wallis and Futuna</option><option value="EH">Western Sahara</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option></select>                    </div>
+                </div>
+            </li>
+		
+
+
+<?php /*
+    <li>
+        <div class="input-box">
+            <label for="<?php echo $_code ?>_cc_owner" class="required"><em>*</em><?php echo $this->__('Name on Card') ?></label>
+            <input type="text" title="<?php echo $this->__('Name on Card') ?>" class="input-text required-entry" id="<?php echo $_code ?>_cc_owner" name="payment[cc_owner]" value="<?php echo $this->htmlEscape($this->getInfoData('cc_owner')) ?>" />
+        </div>
+    </li>
+*/ ?>
+    <li>
+        <label for="<?php echo $_code ?>_cc_type" class="required"><em>*</em><?php echo $this->__('Credit Card Type') ?></label><?php /* </td><td> */ ?>
+        <div class="input-box">
+            <select id="<?php echo $_code ?>_cc_type" name="cc_type" class="required-entry validate-cc-type-select">
+                <option value=""><?php echo $this->__('--Please Select--')?></option>
+            <?php //$_ccType = $this->getInfoData('cc_type') ?>
+            <?php foreach ($this->getCcAvailableTypes() as $_typeCode => $_typeName): ?>
+                <option value="<?php echo $_typeCode ?>"<?php if($_typeCode==$_ccType): ?> selected="selected"<?php endif ?>><?php echo $_typeName ?></option>
+            <?php endforeach ?>
+            </select>
+        </div>
+    </li>
+	<?php /* </td></tr><tr><td> */ ?>
+    <li>
+        <label for="<?php echo $_code ?>_cc_number" class="required"><em>*</em><?php echo $this->__('Credit Card Number') ?></label><?php /* </td><td> */ ?>
+        <div class="input-box">
+            <input type="text" id="<?php echo $_code ?>_cc_number" name="cc_number" title="<?php echo $this->__('Credit Card Number') ?>" class="input-text validate-cc-number validate-cc-type" value="" />
+        </div>
+    </li>
+	<?php /* </td></tr><tr><td> */ ?>
+    <li id="<?php echo $_code ?>_cc_type_exp_div">
+        <label for="<?php echo $_code ?>_expiration" class="required"><em>*</em><?php echo $this->__('Expiration Date') ?></label><?php /* </td><td> */ ?>
+        <div class="input-box">
+            <div class="v-fix">
+                <select id="<?php echo $_code ?>_expiration" name="cc_exp_month" class="month validate-cc-exp required-entry">
+                <?php //$_ccExpMonth = $this->getInfoData('cc_exp_month') ?>
+                <?php foreach ($this->getCcMonths() as $k=>$v): ?>
+                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpMonth): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                <?php endforeach ?>
+                </select>
+            </div>
+            <div class="v-fix">
+                <?php //$_ccExpYear = $this->getInfoData('cc_exp_year') ?>
+                <select id="<?php echo $_code ?>_expiration_yr" name="cc_exp_year" class="year required-entry">
+                <?php foreach ($this->getCcYears() as $k=>$v): ?>
+                    <option value="<?php echo $k?$k:'' ?>"<?php if($k==$_ccExpYear): ?> selected="selected"<?php endif ?>><?php echo $v ?></option>
+                <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+    </li>
+	<?php /* </td></tr><tr><td> */ ?>
+    <?php echo $this->getChildHtml() ?>
+    <?php if($this->hasVerification()): ?>
+    <li id="<?php echo $_code ?>_cc_type_cvv_div">
+        <label for="<?php echo $_code ?>_cc_cid" class="required"><em>*</em><?php echo $this->__('Card Verification Number') ?></label><?php /* </td><td> */ ?>
+        <div class="input-box">
+            <div class="v-fix">
+                <input type="text" title="<?php echo $this->__('Card Verification Number') ?>" class="input-text cvv required-entry validate-cc-cvn" id="<?php echo $_code ?>_cc_cid" name="cc_cid" value="" />
+            </div>
+            <a href="#" class="cvv-what-is-this"><?php echo $this->__('What is this?') ?></a>
+        </div>
+    </li>
+    <?php endif; ?>
+	<?php /* </td></tr></table>  */ ?>
+
+	</span>
+	</ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+        <button type="submit" title="<?php echo $this->__('Save Credit Card') ?>" class="button"><span><span><?php echo $this->__('Save Credit Card') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+//]]>
+</script>
+
+<script type="text/javascript">
+jQuery(function ($) {
+	jQuery.fn.center = function () {
+		this.css("position","fixed");
+		this.css("top", Math.max(0, (($(window).height() - $(this).height()) / 2)) + "px");
+		this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2)) + "px");
+		return this;
+	}
+
+	$(document).ready(function () {
+		$(".cvv-what-is-this").click(function (evt) {
+			evt.preventDefault();
+			$("#ask-question-background").fadeIn(150);
+			$("#ask-question-box-2").fadeIn(150);
+			$("#ask-question-box-2").center();
+			$("body").css("overflow", "hidden");
+		});
+		var closeCVVPopup = function (evt) {
+			$("#ask-question-background").fadeOut(150);
+			$("#ask-question-box-2").fadeOut(150);
+			$("body").css("overflow", "");
+			if (evt) evt.preventDefault();
+		}
+
+		$("#ask-question-background").click(closeCVVPopup);
+		$("#ask-question-box-2-close").click(closeCVVPopup);
+	});
+});
+</script>
+<div id="ask-question-background"></div>
+<div id="ask-question-box-2">
+<a href="#" id="ask-question-box-2-close">&times;</a>
+<b>Visa, Mastercard and Discover cardholders:</b>
+<p>Turn your card over and look at the signature box. You should see either the entire 16-digit credit card number or
+just the last four digits followed by a special 3-digit code. This 3-digit code is your CVV number / Card Security Code.</p>
+<br/>
+<b>American Express cardholders:</b>
+<p>Look for the 4-digit code printed on the front of your card just above and to the right of your main credit card number. 
+This 4-digit code is your Card Identification Number (CID). The CID is the four-digit code printed just above the Account Number.</p>
+<br/>
+<p>CVV numbers are not your card's secret PIN number. You should never enter your PIN number when asked to provide a CVV.</p>
+</div>

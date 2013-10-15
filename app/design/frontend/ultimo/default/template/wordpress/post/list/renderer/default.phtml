@@ -1,0 +1,34 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+<div class="post-list-item-small">        
+	<?php if($post->getCustomField('wpcf-thumbnail-for-blog')) { ?>
+                <div class="featured-image">
+                    <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+                    <?php
+                        $imageHelper = Mage::helper('wordpress/image');
+                        $img = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-thumbnail-for-blog'), "thumbnail");  
+                    ?>                        
+                    <?php if(!$img) { ?>
+                            <?php $featuredImage = $post->getFeaturedImage(); ?>                                                                
+                            <img src="<?php echo $featuredImage->getImageByType('thumbnail') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>                        
+                    <?php } else { ?>
+                        <img src="<?php print $img; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>
+                    <?php } ?>
+                    </a>
+                </div>
+        <?php } else if($featuredImage = $post->getFeaturedImage()): ?>    
+		<div class="featured-image">                                         
+			<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('thumbnail') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+		</div>
+	<?php endif; ?>
+	<h3><?php print $post->getParentCategory()->name; ?></h3>
+	<h2><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a></h2>
+	<p class="post-date"><?php print $post->getPostDate(); ?></p>	
+</div>

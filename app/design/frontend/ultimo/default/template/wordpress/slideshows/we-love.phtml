@@ -1,0 +1,85 @@
+<div class="page-title">
+	<h1>We Love</h1>
+</div>
+<?php
+
+// get helper
+$helper = Mage::helper('wordpress/category');                                                                      
+
+$data = $helper->getAllPostsByTag(321);                        
+
+?>
+<div id="blog-welove-slideshow" class="blog-slideshow slideshow-with-details"> 
+        
+        <?php foreach($data AS $post) { ?>            
+            <div class="slidesjs-slide">                
+                <?php if($post->getCustomField('wpcf-slideshow-image')) { ?>                
+                <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+                    <?php
+                        $imageHelper = Mage::helper('wordpress/image');
+                        $img = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-slideshow-image'), "post-main-wide");                        
+                    ?>
+                    <img src="<?php print $img; ?>" />
+                </a>
+                <?php } else if($post->getFeaturedImage()) { ?>
+                <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+                    <img src="<?php print $post->getFeaturedImage()->getImageByType('post-main-wide'); ?>" />
+                </a>
+                <?php } else { ?>                                
+                <a href="<?php print $post->getPermalink(); ?>" >
+                    <img src="http://placehold.it/959x424" />
+                </a>
+                <?php } ?>
+                <h2><?php print $post->getPostTitle(); ?></h2>
+                <p class="post-date" ><?php print $post->getPostDate(); ?></p>
+                
+                <p class="entry-summary" >
+                    <?php print $post->getExcerpt(); ?>
+                </p>
+                
+                <div class="read-more" >
+                    <a href="<?php print $post->getPermalink(); ?>" >Read more</a>
+                </div>                                      
+            </div>
+        <?php } ?>                       
+</div>
+
+
+<?php if(isset($data[1])) { ?>
+<script>
+    jQuery(function() {
+      
+      jQuery('#blog-welove-slideshow').slidesjs({
+        width: 940,
+        height: 561,
+        navigation: {
+          effect: "slide"
+        },
+        pagination: {
+          effect: "slide"
+        },
+        effect: {
+          fade: {
+            speed: 400
+          }
+        },        
+        callback: {
+            complete: function(number) {
+                
+                // TODO: Height adaptation
+                //var currentSlide = jQuery(
+                /*
+                 
+                #blog-default-slideshow').find("[slidesjs-index='" + (number-1) + "']"); 
+                var iNewHeight = currentSlide.height();
+                
+                if(iNewHeight != null) {
+                    jQuery('#blog-default-slideshow').css('height', iNewHeight+1);
+                }
+                */
+            }
+        }
+      });
+    });
+  </script>
+  <?php } ?>

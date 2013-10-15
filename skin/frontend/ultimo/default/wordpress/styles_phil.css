@@ -1,0 +1,958 @@
+/*
+Author: Philipp Schöfer
+*/
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Blog General
+:: Blog Home
+:: Sliders & Slideshows
+:: Blog Post List
+:: Blog Archive & Search
+:: Sidebars
+:: Post Views
+:: Related Posts
+*/
+
+/* Blog General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.blog-default .page-title,
+.blog .page-title, .is-blog .page-title {
+    text-align: center;    
+}
+
+.is-blog .page-title {
+    margin-bottom: 0;
+    margin-top: 18px;
+}
+
+/* ------ social share widget for gallery blocks */
+ul.social-share li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+ul.social-share li a {
+    width: 10px;
+    height: 19px;
+    display: block;
+}
+
+ul.social-share li a span {
+    display: none;
+}
+
+ul.social-share li.facebook a {
+    background: url('../images/facebook_white.png') no-repeat top left;    
+}
+
+ul.social-share li.twitter a {
+    background: url('../images/twitter_white.png') no-repeat top left;    
+    width: 20px;
+}
+
+ul.social-share li.pinterest a {
+    background: url('../images/pintrest_white.png') no-repeat top left;    
+    width: 20px;
+}
+
+/* ------- Blog Main Navigation and Header */
+
+.blog-nav-categories {
+    position: relative;
+}
+
+.blog-nav-list {
+    padding-bottom: 9px;
+    border-bottom: 1px solid #dadada;
+}
+
+.blog-nav-list li {
+    display: inline-block;
+    margin-right: 24px;
+}
+
+.blog-nav-list li, .blog-nav-list li a {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.blog-nav-search {
+    position: absolute;
+    top: -5px;
+    right: 0;
+}
+
+.blog-nav-search input {
+    width: 156px;
+    height: 33px;
+    line-height: 34px;
+    border-top: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+    border-bottom: 0;
+    padding: 0px 25px 0 8px;  
+    background-image: url('../images/search_icon_dark.gif');
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.blog-nav-search .blog-search {
+    padding: 0;
+}
+
+.blog .page-title.category-title {
+    display: none;
+}
+
+.blog .breadcrumbs {
+    margin: 12px 0 12px;    
+}
+
+
+
+/* Blog Home
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.is-blog .grid-col2-main        { width:80%; margin-left: 0;}
+
+
+/* Sliders
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.blog-slideshow {
+    position: relative;
+    margin-bottom: 2em;
+    -webkit-transition: height 0.3s ease;
+    -moz-transition: height 0.3s ease;
+    -o-transition: height 0.3s ease;
+    transition: height 0.3s ease;
+}
+
+.slidesjs-navigation {
+    background-color: #222;
+    opacity: 0.8;
+    position: absolute;
+    top: 40%;    
+    z-index: 99;
+    text-indent: -999px;
+    display: block;
+    overflow: hidden;
+    background: url('../images/blog_slider-arrows.gif') no-repeat top left;
+    width: 30px;
+    height: 29px;
+}
+
+.slidesjs-navigation.slidesjs-previous {
+    left: 0;
+}
+
+.slidesjs-navigation.slidesjs-next {
+    right: 0;    
+    background-position: top right;
+}
+
+.slidesjs-navigation:hover {    
+    background-position-y: bottom;
+}
+
+
+.slidesjs-pagination {
+    position: absolute;
+    bottom: 24px;
+    width: 100%;
+    text-align: center;
+    z-index: 99;
+}
+
+.slidesjs-pagination li {
+    display: inline-block;
+    margin-right: 9px;
+    margin-left: 9px;
+}
+
+.slidesjs-pagination li a {
+    background: url('../images/blog_slider-bullets.png') no-repeat top right;
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.slidesjs-pagination li a.active {
+    background-position: top left;
+}
+
+/* ------ Default Slider Look */
+#blog-default-slideshow {
+    
+}
+
+#blog-default-slideshow .slidesjs-slide h2, #blog-welove-slideshow .slidesjs-slide h2 {
+    font-family: "Sorts Mill Goudy Regular";
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1.4em;
+    margin-bottom: 0;
+}
+
+#blog-default-slideshow .slidesjs-slide img {
+    width: 100%;
+    max-height: 424px;
+}
+
+#blog-default-slideshow .slidesjs-pagination,#blog-welove-slideshow .slidesjs-pagination {
+    top: 424px;
+    bottom: auto;
+}
+
+body.active-clean-and-learn #blog-default-slideshow {
+	margin-bottom: 0;
+}
+body.active-clean-and-learn #blog-default-slideshow .slidesjs-pagination {
+	top:300px;
+}
+.clean-and-learn-index-related {
+	border-top: none !important;
+}
+
+#blog-default-slideshow .slidesjs-slide .read-more,#blog-welove-slideshow .slidesjs-slide .read-more {
+    text-align: center;
+    zoom: 1;
+    margin-top: 2em;   
+    display: block;
+    border-bottom: 1px solid #222;    
+}
+
+#blog-default-slideshow .slidesjs-slide .read-more a,#blog-welove-slideshow .slidesjs-slide .read-more a {
+    background-color: #222;
+    color: #fff;
+    padding: 9px 30px 6px;
+    text-transform: uppercase;
+    font-family: "GillSansMTStd", serif;
+    font-size: 11px;    
+    display: inline-block;
+}
+#blog-default-slideshow .slidesjs-slide .read-more a:hover, #blog-welove-slideshow .slidesjs-slide .read-more a:hover {
+	background-color: #64b96a;
+}
+
+/* Blog Post Lists
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.post-list .item {
+    position: relative;
+}
+
+    .post-list .item h2 {    
+        margin-bottom: 1.6em;
+    }
+
+    .post-list .item h2 a {
+        color: #222;
+        display: block;
+        font-family: "Sorts Mill Goudy Regular";
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+
+.post-list-item-small img {
+    width: 230px;
+}
+
+/* ------ small blog items/default blog */
+.blog .grid-col2-main {
+	width: 715px;
+	margin: 0;
+}
+
+.wordpress-post-category-view #post-list, 
+.blog-list-small #post-list {
+    overflow: hidden;
+}
+
+.wordpress-post-category-view #post-list .item,
+.blog-list-small .post-list .item {
+    margin-right: 12px;
+    float: left;
+}
+	.wordpress-post-category-view #post-list .row-end {
+		margin-right: 0 !important;
+	}
+	body.blog-as-seen-in #post-list .row-end {
+			margin-right: 13px !important;
+		}
+
+
+.post-list .item .post-list-item-small {
+    width: 230px;
+    min-height: 370px;    
+}
+
+.post-list .item .post-list-item-small h2 {
+    padding-left: 20px;
+    padding-right: 20px;   
+    margin-bottom: 0;
+}
+
+/* ------- home blog items */
+.post-list .item .post-list-item-home {
+    border-bottom: 1px solid #222222;
+}
+
+.post-list .item .post-list-item-home h2 {
+    padding-left: 20px;
+    padding-right: 20px;   
+    margin-bottom: 0;
+}
+
+.post-list .item .post-list-item-home .entry p {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+}
+
+.post-list .item .post-list-item-home .entry {
+    padding: 0 90px;
+    margin-bottom: 2em;
+    margin-top: 2em;
+}
+
+/* ---- we love blog */
+body.wordpress-post-customtype-view .grid-full {
+	width: 100%;
+	margin: 0;
+}
+
+.blog-welove #post-list {
+    overflow: hidden;
+}
+
+.blog-welove #post-list .item {
+    float: left;
+    width: 230px;      
+}
+	.blog-welove #post-list .row-end {
+		margin-right: 0 !important;
+	}
+
+.blog-welove .col-main .page-title  {
+    text-align: center;
+}
+
+.blog-welove #blog-welove-slideshow {
+    margin-bottom: 3em;
+}
+
+/* ------ fabric blog */
+.post-list .item .post-list-item-fabric {
+    padding-left: 150px;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 0;
+}
+
+.post-list .item .post-list-item-fabric .featured-image {
+    position: absolute;
+    top: 30px;
+    left:0;
+}  
+
+.post-list .item .post-list-item-fabric h2 a {
+    font-size: 34px;
+    text-transform: uppercase;
+    text-align: left;    
+}
+
+.post-list .item .post-list-item-fabric .post-entry {
+    margin-left: 0;
+    margin-bottom: 0;
+}
+
+
+/* ----- as seen in blog */
+
+.blog-as-seen-in #post-list {
+    overflow: hidden;
+}
+
+.blog-as-seen-in .post-list .item {
+    float: left;
+    width: 330px;
+    height: 423px;
+    border: 1px solid #dbdbdb;
+    margin-right: 18px;
+}
+
+.blog-as-seen-in .post-list .item .featured-image img {    
+    width: 330px;    
+    max-width: 330px;
+}
+
+.blog-as-seen-in .post-list .post-list-item-press {    
+    border-bottom: 0px;   
+}
+
+.blog-as-seen-in .post-list .item h2 a {  
+    text-transform: uppercase;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.page-blog a img {
+    margin-bottom:15px;
+}
+
+.blog .featured-image {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.blog .featured-image img {
+    
+}
+
+/* Blog Archive and Search
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+body.wordpress-index-index.active-archive .col-main {
+    width: 100%;
+    border-right: 0;
+}
+
+body.wordpress-index-index.active-archive .post-list #post-list li,
+body.wordpress-search-index .post-list #post-list li {
+    width: 24%;
+    float: left;
+    margin-right: 1%;    
+}
+
+body.wordpress-index-index.active-archive .post-list #post-list li .post-list-item,
+body.wordpress-search-index .post-list #post-list li .post-list-item {
+    min-height: 380px;
+}
+
+/* Blog Sidebars
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.blog .sidebar p {
+    margin-bottom: 1.2em;
+}
+
+.blog .sidebar ul li {
+    margin-left: 12px;
+}
+
+.blog .sidebar ul li a {
+    font-family: "Georgia", serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #222;
+}
+
+.blog .sidebar ul li a:hover,
+.blog .sidebar ul li.active a {
+    color: #64b96a;
+}
+
+.blog .sidebar .cleanandlearn {
+    border-top: 1px solid #bdc2c1;
+}
+
+.blog .sidebar .cleanandlearn .block-title {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #222;
+    border-bottom: 0;
+}
+
+.blog .sidebar .cleanandlearn .block-title span {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    color: #222;
+    display: block;
+}
+
+.blog .sidebar .cleanandlearn .block-blog {
+    background-color: transparent;    
+    border-bottom: 1px solid #bdc2c1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.blog .sidebar .cleanandlearn .block-blog:last-child {
+    border-bottom: 0;
+}
+
+.blog .sidebar .cleanandlearn #wp-menu-washing .block-content,
+.blog .sidebar .cleanandlearn #wp-menu-cleaning .block-content {
+    padding: 0;
+    overflow: hidden;
+    height: 0;    
+}
+
+.blog .sidebar .cleanandlearn #wp-menu-learnmore .block-content > ul > li > ul {
+    display: none;
+}
+
+.open-washing .blog .sidebar .cleanandlearn #wp-menu-washing .block-content,
+.open-cleaning .blog .sidebar .cleanandlearn #wp-menu-cleaning .block-content, 
+.open-learnmore .blog .sidebar .cleanandlearn #wp-menu-learnmore .block-content,
+.open-ingredients .blog .sidebar .cleanandlearn #wp-menu-learnmore .block-content > ul > li > #wp-menu-learnmore-ingredients,
+.open-resources .blog .sidebar .cleanandlearn #wp-menu-learnmore .block-content > ul > li > #wp-menu-learnmore-resources {
+    display: block;
+    height: auto;    
+    overflow: auto;
+}
+
+/* Blog Post Views
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.blog .post-view {
+    position: relative;
+    overflow: hidden;
+}
+
+.post-view h2 {
+    font-family: "Sorts Mill Goudy Regular";
+    font-size: 15px;
+    margin-bottom: 0.4em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.post-view .featured-image {
+    margin-bottom: 25px;
+}
+
+.post-view.post-view-welove-things h2 {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.post-view h2 a {
+    color: #222;
+    display: block;
+}
+
+.blog .post-view .label-category {
+    font-family: "GillSansMTStd-Bold", serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #222;
+    text-align: center;
+    margin: 39px 0 20px 0;
+    font-weight: normal;
+}
+
+.blog .post-view.post-view-welove-things .label-category {
+    text-align: left;
+    margin-top: 0;    
+    margin-bottom: 19px;
+}
+
+.blog .post-view h3 {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.blog .post-view .post-entry, .blog .post-list .post-entry {
+    width: 670px;
+    margin: 0 auto 2em;   
+}
+
+.blog .post-view .post-entry p {    
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.blog .post-view .related-posts .more-in {
+    
+}
+
+.blog .post-view .post-date {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    color: black;
+    text-align: center;
+    margin-bottom: 3.6em;
+}
+
+.blog a.post-skip-next, .blog a.post-skip-previous {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #222;
+}
+
+.blog a.post-skip-next {
+    float: right;
+}
+
+.blog a.post-skip-previous {
+    float: left;
+}
+
+.blog .post-social, .post-entry .post-social {
+   position: relative;
+   font-family: "GillSansMTStd-Bold", sans-serif;
+   font-size: 12px;
+   text-transform: uppercase;
+   text-align: right;
+   float: right;
+}
+	.post-entry .post-social {
+		margin: 0 10px 0 0;
+	}
+
+.post-view > .post-social {
+	position: absolute;
+	right: 5px;
+	top: 15px;
+}
+
+.blog .post-social .post-social-links, .post-entry .post-social .post-social-links {
+	margin-top: 4px;
+}
+
+.blog .post-social .post-social-links li, .post-entry .post-social .post-social-links li {
+	display: inline;
+	margin-left: 5px;
+}
+
+.print-link {
+	margin: 15px 0 3px;
+}
+.blog .print, .post-entry .print {
+	padding-right: 8px
+}
+
+/* ---- how to posts */
+
+.blog .post-view .post-howtosteps > ul {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    overflow: hidden;
+    margin-bottom: 2em;
+}
+
+.blog .post-view .post-howtosteps ul > li > div > ol {    
+    overflow: hidden;
+}
+
+.blog .post-view .post-howtosteps ul > li > div > ol > li {     
+    padding-left: 12px;
+    background-image: url('../images/bullet.gif');
+    background-repeat: no-repeat;
+    background-position: 0px 5px;    
+}
+
+.blog .post-view .post-howtosteps > ul > li {
+    border-bottom: 1px solid #dadada;
+    background-image: url('../images/accordion_plus.gif');
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.blog .post-view .post-howtosteps > ul > li:last-child {
+    border-bottom: 0;
+}
+
+.blog .post-view .post-howtosteps > ul > li.active {
+    background-image: url('../images/accordion_minus.gif');
+}
+
+.blog .post-view .post-howtosteps > ul > li > a {
+    font-family: "GillSansMTStd-Bold", serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #222;
+    margin: 9px 0 8px;
+}
+
+.blog .post-view .post-howtosteps > ul > li > div {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.post-view-sidebar {
+    
+}
+
+/* ----- things we love */
+.blog .post-view.post-view-welove-things .grid12-4 {
+    padding-left: 2%;
+    width: 29.33%;   
+}
+
+.blog .post-view.post-view-welove-things .post-entry {
+    width: 280px;
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+    line-height: 1.8em;
+}
+
+.blog .post-view.post-view-welove-things .post-date {
+    text-align: left;
+    margin-bottom: 37px;
+}
+
+.blog .post-view.post-view-welove-things .pinterest-list {
+    clear: both;
+    overflow: hidden;
+}
+
+/* ---- pinterest style list */
+
+.pinterest-list li.p-list-item {
+    width: 230px;
+    margin-right: 10px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+    .pinterest-list li.p-list-item .p-list-item-content {        
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-image: url('../images/blog_welove_plist-overlay.png');
+        padding: 12px 10px;
+        -moz-transition:opacity 300ms;
+        -webkit-transition:opacity 300ms;
+        -o-transition:opacity 300ms;
+        transition:opacity 300ms;
+    }        
+
+    .pinterest-list li.p-list-item:hover .p-list-item-content {
+        opacity: 1.0;       
+    }
+    
+    
+        .pinterest-list li.p-list-item .p-list-item-content h3 {
+            color: #ffffff;
+            font-family: "GillSansMTStd-Bold", sans-serif;
+            font-size: 11px;
+            font-weight: normal;
+            text-align: left;
+        }
+
+        .pinterest-list li.p-list-item .p-list-item-entry {
+            color: #fff;
+            font-family: "Sorts Mill Goudy Regular", serif;
+            font-size: 15px
+        }
+        
+        .pinterest-list li.p-list-item .p-list-item-entry-full {
+            display: none;
+        }
+    
+    
+    .pinterest-list li.p-list-item .p-list-item-image {
+        border: 1px solid #dadada;
+        width: 230px;
+    }
+
+    .p-list-item-content .p-list-item-button {
+        background-color: #222222;
+        color: #fff;
+        padding: 8px 12px;
+        font-family: "GillSansMTStd", sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+    
+    .p-list-item-content .p-list-item-actions {
+        position: absolute;
+        bottom: 33px;
+        left: 10px;
+        
+    }
+    
+    .p-list-item-content .p-list-item-share {
+        position: absolute;
+        bottom: 3px;
+        left: 10px;
+        
+    }
+    
+
+/* ---- Fabric */
+
+.post-view.post-view-fabric .featured-image {
+    float: left;
+}
+
+.post-view.post-view-fabric .featured-image img:first-child {
+
+}
+
+.post-view.post-view-fabric h4.label-category,
+.post-view.post-view-fabric h3,
+.post-view.post-view-fabric .post-entry {
+    text-align: left;
+    margin: 0;
+}
+
+.post-view.post-view-fabric .post-entry {
+    margin-bottom: 1.2em;
+    margin-top: 25px !important;
+}
+
+.post-view.post-view-fabric h3 {
+    font-size: 34px;
+    font-weight: normal;
+    margin: 0;
+}
+
+.post-view.post-view-fabric .read-label {
+    background-color: #222;
+    padding: 5px 13px 5px 45px;
+    color: #fff;
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;    
+    position: relative;   
+    /*display: inline-block;*/
+    display: none; /*TEMPORARY*/
+    margin-bottom: 1em;
+}
+
+.post-view.post-view-fabric .read-label span {
+    background: url('../images/blog_fabric-questionmark.gif') no-repeat 0 0;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+/* Blog Related
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.blog .block-related .block-title {
+    text-align: center;
+}
+
+.clean-and-learn-cat .blog .block-related.block-related-posts .block-title {
+    border-top: 0;
+    margin-bottom: 1.5em;
+}
+
+.blog .block-related .block-title strong {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+    font-size: 34px;
+}
+
+.blog .block-related .block-title p {
+    font-family: "GillSansMTStd-Bold", serif;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.blog .block-related.block-related-posts .block-title {
+    border-bottom: 0;
+    border-top: 1px solid #222;
+}
+
+.blog .block-related.block-related-posts .block-title p {
+    margin-bottom: 1.2em;
+}
+
+.blog .block-related .block-content {
+    padding: 0;
+}
+
+.blog .block-related .item {
+    width: 229px;
+    float: left;
+    margin-right: 6px;
+}
+
+.blog .block-related .item:last-child {
+    margin-right: 0;
+}
+
+.blog .block-related .item .product-details {
+    margin-left: 0;
+}
+
+.blog .block-related .item .product-image {
+    width: auto;
+    margin-bottom: 1em;
+}
+
+.blog .block-related .item .product-image img {
+    max-width: none;    
+}
+
+.blog .block-related .item .product > a {
+    border: none;
+}
+
+.blog .block-related .item .product-details .product-name, .blog .block-related .item .product-details .price-box {
+    text-align: center;
+}
+
+.blog .block-related .item .product-details .product-name a {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #222;
+}
+
+/* fabrics */
+.blog-fabrics-atoz {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    font-family: 'GillSansMTStd-Bold', serif;
+    font-size: 18px;
+    padding: 10px 0;
+    text-transform: uppercase; 
+    padding-left: 12px;
+}
+
+.blog-fabrics-atoz ul li {
+    display: inline-block;
+    margin-right: 8px;  
+}
+
+.blog-fabrics-atoz ul li:last-child {
+    margin-right: 0;
+}
+
+.block-related.block-related-posts ul.post-list > li {
+    width: 24%;
+    margin-right: 1%;
+    float: left;
+}
+
+.block-related.block-related-posts ul.post-list > li img {
+    width: 100%;
+}
+
+.clean-and-learn-cat .block-related.block-related-posts ul.post-list > li {
+    width: auto;
+}
+

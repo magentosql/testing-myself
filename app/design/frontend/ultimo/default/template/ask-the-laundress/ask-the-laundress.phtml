@@ -1,0 +1,130 @@
+<?php
+$helper = Mage::helper('wordpress/category');
+$sub_categories = $helper->getSubCategories(37);
+?>
+
+<div class="ask-header">
+	<h1>Ask The Laundress</h1>
+	<form id="ask_search_form" action="/blog/ask-search/" method="get">
+	    <div class="form-search">
+	        <label for="search">Search:</label>
+	        <input id="search" placeholder="'Enter a topic (ex: clean pit stains, washing sweaters, denim care)" type="text" name="s" value="" class="input-text" maxlength="128" autocomplete="off">
+	        <button type="submit" title="GO" class="button"><span>GO</span></button>
+	    </div>
+	</form>
+	<p>Frustrated with tough stains, not sure how to clean your precious heirlooms, sick of yellowing on your favorite tees?</p>
+	<?php if ($this->helper('customer')->isLoggedIn()): ?>
+		<p class="sign-in" id="ask_click_text"><a id="ask-question" href="#">CLICK HERE</a>TO ASK GWEN & LINDSEY A QUESTION</p>
+		
+		<div id="ask-question-background"></div>
+		<form id="ask-question-box" name="ask-question-box">
+			<input type="text" id="ask_title" required placeholder="How do I..." />
+			<span style="display:none" id="ask_title_error">A title is required</span>
+			<textarea id="ask_text" required></textarea>
+			<span style="display:none" id="ask_text_error">A message is required</span>
+			<p><img id="ask-loader" src="/skin/frontend/ultimo/default/images/ajax-loader.gif"><a href="#" id="ask-question-submit">ASK QUESTION</a></p>
+		</form>
+		
+		<script type="text/javascript" >
+			jQuery(function($) {
+				jQuery.fn.center = function () {
+					this.css("position","fixed");
+					this.css("top", Math.max(0, (($(window).height() - $(this).height()) / 2)) + "px");
+					this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2)) + "px");
+					return this;
+				}
+			
+				$(document).ready(function () {
+					$("#ask-question-background").click(hideBox);
+					$("#ask-question").click(function (evt) {
+						evt.preventDefault();
+						showBox();
+					});
+					
+					$("#ask_title").keypress(function () {
+						$("#ask_title_error").hide();
+					});
+					$("#ask_text").keypress(function () {
+						$("#ask_text_error").hide();
+					});
+					
+					$("#ask-question-submit").click(function (evt) {
+						evt.preventDefault();
+						var data = {};
+						data.title = $("#ask_title").val();
+						data.text = $("#ask_text").val();
+						
+						
+						var errored = false;
+						if (null == data.title || "" == data.title) {
+							$("#ask_title_error").show();
+							errored = true;
+						}
+						
+						if (null == data.text || "" == data.text) {
+							$("#ask_text_error").show();
+							errored = true;
+						}
+						
+						if (errored) return;
+					
+						$("#ask-loader").show();
+						
+						$.ajax({
+							url: '/blog/ask-the-laundress-json',
+							type: 'POST',
+							data: data,
+							success: function () {
+								$("#ask_click_text").text("Thank you for asking Gwen & Lindsay a question!");
+								hideBox();
+							}
+						});
+					});
+				});
+				
+				function showBox() {
+					$("#ask-loader").hide();
+					$("#ask-question-background").fadeIn(150);
+					$("#ask-question-box").fadeIn(150);
+					$("#ask-question-box").center();
+					$("body").css("overflow", "hidden");
+				}
+				
+				function hideBox() {
+					$("#ask-question-background").fadeOut(150);
+					$("#ask-question-box").fadeOut(150);
+					$("body").css("overflow", "");
+				}
+			});
+		</script>
+	<?php else: ?>
+		<p class="sign-in"><a id="atl-login" href="/customer/account/">SIGN IN</a>TO ASK GWEN & LINDSEY A QUESTION</p>
+		<script type="text/javascript">
+			jQuery(function ($) {
+				$(document).ready(function () {
+					$("#atl-login").click(function (evt) {
+						var found = $("a[title='Log In']");
+						if (found.length == 1) {
+							evt.preventDefault();
+							document.location.href = found.attr('href');
+						}
+					});
+				});
+			});
+		</script>
+	<?php endif; ?>
+</div>
+
+<div class="ask-sidebar">
+	<h1>Your top cleaning questions answered!</h1>
+	<h2>Search Top Conversations</h2>
+	<ul>
+	<?php foreach($sub_categories as $category) : ?>
+		<li><a href="/blog/category/ask-the-laundress/<?php echo $category['slug'] ?>"><?php echo $category['name'] ?></a></li>
+	<?php endforeach ; ?>
+	</ul>
+</div>
+
+<div class="ask-content">
+	<h2>Most Recent Posts</h2>
+</div>

@@ -1,0 +1,29 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $posts = $this->getPosts() ?>
+
+<?php if ($title = $this->getTitle()): ?>
+<h3 class="section-title"><?php echo $this->__($title) ?></h3>
+<?php endif; ?>
+<?php if (count($posts) > 0): ?>
+<div class="page-blog clearer">
+    <?php foreach($posts as $post): ?>    
+    <div class="grid12-4">
+        <?php if ($featuredImage = $post->getFeaturedImage()): ?>
+            <a href="<?php print $post->getPermalink(); ?>"><img src="<?php print $featuredImage->getImageByType('post-list-thumb-home'); ?>" alt="<?php echo $this->htmlEscape($post->getPostTitle()) ?>" /></a>
+        <?php endif; ?>
+        <div class="blog-category"><?php 
+        	if ($post_cat = $post->getParentCategory())
+        		print $post_cat->getName();
+        ?></div>
+        <h4 class="blog-title"><a href="<?php print $post->getPermalink(); ?>" ><?php echo $this->htmlEscape($post->getPostTitle()) ?></a></h4>
+    </div>
+    <?php endforeach; ?>    
+</div>
+<?php endif; ?>

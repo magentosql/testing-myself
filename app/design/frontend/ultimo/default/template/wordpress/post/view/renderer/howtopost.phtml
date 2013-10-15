@@ -1,0 +1,75 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+<?php if ($post): ?>
+	<?php $helper = $this->helper('wordpress') ?>
+	<?php $author = $post->getAuthor() ?>
+	<?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+		<?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
+	<?php endif; ?>
+                
+        <?php if($post->getCustomField('wpcf-wide-featured-image')) { ?>
+                <div class="featured-image">
+                    <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+                    <img src="<?php print $post->getCustomField('wpcf-wide-featured-image'); ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+                </div>
+        <?php } else if($featuredImage = $post->getFeaturedImage()): ?>    
+                <div class="featured-image">                                         
+                        <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('post-main') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+                </div>
+        <?php endif; ?>
+
+	<div class="post-view">                      
+        <h4 class="label-category"><?php print $post->getParentCategory()->name; ?></h4>
+		<h3 class="post-category"><?php echo $this->escapeHtml($post->getPostTitle()) ?></h3>                  
+		<div class="post-social">
+	    	<div>Share it on</div>
+	        <ul class="post-social-links">
+				<li class="odd"><a href="#share-facebook" class="share-facebook" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>
+				<li class="even"><a href="#" class="share-twitter" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-twitter.gif" alt="Twitter" width="21" height="18" border="0"></a></li>
+				<?php if($featuredImage = $post->getFeaturedImage()) : ?>
+				<li class="odd last"><a href="#" class="share-pinterest" data-url="<?php echo $post->getPermalink() ?>" data-img="<?php echo $post->getFeaturedImage()->getImageByType('post-main') ?>"><img src="/skin/frontend/ultimo/default/images/post-social-pinterest.gif" alt="Pinterest" width="21" height="18" border="0"></a></li>
+				<?php endif; ?>
+			</ul>
+			<div class="print-link">Print</div>
+			<a href="javascript:window.print()" class="print"><img src="/skin/frontend/ultimo/default/images/print.gif" alt="Print" width="15" height="18" border="0"></a>
+			
+	    </div>
+		<div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
+                    
+			<?php if ($post->isViewableForVisitor()): ?>				
+				<?php echo $post->getPostContent() ?>
+			<?php else: ?>
+				<?php echo $this->getPasswordProtectHtml() ?>
+			<?php endif; ?>                                                                                    
+	</div>
+                           
+    <div class="post-howtosteps" >
+        <ul id="accordion-howto" class="accordion">
+            <?php 
+            
+                $cathelper = Mage::helper('wordpress/category');
+                $steps = $cathelper->getStepsFor('howto', $post->getId());
+                                                                                
+                foreach($steps AS $key => $step) {                                  
+            ?>
+                    <li>
+                    	<a href="#<?php print "item" . $key; ?>" ><?php print $this->escapeHtml($step->getPostTitle()); ?></a>
+		    	<div><?php print $step->getPostContent(); ?></div>
+                    </li>
+            <?php } ?>
+            </ul>    
+    </div>
+		
+		<?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+				<div class="sharethis-icons" id="sharethis-icons-<?php echo $post->getId() ?>"><?php echo $this->helper('wordpress/plugin_shareThis')->getIcons($post) ?></div>
+		<?php endif; ?>
+		
+	</div>
+<?php endif; ?>

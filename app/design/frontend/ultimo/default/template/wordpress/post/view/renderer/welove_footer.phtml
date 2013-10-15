@@ -1,0 +1,42 @@
+<div class="blog" >
+	<div class="block block-related block-related-posts" >
+        	<div class="block-title">
+                        <p>More to Explore in</p>
+                        <strong>We Love</strong>
+		</div>
+		
+		<div class="post-list">
+			<ul id="post-list">
+				<?php
+                           		$catHelper = Mage::helper('wordpress/category');
+                           		$output = $catHelper->getRelatedPosts(-1, 2, 4); //-1 used temp
+                           		$i = 0;
+                           		foreach ($output as $resource) {
+                           			$related = Mage::getResourceModel('wp_addon_cpt/type')->getPostByUri("welove/" . $resource['post_name']);
+                           			if ($related == null) continue;
+                           			$i++;
+                           			$postTitle = $this->escapeHtml($related->getPostTitle());
+                           			$postDate = $related->getPostDate();
+                           			$postLink = $related->getPermalink();
+				?>	
+                                		<li class="item <?php echo ($i %2 == 1 ? 'odd' : 'even' ) ?><?php echo ($i == 4 ? ' last' : '' ) ?>">
+                                			<div class="post-list-item post-list-item-small">
+                                        
+                                				<?php if ($ftrImg = $related->getFeaturedImage()): ?>
+                                					<div class="featured-image">
+                                						<a href="<?php echo $postLink; ?>" title="<?php echo $postTitle; ?>"><img src="<?php echo $ftrImg->getThumbnailImage('post-list-thumb') ?>" alt="<?php echo $postTitle; ?>"/></a>
+									</div>
+								<?php endif; ?>
+                                    
+                                    
+								<h2><a href="<?php echo $postLink; ?>" title="<?php echo $postTitle; ?>"><?php echo $postTitle; ?></a></h2>
+								<p class="post-date"><?php echo $postDate; ?></p>
+                
+							</div>				
+						</li>
+				<?php } ?>
+			</ul>
+			<script type="text/javascript">decorateList($('post-list'));</script>
+		</div>
+	</div>
+</div>

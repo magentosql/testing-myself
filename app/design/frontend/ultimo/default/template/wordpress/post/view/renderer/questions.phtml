@@ -1,0 +1,29 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+<?php if ($post): ?>
+	<?php $helper = $this->helper('wordpress') ?>
+	<?php $author = $post->getAuthor() ?>
+	<?php $answer = $post->getMetaValues('wpcf-answer') ?>
+	<?php $postDate = $post->getPostDate(); ?>
+    <div class="ask-content">
+    	
+        <?php if ($featuredImage = $post->getFeaturedImage()): ?> 
+		<div class="featured-image"><img src="<?php echo $featuredImage['guid']; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></div>
+        <?php endif; ?>
+
+		<div class="ask-post-single<?php if (!$post->getFeaturedImage): ?> no-image<?php endif; ?>">                  
+			<h1 class="post-title"><?php echo $this->escapeHtml($post->getPostTitle()) ?></h3>
+			<p class="post-date"><?php echo $postDate ?></p>               
+			<div class="post-entry"><?php echo nl2br($answer[0]['meta_value']) ?></div>
+		</div>
+	
+	</div>
+
+<?php endif; ?>

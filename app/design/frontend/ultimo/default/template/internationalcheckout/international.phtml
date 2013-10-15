@@ -1,0 +1,19 @@
+<?php
+	
+	//if ($this->isEnabled()) {
+		
+		$button_width = Mage::getStoreConfig("checkout/internationalcheckout/ic_button_width");
+
+?>
+
+<form name="icForm" id="icForm" method="post" action="<?php echo '/index.php/internationalcheckout';?>">
+
+   <button style="width:<?php echo $button_width; ?>px; padding:0px;cursor:pointer;" title="<?php echo $this->__('International Checkout') ?>" class="<?php echo $this->buttonClassName(); ?>" <?php echo $this->buttonImagePath(); ?> type="submit"><span style="cursor:pointer;"><span ><?php echo $this->buttonText(); ?></span></span></button>
+   <div style="width:<?php echo $button_width; ?>px;"><?php echo $this->textBelowButton(); ?></div>
+
+</form>
+
+<?php
+	//} // isEnabled	
+?>
+

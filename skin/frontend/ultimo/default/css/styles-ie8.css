@@ -1,0 +1,53 @@
+
+/* Borders instead of dropdown shadows
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+/* Main menu drop-down */
+#nav ul.level0,
+
+/* Main menu drop-down (classic style) */
+.nav-classic #nav .parent > ul,
+
+/* Mini cart dropdown */
+#mini-cart .block-content {
+	border:1px solid #e5e5e5;
+}
+
+
+/* Remember Me popup, MAP popup, credit card number */
+.remember-me-popup,
+.map-popup,
+.tool-tip { border:1px solid #e5e5e5; }
+
+/* Edgeboxes */
+.edgebox-content .custom-content { border:1px solid #aaa; }
+
+
+/* Vertical positioning of header elements
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+.v { display:block; }
+.v .v-item {
+	float:left;
+	display:block;
+}
+.v2 .v-item { width:50%; }
+.v3 .v-item { width:32%; }
+
+.v .user-menu { float:right; }
+.v .header-top-search-wrapper { margin-top:25px; }
+
+/* Main logo fix */
+.logo-wrapper h1.logo a {
+	background: url('../images/laundress_header_logo.gif') 0 0 no-repeat !important;
+}
+
+.header .form-search .button {
+	background: url('../images/search_icon.gif') 3px 1px no-repeat #fff !important;
+}
+
+.banner.grid12-4 {
+	width: 32% !important;
+}
+

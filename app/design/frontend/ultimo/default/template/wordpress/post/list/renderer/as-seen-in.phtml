@@ -1,0 +1,26 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+<div class="post-list-item post-list-item-press">
+
+	<?php if ($thumbnailImage = $post->getCustomField('wpcf-thumbnail-for-index')): ?>	
+                <?php
+                    $imageHelper = Mage::helper('wordpress/image');
+                    $img = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-thumbnail-for-index'), "post-list-thumb-press");                        
+                ?>
+		<div class="featured-image">
+			<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $img ?>" width="330" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+		</div>
+	<?php endif; ?>
+	<div class="post-contents">
+		<h3><?php print $post->getParentCategory()->name; ?></h3>
+		<h2><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a></h2>
+		<p class="post-date"><?php echo $post->getPostDate(); ?></p>
+	</div>			
+</div>

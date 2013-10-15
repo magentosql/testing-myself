@@ -1,0 +1,12 @@
+##
+# Custom Post Types / WordPress Integration
+#
+# Author:			    	 FishPig Limited (Ben Tideswell)
+# URL:	 					 fishpig.co.uk/custom-post-types-in-wordpress-integration.html
+##
+
+23/05/2013 - v1.0.0.7
+- Added fix for single store Magento installations
+
+23/05/2013 - v1.0.0.6
+- Added delete action to Adminhtml controller

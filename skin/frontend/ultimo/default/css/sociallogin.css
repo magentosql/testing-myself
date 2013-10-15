@@ -1,0 +1,130 @@
+
+.clear{
+ width:100%;
+ height:0px;
+ clear:both;
+ font-size:0px;
+ line-height:0px;
+}
+
+#sociallogin_button{
+	margin-top:10px;
+}
+
+#sociallogin_button #bt-loginfb span{
+    height: 32px;
+    background: url("sociallogin/facebook.png") no-repeat;
+    display: block;
+    float: left;
+}
+
+#sociallogin_button #bt-logingo span{
+    height: 32px;
+    background: url("sociallogin/google.png") no-repeat;
+    display: block;
+    float: left;
+}
+#sociallogin_button #bt-loginper span{
+    height: 32px;
+    background: url("sociallogin/persona.png") no-repeat;
+    display: block;
+    float: left;
+}
+#sociallogin_button #bt-loginse span{
+    height: 32px;
+    background: url("sociallogin/stackexchange.png") no-repeat;
+    display: block;
+    float: left;
+}
+
+
+#sociallogin_button #bt-logintw span{
+    height: 32px;
+	background: url("sociallogin/twitter.png") no-repeat;
+    display: block;
+    float: left;
+}
+
+#sociallogin_button #bt-loginya span{
+    height: 32px;
+	background: url("sociallogin/yahoo.png") no-repeat;
+    display: block;
+    float: left;
+}
+/* by Hai Ta */
+#sociallogin_button #bt-loginaol span{    
+	background: url("sociallogin/aol-login-button.png") no-repeat;  
+}
+#sociallogin_button #bt-loginwp span{   
+	background: url("sociallogin/wordpress-login-button.png") no-repeat;  
+}
+#sociallogin_button #bt-logincal span{    
+	background: url("sociallogin/clavid-login-button.png") no-repeat;    
+}
+#sociallogin_button #bt-loginorg span{    
+	background: url("sociallogin/orange-login-button.png") no-repeat;    
+}
+#sociallogin_button #bt-loginmp span{    
+	background: url("sociallogin/myspace-login-button.png") no-repeat;    
+}
+#sociallogin_button #bt-loginlive span{    
+	background: url("sociallogin/live-login-button.png") no-repeat;    
+}
+#sociallogin_button #bt-loginfq span{    
+	background: url("sociallogin/foursquare-login-button.png") no-repeat;   
+}
+
+#sociallogin_button #bt-loginlinked span{    
+	background: url("sociallogin/linkedin-login-button.png") no-repeat;   
+}
+
+#sociallogin_button #bt-loginopen span{    
+	background: url("sociallogin/myOpenId-login-button.png") no-repeat;   
+}
+
+#sociallogin_button #bt-loginlj span{    
+	background: url("sociallogin/Livejournal.png") no-repeat;   
+}
+
+
+#sociallogin-other-div{	
+	display: block;	
+	float: right;      
+}
+#sociallogin-other-a{}
+.sociallogin-other{
+	display: block;	
+	float: right;
+    position: relative;
+    width: 100%;
+}
+.sociallogin-other-span{
+	cursor: pointer;    
+    white-space: nowrap;
+}
+
+.other-button{
+	margin: 7px 3px 5px 4px;
+}
+.sociallogin-other-button{	
+    width: auto;
+	max-width:528px;
+}
+button.bt-login-social{background:none;border:none;cursor: pointer;}
+button.bt-login-social span{	
+	height:33px;
+	line-height:27px;
+	color:#fff;
+	padding:0 0 0 33px;
+	float:left;
+	}
+button.bt-login-social span span{
+	background-position:100% 0 !important;
+	padding-right:10px !important;
+	padding-left:5px !important;
+	min-width: 110px;
+	}
+button.bt-login-social.visible span span {
+	min-width: 90px;
+	}
+	

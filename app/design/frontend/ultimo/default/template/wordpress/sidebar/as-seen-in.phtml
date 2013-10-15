@@ -1,0 +1,35 @@
+<?php
+$helper = Mage::helper('wordpress/category');
+$featuredInCategories = $helper->getSubCategories(184);
+$inStoreCategories = $helper->getSubCategories(187);
+?>
+
+<div class="wp-sidebar as-seen-in">
+    <div class="block block-blog block-blog-menu" id="wp-f2a">
+        <div class="block-title">
+            <strong><span>As Seen In</span></strong>
+        </div>
+        <div class="block-content">
+            <ul>
+            	<?php foreach($featuredInCategories as $category) : ?>
+					<li class="level0 nav-1 first item odd"><a href="/blog/category/as-seen-in/featured-as-seen-in/<?php echo $category['slug'] ?>"><?php echo $category['name'] ?></a></li>
+				<?php endforeach ; ?>                
+            </ul>	
+        </div>
+    </div>
+    
+    <div class="block block-blog block-blog-menu" id="wp-f2a">
+        <div class="block-title">
+            <strong><span>In Store</span></strong>
+        </div>
+        <div class="block-content">
+            <ul>
+            	<?php foreach($inStoreCategories as $category) : ?>
+					<li class="level0 nav-1 first item odd"><a href="/blog/category/as-seen-in/in-store/<?php echo $category['slug'] ?>"><?php echo $category['name'] ?></a></li>
+				<?php endforeach ; ?> 
+            </ul>	
+        </div>
+    </div>   
+    
+       
+</div>

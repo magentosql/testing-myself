@@ -1,0 +1,42 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?> 
+<?php $post = $this->getPost() ?>
+<div class="post-list-item-home">                
+            
+        <?php if($post->getCustomField('wpcf-wide-featured-image')) { ?>
+                <div class="featured-image">
+                    <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+                    <img src="<?php print $post->getCustomField('wpcf-wide-featured-image'); ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+                </div>
+        <?php } else if($featuredImage = $post->getFeaturedImage()): ?>    
+		<div class="featured-image">                                         
+			<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('post-list-home') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+		</div>
+	<?php endif; ?>
+	<h3><?php print $post->getParentCategory()->name; ?></h3>
+	<h2><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a></h2>
+	<p class="post-date"><?php print $post->getPostDate(); ?></p>	
+        
+        <div class="entry" >
+            <p><?php print $post->getPostExcerpt(); ?></p>
+        </div>
+        
+        
+        <div class="post-action-bar">		
+			<ul class="post-social-links">
+				<li class="first even">Share it on</li>
+				<li class="odd"><a href="#share-facebook" class="share-facebook" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>
+				<li class="even"><a href="#" class="share-twitter" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-twitter.gif" alt="Twitter" width="21" height="18" border="0"></a></li>
+				<?php if($featuredImage = $post->getFeaturedImage()) : ?>
+				<li class="odd last"><a href="#" class="share-pinterest" data-url="<?php echo $post->getPermalink() ?>" data-img="<?php echo $post->getFeaturedImage()->getImageByType('post-list-home') ?>"><img src="/skin/frontend/ultimo/default/images/post-social-pinterest.gif" alt="Pinterest" width="21" height="18" border="0"></a></li>
+				<?php endif; ?>
+			</ul>
+			<a href="<?php echo $post->getPermalink() ?>" class="post-read-more">Read More</a>
+	</div>
+</div>

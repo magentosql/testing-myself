@@ -1,0 +1,14 @@
+<?php
+$helper = Mage::helper('wordpress/category');
+$sub_categories = $helper->getSubCategories(37);
+?>
+<div class="ask-search-sidebar">
+	<div class="ask-sidebar">
+		<h1>Your top cleaning questions answered!</h1>
+		<h2>Search Top Conversations</h2>
+		<ul>
+		<?php foreach($sub_categories as $category) : ?>
+			<li><a href="/blog/category/ask-the-laundress/<?php echo $category['slug'] ?>"><?php echo $category['name'] ?></a></li>
+		<?php endforeach ; ?>
+	</ul>
+</div>

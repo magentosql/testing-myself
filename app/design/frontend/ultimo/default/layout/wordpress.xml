@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+  
+
+   <default>
+      <reference name="head">
+         <block type="core/template" name="wordpress.blog.feed" as="blog_feed" before="-" template="wordpress/feed/default/link.phtml" />
+      </reference>
+      <reference name="top.links">
+         <action method="addLink" translate="label title" module="wordpress" ifconfig="wordpress_blog/layout/toplink_enabled">
+            <label helper="wordpress/getTopLinkLabel" />
+            <url helper="wordpress/getTopLinkUrl" />
+            <title>Blog</title>
+            <prepare>0</prepare>
+            <urlParams />
+            <position helper="wordpress/getTopLinkPosition" />
+            <li_params />
+            <a_params>class="top-link-blog"</a_params>
+            <before_text />
+            <after_text />
+         </action>
+      </reference>
+   </default>
+   
+   
+   
+   <wordpress_default>
+      <remove name="tags_popular" />
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/2columns-left-blog.phtml</template>
+         </action>
+         <block type="core/template" name="wordpress.header" as="blog_header" before="-" template="wordpress/header.phtml" />
+      </reference>
+      <reference name="head">
+         <action method="addCss" ifconfig="wordpress_blog/layout/include_css">
+            <style>css/custom.css</style>
+         </action>
+         <action method="addCss">
+            <style>wordpress/styles.css</style>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChildren" ifconfig="wordpress_blog/layout/sidebar_left_empty" />
+         <block type="wordpress/sidebar" name="wordpress_sidebar_left" template="wordpress/sidebar.phtml">
+            <action method="setWidgetArea">
+               <area>sidebar-1</area>
+            </action>
+            <action method="setWidgetFallbackArea">
+               <area>primary-widget-area</area>
+            </action>
+         </block>
+      </reference>
+      <reference name="right">
+         <action method="unsetChildren" ifconfig="wordpress_blog/layout/sidebar_right_empty" />
+         <block type="wordpress/sidebar" name="wordpress_sidebar_right" before="-" template="wordpress/sidebar.phtml">
+            <action method="setWidgetArea">
+               <area>sidebar-2</area>
+            </action>
+            <action method="setWidgetFallbackArea">
+               <area>secondary-widget-area</area>
+            </action>
+         </block>
+      </reference>
+      <reference name="before_body_end">
+         <block type="core/template" name="wordpress.humansnobots" as="HumansNoBots" template="wordpress/js/humans-no-bots.phtml" />
+         <block type="wordpress/sidebar_widget_slickSocialButtons" name="wordpress.slickSocialButtons" as="slickSocialButtons" />
+      </reference>
+   </wordpress_default>
+   
+   
+   
+   <!-- HOMEPAGE -->
+   <wordpress_homepage>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/blog-home.phtml</template>
+         </action>
+      </reference>
+      <reference name="left">
+         <!-- action method="unsetChild"><name>wordpress_sidebar_left</name></action -->
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="wordpress/homepage" name="wordpress_homepage" template="wordpress/homepage.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_homepage>
+
+   
+   <!-- DEFAULT SETTINGS, DO NOT EDIT BELOW THIS LINE -->
+   <wordpress_post_view>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1-or-2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>blog</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="wordpress/post_view" name="wordpress_post_view" template="wordpress/post/view.phtml">
+            <block type="wordpress/post_related" name="wordpress_post_related" as="related_posts" template="wordpress/post/related.phtml" />
+            <block type="wordpress/post_view_comments" name="wordpress_post_comments" as="comments" template="wordpress/post/view/comments.phtml">
+               <block type="wordpress/post_view_comment_pager" name="wordpress_post_comment_pager" as="pager" />
+               <block type="wordpress/post_view_comment_form" name="wordpress_post_comment_form" as="form" template="wordpress/post/view/comment/form.phtml" />
+            </block>
+         </block>
+         <block type="core/template" name="wordpress_disqus" template="wordpress/post/disqus.phtml" />
+         <block type="wordpress/post_associated_products" before="wordpress_disqus" name="wordpress_associated_products" template="wordpress/post/associated/products.phtml">
+            <action method="setTitle" translate="title" module="wordpress">
+               <title><![CDATA[Related Products]]></title>
+            </action>
+         </block>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+   </wordpress_post_view>
+
+   <wordpress_post_category_view>
+      <reference name="head">
+         <block type="core/template" name="wordpress.blog.feed.category" as="blog_category_feed" before="-" template="wordpress/feed/category/link.phtml" />
+      </reference>
+      <reference name="content">
+         <block type="core/template" name="wordpress_category_default_slideshow" template="wordpress/slideshows/default.phtml" />
+         <block type="wordpress/category_view" name="wordpress_category" template="wordpress/category/view.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+   </wordpress_post_category_view>
+
+   <wordpress_post_tag_view>
+      <reference name="content">
+         <block type="wordpress/tag_view" name="wordpress_tag" template="wordpress/tag/view.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_post_tag_view>
+
+   <wordpress_term_view>
+      <reference name="content">
+         <block type="wordpress/term_view" name="wordpress_term_view" template="wordpress/term/view.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_term_view>
+
+   <wordpress_page_view>
+      <reference name="content">
+         <block type="wordpress/page_view" name="wordpress_page_view" template="wordpress/page/view.phtml">
+            <block type="wordpress/page_view_comments" name="wordpress_page_comments" as="comments" template="wordpress/post/view/comments.phtml">
+               <block type="wordpress/page_view_comment_pager" name="wordpress_page_comment_pager" as="pager" />
+               <block type="wordpress/page_view_comment_form" name="wordpress_page_comment_form" as="form" template="wordpress/post/view/comment/form.phtml" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_page_view>
+   
+   <wordpress_author_view>
+      <reference name="content">
+         <block type="wordpress/author_view" name="wordpress_author" template="wordpress/author/view.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_author_view>
+   <!-- DO NOT EDIT ABOVE THIS LINE -->
+   
+
+   <!-- SEARCH -->
+   <wordpress_search_index>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="wordpress/search_result" name="wordpress_search_result" template="wordpress/search/result.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_search_index>
+
+   
+   <!-- ARCHIVE (NO LONGER IN USE) -->
+   <wordpress_archive_view>
+      <reference name="content">
+         <block type="wordpress/archive_view" name="wordpress_archive" template="wordpress/archive/view.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_archive_view>
+   
+   
+   <!-- RELATED BLOG POSTS E-COMMERCE -->
+   <catalog_product_view>
+      <reference name="product.info.additional">
+         <block type="wordpress/post_associated" name="wordpress_posts_associated" template="wordpress/post/associated.phtml">
+            <action method="setTitle" translate="title" module="wordpress">
+               <title><![CDATA[Related Blog Posts]]></title>
+            </action>
+            <action method="setEntity">
+               <type><![CDATA[product]]></type>
+            </action>
+            <!--<action method="setCount"><count>5</count></action>-->
+         </block>
+      </reference>
+   </catalog_product_view>
+
+   <cms_page>
+      <reference name="content">
+         <block type="wordpress/post_associated" name="wordpress_posts_associated" template="wordpress/post/associated.phtml" after="-">
+            <action method="setTitle" translate="title" module="wordpress">
+               <title><![CDATA[Related Blog Posts]]></title>
+            </action>
+            <action method="setEntity">
+               <type><![CDATA[cms_page]]></type>
+            </action>
+         </block>
+      </reference>
+   </cms_page>
+   
+   
+   <!-- ASK THE LAUNDRESS -->
+   <wordpress_post_view_QUESTION>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>ask-the-laundress</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-ask-the-laundress</classname>
+         </action>
+         <action method="unsetChild">
+            <name>blog_header</name>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="wordpress/homepage" name="wordpress_homepage" template="ask-the-laundress/ask-the-laundress-post.phtml" />
+         <remove name="wordpress_disqus" />
+      </reference>
+   </wordpress_post_view_QUESTION>
+   
+   <wordpress_post_customtype_view_question>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>ask-the-laundress</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-ask-the-laundress</classname>
+         </action>
+         <action method="unsetChild">
+            <name>blog_header</name>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="wordpress/homepage" name="wordpress_homepage" template="ask-the-laundress/ask-the-laundress.phtml" />
+      </reference>
+   </wordpress_post_customtype_view_question>
+   
+   <wordpress_asksearch_index>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>ask-the-laundress</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-ask-the-laundress</classname>
+         </action>
+         <action method="unsetChild">
+            <name>blog_header</name>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" template="wordpress/sidebar/ask-the-laundress.phtml" />
+      </reference>
+      <reference name="content">
+         <block type="wordpress/search_result" name="wordpress_search_result" template="wordpress/search/askresult.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_asksearch_index>
+   
+   <wordpress_category_37>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-ask.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>ask-the-laundress</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-ask-the-laundress</classname>
+         </action>
+         <action method="unsetChild">
+            <name>blog_header</name>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="wordpress/homepage" name="wordpress_homepage" template="ask-the-laundress/ask-the-laundress.phtml" />
+      </reference>
+   </wordpress_category_37>
+   
+   <wordpress_post_view_cat37>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-ask-the-laundress</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat37>
+   
+   
+   <!-- WE LOVE -->
+   <wordpress_post_view_WELOVEPOST>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>blog-we-love</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-we-love</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>blog</classname>
+         </action>
+      </reference>
+      <remove name="breadcrumbs" />
+      <reference name="left">
+         <action method="unsetChildren" />
+      </reference>
+      <reference name="content">
+         <block type="core/template" after="wordpress_post_view" name="wordpress_category_welove_slideshow" template="wordpress/post/view/renderer/welove_footer.phtml" />
+      </reference>
+   </wordpress_post_view_WELOVEPOST>
+   
+   <wordpress_category_2>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-we-love</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="core/template" name="wordpress_category_welove_slideshow" template="wordpress/slideshows/we-love.phtml" />
+      </reference>
+   </wordpress_category_2>
+   
+   <wordpress_post_view_cat2>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-we-love</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat2>
+   
+   
+   <!-- CLEAN AND LEARN -->
+   <wordpress_category_176>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+      <reference name="content">
+         <remove name="wordpress_category_default_slideshow" />
+         <block type="core/template" before="-" name="wordpress_category_cleanandlearn_slideshow" template="wordpress/slideshows/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_category_176>
+   
+   <wordpress_post_view_cat176>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat176>
+   
+   <!-- CLEAN AND LEARN: WASHING CATEGORY -->
+   <wordpress_category_177>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>open-washing</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <remove name="wordpress_category_cleanandlearn_slideshow" />
+         <block type="core/template" name="block_blog_category_header" before="-" template="wordpress/category/cleanandlearn/washing_block.phtml" />
+      </reference>
+   </wordpress_category_177>
+   
+   <wordpress_post_view_cat177>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat177>
+   
+   <!-- CLEAN AND LEARN: CLEANING CATEGORY -->
+   <wordpress_category_183>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>open-cleaning</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <remove name="wordpress_category_cleanandlearn_slideshow" />
+         <block type="core/template" name="block_blog_category_header" before="-" template="wordpress/category/cleanandlearn/cleaning_block.phtml" />
+      </reference>
+   </wordpress_category_183>
+   
+   <wordpress_post_view_cat183>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat183>
+   
+   <!-- CLEAN AND LEARN: FABRIC -->
+   <wordpress_post_view_FABRIC>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>open-washing</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_view_FABRIC>
+   
+   <wordpress_post_customtype_view_fabric>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>open-washing</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="cms/block" name="block_blog_cleandandlearn_fabrics_slide">
+            <action method="setBlockId">
+               <block_id>block_blog_cleandandlearn_fabrics_slide</block_id>
+            </action>
+         </block>
+         <block type="core/template" name="block_blog_cleanandlearn_atoz" template="wordpress/category/cleanandlearn/fabrics_atoz.phtml" />
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_customtype_view_fabric>
+   
+   <!-- CLEAN AND LEARN: MATERIAL -->
+   <wordpress_post_view_MATERIAL>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>open-cleaning</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_view_MATERIAL>
+   
+   <wordpress_post_customtype_view_material>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>open-cleaning</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="cms/block" name="block_blog_cleandandlearn_materials_slide">
+            <action method="setBlockId">
+               <block_id>block_blog_cleandandlearn_materials_slide</block_id>
+            </action>
+         </block>
+         <block type="core/template" name="block_blog_cleanandlearn_atoz" template="wordpress/category/cleanandlearn/materials_atoz.phtml" />
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_customtype_view_material>
+   
+   <!-- CLEAN AND LEARN: HOW TO -->
+   <wordpress_post_view_HOWTO>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1-or-2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <block type="cms/block" name="block_blog_sidebar_howto_banner1">
+            <action method="setBlockId">
+               <block_id>block_blog_sidebar_howto_banner1</block_id>
+            </action>
+         </block>
+         <block type="cms/block" name="block_blog_sidebar_howto_banner2">
+            <action method="setBlockId">
+               <block_id>block_blog_sidebar_howto_banner2</block_id>
+            </action>
+         </block>
+         <block type="cms/block" name="block_blog_sidebar_howto_banner3">
+            <action method="setBlockId">
+               <block_id>block_blog_sidebar_howto_banner3</block_id>
+            </action>
+         </block>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_view_HOWTO>
+   
+   <wordpress_post_customtype_view_howto>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <block type="cms/block" name="block_blog_sidebar_howto_banner1">
+            <action method="setBlockId">
+               <block_id>block_blog_sidebar_howto_banner1</block_id>
+            </action>
+         </block>
+         <block type="cms/block" name="block_blog_sidebar_howto_banner2">
+            <action method="setBlockId">
+               <block_id>block_blog_sidebar_howto_banner2</block_id>
+            </action>
+         </block>
+         <block type="cms/block" name="block_blog_sidebar_howto_banner3">
+            <action method="setBlockId">
+               <block_id>block_blog_sidebar_howto_banner3</block_id>
+            </action>
+         </block>
+      </reference>
+   </wordpress_post_customtype_view_howto>
+   
+   <!-- CLEAN AND LEARN: INGREDIENTS -->
+   <wordpress_category_239>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>open-ingredients</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <remove name="wordpress_category_cleanandlearn_slideshow" />
+         <block type="core/template" name="block_blog_category_header" before="-" template="wordpress/category/cleanandlearn/ingredients_block.phtml" />
+      </reference>
+   </wordpress_category_239>
+   
+   <wordpress_post_view_cat239>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat239>
+   
+   <wordpress_post_view_INGREDIENTS>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1-or-2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>open-ingredients</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <block type="core/template" name="wordpress_sidebar_left" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_view_INGREDIENTS>
+   
+   <wordpress_post_customtype_view_ingredients>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1-or-2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>open-ingredients</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <block type="core/template" name="wordpress_sidebar_left" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_customtype_view_ingredients>
+   
+   <!-- CLEAN AND LEARN: SPECIALITY RESOURCES -->
+   <wordpress_post_view_SPECIALITY-RESOURCE>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1-or-2columns-left-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>open-resources</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_view_SPECIALITY-RESOURCE>
+   
+   <wordpress_category_203>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>open-resources</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+      <reference name="content">
+         <remove name="wordpress_category_cleanandlearn_slideshow" />
+         <block type="core/template" name="block_blog_category_header" before="-" template="wordpress/category/cleanandlearn/resources_block.phtml" />
+      </reference>
+   </wordpress_category_203>
+   
+   <wordpress_post_view_cat203>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-clean-and-learn</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat203>
+   
+   <!-- AS SEEN IN -->
+   <wordpress_category_178>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>blog-as-seen-in</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-as-seen-in</classname>
+         </action>
+         <action method="setTemplate">
+            <template>page/2columns-left-blog.phtml</template>
+         </action>
+      </reference>
+      <reference name="content" />
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" template="wordpress/sidebar/as-seen-in.phtml" />
+      </reference>
+   </wordpress_category_178>
+   
+   <wordpress_post_view_cat178>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-as-seen-in</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat178>
+   
+   <wordpress_post_view_AS-SEEN-IN>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>as-seen-in-post</classname>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-as-seen-in</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_post_view_AS-SEEN-IN>
+   
+   
+   <!-- STYLE -->
+   <wordpress_category_180>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-style</classname>
+         </action>
+      </reference>
+      <reference name="content" />
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_category_180>
+   
+   <wordpress_post_view_cat180>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-style</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat180>
+   
+   
+   <!-- CULTURE -->
+   <wordpress_category_181>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-culture</classname>
+         </action>
+      </reference>
+      <reference name="content" />
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_category_181>
+   
+   <wordpress_post_view_cat181>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-culture</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat181>
+   
+   
+   <!-- TRAVEL -->
+   <wordpress_category_182>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-travel</classname>
+         </action>
+      </reference>
+      <reference name="content" />
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <block type="core/template" name="wordpress_sidebar_left" before="-" template="wordpress/sidebar/cleanandlearn.phtml" />
+      </reference>
+   </wordpress_category_182>
+   
+   <wordpress_post_view_cat182>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-travel</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat182>
+
+   
+   <!-- ENTERTAINING -->
+   <wordpress_category_309>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-entertaining</classname>
+         </action>
+      </reference>
+      <reference name="content" />
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+      </reference>
+   </wordpress_category_309>
+   
+   <wordpress_post_view_cat309>
+      <reference name="root">
+         <action method="addBodyClass">
+            <classname>active-entertaining</classname>
+         </action>
+      </reference>
+   </wordpress_post_view_cat309>
+   
+   
+   <!-- NEW ARCHIVE -->
+   <wordpress_post_archive>
+      <reference name="root">
+         <action method="setTemplate">
+            <template>page/1column-blog.phtml</template>
+         </action>
+         <action method="addBodyClass">
+            <classname>active-archive</classname>
+         </action>
+      </reference>
+      <reference name="left">
+         <action method="unsetChild">
+            <name>wordpress_sidebar_left</name>
+         </action>
+         <action method="unsetChild">
+            <name>left.reports.product.viewed</name>
+         </action>
+      </reference>
+      <reference name="content">
+         <block type="wordpress/homepage" name="wordpress_homepage" template="wordpress/search/result.phtml">
+            <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
+               <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
+            </block>
+         </block>
+      </reference>
+   </wordpress_post_archive>
+   
+</layout>

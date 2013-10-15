@@ -1,0 +1,68 @@
+<?php
+/**
+ * @category		Fishpig
+ * @package		Fishpig_Wordpress
+ * @license		http://fishpig.co.uk/license.txt
+ * @author		Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+
+<?php $helper = $this->helper('wordpress/search') ?>
+ 
+<div class="page-title blog-title">
+	<h2 class="section-title"><a href="/blog/">Clean Talk Blog</a></h2>
+</div>
+
+<div class="blog-nav-categories" >
+    <ul class="blog-nav-list" >
+        <li><a href="/blog/category/we-love/" class="nav-we-love">We Love</a></li>
+        <li><a href="/blog/category/cleanandlearn/" class="nav-clean">Clean & Learn</a></li>
+        <li><a href="/blog/category/as-seen-in/" class="nav-seen">As Seen In</a></li>
+        <li><a href="/blog/category/style/" class="nav-style">Style</a></li>
+        <li><a href="/blog/category/culture/" class="nav-culture">Culture</a></li>
+        <li><a href="/blog/category/travel-general/" class="nav-travel">Travel</a></li>
+        <li><a href="/blog/category/entertaining/" class="nav-entertaining">Entertaining</a></li>
+        <li><a href="/blog/archive/" class="nav-archive">Archive</a></li>
+    </ul>
+
+    <div class="blog-nav-search" >
+        <form method="get" action="/blog/search/" id="blog-search-form">
+            <div class="blog-search">
+                <input type="text" class="input-text" value="" name="s" id="blog-search">                
+                <script type="text/javascript">
+                    //<![CDATA[
+                    var wpSearchForm = Class.create(Varien.searchForm, {
+                        initialize : function($super, form, field, emptyText, useSeoUrls) {
+                            this.useSeoUrls = useSeoUrls;
+                            return $super(form, field, emptyText);
+                        },
+                        submit : function($super, event) {
+                            if (this.useSeoUrls) {
+                                var o = this.form.readAttribute('action');
+                                var n = this.form.readAttribute('action') + encodeURIComponent(this.field.getValue().replace(' ', '-')) + '/';
+				
+                                this.form.writeAttribute('action', n);
+                                this.field.writeAttribute('disabled', 'disabled');
+                                
+                                if (!$super(event)) {
+                                    this.form.writeAttribute('action', o);
+                                    this.field.writeAttribute('disabled', null);
+                                    
+                                    Event.stop(event);
+                                    return false;
+                                }
+                                
+                                return true;
+                            }
+                            
+                            return $super(event);
+                        }
+                    });
+                    
+                    var searchForm = new wpSearchForm('blog-search-form', 'blog-search', 'Search Posts', true);
+                    //]]>
+                </script>
+            </div>
+        </form>        
+    </div>
+</div>      

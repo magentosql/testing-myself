@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <customer_account>
+        <!-- Mage_Newsletter -->
+        <reference name="customer_account_navigation">
+        <!--  <action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action> -->
+	
+			<action method="addLink" translate="label" module="authorizeCIM"><name>authorizeCIM</name><path>authorizecim/</path><label>Manage Credit Cards</label></action>
+        </reference>
+       <!-- <remove name="left.newsletter"/> -->
+    </customer_account>
+
+	<authorizecim_index_index>
+        <label>Customer My Account Credit Card Management</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+
+            <block type="core/template" name="authorizecards" template="authorizecim/ccshow.phtml" />
+
+        </reference>
+    </authorizecim_index_index>
+
+	<authorizecim_index_new>
+        <label>Customer My Account Add Credit Card</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+
+         <block type="authorizecim/cc" name="checkout.payment.methods" as="methods" template="authorizecim/ccnew.phtml">
+
+         </block>
+		 
+ 
+
+        </reference>
+    </authorizecim_index_new>
+
+	<authorizecim_index_update>
+        <label>Customer My Account Update Credit Card</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="core/template" name="authorizecards" template="authorizecim/ccshow.phtml" />
+        </reference>
+    </authorizecim_index_update>
+
+	
+	<authorizecim_index_new3>
+        <label>Customer My Account Add Credit Card</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+
+         <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="authorizecim/ccnew.phtml">
+
+         </block>
+
+			
+        </reference>
+    </authorizecim_index_new3>
+	
+
+	
+</layout> 
+
+
+		    <!-- Mage_Review
+	BEST
+	<authorizecim_index_new>
+        <label>Customer My Account Newsletter Subscriptions</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+			<block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="checkout/onepage/payment.phtml">
+				<block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="checkout/onepage/payment/methods.phtml">
+				</block>
+			</block>	
+        </reference>
+    </authorizecim_index_new>
+	BEST
+		<remove name="right"/>
+        <remove name="left"/>
+					<remove id="savedsection"/>
+				<remove name="savedsection"/>
+            <block type="core/template" name="authorizecards" template="authorizecim/ccnew.phtml" />
+			
+<block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="checkout/onepage/payment.phtml">
+         <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="checkout/onepage/payment/methods.phtml">
+         </block>
+      </block>			
+			
+            <block type="customer/newsletter" name="customer_newsletter">
+                <block type="page/html_wrapper" name="customer.newsletter.form.before" as="form_before" translate="label">
+                    <label>Newsletter Subscription Form Before</label>
+                    <action method="setMayBeInvisible"><value>1</value></action>
+                </block>
+            </block>
+			    Mage_Review -->

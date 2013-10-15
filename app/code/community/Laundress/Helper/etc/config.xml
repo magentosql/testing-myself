@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Laundress>
+            <version>1.0</version>
+        </Laundress>
+    </modules>
+    <global>
+      <helpers>
+        <Helper>
+            <class>Laundress_Helper_Helper</class>
+        </Helper>
+      </helpers>
+    </global>
+</config>

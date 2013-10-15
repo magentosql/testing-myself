@@ -1,0 +1,40 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+<?php $featuredImage = $post->getCustomField('wpcf-wide-featured-image') ?>
+<?php $postDate = $post->getPostDate(); ?>
+<div class="as-seen-in-post-sidebar">
+	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_blog_seenin_left_promos')->toHtml() ?>
+</div>
+<div class="post-list-item as-seen-in-post-content">
+	<div class="post-entry entry<?php if ($featuredImage): ?> post-entry-with-image<?php endif; ?>">
+		<?php if ($post->isViewableForVisitor()): ?>
+			<?php if ($featuredImage): ?>
+				<div class="featured-image">
+					<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+				</div>
+			<?php endif; ?>
+			<div class="post-social">
+	        	<div>Share it on</div>
+	            <ul class="post-social-links">
+					<li class="odd"><a href="#share-facebook" data-url="" class="share-facebook" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>
+					<li class="even"><a href="#" data-url="" class="share-twitter" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-twitter.gif" alt="Twitter" width="21" height="18" border="0"></a></li>
+					<?php if($featuredImage = $post->getFeaturedImage()) : ?>
+					<li class="odd last"><a href="#" class="share-pinterest" data-url="<?php echo $post->getPermalink() ?>" data-img="<?php echo $post->getFeaturedImage()->getImageByType('post-main') ?>"><img src="/skin/frontend/ultimo/default/images/post-social-pinterest.gif" alt="Pinterest" width="21" height="18" border="0"></a></li>
+					<?php endif; ?>
+				</ul>
+	        </div>
+			<h2><?php echo $this->escapeHtml($post->getPostTitle()) ?></h2>
+			<p class="post-date"><?php echo $postDate ?></p>
+			<?php echo $post->getPostContent() ?>
+		<?php else: ?>
+			<?php echo $this->getPasswordProtectHtml($post) ?>
+		<?php endif; ?>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+/* 
+    Document   : fonts
+    Created on : 25-Apr-2013, 4:45:48 PM
+    Author     : Philipp Schöfer [ps@perspektive-web.de]
+    Description:
+        Font embedding
+*/
+
+
+@font-face {
+    font-family: 'Halo Handletter';
+    src: url('../fonts/halohandletter-regular/halohandletter.eot');
+    src: url('../fonts/halohandletter-regular/halohandletter.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/halohandletter-regular/halohandletter.woff') format('woff'),
+         url('../fonts/halohandletter-regular/halohandletter.ttf') format('truetype'),
+         url('../fonts/halohandletter-regular/halohandletter.svg#halohandletterregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Sorts Mill Goudy Regular';
+    src: url('../fonts/sortsmillgoudy-regular/sortsmillgoudy-regular-webfont.eot');
+    src: url('../fonts/sortsmillgoudy-regular/sortsmillgoudy-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sortsmillgoudy-regular/sortsmillgoudy-regular-webfont.woff') format('woff'),
+         url('../fonts/sortsmillgoudy-regular/sortsmillgoudy-regular-webfont.ttf') format('truetype'),
+         url('../fonts/sortsmillgoudy-regular/sortsmillgoudy-regular-webfont.svg#sorts_mill_goudyregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'GillSansMTStd-Bold';
+    src: url('../fonts/gillsansbold/26D5D6_0_0.eot');
+    src: url('../fonts/gillsansbold/26D5D6_0_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gillsansbold/26D5D6_0_0.woff') format('woff'),
+         url('../fonts/gillsansbold/26D5D6_0_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'GillSansMTStd';
+    src: url('../fonts/gillsans/gillsans.eot');
+    src: url('../fonts/gillsans/gillsans.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/gillsans/gillsans.woff') format('woff'),
+         url('../fonts/gillsans/gillsans.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'bodoni-bookbookitalic';
+    src: url('../fonts/bodoni-bookbookitalic/bodoni-book_italic-webfont.eot');
+    src: url('../fonts/bodoni-bookbookitalic/bodoni-book_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bodoni-bookbookitalic/bodoni-book_italic-webfont.woff') format('woff'),
+         url('../fonts/bodoni-bookbookitalic/bodoni-book_italic-webfont.ttf') format('truetype'),
+         url('../fonts/bodoni-bookbookitalic/bodoni-book_italic-webfont.svg#bodoni-bookbookitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

@@ -4,3 +4,5 @@ downloader/*
 media/catalog/product/cache/*
 media/tmp/*
 var/*
+nbproject/
+wp/wordpress/wp-content

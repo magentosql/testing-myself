@@ -1,0 +1,121 @@
+<?php
+/** COPYRIGHT authorizeCIM 2011-2012 Eric Levine */
+?>
+<?php $_code=$this->getMethodCode() ?>
+<?php	//authorizeCIM 2011
+$custID=0; $poall=''; $lastused=0; $profilecount=0; $showcount=0;
+          if (!$this->helper('customer')->isLoggedIn()) {
+                 header("Location: /customer/account/login/");
+                 exit();
+          }
+
+$custID=Mage::getSingleton('customer/session')->getCustomerId();
+//$response = Mage::app()->getResponse()->setHeader(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB), "/customer/account/login")->sendHeaders(); 
+
+//print "CUSTID: $custID";
+
+if($custID>0) {
+	$orderTable=Mage::getSingleton('core/resource')->getTableName('sales_flat_order'); $orderPaymentTable=Mage::getSingleton('core/resource')->getTableName('sales_flat_order_payment'); $sql = "SELECT * FROM $orderPaymentTable p, $orderTable q WHERE q.customer_id=".$custID." AND q.entity_id=p.parent_id AND po_number LIKE '%-%' AND cc_type > '' AND cc_ss_start_month>0 ORDER BY p.entity_id desc;";
+	
+	//print($sql);
+	
+	$results = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($sql);
+
+	$profiletoken=array();
+	$profileexpmonth=array();
+	$profileexpyear=array();
+	$profilecctype=array();
+	$profilesavecim=array();
+	$profilelast4=array();
+	$showcount = Mage::getStoreConfig('payment/authorizecimsoap/cardstoshow');
+
+	if($showcount==0) { $showcount=50; }
+	foreach($results as $data2) {
+		 $poall = $data2['po_number'];
+		 $poparts = preg_split('/-/',$poall);
+		 $cimcustid=$poparts[0];
+		 $cimprofid=$poparts[1];
+		 $last4 = $data2['cc_last4'];
+		 $token="$poall";
+		if(!isset($profilelast4[$last4])) {
+			$profiletoken[$cimprofid]=$token;
+			$profilelast4[$cimprofid]=$last4;
+				 if($data2['cc_ss_start_month']=="0") {$profilesavecim[$cimprofid]="0"; } else {$profilesavecim[$cimprofid]="1"; }
+				 $profilecctype[$cimprofid]=$data2['cc_type'];
+				 $profileexpmonth[$cimprofid]=$data2['cc_exp_month'];
+				 $profileexpyear[$cimprofid]=$data2['cc_exp_year'];
+				 if($profilesavecim[$cimprofid]!="0") { 
+					$profilelast4[$last4]=$cimprofid;
+					$profilecount=$profilecount+1;
+					if($lastused==0) { $lastused=$cimprofid;  }
+				 }
+		}
+	}
+	if($showcount<1) { $showcount=0; $profilecount=0; }
+}
+////////////////////////////////
+?>
+
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Credit Card Management') ?></h1>
+</div>
+<?php $urlnew="index/new/params?cid=$custID"; ?>
+<div class="box-head">
+    <h2>CREDIT CARDS ON FILE</h2>
+	<a href="<?php echo $urlnew ?>"><?php echo $this->__('Enter New Card') ?></a>
+</div>
+<?php echo $this->getPagerHtml(); ?>
+<?php if($showcount>0): ?>
+<table class="data-table" id="my-orders-table">
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col width="1" />
+    <col />
+    <thead>
+        <tr>
+            <th><?php echo $this->__('Card Type') ?></th>
+            <th><?php echo $this->__('Ending') ?></th>
+            <th><?php echo $this->__('Exp Month') ?></th>
+            <th><?php echo $this->__('Exp Year') ?></th>
+ <?php /*            <th><?php echo $this->__('Visible') ?></th>   */ ?>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $_odd = ''; ?>
+        <?php foreach($profiletoken as $profilepay => $token): ?>
+		<?php $uurl="index/remove/params?cid=$custID&cprofile=$token"; 
+		$uurlindex="index/new/params?cid=$custID&cprofile=$token"; 
+		?>
+        <tr>
+			<td><?php echo $profilecctype[$profilepay] ?></td>	
+			<td><?php echo $profilelast4[$profilepay];  ?></td>
+            <td><?php echo $profileexpmonth[$profilepay] ?></td>
+            <td><?php echo $profileexpyear[$profilepay] ?></td>
+ <?php /*            <td><?php echo $profilesavecim[$profilepay] ?></td>	 */ ?>
+			<td><a href="<?php echo $uurl ?>"><?php echo $this->__('Remove') ?></a>
+			<a href="<?php echo $uurlindex ?>"><?php echo $this->__('Update') ?></a>
+			
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<script type="text/javascript">decorateTable('my-orders-table');</script>
+<?php echo $this->getPagerHtml(); ?>
+<?php else: ?>
+    <p><?php echo $this->__('You have no cards on file.'); ?></p>
+<?php endif; ?>
+ <?php /*
+    <div class="buttons-set">
+        <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->getBackTitle() ?></a></p>
+    </div>
+*/ ?>
+
+
+

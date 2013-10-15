@@ -1,0 +1,45 @@
+<?php if ($title = $this->getSlideshowTitle()): ?>
+	<div class="page-title">
+		<h1><?php echo $this->__($title) ?></h1>
+	</div>
+<?php endif; ?>
+
+<div id="blog-custom-slideshow" class="<?php echo $this->getSlideshowStyles(); ?>">         
+    
+<?php $helper = Mage::helper('wordpress/category');
+      $data = $helper->getAllPostsByTag($this->getSlideshowId());
+      foreach($data AS $post): ?>            
+            <div class="slidesjs-slide">
+                <?php if($post->getFeaturedImage()) { ?>
+                    <img src="<?php print $post->getFeaturedImage()->getImageByType('post-main'); ?>" />            
+                <?php } ?>                                
+                <h2><?php print $post->getPostTitle(); ?></h2>
+                <p class="post-date" ><?php print $post->getPostDate(); ?></p>
+                <div class="read-more" >
+                    <a href="<?php print $post->getPermalink(); ?>" >Read more</a>
+                </div>
+            </div>
+<?php endforeach; ?>   
+        
+
+</div>
+
+<script type="text/javascript">
+    jQuery(function() {
+      jQuery('#blog-custom-slideshow').slidesjs({
+        width: 940,
+        height: 443,
+        navigation: {
+          effect: "slide"
+        },
+        pagination: {
+          effect: "slide"
+        },
+        effect: {
+          fade: {
+            speed: 400
+          }
+        }
+      });
+    });
+</script>

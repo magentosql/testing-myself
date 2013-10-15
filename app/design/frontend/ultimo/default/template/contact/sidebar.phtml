@@ -1,0 +1,42 @@
+<?php
+
+$sPageId = Mage::getSingleton('cms/page')->getIdentifier();
+
+$oStore = Mage::app()->getStore();
+$collection = Mage::getModel('cms/page')->getCollection()
+              ->addStoreFilter($oStore)
+              ->addFieldToFilter('is_active',1)
+              ->addFieldToFilter('identifier',array(array('like'=>array('%contact%'))));
+/*
+foreach($collection AS $page) {
+    print_r($page);
+}
+ * 
+ */
+
+?>
+<div id="sidebar-contact">
+    <div class="block block-vertnav">
+        <div class="block-title"><span>About Us</span></div>
+        <div class="block-content">
+            <ul class="vertnav clearer nav-contact">
+            	<li class="first nav-our-story"><a href="/our-story/">Our Story</a></li>
+                <li class="nav-contact-us"><a href="/contact/"><span>Contact us</span></a></li>
+                <li class="nav-find-a-store"><a href="/contact/find-a-store">Find a Store Near You</a></li>
+                <li class="nav-corporate"><a href="/contact/corporate">Corporate</a></li>                
+            </ul>
+        </div>
+    </div>
+    <div class="block block-vertnav hide-below-768">
+        <div class="block-title"><span>Our Policies</span></div>
+        <div class="block-content">
+            <ul class="vertnav clearer nav-contact">
+                <li class="first nav-faq-orders"><a href="/faq/"> <span>FAQ for Orders</span> </a></li>
+                <li class="nav-faq-washing"><a href="/washing-service-faq/"> <span>FAQ for Washing Service</span> </a></li>
+                <li class="nav-shipping"><a href="/contact/shipping/">Shipping</a></li>
+                <li class="nav-privacy"><a href="/contact/privacypolicy/">Privacy Policy</a></li>
+                <li class="nav-terms"><a href="/contact/terms/">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

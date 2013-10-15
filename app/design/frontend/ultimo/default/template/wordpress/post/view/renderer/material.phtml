@@ -1,0 +1,73 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+<?php if ($post): ?>
+	<?php $helper = $this->helper('wordpress') ?>
+	<?php $author = $post->getAuthor() ?>
+	<?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+		<?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
+	<?php endif; ?>                    
+        
+	<div class="post-view post-view-fabric grid4-4">                      
+            
+            <div class="post-view-head clearer" >
+                <?php if ($featuredImage = $post->getFeaturedImage()): ?> 
+                <div class="featured-image grid4-1">                    
+                    <img src="<?php echo $featuredImage->getAvailableImage(); ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>
+                </div>
+                <?php endif; ?>
+
+                <div class="grid4-4" >
+                    <h4 class="label-category">How to Clean</h4>
+                    <h3 class="post-category"><?php echo $this->escapeHtml($post->getPostTitle()) ?></h3>                                    
+                    <div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
+
+                             <div class="post-social" >
+                                <img src="/skin/frontend/ultimo/default/images/dummy_wp_social.gif" border="0" alt="" />
+                            </div>
+
+
+                            <?php if ($post->isViewableForVisitor()): ?>				
+                                    <?php echo $post->getPostContent() ?>
+                            <?php else: ?>
+                                    <?php echo $this->getPasswordProtectHtml() ?>
+                            <?php endif; ?>                                                                                    
+
+                    </div>
+
+                    <a class="read-label" ><span>?</span> How to read a label!</a>
+                </div>     
+            </div>
+            
+            <div class="post-howtosteps" >
+                    <ul id="accordion-howto" class="accordion">
+                        <?php 
+                            $cathelper = Mage::helper('wordpress/category');
+                            $steps = $cathelper->getStepsFor('fabric', $post->getId());
+                                                                                
+                            foreach($steps AS $key => $step) {                                      
+                        ?>
+                                <li>
+                                	<a href="#<?php print "item" . $key; ?>" ><?php print $this->escapeHtml($step->getPostTitle()); ?></a>
+					<div><?php print $step->getPostContent(); ?></div>
+                                </li>
+                        <?php } ?>
+                    </ul>    
+            </div>
+            
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('block_blog_fabric_afterhowto')->toHtml() ?>
+		
+            
+            
+            <?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+                <div class="sharethis-icons" id="sharethis-icons-<?php echo $post->getId() ?>"><?php echo $this->helper('wordpress/plugin_shareThis')->getIcons($post) ?></div>
+            <?php endif; ?>
+		
+	</div>
+<?php endif; ?>

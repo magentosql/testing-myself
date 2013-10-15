@@ -1,0 +1,1591 @@
+
+/*
+    for justin 
+*/
+
+body .sidebar ul.level0 li a {
+    line-height: 1.2em;
+}
+
+.toolbar .pager .pages span {
+    text-transform: uppercase; 
+}
+
+.itemslider-wrapper .itemslider-horizontal {
+    margin-top: 5px;
+}
+
+.itemslider-wrapper .gen-slider-arrows1-pos-top-right .direction-nav {
+    display: none;
+}
+
+.itemslider-wrapper .products-grid h3.product-name a {
+    text-transform: none;
+    font-size: 18px;
+}
+
+.itemslider-wrapper .itemslider-horizontal .slides > li {
+    border-left: 1px solid #dadada;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.itemslider-wrapper .itemslider-horizontal .slides > li:first-child {
+    border-left: 0;
+}
+
+.itemslider-wrapper .itemslider-x.count-3 {
+    max-width: 753px;
+}
+
+.products-list .product-name a, .products-grid .product-name a, h3.product-name a {
+    color: #222222;
+}
+
+.products-grid .online-exclusive {
+    font-family: "Georgia", serif;
+    font-style: italic;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #afafaf;
+}
+
+.products-grid .price-box {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+}
+
+.itemslider-wrapper .products-grid .price-box .regular-price {
+    font-size: 14px;
+}
+
+#bottom-cap {
+    height: 0 !important;
+}
+
+body .sidebar ul.level0 li.active a {
+    color: #64B96A;
+}
+
+body .sidebar .block-content #recently-viewed-items a:first-of-type {
+    display: block;
+}
+
+body .sidebar .block-content #recently-viewed-items a:first-of-type img {
+    padding-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------- */
+
+a {}
+a:hover { 
+    color: #64B96A;     
+}
+
+.effect {  
+    transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+    -moz-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+    -webkit-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+    -o-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;
+}
+
+body.catalogsearch-result-index .page-title {
+    margin: 10px 0 0 0;
+}
+
+body.catalogsearch-result-index .page-title h1 {
+    vertical-align: bottom;
+    display: inline;
+    min-height: available;    
+}
+
+#mini-cart .block-content .empty {
+    padding: 10px 20px; 
+}
+
+#mini-cart button.btn-inline span span {
+    font-weight: normal;
+}
+
+#overlay {
+    position: absolute;
+    z-index: 2001;
+    left: 50%;
+    margin-left: -50%;
+    display: none;
+    max-width: none;
+    margin-top: -5px;
+}
+
+#overlay img {
+    width: auto;
+    max-width: none;
+}
+
+/* General
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+h1 {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+}
+
+h1 span {
+    text-transform: none;
+}
+
+.breadcrumbs li, .breadcrumbs li a {
+    color: #999999;
+    font-family: "Georgia";
+    font-style: italic;    
+    font-size: 12px;
+}
+
+.breadcrumbs li a:hover {
+    color: #64B96A;
+}
+
+.breadcrumbs li strong {
+    color: #222;
+}
+
+.grid3-1 {
+    display: inline;        
+    float: left;
+    margin-right: 2%;
+    position: relative;    
+    width: 31%;
+}
+
+.grid3-1:last-child {
+    margin-right: 0;
+}
+
+
+
+
+/* Homepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.cms-home .col-main {
+    margin: 0;
+    width: 100%;
+}
+
+.cms-home .preface.grid-full {
+    margin: 0;
+    width: 100%;
+}
+
+.cms-home .preface.grid-full .the-slideshow-wrapper {
+    margin: 0 0 0 -23px;
+    width: 1006px;    
+    height: 440px;
+}
+
+.cms-home .preface.grid-full .the-slideshow {
+    margin: 0;
+    width: 1006px;
+}
+
+.cms-home .main-container .container {
+    padding-top: 0;
+}
+
+
+/* Nav
+-------------------------------------------------------------- */
+
+#nav {
+	border-bottom: none;
+}
+
+.nav-dropdown-wrapper {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	
+	width: 927px;
+	padding: 7px 6px 7px 7px;
+	
+	background-color: #fff;
+	
+	-moz-box-shadow: 1px 1px 5px rgba(0,0,0, 0.2);
+	-webkit-box-shadow: 1px 1px 5px rgba(0,0,0, 0.2);
+	box-shadow: 1px 1px 5px rgba(0,0,0, 0.2);
+}
+
+#nav ul.level0 {
+	position: absolute;
+	top: 50px;
+	left: 0;		
+	padding: 0;
+	margin: 0;
+        width: 100%;
+}
+
+#nav ul.level0 .nested-container {
+        border: 1px solid black;
+        overflow: hidden;  
+        width: auto;
+        margin: 7px;
+        padding: 20px 30px;
+}
+
+        #nav ul.level0 .nested-container h4 {
+            color: #222;
+            font-family: 'Sorts Mill Goudy Regular', serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+        
+        #nav ul.level0 .nested-container ul.childcategories li {            
+            background-image: none;
+            border-top: 1px solid #ababab;
+            color: #888888;
+            cursor: pointer;
+            font-family: 'GillSansMTStd', serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 30px;     
+            padding-left: 5px;
+            transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out;
+            -moz-transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out;
+            -webkit-transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out;
+            -o-transition: color 300ms ease-out, background-color 300ms ease-out, border-color 300ms ease-out;
+        }
+        
+        #nav ul.level0 .nested-container ul.childcategories li:hover {
+            background-color: #E9E9E9;
+            color: #222222;
+            border-color: #E9E9E9;
+        }
+        
+        #nav ul.level0 .nested-container ul.childcategories li:hover + li {
+            border-color: #E9E9E9;
+        }
+        
+        #nav ul.level0 .nested-container ul.childcategories li:first-child {
+            border-top: 0;
+        }
+        
+        #nav ul.level0 .nested-container .custom-block:first-child {
+            border-bottom: 1px solid #ababab;
+            padding-bottom: 20px;
+            margin-top: 35px;
+        }        
+        
+        #nav ul.level0 .nested-container .custom-block {
+            margin-bottom: 2em;
+            text-align: center;            
+        }
+        
+        #nav ul.level0 .nested-container .custom-block h4 {         
+            background: url('../images/customblock-shortline.png') no-repeat bottom center;            
+            font-family: "Bodoni-Book", sans-serif;
+            font-size: 26px;
+            font-style: italic;  
+            padding-bottom: 14px;
+            text-transform: none;            
+        }
+        
+        #nav ul.level0 .nested-container .custom-block p {
+            font-family: "GillSansMTStd";
+            font-style: normal;
+        }
+        
+        #nav ul.level0 .nested-container .custom-block a {
+            float: none;
+        }
+                
+#nav > li {
+	border-bottom: 5px solid #222222;
+	margin-bottom: 0;
+}
+
+#nav > li > a {
+	font-family: 'GillSansMTStd', sans-serif;
+	font-size: 14px;
+        font-weight: normal;        
+	line-height: 45px;
+	font-style: normal;
+        padding: 0 21px 0 21px; 
+        border-top: 1px solid #e9e9e9;
+        transition: all 450ms ease-in-out;
+}
+
+#nav > li:hover > a {
+        
+}
+
+#nav, .vertnav-top li a {
+	background-color: #fff;
+}
+
+#nav > li:first-child > a {
+        padding-right: 22px;
+}
+
+
+/* Slider
+-------------------------------------------------------------- */
+
+.the-slideshow-wrapper .caption.full-width { 
+    text-align: center;
+}
+
+.the-slideshow-wrapper .caption .heading {  
+    float: none;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
+.the-slideshow-wrapper .caption h2 {
+    font-size: 27px;
+    font-family: "Sorts Mill Goudy Regular";
+    margin: 0;
+    padding: 0;    
+}
+
+.caption.light2 h2 + p {
+    margin-bottom: 42px;
+}
+
+.caption.light2 p {
+    background-color: transparent;
+    font-family: "GillSansMTStd";
+    font-size: 13px;
+    float: none;
+    text-transform: uppercase;       
+}
+
+.caption p {
+    display: block;
+}
+
+.caption p a {
+    font-family: "GillSansMTStd-Bold";
+    font-size: 16px;
+    color: #222;
+}
+
+.caption p a:hover {
+    color: #64b96a;
+}
+
+.caption.full-width {
+    margin: 0%;
+    width: 100%;
+    bottom: 50px;
+}
+
+/* Headlines
+-------------------------------------------------------------- */
+
+.section-title { 
+    border: none; 
+    color: #222222; 
+    font-family: "Halo Handletter"; 
+    font-size: 50px; 
+    font-weight: normal;
+    margin-bottom: -8px;
+    padding-bottom: 0;   
+    padding-left: 80px;    
+    position: relative;
+    text-align: center;  
+    z-index: 12;
+} 
+
+/* Boxes 
+-------------------------------------------------------------- */
+.box-additional.box-up-sell {
+    background: url('../images/fade_bottom_wide.png') top left no-repeat;
+}
+
+.box-additional.box-up-sell .block-subtitle {
+    width: 100%;
+    text-align: center;
+}
+
+/* Banners
+-------------------------------------------------------------- */
+
+.page-banners {
+    width: 960px;
+}
+
+.grid12-4.banner {
+    width: 32.4%;
+    margin-left: 0.7%;
+    margin-right: 0.7%;
+}
+
+.page-banners .banner a { 
+    display: block;
+    margin-bottom: 17px;
+    overflow: hidden; 
+    position: relative;
+}
+
+.page-banners .banner a:hover img {
+    opacity: 1;
+}
+
+.page-banners .banner a img {
+    position: absolute;
+    top: 0;
+}
+
+.page-banners .banner a.home-banner1, .page-banners .banner a.home-banner4 {    
+    height: 334px;           
+    width: 308px;
+}
+
+.page-banners .banner a.home-banner2, .page-banners .banner a.home-banner5 {    
+    height: 162px;           
+    width: 308px;
+}
+
+.page-banners .banner a.home-banner3 {    
+    height: 513px;           
+    width: 311px;
+}
+
+
+.page-banners .banner:first-child {
+    margin-left: 0;
+}
+
+.page-banners .banner:last-child {
+    margin-right: 0;
+}
+
+/* Blog
+-------------------------------------------------------------- */
+
+.page-blog a img {
+    margin-bottom:15px;
+}
+
+h4.blog-title {    
+    color: #222222;
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+    font-weight: normal;
+    text-align: center;
+    text-transform: uppercase;      
+}
+
+div.blog-category {
+    color: #222222;
+    font-family: "GillSansMTStd";    
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+    text-transform: uppercase;    
+}
+
+
+/* Product Category
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+/* Sidebar
+-------------------------------------------------------------- */
+
+
+
+/* Product Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+
+.product-nav {
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+
+.product-nav a {
+    font-family: "Georgia", serif;
+    font-style: italic;    
+    text-transform: uppercase; 
+    line-height: 29px;
+    margin-left: 15px;       
+}
+
+.product-nav a span {
+    -webkit-transition: background-color 450ms ease-in-out;  /* Chrome 1-25, Safari 3.2+ */
+     -moz-transition: background-color 450ms ease-in-out;  /* Firefox 4-15 */
+       -o-transition: background-color 450ms ease-in-out;  /* Opera 10.50–12.00 */
+          transition: background-color 450ms ease-in-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+}
+
+.product-nav a:first-child span {
+    background-position:0px -55px;
+    background-color: #EFEFEF;
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+.product-nav a:last-child span {
+    background-position: -30px -55px;
+    background-color: #EFEFEF;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+.product-nav a:hover span {
+    background-color: #ccc;
+}
+
+.product-nav a span {
+    background-image:url(../images/img/pix.png); background-repeat:no-repeat;
+    background-repeat: no-repeat;     
+    background-position:-30px -55px;
+    display: inline-block;
+    height: 29px;
+    margin-left: 5px;
+    vertical-align: middle;
+    width: 30px;           
+}
+
+.product-nav a:hover {
+    color: #222;
+}
+
+.catalog-product-view .col1-layout .col-main {
+    margin: 0;
+    width: 100%;
+}
+
+.product-view .product-img-box .product-image {
+    border: none;
+    box-shadow: 1px -1px 10px #e2e2e2;    
+    padding: 0;    
+}
+
+.product-view .product-img-box .product-image.zoom-inside #wrap > a > img {
+    padding: 10px;
+}
+
+.product-view .product-shop {
+    margin-top: 20px;
+    margin-left: 2%;
+    width: 55.33%;
+}
+
+.product-view .product-shop .product-name {
+    margin-bottom: 0;
+    border-bottom: 1px solid #222;
+}
+
+.product-view .product-shop .input-text.qty {  
+    text-align: center;    
+}
+
+.product-view .grouped-items-table thead th {
+    color: #9a9a9a;
+    font-family: "GillSansMTStd-Bold", sans-serif;      
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.product-view .grouped-items-table.data-table th, .product-view .grouped-items-table.data-table td {
+    padding: 5px 10px;
+}
+
+.product-view .product-type-data .price-box {
+    border-color: #222;
+}
+
+.product-view .price-box .price, .product-view .product-shop .price-box .special-price .price {
+    font-family: "GillSansMTStd-Bold", sans-serif;    
+    font-size: 24px;
+    font-weight: normal;
+    color: #222;    
+}
+
+.product-view .product-shop .grouped-items-table .price-box .regular-price .price,
+.product-view .product-shop .grouped-items-table .price-box .old-price .price,
+.product-view .product-shop .grouped-items-table .price-box .special-price .price {
+    font-size: 15px;
+    display: inline-block;
+}
+
+.product-view .product-shop .price-box .regular-price .price {
+    font-family: "GillSansMTStd-Bold", sans-serif;    
+    font-size: 16px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.product-view .price-box .special-price,
+.product-view .price-box .old-price {
+    display: inline-block;
+}
+
+.special-price .price-label {
+    display: none;
+}
+
+.products-grid .item .special-price .price-label {
+    display: inline;
+    font-family: "GillSansMTStd-Bold", sans-serif;    
+    text-transform: uppercase;
+}
+
+.products-grid .item p.old-price, .products-grid .item p.special-price {
+    display: inline;
+}
+
+.products-grid .item p.old-price {
+    margin-right: 6px;
+}
+
+.special-price .price,
+.special-price .price-label {
+    color: #222 !important;
+}
+
+.old-price .price-label,
+.old-price .price {
+    color: #979797 !important;
+}
+
+.product-view .btn-cart:hover span, button.btn-checkout:hover span {
+    background-color: #64b96a;
+    color: #fff;    
+}
+
+.product-view .btn-cart span, button.btn-checkout span {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    text-transform: uppercase;
+}
+
+.product-view .add-to-box {
+    border: none;
+}
+
+.product-view .action-box {
+    background-image: url('../images/product-view_shadow.jpg');
+    background-repeat: no-repeat;
+    font-family: "GillSansMTStd", sans-serif;
+    padding: 35px 0 0 0;    
+}
+
+.product-view .product-shop .product-name h1 {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 22px;
+    text-transform: uppercase;    
+}
+
+.product-view #zoom-btn {  
+    font-family: "Sorts Mill Goudy Regular";
+    font-size: 14px;
+    line-height: 1em;
+    text-transform: uppercase;    
+    padding: 10px 1em 5px;
+}
+
+
+.product-view .tbl-ingridients {
+    width: 100%;
+}
+
+.product-view .tbl-ingridients td {
+    padding: 10px;
+}
+
+.product-view .tbl-ingridients td:first-child {
+    font-weight: bold;
+    width: 30%;
+    border-right: 1px solid #DDDDDD;
+}
+
+.product-view .tbl-ingridients tr:nth-child(2n) {
+    background-color: #f1f1f1;
+}
+
+.product-view .tbl-ingridients tr:last-child td {
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.product-view .fragrance { 
+    padding-left: 160px;
+    position: relative;
+}
+
+.product-view .fragrance img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.product-view .fragrance p {
+    color: #999999;
+    font-family: "Arial";
+    font-style: italic;   
+}
+
+.product-view .fragrance p a {
+    color: #222;
+    font-style: italic;
+    font-weight: bold;    
+}
+
+.product-view .fragrance {
+    overflow: hidden;
+}
+
+.product-view .gen-slider-arrows3 .direction-nav .next,
+.product-view .gen-slider-arrows3 .direction-nav .prev {
+    top: 42px;
+}
+
+.product-view .product-type-data {
+    position: relative;
+}
+
+/* Related Products
+-------------------------------------------------------------- */
+
+.related-itemslider-wrapper .itemslider .slides img {
+    max-width: none;
+}
+
+/* Monograms
+-------------------------------------------------------------- */
+
+.product-view .add-monogram {
+    position: absolute;
+    right: 0;   
+    top: 15px;
+    width: 130px;
+}
+
+.product-view .add-monogram span.custom {
+    float: left;
+    margin-right: 4px;
+    margin-top: -2px;
+}
+
+.product-view .add-monogram label {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #999999;
+}
+
+.product-view .add-monogram-content {
+    -webkit-transition: opacity 1s ease-in-out, height 1s;
+    -moz-transition: opacity 1s ease-in-out, height 1s;
+    -o-transition: opacity 1s ease-in-out, height 1s;
+    -ms-transition: opacity 1s ease-in-out, height 1s;    
+    transition: opacity 1s ease-in-out, height 1s;
+    height: 0;
+    opacity: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-view .add-monogram-content.opened {
+    height: 370px;
+    opacity: 1;
+}
+
+.product-view .add-monogram-content #monogram-logo {
+    position: absolute;
+    top: 3px;
+    left: 0;
+}
+
+.product-view .add-monogram-content h3 {
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.product-view .add-monogram-content h3, .product-view .add-monogram-content p {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #131425;
+    margin-left: 55px;
+}
+
+.product-view .add-monogram-content p {
+    margin-bottom: 1em;
+}
+
+.product-view .add-monogram-content .add-monogram-list {
+    overflow: hidden;
+    width: 400px;
+}
+
+.product-view .add-monogram-content .add-monogram-list > li {
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #d7d7d7;
+}
+
+.product-view .add-monogram-content .add-monogram-list > li img {
+    cursor: pointer;
+}
+
+.product-view .add-monogram-content .add-monogram-list > li.selected,
+.product-view .add-monogram-content .add-monogram-list > li:hover {
+    border: 1px solid #222;
+} 
+
+.product-view .add-monogram-content .add-monogram-process  {
+    counter-reset:li; /* Initiate a counter */
+    margin-left:1.7em; /* Remove the default left margin */
+    padding-left:0; /* Remove the default left padding */
+}
+.product-view .add-monogram-content .add-monogram-process  > li {
+    position:relative; /* Create a positioning context */    
+    list-style:none; /* Disable the normal item numbering */    
+}
+.product-view .add-monogram-content .add-monogram-process  > li:before {
+    content:counter(li) "."; /* Use the counter as content */
+    counter-increment:li; /* Increment the counter by 1 */
+    /* Position and style the number */
+    position:absolute;
+    top:0;
+    left:-1.7em;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    width:2em;
+    /* Some space between the number and the content in browsers that support
+       generated content but not positioning it (Camino 2 is one example) */
+    margin-right:8px;        
+    font-family:"GillSansMTStd-Bold", sans-serif;
+    color: #999999;
+    text-align:center;
+    font-size: 14px;
+}
+
+.product-view .add-monogram-content .add-monogram-process > li {
+    margin-bottom: 1.2em;
+}
+
+.product-view .add-monogram-content .add-monogram-process > li > label {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 14px;
+    color: #999999;
+    display: block;
+    margin-bottom: 0.35em;
+}
+
+.product-view .add-monogram-content #monogram-initials {
+    padding: 5px 7px;
+    border: 1px solid #dadada;
+    font-size: 11px;
+    font-family: "GillSansMTStd", sans-serif;
+    width: 383px;
+}
+
+.product-view .add-monogram-content div.custom.dropdown, 
+.product-view .add-monogram-content label {
+    float: none;    
+    margin-left: 0;
+}
+
+.product-view form.custom span.custom.checkbox.checked:before {
+    content: url('/skin/frontend/ultimo/default/images/checkbox.gif');
+    color: #222222;
+}
+
+.addto-textlink .email-friend a {
+    margin-right: 35px;
+    padding-left: 25px;
+}
+
+.add-to-cart label {
+    color: #999999;
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 14px;    
+}
+
+.add-to-cart button.btn-cart {
+    margin-right: 40px;
+}
+
+.product-view .btn-cart span span {
+    padding: 0 50px;
+}
+
+.ratings, .no-rating {
+    color: #222;
+}
+
+.availability {
+    color: #666666;
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.gen-tabs-style1 .tabs a.current {
+    box-shadow: 0px -6px 15px #f7f7f7;
+    color: #64b96a;
+}
+
+.gen-tabs-style1 .tabs a {
+    color: #222;
+    background-color: #efefef;
+    font-family: "GillSansMTStd-Bold";
+    font-size: 13px;
+    padding: 7px 35px;
+    text-transform: uppercase;
+}
+
+.gen-tabs .tabs-panels .panel {
+    padding: 20px 30px;
+}
+
+.gen-tabs .tabs-panels .panel h3 {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.gen-tabs .tabs-panels .panel h4 {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 15px; 
+    font-weight: normal;
+    margin-bottom: 0;
+}
+
+.gen-tabs .tabs-panels .panel h3 span {
+    color: #999999;
+    font-family: "GillSansMTStd", serif;
+    font-weight: normal;
+    margin-left: 60px;
+    text-transform: none;
+}
+
+.gen-tabs .tabs-panels .panel h3 span strong {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-weight: normal;
+}
+
+.gen-tabs .tabs-panels .panel.tab-monogram-shop {
+    text-align: center;
+}
+
+.gen-tabs .tabs-panels .panel.tab-monogram-shop h3 {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+    font-size: 16px;    
+    margin-bottom: 0;
+}
+
+.gen-tabs .tabs-panels .panel.tab-monogram-shop h4 {
+    font-family: "Georgia", serif;
+    font-style: italic;
+    font-size: 17px;
+    color: #64b96a;   
+}
+
+.gen-tabs .tabs-panels .panel.tab-monogram-shop hr {
+    height: 2px;
+    border: 0;
+    background-color: #000000;    
+    width: 17px;
+    margin: 19px auto;
+}
+
+.gen-tabs .tabs-panels .panel.tab-monogram-shop p {
+    color: #6e6e6e;
+    font-family: "GillSansMTStd", serif;
+    font-size: 15px;
+    margin-bottom: 1.3em;
+}
+
+
+/* Contact Us
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+body.cms-contact .std {
+    margin-top: 40px;
+}
+
+.cms-page-view h3 {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 14px;
+    font-weight: normal;     
+    margin-bottom: 0;    
+    text-transform: uppercase; 
+}
+
+body.cms-contact p {
+    font-family: "GillSansMTStd", sans-serif;
+    margin-bottom: 1.6em;
+}
+
+.cms-page-view p.box-note {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    padding: 20px;
+}
+
+.cms-page-view address {
+    color: #58595b;
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 14px;    
+    margin-bottom: 0;  
+}
+
+.cms-page-view .std .contactus-contact a {
+    background-color: #848484;
+    color: #fff;    
+    float: left;
+    font-family: "GillSansMTStd", sans-serif;
+    font-weight: normal;   
+    margin-right: 20px;
+    padding: 14px 30px;
+    text-transform: uppercase;
+}
+
+.cms-page-view .std .contactus-contact a:hover {
+    background-color: #64B96A;
+}
+
+.cms-page-view .std .contactus-contact span {
+    float: left;
+    font-family: "Georgia", serif;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.cms-page-view .std .contactus-contact span strong {
+    font-weight: normal;
+    font-style: normal;
+}
+
+.cms-page-view .std .contactus-contact {
+    border-bottom: 1px solid #222;
+    height: 70px;
+    margin-bottom: 2em;    
+}
+
+.cms-page-view .std .contactus-contact.noborder {
+    border-bottom: 0;
+}
+
+.sidebar #sidebar-contact {
+    background-color: #f2f2f2;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 1%;
+   
+}
+
+.sidebar #sidebar-contact .block .block-title {
+    margin-bottom: 0.5em;
+}
+
+.sidebar #sidebar-contact .block .block-title span {
+    vertical-align: bottom;
+}
+
+.sidebar #sidebar-contact .block .block-content ul.vertnav {
+    background-color: transparent;
+    line-height: 24px;
+}
+
+.sidebar #sidebar-contact .block .block-content ul.vertnav li a {
+    border-bottom: 0;
+    font-family: "Georgia", serif;
+    font-size: 13px;
+    font-style: italic;    
+    text-decoration: none;
+}
+
+
+
+
+
+.cms-corporate #distributors h3 {
+    border-bottom: 1px solid #222;
+    font-size: 14px; 
+    text-transform: none;
+}
+
+.cms-contact .left-content {
+    padding-left: 10px;
+    position: relative;
+    z-index: 9;
+    width: 50%;
+}
+
+.cms-contact .std h2 {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    line-height: 1.2em;
+    text-transform: uppercase;    
+}
+
+.cms-contact .std h2 + p {
+    color: #666666;
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 18px;
+}
+
+.cms-contact .std {
+    min-height: 600px;
+}
+
+.cms-contact .std .grid4-3 {
+    border-bottom: 1px solid #222;
+}
+
+.cms-faq.cms-page-view .col-main h3 {
+    margin: 25px 30px 0 0;
+}
+
+.cms-faq.cms-page-view .col-main h3, .cms-faq.cms-page-view .col-main > div.std > p.subline {    
+    display: inline-block;
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 18px;
+}
+
+.cms-faq.cms-page-view .col-main > div.std > p.subline {    
+    color: #666666;
+}
+
+.cms-faq.cms-page-view .col-main > div.std > p {
+    color: #999999;
+    font-size: 14px;
+}
+
+.cms-faq.cms-page-view .std .contactus-contact {
+    margin-bottom: 0.5em;
+}
+
+.cms-faq .accordion li a {
+    color: #222222;
+    display: block;
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 18px;        
+    margin: 20px 0 12px 0;
+    padding: 0;
+}
+
+.cms-faq .accordion > li:first-child {
+    border-top: 0;
+}
+
+.cms-faq .accordion > li > div {
+    color: #666666;    
+    margin: 10px 0 2em 0;
+}
+
+.cms-faq .accordion > li {
+    padding: 2em 0 1em;
+    border-top: 1px solid #d4d4d4;    
+}
+
+/**
+ * Box distributor
+ */
+ 
+.cms-page-view .box-distributor {
+    border-top: 1px solid #222;
+    margin-bottom: 2em;    
+    padding: 1em 0;
+}
+ 
+.cms-page-view .box-distributor h4 {
+    background-position: top left;
+    background-repeat: no-repeat;    
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-top: 70px;
+    text-transform: uppercase;    
+}
+
+.cms-page-view .box-distributor h4.canada { background-image: url('../images/flag_canada.png'); }
+.cms-page-view .box-distributor h4.mexico { background-image: url('../images/flag_mexico.png'); }
+.cms-page-view .box-distributor h4.uk { background-image: url('../images/flag_gb.png'); }
+.cms-page-view .box-distributor h4.eu { background-image: url('../images/flag_europe.png'); }
+
+.cms-page-view .box-distributor h4.canada {
+    background: url('../images/flag_canada.png') no-repeat top left;
+    padding-top: 70px;
+}
+
+.cms-page-view .box-distributor h5 {
+    color: #58595b;
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.cms-page-view .box-distributor dl {
+
+}
+
+.cms-page-view .box-distributor dl dt, .cms-page-view .box-distributor dl dd {
+    display: inline;
+    font-family: "GillSansMTStd", sans-serif;
+}
+
+.cms-page-view .box-distributor dl dt {
+
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    margin-right: 5px;    
+}
+
+.cms-page-view .box-distributor dl dd:after {
+    content: '\A';
+    white-space: pre;
+    
+}
+
+
+/* Create an account
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.account-create h1 {
+    
+}
+
+.account-login .new-users, .account-login .registered-users {
+    background: #f2f2f2;
+    padding: 10px;
+    margin-right: 0;
+    margin-left: 0;
+    width: 46.5%;
+}
+
+.account-login .new-users {
+    margin-right: 1%;
+}
+
+
+/* Checkout
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.col-main .one-step-checkout h3.step_1 {
+    background-image: none;
+}
+
+.col-main .one-step-checkout h3 {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 14px; 
+    font-weight: normal;
+    background-image: none !important;
+    padding-left: 0;
+        height: auto !important;
+}
+
+.col-main .one-step-checkout h3#review_step_header {
+    background: none !important;
+}
+
+.col-main ol.one-step-checkout {
+    border: none;    
+    padding: 0;
+    background: none !important;
+}
+
+.col-main .checkout_header {
+    border-bottom: 1px solid #222222;
+}
+	.col-main .checkout_header #onestepcheckout-login-link {
+		font-family: Georgia, serif;
+	    font-style: italic;
+	    font-size: 20px;
+	    color: #a7a7a7;
+	    text-decoration: underline;
+	}
+	.col-main .checkout_header h1 {
+		display: inline;
+		font-family: 'Sorts Mill Goudy Regular', serif;
+		font-size: 34px;
+		padding-right: 25px;
+	}
+
+.col-main .one-step-checkout #onestepcheckout-button-place-order span {
+    background: #222222 none !important;    
+    color: #fff;
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 12px; 
+    font-weight: normal;
+}
+
+.col-main .one-step-checkout button.btn-checkout span {
+    font-family: "GillSansMTStd-Bold", sans-serif;
+    font-size: 12px; 
+    font-weight: normal;
+}
+
+.col-main .one-step-checkout label {
+    font-family: "Georgia", serif;
+    font-style: italic;
+    color: #222 !important;
+}
+
+.col-main .one-step-checkout .onestepcheckout-payment-methods .form-list {
+    padding-left: 0;
+}
+
+.one-step-checkout li label span.required {
+	color: #7cc181;
+}
+
+.one-field input {
+	width: 91%;
+}
+
+.two-fields input {
+	width: 90%;
+}
+
+.one-step-checkout form.custom div.custom.dropdown {
+	width: 93% !important;
+	margin-left: 0;
+}
+
+.one-step-checkout form.custom div.custom.dropdown a.selector {
+	height: 31px;
+	width: 31px;
+}
+
+.one-step-checkout form.custom div.custom.dropdown a.current {
+	line-height: 29px;
+	min-height: 28px;
+}
+
+.one-step-checkout form.custom div.custom.dropdown ul {
+	top: 30px;
+}
+
+
+/* Clean Talk Blog
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+*/
+
+.blog .col-main {
+    width: 74%;
+    margin-right: 0%;
+}
+
+.blog .featured-image {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.blog .featured-image img {
+    max-width: none;
+}
+
+.blog .post-view {
+    position: relative;
+}
+
+.blog .post-view .label-category {
+    font-family: "GillSansMTStd-Bold", serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #222;
+    text-align: center;
+    margin: 39px 0 20px 0;
+    font-weight: normal;
+}
+
+.blog .post-view h3.post-category {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.blog .post-view .post-entry {
+    width: 470px;
+    margin: 0 auto 2em;   
+}
+
+.blog .post-view .post-entry p {    
+    font-family: "Sorts Mill Goudy Regular", serif;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+.blog .post-social {
+    position: absolute;
+   top: 0;
+   right: 0;
+}
+
+.blog .post-view .post-howtosteps > ul {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    overflow: hidden;
+    margin-bottom: 2em;
+}
+
+.blog .post-view .post-howtosteps ul > li > div > ol {    
+    overflow: hidden;
+}
+
+.blog .post-view .post-howtosteps ul > li > div > ol > li {     
+    padding-left: 12px;
+    background-image: url('../images/bullet.gif');
+    background-repeat: no-repeat;
+    background-position: 0px 5px;    
+}
+
+.blog .post-view .post-howtosteps > ul > li {
+    border-bottom: 1px solid #dadada;
+    background-image: url('../images/accordion_plus.gif');
+    background-position: top right;
+    background-repeat: no-repeat;
+}
+
+.blog .post-view .post-howtosteps > ul > li:last-child {
+    border-bottom: 0;
+}
+
+.blog .post-view .post-howtosteps > ul > li.active {
+    background-image: url('../images/accordion_minus.gif');
+}
+
+.blog .post-view .post-howtosteps > ul > li > a {
+    font-family: "GillSansMTStd-Bold", serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #222;
+    margin: 9px 0 8px;
+}
+
+.blog .post-view .post-howtosteps > ul > li > div {
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
+.blog .block-related .block-title {
+    text-align: center;
+}
+
+.blog .block-related .block-title strong {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+    font-size: 34px;
+}
+
+.blog .block-related .block-title p {
+    font-family: "GillSansMTStd-Bold", serif;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.blog .block-related .block-content {
+    padding: 0;
+}
+
+.blog .block-related .item {
+    width: 229px;
+    float: left;
+    margin-right: 6px;
+}
+
+.blog .block-related .item:last-child {
+    margin-right: 0;
+}
+
+.blog .block-related .item .product-details {
+    margin-left: 0;
+}
+
+.blog .block-related .item .product-image {
+    width: auto;
+    margin-bottom: 1em;
+}
+
+.blog .block-related .item .product-image img {
+    max-width: none;    
+}
+
+.blog .block-related .item .product > a {
+    border: none;
+}
+
+.blog .block-related .item .product-details .product-name, .blog .block-related .item .product-details .price-box {
+    text-align: center;
+}
+
+.blog .block-related .item .product-details .product-name a {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #222;
+}
+
+.blog-nav-categories {
+    position: relative;
+}
+
+.blog-nav-list {
+    padding-bottom: 9px;
+    border-bottom: 1px solid #dadada;
+}
+
+.blog-nav-list li {
+    display: inline-block;
+    margin-right: 24px;
+}
+
+.blog-nav-list li, .blog-nav-list li a {
+    font-family: "Sorts Mill Goudy Regular", serif;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.blog-nav-search {
+    position: absolute;
+    top: -5px;
+    right: 0;
+}
+
+.blog-nav-search input {
+    width: 156px;
+    height: 34px;
+    border-top: 1px solid #dadada;
+    border-right: 1px solid #dadada;
+    border-left: 1px solid #dadada;
+    border-bottom: 0;
+    padding: 0px 8px;  
+    background-image: url('../images/search_icon_dark.gif');
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.blog .page-title.category-title {
+    display: none;
+}
+
+.blog .breadcrumbs {
+    margin: 12px 0 12px;    
+}
+
+.blog .sidebar p {
+    margin-bottom: 1.2em;
+}

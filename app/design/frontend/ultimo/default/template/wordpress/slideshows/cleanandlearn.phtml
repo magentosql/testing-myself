@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * Slider for Clean and Learn and all Suncateogries
+ * 
+ * Slider is deactivated here for subcategories but included on every
+ * category within Clean and Learn
+ */
+
+$helper = Mage::helper('wordpress/category'); 
+$iCurrentCategory = $helper->getCurrentContext();
+
+?>
+
+<?php if($iCurrentCategory = 176) { ?>
+<div id="blog-default-slideshow" class="blog-slideshow clean-and-learn-slideshow" >     
+    
+        <?php                            
+            $data = $helper->getAllPostsByTag(305);                       
+        ?>    
+        
+        <?php foreach($data AS $post) { ?>            
+            <div class="slidesjs-slide">
+                <?php if($post->getFeaturedImage()) { ?>
+                    <img src="<?php print $post->getFeaturedImage()->getImageByType('post-main'); ?>" />            
+                <?php } ?>                                
+                <h2><?php print $post->getPostTitle(); ?></h2>
+                <p class="post-date" ><?php print $post->getPostDate(); ?></p>
+                <div class="read-more" >
+                    <a href="<?php print $post->getPermalink(); ?>" >Read more</a>
+                </div>
+            </div>
+        <?php } ?>                       
+</div>
+
+<?php if(count($data) > 0) { ?>
+<script>
+    jQuery(function() {
+      jQuery('#blog-default-slideshow').slidesjs({
+        width: 940,
+        height: 620,
+        navigation: {
+          effect: "slide"
+        },
+        pagination: {
+          effect: "slide"
+        },
+        effect: {
+          fade: {
+            speed: 400
+          }
+        }
+      });
+    });
+  </script>
+  <?php } ?>
+  
+  <?php } ?>

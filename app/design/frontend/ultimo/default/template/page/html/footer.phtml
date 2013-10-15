@@ -1,0 +1,180 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+	$theme = $this->helper('ultimo');
+	$d = $theme->getDesignCfgSection();
+	
+	//Get skin settings
+	$footerContainerCss = array();
+	$classString['all'] = '';
+	$classString['top'] = '';
+	$classString['primary-container'] = '';
+	$classString['primary'] = '';
+	$classString['secondary'] = '';
+	$classString['bottom'] = '';
+	
+	
+	//All footer sections
+	$classes['all'] = array();
+	if ($theme->isColor($d['footer']['inner_bg_color']))
+		$classes['all'][] = 'show-bg';
+
+	if ($classes['all'])
+		$classString['all'] = " " . implode(" ", $classes['all']); //NOTE: Add space before classes
+
+
+	//Footer top
+	$classes['top'] = array();
+	if ($theme->isColor($d['footer']['inner_bg_color']) == false)
+	{
+		if ($theme->isColor($d['footer_top']['inner_bg_color']))
+			$classes['top'][] = 'show-bg';
+		else
+			$classes['top'][] = 'stretched';
+	}
+		
+	if ($classes['top'])
+		$classString['top'] = implode(" ", $classes['top']);
+	$classString['top'] .= $classString['all'];
+	
+	
+	//Footer primary container
+	$classes['primary-container'] = array();
+	if ($d['footer_primary']['padding_top'])
+		$classes['primary-container'][] = 'padding-top';
+	if ($d['footer_primary']['padding_bottom'])
+		$classes['primary-container'][] = 'padding-bottom';
+	
+	if ($classes['primary-container'])
+		$classString['primary-container'] = implode(" ", $classes['primary-container']);
+	//$classString['primary-container'] .= $classString['all'];
+	
+	
+	//Footer primary
+	$classes['primary'] = array();
+	if ($theme->isColor($d['footer_primary']['inner_bg_color']))
+		$classes['primary'][] = 'show-bg';
+		
+	if ($classes['primary'])
+		$classString['primary'] = implode(" ", $classes['primary']);
+	$classString['primary'] .= $classString['all'];
+	
+	
+	//Footer secondary
+	$classes['secondary'] = array();
+	if ($classes['secondary'])
+		$classString['secondary'] = implode(" ", $classes['secondary']);
+	$classString['secondary'] .= $classString['all'];
+	
+	
+	//Footer bottom
+	$classes['bottom'] = array();
+	if ($classes['bottom'])
+		$classString['bottom'] = implode(" ", $classes['bottom']);
+	$classString['bottom'] .= $classString['all'];
+?>
+
+<div class="footer-container<?php if($footerContainerCss) echo " " . implode(" ", $footerContainerCss); ?>">
+
+	<div class="footer-top-container section-container">
+        <div class="footer-top footer container<?php if($classString['top']) echo " " . $classString['top']; ?>">
+                    
+                   <?php //Custom footer links - override default Magento footer links ?>
+                    <?php if ($tmp = $this->getChildHtml('block_footer_links')): ?>
+                        <?php echo $tmp; ?>
+					<?php endif; ?>
+                    
+        </div> <!-- end: footer-top -->
+    </div>
+        
+    <div class="footer-primary-container section-container<?php if($classString['primary-container']) echo " " . $classString['primary-container']; ?>">
+        <div class="footer-primary footer container<?php if($classString['primary']) echo " " . $classString['primary']; ?>">
+            
+            <div id="footer-card">
+            	<div class="contact-details">
+	            	<p class="email"><a href="mailto:laundress@thelaundress.com"><span class="effect">LAUNDRESS</span>@THELAUNDRESS.COM</a></p>
+	            	<p class="phone"><a href="tel: +1 212 209 0074" >212 209 0074</a></p>
+            	</div>
+	            <div class="social-icons">
+		            <ul>
+		            	<li><a href="http://pinterest.com/thelaundressny/" class="pintrest">Pintrest</a></li>
+		            	<li><a href="https://www.facebook.com/thelaundressnyc" class="facebook">Facebook</a></li>
+		            	<li><a href="https://twitter.com/TheLaundressNY" class="twitter">Twitter</a></li>
+		            	<li><a href="http://www.youtube.com/user/TheLaundressnyc" class="youtube">YouTube</a></li>
+		            	<li><a href="/rss/" class="rss">RSS</a></li>
+		            </ul>
+	            </div>
+            </div>
+            
+	        <div class="footer-form newsletter-form">
+					    <form action="http://thelaundress.us6.list-manage1.com/subscribe/post-json?u=d3d48e75efd637e646b0beb3c&id=dbfb7e7934&c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>					
+					    	<label for="mce-EMAIL" class="float-left">Sign Up For Updates By Email</label>
+					        <div>
+					            <div class="input-box float-left effect">
+					                <input type="email" placeholder="Enter email address" name="EMAIL"  id="mce-EMAIL" value="" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+					            </div>
+					            <button type="submit" name="subscribe" id="mc-embedded-subscribe"  title="<?php echo $this->__('GO') ?>" class="button btn-inline float-left effect"><span><?php echo $this->__('GO') ?></span></button>
+					        </div>
+					    </form>						
+                    </div>
+	        
+	        <div class="footer-form find-form">
+			    <form action="/contact/find-a-store/" method="post" id="find-validate-detail">
+			    	<label for="find" class="float-right">FIND THE LAUNDRESS IN STORES</label>
+			        <div style="position:relative" class="float-right">
+			            <div class="input-box float-left">
+			                <input type="text" placeholder="Enter your city or zip" name="address-to-find" id="find" title="<?php echo $this->__('Zip Code/Postal Code') ?>" class="input-text required-entry" />
+			            </div>
+			            <button type="submit" title="<?php echo $this->__('GO') ?>" class="button btn-inline float-left"><span><?php echo $this->__('GO') ?></span></button>
+			        </div>
+			    </form>
+            </div>
+
+        </div> <!-- end: footer-primary -->
+    </div>
+    
+    <div class="footer-bottom-container section-container">
+        <div class="footer-bottom footer container<?php if($classString['bottom']) echo " " . $classString['bottom']; ?>">
+	        <ul class="copyright-ul">
+	        	<li class="first"><?php echo $this->getCopyright(); ?></li>
+                <li class="terms"><a href="/contact/terms/" title="Terms of Use">Terms of Use</a></li>
+                <li class="privacy"><a href="/contact/privacypolicy/" title="Privacy Policy">Privacy Policy</a></li>
+                <li class="madeby float-right"><a href="http://ivorydigitalnyc.com" title="MADE BY ID">MADE BY ID</a></li>
+            </ul>
+        </div> <!-- end: footer-bottom -->
+    </div>
+    
+    <div id="bottom-cap">
+    	<div>
+    		<a href="#top" id="scroll-to-top" class="scroll-to-top">POP TO TOP</a>
+    		<a href="#top" class="missed-a-spot scroll-to-top"></a>
+    	</div>    	
+    </div>
+
+</div> <!-- end: footer-container -->
+
+<?php echo $this->getChildHtml('footer.additional'); ?>

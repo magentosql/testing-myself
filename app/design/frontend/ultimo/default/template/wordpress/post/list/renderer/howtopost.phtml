@@ -1,0 +1,55 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+<div class="post-list-item">          
+        <?php if($post->getCustomField('wpcf-thumbnail-for-blog')) { ?>
+                <div class="featured-image">
+                    <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+                    <?php
+                        $imageHelper = Mage::helper('wordpress/image');
+                        $img = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-thumbnail-for-blog'), "thumbnail");
+                    ?>
+                    <img src="<?php print $img; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a> 
+                </div>
+        <?php } else if($featuredImage = $post->getFeaturedImage()): ?>    
+		<div class="featured-image">                                         
+			<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('thumbnail') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+		</div>
+	<?php endif; ?>
+    
+        <h3 class="post-meta-category" ><?php print $post->getParentCategory()->name; ?></h3>
+    
+	<h2><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a></h2>
+	<div class="post-entry entry<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
+		<?php if ($post->isViewableForVisitor()): ?>
+			<?php if ($this->displayExcerptInFeed() || $post->hasMoreTag()): ?>
+				<?php echo $post->getPostExcerpt() ?>
+			<?php else: ?>
+				<?php echo $post->getPostContent() ?>
+			<?php endif; ?>
+		<?php else: ?>
+			<?php echo $this->getPasswordProtectHtml($post) ?>
+		<?php endif; ?>            
+	</div>
+	
+        <div class="post-action-bar">		
+		<ul class="post-social-links">
+			<li class="first even">Share it on</li>
+			<li class="odd"><a href="#"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>
+			<li class="even"><a href="#"><img src="/skin/frontend/ultimo/default/images/post-social-twitter.gif" alt="Twitter" width="21" height="18" border="0"></a></li>
+			<li class="odd"><a href="#"><img src="/skin/frontend/ultimo/default/images/post-social-pinterest.gif" alt="Pinterest" width="21" height="18" border="0"></a></li>
+			<li class="last even"><a href="#"><img src="/skin/frontend/ultimo/default/images/post-social-rss.gif" alt="RSS" width="21" height="18" border="0"></a></li>
+		</ul>
+		<a href="<?php echo $post->getPermalink() ?>" class="post-read-more">Read More</a>
+	</div>
+        
+	<?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+		<div class="sharethis-icons" id="sharethis-icons-<?php echo $post->getId() ?>"><?php echo $this->helper('wordpress/plugin_shareThis')->getIcons($post) ?></div>
+	<?php endif; ?>
+</div>

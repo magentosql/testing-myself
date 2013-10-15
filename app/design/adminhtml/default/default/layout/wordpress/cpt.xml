@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout>
+	<adminhtml_wordpress_cpt_index>
+		<reference name="content">
+			<block type="wp_addon_cpt/adminhtml_type" name="wp.cpt.type" />
+		</reference>
+	</adminhtml_wordpress_cpt_index>
+	<adminhtml_wordpress_cpt_edit>
+		<reference name="left">
+			<block type="wp_addon_cpt/adminhtml_type_edit_tabs" name="wp.cpt.type.tabs" />
+		</reference>
+		<reference name="content">
+			<block type="wp_addon_cpt/adminhtml_type_edit" name="wp.cpt.type" />
+		</reference>
+	</adminhtml_wordpress_cpt_edit>
+</layout>

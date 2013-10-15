@@ -1,0 +1,2228 @@
+@import url('fonts.css');
+@import url('custom_phil.css');
+
+/**
+ * File for custom CSS. You can use it to override the default styling of the theme.
+ *
+ * 1. Copy the file "default.custom.css" and rename it to "custom.css".
+ *    Otherwise this file will not be loded by Magento.
+ * 2. Enable it in the admin panel.
+ * 3. Uncomment slected classes or add your own CSS to override the default styling of the theme.
+ *
+ * Please refer to the user guide for more details.
+ *
+ */
+
+.cms-page-view p {
+	font-family: "GillSansMTStd", sans-serif;
+	
+}
+
+.gen-tabs .tabs a {
+	transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+	-moz-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+	-webkit-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+	-o-transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
+}
+
+/* Header
+-------------------------------------------------------------- */
+html {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	border-top: 5px solid black;
+}
+
+.wrapper {
+	border-top: none;
+}
+
+.header {
+	padding-bottom: 20px;
+}
+
+.v .v-item {
+	vertical-align: top;
+}
+
+.header-top {
+	padding-bottom: 18px;
+}
+
+.header-main {
+	padding-bottom: 17px;
+}
+
+.header-container {
+	font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	line-height: 1.38em;
+	color: #666;
+}
+
+.header h1.logo {
+	width: 283px;
+	margin: 0 auto;
+	max-width: none;
+	display: block;
+}
+
+.logo-wrapper h1.logo a {
+	display: block;
+	position: relative;
+	width: 283px;
+	height: 53px;
+	text-indent: -9999px;
+	background: url('../images/laundress_header_logo_020713.gif') 0 0 no-repeat;
+	background-size: 283px 108px;
+	transition: none;
+	-moz-transition: none;
+	-webkit-transition: none;
+	-o-transition: none;
+}
+
+/*.logo-wrapper h1.logo a:hover {
+	background-position-y: -53px;
+}*/
+
+.logo-wrapper h1.logo a:after {
+	content: "";
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	background-image: inherit;
+	background-size: 283px 108px;
+	background-position: 0 -55px;
+	opacity: 0;
+	-webkit-transition: opacity 0.15s;
+	-moz-transition:    opacity 0.15s;
+	-o-transition:      opacity 0.15s;
+}
+.logo-wrapper h1.logo a:hover:after {
+	opacity: 1;
+}
+
+.header .form-search {
+	margin: 0;
+	width: 238px;
+}
+
+.header .form-search .button {
+	background: url('../images/search_icon.gif') 0 0 no-repeat #fff;
+	right: 0;
+}
+
+input.input-text, select, textarea {
+	border: 1px solid #dddddd;
+}
+
+.header .top-links {
+	padding-top: 9px;
+}
+
+#mini-cart {
+	padding-right: 13px;
+}
+
+/* Reverting p style from .cms-page */
+#mini-cart p {
+	font-family: inherit;
+	margin-bottom: 0;
+}
+
+#mini-cart .summary .amount {
+	line-height: 1em;
+	text-align: center;
+	font-size: 10px;
+}
+
+#mini-cart .summary .price {
+	display: block;
+	font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1em;
+	color: #222;
+	padding-top: 3px;
+}
+
+#mini-cart .summary .empty {
+	vertical-align: text-top;
+}
+
+#mini-cart .block-title .heading {
+	background: url('../images/cart_icon.gif') 0 0 no-repeat;
+	width: 26px;
+	height: 28px;
+	padding: 0 15px 0 0;
+	margin-top: 3px;
+	text-indent: -9999px;
+	overflow: hidden;
+}
+
+.after-mini-cart {
+	clear: none;
+}
+
+.welcome-msg {
+	background: url('../images/truck_icon.gif') 0 center no-repeat;
+	padding: 0 3px 0 28px;
+}
+
+.welcome-msg b.no-italic {
+	font-style: normal;
+}
+
+/* Footer
+-------------------------------------------------------------- */
+
+.footer-top-container {
+    padding-bottom: 5px;
+}
+
+.footer-top ul li {
+    border-left: 1px solid #d9d9d9;
+}
+
+.footer-top ul li:first-child {
+    border-left: 0;
+}
+
+.footer-top ul li a { 
+    font-family: "Georgia";
+    font-size: 13px;
+    font-style: italic;
+    color: #222222;
+}
+
+.footer-top ul li a:hover {    
+    background-color: transparent;
+    color: #64B96A;
+}
+
+.link-rss {
+	background: none;
+}
+
+
+.footer-container {
+	background-color: white;
+	background-image: none;
+}
+
+.footer-primary-container {
+	background: url('../images/footer_tile.gif') repeat-x;
+	height: 385px;
+}
+
+.footer-top {
+	text-align: center;
+}
+
+ul.links {
+	margin: auto;
+}
+
+ul.links li {
+	float: none;
+	display: inline-block;
+}
+
+ul.links li a {
+	display: inline-block;
+}
+
+.footer-container ul.links li, .footer-container ul.links li a {
+        display: inline;
+}
+
+.footer-primary {
+	background-color: transparent;
+	width: 564px;
+	position: relative;
+	padding-top: 33px;
+}
+
+.footer-primary > div {
+	width: 50%;
+	float: left;
+	position: relative;
+	z-index: 2;
+}
+
+.footer-form label {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 12px;
+	line-height: 1em;
+	padding: 0 0 9px 2px;
+}
+
+.footer-form .input-box {
+	margin: 0 0 5px 0;
+	width: 160px;
+	overflow: hidden;
+}
+
+.footer-form .input-text {
+	width: 100%;
+	margin: 0;
+	padding: 0 7px;
+	height: 34px;
+	color: #999999;
+	border-top: 1px solid #dfdfdf;
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #dfdfdf;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;        
+}
+
+.footer-form:hover .input-text {
+        border-color: #64B96A;
+}
+
+.footer-form button.button span {
+	background-color: #222222;
+	color: white;
+	line-height: 36px;
+	height: 36px;
+	width: 64px;
+}
+
+.footer-form:hover button.button span {
+	background-color: #64B96A;
+}
+
+.find-form {
+	text-align: right
+}
+
+.find-form label {
+	padding-right: 13px;
+}
+
+/* Footer card
+-------------------------------------------------------------- */
+
+#footer-card {
+	width: 564px;
+	height: 394px;
+	position: absolute;
+	top: 33px;
+	left: 0;
+	z-index: 1;
+	background: url('../images/footer_card.png') no-repeat;
+}
+
+#footer-card .contact-details {
+	position: absolute;
+	top: 278px;
+	width: 100%;
+	text-align: center;
+}
+
+#footer-card .contact-details .email {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 12px;
+	line-height: 1em;
+	color: #313131;
+}
+	#footer-card .contact-details .email a {
+		color: inherit;
+	}
+		
+	#footer-card .contact-details .email span {
+		color: #999999;
+	}
+        
+        #footer-card .contact-details .email:hover span {
+                color: #64B96A;
+        }
+
+#footer-card .contact-details .phone {
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-weight: bold;
+	font-size: 13px;
+	line-height: 1em;
+	color: #333333;
+	padding-top: 7px;
+}
+
+#footer-card .contact-details .phone:hover {
+        color: #64B96A;
+}
+
+#footer-card .social-icons {
+	position: absolute;
+	top: 335px;
+	width: 100%;
+	text-align: center;
+}
+
+#footer-card .social-icons ul li {
+	display: inline;
+}
+
+#footer-card .social-icons ul li a {
+	display: inline-block;
+	height: 18px;
+	text-indent: -9999px;
+}
+
+#footer-card .social-icons ul li a.pintrest {
+	width: 14px;
+	background: url('../images/pintrest.gif') 0 0 no-repeat;
+	position: relative;
+}
+#footer-card .social-icons ul li a.facebook {
+	width: 14px;
+	background: url('../images/facebook.gif') 0 0 no-repeat;
+	margin-left: 19px;
+	position: relative;
+}
+#footer-card .social-icons ul li a.twitter {
+	width: 19px;
+	background: url('../images/twitter.gif') 0 0 no-repeat;
+	margin-left: 20px;
+	position: relative;
+}
+#footer-card .social-icons ul li a.youtube {
+	width: 40px;
+	background: url('../images/youtube.gif') 0 0 no-repeat;
+	margin-left: 15px;
+	position: relative;
+}
+#footer-card .social-icons ul li a.rss {
+	width: 15px;
+	background: url('../images/rss.gif') 0 0 no-repeat;
+	margin-left: 18px;
+	position: relative;
+}
+
+/*#footer-card .social-icons ul li a.pintrest:hover, #footer-card .social-icons ul li a.facebook:hover, #footer-card .social-icons ul li a.twitter:hover, #footer-card .social-icons ul li a.youtube:hover, #footer-card .social-icons ul li a.rss:hover {
+	background-position: 0 -18px;
+}*/
+
+#footer-card .social-icons ul li a.pintrest:after, #footer-card .social-icons ul li a.facebook:after, #footer-card .social-icons ul li a.twitter:after, #footer-card .social-icons ul li a.youtube:after, #footer-card .social-icons ul li a.rss:after {
+	content: "";
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	background-image: inherit;
+	background-position: 0 -20px;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s;
+	-moz-transition:    opacity 0.2s;
+	-o-transition:      opacity 0.2s;
+}
+#footer-card .social-icons ul li a.pintrest:hover:after, #footer-card .social-icons ul li a.facebook:hover:after, #footer-card .social-icons ul li a.twitter:hover:after, #footer-card .social-icons ul li a.youtube:hover:after, #footer-card .social-icons ul li a.rss:hover:after {
+	opacity: 1;
+}
+
+/* Footer copyright area
+-------------------------------------------------------------- */
+
+.footer-bottom-container {
+	padding: 53px 0 25px 0;	
+}
+
+.footer-bottom {
+	width: 558px;
+	margin: 0 auto;
+}
+
+.copyright-ul {
+	line-height: 12px
+}
+
+.copyright-ul li {
+	display: inline;
+	font-family: 'Georgia', sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	color: #aaabad;
+}
+
+.copyright-ul li a {
+	color: inherit;
+}
+
+	.copyright-ul li a:hover {
+		text-decoration: underline;
+	}
+
+.copyright-ul li.first {
+	padding-right: 25px;
+}
+
+.copyright-ul li.terms {
+	padding-right: 5px;
+	border-right: 1px solid #aaabad;
+}
+
+.copyright-ul li.privacy {
+	padding-left: 3px;
+}
+
+.copyright-ul li.madeby {
+	font-size: 11px;
+	color: #d7d7d7;
+	font-style: normal;
+}
+
+#bottom-cap {
+	width: 100%;
+	height: 5px;
+	border-top: 5px solid #222222;
+}
+
+#bottom-cap > div {
+	width: 558px;
+	margin: 0 auto;
+	position: relative
+}
+
+#scroll-to-top {
+	display: none;
+	width: 110px;
+	height: 22px;
+	position: absolute;
+	bottom: 5px;
+	right: -147px;
+	z-index: 9999;
+	background-color: #222222;
+	color: white;
+	text-indent: inherit;
+	font-family: "GillSansMTStd", sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 22px;
+	text-align: center;
+	transition: opacity 300ms ease-in-out;
+	-moz-transition: opacity 300ms ease-in-out;
+	-webkit-transition: opacity 300ms ease-in-out;
+	-o-transition: opacity 300ms ease-in-out;
+}
+
+.missed-a-spot {
+	position: fixed;
+	display: none;
+	bottom: 50px;
+	right: 15px;
+	z-index: 9999;
+	width: 144px;
+	height: 50px;
+	background: url('../images/missedaspot.png') 0 0 no-repeat;
+}
+
+.missed-a-spot:hover {
+	opacity: 0.75;
+}
+
+/* Mini cart
+-------------------------------------------------------------- */
+#mini-cart .block-title {
+	position: relative;
+	z-index: 2501;
+}
+
+#mini-cart .block-content {
+	display: none;
+	z-index: 2500;
+	position: absolute;
+	right: 0;
+	top: -10px;
+	width: 323px;
+	text-align: left;
+}
+
+#mini-cart .block-content .block-content-inner {
+	padding: 0px;
+}
+
+#mini-cart .product-name {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ababab;
+}
+
+#mini-cart .block-content a {
+	font-family: "GillSansMTStd", sans-serif;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-style: normal;
+	color: #000000;
+}
+
+#mini-cart .qty-and-price {
+	font-family: Georgia, serif;
+	font-size: 13px;
+	font-style: normal;
+	color: #888888;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ababab;
+}
+
+ol#cart-sidebar {
+	padding: 0 13px;
+}
+
+#mini-cart .block-subtitle {
+	padding: 0 13px;
+	margin: 0;
+	height: 50px;
+}
+
+#mini-cart .block-subtitle p {
+	padding: 25px 0 0 40px;
+}
+
+.block_mini_cart_above_products {
+	margin: 0 0 10px;
+	text-align: center;
+}
+
+#mini-cart .block_mini_cart_above_products div a {
+	font-family: Georgia, serif;
+	font-size: 12px;
+}
+
+#mini-cart .actions {
+	padding: 0 13px 13px;
+	margin-top: 15px;
+}
+
+#mini-cart .actions button {
+	width: 50%;
+	margin: 0;
+	float: left;
+}
+
+#mini-cart button.btn-inline span {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#mini-cart button.btn-inline span span {
+	padding: 0;
+	margin: 0;
+	line-height: 48px;
+	height: 48px;
+	font-family: "GillSansMTStd", sans-serif;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+#mini-cart button.btn-viewcart span, #mini-cart button.btn-checkout span {
+	background-color: #e9e9e9;
+	color: #000000;
+}
+
+#mini-cart button.btn-viewcart span:hover, #mini-cart button.btn-checkout span:hover {
+	background-color: #64b96a;
+	color: #ffffff;
+}
+
+
+
+/* Category page
+-------------------------------------------------------------- */
+.breadcrumbs {
+	margin-bottom: 20px;
+}
+
+body .category-title {
+	border-color: #000000;
+}
+
+body .category-title h1 {
+	line-height: 1em;
+	min-height: 1em;
+	margin-bottom: 10px;
+	font-family: "Sorts Mill Goudy Regular";
+	text-transform: uppercase;
+}
+
+.price-box .price {
+	color: #222222;
+	font-size: 13px;
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-weight: normal;
+}
+
+.minimal-price .price-label {
+	font-family: Georgia, serif;
+	font-size: 10px;
+	font-style: italic;
+	color: #bdc2c1;
+	text-transform: lowercase;
+}
+
+body .main {
+	padding-top: 20px;
+}
+
+body .sidebar {
+	margin: 0;
+	width: 230px;
+}
+
+body.catalog-category-view .col-main {
+	width: 710px;
+	margin: 0 0 0 19px;
+}
+
+body .sidebar .block {
+	background-color: #f2f2f2;
+}
+
+/* Clearing styles */
+.block-layered-nav dl {
+	padding: 0;
+}
+
+.block-layered-nav dd {
+	padding: 0;
+}
+
+body .sidebar .vertnav {
+	background-color: transparent;
+}
+
+.vertnav li .opener {
+	display: none;
+}
+
+body .sidebar .vertnav li a {
+	border: none;
+}
+
+/* Sidebar nav styles */
+
+body .sidebar .block-title {
+	padding: 14px 0 7px 0;
+	margin: 0 15px;
+	border-bottom: 1px solid #bdc2c1;
+}
+	body .sidebar .block-title span {
+		font-family: 'Sorts Mill Goudy Regular', serif;
+		font-size: 12px;
+		line-height: 1em;
+		text-transform: uppercase;
+		color: #999999;
+	}
+
+body .sidebar .block-content {
+	padding: 0 13px 14px;
+}
+
+body .sidebar .sidebar-promos {
+	padding: 14px 13px;
+}
+
+body .sidebar .block-content a:first-of-type img {
+	padding-bottom: 13px;
+}
+
+body .sidebar a.level-top {
+	display: inline-block;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 14px;
+	line-height: 1em;
+	text-transform: uppercase;
+	color: #222222;
+	padding: 0 0 0 0;
+	margin: 2em 0 0 0;
+	
+	/*IE Hack*/
+	zoom: 1;
+    *display: inline;
+}
+
+body .sidebar ul.level0 li a, .block-layered-nav dd li {
+	display: block;
+	font-family: Georgia, serif;
+	font-size: 13px;
+	line-height: 1.2em;
+	font-style: italic;
+	color: #666666;
+	padding: 0 0 0 20px;
+	margin: 10px 0 0 0;
+	background: url('../images/sidebar_arrow.gif') 6px 3px no-repeat;
+	
+	/*IE Hack*/
+	zoom: 1;
+    *display: inline;
+}
+	
+	body .sidebar ul.level0 li a:hover {
+		color: #64B96A;
+	}
+
+	.block-layered-nav dd li:hover {
+		background-position: 6px 3px;
+	}
+
+.block-layered-nav dt {
+	display: inline-block;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1em;
+	text-transform: uppercase;
+	color: #222222;
+	padding: 0 0 0 0;
+	margin: 17px 0 0 0;
+	
+	/*IE Hack*/
+	zoom: 1;
+    *display: inline;
+}
+
+.category-products-grid {
+	margin: 0 0 0 0;
+}
+
+/* Category Toolbar
+-------------------------------------------------------------- */
+.toolbar {
+	color: #222222;
+	border-bottom: none;
+	margin: 0;
+	padding-bottom: 25px;
+	background: url('../images/fade_top.png') bottom left no-repeat;
+}
+
+.toolbar .pager {
+	margin: 0;
+	padding: 0;
+	border-bottom: none;
+	border-top: none;
+	text-align: center;
+}
+
+.toolbar .pager .pages {
+	float: right;
+}
+
+.toolbar .sorter .amount, .toolbar .sorter .sort-by, .toolbar .sorter .limiter {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	/*margin-top: 4px;*/
+}
+
+.dropdown a {
+	font-weight: normal;
+}
+
+/* Toolbar bottom modifications */
+
+.toolbar-bottom .toolbar .pager {
+	padding-top: 45px;
+}
+
+.toolbar-bottom .toolbar .pager .pages {
+	float: none;
+}
+
+.toolbar-bottom {
+	margin: 0;
+}
+
+.toolbar-bottom .sorter {
+	display: block;
+}
+
+.toolbar-bottom .sorter .amount, .toolbar-bottom .sorter .sort-by, .toolbar-bottom .sorter .limiter {
+	display: none;
+}
+
+.toolbar-bottom .sorter .amount span {
+	font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.toolbar-bottom .toolbar {
+	border: none;
+	padding-top: 0;
+	background: url('../images/fade_bottom.png') top left no-repeat;
+}
+
+.sorter {
+	line-height: 22px;
+}
+
+.toolbar, .category-products-grid .item {
+	border: none;
+}
+
+.pager .amount, .sorter .amount, .sorter .sort-by {
+	background: none;
+}
+
+.toolbar {
+	border-top: 1px solid black;
+}
+
+form.custom div.custom.dropdown, form.custom label { 
+	float: left;
+}
+
+form.custom div.custom.dropdown { 
+	margin: 0 5px;
+}
+
+form.custom div.custom.dropdown a.selector {
+	position: absolute;
+	width: 22px;
+	height: 22px;
+	display: block;
+	right: 0;
+	top: 0;
+	border: none;
+	background-color: black;
+}
+
+form.custom div.custom.dropdown a.current {
+	line-height: 20px;
+	min-height: 20px;
+	color: #999;
+}
+
+form.custom div.custom.dropdown a.selector:after {
+	border-color: white transparent transparent transparent;
+}
+
+form.custom div.custom.dropdown:hover a.selector:after, form.custom div.custom.dropdown.open a.selector:after {
+	border-color: white transparent transparent transparent;
+}
+
+form.custom div.custom.dropdown ul {
+	top: 20px;
+}
+
+form.custom div.custom.dropdown ul li {
+	color: #999;
+	font-size: 12px;
+	font-weight: normal;
+	min-height: 16px;
+	line-height: 16px;
+}
+
+
+.toolbar .pager .pages span {
+	font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.toolbar .pager .pages li {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.pager .pages li.current {
+	background-color: black;
+	color: white;
+}
+
+/* Category Image
+-------------------------------------------------------------- */
+
+.category-image {
+	width: 765px;
+	overflow: hidden;
+	margin: 0 0 0 -19px;
+	text-align: center;
+}
+
+/* Category grid
+-------------------------------------------------------------- */
+
+.products-grid .btn-cart {
+	margin-right: 0;
+}
+
+.products-grid.equal-height .item .actions {
+	position: absolute;
+	bottom: 15px;
+	width: 222px;
+}
+
+
+.products-list .product-name, .products-grid .product-name, h3.product-name	{
+	font-family: "Sorts Mill Goudy Regular";
+	text-transform: uppercase;
+	line-height: 1.2em;
+	font-size: 16px;
+	color: #222222;
+}
+
+.category-products-grid button.button, .category-products-grid button.button span {
+	width: 100%;
+}
+
+.category-products-grid button.button span span {
+	width: 100%;
+	padding: 0;
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #999999;
+}
+
+.category-products-grid button.button:hover span {
+	background-color: #64b96a;
+	color: white;
+}
+
+/* Category Bottom Promos
+-------------------------------------------------------------- */
+
+body .block_category_below_collection div.promo1 {
+	float: left;
+}
+
+body .block_category_below_collection div.promo2 {
+	float: right;
+}
+
+/* Category Recently Viewed
+-------------------------------------------------------------- */
+.block-viewed .block-content li.item {
+	display: inline-block;
+	background: white;
+	border: 1px solid #e3e3e3;
+	padding: 2px;
+	margin: 15px 0 0 11px;
+	box-shadow: 2px 2px 3px 0 rgba(0,0,0,0.1);
+}
+	.block-viewed .block-content li.item:nth-child(3n+1) {
+		margin-left: 0;
+	}
+
+
+.block-viewed .block-content li.item img {
+	border: 1px solid #f3f3f3;
+}
+
+/* Sidebar Popular Tags
+-------------------------------------------------------------- */
+.block-tags .block-content .tags-list {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 16px;
+	line-height: 1.38em;
+	color: #222222;
+	padding: 10px 4px 0;
+}
+
+/* Washing Service Page
+-------------------------------------------------------------- */
+body.category-washing-service .grid-full {
+	width: 100%;
+	margin: 0;
+}
+
+body.category-washing-service .main {
+	padding-bottom: 10px;
+}
+
+body.category-washing-service .page-title {	
+	display: none;
+}
+
+.small-horizontal-line {
+	width: 17px;
+	margin: 0 auto;
+	border-top: 2px solid black;
+	margin-top: 25px;
+}
+
+body.category-washing-service .washing-hero {
+	display: block;
+	width: 1061px;
+	height: 614px;
+	background: url('../images/washing_hero.jpg') 0 0 no-repeat;
+	position: relative;
+	margin: 15px 0 0 -50px;
+	color: #222222;
+}
+	body.category-washing-service .washing-hero:hover {
+		color: inherit;
+	}
+	
+#washing-service {
+	padding-top: 25px;
+}
+
+body.category-washing-service h2 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 35px;
+	line-height: 1em;
+	color: #000000;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 0;
+}
+
+body.category-washing-service h3 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 14px;
+	line-height: 1em;
+	color: #000000;
+	text-transform: uppercase;
+	text-align: center;
+	margin: 3px 0 0 0;
+}
+
+body.category-washing-service h4 {
+	font-size: 22px;
+	line-height: 1em;
+	font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	font-style: italic;
+	font-weight: normal;
+	text-transform: uppercase;
+	padding: 0;
+	margin: 0;
+}
+
+body.category-washing-service h3.selection-title {
+	color: #222222;
+	font-family: "Halo Handletter";
+	font-size: 48px;
+	line-height: 1.38em;
+	font-weight: normal;
+	text-align: center;
+	text-transform: none;
+}
+
+body.category-washing-service .washing-hero p {
+	font-size: 13px;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	padding: 0;
+	margin: 0;
+}
+
+body.category-washing-service .washing-hero a {
+	text-decoration: underline;
+	color: inherit;
+}
+
+body.category-washing-service .step-one, body.category-washing-service .step-two, body.category-washing-service .step-three, body.category-washing-service .step-four {
+	position: absolute;
+	-webkit-text-size-adjust: none;
+}
+
+body.category-washing-service .step-one {
+	top: 123px;
+	left: 50px;
+}
+
+	body.category-washing-service .step-one p {
+		padding-top: 5px;
+	}
+
+body.category-washing-service .step-two {
+	top: 510px;
+	left: 193px;
+}
+
+	body.category-washing-service .step-two p {
+		padding-top: 17px;
+	}
+
+body.category-washing-service .step-three {
+	top: 529px;
+	left: 540px;
+}
+
+	body.category-washing-service .step-three p {
+		padding-top: 10px
+	}
+
+body.category-washing-service .step-four {
+	top: 96px;
+	left: 696px;
+	width: 140px;
+}
+
+	body.category-washing-service .step-four p {
+		padding-top: 23px
+	}
+
+
+/* Washing service type selection area */
+#washing-service .select-type {
+	margin-top: 25px;
+	overflow: hidden;
+}
+
+#washing-service .select-type a {
+	display: block;
+	width: 308px;
+	float: left;
+}
+	#washing-service .select-type a.active {
+		background-color: #e5e5e5;
+	}
+	#washing-service .select-type a:nth-of-type(2) {
+		margin: 0 17px;
+	}
+	
+	#washing-service .select-type a:hover {
+		background-color: #e5e5e5;
+	}
+
+#washing-service .select-type a div {
+	width: 102px;
+	float: left;
+	text-align: center;
+	margin: 0 !important;
+	padding: 15px 0;
+}
+
+	#washing-service .select-type a div:nth-of-type(2) {
+		border-left: 1px solid black;
+		border-right: 1px solid black;
+	}
+	
+#washing-service .select-type h5 {
+	font-size: 13px;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	text-transform: uppercase;
+	font-weight: normal;
+	text-align: center;
+	color: #040707;
+	background-color: white;
+	margin: 0;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	line-height: 1em;
+	padding: 20px 0 12px;
+}
+	#washing-service .select-type h5.check {
+		background-image: url('../images/washing_service_check.gif');
+		background-position: 255px 11px;
+		background-repeat: no-repeat;
+	}
+	
+/* Quantity selection flyout */
+#washing-service .clothing-section, #washing-service .household-section {
+	overflow: hidden;
+	margin-bottom: 33px;
+}
+
+#washing-service .select-quantity {
+	margin: 20px 0 0 0;
+	overflow: hidden;
+}
+
+#washing-service .select-quantity h5 {
+	font-size: 18px;
+	font-family: "GillSansMTStd", sans-serif;
+	font-weight: normal;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+#washing-service .select-quantity .item-line {
+	background-color: #e5e5e5;
+	padding: 2px;
+	height: 34px;
+	line-height: 34px;
+	margin-top: 8px !important;
+	float: left;
+	width: 301px;
+}
+	#washing-service .select-quantity .item-line:nth-of-type(3n+2) {
+		margin: 0 20px;
+	}
+
+	#washing-service .select-quantity .item-line .item-title {
+		color: #222;
+		font-family: 'Sorts Mill Goudy Regular', serif;
+		font-weight: normal;
+		font-size: 12px;
+		line-height: 42px;
+		text-transform: uppercase;
+		padding-left: 10px;
+		overflow: hidden;
+		float: left;
+		width: 150px;
+		text-overflow: ellipsis;
+		height: 34px;
+	}
+	
+		#washing-service .select-quantity .item-line .item-title span {
+			color: #222;
+			font-family: "GillSansMTStd", sans-serif;
+			font-size: 12px;
+			line-height: 1em;
+		}
+	
+	#washing-service .select-quantity .item-line .item-selector {
+		width: 136px;
+		height: 100%;
+		float: right;
+	}
+
+		#washing-service .select-quantity .item-line .item-selector a {
+			display: block;
+			float: left;
+			height: 34px;
+			width: 34px;
+			color: white;
+			background-color: #848484;
+			text-indent: -9999px;
+			transition: opacity 200ms ease-in-out;
+			-moz-transition: opacity 200ms ease-in-out;
+			-webkit-transition: opacity 200ms ease-in-out;
+			-o-transition: opacity 200ms ease-in-out;
+		}
+		
+			#washing-service .select-quantity .item-line .item-selector a:hover {
+				opacity: 0.5
+			}
+			
+			#washing-service .select-quantity .item-line .item-selector a.minus {
+				background: #848484 url('../images/minus.png') center center no-repeat;
+			}
+			#washing-service .select-quantity .item-line .item-selector a.plus {
+				background: #848484 url('../images/plus.png') center center no-repeat;
+			}
+		
+		#washing-service .select-quantity .item-line .item-selector span.qty {
+			display: block;
+			float: left;
+			height: 34px;
+			width: 34px;
+			color: #848484;
+			background-color: white;
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			line-height: 34px;
+			text-align: center;
+			vertical-align: top;
+		}
+		
+		#washing-service .select-quantity .item-line .item-selector span.item-subtotal {
+			display: block;
+			float: left;
+			height: 34px;
+			width: 34px;
+			color: black;
+			background-color: white;
+			font-family: "GillSansMTStd-Bold", sans-serif;
+			font-size: 14px;
+			line-height: 34px;
+			text-align: center;
+			vertical-align: top;
+			transition: font-size 10ms ease-in-out;
+			-moz-transition: font-size 10ms ease-in-out;
+			-webkit-transition: font-size 10ms ease-in-out;
+			-o-transition: font-size 10ms ease-in-out;
+		}
+
+#washing-service .washing-subtotal {
+	margin-top: 10px;
+	text-align: center;
+}
+
+	#washing-service .washing-subtotal .subtotal {
+		font-family: 'Sorts Mill Goudy Regular', serif;
+		font-weight: normal;
+		font-size: 33px;
+		line-height: 1em;
+		margin-bottom: 25px;
+		text-transform: uppercase;
+	}
+
+	#washing-service .washing-subtotal .subtotal span {
+		font-family: "GillSansMTStd-Bold", sans-serif;
+	}
+
+#washing-service .btn-cart span {
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	background-color: #333333;
+	text-transform: uppercase;
+	color: white;
+}
+	#washing-service .btn-cart:hover span {
+	background-color: #64b96a;
+	color: #fff;
+	}
+
+#washing-service .btn-cart span span {
+	padding: 0 100px;
+}
+
+/* Ask The Laundress Page
+-------------------------------------------------------------- */
+
+body.cms-ask-the-laundress .std, body.cms-ask-the-laundress-post .std {
+	margin: 0;
+}
+
+body.cms-ask-the-laundress .grid-full, body.cms-ask-the-laundress-post .grid-full {
+	width: 100%;
+	margin: 15px 0 0 0;
+}
+
+body.cms-ask-the-laundress .page-title, body.cms-ask-the-laundress-post .page-title, body.cms-ask-the-laundress .breadcrumbs, body.cms-ask-the-laundress-post .breadcrumbs {	
+	display: none;
+}
+
+/* Post Header */
+.ask-header {
+	height: 160px;
+	position: relative;
+	border-bottom: 1px solid #222222;
+	margin-bottom: 20px;
+}
+
+.ask-header h1 {
+	padding: 25px 0 0 262px;
+	line-height: 1em
+}
+
+.ask-header form {
+	display: block;
+	margin: 0 0 0 262px;
+	width: 690px;
+}
+
+.ask-header .form-search {
+	position: relative;
+}
+
+.ask-header .form-search label {
+	display: none;
+}
+
+.ask-header .form-search input {
+	width: 683px;
+	height: 20px;
+	padding-right: 0px;
+	padding-left: 5px;
+}
+
+.ask-header .form-search button.button {
+	position: absolute;
+	right: -4px;
+	top: 0;
+}
+
+	.ask-header .form-search button.button span {
+		width: 66px;
+		height: 36px;
+		line-height: 36px;
+		background-color: black;
+		color: white;
+	}
+	
+	.ask-header .form-search:hover button.button span {
+		background-color: #64B96A;
+	}
+	.ask-header .form-search:hover input {
+		border-color: #64B96A;
+	}
+
+/* Main Page Header */
+body.cms-ask-the-laundress .ask-header {
+	height: 300px;
+	text-align: center;
+}
+
+body.cms-ask-the-laundress .ask-header h1 {
+	padding: 0;
+	width: 250px;
+	margin: 0 auto;
+}
+
+body.cms-ask-the-laundress .ask-header form {
+	margin: 0px;
+	margin: 25px auto 0;
+}
+
+.ask-header p {
+	color: #000;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 1.2em;
+	width: 500px;
+	margin: 25px auto;
+}
+
+.ask-header p.sign-in {
+	font-size: 12px;
+	line-height: 1em;
+}
+
+.ask-header p.sign-in a {
+	display: inline-block;
+	padding: 8px 10px 10px;
+	margin-right: 8px;
+	background: black;
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-weight: bold;
+	color: white;
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 1em;
+}
+
+.ask-header p.sign-in a:hover {
+	background-color: #64B96A;
+}
+
+/* Sidebar */
+.ask-sidebar {
+	width: 250px;
+	float: left;
+	position: relative;
+}
+
+body.cms-ask-the-laundress .ask-sidebar {
+	margin-top: 100px;
+}
+
+.ask-sidebar h1 {
+	position: absolute;
+	left: 0;
+	top: -177px;
+	width: 243px;
+	height: 158px;
+	margin: 0;
+	text-indent: -9999px;
+	background-image: url('../images/ask-header.gif');
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.ask-sidebar h2 {
+	color: #222222;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-weight: normal;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 1em;
+	text-transform: uppercase;
+	padding-left: 10px;
+	margin: 0 0 4px 0;
+}
+.ask-sidebar li {
+	font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 1.75em;
+	color: #666;
+	padding-left: 10px;
+}
+
+/* Content section */
+.ask-content {
+	width: 653px;
+	float: right;
+}
+
+.ask-content h2 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-weight: bold;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #999999;
+	margin: 15px 0 0 0;
+	line-height: 1em;
+}
+
+/* Single post item */
+.ask-post {
+	position: relative;
+	margin: 20px 0 0 0;
+	border-bottom: 8px solid black;
+}
+
+.ask-category {
+	display: block;
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	color: #222;
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 1em;
+}
+
+.ask-title {
+	display: block;
+	font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	font-size: 22px;
+	font-style: italic;
+	text-transform: uppercase;
+	line-height: 1.15em;
+	color: #222;
+	padding: 10px 0;
+}
+
+.ask-post p {
+	font-family: "GillSansMTStd", sans-serif;
+	font-size: 13px;
+	line-height: 1.5em;
+	color: #58595b;
+	padding: 0;
+	margin-bottom: 15px;
+}
+
+.ask-read-more {
+	display: block;
+	position: absolute;
+	bottom: -10px;
+	right: 0;
+	width: 90px;
+	background-color: white;
+	text-transform: uppercase;
+	text-align: right;
+	font-family: "GillSansMTStd", sans-serif;
+	font-size: 12px;
+	line-height: 1em;
+	color: black;
+}
+
+/* Our Story page
+-------------------------------------------------------------- */
+
+body.cms-our-story .page-title, body.cms-our-story .breadcrumbs {	
+	display: none;
+}
+
+body.cms-our-story .main {
+	padding-top: 40px;
+}
+
+body.cms-our-story .grid-full {
+	width: 100%;
+	margin: 0;
+}
+
+body.cms-our-story #story-intro {
+	overflow: hidden;
+	padding: 0 0 15px 0;
+}
+
+/* Our Story nav */
+
+body.cms-our-story .top {
+	overflow: hidden;
+	margin-bottom: 20px;
+	padding-top: 15px;
+}
+	body.cms-our-story .top .active {
+		color: #64b96a;
+	}
+		body.cms-our-story .top .active a {
+			color: inherit;
+		}
+
+body.cms-our-story .top > div {
+	width: 33.3%;
+	float: left;
+	text-align: center;
+}
+
+body.cms-our-story .top > div h1 {
+	font-size: 40px;
+	line-height: 1em;
+	text-transform: uppercase;
+}
+	body.cms-our-story .top > div h1 a {
+		font-size: inherit;
+		font-family: inherit;
+		line-height: inherit;
+		padding: 0;
+	}
+
+body.cms-our-story .top > div div.small-horizontal-line {
+	margin-top: 5px;
+}
+
+body.cms-our-story .top > div p {
+	padding: 0 80px;
+	line-height: 14px;
+}
+body.cms-our-story .top > div span {
+	display: block;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+body.cms-our-story .top > div a {
+	display: block;
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-size: 10px;
+	padding-top: 10px;
+	text-transform: uppercase;
+	color: #222;
+}
+
+
+
+body.cms-our-story #story-intro > p {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 19px;
+	line-height: 1.32em;
+	color: #262626;
+	width: 520px;
+	float: left;
+	padding: 0 0 0 7px;
+	margin: 0;
+}
+
+body.cms-our-story .story-quotes .quote1 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 39px;
+	line-height: 1.15em;
+	color: black;
+	padding: 35px 35px 59px 50px;
+	border-top: 1px solid #dadada;
+	background: url('../images/gwen_lindsey_sig.gif') bottom left no-repeat;
+}
+
+body.cms-our-story .story-quotes .quote2 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 19px;
+	line-height: 1.26em;
+	color: black;
+	padding: 35px 175px 40px;
+	
+	border-bottom: 1px solid #dadada;
+}
+	body.cms-our-story .story-quotes .quote2 span {
+		text-align: right;
+		display: block;
+		padding-right: 10px;
+	}
+
+body.cms-our-story .drycleaning-stat {
+	width: 835px;
+	height: 180px;
+	margin-left: 82px;
+	background: url('../images/drycleaning_pie.gif') top left no-repeat;
+}
+
+	body.cms-our-story .drycleaning-stat p {
+		font-family: Georgia, serif;
+		font-style: italic;
+		font-size: 22px;
+		line-height: 1.1em;
+		color: #222222;
+		text-transform: uppercase;
+		padding: 90px 0 0 385px;
+	}
+	
+body.cms-our-story .meet-the-founders {
+	overflow: hidden;
+	margin-top: 20px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #dadada;
+}
+
+body.cms-our-story .meet-the-founders > div {
+	width: 450px;
+}
+
+body.cms-our-story .meet-the-founders > div:first-of-type {
+	float: left;
+	margin-left: 10px;
+}
+body.cms-our-story .meet-the-founders > div:last-of-type {
+	float: right;
+	margin-right: 10px;
+}
+
+body.cms-our-story .meet-the-founders h1 {
+	padding: 65px 200px 0 0;
+	font-family: 'bodoni-bookbookitalic', serif;
+	font-weight: normal;
+	font-style: italic;
+	font-size: 60px;
+	line-height: 0.8em;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+}
+
+body.cms-our-story .meet-the-founders .gwen {
+	background: url('../images/our_story_gwen.jpg') top right no-repeat;
+}
+body.cms-our-story .meet-the-founders .lindsey {
+	background: url('../images/our_story_lindsey.jpg') top right no-repeat;
+}
+
+body.cms-our-story .meet-the-founders p {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 14px;
+	line-height: 1.3em;
+	color: black;
+}
+
+body.cms-our-story .meet-the-founders h2 {
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-weight: bold;
+	font-size: 11px;
+	text-transform: uppercase;
+	margin-bottom: 3px;
+}
+	body.cms-our-story .meet-the-founders h2:first-of-type {
+		border-top: 1px solid black;
+		padding-top: 20px;
+	}
+
+/* Why the Laundress section */
+
+body.cms-our-story #why-the-laundress {
+	margin-top: 20px;
+}
+
+body.cms-our-story .why-the-laundress {
+	margin-top: 15px;
+	font-family: "GillSansMTStd", sans-serif;
+	border-top: 1px solid #dadada;
+	padding-top: 30px;
+}
+
+body.cms-our-story .why-the-laundress > div {
+	width: 465px;
+	float: left;
+}
+body.cms-our-story .why-the-laundress > div:nth-of-type(odd) {
+	border-right: 1px solid black;
+	padding-right: 12px;
+}
+body.cms-our-story .why-the-laundress > div:nth-of-type(even) {
+	float: right;
+}
+
+body.cms-our-story .why-the-laundress h1 {
+	clear: both;
+	height: 155px;
+	background: url('../images/why_the_laundress_bottle.jpg') 430px 0 no-repeat;
+	padding: 190px 0 0 140px;
+	margin: 0;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 55px;
+	text-transform: uppercase;
+	position: relative;
+	z-index: 2;
+}
+	body.cms-our-story .why-the-laundress h1 span {
+		font-size: 60px;
+		text-transform: uppercase;
+		padding-left: 100px;
+	}
+	/* Pulling the middle title h1 up */
+	body.cms-our-story .why-the-laundress .save {
+		margin-bottom: -90px;
+		position: relative;
+		z-index: 1;
+	}
+
+body.cms-our-story .why-the-laundress h2 {
+	font-family: "Halo Handletter";
+	font-size: 43px;
+	text-transform: none;
+	padding: 0 0 5px 0;
+}
+
+body.cms-our-story .why-the-laundress .save div:first-of-type {
+	border-bottom: 20px solid #222222;
+	padding-bottom: 14px;
+	overflow: hidden;
+}
+	body.cms-our-story .why-the-laundress .save h2 {
+		padding-left: 10px;
+	}
+
+	body.cms-our-story .why-the-laundress .save div:first-of-type p {
+		padding: 40px 0 0 276px;
+		color: #58595b;
+		font-size: 13px;
+	}
+	body.cms-our-story .why-the-laundress .save div:first-of-type img {
+		border-right: 1px solid #dadada;
+	}
+	body.cms-our-story .why-the-laundress .save div:first-of-type b {
+		color: #222222;
+	}
+	body.cms-our-story .why-the-laundress .save div:first-of-type span {
+		font-family: 'bodoni-bookbookitalic', serif;
+		font-weight: normal;
+		font-style: italic;
+		font-size: 55px;
+		display: block;
+		color: #222;
+		padding: 15px 0 5px 0;
+	}
+		body.cms-our-story .why-the-laundress .save div:first-of-type span sub {
+			font-size: 23px;
+			vertical-align: baseline;
+		}
+	
+body.cms-our-story .why-the-laundress .save div:last-of-type {
+	background: url('../images/save_2.gif') top left no-repeat;
+	height: 130px;
+	margin-top: 10px;
+}
+
+	body.cms-our-story .why-the-laundress .save div:last-of-type p {
+		font-size: 13px;
+		padding: 65px 70px 0 185px;
+		line-height: 1.38em;
+	}
+
+body.cms-our-story .why-the-laundress .green > div {
+	margin-left: 10px;
+	overflow: hidden;
+}
+
+	body.cms-our-story .why-the-laundress .green > div:first-of-type {
+		margin-bottom: 5px;
+	}
+
+	body.cms-our-story .why-the-laundress .green > div:first-of-type > p {
+		padding: 3px 30px 0 235px;
+		margin: 0;
+	}
+	body.cms-our-story .why-the-laundress .green p b {
+		color: #222;
+	}
+	
+	body.cms-our-story .why-the-laundress .green > div:first-of-type > p:first-of-type {
+		font-family: "GillSansMTStd", sans-serif;
+		line-height: 1em;
+		font-size: 13px;
+		color: #58595b;
+		padding-top: 10px;
+	}
+	body.cms-our-story .why-the-laundress .green > div:first-of-type > p:first-of-type span {
+		font-family: 'bodoni-bookbookitalic', serif;
+		font-weight: normal;
+		font-style: italic;
+		font-size: 55px;
+		display: block;
+		color: black;
+		padding: 15px 0;
+	}
+
+body.cms-our-story .why-the-laundress .green .green-split div {
+	width: 185px;
+	border-top: 1px solid #dadada;
+	border-bottom: 20px solid #222222;
+	height: 116px;
+}
+	body.cms-our-story .why-the-laundress .green .green-split div:first-of-type {
+		float: left;
+		background: url('../images/green_2.gif') top left no-repeat;
+		position: relative;
+		z-index: 1;
+	}
+	body.cms-our-story .why-the-laundress .green .green-split div:last-of-type {
+		float: right;
+		background: url('../images/green_3.gif') top left no-repeat;
+	}
+	
+	body.cms-our-story .why-the-laundress .green .green-split div p {
+		line-height: 1.38em;
+		padding: 8px 0 0 45px;
+		margin: 0;
+		color: #58595b;
+		font-size: 13px;
+	}
+	
+	body.cms-our-story .why-the-laundress .green .green-split div:last-of-type p:first-of-type {
+		padding-top: 15px;
+	}
+	
+	body.cms-our-story .why-the-laundress .green .green-split div p:first-of-type {
+		font-family: 'Georgia', Arial, Helvetica, sans-serif;
+		font-size: 22px;
+		line-height: 1.1em;
+		font-style: italic;
+		text-transform: uppercase;
+	}
+		body.cms-our-story .why-the-laundress .green .green-split div p:first-of-type span {
+			color: #222222;
+		}
+		
+body.cms-our-story .why-the-laundress .green div.cruelty-free {
+	background: url('../images/green_4.png') bottom left no-repeat;
+	height: 100px;
+	width: 360px;
+	margin: -17px 0 0 65px;
+	position: relative;
+	z-index: 2;
+}
+	body.cms-our-story .why-the-laundress .green div.cruelty-free p {
+		padding: 37px 0 0 110px;
+		font-size: 13px;
+	}
+		body.cms-our-story .why-the-laundress .green div.cruelty-free p span {
+			display: block;
+			font-family: 'Georgia', Arial, Helvetica, sans-serif;
+			font-size: 22px;
+			line-height: 1.1em;
+			font-style: italic;
+		}
+	
+body.cms-our-story .why-the-laundress .easy div {
+	overflow: hidden;
+	width: 400px;
+}
+	body.cms-our-story .why-the-laundress .easy div:first-of-type {
+		background: url('../images/easy_1.gif') top left no-repeat;
+		margin-bottom: 30px;
+	}
+	body.cms-our-story .why-the-laundress .easy div:last-of-type {
+		background: url('../images/easy_2.gif') top left no-repeat;
+	}
+
+	body.cms-our-story .why-the-laundress .easy div p, body.cms-our-story .why-the-laundress .neurotic div p {
+		float: right;
+		display: block;
+		width: 155px;
+		border-top: 1px solid #dadada;
+		border-bottom: 20px solid #222222;
+		font-size: 13px;
+		color: #58595b;
+		padding: 15px 0;
+	}
+
+	body.cms-our-story .why-the-laundress .easy div p b, body.cms-our-story .why-the-laundress .neurotic div p b {
+		display: block;
+		font-family: 'Georgia', Arial, Helvetica, sans-serif;
+		font-size: 22px;
+		line-height: 1.1em;
+		font-style: italic;
+		font-weight: normal;
+		color: #222222;
+		text-transform: uppercase;
+		padding: 3px 0;
+	}
+	
+	body.cms-our-story .why-the-laundress .easy h2, body.cms-our-story .why-the-laundress .neurotic h2 {
+		line-height: 1em;
+	}
+
+body.cms-our-story .why-the-laundress .neurotic div {
+	overflow: hidden;
+	width: 440px;
+	height: 260px;
+	margin-left: 10px;
+	background: url('../images/neurotic_1.gif') top left no-repeat; 
+}
+
+body.cms-our-story .why-the-laundress .neurotic h2 {
+	margin: 0 0 35px 10px;
+}
+
+body.cms-our-story .why-the-laundress .easy {
+	margin-bottom: 25px;
+}
+
+body.cms-our-story .closing-quote {
+	width: 626px;
+	height: 179px;
+	clear: both;
+	margin: 0 auto 50px;
+	background: url('../images/quote_box_l.gif') top left no-repeat, url('../images/quote_box_r.gif') top right no-repeat;
+}
+
+	body.cms-our-story .closing-quote p {
+		font-family: 'Sorts Mill Goudy Regular', serif;
+		font-size: 19px;
+		line-height: 1.26em;
+		color: black;
+		padding: 24px 30px 0 28px;		
+	}
+	body.cms-our-story .closing-quote p i {
+		font-family: 'Georgia', Arial, Helvetica, sans-serif;
+	}
+	body.cms-our-story .closing-quote p span {
+		display: block;
+		text-align: right;
+	}
+
+
+
+/* Find a Store page
+-------------------------------------------------------------- */
+
+body.cms-contact-find-a-store .grid-col2-main {
+	width: 74%;
+	margin-right: 0;
+}
+
+.find-store-top {
+	margin-top: 25px;
+	padding-bottom: 30px;
+}
+
+.find-store-top h1 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 18px;
+	text-transform: uppercase;
+	margin: 5px 0 5px 0;
+}
+
+.find-store-top p {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 14px;
+	padding: 0 300px 0 0;
+}
+
+.find-store-top .spacer {
+	padding: 25px 9px 0;
+	font-family: Georgia, serif;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 12px;
+}
+
+.find-store-top form.custom label {
+	display: block;
+	float: none;
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	padding-left: 15px;
+}
+
+.find-store-top form.custom .input-text {
+	line-height: 21px;
+	padding: 7px 5px;
+}
+
+.find-store-top form.custom div.custom.dropdown {
+	margin: 0 0 0 9px;
+}
+
+.find-store-top form.custom div.custom.dropdown a.current {
+	min-height: 35px;
+	line-height: 35px;
+}
+.find-store-top form.custom div.custom.dropdown a.selector {
+	width: 35px;
+	height: 37px;
+	background-color: #999999;
+}
+
+.find-store-top form.custom div.custom.dropdown ul {
+	top: 35px;
+}
+
+.find-store-top form.custom .postal input {
+	width: 124px
+}
+.find-store-top form.custom .city input {
+	width: 144px
+}
+.find-store-top form.custom .postal label {
+	padding-left: 3px
+}
+.find-store-top form.custom .city label {
+	padding-left: 3px
+}
+
+
+body.cms-contact-find-a-store .find-store-top button.button {
+	margin-top: -64px;
+}
+
+body.cms-contact-find-a-store .find-store-top button.button span {
+	background-color: #222222;
+	color: white;
+	font-family: "GillSansMTStd", sans-serif;
+	padding: 15px 40px;
+}
+
+body.cms-contact-find-a-store .find-store-top button.button:hover span {
+	background-color: #64B96A;
+}
+
+#find-store-map-area {
+	height: 260px;
+	padding: 3px;
+	border-top: 1px solid #222;
+}
+
+#find-store-map-results .sidebar-entry-container {
+	padding: 20px 0;
+	border-bottom: 1px solid #bdc2c1;
+}
+	#find-store-map-results .sidebar-entry-container img, #find-store-map-results .sidebar-entry-container .directions {
+		display: none;
+	}
+	
+#find-store-map-results span {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 14px;
+	color: black;
+	border-bottom: 1px solid #58595b;
+	line-height: 1em;
+}
+	#find-store-map-results span.title {
+		text-transform: uppercase;
+	}
+	#find-store-map-results span.spacer {
+		padding: 0 9px;
+	}
+
+/* Store Locator CSS */
+#storelocator-container { width:auto; font-family:Helvetica, sans-serif; font-size:11px;}
+#find-store-map-area { overflow:hidden; height:300px; font-size:14px; line-height:1.3em; }
+#tag-container { margin-top:10px; }
+#tag-container div { display:inline; }
+#locations-reset { cursor:pointer; }
+.dir-btn {
+    background-color:#f5f5f5 !important;
+    border:1px solid rgba(0, 0, 0, 0.1);
+    border-radius:2px 2px 2px 2px;
+    color:#444;
+    display:inline-block !important;
+    font-weight:bold;
+    height:27px;
+    line-height:27px;
+    min-width:54px;
+    padding:0 8px;
+    text-align:center;
+    text-decoration:none;
+	}
+.dir-btn:hover { background-color:#f8f8f8; border:1px solid #C6C6C6; box-shadow:0 1px 1px rgba(0, 0, 0, 0.1); color:#333333; text-decoration:none; }
+.dir-btn:active { box-shadow:0 1px 2px rgba(0, 0, 0, 0.3) inset; }
+div.directions {
+    width:90%;
+    margin:5px auto;
+	}
+
+#find-store-map-area img {
+    max-width: none;
+}
+
+#storelocator-results .pager{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+

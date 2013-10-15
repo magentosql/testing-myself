@@ -1,0 +1,926 @@
+@import url('fonts.css');
+.add-monogram-process .color{width:20px;height:20px;position:absolute;left:0;margin-top:-20px}
+.add-monogram-process .color[data-color="#FFFFFF"]{border:1px solid #999;width:18px;height:18px}
+.add-monogram-process .monogram-step-2 ul li{padding-left:25px !important}
+form.custom div.custom.dropdown ul li.selected:after,form.custom div.custom.dropdown ul li.selected:hover:after{content:''}
+.monogram-step-disabled{opacity:.5;pointer-events:none}
+.monogram-step-disabled a,#monogram-initials{cursor:default}
+html.touch .add-monogram span.custom.checkbox{display:none}
+html.touch .add-monogram input#monogram-check{float:left;margin-right:5px;display:block !important}
+.product-view .fragrance{min-height:40px}
+.product-nav a{vertical-align:bottom}
+.product-view .box-tabs{clear:both}
+.product-img-box{margin-bottom:20px}
+.add-to-links li{margin-left:10px}
+.add-to-links li.first{margin-left:0;margin-right:20px}
+.sidebar #sidebar-contact{min-height:530px}
+.cms-washing-service-faq p{font-family:inherit}
+.cms-washing-service-faq .accordion li a{color:#222;display:block;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px;margin:20px 0 12px 0;padding:0}
+.cms-washing-service-faq .accordion li h4{font-family:"Sorts Mill Goudy Regular",serif;font-size:19px;margin-top:30px}
+.cms-washing-service-faq .accordion>li:first-child{border-top:0}
+.cms-washing-service-faq .accordion>li{padding:1em 0 1em;border-top:1px solid #d4d4d4}
+.cms-washing-service-faq .accordion>li>div{color:#666;margin:10px 0 2em 0}
+.cms-washing-service-faq ol{list-style:decimal outside;margin-left:15px}
+.cms-washing-service-faq ol li{display:list-item;list-style-type:inherit}
+.cms-washing-service-faq.cms-page-view .col-main h3,.cms-faq.cms-page-view .col-main>div.std>p.subline,.cms-washing-service-faq.cms-page-view .col-main>div.std>p.subline{display:inline-block;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px}
+.cms-washing-service-faq.cms-page-view .col-main>div.std>p.subline{color:#666}
+.cms-washing-service-faq.cms-page-view .col-main>div.std>p{color:#999;font-size:14px}
+.cms-washing-service-faq.cms-page-view .std .contactus-contact{margin-bottom:.5em}
+.cms-washing-service-faq .accordion li div a,.cms-faq .accordion li div a{color:inherit;display:inline;font-size:inherit;font-family:inherit;margin:0;padding:0;text-decoration:underline}
+.cms-washing-service-faq .accordion li div a:hover,.cms-faq .accordion li div a:hover{color:#64b96a}
+.cms-washing-service-faq.cms-page-view .col-main h3{margin-right:30px}
+#nav ul.level0 .nested-container .custom-block p{color:#777}
+#nav ul.level0 .nested-container .custom-block a{color:inherit}
+#nav ul.level0 .nested-container .custom-block a:hover{color:#64b96a}
+body.cms-contact-corporate .col-main{border-bottom:1px solid #222;color:#58595b}
+body.cms-contact-corporate h3{color:black}
+body.cms-contact-corporate .spacer{padding:0 7px}
+body.cms-contact-corporate .col-main .grid4-2{width:46%}
+body.cms-contact-corporate .col-main .grid4-2.left{margin-left:0;float:left}
+body.cms-contact-corporate .col-main .grid4-2.right{float:right;margin-right:0}
+body.cms-contact-corporate .col-main .grid4-2>div{padding:20px 0}
+body.cms-contact-corporate .col-main .grid4-2 .international-q{padding:10px 0 20px}
+body.cms-contact-corporate .box-note{border-top:1px solid #222;font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;color:black}
+body.cms-contact-corporate .box-note span{text-transform:uppercase;font-size:10px;display:block;color:black}
+body.cms-contact-corporate .press{border-top:1px solid #222}
+body.cms-contact-corporate .distribution{border-top:1px solid #222}
+body.cms-contact-corporate p{font-family:"GillSansMTStd",sans-serif;font-size:14px}
+body.cms-contact-corporate p span{font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;color:#58595b}
+body.cms-contact-corporate a.email{font-family:"GillSansMTStd",sans-serif;font-size:14px}
+body.cms-contact li.nav-contact-us a,body.cms-contact-find-a-store li.nav-find-a-store a,body.cms-contact-corporate li.nav-corporate a,body.cms-faq li.nav-faq-orders a,body.cms-washing-service-faq li.nav-faq-washing a,body.cms-contact-shipping li.nav-shipping a,body.cms-contact-privacypolicy li.nav-privacy a,body.cms-contact-terms li.nav-terms a{color:#64b96a}
+body.cms-contact-privacypolicy span{font-family:inherit}
+.ajaxcart-content button.btn-cart span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;text-transform:uppercase}
+.ajaxcart-content button.btn-cart:hover span{background-color:#64b96a;color:white}
+.blog-fabrics-atoz a{color:#222}
+.blog-fabrics-atoz a:hover{color:#64b96a}
+body.wishlist-index-index .my-account button.button span{background-color:#e9e9e9;color:#888}
+body.wishlist-index-index .my-account button.btn-cart span,.ajaxcart-content button.btn-cart span{background-color:#222;color:white}
+body.wishlist-index-index .my-account button.button:hover span,.ajaxcart-content button.btn-cart:hover span{background-color:#64b96a;color:white}
+body.wishlist-index-index .my-account button.btn-cart span{color:white}
+body.wishlist-index-index .my-account button.btn-cart:hover span{background-color:#64b96a}
+body.wishlist-index-index .page-title{display:block !important}
+body.wishlist-index-index .input-text{text-align:center}
+body.wishlist-index-index .add-to-bag-cell{position:relative}
+body.wishlist-index-index .add-to-bag-cell p{float:left}
+body.wishlist-index-index .add-to-bag-cell .price-box{float:right;padding-top:6px}
+body.wishlist-index-index .add-to-bag-cell button{position:absolute;bottom:10px;left:10px}
+body.wishlist-index-index .my-account{margin-top:10px}
+body.wishlist-index-index .data-table thead th{line-height:26px}
+body.wishlist-index-index .data-table tr td,.data-table tr th{border-right:0}
+body.wishlist-index-index .data-table tr.odd.last{border-bottom:0}
+body.wishlist-index-index .btn-remove{margin-top:6px}
+.my-wishlist .data-table tr.even{border-top:1px solid #f1f1f1;background:white}
+body.wishlist-index-index .data-table td{padding:15px 10px}
+body.wishlist-index-index .product-image img{border:1px solid #bdc2c1}
+.my-wishlist textarea{width:90%;height:53px;border:1px solid #efefef;padding:10px}
+body.wishlist-index-index .grid-col2-main{width:74%;margin-right:0}
+.my-wishlist .product-name a{color:#222;text-transform:uppercase}
+.my-wishlist .product-name a:hover{color:#64b96a}
+.cms-page-view p{font-family:"GillSansMTStd",sans-serif}
+.gen-tabs .tabs a{transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-moz-transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-webkit-transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-o-transition:color 300ms ease-in-out,background-color 300ms ease-in-out}
+body.cms-contact-shipping .std ul{list-style:disc;font-family:"GillSansMTStd",sans-serif;padding-left:30px}
+html{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+body{border-top:5px solid black;border-bottom:5px solid black;width:100%;min-width:1024px}
+.wrapper{border-top:0}
+.header{padding-bottom:20px}
+#nav li a{padding:0}
+#nav li a span{display:inline}
+#nav li.nav-1 a.level-top{width:207px}
+#nav li.nav-2 a.level-top{width:142px}
+#nav li.nav-3 a.level-top{width:160px}
+#nav li.nav-4 a.level-top{width:176px}
+#nav li.nav-5 a.level-top{width:163px}
+#nav li.nav-6 a.level-top{width:112px}
+#nav.mobile{display:block}
+body.cms-contact #nav>li.nav-6>a,body.cms-contact-find-a-store #nav>li.nav-6>a,body.cms-contact-corporate #nav>li.nav-6>a,body.cms-faq #nav>li.nav-6>a,body.cms-washing-service-faq #nav>li.nav-6>a,body.cms-contact-shipping #nav>li.nav-6>a,body.cms-contact-privacypolicy #nav>li.nav-6>a,body.cms-contact-terms #nav>li.nav-6>a{background-color:#222;color:#fff}
+body.is-blog #nav>li.nav-5>a{background-color:#222;color:#fff}
+body.ask-the-laundress #nav>li.nav-4>a{background-color:#222;color:#fff}
+body.ask-the-laundress #nav>li.nav-5>a{background-color:white !important;color:#222 !important}
+body.ask-the-laundress #nav>li:hover.nav-5>a{background-color:#222 !important;color:#fff !important}
+body.category-washing-service #nav>li.nav-3>a{background-color:#222;color:#fff}
+.v .v-item{vertical-align:top}
+.header-top{padding-bottom:18px}
+.header-main{padding-bottom:17px}
+.header-container{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:12px;font-style:italic;line-height:1.38em;color:#666}
+.header h1.logo{width:283px;margin:0 auto;max-width:none;display:block}
+.logo-wrapper h1.logo a{display:block;position:relative;width:283px;height:53px;text-indent:-9999px;background:url('../images/laundress_header_logo@2x.gif') 0 0 no-repeat;background-size:283px 108px;transition:none;-moz-transition:none;-webkit-transition:none;-o-transition:none}
+.logo-wrapper h1.logo a:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background-image:inherit;background-size:283px 108px;background-position:0 -55px;opacity:0;-webkit-transition:opacity .15s;-moz-transition:opacity .15s;-o-transition:opacity .15s}
+.logo-wrapper h1.logo a:hover:after{opacity:1}
+.header .form-search{margin:0;width:238px}
+.header .form-search .button{background:url('../images/search_icon@2x.png') 6px 5px no-repeat #fff;background-size:14px 14px;right:0;opacity:.5;transition:opacity .15s;-webkit-transition:opacity .15s;-moz-transition:opacity .15s;-o-transition:opacity .15s}
+.header .form-search .button:hover{opacity:1}
+input.input-text,select,textarea{border:1px solid #ddd}
+.header .top-links{padding-top:9px}
+#mini-cart{padding-right:13px}
+#mini-cart p{font-family:inherit;margin-bottom:0}
+#mini-cart .summary .amount{line-height:1em;text-align:center;font-size:10px;margin-top:2px}
+#mini-cart .summary .price{display:block;font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:16px;line-height:1em;color:#222;padding-top:3px}
+#mini-cart .summary .empty{padding-top:9px;display:inline-block}
+#mini-cart .block-title .heading{background:url('../images/cart_icon.gif') 0 0 no-repeat;width:26px;height:28px;padding:0 15px 0 0;margin-top:3px;text-indent:-9999px;overflow:hidden}
+.after-mini-cart{clear:none}
+.header .welcome-msg{background:url('../images/truck_icon.gif') 0 center no-repeat;padding:0 3px 0 28px}
+.header .welcome-msg b.no-italic{font-style:normal}
+body.cms-index-index .page-blog a img{margin-bottom:15px}
+body.cms-index-index h4.blog-title{color:#222;font-family:"Sorts Mill Goudy Regular",serif;font-size:15px;font-weight:normal;text-align:center;text-transform:uppercase}
+body.cms-index-index div.blog-category{color:#222;font-family:"GillSansMTStd";font-weight:bold;margin-bottom:8px;text-align:center;text-transform:uppercase}
+.block-related-slider:hover .block-subtitle{display:none}
+.footer-top-container{padding-bottom:5px}
+.footer-top ul li{border-left:1px solid #d9d9d9}
+.footer-top ul li:first-child{border-left:0}
+.footer-top ul li a{font-family:"Georgia";font-size:13px;font-style:italic;color:#222}
+.footer-top ul li a:hover{background-color:transparent;color:#64b96a}
+.link-rss{background:0}
+.footer-container{background-color:white;background-image:none}
+.footer-primary-container{background:url('../images/footer_tile.gif') repeat-x;height:385px}
+.footer-top{text-align:center}
+ul.links{margin:auto}
+ul.links li{float:none;display:inline-block}
+ul.links li a{display:inline-block}
+.footer-container ul.links li,.footer-container ul.links li a{display:inline}
+.footer-primary{background-color:transparent;width:564px;position:relative;padding-top:33px}
+.footer-primary>div{width:50%;float:left;position:relative;z-index:2}
+.footer-form label{font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;line-height:1em;padding:0 0 9px 2px;text-transform:uppercase}
+.footer-form .input-box{margin:0 0 5px 0;width:160px;overflow:hidden}
+.footer-form .input-text{width:100%;margin:0;padding:0 7px;height:34px;color:#999;border-top:1px solid #dfdfdf;border-left:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
+.footer-form:hover .input-text{border-color:#64b96a}
+.footer-form button.button span{background-color:#222;color:white;line-height:36px;height:36px;width:64px;font-family:"GillSansMTStd-Bold",sans-serif}
+.footer-form:hover button.button span{background-color:#64b96a}
+.find-form{text-align:right}
+.find-form label{padding-right:13px}
+#footer-card{width:564px;height:394px;position:absolute;top:33px;left:0;z-index:1;background:url('../images/footer_card.png') no-repeat}
+#footer-card .contact-details{position:absolute;top:278px;width:100%;text-align:center}
+#footer-card .contact-details .email{font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;line-height:1em;color:#313131}
+#footer-card .contact-details .email a{color:inherit}
+#footer-card .contact-details .email span{color:#999}
+#footer-card .contact-details .email:hover span{color:#64b96a}
+#footer-card .contact-details .phone{font-family:"GillSansMTStd-Bold",sans-serif;font-weight:bold;font-size:13px;line-height:1em;color:#333;padding-top:7px}
+#footer-card .contact-details .phone:hover{color:#64b96a}
+#footer-card .social-icons{position:absolute;top:335px;width:100%;text-align:center}
+#footer-card .social-icons ul li{display:inline}
+#footer-card .social-icons ul li a,.add-to-links li.social a{display:inline-block;height:18px;text-indent:-9999px}
+#footer-card .social-icons ul li a.pintrest,.add-to-links li.social a.pintrest{width:14px;background:url('../images/pintrest.gif') 0 0 no-repeat;position:relative}
+.add-to-links li.social a.pintrest{margin-left:5px}
+#footer-card .social-icons ul li a.facebook,.add-to-links li.social a.facebook{width:14px;background:url('../images/facebook.gif') 0 0 no-repeat;margin-left:19px;position:relative}
+.add-to-links li.social a.facebook{margin-left:0}
+#footer-card .social-icons ul li a.twitter,.add-to-links li.social a.twitter{width:19px;background:url('../images/twitter.gif') 0 0 no-repeat;margin-left:20px;position:relative}
+.add-to-links li.social a.twitter{margin-left:5px}
+#footer-card .social-icons ul li a.youtube{width:40px;background:url('../images/youtube.gif') 0 0 no-repeat;margin-left:15px;position:relative}
+#footer-card .social-icons ul li a.rss{width:15px;background:url('../images/rss.gif') 0 0 no-repeat;margin-left:18px;position:relative}
+#footer-card .social-icons ul li a.pintrest:after,#footer-card .social-icons ul li a.facebook:after,#footer-card .social-icons ul li a.twitter:after,#footer-card .social-icons ul li a.youtube:after,#footer-card .social-icons ul li a.rss:after,.add-to-links li.social a.pintrest:after,.add-to-links li.social a.facebook:after,.add-to-links li.social a.twitter:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background-image:inherit;background-position:0 -20px;opacity:0;-webkit-transition:opacity .2s;-moz-transition:opacity .2s;-o-transition:opacity .2s}
+#footer-card .social-icons ul li a.pintrest:hover:after,#footer-card .social-icons ul li a.facebook:hover:after,#footer-card .social-icons ul li a.twitter:hover:after,#footer-card .social-icons ul li a.youtube:hover:after,#footer-card .social-icons ul li a.rss:hover:after,.add-to-links li.social a.pintrest:hover:after,.add-to-links li.social a.facebook:hover:after,.add-to-links li.social a.twitter:hover:after{opacity:1}
+.footer-bottom-container{padding:53px 0 25px 0}
+.footer-bottom{width:558px;margin:0 auto}
+.copyright-ul{line-height:12px}
+.copyright-ul li{display:inline;font-family:'Georgia',sans-serif;font-size:12px;font-style:italic;color:#aaabad}
+.copyright-ul li a{color:inherit}
+.copyright-ul li a:hover{text-decoration:underline}
+.copyright-ul li.first{padding-right:25px}
+.copyright-ul li.terms{padding-right:5px;border-right:1px solid #aaabad}
+.copyright-ul li.privacy{padding-left:3px}
+.copyright-ul li.madeby{font-size:11px;color:#d7d7d7;font-style:normal}
+#bottom-cap{width:100%;height:5px}
+#bottom-cap>div{width:558px;margin:0 auto;position:relative}
+#scroll-to-top{display:none;width:110px;height:22px;position:absolute;bottom:0;right:-147px;z-index:9999;background-color:#222;color:white;text-indent:inherit;font-family:"GillSansMTStd",sans-serif;font-size:12px;font-weight:bold;line-height:22px;text-align:center;transition:opacity 300ms ease-in-out;-moz-transition:opacity 300ms ease-in-out;-webkit-transition:opacity 300ms ease-in-out;-o-transition:opacity 300ms ease-in-out}
+.missed-a-spot{position:fixed;display:none;bottom:50px;right:15px;z-index:9999;width:144px;height:50px;background:url('../images/missedaspot.png') 0 0 no-repeat}
+.missed-a-spot:hover{opacity:.75}
+#mini-cart .block-title{position:relative;z-index:2501}
+#mini-cart .block-content{display:none;z-index:2500;position:absolute;right:0;top:-10px;width:323px;text-align:left}
+#mini-cart .block-content .block-content-inner{padding:0}
+#mini-cart .product-name{margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #ababab}
+#mini-cart .block-content a{font-family:"GillSansMTStd",sans-serif;font-size:13px;text-transform:uppercase;font-style:normal;color:#000}
+#mini-cart .qty-and-price{font-family:Georgia,serif;font-size:13px;font-style:normal;color:#888;padding-bottom:5px;border-bottom:1px solid #ababab}
+ol#cart-sidebar{padding:0 13px}
+#mini-cart .block-subtitle{padding:0 13px;margin:0;height:50px}
+#mini-cart .block-subtitle p{padding:25px 0 0 40px}
+.block_mini_cart_above_products{margin:0 0 10px;text-align:center}
+#mini-cart .block_mini_cart_above_products div a{font-family:Georgia,serif;font-size:12px}
+#mini-cart .actions{padding:0 13px 13px;margin-top:15px}
+#mini-cart .actions button{width:50%;margin:0;float:left}
+#mini-cart button.btn-inline span{margin:0;padding:0;width:100%}
+#mini-cart button.btn-inline span span{padding:0;margin:0;line-height:48px;height:48px;font-family:"GillSansMTStd-Bold",sans-serif;font-size:13px;text-transform:uppercase;font-weight:normal}
+#mini-cart button.btn-viewcart span{background-color:#e9e9e9;color:#000;font-weight:bold}
+#mini-cart button.btn-viewcart span:hover{background-color:#64b96a;color:#fff}
+#mini-cart button.btn-checkout span{background-color:#222;color:white}
+#mini-cart button.btn-checkout span:hover{background-color:#64b96a;color:#fff}
+.col2-left-layout .col-main .page-title{display:none}
+.breadcrumbs{margin-bottom:20px;overflow:hidden}
+body .category-title{border-color:#000}
+body .category-title h1{line-height:1em;min-height:1em;margin-bottom:10px;font-family:"Sorts Mill Goudy Regular";text-transform:uppercase}
+.price-box .price{color:#222;font-size:13px;font-family:"GillSansMTStd-Bold",sans-serif;font-weight:normal}
+.minimal-price .price-label{font-family:Georgia,serif;font-size:10px;font-style:italic;color:#bdc2c1;text-transform:lowercase}
+body .main{padding-top:20px}
+body .sidebar{margin:0;width:230px}
+body.catalog-category-view .col-main{width:710px;margin:0 0 0 19px}
+body .sidebar .block{background-color:#f2f2f2}
+.block-layered-nav dl{padding:0}
+.block-layered-nav dd{padding:0}
+body .sidebar .vertnav{background-color:transparent}
+.vertnav li .opener{display:none}
+body .sidebar .vertnav li a{border:0}
+body .sidebar .block-title{padding:14px 0 7px 0;margin:0 15px;border-bottom:1px solid #bdc2c1}
+body .sidebar .block-title span{font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;line-height:1em;text-transform:uppercase;color:#999}
+body .sidebar .block-content{padding:0 13px 14px}
+body .sidebar .sidebar-promos{padding:14px 13px}
+body .sidebar .block-content a:first-of-type img{padding-bottom:13px}
+body .sidebar a.level-top{display:inline-block;font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;line-height:1em;text-transform:uppercase;color:#222;padding:0;margin:2em 0 0 0;zoom:1;*display:inline}
+body .sidebar ul.level0 li a,.block-layered-nav dd li,.block-layered-nav .currently ol li{display:block;font-family:Georgia,serif;font-size:13px;line-height:1.2em;font-style:italic;color:#666;padding:0 0 0 20px;margin:10px 0 0 0;background:url('../images/sidebar_arrow.gif') 6px 3px no-repeat;zoom:1;*display:inline}
+.block-layered-nav .currently ol li{color:#64b96a}
+body .sidebar ul.level0 li a:hover{color:#64b96a}
+.block-layered-nav dd li:hover{background-position:6px 3px}
+.block-layered-nav dt{display:inline-block;font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;font-weight:normal;line-height:1.3em;text-transform:uppercase;color:#222;padding:0;margin:17px 0 0 0;zoom:1;*display:inline}
+.category-products-grid{margin:0}
+.catalog-category-view .messages{margin:0}
+.block-layered-nav .currently{margin:15px 0 0}
+.block-layered-nav .currently .block-subtitle{display:block;padding:0;font-weight:normal;font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;text-transform:uppercase}
+.block-layered-nav .currently ol{padding:0}
+.block-layered-nav .currently .label{margin-right:3px;color:inherit}
+.block-layered-nav .currently ol li{background-position:6px 4px;margin:7px 0 0 0}
+.block-layered-nav .currently ol li:hover{background-position:6px 4px}
+.block-layered-nav .currently .actions{border-top:0;margin-top:5px;background-color:transparent}
+.block-layered-nav .currently .actions a{font-family:'GillSansMTStd',serif;font-size:12px;background-color:#222;color:#fff;text-transform:uppercase;background-image:none}
+.block-layered-nav .currently .actions a:hover{background-color:#64b96a}
+.toolbar{color:#222;border-bottom:0;border-top:1px solid black;margin:0;padding-bottom:25px;background:url('../images/fade_top.png') bottom left no-repeat}
+.catalogsearch-result-index .toolbar{border-top:0}
+.toolbar .pager{margin:0;padding:0;border-bottom:0;border-top:0;text-align:center}
+.toolbar .pager .pages{float:right}
+.toolbar .sorter .amount,.toolbar .sorter .sort-by,.toolbar .sorter .limiter{font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold}
+.dropdown a{font-weight:normal}
+.toolbar-bottom .toolbar .pager{padding-top:45px}
+.toolbar-bottom .toolbar .pager .pages{float:none}
+.toolbar-bottom{margin:0}
+.toolbar-bottom .sorter{display:block}
+.toolbar-bottom .sorter .amount,.toolbar-bottom .sorter .sort-by,.toolbar-bottom .sorter .limiter{display:none}
+.toolbar-bottom .sorter .amount span{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold}
+.toolbar-bottom .toolbar{border:0;padding-top:0;background:url('../images/fade_bottom.png') top left no-repeat}
+.sorter{line-height:22px}
+.category-products-grid .item{border:0}
+.pager .amount,.sorter .amount,.sorter .sort-by{background:0}
+form.custom div.custom.dropdown,form.custom label{float:left}
+form.custom div.custom.dropdown{margin:0 5px}
+body.authorizecim-index-new form.custom div.custom.dropdown{margin:0 10px 0 0}
+form.custom div.custom.dropdown a.selector{position:absolute;display:block;right:1px;top:1px;border:0;background-color:black}
+body.catalog-category-view form.custom div.custom.dropdown a.selector{width:22px;height:22px;top:0;right:0}
+form.custom div.custom.dropdown a.current{color:#999}
+body.catalog-category-view form.custom div.custom.dropdown a.current{line-height:20px;min-height:20px}
+form.custom div.custom.dropdown a.selector:after{border-color:white transparent transparent transparent}
+form.custom div.custom.dropdown:hover a.selector:after,form.custom div.custom.dropdown.open a.selector:after{border-color:white transparent transparent transparent}
+body.catalog-category-view form.custom div.custom.dropdown ul{top:21px}
+body.catalog-category-view form.custom div.custom.dropdown ul li{color:#999;font-size:12px;font-weight:normal;min-height:16px;line-height:16px;position:relative}
+.toolbar .pager .pages span{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:12px;font-style:italic}
+.toolbar .pager .pages li{font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold}
+.pager .pages li.current{background-color:black;color:white}
+.category-image{width:765px;overflow:hidden;margin:0 0 0 -19px;text-align:center}
+.products-grid .btn-cart{margin-right:0}
+.products-grid.equal-height .item .actions{position:absolute;bottom:15px;width:222px}
+.products-list .product-name,.products-grid .product-name,h3.product-name{font-family:"Sorts Mill Goudy Regular";text-transform:uppercase;line-height:1.2em;font-size:16px;color:#222}
+.category-products-grid button.button,.category-products-grid button.button span{width:100%}
+.category-products-grid button.button span span{width:100%;padding:0;font-family:"GillSansMTStd-Bold",sans-serif;font-weight:normal;font-size:14px;text-transform:uppercase;color:#999}
+.category-products-grid button.button:hover span{background-color:#64b96a;color:white}
+.thing-we-love{position:absolute;top:-3px;left:-3px}
+body .block_category_below_collection div.promo1{float:left}
+body .block_category_below_collection div.promo2{float:right}
+.block-viewed .block-content li.item{display:inline-block;background:white;border:1px solid #e3e3e3;padding:2px;margin:15px 0 0 11px;box-shadow:2px 2px 3px 0 rgba(0,0,0,0.1)}
+.block-viewed .block-content li.item:nth-child(3n+1){margin-left:0}
+.block-viewed .block-content li.item img{border:1px solid #f3f3f3}
+.block-tags .block-content .tags-list{font-family:'Sorts Mill Goudy Regular',serif;font-size:16px;line-height:1.38em;color:#222;padding:10px 4px 0}
+body.category-washing-service .grid-full{width:100%;margin:0}
+body.category-washing-service .main{padding-bottom:10px}
+body.category-washing-service .page-title{display:none}
+.small-horizontal-line{width:17px;margin:0 auto;border-top:2px solid black;margin-top:25px}
+body.category-washing-service p.header-copy{width:525px;margin:10px auto 18px;text-align:center;font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;color:black}
+body.category-washing-service .washing-hero{display:block;width:1061px;height:614px;background:url('../images/washing_hero.jpg') 0 0 no-repeat;position:relative;margin:15px 0 0 -50px;color:#222}
+body.category-washing-service .washing-hero:hover{color:inherit}
+body.category-washing-service h3 a{text-decoration:underline;color:black}
+#washing-service{padding-top:25px}
+body.category-washing-service h2{font-family:'Sorts Mill Goudy Regular',serif;font-size:35px;line-height:1em;color:#000;text-transform:uppercase;text-align:center;margin:0}
+body.category-washing-service h3{font-family:"GillSansMTStd",sans-serif;font-size:14px;line-height:1em;color:#000;text-transform:uppercase;text-align:center;margin:3px 0 0 0}
+body.category-washing-service h4{font-size:22px;line-height:1em;font-family:'Georgia',Arial,Helvetica,sans-serif;font-style:italic;font-weight:normal;text-transform:uppercase;padding:0;margin:0}
+body.category-washing-service h3.selection-title{color:#222;font-family:"Halo Handletter";font-size:48px;line-height:1.38em;font-weight:normal;text-align:center;text-transform:none}
+body.category-washing-service .washing-hero p{font-size:13px;font-family:'Sorts Mill Goudy Regular',serif;padding:0;margin:0}
+body.category-washing-service .washing-hero a{text-decoration:underline;color:inherit}
+body.category-washing-service .step-one,body.category-washing-service .step-two,body.category-washing-service .step-three,body.category-washing-service .step-four{position:absolute;-webkit-text-size-adjust:none}
+body.category-washing-service .step-one{top:123px;left:50px}
+body.category-washing-service .step-one p{padding-top:5px}
+body.category-washing-service .step-two{top:510px;left:193px}
+body.category-washing-service .step-two p{padding-top:17px}
+body.category-washing-service .step-three{top:529px;left:540px}
+body.category-washing-service .step-three p{padding-top:10px}
+body.category-washing-service .step-four{top:96px;left:696px;width:140px}
+body.category-washing-service .step-four p{padding-top:23px}
+#washing-service .select-type{margin-top:25px;overflow:hidden}
+#washing-service .select-type a{display:block;width:308px;float:left}
+#washing-service .select-type a.active{background-color:#e5e5e5}
+#washing-service .select-type a:nth-of-type(2){margin:0 17px}
+#washing-service .select-type a:hover{background-color:#e5e5e5}
+#washing-service .select-type a div{width:102px;float:left;text-align:center;margin:0 !important;padding:15px 0}
+#washing-service .select-type a div:nth-of-type(2){border-left:1px solid black;border-right:1px solid black}
+#washing-service .select-type h5{font-size:13px;font-family:'Sorts Mill Goudy Regular',serif;text-transform:uppercase;font-weight:normal;text-align:center;color:#040707;background-color:white;margin:0;border-top:2px solid black;border-bottom:2px solid black;line-height:1em;padding:20px 0 12px}
+#washing-service .select-type h5.check{background-image:url('../images/washing_service_check.gif');background-position:255px 11px;background-repeat:no-repeat}
+#washing-service .clothing-section,#washing-service .household-section{overflow:hidden;margin-bottom:33px}
+#washing-service .select-quantity{margin:20px 0 0 0;overflow:hidden}
+#washing-service .select-quantity h5{font-size:18px;font-family:"GillSansMTStd",sans-serif;font-weight:normal;text-align:center;text-transform:uppercase;margin:0}
+#washing-service .select-quantity .item-line{background-color:#e5e5e5;padding:2px;height:34px;line-height:34px;margin-top:8px !important;float:left;width:301px}
+#washing-service .select-quantity .item-line:nth-of-type(3n+2){margin:0 20px}
+#washing-service .select-quantity .item-line .item-title{color:#222;font-family:'Sorts Mill Goudy Regular',serif;font-weight:normal;font-size:12px;line-height:42px;text-transform:uppercase;padding-left:10px;overflow:hidden;float:left;width:150px;text-overflow:ellipsis;height:34px}
+#washing-service .select-quantity .item-line .item-title span{color:#222;font-family:"GillSansMTStd",sans-serif;font-size:12px;line-height:1em}
+#washing-service .select-quantity .item-line .item-selector{width:136px;height:100%;float:right}
+#washing-service .select-quantity .item-line .item-selector a{display:block;float:left;height:34px;width:34px;color:white;background-color:#848484;text-indent:-9999px;transition:opacity 200ms ease-in-out;-moz-transition:opacity 200ms ease-in-out;-webkit-transition:opacity 200ms ease-in-out;-o-transition:opacity 200ms ease-in-out}
+#washing-service .select-quantity .item-line .item-selector a:hover{opacity:.5}
+#washing-service .select-quantity .item-line .item-selector a.minus{background:#848484 url('../images/minus.png') center center no-repeat}
+#washing-service .select-quantity .item-line .item-selector a.plus{background:#848484 url('../images/plus.png') center center no-repeat}
+#washing-service .select-quantity .item-line .item-selector span.qty{display:block;float:left;height:34px;width:34px;color:#848484;background-color:white;font-family:Arial,sans-serif;font-size:14px;line-height:34px;text-align:center;vertical-align:top}
+#washing-service .select-quantity .item-line .item-selector span.item-subtotal{display:block;float:left;height:34px;width:34px;color:black;background-color:white;font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;line-height:34px;text-align:center;vertical-align:top;transition:font-size 10ms ease-in-out;-moz-transition:font-size 10ms ease-in-out;-webkit-transition:font-size 10ms ease-in-out;-o-transition:font-size 10ms ease-in-out}
+#washing-service .washing-subtotal{margin-top:10px;text-align:center;height:120px}
+#washing-service .washing-subtotal .subtotal{font-family:'Sorts Mill Goudy Regular',serif;font-weight:normal;font-size:33px;line-height:1em;margin-bottom:25px;text-transform:uppercase}
+#washing-service .washing-subtotal .subtotal span{font-family:"GillSansMTStd-Bold",sans-serif}
+#washing-service .btn-cart span{font-family:"GillSansMTStd-Bold",sans-serif;background-color:#333;text-transform:uppercase;color:white}
+#washing-service .btn-cart:hover span{background-color:#64b96a;color:#fff}
+#washing-service .btn-cart span span{padding:0 100px}
+body.ask-the-laundress .std,body.ask-the-laundress-post .std{margin:0}
+body.ask-the-laundress .grid-full,body.ask-the-laundress-post .grid-full{width:100%;margin:0}
+body.ask-the-laundress .page-title,body.ask-the-laundress-post .page-title,body.ask-the-laundress .breadcrumbs,body.ask-the-laundress-post .breadcrumbs{display:none}
+.ask-header{height:160px;position:relative;border-bottom:1px solid #222;margin-bottom:20px}
+.ask-header h1{padding:25px 0 0 262px;line-height:1em}
+.ask-header form{display:block;margin:0 0 0 262px;width:690px}
+.ask-header .form-search{position:relative}
+.ask-header .form-search label{display:none}
+.ask-header .form-search input{width:683px;height:20px;padding-right:0;padding-left:5px}
+.ask-header .form-search button.button{position:absolute;right:-4px;top:0}
+.ask-header .form-search button.button span{width:66px;height:36px;line-height:36px;background-color:black;color:white}
+.ask-header .form-search:hover button.button span{background-color:#64b96a}
+.ask-header .form-search:hover input{border-color:#64b96a}
+body.ask-the-laundress .ask-header{height:300px;text-align:center}
+body.ask-the-laundress .ask-header h1{padding:0;width:250px;margin:0 auto}
+body.ask-the-laundress .ask-header form{margin:0;margin:25px auto 0}
+.ask-header p{color:#000;font-family:'Sorts Mill Goudy Regular',serif;font-weight:normal;font-size:15px;line-height:1.2em;width:500px;margin:25px auto}
+.ask-header p.sign-in{font-size:12px;line-height:1em}
+.ask-header p.sign-in a{display:inline-block;padding:8px 10px 10px;margin-right:8px;background:black;font-family:"GillSansMTStd-Bold",sans-serif;font-weight:bold;color:white;text-transform:uppercase;font-size:11px;line-height:1em}
+.ask-header p.sign-in a:hover{background-color:#64b96a}
+.ask-sidebar{width:250px;float:left;position:relative}
+body.ask-the-laundress .ask-sidebar{margin-top:100px}
+.ask-sidebar h1{position:absolute;left:0;top:-177px;width:243px;height:158px;margin:0;text-indent:-9999px;background-image:url('../images/ask-header.gif');background-repeat:no-repeat;background-position:left top}
+.ask-sidebar h2{color:#222;font-family:'Sorts Mill Goudy Regular',serif;font-weight:normal;font-size:14px;font-style:italic;line-height:1em;text-transform:uppercase;padding-left:10px;margin:0 0 4px 0}
+.ask-sidebar li{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:14px;font-style:italic;line-height:1.75em;color:#666;padding-left:10px}
+body.ask-the-laundress .ask-content{width:650px;float:right}
+body.ask-the-laundress .post-list{width:650px;float:right}
+body.ask-the-laundress .ask-content h2{color:#999;text-transform:uppercase;font-size:18px;margin:0}
+body.ask-the-laundress .post-list h2{font-family:'Sorts Mill Goudy Regular',serif;font-weight:bold;font-size:18px;text-transform:uppercase;color:#999;margin:15px 0 0 0;line-height:1em}
+.ask-post{position:relative;margin:20px 0 0 0;border-bottom:8px solid black}
+.ask-category{display:block;font-family:"GillSansMTStd-Bold",sans-serif;color:#222;text-transform:uppercase;font-size:11px;line-height:1em}
+.ask-title{display:block;font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:22px;font-style:italic;line-height:1.15em;color:#222;padding:10px 0}
+.ask-title a{color:inherit}
+.ask-title a:hover{color:#64b96a}
+.ask-post p{font-family:"GillSansMTStd",sans-serif;font-size:15px;line-height:1.5em;color:#58595b;padding:0;margin-bottom:15px}
+.ask-read-more{display:block;position:absolute;bottom:-10px;right:0;width:90px;background-color:white;text-transform:uppercase;text-align:right;font-family:"GillSansMTStd",sans-serif;font-size:12px;line-height:1em;color:black}
+body.ask-the-laundress.wordpress-post-view .ask-sidebar{margin-top:178px}
+body.ask-the-laundress.wordpress-post-view .featured-image{border:0;padding:0;margin:0 0 20px 0}
+body.ask-the-laundress.wordpress-post-view .featured-image img{max-width:100%}
+body.ask-the-laundress.wordpress-post-view .ask-content{width:700px}
+body.ask-the-laundress.wordpress-post-view .ask-post-single{width:575px;margin:0 auto}
+body.ask-the-laundress.wordpress-post-view .no-image{margin-top:50px}
+body.ask-the-laundress.wordpress-post-view .post-title{font-family:'Sorts Mill Goudy Regular',serif;font-size:15px;text-transform:uppercase;text-align:center;margin:0 auto}
+body.ask-the-laundress.wordpress-post-view .post-date{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:11px;font-style:italic;text-align:center;margin-bottom:20px}
+body.cms-our-story .page-title,body.cms-our-story .breadcrumbs{display:none}
+body.cms-our-story .main{padding-top:40px}
+body.cms-our-story .grid-full{width:100%;margin:0}
+body.cms-our-story #story-intro{overflow:hidden;padding:0 0 15px 0}
+body.cms-our-story .top{overflow:hidden;margin-bottom:20px;padding-top:15px}
+body.cms-our-story .top>div{width:33.3%;float:left;text-align:center}
+body.cms-our-story .top>div h1{font-size:40px;line-height:1em;text-transform:uppercase}
+body.cms-our-story .top>div h1 a{font-size:inherit;font-family:inherit;line-height:inherit;padding:0}
+body.cms-our-story .top>div div.small-horizontal-line{margin-top:5px}
+body.cms-our-story .top>div a{padding:0 70px;line-height:14px;display:block;color:#222;font-family:"GillSansMTStd",sans-serif}
+body.cms-our-story .top>div span{display:block;font-family:'Sorts Mill Goudy Regular',serif;font-size:20px;line-height:1.1em;padding-bottom:5px;color:#222}
+body.cms-our-story .top>div span.link{display:block;font-family:"GillSansMTStd-Bold",sans-serif;font-size:10px;padding-top:10px;text-transform:uppercase;color:#64b96a}
+body.cms-our-story .top>div a:hover span.link{color:#a3a3a3}
+body.cms-our-story #story-intro>p{font-family:'Sorts Mill Goudy Regular',serif;font-size:19px;line-height:1.32em;color:#262626;width:520px;float:left;padding:0 0 0 7px;margin:0}
+body.cms-our-story .story-quotes .quote1{font-family:'Sorts Mill Goudy Regular',serif;font-size:39px;line-height:1.15em;color:black;padding:35px 35px 59px 50px;border-top:1px solid #dadada;background:url('../images/gwen_lindsey_sig.gif') bottom left no-repeat}
+body.cms-our-story .story-quotes .quote2{font-family:'Sorts Mill Goudy Regular',serif;font-size:19px;line-height:1.26em;color:black;padding:35px 175px 40px;border-bottom:1px solid #dadada}
+body.cms-our-story .story-quotes .quote2 span{text-align:right;display:block;padding-right:10px}
+body.cms-our-story .drycleaning-stat{width:835px;height:180px;margin-left:82px;background:url('../images/drycleaning_pie.gif') top left no-repeat}
+body.cms-our-story .drycleaning-stat p{font-family:Georgia,serif;font-style:italic;font-size:22px;line-height:1.1em;color:#222;text-transform:uppercase;padding:90px 0 0 385px}
+body.cms-our-story .meet-the-founders{overflow:hidden;margin-top:20px;padding-bottom:15px;border-bottom:1px solid #dadada}
+body.cms-our-story .meet-the-founders>div{width:450px}
+body.cms-our-story .meet-the-founders>div:first-of-type{float:left;margin-left:10px}
+body.cms-our-story .meet-the-founders>div:last-of-type{float:right;margin-right:10px}
+body.cms-our-story .meet-the-founders h1{padding:65px 200px 0 0;font-family:'bodoni-bookbookitalic',serif;font-weight:normal;font-style:italic;font-size:60px;line-height:.8em;text-transform:uppercase;margin-bottom:15px}
+body.cms-our-story .meet-the-founders .gwen{background:url('../images/our_story_gwen.jpg') top right no-repeat}
+body.cms-our-story .meet-the-founders .lindsey{background:url('../images/our_story_lindsey.jpg') top right no-repeat}
+body.cms-our-story .meet-the-founders p{font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;line-height:1.3em;color:black}
+body.cms-our-story .meet-the-founders h2{font-family:"GillSansMTStd-Bold",sans-serif;font-weight:bold;font-size:11px;text-transform:uppercase;margin-bottom:3px}
+body.cms-our-story .meet-the-founders h2:first-of-type{border-top:1px solid black;padding-top:20px}
+body.cms-our-story #why-the-laundress{margin-top:20px}
+body.cms-our-story .why-the-laundress{margin-top:15px;font-family:"GillSansMTStd",sans-serif;border-top:1px solid #dadada;padding-top:30px}
+body.cms-our-story .why-the-laundress>div{width:465px;float:left}
+body.cms-our-story .why-the-laundress>div:nth-of-type(odd){border-right:1px solid black;padding-right:12px}
+body.cms-our-story .why-the-laundress>div:nth-of-type(even){float:right}
+body.cms-our-story .why-the-laundress h1{clear:both;height:155px;background:url('../images/why_the_laundress_bottle.jpg') 430px 0 no-repeat;padding:190px 0 0 140px;margin:0;font-family:'Sorts Mill Goudy Regular',serif;font-size:55px;text-transform:uppercase;position:relative;z-index:2}
+body.cms-our-story .why-the-laundress h1 span{font-size:60px;text-transform:uppercase;padding-left:100px}
+body.cms-our-story .why-the-laundress .save{margin-bottom:-90px;position:relative;z-index:1}
+body.cms-our-story .why-the-laundress h2{font-family:"Halo Handletter";font-size:43px;text-transform:none;padding:0 0 5px 0}
+body.cms-our-story .why-the-laundress .save div:first-of-type{border-bottom:20px solid #222;padding-bottom:14px;overflow:hidden}
+body.cms-our-story .why-the-laundress .save h2{padding-left:10px}
+body.cms-our-story .why-the-laundress .save div:first-of-type p{padding:40px 0 0 276px;color:#58595b;font-size:13px}
+body.cms-our-story .why-the-laundress .save div:first-of-type img{border-right:1px solid #dadada}
+body.cms-our-story .why-the-laundress .save div:first-of-type b{color:#222}
+body.cms-our-story .why-the-laundress .save div:first-of-type span{font-family:'bodoni-bookbookitalic',serif;font-weight:normal;font-style:italic;font-size:55px;display:block;color:#222;padding:15px 0 5px 0}
+body.cms-our-story .why-the-laundress .save div:first-of-type span sub{font-size:23px;vertical-align:baseline}
+body.cms-our-story .why-the-laundress .save div:last-of-type{background:url('../images/save_2.gif') top left no-repeat;height:130px;margin-top:10px}
+body.cms-our-story .why-the-laundress .save div:last-of-type p{font-size:13px;padding:65px 70px 0 185px;line-height:1.38em}
+body.cms-our-story .why-the-laundress .green>div{margin-left:10px;overflow:hidden}
+body.cms-our-story .why-the-laundress .green>div:first-of-type{margin-bottom:5px}
+body.cms-our-story .why-the-laundress .green>div:first-of-type>p{padding:3px 30px 0 235px;margin:0}
+body.cms-our-story .why-the-laundress .green p b{color:#222}
+body.cms-our-story .why-the-laundress .green>div:first-of-type>p:first-of-type{font-family:"GillSansMTStd",sans-serif;line-height:1em;font-size:13px;color:#58595b;padding-top:10px}
+body.cms-our-story .why-the-laundress .green>div:first-of-type>p:first-of-type span{font-family:'bodoni-bookbookitalic',serif;font-weight:normal;font-style:italic;font-size:55px;display:block;color:black;padding:15px 0}
+body.cms-our-story .why-the-laundress .green .green-split div{width:185px;border-top:1px solid #dadada;border-bottom:20px solid #222;height:116px}
+body.cms-our-story .why-the-laundress .green .green-split div:first-of-type{float:left;background:url('../images/green_2.gif') top left no-repeat;position:relative;z-index:1}
+body.cms-our-story .why-the-laundress .green .green-split div:last-of-type{float:right;background:url('../images/green_3.gif') top left no-repeat}
+body.cms-our-story .why-the-laundress .green .green-split div p{line-height:1.38em;padding:8px 0 0 45px;margin:0;color:#58595b;font-size:13px}
+body.cms-our-story .why-the-laundress .green .green-split div:last-of-type p:first-of-type{padding-top:15px}
+body.cms-our-story .why-the-laundress .green .green-split div p:first-of-type{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:22px;line-height:1.1em;font-style:italic;text-transform:uppercase}
+body.cms-our-story .why-the-laundress .green .green-split div p:first-of-type span{color:#222}
+body.cms-our-story .why-the-laundress .green div.cruelty-free{background:url('../images/green_4.png') bottom left no-repeat;height:100px;width:360px;margin:-17px 0 0 65px;position:relative;z-index:2}
+body.cms-our-story .why-the-laundress .green div.cruelty-free p{padding:37px 0 0 110px;font-size:13px}
+body.cms-our-story .why-the-laundress .green div.cruelty-free p span{display:block;font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:22px;line-height:1.1em;font-style:italic}
+body.cms-our-story .why-the-laundress .easy div{overflow:hidden;width:400px}
+body.cms-our-story .why-the-laundress .easy div:first-of-type{background:url('../images/easy_1.gif') top left no-repeat;margin-bottom:30px}
+body.cms-our-story .why-the-laundress .easy div:last-of-type{background:url('../images/easy_2.gif') top left no-repeat}
+body.cms-our-story .why-the-laundress .easy div p,body.cms-our-story .why-the-laundress .neurotic div p{float:right;display:block;width:155px;border-top:1px solid #dadada;border-bottom:20px solid #222;font-size:13px;color:#58595b;padding:15px 0}
+body.cms-our-story .why-the-laundress .easy div p b,body.cms-our-story .why-the-laundress .neurotic div p b{display:block;font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:22px;line-height:1.1em;font-style:italic;font-weight:normal;color:#222;text-transform:uppercase;padding:3px 0}
+body.cms-our-story .why-the-laundress .easy h2,body.cms-our-story .why-the-laundress .neurotic h2{line-height:1em}
+body.cms-our-story .why-the-laundress .neurotic div{overflow:hidden;width:440px;height:260px;margin-left:10px;background:url('../images/neurotic_1.gif') top left no-repeat}
+body.cms-our-story .why-the-laundress .neurotic h2{margin:0 0 35px 10px}
+body.cms-our-story .why-the-laundress .easy{margin-bottom:25px}
+body.cms-our-story .closing-quote{width:626px;height:179px;clear:both;margin:0 auto 50px;background:url('../images/quote_box_l.gif') top left no-repeat,url('../images/quote_box_r.gif') top right no-repeat}
+body.cms-our-story .closing-quote p{font-family:'Sorts Mill Goudy Regular',serif;font-size:19px;line-height:1.26em;color:black;padding:24px 30px 0 28px}
+body.cms-our-story .closing-quote p i{font-family:'Georgia',Arial,Helvetica,sans-serif}
+body.cms-our-story .closing-quote p span{display:block;text-align:right}
+.cms-contact-find-a-store .col-main .page-title{display:none}
+body.cms-contact-find-a-store .grid-col2-main{width:74%;margin-right:0}
+.find-store-top{margin:22px 0 0 0;padding-bottom:30px}
+.find-store-top h1{font-family:'Sorts Mill Goudy Regular',serif;font-size:18px;text-transform:uppercase;margin:0 0 5px 0}
+.find-store-top p{font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;padding:0 300px 0 0}
+.find-store-top .spacer{padding:25px 9px 0;font-family:Georgia,serif;font-weight:bold;font-style:italic;font-size:12px}
+.find-store-top .find-a-store-form{margin-top:20px}
+.find-store-top form.custom label{display:block;float:none;font-family:Arial,sans-serif;font-weight:bold;font-size:12px;padding-left:15px}
+.find-store-top form.custom .input-text{line-height:21px;padding:7px 5px}
+.find-store-top form.custom div.custom.dropdown{margin:0 0 0 9px}
+.find-store-top form.custom div.custom.dropdown a.current{min-height:35px;line-height:35px}
+.find-store-top form.custom div.custom.dropdown a.selector{width:35px;height:37px;background-color:#999}
+.find-store-top form.custom div.custom.dropdown ul{top:35px}
+.find-store-top form.custom .postal input{width:400px}
+.find-store-top form.custom .city input{width:144px}
+.find-store-top form.custom .postal label{padding-left:3px}
+.find-store-top form.custom .city label{padding-left:3px}
+body.cms-contact-find-a-store .find-store-top button.button{margin-top:18px}
+body.cms-contact-find-a-store .find-store-top button.button span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif;padding:11px 35px}
+body.cms-contact-find-a-store .find-store-top button.button:hover span{background-color:#64b96a}
+#find-store-map-area{height:320px;padding:3px;border-top:1px solid #222;position:fixed;top:0;left:0}
+#find-store-map-results .sidebar-entry-container{padding:20px 0;border-bottom:1px solid #bdc2c1}
+#find-store-map-results .sidebar-entry-container img,#find-store-map-results .sidebar-entry-container .directions{display:none}
+#find-store-map-results span{font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;color:black;line-height:1.4em}
+#find-store-map-results span.title{text-transform:uppercase;border-bottom:1px solid #58595b}
+#find-store-map-results span.spacer{padding:0 9px}
+#find-store-map-results address{padding:10px 0 0 0}
+#find-store-map-results span.website{display:block}
+#storelocator-container{width:auto;font-family:Helvetica,sans-serif;font-size:11px}
+#find-store-map-area{overflow:hidden;font-size:14px;line-height:1.3em}
+#tag-container{margin-top:10px}
+#tag-container div{display:inline}
+#locations-reset{cursor:pointer}
+.dir-btn{background-color:#f5f5f5 !important;border:1px solid rgba(0,0,0,0.1);border-radius:2px 2px 2px 2px;color:#444;display:inline-block !important;font-weight:bold;height:27px;line-height:27px;min-width:54px;padding:0 8px;text-align:center;text-decoration:none}
+.dir-btn:hover{background-color:#f8f8f8;border:1px solid #c6c6c6;box-shadow:0 1px 1px rgba(0,0,0,0.1);color:#333;text-decoration:none}
+.dir-btn:active{box-shadow:0 1px 2px rgba(0,0,0,0.3) inset}
+div.directions{width:90%;margin:5px auto}
+#find-store-map-area img{max-width:none}
+#storelocator-results .pager{display:none}
+body.checkout-cart-index .grid-full{width:100%;margin:0}
+body.checkout-cart-index .cart-empty{float:left;clear:both;margin-top:20px}
+body.checkout-cart-index .breadcrumbs{width:50%;float:left;margin:0}
+body.checkout-cart-index .page-title{margin:0}
+body.checkout-cart-index .page-title h1{margin:0;min-height:1em;line-height:45px;padding-top:5px}
+body.checkout-cart-index .cart{margin-top:24px}
+body.checkout-cart-index .above-cart{width:360px;float:right;overflow:hidden}
+body.checkout-cart-index .above-cart button{width:175px;float:left;font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;text-transform:uppercase}
+body.checkout-cart-index .above-cart button:first-of-type{margin-right:10px;color:#999}
+body.checkout-cart-index .above-cart button span{float:none}
+body.checkout-cart-index .above-cart button span span{padding:0}
+.data-table thead th{font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;color:#999;text-transform:uppercase;line-height:45px;padding:3px 10px 0 10px}
+.cart-table thead tr{border-top:2px solid black;border-bottom:2px solid black}
+.cart-table td{padding-top:25px;padding-bottom:15px}
+.cart-table td.col-qty{padding-top:20px}
+.cart-table .product-name{font-family:'Sorts Mill Goudy Regular',serif;font-size:18px;color:#222}
+.cart-table .product-name a{color:inherit}
+.cart-table .product-name a:hover{color:#64b96a}
+.cart-table tbody{font-family:"GillSansMTStd",sans-serif;font-size:16px;font-weight:bold}
+.cart-table .standard-items .col-img{padding-top:15px}
+.cart-table .standard-items .col-img a{border:1px solid #bdc2c1;margin-bottom:2px}
+.cart-table .col-img{text-align:center}
+.cart-table .col-edit{font-size:14px;font-weight:normal}
+.cart-table input.input-text{text-align:center}
+.cart-table .standard-items tr.standard-title-spacer{margin:0;background-color:white}
+.cart-table .standard-items tr.standard-title-spacer td{margin:0;padding:0;position:relative}
+.cart-table .standard-items tr.standard-title-spacer h1{position:absolute;left:50%;top:-105px;margin:0 0 0 -130px;width:174px;height:120px;text-align:center;padding:0 35px 0 35px;background:url('../images/my_bag_large.gif') 35px 0 no-repeat;background-color:white}
+.cart-table .standard-items tr.standard-title-spacer h1 span{text-transform:uppercase;font-size:35px;display:block;padding-top:57px}
+.cart-table .standard-items tr:nth-child(2) td{padding-top:40px}
+.cart-table .standard-items tr:nth-child(2) td.col-img,.cart-table .standard-items tr:nth-child(2) td.col-qty{padding-top:35px}
+.cart-table .washing-items tr.washing-title-spacer{margin:50px 0 0 0;border-bottom:1px solid black;background-color:white !important}
+.cart-table .washing-items .washing-title-spacer td{padding:0;vertical-align:bottom}
+.cart-table .washing-items .washing-title-spacer h1{font-family:"Halo Handletter";font-size:50px;line-height:1em;font-weight:normal;color:#222;text-align:center;text-transform:capitalize;position:relative;width:240px;margin:0 auto -10px;background-color:white}
+.cart-table .washing-items tr{height:135px}
+.cart-table .washing-items td{vertical-align:middle}
+.cart-table .washing-items tr.even{background-color:#fff}
+.cart-table .washing-items tr.odd{background-color:#f8f8f8}
+.cart-table tfoot button:hover span{color:#64b96a}
+.item-monogram{font-family:"GillSansMTStd",sans-serif;font-size:14px;color:#999}
+.cart-table .btn-continue>span,.cart-table .btn-update>span{background:0}
+.cart-table tfoot td.last{padding:0;border-top:2px solid black;border-bottom:2px solid black}
+.cart-table tfoot button{padding:0;margin:0}
+.cart-table tfoot button span{padding:0 10px 0 10px}
+.cart-table tfoot button span span{font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;line-height:50px;color:#999;text-transform:uppercase}
+.cart strong{font-weight:normal}
+.cart .totals{width:370px;float:right;background-color:transparent;font-family:"GillSansMTStd-Bold",sans-serif;font-size:16px;color:#888}
+.cart .totals td:first-of-type{padding:1px 0 1px 0}
+.cart .totals td:last-of-type{padding:1px 20px 1px 0}
+.cart .totals tfoot{color:#222}
+.cart .totals tfoot td:first-of-type{padding:20px 0 1px 0}
+.cart .totals tfoot td:last-of-type{padding:20px 20px 1px 0}
+.cart .totals-inner{padding:0}
+table#shopping-cart-totals-table tr td:first-of-type{text-align:left !important}
+.cart .totals .checkout-types{margin-top:15px;overflow:hidden}
+.cart .totals .checkout-types button{width:177px;float:left;font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;text-transform:uppercase}
+.cart .totals .checkout-types button:first-of-type{margin-right:16px;color:#999}
+.cart .totals .checkout-types button span{float:none}
+.cart .totals .checkout-types button span span{padding:0}
+.cart .block_cart_below_totals{padding-top:5px;font-family:"GillSansMTStd",sans-serif;font-size:12px;font-style:italic}
+.cart .cart-intl-shipping{margin-top:29px}
+.empty-cart{margin-top:50px}
+.empty-cart button.button span,.empty-cart button.button span span{background:transparent;font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;color:#999;text-transform:uppercase}
+.empty-cart button.button:hover span{color:#64b96a}
+.empty-cart .cart-table .standard-items tr.standard-title-spacer h1 span{text-transform:uppercase;font-size:22px;display:block;padding-top:53px}
+.empty-cart-message{text-align:center;margin:55px 0 40px 0}
+.empty-cart-message h2{font-family:'Sorts Mill Goudy Regular',serif;font-size:28px;margin:0 0 5px 0;color:black;line-height:1em}
+.empty-cart-message p{font-family:'Georgia',serif;font-size:24px;font-style:italic;color:#999}
+.empty-cart .cart-collaterals{width:101%}
+.empty-cart .cart-promo-1{float:left}
+.empty-cart .cart-promo-2{float:right}
+#sociallogin_button li{text-align:center}
+#sociallogin_button li button{margin-top:12px}
+#sociallogin_button li button{width:90%}
+.social-login h2{margin-bottom:0}
+#sociallogin_button li button span,#sociallogin_button li button span span,.new-users button span,.new-users button span span{width:100%;background-color:#222;color:white}
+#sociallogin_button li button:hover span{background-color:#64b96a}
+#sociallogin_button li button span span,.new-users button span span{padding:0}
+#sociallogin_button li button span span{text-align:left;font-family:"GillSansMTStd",sans-serif;font-size:12px;text-transform:uppercase}
+#sociallogin_button li button span span b{font-family:"GillSansMTStd-Bold",sans-serif;font-weight:normal;margin-left:65px}
+#bt-loginfb span span{background:url('../images/facebook_login.png') 24px 10px no-repeat}
+#bt-logingo span span{background:url('../images/google_login.png') 23px 10px no-repeat}
+#bt-logintw span span{background:url('../images/twitter_login.png') 20px 10px no-repeat}
+#bt-loginya span span{background:url('../images/yahoo_login.png') 18px 10px no-repeat}
+#onestepcheckout-login-popup-contents-login .social-login{margin:20px auto 5px;width:280px}
+#onestepcheckout-login-popup-contents-login p,#onestepcheckout-login-popup-contents-login label{font-family:"Georgia",serif;font-style:italic}
+#onestepcheckout-login-popup p.close{font-weight:normal;right:15px;bottom:10px}
+#onestepcheckout-login-button span{font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;text-transform:uppercase;background-color:#222;color:white}
+#onestepcheckout-login-button:hover span{background-color:#64b96a}
+.my-account{margin-top:25px}
+body.customer-account-login .col-main.grid-full{width:100%;margin:0}
+body.customer-account-login .account-login .new-users,.account-login .registered-users,.social-login{background:#f2f2f2;padding:9px;margin-left:0;margin-right:9px}
+body.customer-account-login .account-login .new-users,body.customer-account-login .social-login{min-height:300px}
+body.customer-account-login .account-login .buttons-set button span{width:100%;padding:0}
+body.customer-account-login .account-login h2{font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;color:#222;text-align:center;border-color:#bdc2c1}
+body.customer-account-login .account-login form>div:last-child{margin-right:0}
+body.customer-account-login .account-login form>div{width:30.55%}
+body.customer-account-login .page-title{margin-bottom:15px;border-bottom:1px solid #222}
+body.customer-account-login .account-login p{font-family:'Sorts Mill Goudy Regular',serif;font-size:13px;color:#666;text-align:center}
+body.customer-account-login .account-login a{font-family:'Sorts Mill Goudy Regular',serif}
+body.customer-account-login label{color:#222;font-family:'Sorts Mill Goudy Regular',serif}
+body.customer-account-login .social-login{margin-left:0}
+p.required,.product-options dt label.required em,.form-list label.required em,p.required{color:#64b96a}
+body.customer-account-login button.button span,body.customer-account-create button.button span,.my-account button.button span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;text-transform:uppercase}
+body.customer-account-login .registered-users button.button,body.customer-account-login .new-users button.button{position:absolute;bottom:10px;right:20px;left:20px}
+body.customer-account-login .registered-users .required{font-weight:normal}
+body.customer-account-login .registered-users p.required{font-weight:normal;text-align:right;font-size:11px;margin-top:-26px;margin-right:7px;color:#64b96a}
+body.customer-account-login .registered-users .content{margin-left:11px}
+body.customer-account-login .registered-users .f-left{position:absolute;bottom:65px;right:14px}
+body.customer-account-login .registered-users .link-tip{display:none}
+body.customer-account-login button.button:hover span,body.customer-account-create button.button:hover span,.my-account button.button:hover span{background-color:#64b96a}
+.account-create form label,.account-create h2,.account-create .back-link{font-family:'Sorts Mill Goudy Regular',serif;color:#222}
+.my-account .back-link{font-family:'Sorts Mill Goudy Regular',serif;line-height:2em;text-transform:uppercase}
+.dashboard .box .box-title{border-bottom:0}
+.my-account h2{font-family:'Sorts Mill Goudy Regular',serif}
+.my-account .fieldset{border-color:transparent;margin-top:15px}
+body.customer-account-edit .my-account .fieldset,body.newsletter-manage-index .my-account .fieldset{padding-top:0}
+.my-account .fieldset label{font-family:"Georgia",serif;font-style:italic;font-weight:normal;color:#222 !important}
+body.newsletter-manage-index label{font-size:13px}
+.block-account li{padding:4px;background:0;color:#222}
+.block-account li.current{color:#64b96a;padding:4px;background:0}
+.block-account li a{padding:0;background:0;color:#222}
+.block-account li:hover a{color:#64b96a}
+.block-account .block-title{background:0;padding-left:0 !important;font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;color:#888;text-transform:uppercase}
+.block-account .block-content{font-family:Georgia,serif;font-style:italic;font-size:13px;padding-top:5px !important}
+.my-account .welcome-msg{background:0;padding:0;font-family:'Sorts Mill Goudy Regular',serif}
+.box-account .box-head h2,.dashboard .box-info .box-head h2{background-image:none;padding:0;font-family:'Sorts Mill Goudy Regular',serif}
+body.customer-account-index .my-account{margin-top:0}
+.dashboard .col2-set .box-title{margin-top:35px}
+.dashboard .box .box-title,.dashboard{font-family:'Sorts Mill Goudy Regular',serif;font-size:13px}
+.dashboard .box .box-title h3,.addresses-list h2{font-size:16px;text-transform:uppercase;margin-bottom:8px;font-weight:normal}
+.dashboard .box .box-title a{font-size:11px}
+.dashboard .box-info h4{font-size:13px;font-weight:normal;text-transform:uppercase}
+.box-account.box-info .col-1{border-right:0}
+.dashboard .col-1,.dashboard .col-2{border-bottom:1px solid #afafaf;height:145px;padding-bottom:15px;margin-bottom:0}
+.dashboard address a,.dashboard .box-content a{margin-top:5px;text-decoration:underline;display:inline-block;color:#999}
+.addresses-list h3{background:0;padding-left:0;font-family:'Sorts Mill Goudy Regular',serif;font-size:13px;text-transform:uppercase}
+.addresses-list .addresses-additional .item{padding:15px 15px 15px 0;border:0}
+.addresses-list .addresses-primary .item{background-color:transparent;padding:15px 15px 15px 0}
+.addresses-list .addresses-primary .item a{text-decoration:underline}
+.addresses-list address{font-family:'Sorts Mill Goudy Regular',serif;font-size:13px}
+body.onestepcheckout-index-index .grid-full{width:100%;margin:0}
+.onestepcheckout-discount{overflow:hidden}
+#add_coupon_code_button{float:right}
+#remove_coupon_code_button{float:left}
+#add_coupon_code_button span,#add_coupon_code_button span span,#remove_coupon_code_button span,#remove_coupon_code_button span span{background-color:#e9e9e9 !important;color:#888 !important;height:30px;line-height:30px;padding:0 7px;background-image:none}
+#add_coupon_code_button:hover span,#add_coupon_code_button:hover span span,#remove_coupon_code_button:hover span,#remove_coupon_code_button:hover span span{color:white !important}
+#coupon_code_onestepcheckout{margin-bottom:0;width:70%}
+.one-step-checkout li label span.required{color:#64b96a}
+.one-step-checkout button.onestepcheckout-place,.one-step-checkout button.onestepcheckout-place span{width:310px !important}
+#one-step-checkout-form button.button span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif !important;font-size:12px;text-transform:uppercase}
+#one-step-checkout-form button.button:hover span{background-color:#64b96a !important}
+.checkout_header{overflow:hidden}
+.checkout_header h1{float:left;width:250px;margin-bottom:0}
+.checkout_header a{float:left;line-height:40px;font-family:Georgia,serif;font-size:20px;font-style:italic;text-decoration:underline}
+.checkout_header button.btn-continue{float:right}
+.checkout_header button.btn-continue span span{font-family:"GillSansMTStd-Bold",sans-serif !important;font-size:12px;text-transform:uppercase;color:#888;background-color:#e9e9e9}
+.checkout_header button.btn-continue:hover span span{color:white;background-color:#64b96a}
+.one-step-checkout .address-order{border-top:1px solid #222;margin-top:0}
+#checkout-review-table{font-family:"GillSansMTStd",sans-serif;font-size:14px}
+#checkout-review-table th,#checkout-review-table tfoot td{font-family:"GillSansMTStd",sans-serif;font-size:13px;text-transform:uppercase;color:black}
+#checkout-review-table tfoot td{border-bottom:none !important;border-right:none !important}
+#checkout-review-table h3{font-family:"Georgia",sans-serif;font-size:14px;text-transform:inherit}
+#one-step-checkout-form .checkout-review-load .data-table tfoot td{border-bottom:none !important;border-right:none !important}
+#one-step-checkout-form .checkout-review-load .data-table{border-bottom:none !important;border-top:1px solid black !important}
+#one-step-checkout-form .checkout-review-load .data-table tbody tr.last td{border-bottom:1px solid black !important}
+#one-step-checkout-form .checkout-review-load .data-table tfoot tr.last{background:#f3f3f3 !important}
+#one-step-checkout-form .checkout-review-load .data-table td{padding:8px 8px !important}
+.ajax-loader3{width:16px;height:16px;background:url('../images/ajax-loader.gif') top left no-repeat}
+.two-fields input{width:90%}
+.one-field input{width:90%}
+#coupon_code_onestepcheckout{width:98%}
+.one-step-checkout .order-info-3-columns,.one-step-checkout .address-info-3-columns{background:0;border-right:1px solid #bdc2c1;min-height:650px}
+body.checkout-onepage-success button.button span{font-family:"GillSansMTStd-Bold",sans-serif !important;font-size:12px;text-transform:uppercase;color:#888;background-color:#e9e9e9}
+body.checkout-onepage-success button.button:hover span{color:white;background-color:#64b96a}
+body.checkout-onepage-success h2{font-family:"GillSansMTStd",sans-serif !important}
+body.checkout-onepage-success .buttons-set{margin:20px}
+.we-love-header{border-top:1px solid #000;padding-top:25px;text-align:center}
+#blog-welove-slideshow p{text-align:center}
+.top_block_text{position:relative;width:75%;margin:45px auto 0;padding-bottom:25px;font-family:"Georgia",serif;color:#555;font-size:14px;text-align:center}
+.blog-home-top-promo ul li{max-width:313px}
+.blog-sidebar-promo img{max-width:176px}
+#ask-question-box{display:none;z-index:10001;background-color:#fff;border:2px solid #000;border-radius:5px;padding:10px;width:700px}
+#ask-question-box p{width:700px;text-align:right}
+#ask-question-box-2{display:none;z-index:10001;background-color:#fff;border:2px solid #000;border-radius:5px;padding:10px;width:700px}
+#ask-question-box-2 p{width:700px;text-align:left}
+#ask-question-box-2-close{float:right;font-weight:300;font-size:16px}
+#ask-loader{display:none}
+#ask-question-submit{padding:8px 10px 10px;background:#000;font-family:"GillSansMTStd-Bold",sans-serif;font-weight:bold;text-transform:uppercase;color:#fff;font-size:11px;line-height:1em}
+#ask-question-submit:hover{background:#64b96a}
+#ask-question-background{background-color:#333;width:100%;height:100%;position:fixed;left:0;top:0;z-index:10000;opacity:.8;display:none}
+#ask_title{width:683px;height:20px;border:1px solid #ddd;margin:0;padding:5px}
+#ask_text{width:683px;height:100px;border:1px solid #ddd;margin:10px 0 0 0;padding:5px}
+.ask-search-sidebar{margin-top:100px}
+.order-info-box{background-color:transparent}
+.order-info-box .col-1{border-right:0}
+.order-info-box h2{font-size:13px;font-weight:normal;text-transform:uppercase;margin-bottom:0}
+.order-details h2{background:0;padding-left:0}
+.order-items h2.table-caption,.order-items h2.sub-title{font-family:'Sorts Mill Goudy Regular',serif;font-size:16px;text-transform:uppercase;margin-bottom:8px;font-weight:normal}
+#my-orders-table{font-family:"GillSansMTStd",sans-serif;font-size:13px}
+#my-orders-table strong{font-weight:normal}
+#my-orders-table tfoot td{color:#888;font-size:13px;padding:3px 0 0 0;font-weight:bold !important}
+#my-orders-table tfoot tr.first td{padding:10px 0 0 0}
+.order-items .data-table .grand_total td{font-size:13px;color:#222 !important;text-transform:uppercase;padding:10px 0 0 0 !important}
+.order-items .data-table td{padding:10px 9px 0}
+.order-items .product-name{margin-top:4px}
+.order-date{color:#222}
+.sendfriend-product-send .fieldset{border:0}
+.sendfriend-product-send .fieldset .legend{font-family:'Sorts Mill Goudy Regular',serif;font-size:16px;text-transform:uppercase;margin-bottom:8px;font-weight:normal}
+.sendfriend-product-send .fieldset label{font-family:"Georgia",serif;font-style:italic;font-weight:normal;color:#222 !important}
+.sendfriend-product-send button{font-family:"GillSansMTStd-Bold",sans-serif;text-transform:uppercase}
+.sendfriend-product-send .back-link{font-family:'Sorts Mill Goudy Regular',serif;line-height:2em;text-transform:uppercase}
+.sendfriend-product-send .form-list li.additional-row .btn-remove{margin-top:15px}
+body .sidebar ul.level0 li a{line-height:1.2em}
+.toolbar .pager .pages span{text-transform:uppercase}
+.itemslider-wrapper .itemslider-horizontal{margin-top:5px}
+.itemslider-wrapper .gen-slider-arrows1-pos-top-right .direction-nav{display:none}
+.itemslider-wrapper .products-grid h3.product-name a{text-transform:none;font-size:18px}
+.itemslider-wrapper .itemslider-horizontal .slides>li{border-left:1px solid #dadada;padding-left:20px;padding-right:20px}
+.itemslider-wrapper .itemslider-horizontal .slides>li:first-child{border-left:0}
+.itemslider-wrapper .itemslider-x.count-3{max-width:753px}
+.products-list .product-name a,.products-grid .product-name a,h3.product-name a{color:#222}
+.products-grid .online-exclusive{font-family:"Georgia",serif;font-style:italic;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#afafaf}
+.products-grid .price-box{margin-top:0;margin-bottom:.25em}
+.itemslider-wrapper .products-grid .price-box .regular-price{font-size:14px}
+#bottom-cap{height:0 !important}
+body .sidebar ul.level0 li.active a{color:#64b96a}
+body .sidebar .block-content #recently-viewed-items a:first-of-type{display:block}
+body .sidebar .block-content #recently-viewed-items a:first-of-type img{padding-bottom:0}
+.page-blog a{color:#222}
+a:hover{color:#64b96a}
+.effect{transition:color 450ms ease-in-out,background-color 450ms ease-in-out;-moz-transition:color 450ms ease-in-out,background-color 450ms ease-in-out;-webkit-transition:color 450ms ease-in-out,background-color 450ms ease-in-out;-o-transition:color 450ms ease-in-out,background-color 450ms ease-in-out}
+body.catalogsearch-result-index .page-title{margin:10px 0 0 0}
+body.catalogsearch-result-index .page-title h1{vertical-align:bottom;display:inline;min-height:available}
+#mini-cart .block-content .empty{padding:10px 20px}
+#mini-cart button.btn-inline span span{font-weight:normal}
+#overlay{position:absolute;z-index:2001;left:50%;margin-left:-50%;display:none;max-width:none;margin-top:-5px}
+#overlay img{width:auto;max-width:none}
+h1{font-family:"Sorts Mill Goudy Regular",serif;text-transform:uppercase}
+h1 span{text-transform:none}
+.breadcrumbs li,.breadcrumbs li a{color:#999;font-family:"Georgia";font-style:italic;font-size:12px}
+.breadcrumbs li a:hover{color:#64b96a}
+.breadcrumbs li strong{color:#222}
+.grid3-1{display:inline;float:left;margin-right:2%;position:relative;width:31%}
+.grid3-1:last-child{margin-right:0}
+.col2-left-layout .col-main .std{margin-top:20px}
+.cms-home .col-main{margin:0;width:100%}
+.cms-home .preface.grid-full{margin:0;width:100%}
+.cms-home .preface.grid-full .the-slideshow-wrapper{margin:0 0 0 -23px;width:1006px;height:440px}
+.cms-home .preface.grid-full .the-slideshow{margin:0;width:1006px}
+.cms-home .main-container .container{padding-top:0}
+#nav{border-bottom:0}
+.nav-dropdown-wrapper{position:absolute;top:50px;left:0;width:927px;padding:7px 6px 7px 7px;background-color:#fff;-moz-box-shadow:1px 1px 5px rgba(0,0,0,0.2);-webkit-box-shadow:1px 1px 5px rgba(0,0,0,0.2);box-shadow:1px 1px 5px rgba(0,0,0,0.2)}
+#nav ul.level0{position:absolute;top:50px;left:0;padding:0;margin:0;width:100%}
+#nav ul.level0 .nested-container{border:1px solid black;overflow:hidden;width:auto;margin:7px;padding:20px 30px}
+#nav ul.level0 .nested-container h4{color:#222;font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;font-style:normal;font-weight:normal;text-transform:uppercase}
+#nav ul.level0 .nested-container ul.childcategories li{background-image:none;border-top:1px solid #ababab;color:#888;cursor:pointer;font-family:'GillSansMTStd',serif;font-size:14px;font-style:normal;font-weight:normal;line-height:30px;padding-left:5px;transition:color 300ms ease-out,background-color 300ms ease-out,border-color 300ms ease-out;-moz-transition:color 300ms ease-out,background-color 300ms ease-out,border-color 300ms ease-out;-webkit-transition:color 300ms ease-out,background-color 300ms ease-out,border-color 300ms ease-out;-o-transition:color 300ms ease-out,background-color 300ms ease-out,border-color 300ms ease-out}
+#nav ul.level0 .nested-container ul.childcategories li:hover{background-color:#e9e9e9;color:#222;border-color:#e9e9e9}
+#nav ul.level0 .nested-container ul.childcategories li:hover+li{border-color:#e9e9e9}
+#nav ul.level0 .nested-container ul.childcategories li:first-child{border-top:0}
+#nav ul.level0 .nested-container .custom-block:first-child{border-bottom:1px solid #ababab;padding-bottom:20px;margin-top:35px}
+#nav ul.level0 .nested-container .custom-block{margin-bottom:2em;text-align:center}
+#nav ul.level0 .nested-container .custom-block h4{background:url('../images/customblock-shortline.png') no-repeat bottom center;font-family:"bodoni-bookbookitalic",sans-serif;font-size:26px;padding-bottom:14px;text-transform:none}
+#nav ul.level0 .nested-container .custom-block p{font-family:"GillSansMTStd";font-style:normal}
+#nav ul.level0 .nested-container .custom-block a{float:none}
+#nav>li{border-bottom:5px solid #222;margin-bottom:0}
+#nav>li>a{font-family:'GillSansMTStd',sans-serif;font-size:14px;font-weight:normal;line-height:45px;text-align:center;width:100%;padding:0;font-style:normal;border-top:1px solid #e9e9e9;transition:all 450ms ease-in-out}
+#nav,.vertnav-top li a{background-color:#fff}
+.the-slideshow-wrapper .caption.full-width{text-align:center}
+.the-slideshow-wrapper .caption .heading{float:none;background-color:transparent;text-transform:uppercase}
+.the-slideshow-wrapper .caption h2{font-size:27px;font-family:"Sorts Mill Goudy Regular";margin:0;padding:0}
+.caption.light2 h2+p{margin-bottom:42px}
+.caption.light2 p{background-color:transparent;font-family:"GillSansMTStd";font-size:13px;float:none;text-transform:uppercase}
+.caption p{display:block}
+.caption p a{font-family:"GillSansMTStd-Bold";font-size:16px;color:#222}
+.caption p a:hover{color:#64b96a}
+.caption.full-width{margin:0;width:100%;bottom:50px}
+.section-title{border:0;color:#222;font-family:"Halo Handletter";font-size:50px;font-weight:normal;margin-bottom:-8px;padding-bottom:0;padding-left:80px;position:relative;text-align:center;z-index:12}
+.box-additional.box-up-sell{background:url('../images/fade_bottom_wide.png') top left no-repeat}
+.box-additional.box-up-sell .block-subtitle{width:100%;text-align:center}
+.page-banners{width:960px}
+.grid12-4.banner{width:32.4%;margin-left:.7%;margin-right:.7%}
+.page-banners .banner a{display:block;margin-bottom:17px;overflow:hidden;position:relative}
+.page-banners .banner a:hover img{opacity:1}
+.page-banners .banner a img{position:absolute;top:0}
+.page-banners .banner a.home-banner1,.page-banners .banner a.home-banner4{height:334px;width:308px}
+.page-banners .banner a.home-banner2,.page-banners .banner a.home-banner5{height:162px;width:308px}
+.page-banners .banner a.home-banner3{height:513px;width:311px}
+.page-banners .banner:first-child{margin-left:0}
+.page-banners .banner:last-child{margin-right:0}
+.product-nav{float:right;margin-top:-30px}
+.product-nav a{font-family:"Georgia",serif;font-style:italic;text-transform:uppercase;line-height:29px;margin-left:15px}
+.product-nav a span{-webkit-transition:background-color 450ms ease-in-out;-moz-transition:background-color 450ms ease-in-out;-o-transition:background-color 450ms ease-in-out;transition:background-color 450ms ease-in-out}
+.product-nav a:first-child span{background-position:0 -55px;background-color:#efefef;margin-right:5px;margin-left:0}
+.product-nav a:last-child span{background-position:-30px -55px;background-color:#efefef;margin-right:5px;margin-left:10px}
+.product-nav a:hover span{background-color:#ccc}
+.product-nav a span{background-image:url(../images/img/pix.png);background-repeat:no-repeat;background-repeat:no-repeat;background-position:-30px -55px;display:inline-block;height:29px;margin-left:5px;vertical-align:middle;width:30px}
+.product-nav a:hover{color:#222}
+.catalog-product-view .col1-layout .col-main{margin:0;width:100%}
+.product-view .product-img-box .product-image{border:0;box-shadow:1px -1px 10px #e2e2e2;padding:0}
+.product-view .product-img-box .product-image.zoom-inside #wrap>a>img{padding:10px}
+.product-view .product-shop{margin-top:20px;margin-left:2%;width:55.33%}
+.product-view .product-shop .product-name{margin-bottom:0;border-bottom:1px solid #222}
+.product-view .product-shop .input-text.qty{text-align:center}
+.product-view .grouped-items-table thead th{color:#9a9a9a;font-family:"GillSansMTStd-Bold",sans-serif;font-size:15px;font-weight:normal}
+.product-view .grouped-items-table.data-table th,.product-view .grouped-items-table.data-table td{padding:5px 10px}
+.product-view .product-type-data .price-box{border-color:#222}
+.product-view .price-box .price,.product-view .product-shop .price-box .special-price .price{font-family:"GillSansMTStd-Bold",sans-serif;font-size:24px;font-weight:normal;color:#222}
+.product-view .product-shop .grouped-items-table .price-box .regular-price .price,.product-view .product-shop .grouped-items-table .price-box .old-price .price,.product-view .product-shop .grouped-items-table .price-box .special-price .price{font-size:15px;display:inline-block}
+.product-view .product-shop .price-box .regular-price .price{font-family:"GillSansMTStd-Bold",sans-serif;font-size:16px;font-weight:normal;letter-spacing:1px}
+.product-view .price-box .special-price,.product-view .price-box .old-price{display:inline-block}
+.special-price .price-label{display:none}
+.products-grid .item .special-price .price-label{display:inline;font-family:"GillSansMTStd-Bold",sans-serif;text-transform:uppercase}
+.products-grid .item p.old-price,.products-grid .item p.special-price{display:inline}
+.products-grid .item p.old-price{margin-right:6px}
+.special-price .price,.special-price .price-label{color:#222 !important}
+.old-price .price-label,.old-price .price{color:#979797 !important}
+.product-view .btn-cart:hover span,button.btn-checkout:hover span{background-color:#64b96a;color:#fff}
+.product-view .btn-cart span,button.btn-checkout span{font-family:"GillSansMTStd-Bold",sans-serif;text-transform:uppercase}
+.product-view .add-to-box{border:0}
+.product-view .action-box{background-image:url('../images/product-view_shadow.jpg');background-repeat:no-repeat;font-family:"GillSansMTStd",sans-serif;padding:35px 0 0 0}
+.product-view .product-shop .product-name h1{font-family:"Sorts Mill Goudy Regular",serif;font-size:22px;text-transform:uppercase}
+.product-view #zoom-btn{font-family:"Sorts Mill Goudy Regular";font-size:14px;line-height:1em;text-transform:uppercase;padding:10px 1em 5px}
+.product-view .tbl-ingridients{width:100%}
+.product-view .tbl-ingridients td{padding:10px}
+.product-view .tbl-ingridients td:first-child{font-weight:bold;width:30%;border-right:1px solid #ddd}
+.product-view .tbl-ingridients tr:nth-child(2n){background-color:#f1f1f1}
+.product-view .tbl-ingridients tr:last-child td{border-bottom:1px solid #ddd}
+.product-view .fragrance{padding-left:160px;position:relative}
+.product-view .fragrance img{position:absolute;top:0;left:0}
+.product-view .fragrance p{color:#999;font-family:"Arial";font-style:italic}
+.product-view .fragrance p a{color:#222;font-style:italic;font-weight:bold}
+.product-view .fragrance{overflow:hidden}
+.product-view .gen-slider-arrows3 .direction-nav .next,.product-view .gen-slider-arrows3 .direction-nav .prev{top:42px}
+.product-view .product-type-data{position:relative}
+.related-itemslider-wrapper .itemslider .slides img{max-width:none}
+.product-view .add-monogram{position:absolute;right:0;top:15px}
+.product-view .add-monogram span.custom{float:left;margin-right:4px;margin-top:2px}
+.product-view .add-monogram label{font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;font-weight:normal;color:#222;padding:5px 0 5px 60px;background:url('../images/monogram-logo.gif') 5px top no-repeat}
+.product-view .add-monogram-content{-webkit-transition:opacity 1s ease-in-out,height 1s;-moz-transition:opacity 1s ease-in-out,height 1s;-o-transition:opacity 1s ease-in-out,height 1s;-ms-transition:opacity 1s ease-in-out,height 1s;transition:opacity 1s ease-in-out,height 1s;height:0;opacity:0;position:relative;overflow:hidden}
+.product-view .add-monogram-content.opened{height:370px;opacity:1}
+.product-view .add-monogram-content #monogram-logo{position:absolute;top:3px;left:0}
+.product-view .add-monogram-content h3{text-transform:uppercase;margin-bottom:0}
+.product-view .add-monogram-content h3,.product-view .add-monogram-content p{font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;font-weight:normal;color:#131425;margin-left:55px}
+.product-view .add-monogram-content p{margin-bottom:1em}
+.product-view .add-monogram-content .add-monogram-list{overflow:hidden;width:400px}
+.product-view .add-monogram-content .add-monogram-list>li{float:left;margin-right:5px;margin-bottom:5px;border:1px solid #d7d7d7}
+.product-view .add-monogram-content .add-monogram-list>li img{cursor:pointer}
+.product-view .add-monogram-content .add-monogram-list>li.selected,.product-view .add-monogram-content .add-monogram-list>li:hover{border:1px solid #222}
+.product-view .add-monogram-content .add-monogram-process{counter-reset:li;margin-left:1.7em;padding-left:0}
+.product-view .add-monogram-content .add-monogram-process>li{position:relative;list-style:none}
+.product-view .add-monogram-content .add-monogram-process>li:before{content:counter(li) ".";counter-increment:li;position:absolute;top:0;left:-1.7em;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;width:2em;margin-right:8px;font-family:"GillSansMTStd-Bold",sans-serif;color:#999;text-align:center;font-size:14px}
+.product-view .add-monogram-content .add-monogram-process>li{margin-bottom:1.2em}
+.product-view .add-monogram-content .add-monogram-process>li>label{font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;color:#999;display:block;margin-bottom:.35em}
+.product-view .add-monogram-content #monogram-initials{padding:5px 7px;border:1px solid #dadada;font-size:11px;font-family:"GillSansMTStd",sans-serif;width:383px}
+.product-view .add-monogram-content div.custom.dropdown,.product-view .add-monogram-content label{float:none;margin-left:0}
+.product-view form.custom span.custom.checkbox.checked:before{content:url('/skin/frontend/ultimo/default/images/checkbox.gif');color:#222}
+.addto-textlink .email-friend a{margin-right:35px;padding-left:25px}
+.add-to-cart label{color:#999;font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px}
+.add-to-cart button.btn-cart{margin-right:40px}
+.product-view .btn-cart span span{padding:0 50px}
+.ratings,.no-rating{color:#222}
+.availability{color:#666;font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;text-transform:uppercase}
+.gen-tabs-style1 .tabs a.current{box-shadow:0 -6px 15px #f7f7f7;color:#64b96a}
+.gen-tabs-style1 .tabs a{color:#222;background-color:#efefef;font-family:"GillSansMTStd-Bold";font-size:13px;padding:7px 35px;text-transform:uppercase}
+.gen-tabs .tabs-panels .panel{padding:20px 0 20px 30px}
+.gen-tabs .tabs-panels .panel h3{font-family:"Sorts Mill Goudy Regular",serif;font-size:15px;font-weight:normal;text-transform:uppercase}
+.gen-tabs .tabs-panels .panel h4{font-family:"GillSansMTStd-Bold",sans-serif;font-size:15px;font-weight:normal;margin-bottom:0}
+.gen-tabs .tabs-panels .panel h4.label-category{text-transform:uppercase;margin-bottom:1em;margin-top:.8em;font-size:11px}
+.gen-tabs .tabs-panels .panel h3 span{color:#999;font-family:"GillSansMTStd",serif;font-weight:normal;margin-left:60px;text-transform:none}
+.gen-tabs .tabs-panels .panel h3 span strong{font-family:"GillSansMTStd-Bold",sans-serif;font-weight:normal}
+.gen-tabs .tabs-panels .panel.tab-monogram-shop{text-align:center}
+.gen-tabs .tabs-panels .panel.tab-monogram-shop h3{font-family:"Sorts Mill Goudy Regular",serif;text-transform:uppercase;font-size:16px;margin-bottom:0}
+.gen-tabs .tabs-panels .panel.tab-monogram-shop h4{font-family:"Georgia",serif;font-style:italic;font-size:17px;color:#64b96a}
+.gen-tabs .tabs-panels .panel.tab-monogram-shop hr{height:2px;border:0;background-color:#000;width:17px;margin:19px auto}
+.gen-tabs .tabs-panels .panel.tab-monogram-shop p{color:#6e6e6e;font-family:"GillSansMTStd",serif;font-size:15px;margin-bottom:1.3em}
+.gen-tabs .tabs-panels .panel h2{font-family:"GillSansMTStd-Bold",sans-serif;font-style:normal;font-size:14px;color:#222}
+.gen-tabs .tabs-panels .panel ul li a{color:#222}
+.gen-tabs .tabs-panels .panel ul li a:hover{color:#64b96a}
+body.cms-contact .std{margin-top:40px}
+.cms-page-view h3{font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;font-weight:normal;margin-bottom:0;text-transform:uppercase}
+body.cms-contact p{font-family:"GillSansMTStd",sans-serif;margin-bottom:1.6em}
+.cms-page-view p.box-note{border-top:1px solid #222;border-bottom:1px solid #222;padding:20px}
+.cms-page-view address{color:#58595b;font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;margin-bottom:0}
+.cms-page-view .std .contactus-contact>a{background-color:#848484;color:#fff;float:left;font-family:"GillSansMTStd",sans-serif;font-weight:normal;margin-right:20px;padding:14px 30px;text-transform:uppercase}
+.cms-page-view .std .contactus-contact a:hover{background-color:#64b96a}
+.cms-page-view .std .contactus-contact span{float:left;font-family:"Georgia",serif;font-size:14px;font-style:italic;font-weight:bold}
+.cms-page-view .std .contactus-contact span strong{font-weight:normal;font-style:normal}
+.cms-page-view .std .contactus-contact{border-bottom:1px solid #222;height:70px;margin-bottom:2em}
+.cms-page-view .std .contactus-contact.noborder{border-bottom:0}
+.sidebar #sidebar-contact{background-color:#f2f2f2;margin-left:0;margin-right:0;padding:0 1%}
+.sidebar #sidebar-contact .block .block-title{margin-bottom:.5em}
+.sidebar #sidebar-contact .block .block-title span{vertical-align:bottom}
+.sidebar #sidebar-contact .block .block-content ul.vertnav{background-color:transparent;line-height:24px}
+.sidebar #sidebar-contact .block .block-content ul.vertnav li a{border-bottom:0;font-family:"Georgia",serif;font-size:13px;font-style:italic;text-decoration:none}
+.cms-corporate #distributors h3{border-bottom:1px solid #222;font-size:14px;text-transform:none}
+.cms-contact .left-content{padding-left:10px;position:relative;z-index:9;width:50%}
+.cms-page-view .col2-left-layout .col-main h2{font-family:"Sorts Mill Goudy Regular",serif;line-height:1.2em;text-transform:uppercase;margin-top:1.8em}
+.cms-contact .std h2+p{color:#666;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px}
+.cms-contact .std{min-height:600px}
+.cms-contact .std .grid4-3{border-bottom:1px solid #222}
+.cms-faq.cms-page-view .col-main h3{margin-right:30px}
+.cms-faq.cms-page-view .col-main h3,.cms-faq.cms-page-view .col-main>div.std>p.subline{display:inline-block;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px}
+.cms-faq.cms-page-view .col-main>div.std>p.subline{color:#666}
+.cms-faq.cms-page-view .col-main>div.std>p{color:#999;font-size:14px}
+.cms-faq.cms-page-view .std .contactus-contact{margin-bottom:.5em}
+.cms-faq .accordion li a{color:#222;display:block;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px;margin:20px 0 12px 0;padding:0}
+.cms-faq .accordion>li:first-child{border-top:0}
+.cms-faq .accordion>li>div{color:#666;margin:10px 0 2em 0}
+.cms-faq .accordion>li{padding:1em 0 1em;border-top:1px solid #d4d4d4}
+.cms-page-view .box-distributor{border-top:1px solid #222;margin-bottom:2em;padding:1em 0}
+.cms-page-view .box-distributor h4{background-position:top left;background-repeat:no-repeat;font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;font-weight:normal;margin-bottom:0;padding-top:70px;text-transform:uppercase}
+.cms-page-view .box-distributor h4.canada{background-image:url('../images/flag_canada.png')}
+.cms-page-view .box-distributor h4.mexico{background-image:url('../images/flag_mexico.png')}
+.cms-page-view .box-distributor h4.uk{background-image:url('../images/flag_gb.png')}
+.cms-page-view .box-distributor h4.eu{background-image:url('../images/flag_europe.png')}
+.cms-page-view .box-distributor h4.canada{background:url('../images/flag_canada.png') no-repeat top left;padding-top:70px}
+.cms-page-view .box-distributor h5{color:#58595b;font-family:"GillSansMTStd-Bold",sans-serif;font-weight:normal;text-transform:uppercase}
+.cms-page-view .box-distributor dl dt,.cms-page-view .box-distributor dl dd{display:inline;font-family:"GillSansMTStd",sans-serif}
+.cms-page-view .box-distributor dl dt{font-family:"GillSansMTStd-Bold",sans-serif;margin-right:5px}
+.cms-page-view .box-distributor dl dd:after{content:'\A';white-space:pre}
+.col-main .one-step-checkout h3.step_1{background-image:none}
+.col-main .one-step-checkout h3{font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;font-weight:normal;background-image:none !important;padding-left:0;height:auto !important}
+.col-main .one-step-checkout h3#review_step_header{background:none !important}
+.col-main ol.one-step-checkout{border:0;padding:0;background:none !important}
+.col-main h1.checkout_header{border-bottom:1px solid #222}
+.col-main .one-step-checkout #onestepcheckout-button-place-order span{background:#222 none !important;color:#fff;font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;font-weight:normal}
+.col-main .one-step-checkout button.btn-checkout span{font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;font-weight:normal}
+.col-main .one-step-checkout label{font-family:"Georgia",serif;font-style:italic;color:#222 !important}
+.col-main .one-step-checkout .onestepcheckout-payment-methods .form-list{padding-left:0}

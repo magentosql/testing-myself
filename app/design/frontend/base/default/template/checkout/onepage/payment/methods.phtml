@@ -1,0 +1,138 @@
+<?php
+/** COPYRIGHT authorizeCIM 2011-2012 Eric Levine with SARP coexistence*/
+?>
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * One page checkout payment methods
+ *
+ * @see Mage_Checkout_Block_Onepage_Payment_Methods
+ */
+?>
+<dl class="sp-methods" id="checkout-payment-method-load">
+<?php
+    $methods = $this->getMethods();
+    $oneMethod = count($methods) <= 1;
+		$num=0;
+
+    foreach ($methods as $_method):
+        $_code = $_method->getCode();
+		if(($_code=='authorizenet') or ($_code=='authorizecimsoap')){ $num++; }
+	endforeach;
+	$sel='authorizecimsoap';
+	if(!$this->hasVerification()) {$cvv=false; } else {$cvv=true; }
+    foreach ($methods as $_method):
+        $_code = $_method->getCode();
+		if(($num>1) AND ($_code=='authorizenet')){ continue; } else { $sel='authorizecimsoap'; }
+?>
+    <dt>
+    <?php if(!$oneMethod): ?>
+        <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->htmlEscape($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if('authorizecimsoap'==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+    <?php else: ?>
+        <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+        <?php $oneMethod = $_code; ?>
+    <?php endif; ?>
+        <label for="p_method_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+    </dt>
+    <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+    <dd>
+        <?php echo $html; ?>
+    </dd>
+    <?php endif; ?>
+	<?php endforeach; ?>
+</dl>
+<script type="text/javascript">
+if(typeof authorizecimsoapremoveRequired != 'function') {
+	function authorizecimsoapremoveRequired(prof) {
+				var t0 = document.getElementById('authorizecimsoaptoken'+prof);
+					t0v=t0.value;
+				var t1 = document.getElementById('authorizecimsoapcctype'+prof);
+					t1v=t1.value;
+				var t2 = document.getElementById('authorizecimsoapexpmonth'+prof);
+					t2v=t2.value;
+				var t3 = document.getElementById('authorizecimsoapexpyear'+prof);
+					t3v=t3.value;
+				var t4 = document.getElementById('authorizecimsoapsavecim'+prof);
+					t4v=t4.value;
+				var t = document.getElementById('authorizecimsoap_cc_number');
+					t.setAttribute("class","");
+					t.value=t0v;
+				var t = document.getElementById('authorizecimsoap_cc_type');
+					t.setAttribute("class","");
+					t.value=t1v;
+    <?php if($cvv): ?>
+					var t = document.getElementById('authorizecimsoap_cc_cid');
+					t.setAttribute("class","");
+					t.value='111';
+    <?php endif; ?>
+				var t = document.getElementById('authorizecimsoap_expiration');
+					t.value=t2v;
+					t.setAttribute("class","");
+				var t = document.getElementById('authorizecimsoap_expiration_yr');
+					t.value=t3v;
+					t.setAttribute("class","");
+				var t = document.getElementById('authorizecimsoap_savecim');
+					if(t4v!='0') { t.checked=true; } else { t.checked=false; }
+					t.setAttribute("class","");
+				var t = document.getElementById('authorizecimsoapdetailsection');
+					t.style.display = 'none';
+	};
+	function authorizecimsoapaddRequired() {
+				var t = document.getElementById('authorizecimsoap_cc_number');
+					t.setAttribute("class","input-text validate-cc-number");
+					t.value='';
+				var t = document.getElementById('authorizecimsoap_cc_type');
+					t.setAttribute("class","required-entry validate-cc-type-select");
+    <?php if($cvv): ?>
+				var t = document.getElementById('authorizecimsoap_cc_cid');
+					t.setAttribute("class","required-entry input-text validate-cc-cvn");
+					t.value='';
+    <?php endif; ?>
+				var t = document.getElementById('authorizecimsoap_expiration');
+					t.setAttribute("class","month validate-cc-exp required-entry");
+				var t = document.getElementById('authorizecimsoap_expiration_yr');
+					t.setAttribute("class","year required-entry");
+				var t = document.getElementById('authorizecimsoap_savecim');
+					t.checked=true;
+				var t = document.getElementById('authorizecimsoapdetailsection');
+					t.style.display = 'block';
+	};
+		authorizecimsoapaddRequired();
+}
+</script>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script type="text/javascript">
+//<![CDATA[
+<?php echo $this->getChildChildHtml('scripts'); ?>
+payment.init();
+<?php //if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $sel ?>');
+<?php //endif; ?>
+//]]>
+</script>
+

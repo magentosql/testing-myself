@@ -1,0 +1,727 @@
+@import url('styles_phil.css');
+
+/**
+ * FishPig_WordPress
+ * WordPress Integration for Magento eCommerce
+ * by FishPig
+ *
+ * http://fishpig.co.uk/wordpress-integration.html
+ *
+ */
+
+/**
+ * Search block
+ *
+ */
+.blog-search { padding: 5px; }
+input#blog-search { clear: both; margin-bottom: 6px;}
+
+/**
+ * General post (view and list)
+ *
+ */
+.post-date { font-style: italic; font-size: 98%; margin-bottom: 10px; }
+.post-meta { font-style: italic; }
+.post-entry { font-size: 110%; height: 1%; margin-bottom: 1.5em; overflow: hidden; position: relative}
+.post-entry-with-image { height: 1%; overflow: hidden; }
+.post-entry p { margin-bottom: 1em; }
+
+.featured-image {
+	
+	
+}
+
+.featured-image.right {
+	margin: 2px 0 4px 10px;
+}
+
+.is-blog .toolbar { margin: 0 0 10px; }
+
+/**
+ * Blog homepage
+ *
+ */
+.blog-title.not-first-page { display: none; }
+.blog-title.with-tagline { margin-bottom: 10px; }
+.blog-tag-line {  }
+
+.blog-title a {
+	color: inherit;
+}
+	
+	.blog-title a:hover {
+		color: inherit;
+		opacity: 0.7;
+	}
+
+/**
+ * Post list page
+ *
+ */
+.post-list li.item { margin-bottom: 20px; border-bottom: 1px solid #222; }
+.post-list h2 { line-height: 1em; margin-bottom: 1em; }
+
+/**
+ * Post view page
+ *
+ */
+.page-title.post-title { margin-bottom: 4px; }
+.post-view .post-meta { margin-bottom: 20px; }
+.post-view .post-skips { display: block; margin-top: 20px; width: 100%; }
+.post-view .post-skips .post-skip-previous { margin-right: 10px; }
+
+.post-view .yarpp-related { margin-bottom: 20px; }
+
+/**
+ * Post comments
+ *
+ */
+.comments-wrapper h2 { margin-bottom: 10px; }
+.comment { height: 1%; overflow: hidden; margin-bottom: 10px; }
+.comment .gravatar { float: left; margin: 0 10px 10px 0; }
+.comment .comment-meta { margin-bottom: 10px; }
+.comment .comment-when { display: block; text-decoration: none; }
+.comment .comment-entry { clear: both; font-size: 110%; }
+
+/**
+ * Author page
+ *
+ */
+.author-description { font-style: italic; margin-bottom: 20px; }
+
+/**
+ * PinterestRssWidget plugin
+ *
+ */
+
+
+.block-blog-pinterest li.item { text-align: center; }
+.block-blog-pinterest .follow { text-align: center; margin: 10px 0 15px; }
+
+.shortcode-pinterest {}
+.shortcode-pinterest ul { height: 1%; overflow: hidden; }
+.shortcode-pinterest li { list-style: none; padding: 0; margin: 0 10px 10px; float: left; }
+
+/**
+ * Alignment and captions
+ * Taken from default WordPress CSS file
+ *
+ */
+.alignleft { display: inline; float: left; margin-right: 1.625em; }
+.alignright { display: inline; float: right; margin-left: 1.625em; }
+.aligncenter { clear: both; display: block; margin-left: auto; margin-right: auto; }
+
+img[class*="align"],
+img[class*="wp-image-"],
+#content .gallery .gallery-icon img {/* Add fancy borders to all WordPress-added images but not things like badges and icons and the like */
+	border: 1px solid #ddd;
+	padding: 6px;
+}
+
+img[class*="align"],
+img[class*="wp-image-"],
+img[class*="attachment-"] {
+height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+}
+img.size-full,
+img.size-large {
+max-width: 97.5%;
+width: auto; /* Prevent stretching of full-size and large-size images with height and width attributes in IE8 */
+height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
+}
+
+img.alignleft,
+img.alignright,
+img.aligncenter {
+margin-bottom: 1.625em;
+}
+
+.wp-caption {
+margin-top: 0.4em;
+}
+.wp-caption {
+background: #eee;
+margin-bottom: 1.625em;
+max-width: 96%;
+padding: 9px;
+}
+.wp-caption img {
+display: block;
+margin: 0 auto;
+max-width: 98%;
+border-color: #eee;
+}
+.wp-caption .wp-caption-text {
+color: #666;
+font-family: Georgia, serif;
+font-size: 12px;
+}
+.wp-caption .wp-caption-text {
+margin-bottom: 0.6em;
+padding: 10px 0 5px 40px;
+position: relative;
+}
+.wp-caption .wp-caption-text:before {
+color: #666;
+content: '\2014';
+font-size: 14px;
+font-style: normal;
+font-weight: bold;
+margin-right: 5px;
+position: absolute;
+left: 10px;
+top: 7px;
+}
+.wp-caption img {
+border-color: #eee;
+}
+.wp-caption a:focus img,
+.wp-caption a:active img,
+.wp-caption a:hover img {
+background: #fff;
+border-color: #ddd;
+}
+
+div.gallery { height: 1%; overflow: hidden; }
+.gallery-columns-2 dl.gallery-item { width: 50%; }
+.gallery-columns-3 dl.gallery-item { width: 33%; }
+.gallery-columns-4 dl.gallery-item { width: 25%; }
+.gallery-columns-5 dl.gallery-item { width: 20%; }
+
+dl.gallery-item { float: left; }
+
+.post-view ul.form-list { list-style: none outside none; }
+
+
+/**
+ * Yarpp thumbnails
+ * This is taken directly from the Yarpp plugin
+ */
+
+.yarpp-thumbnails-horizontal .yarpp-thumbnail, .yarpp-thumbnail-default, .yarpp-thumbnail-title {
+	display: inline-block;
+	*display: inline;
+}
+.yarpp-thumbnails-horizontal .yarpp-thumbnail {
+	border: 1px solid rgba(127,127,127,0.1);
+	width: 130px;
+	height: 170px;
+	margin: 5px;
+	margin-left: 0px;
+	vertical-align: top;
+}
+.yarpp-thumbnail > img, .yarpp-thumbnail-default {
+	width: 120px;
+	height: 120px;
+	margin: 5px;
+}
+.yarpp-thumbnails-horizontal .yarpp-thumbnail > img, .yarpp-thumbnails-horizontal .yarpp-thumbnail-default {
+	margin-bottom: 0px;
+	display: block;
+}
+.yarpp-thumbnails-horizontal .yarpp-thumbnail-title {
+	font-size: 1em;
+	max-height: 2.8em;
+	line-height: 1.4em;
+	margin: 7px;
+	margin-top: 0px;
+	width: 120px;
+	text-decoration: inherit;
+	overflow: hidden;
+}
+
+.yarpp-thumbnail-default {
+	overflow: hidden;
+}
+.yarpp-thumbnail-default > img.yarpp-thumbnail-default-wide {
+	height: 120px;
+	max-width: none;
+}
+.yarpp-thumbnail-default > img.yarpp-thumbnail-default-tall {
+	width: 120px;
+	max-height: none;
+}
+
+/* Nav Highlights for blog */
+body.active-we-love .blog-nav-list .nav-we-love,
+body.active-clean-and-learn .blog-nav-list .nav-clean,
+body.active-as-seen-in .blog-nav-list .nav-seen,
+body.active-style .blog-nav-list .nav-style,
+body.active-culture .blog-nav-list .nav-culture,
+body.active-travel .blog-nav-list .nav-travel,
+body.active-entertaining .blog-nav-list .nav-entertaining,
+body.active-archive .blog-nav-list .nav-archive
+ {
+	color: #64B96A;
+} 
+
+
+/* Laundress Blog Home */
+
+.blog-home-top {
+	overflow: hidden;
+	margin: 9px 0 20px 0;
+}
+
+.blog-home-top .blog-home-slider {
+	float: left;
+	width: 635px;
+	position: relative;
+	background-color: black;
+}
+.blog-home-top .blog-home-slider img {
+	width: 100%;
+	height: 100%;
+}
+
+.blog-home-top .slidesjs-slide {
+	height: 100%
+}
+
+.blog-home-slideshow-feature {
+	width: 330px;
+	min-height: 115px;
+	background: rgba(255,255,255,0.9);
+	position: absolute;
+	bottom: 0;
+	left: 24%;
+}
+	.blog-home-slideshow-feature p {
+		font-family: "GillSansMTStd-Bold", sans-serif;
+		font-size: 11px;
+		text-align: center;
+		margin: 20px 0 10px 0;
+		text-transform: uppercase;
+	}
+	.blog-home-slideshow-feature h2 {
+		font-family: "Sorts Mill Goudy Regular", serif;
+	    font-size: 15px;
+	    line-height: 1.2em;
+	    color: black;
+	    text-align: center;
+	    text-transform: uppercase;
+	    padding: 0 15px 13px;
+	}
+	.blog-home-slideshow-feature h2 a {
+		color: black;
+	}
+.blog-home-top .slidesjs-pagination {
+	bottom: 4px;
+}
+
+.blog-home-top .slidesjs-pagination li a {
+	background: url('../images/blog_slider-bullets_laundress.png') no-repeat top right !important;
+}
+.blog-home-top .slidesjs-pagination li a.active {
+	background: url('../images/blog_slider-bullets_laundress.png') no-repeat top left !important;
+}
+
+.blog-home-top .blog-home-top-promo {
+	float: right;
+	width: 313px;
+}
+
+	.blog-home-top .blog-home-top-promo ul li:nth-child(1) {
+		border-bottom: 1px solid #dadada;
+		margin-bottom: 17px;
+	}
+	.blog-home-top .blog-home-top-promo ul li:nth-child(2) {
+		margin-bottom: 10px;
+	}
+	.blog-home-top .blog-home-top-promo ul li:nth-child(3) {
+		border-bottom: 1px solid #dadada;
+	}
+	
+.post-list h3 {
+	font-family: "GillSansMTStd-Bold", sans-serif;
+    font-weight: normal;
+	font-size: 11px;
+	color: black;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 21px;
+}
+
+.post-list h2 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 15px;
+	color: black;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 0;
+}
+
+.post-date,
+.post-list .post-date {
+	font-family: Georgia, serif;
+	font-size: 11px;
+	color: black;
+	text-align: center;
+}
+
+.post-list .post-list-item {
+	overflow: hidden;
+}
+
+.post-list .post-entry {
+	margin-top: 15px;
+}
+
+.post-list .post-entry p {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 15px;
+}
+
+.post-action-bar {
+	overflow: hidden;
+	line-height: 34px;
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-size: 11px;
+	text-transform: uppercase;
+}
+
+.post-action-bar .post-comment-button {
+	float: left;
+	width: 165px;
+	color: black;
+	background: url('../images/post-comment-button.gif') center right no-repeat;
+	margin-left: 5px;
+}
+	.post-action-bar .post-comment-button:hover {
+		color: #64B96A;
+	}
+
+.post-action-bar .post-social-links {
+	float: left;
+	width: 250px;
+	margin-left: 28px;
+}
+
+	.post-action-bar .post-social-links li {
+		display: inline-block;
+		width: 21px;
+		margin-left: 15px;
+	}
+		.post-action-bar .post-social-links li.first {
+			width: 90px;
+			margin: 0;
+		}
+		.post-action-bar .post-social-links li img {
+			vertical-align: text-bottom;
+		}
+	
+
+.post-action-bar .post-read-more {
+	float: right;
+	color: black;
+	background-color: #222222;
+	padding: 0 29px;
+	color: white;
+        font-weight: normal;
+        font-family: "GillSansMTStd", sans-serif;
+}
+	.post-action-bar .post-read-more:hover {
+		background-color: #64B96A;
+	}
+
+
+/* Sidebar */
+
+.blog-sidebar {
+	float: right;
+	width: 176px;
+	text-align: center;
+	padding-top: 6px;
+}
+
+.blog-sidebar .spacer {
+	width: 17px;
+	margin: 10px auto 8px;
+	height: 2px;
+	background-color: black;
+}
+	.blog-sidebar .sidebar-facebook .spacer {
+		margin-top: 14px;
+	}
+	.blog-sidebar .sidebar-youtube .spacer {
+		margin-top: 27px;
+	}
+
+.blog-sidebar span {
+	font-family: "GillSansMTStd-Bold", sans-serif;
+	font-size: 11px;
+	color: #222222;
+	text-transform: uppercase;
+}
+
+.blog-sidebar h1 {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 15px;
+	margin: 10px 0 5px;
+	color: #222;
+}
+
+.blog-sidebar .sidebar-promo2 {
+	margin-top: 18px;
+}
+
+.blog-sidebar > a {
+	display: block
+}
+
+	.blog-sidebar > a:hover span {
+		color: #64B96A;
+	}
+
+.blog-sidebar .sidebar-facebook, .blog-sidebar .sidebar-twitter, .blog-sidebar .sidebar-pinterest, .blog-sidebar .sidebar-youtube {
+	border-bottom: 1px solid #dadada;
+}
+
+.blog-sidebar .sidebar-facebook {
+	margin: 12px 0 0 0;
+	padding-bottom: 22px
+}
+	.blog-sidebar .sidebar-facebook .sidebar-logo {
+		margin-top: 14px;
+	}
+	
+.blog-sidebar .sidebar-twitter {
+	padding-bottom: 44px;
+     margin-bottom: 2em;
+}
+	.blog-sidebar .sidebar-twitter .sidebar-logo {
+		margin-top: 37px;
+	}
+
+.blog-sidebar .sidebar-pinterest {
+	padding-bottom: 44px;
+        margin-bottom: 2em;
+}
+	.blog-sidebar .sidebar-pinterest .sidebar-logo {
+		margin-top: 35px;
+	}
+
+.blog-sidebar .sidebar-youtube {
+	margin-bottom: 2em;
+	padding-bottom: 54px;
+}
+	.blog-sidebar .sidebar-youtube .sidebar-logo {
+		margin-top: 43px;
+	}
+	
+/* Clean and Learn sidebar */
+.blog .sidebar ul .level1 {
+	margin-top: 5px
+}
+
+.blog .sidebar ul.level1 li {
+	line-height: 2em;
+}
+
+/* Homepage */
+body.wordpress-index-index .col-main {
+	width: 713px;
+	padding-right: 34px;
+	margin-right: 0;
+	border-right: 1px solid #dadada;
+}
+
+body.wordpress-index-index .blog-sidebar-promo {
+    width: 19%;
+    padding-left: 29px;
+}
+
+body.wordpress-index-index .blog-sidebar-promo p {
+    
+}
+
+
+/* As Seen In */
+body.as-seen-in-post .blog-nav-list li:nth-child(3) a, body.as-seen-in-cat .blog-nav-list li:nth-child(3) a {
+	color: #64B96A !important;
+}
+
+body.as-seen-in-post .grid-full {
+	width: 100%;
+	margin: 13px 0 0 0;
+}
+
+body.as-seen-in-post .category-title {
+	display: none;
+}
+
+body.as-seen-in-post .breadcrumbs {
+	margin-bottom: 0;
+}
+
+body.as-seen-in-cat .post-list .post-list-item {
+	border: none;
+}
+body.as-seen-in-cat #post-list {
+	overflow: hidden;
+}
+body.as-seen-in-cat #post-list li {
+	width: 330px;
+	margin-bottom: 30px;
+	float: left;
+	text-align: center;
+}
+	body.as-seen-in-cat #post-list li:nth-child(odd) {
+		padding-right: 19px;
+		margin-right: 20px;
+		border-right: 1px solid #dadada;
+	}
+
+body.as-seen-in-cat .post-contents {
+	border-left: 1px solid #dadada;
+	border-right: 1px solid #dadada;
+	border-bottom: 1px solid #dadada;
+	width: 278px;
+	min-height: 120px;
+	padding: 0 25px;
+}
+
+body.as-seen-in-cat .post-list h3 {
+	padding-top: 21px;
+	margin-top: 0;
+}
+
+body.as-seen-in-cat .post-list .item h2 {
+	margin-bottom: 10px;
+}
+
+/*Single post*/
+.as-seen-in-post-sidebar {
+	float: left;
+	width: 230px;
+}
+	.as-seen-in-post-sidebar img {
+		max-width: 100%;
+		margin-bottom: 15px;
+	}
+
+.as-seen-in-post-content {
+	float: right;
+	width: 710px;
+}
+
+.as-seen-in-post-content .featured-image {
+	border:none;
+	padding: 0;
+	margin: 0;
+}
+
+.as-seen-in-post-content h2 {
+	text-align: center;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 15px;
+	color: black;
+	text-transform: uppercase;
+	margin: 25px auto 0;
+	width: 530px;
+}
+
+.as-seen-in-post-content p {
+	padding: 0 10px 50px 25px;
+	width: 530px;
+	margin: 0 auto;
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 15px;
+	color: black;
+	border-bottom: 1px solid #222222;
+}
+.as-seen-in-post-content p.post-date {
+	line-height: 1em;
+	padding: 0;
+	font-family: 'Georgia', serif;
+	font-size: 11px;
+	color: #222222;
+	margin-bottom: 30px;
+	border-bottom: none;
+}
+
+body.as-seen-in-post .block-related {
+	width: 713px;
+	float: right;
+}
+
+body.as-seen-in-post .block-related .block-title {
+	font-family: 'Sorts Mill Goudy Regular', serif;
+	font-size: 34px;
+	color: black;
+	text-align: center;
+	border-bottom: none;
+	text-transform: uppercase;
+}
+	body.as-seen-in-post .block-related .block-title p {
+		display: inline;
+		font-family: inherit;
+		font-size: inherit;
+	}
+	
+body.as-seen-in-post .block-content {
+	padding: 0;
+}
+
+body.as-seen-in-post .block-content .mini-products-list li {
+	display: inline-block;
+	vertical-align: top;
+	width: 229px;
+}
+	body.as-seen-in-post .block-content .mini-products-list li:first-of-type {
+		margin-left: 0;
+	}
+
+	body.as-seen-in-post .block-content .mini-products-list li .product-image {
+		padding: 0;
+		border: none;
+		width: 100%;
+		float: none;
+	}
+	body.as-seen-in-post .block-content .mini-products-list li .product-details {
+		margin: 10px 0 0 0;
+		text-align: center;
+		font-family: 'Sorts Mill Goudy Regular', serif;
+		font-size: 18px;
+		color: #222222;
+		text-transform: uppercase;
+	}
+		body.as-seen-in-post .block-content .mini-products-list li .product-details a {
+			color: #222;
+		}
+		body.as-seen-in-post .block-content .mini-products-list li .product-details:hover a {
+			color: #64B96A;
+		}
+		body.as-seen-in-post .block-content .mini-products-list li .product-details .price-box {
+			display: none;
+		}
+
+/* We Love Post */
+body.we-love-post .breadcrumbs, body.we-love-post .category-title {
+	display: none;
+}
+body.we-love-post .featured-image {
+	border: 0;
+	padding: 0;
+	margin: 0 0 2em 0;
+}
+
+body.we-love-post .post-social {
+    float: right;
+}
+
+body.we-love-post .post-entry {
+    
+}
+
+
+#disqus_thread {
+	position: relative;
+	float: left;
+	width: 100%
+}
+
+
+
+

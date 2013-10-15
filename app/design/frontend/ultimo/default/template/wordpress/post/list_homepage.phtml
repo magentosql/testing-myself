@@ -1,0 +1,30 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php 
+	$posts = $this->getPosts();
+	$renderer = "";
+	if ("index" == Mage::app()->getRequest()->getActionName() && "index" == Mage::app()->getRequest()->getControllerName())
+		$renderer = "wordpress/post/list/renderer/homepage.phtml";
+?>
+<?php if (count($posts) > 0): ?>
+	<?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+		<?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
+	<?php endif; ?>
+	<div class="post-list">
+		<ul id="post-list">
+			<?php foreach($posts as $post): ?>
+				<li class="item">
+					<?php echo $this->getPostRenderer($post, $renderer)->toHtml(); ?>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<script type="text/javascript">decorateList($('post-list'));</script>
+		<?php echo $this->getPagerHtml() ?>
+	</div>
+<?php endif; ?>

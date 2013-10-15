@@ -1,0 +1,151 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $session = Mage::getSingleton('checkout/session');
+if(!$session->getQuote()->getAllVisibleItems()){
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('Shopping Cart is Empty') ?></h1>
+</div>
+<div class="cart-empty">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <p><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+    <p><?php echo $this->__('Click <a href="%s">here</a> to continue shopping.', '/') ?></p>
+</div>
+<?php }else{?>
+<iframe name="icIframe" id="icIframe" src="" style="margin: 0;display:none; height:1150px; width: 100%;" align="middle" frameborder="0" scrolling="auto" >Your Browser Does Not Support Frames</iframe>
+<div style=" width:100%;height:500px; text-align:center; " align="center" id="Icloading">Loading......</div>
+
+<?php
+	
+	//if ($this->isEnabled()) {
+	
+		if (Mage::getStoreConfig('checkout/internationalcheckout/ic_server') == 1) {
+			$this->IC_URL = "http://www.internationalcheckoutsolutions.com/sandbox/checkout/index.php";
+		}
+		
+?>
+
+<form name="icForm" id="icForm" method="post" action="<?php echo $this->IC_URL;?>"  target="icIframe">
+	
+	<?php
+	
+	
+
+	$output = "";
+	$i = 1;
+	$cartTotal = '';
+	$itemPrice = '';
+	foreach ($session->getQuote()->getAllVisibleItems() as $item) {
+		
+		if(strstr($this->buildItemDescription($item), "Gift Certificate")) {
+			$output .= "<input type=\"hidden\" name=\"GiftStatus\" class=\"GiftStatus\" value=\"1\"/>\n";
+			break;
+		}
+		
+		$output .= "<input type=\"hidden\" name=\"ItemDescription$i\" value=\"".str_replace('&quot;', '&acute;&acute;',$this->buildItemDescription($item))."\"/>\n";
+		$options = $this->getProductOptions($item);
+		if (count($options)) {
+			for ($c=0; $c<count($options); $c++) {
+				if (is_array($options[$c]["value"])) {
+					if (preg_match("/color/i", $options[$c]["label"])) {
+						$output .= "<input type=\"hidden\" name=\"ItemColor$i\" value=\"".strip_tags(implode($valueSeperator,$options[$c]["value"]))."\"/>\n";
+					}
+					if(preg_match("/size/i", $options[$c]["label"]) ){
+						$output .= "<input type=\"hidden\" name=\"ItemSize$i\" value=\"".strip_tags(implode($valueSeperator,$options[$c]["value"]))."\"/>\n";
+					}
+				}
+				else {
+					if(preg_match("/color/i", $options[$c]["label"])){
+						$output .= "<input type=\"hidden\" name=\"ItemColor$i\" value=\"".strip_tags($options[$c]["value"])."\"/>\n";
+					}else if(preg_match("/size/i", $options[$c]["label"]) ){
+						$output .= "<input type=\"hidden\" name=\"ItemSize$i\" value=\"".strip_tags($options[$c]["value"])."\"/>\n";
+					}
+				}
+			}
+		}
+
+
+		$output .= "<input type=\"hidden\" name=\"ItemSKU$i\" value=\"".$this->htmlEscape($item->getSku())."\"/>\n";
+		$output .= "<input type=\"hidden\" name=\"ItemQuantity$i\" value=\"".$item->getQty()."\"/>\n";
+		$output .= "<input type=\"hidden\" name=\"ItemPrice$i\" value=\"".$item->getPrice()."\"/>\n";
+		
+		$itemPrice = ($item->getPrice()*$item->getQty());
+		$cartTotal += $itemPrice;
+		
+		$imgWidth = trim(Mage::getStoreConfig('checkout/internationalcheckout/image_width'));
+		$imgHeight = trim(Mage::getStoreConfig('checkout/internationalcheckout/image_height'));
+		
+		if ($imgWidth == "" || $imgWidth <=0) {
+			$imgWidth = 75;
+		}
+		if ($imgHeight == "" || $imgHeight <=0) {
+			$imgHeight = 75;
+		}
+		
+		
+		$output .= "<input type=\"hidden\" name=\"ItemImage$i\" value=\"".$this->getProductThumbnail($item)->resize($imgWidth)."\"/>\n";
+		
+		
+		$output .= "<input type=\"hidden\" name=\"ImgHeight$i\" value=\"".$imgHeight."\"/>\n";
+		$output .= "<input type=\"hidden\" name=\"ImgWidth$i\" value=\"".$imgWidth."\"/>\n";
+		
+		$i++;
+	}
+	//echo $cartTotal;
+	echo $output;
+	
+	$shipping_charges = $this->shippingPrice();
+	
+	?>
+	
+<input type="hidden" name="p" value="<?php echo $this->formatCompany(Mage::getStoreConfig('checkout/internationalcheckout/name_of_company'))?>" />
+
+<input type="hidden" name="shipping_method" value="<?php echo trim(Mage::getStoreConfig("checkout/internationalcheckout/shipping_method"))?>" /> 
+
+<input type="hidden" name="external_domesticshipping" value="<?php echo $shipping_charges;?>" />
+
+
+</form>
+
+<?php
+	//} // isEnabled	
+?>
+<script language="javascript">
+	if(jQuery(".GiftStatus") && jQuery(".GiftStatus").val() == '1' ){
+		alert('Gift Certificate is not available for international orders. Please remove Gift Certificate from shopping cart before proceeding with International Checkout.');
+		window.parent.location.href = 'checkout/cart/';  
+	}else{
+		jQuery("#icIframe").parent().parent().css("width","1100px");
+		document.getElementById('icForm').submit();
+		jQuery("#icIframe").src = 'https://www.internationalcheckout.com/cart.php';
+		jQuery('#icIframe').load(function () {
+			jQuery("#Icloading").css("display","none");
+			jQuery("#icIframe").css("display","block");
+		});
+	}
+</script> 
+<?php }?>

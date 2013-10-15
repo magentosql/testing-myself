@@ -1,0 +1,126 @@
+<?php if ($post): ?>
+
+        <div class="page-title">
+                <h1>We Love</h1>
+        </div>
+
+	<?php 
+		$helper = $this->helper('wordpress');
+		$author = $post->getAuthor();
+		if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): 
+			echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml(); 
+		endif;                                 
+	?>                
+                               
+	<div class="post-view post-view-welove-things">      
+                                        
+            <div class="grid12-8" >
+                <?php if ($featuredImage = $post->getFeaturedImage()): ?>                          
+                    <div class="featured-image"><img src="<?php echo $featuredImage->getImageByType('post-main-welove'); ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" width="635" /></div>
+                <?php endif; ?>
+            </div>
+            
+            <div class="grid12-4" >
+                
+                <h3 class="label-category" ><?php print $post->getParentCategory()->getName(); ?></h3>
+                
+		<h2><?php echo $this->escapeHtml($post->getPostTitle()); ?></h2>                  
+                <p class="post-date" ><?php echo $post->getPostDate(); ?></p>
+                                
+		<div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
+                    
+			<?php if ($post->isViewableForVisitor()): ?>				
+				<?php echo strip_tags($post->getPostContent()); ?>
+			<?php else: ?>
+				<?php echo $this->getPasswordProtectHtml() ?>
+			<?php endif; ?>                                                                                    
+                    
+		</div>
+                                
+            </div>
+                        
+            <?php
+                    // get all gallery blocks
+                    $numPostsToShow = 50;                       
+                                        
+                    $recentPostCollection = Mage::getModel('wordpress/post')->getCollection()
+                            ->addIsPublishedFilter()
+                            ->addPostTypeFilter('gallery-block')
+                            ->addMetaFieldToFilter('_wpcf_belongs_welovepost_id', $post->getId())
+                            ->setOrder('post_date', 'desc')
+                            ->setPageSize($numPostsToShow)
+                    ;
+            ?>                                   
+            
+            <div class="grid12-12 pinterest-list" >                    
+                <ul class="p-list" >     
+                    <?php foreach($recentPostCollection AS $post) { ?>
+                    <li class="p-list-item" id="post-<?php print $post->getId(); ?>" >
+                        <div class="p-list-item-image" >  
+                            <?php
+                                $imageHelper = Mage::helper('wordpress/image');
+                                $sImgUrl = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-hot-linked-image'), "post-list-thumb-weloveitem");   
+                                $sImgUrlLarge = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-hot-linked-image'), "medium");   
+                                
+                                // get height based on filename. It's the last 3 digits before the file ending
+                                $tmp = explode('.', $sImgUrl);
+                                $sFileExt = end($tmp);                               
+                                $iExtPos = strpos($sImgUrl, '.' . $sFileExt);
+                                $iImgHeight = substr($sImgUrl, $iExtPos-3, $iExtPos);                               
+                                $iImgHeight = str_replace('.' . $sFileExt, '', $iImgHeight);
+                                
+                            ?>
+                            <img src="<?php print $sImgUrl; ?>" alt="" width="230" height="<?php print $iImgHeight; ?>" />
+                        </div>
+                        <div class="p-list-item-content" >
+                            <h3><?php print $post->getPostTitle(); ?></h3>                        
+                            <p class="p-list-item-entry" >
+                                <?php print $post->getCustomField('wpcf-gallery-block-description'); ?>
+                            </p>
+                            <p class="p-list-item-entry-full" >
+                                <?php print $post->getCustomField('wpcf-gallery-block-description'); ?>
+                            </p>
+                            <div class="p-list-item-actions" >                                
+                                <a href="<?php print $sImgUrlLarge; ?>" class="p-list-item-button readmore" data-postid="<?php print $post->getId(); ?>" >Read More</a>                                
+                                <?php if($post->getCustomField('wpcf-shop-now-url')) { ?>
+                                <a href="<?php print $post->getCustomField('wpcf-shop-now-url'); ?>" class="p-list-item-button" >Shop Now</a>
+                                <?php } ?>
+                            </div>
+                            <div class="p-list-item-share" >
+                                <ul class="social-share" >
+                                    <li class="facebook"><a href="#" onclick="javascript:sharePageToFacebook();return false;" ><span>Facebook</span></a></li>
+                                    <li class="twitter"><a href="" onclick="javascript:sharePageToTwitter();return false;" ><span>Twitter</span></a></li>
+                                    <li class="pinterest"><a href="" onclick="javascript:sharePageToPinterest(null, '<?php print $sImgUrl; ?>');return false;" ><span>Pinterest</span></a></li>
+                                </ul>
+                            </div>
+                        </div>                        
+                    </li>                    
+                    <?php } ?>
+                </ul>
+            </div>
+            
+            <script type="text/javascript" src="/js/masonry/masonry.min.js" ></script> 
+            
+            <script type="text/javascript" >
+                
+                // Image links displayed as a group
+                jQuery('a.readmore').colorbox({
+                    rel:'readmore',
+                    onComplete:function(){ 
+                        var $postItem = jQuery('#post-' + jQuery(this).attr('data-postid'));
+                        var longDesc = $postItem.find('.p-list-item-entry-full').html();
+                        var headline = $postItem.find('h3').html();
+                        
+                        var tldContent = jQuery('<div id="cBoxTldContent"></div>');
+                            tldContent.appendTo(jQuery('#cboxContent'));
+                                                    
+                        
+                        
+                    }                  
+                });
+                              
+                
+            </script>
+            
+	</div>
+<?php endif; ?>

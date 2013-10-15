@@ -1,0 +1,53 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost() ?>
+
+<?php if ($post): ?>
+	<?php $helper = $this->helper('wordpress') ?>
+	<?php $author = $post->getAuthor() ?>        
+
+        <div class="page-title">
+            <div class="grid12-3" >
+                <?php if (($previous = $post->getPreviousPost()) !== false): ?>
+			<a href="<?php echo $previous->getPermalink() ?>" class="post-skip post-skip-previous" title="<?php echo $this->escapeHtml($previous->getPostTitle()) ?>">&larr; <?php echo $this->__('Previous Post') ?></a>
+		<?php endif; ?>
+            </div>
+            <div class="grid12-6" >
+                <h1><?php print $post->getParentCategory()->getName(); ?></h1>
+            </div>
+            <div class="grid12-3" >
+                <?php if (($next = $post->getNextPost()) !== false): ?>
+			<a href="<?php echo $next->getPermalink() ?>" class="post-skip post-skip-next" title="<?php echo $this->escapeHtml($next->getPostTitle()) ?>"><?php echo $this->__('Next Post') ?> &rarr;</a>
+		<?php endif; ?>
+            </div>
+        </div>
+       
+	<div class="post-view">
+            
+                <?php if($featuredImage = $post->getFeaturedImage()): ?>    
+                        <div class="featured-image">                                         
+                                <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('post-main-wide') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+                        </div>
+                <?php endif; ?>
+            
+                <h2><?php echo $this->escapeHtml($post->getPostTitle()) ?></h2>                
+                <p class="post-date"><?php print $post->getPostDate(); ?></p>
+            		
+		<div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
+			<?php if ($post->isViewableForVisitor()): ?>				
+				<?php echo $post->getPostContent() ?>
+			<?php else: ?>
+				<?php echo $this->getPasswordProtectHtml() ?>
+			<?php endif; ?>
+		</div>
+		<?php echo $this->getChildHtml('related_posts') ?>
+
+		<?php echo $this->getCommentsHtml() ?>
+	</div>
+<?php endif; ?>

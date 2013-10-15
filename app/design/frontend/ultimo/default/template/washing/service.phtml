@@ -1,0 +1,113 @@
+<h2>Let us do your dirty work</h2>
+<p class="header-copy">Our careful process begins with pre-treatment to eradicate any stains or odors. We then wash each item by hand and line-dry before steaming or hand-pressing. To finish, we de-pill or de-lint, leaving every piece looking, smelling and feeling like a million bucks.</p>
+<h3>Follow these <span>4</span> simple steps or <a href="/washing-service-faq">Read Our FAQ</a></h3>
+
+<a href="#washing-service" class="washing-hero">
+	<div class="step-one">
+		<h4>Enter your order</h4>
+		<p>Use our easy order form <span>below</span></p>
+	</div>
+	<div class="step-two">
+		<h4>Mail your laundry</h4>
+		<p>Or drop it at our NY office</p>
+	</div>
+	<div class="step-three">
+		<h4>Breathe Easy</h4>
+		<p>We'll get your items looking like new!</p>
+	</div>
+	<div class="step-four">
+		<h4>Free delivery</h4>
+		<p>We'll send your laundry back within 7 days</p>
+	</div>
+</a>
+
+<div id="washing-service">
+	<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" class="clearer" id="product_addtocart_form">
+	<h2>What can we wash?</h2>
+	<h3>Select your items below</h3>
+	<div class="small-horizontal-line"></div>
+	<div class="select-type">
+		<a href="#" class="clothing">
+			<h5>Clothing Items</h5>
+			<div><img src="/skin/frontend/ultimo/default/images/clothing1.gif" alt="" width="50" height="50" border="0" /></div>
+			<div><img src="/skin/frontend/ultimo/default/images/clothing2.gif" alt="" width="50" height="50" border="0" /></div>
+			<div><img src="/skin/frontend/ultimo/default/images/clothing3.gif" alt="" width="50" height="50" border="0" /></div>
+		</a>
+		<a href="#" class="household">
+			<h5>Household Items</h5>
+			<div><img src="/skin/frontend/ultimo/default/images/household1.gif" alt="" width="50" height="50" border="0" /></div>
+			<div><img src="/skin/frontend/ultimo/default/images/household2.gif" alt="" width="50" height="50" border="0" /></div>
+			<div><img src="/skin/frontend/ultimo/default/images/household3.gif" alt="" width="50" height="50" border="0" /></div>
+		</a>
+		<a href="#" class="clothing-and-household">
+			<h5>Clothing & Household</h5>
+			<div><img src="/skin/frontend/ultimo/default/images/clothing_and_household1.gif" alt="" width="50" height="50" border="0" /></div>
+			<div><img src="/skin/frontend/ultimo/default/images/clothing_and_household2.gif" alt="" width="50" height="50" border="0" /></div>
+			<div><img src="/skin/frontend/ultimo/default/images/clothing_and_household3.gif" alt="" width="50" height="50" border="0" /></div>
+		</a>
+	</div>
+	<div class="select-quantity">
+		<h3 class="selection-title" style="display:none">Enter the Quantity</h3>     
+		<div class="clothing-section" style="display:none">
+			<h5>Clothing Items </h5>
+            <?php
+            	$catalog = Mage::getModel('catalog/category');
+            	$containerclass = "";
+            	$items = $this->getClothingProducts();
+            	
+            	$containerclass = $this->getNextContainer($containerclass);
+            	$numitems = count($items);
+            	$index = 0;
+            		foreach($items as $item):
+            			$price = intval($item->getPrice());
+            			$url = $this->helper('checkout/cart')->getAddUrl($item, "");
+            ?>
+			<div class="item-line">
+				<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
+				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />
+				<span class="item-title"><?php echo $item->getName(); ?> <span>($<?php echo $price ?>)</span></span>
+				<div class="item-selector">
+					<a href="#" id="item_minus_<?php echo  $item->getId(); ?>" class="minus">-</a>
+					<span id="item_qty_<?php echo  $item->getId(); ?>" class="qty">0</span>
+					<a href="#" id="item_plus_<?php echo  $item->getId(); ?>" class="plus">+</a>
+					<span id="item_subtotal_<?php echo  $item->getId(); ?>" class="item-subtotal">$0</span>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+		<div class="household-section" style="display:none">
+			<h5>Household Items </h5>
+			<?php
+            	$catalog = Mage::getModel('catalog/category');
+            	$containerclass = "";
+            	$items = $this->getHouseholdProducts();
+            	
+            	$containerclass = $this->getNextContainer($containerclass);
+            	$numitems = count($items);
+            	$index = 0;
+            		foreach($items as $item):
+            			$price = intval($item->getPrice());
+            			$url = $this->helper('checkout/cart')->getAddUrl($item, "");
+            ?>
+			<div class="item-line">
+				<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
+				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />
+				<span class="item-title"><?php echo $item->getName(); ?> <span>($<?php echo $price ?>)</span></span>
+				<div class="item-selector">
+					<a href="#" id="item_minus_<?php echo  $item->getId(); ?>" class="minus">-</a>
+					<span id="item_qty_<?php echo  $item->getId(); ?>" class="qty">0</span>
+					<a href="#" id="item_plus_<?php echo  $item->getId(); ?>" class="plus">+</a>
+					<span id="item_subtotal_<?php echo  $item->getId(); ?>" class="item-subtotal">$0</span>
+				</div>
+			</div>
+			<?php endforeach; ?>
+		</div>
+	
+	</div>
+	<div class="washing-subtotal" style="display:none">
+		<div class="subtotal">Subtotal: <span>$0.00</span></div>                
+		<button type="button" title="Add to Bag" class="button btn-cart" onclick=""><span><span>Add to Bag</span></span></button>
+	</div>
+    </form>
+</div>
+

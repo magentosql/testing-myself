@@ -1,0 +1,31 @@
+<?php if ($post): ?>
+	<?php 
+		$helper = $this->helper('wordpress');
+		$author = $post->getAuthor();		
+	?>
+                        
+	<div class="post-view post-view-welove-people">                                      
+            
+            <?php if ($featuredImage = $post->getFeaturedImage()): ?> 
+                    <div class="featured-image"><img src="<?php echo $featuredImage->getImageByType('post-main-wide'); ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></div>
+            <?php endif; ?>
+            
+            <h2><?php echo $this->escapeHtml($post->getPostTitle()); ?></h2>                  
+            <p class="post-date" ><?php echo $post->getPostDate(); ?></p>
+
+            <div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
+
+                    <div class="post-social" >
+                        <img src="/skin/frontend/ultimo/default/images/dummy_wp_social.gif" border="0" alt="" />
+                    </div>
+
+                    <?php if ($post->isViewableForVisitor()): ?>				
+                            <?php echo $post->getPostContent() ?>
+                    <?php else: ?>
+                            <?php echo $this->getPasswordProtectHtml() ?>
+                    <?php endif; ?>                                                                                    
+
+            </div>
+
+	</div>
+<?php endif; ?>
