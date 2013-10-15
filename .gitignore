@@ -1,0 +1,6 @@
+.DS_Store
+app/etc/local.xml
+downloader/*
+media/catalog/product/cache/*
+media/tmp/*
+var/*
