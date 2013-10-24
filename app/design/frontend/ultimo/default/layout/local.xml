@@ -28,6 +28,7 @@
 			<action ifconfig="ultimo/mainmenu/wide_menu" method="removeItem"><type>js</type><name>varien/menu.js</name><params/></action>
 			
 			<!-- CSS -->
+            <action method="addItem"><type>skin_css</type><name>css/fonts.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-nav.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-cck.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/itemslider.css</name><params/></action>
