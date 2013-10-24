@@ -12,11 +12,11 @@
 			<action method="addItem"
 				ifconfig="cloudzoom/lightbox/enable"><type>skin_css</type><name>css/infortis/_shared/colorbox.css</name></action>
 			<!-- jQuery -->
-			<action method="addJs"><script>infortis/jquery/jquery-1.7.2.min.js</script></action>
-			<action method="addJs"><script>infortis/jquery/jquery-noconflict.js</script></action>
-            <action method="addJs" ifconfig="cloudzoom/general/enable"><script>infortis/jquery/plugins/cloud-zoom.1.0.2.min.js</script></action>
-			<action method="addJs" ifconfig="cloudzoom/lightbox/enable"><script>infortis/jquery/plugins/jquery.colorbox-min.js</script></action>
-			<action method="addJs"><script>infortis/jquery/plugins/jquery.flexslider-min.js</script></action>
+			<action method="addJs"><file>infortis/jquery/jquery-1.7.2.min.js</file></action>
+			<action method="addJs"><file>infortis/jquery/jquery-noconflict.js</file></action>
+                        <action method="addJs" ifconfig="cloudzoom/general/enable"><file>infortis/jquery/plugins/cloud-zoom.1.0.2.min.js</file></action>
+			<action method="addJs" ifconfig="cloudzoom/lightbox/enable"><file>infortis/jquery/plugins/jquery.colorbox-min.js</file></action>
+			<action method="addJs"><file>infortis/jquery/plugins/jquery.flexslider-min.js</file></action>
         </reference>
 
         <reference name="product.info">
