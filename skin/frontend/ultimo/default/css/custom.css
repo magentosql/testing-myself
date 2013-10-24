@@ -1,4 +1,3 @@
-@import url('fonts.css');
 .add-monogram-process .color{width:20px;height:20px;position:absolute;left:0;margin-top:-20px}
 .add-monogram-process .color[data-color="#FFFFFF"]{border:1px solid #999;width:18px;height:18px}
 .add-monogram-process .monogram-step-2 ul li{padding-left:25px !important}
