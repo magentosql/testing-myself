@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Shippingnote>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wsnyc_Shippingnote>
+    </modules>
+</config>

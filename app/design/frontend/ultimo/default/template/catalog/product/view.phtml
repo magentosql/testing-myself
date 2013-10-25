@@ -445,8 +445,15 @@ if ($_count) {
 
                     return $html;
                 }
-                
-                $sTabDetails = $_helper->productAttribute($_product, nl2br($_product->getDescription()), 'short_description');                                
+
+                $description = nl2br($_product->getDescription());
+                $shippingNote = $_product->getShippingNote();
+                if(!empty($shippingNote))
+                {
+                    $description .=  nl2br('<h3>Shipping Note</h3>' . $shippingNote);
+                }
+
+                $sTabDetails = $_helper->productAttribute($_product, $description , 'short_description');
                 $sTabDetailsLabel = "Details";
                 $sTabResults = $_helper->productAttribute($_product, nl2br($_product->getForBestResults()), 'for_best_results');        
                 $sTabResultsLabel = $_product->getResource()->getAttribute('for_best_results')->getStoreLabel();

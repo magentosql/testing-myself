@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Shippingnote>
+            <version>0.1.0</version>
+        </Wsnyc_Shippingnote>
+    </modules>
+    <global>
+        <models>
+            <wsnyc_shippingnote_setup>
+                <class>Wsnyc_Shippingnote_Model</class>
+            </wsnyc_shippingnote_setup>
+        </models>
+        <resources>
+            <wsnyc_shippingnote_setup>
+                <setup>
+                    <module>Wsnyc_Shippingnote</module>
+                    <class>Wsnyc_Shippingnote_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </wsnyc_shippingnote_setup>
+        </resources>
+    </global>
+</config>

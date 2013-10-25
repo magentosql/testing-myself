@@ -45,8 +45,18 @@
             <?php endforeach; ?>
         </dl>
         <?php endif;?>
+
+        <?php
+        $pr = Mage::getModel('catalog/product')->load($_item->getProduct()->getId());
+        $shippingNote = $pr->getShippingNote(); ?>
+        <?php if(!empty($shippingNote)): ?>
+            <dl>
+                <dt>Shipping note</dt>
+                <dd><?php echo $shippingNote ?></dd>
+            </dl>
+        <?php endif; ?>
     </td>
-    
+
     <td class="a-center"><?php echo $_item->getQty() ?></td>
     <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
     <td class="a-right">
