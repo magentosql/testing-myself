@@ -178,7 +178,7 @@ class Infortis_Ultimo_Helper_Data extends Mage_Core_Helper_Abstract
 			if ($altImg = $gal->getItemByColumnValue($column, $value))
 			{
 				return
-				'<img class="alt-img" src="' . $this->getImgUrl('', $product, $w, $h, $imgVersion, $altImg->getFile()) . '" alt="' . $product->getName() . '" />';
+				'<img width="' . $w . '" height="' . $h . '" class="alt-img" src="' . $this->getImgUrl('', $product, $w, $h, $imgVersion, $altImg->getFile()) . '" alt="' . $product->getName() . '" />';
 			}
 		}
 		
