@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Holidayordersblock>
+            <version>0.1.1</version>
+        </Wsnyc_Holidayordersblock>
+    </modules>
+    <global>
+        <models>
+            <wsnyc_holidayordersblock>
+                <class>Wsnyc_Holidayordersblock_Model</class>
+            </wsnyc_holidayordersblock>
+        </models>
+        <resources>
+            <wsnyc_holidayordersblock_setup>
+                <setup>
+                    <module>Wsnyc_Holidayordersblock</module>
+                </setup>
+            </wsnyc_holidayordersblock_setup>
+        </resources>
+    </global>
+</config>

@@ -39,6 +39,27 @@
 			$headerCss[] = 'stretched';
 ?>
 
+<?php
+    $block = Mage::getModel('cms/block')->load('holiday-orders');
+?>
+
+<?php
+$cookie = Mage::getSingleton('core/cookie');
+$cookie->set('holiday-order', '1' ,time()+31536000,'/');
+?>
+
+<?php if($block->getIsActive() && !$cookie->get('holiday-order')): ?>
+<script type="text/javascript">
+    jQuery(function($) {
+        $.colorbox({
+            html:    "<?php echo $block->getContent() ?>",
+            opacity: 0.5,
+            speed:	 300
+        });
+    });
+</script>
+<?php endif; ?>
+
 <div class="header-container" id="top">
 
     <div class="header container<?php if($headerCss) echo " " . implode(" ", $headerCss); ?>">
@@ -49,6 +70,12 @@
             <?php endif; ?>
             <div class="item item-right hide-below-960">
             	<div class="welcome-msg"><b class="no-italic">FREE SHIPPING</b> for orders over <b>$150</b></div>
+                <?php
+                    $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier');
+                ?>
+                <?php if($holidayPage &&  $holidayPage->getData('is_active')): ?>
+                    <div class="welcome-msg" style="background: none; margin-top: -8px;"><b class="no-italic"><a href="<?php echo Mage::helper('cms/page')->getPageUrl('holiday-shipping-information') ?>">Holiday shipping information</a></div>
+                <?php endif; ?>
 			</div>
             
             <?php echo $this->getChildHtml('currency'); ?>
