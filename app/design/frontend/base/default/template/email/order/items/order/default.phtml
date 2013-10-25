@@ -46,6 +46,16 @@ $product = Mage::getModel('catalog/product')
 			            <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px"><span style="font-weight:bold"><?php echo $option['label'] ?></span>  <?php echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?></div>
 			            <?php endforeach; ?>
 			        <?php endif; ?>
+
+                    <?php
+                    $shippingNote = $product->getShippingNote(); ?>
+                    <?php if(!empty($shippingNote)): ?>
+                        <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px">
+                            Shipping note<br />
+                            <?php echo $shippingNote ?>
+                        </div>
+                    <?php endif; ?>
+
 				</td>
 			</tr>
 		</table>

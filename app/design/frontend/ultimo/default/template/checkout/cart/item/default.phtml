@@ -86,6 +86,16 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <li><b>Shipping Note </b>Monogram Items will ship in 1-2 weeks.</li>
         </ul>
         <?php endif;?>
+
+        <?php
+            $pr = Mage::getModel('catalog/product')->load($_item->getProduct()->getId());
+            $shippingNote = $pr->getShippingNote(); ?>
+        <?php if(!empty($shippingNote)): ?>
+        <dl>
+            <dt>Shipping note</dt>
+            <dd><?php echo $shippingNote ?></dd>
+        </dl>
+        <?php endif; ?>
         
         <?php if ($messages = $this->getMessages()): ?>
         <?php foreach ($messages as $message): ?>
