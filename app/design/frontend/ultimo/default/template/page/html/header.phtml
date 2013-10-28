@@ -49,13 +49,27 @@ $cookie->set('holiday-order', '1' ,time()+31536000,'/');
 ?>
 
 <?php if($block->getIsActive() && !$cookie->get('holiday-order')): ?>
+
+<div style='display:none'>
+    <a href="#inline_colorbox" class="openHolidayPopup">Open holiday Popup</a>
+    <div id="inline_colorbox"><?php echo $block->getContent() ?></div>
+</div>
+    <style>
+        #inline_colorbox {text-align: left}
+        #inline_colorbox p {padding: 5px 0px 5px 0px}
+        #inline_colorbox ul {padding: 10px 0px 10px 25px}
+        #inline_colorbox ul, #inline_colorbox ul li {list-style: circle;}
+    </style>
 <script type="text/javascript">
     jQuery(function($) {
-        $.colorbox({
-            html:    "<?php echo $block->getContent() ?>",
-            opacity: 0.5,
-            speed:	 300
+        $(".openHolidayPopup").colorbox({
+            inline  : true,
+            opacity : 0.5,
+            speed   : 300,
+            width   : 970
         });
+
+        $('.openHolidayPopup').click();
     });
 </script>
 <?php endif; ?>
