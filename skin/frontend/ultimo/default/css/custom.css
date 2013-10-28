@@ -923,3 +923,13 @@ body.cms-contact p{font-family:"GillSansMTStd",sans-serif;margin-bottom:1.6em}
 .col-main .one-step-checkout button.btn-checkout span{font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;font-weight:normal}
 .col-main .one-step-checkout label{font-family:"Georgia",serif;font-style:italic;color:#222 !important}
 .col-main .one-step-checkout .onestepcheckout-payment-methods .form-list{padding-left:0}
+
+/* ticket #21 - center price and name on product list */
+.products-grid .product-name {
+    text-align:center;
+}
+
+.products-grid .price-box{
+    text-align:center;
+}
+
