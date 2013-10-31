@@ -508,3 +508,21 @@ input.input-text, select, textarea,
 .sample-block:hover {
 	color:#555;
 }
+
+.product-view .product-shop {margin-bottom: -20px;}
+
+.container2-wrapper {float: left;}
+
+.box-additional .container2-wrapper {overflow:hidden; width: 535px;}
+
+.box-additional .container2-wrapper .add-to-cart {float: left; width: 540px;}
+
+#product-options-wrapper {float:left; width: 540px;}
+#product-options-wrapper dt {width: 540px; float: left}
+#product-options-wrapper div.custom.dropdown {margin-left: -2px;}
+#product-options-wrapper ul.options-list li span.custom.radio {float: left; margin-right: 5px;}
+#product-options-wrapper ul.options-list li span.custom.checkbox {float: left; margin-right: 5px;}
+#product-options-wrapper ul.options-list li span.label {float: left; margin: 2px 0px 0px 3px;}
+#product-options-wrapper p.required {float:left; position: relative; top:0; left: 0; right: auto}
+
+div.action-box.addto-textlink.clearer {float: left; margin-left: 20px; width: 545px;}
