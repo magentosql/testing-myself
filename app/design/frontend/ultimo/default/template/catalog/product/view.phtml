@@ -153,7 +153,20 @@ if ($_count) {
                     echo $this->getChildHtml($blockname);                    
                 ?>                
             </div>
-            
+            <script type="text/javascript">
+                jQuery(function($){
+
+                    constainerHeight = $('div.fragrance').height();
+                    logoHeight = $('img','div.fragrance').height();
+
+                    if(constainerHeight <= logoHeight)
+                    {
+                        $('div.fragrance').css({'height' : logoHeight + 'px'})
+                    }
+
+                });
+
+            </script>
             <?php if ($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
                 <div class="extrahint-wrapper"><?php echo $extrahint_html; ?></div>
             <?php endif; ?>
