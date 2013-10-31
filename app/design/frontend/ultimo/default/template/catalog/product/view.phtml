@@ -257,14 +257,7 @@ if ($_count) {
                 <?php endif; ?>
             <?php endif;?>
             
-            <?php if ($addtoBoxHtml = $this->getChildHtml('addto')): //compare, wishlist ?>
-                <div class="action-box addto-textlink clearer">                        
-                        <?php if ($this->canEmailToFriend()): ?>
-                            <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
-                        <?php endif; ?>
-                        <?php echo $addtoBoxHtml; ?>
-                </div>
-            <?php endif; ?>
+
             
             <?php echo $this->getChildHtml('alert_urls'); //alerts ?>
             <?php echo $this->getChildHtml('other'); ?>
@@ -295,7 +288,7 @@ if ($_count) {
 				</div>
             </div> <!-- end: product-secondary-column -->
         <?php endif; ?>
-
+        <div style="float: left">
         <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
 			<?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
         		<div class="box-additional grid-full">
@@ -303,6 +296,16 @@ if ($_count) {
 				</div>
         	<?php endif; ?>
         <?php endif; ?>
+
+        <?php if ($addtoBoxHtml = $this->getChildHtml('addto')): //compare, wishlist ?>
+            <div class="action-box addto-textlink clearer">
+                <?php if ($this->canEmailToFriend()): ?>
+                    <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+                <?php endif; ?>
+                <?php echo $addtoBoxHtml; ?>
+            </div>
+        <?php endif; ?>
+        </div>
 
     </form>
     
