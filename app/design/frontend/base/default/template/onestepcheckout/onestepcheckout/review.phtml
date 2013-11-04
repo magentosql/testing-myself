@@ -54,15 +54,6 @@
 </div>
 <?php endif;?>
 
-<!-- Gift message for order -->
-<?php if ($_helper->enableGiftMessage()):?>
-<div class="onestepcheckout-giftmessage">    
-	<?php if (!$this->getQuote()->isVirtual()): ?>
-    <?php echo Mage::helper('onestepcheckout/message')->getInline('onepage_checkout', $this->getQuote(), $this->getDontDisplayContainer()) ?>
-	<?php endif; ?>
-</div>
-<?php endif;?>
-
 <!-- Newsletter Subscriber -->
 <?php if ($_helper->isShowNewsletter()):?>
 <div class="onestepcheckout-newsletter">
@@ -85,6 +76,15 @@
 	</label>
 </div>
 <?php endif;?>
+<!-- Gift message for order -->
+<?php if ($_helper->enableGiftMessage()):?>
+<div class="onestepcheckout-giftmessage">    
+	<?php if (!$this->getQuote()->isVirtual()): ?>
+    <?php echo Mage::helper('onestepcheckout/message')->getInline('onepage_checkout', $this->getQuote(), $this->getDontDisplayContainer()) ?>
+	<?php endif; ?>
+</div>
+<?php endif;?>
+
 <!-- Survey -->
 <?php if($_helper->enableSurvey()):?>
 	<?php
