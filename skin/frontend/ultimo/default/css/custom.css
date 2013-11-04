@@ -935,3 +935,7 @@ body.cms-contact p{font-family:"GillSansMTStd",sans-serif;margin-bottom:1.6em}
 
 
 .shipping-note {font-style:italic;}
+
+.gift-messages {margin-top: 0px;}
+.order-review-info .onestepcheckout-giftmessage {padding-top: 15px;}
+.order-review-info .onestepcheckout-newsletter {margin-top: 30px;}
