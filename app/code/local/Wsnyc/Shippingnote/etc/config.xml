@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Shippingnote>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Wsnyc_Shippingnote>
     </modules>
     <global>
@@ -19,5 +19,24 @@
                 </setup>
             </wsnyc_shippingnote_setup>
         </resources>
+        <wsnyc_shippingnote>
+            <basic_notes>
+                <enabled>true</enabled>
+                <notes>
+                    <note1>
+                        <noteText><![CDATA[All-Purpose Bleach Alternative ships with Ground Service.]]></noteText>
+                        <skus><![CDATA[H-01,WHDUO,SBI-01,BH-01,DUOH01-4,DUOH01-2]]></skus>
+                    </note1>
+                    <note2>
+                        <noteText><![CDATA[Ships directly from the factory with UPS Ground Service.]]></noteText>
+                        <skus><![CDATA[A-051,A-052,A-053,A-057,A-056]]></skus>
+                    </note2>
+                    <note3>
+                        <noteText><![CDATA[Complementary return shipping for Washing Service Items.]]></noteText>
+                        <skus><![CDATA[WS-Bag,WS-Bathrobe,WS-Blanket,WS-BlanketQueen,WS-Blouse,WS-Bra,WS-Curtain/Drapes,WS-Dress,WS-Dress Shirt,WS-Duvet Covers,WS-Gloves,WS-Handkerchief,WS-Hats,WS-Hosiery,WS-Jacket,WS-Jeans,WS-Napkins,WS-Nightgown,WS-Pajamas,WS-Pants,WS-Pillow,WS-Pillow Case,WS-Pillow Sham,WS-Placemat,WS-Scarf,WS-Sheet,WS-Shorts,WS-Skirt,WS-Slip,WS-Socks,WS-Sweater,WS-Swimwear,WS-Table cloth,WS-Uggs,WS-Underwear,WS-Wedding Gown,WS-Blanketqueen,WS-Comforter,WS-CurtainDrapes,WS-DressShirt,WS-DuvetCovers,WS-Pillowcase,WS-PillowSham,ws-shirts,WS-Tablecloth]]></skus>
+                    </note3>
+                </notes>
+            </basic_notes>
+        </wsnyc_shippingnote>
     </global>
 </config>
