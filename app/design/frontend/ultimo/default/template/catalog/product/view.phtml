@@ -466,7 +466,7 @@ if ($_count) {
                 $shippingNote = $_product->getShippingNote();
                 if(!empty($shippingNote))
                 {
-                    $description .=  nl2br('<h3>Shipping Note</h3>' . $shippingNote);
+                    $description .=  nl2br('<p class="shipping-note">' . $shippingNote .'</p>');
                 }
 
                 $sTabDetails = $_helper->productAttribute($_product, $description , 'short_description');

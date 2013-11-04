@@ -92,8 +92,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             $shippingNote = $pr->getShippingNote(); ?>
         <?php if(!empty($shippingNote)): ?>
         <dl>
-            <dt>Shipping note</dt>
-            <dd><?php echo $shippingNote ?></dd>
+            <dd class="shipping-note"><?php echo $shippingNote ?></dd>
         </dl>
         <?php endif; ?>
         
