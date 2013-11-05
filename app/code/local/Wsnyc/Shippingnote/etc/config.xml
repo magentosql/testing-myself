@@ -24,7 +24,7 @@
                 <enabled>true</enabled>
                 <notes>
                     <note1>
-                        <noteText><![CDATA[All-Purpose Bleach Alternative ships with Ground Service.]]></noteText>
+                        <noteText><![CDATA[Orders including All-Purpose Bleach Alternative must ship Ground.]]></noteText>
                         <skus><![CDATA[H-01,WHDUO,SBI-01,BH-01,DUOH01-4,DUOH01-2]]></skus>
                     </note1>
                     <note2>
