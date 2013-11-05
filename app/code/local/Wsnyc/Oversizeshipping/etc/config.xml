@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Oversizeshipping>
+            <version>0.1.0</version>
+        </Wsnyc_Oversizeshipping>
+    </modules>
+    <global>
+        <models>
+            <wsnyc_oversizeshipping_setup>
+                <class>Wsnyc_Oversizeshipping_Model</class>
+            </wsnyc_oversizeshipping_setup>
+        </models>
+        <resources>
+            <oversizeshipping_setup>
+                <setup>
+                    <module>Wsnyc_Oversizeshipping</module>
+                    <class>Wsnyc_Oversizeshipping_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </oversizeshipping_setup>
+        </resources>
+    </global>
+</config>
