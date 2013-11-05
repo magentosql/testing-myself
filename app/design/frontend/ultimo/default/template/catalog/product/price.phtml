@@ -387,6 +387,9 @@
         </span>
         <?php endif?>
     <?php endif; /* if ($this->getDisplayMinimalPrice() && $_minimalPrice && $_minimalPrice < $_finalPrice): */ ?>
+    <?php if(($oversizedPrice = (float)$_product->getData('oversize_shipping_price')) > 0): ?>
+        and <span class="regular-price"><?php echo $_coreHelper->currency($oversizedPrice, true, true); ?></span> oversized shipping
+    <?php endif;?>
     </div>
 
 <?php else: /* if (!$_product->isGrouped()): */ ?>
