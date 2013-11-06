@@ -526,3 +526,13 @@ input.input-text, select, textarea,
 #product-options-wrapper p.required {float:left; position: relative; top:0; left: 0; right: auto}
 
 div.action-box.addto-textlink.clearer {float: left; margin-left: 20px; width: 545px;}
+
+#cboxWrapper, #cboxContent {background: none !important;}
+#inline_colorbox
+{
+    width: 600px;
+    height: 290px;
+    padding: 80px 50px 70px 10px;
+    background: url('../images/2013HolidayShipping.jpg') top left no-repeat;
+
+}
