@@ -41,14 +41,12 @@
 
 <?php
     $block = Mage::getModel('cms/block')->load('holiday-orders');
+    $cookie = Mage::getSingleton('core/cookie');
+    $cookie->set('holiday-order', '1' ,time()+31536000,'/');
 ?>
 
-<?php
-$cookie = Mage::getSingleton('core/cookie');
-$cookie->set('holiday-order', '1' ,time()+31536000,'/');
-?>
 
-<?php if($block->getIsActive() && !$cookie->get('holiday-order')): ?>
+<?php if($block->getIsActive()): ?>
 
 <div style='display:none'>
     <a href="#inline_colorbox" class="openHolidayPopup">Open holiday Popup</a>
@@ -66,10 +64,10 @@ $cookie->set('holiday-order', '1' ,time()+31536000,'/');
             inline  : true,
             opacity : 0.5,
             speed   : 300,
-            width   : 970
+            width   : 696
         });
 
-        $('.openHolidayPopup').click();
+        <?php if(!$cookie->get('holiday-order')): ?>$('.openHolidayPopup').click();<?php endif; ?>
     });
 </script>
 <?php endif; ?>
@@ -88,7 +86,7 @@ $cookie->set('holiday-order', '1' ,time()+31536000,'/');
                     $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier');
                 ?>
                 <?php if($holidayPage &&  $holidayPage->getData('is_active')): ?>
-                    <div class="welcome-msg" style="background: none; margin-top: -8px;"><b class="no-italic"><a href="<?php echo Mage::helper('cms/page')->getPageUrl('holiday-shipping-information') ?>">Holiday shipping information</a></div>
+                    <div class="welcome-msg" style="background: none; margin-top: -8px;"><b class="no-italic"><a href="#inline_colorbox" class="openHolidayPopup">Holiday shipping information</a></div>
                 <?php endif; ?>
 			</div>
             
