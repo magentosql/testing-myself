@@ -35,6 +35,10 @@
                         <noteText><![CDATA[Complementary return shipping for Washing Service Items.]]></noteText>
                         <skus><![CDATA[WS-Bag,WS-Bathrobe,WS-Blanket,WS-BlanketQueen,WS-Blouse,WS-Bra,WS-Curtain/Drapes,WS-Dress,WS-Dress Shirt,WS-Duvet Covers,WS-Gloves,WS-Handkerchief,WS-Hats,WS-Hosiery,WS-Jacket,WS-Jeans,WS-Napkins,WS-Nightgown,WS-Pajamas,WS-Pants,WS-Pillow,WS-Pillow Case,WS-Pillow Sham,WS-Placemat,WS-Scarf,WS-Sheet,WS-Shorts,WS-Skirt,WS-Slip,WS-Socks,WS-Sweater,WS-Swimwear,WS-Table cloth,WS-Uggs,WS-Underwear,WS-Wedding Gown,WS-Blanketqueen,WS-Comforter,WS-CurtainDrapes,WS-DressShirt,WS-DuvetCovers,WS-Pillowcase,WS-PillowSham,ws-shirts,WS-Tablecloth]]></skus>
                     </note3>
+                    <note4>
+                        <noteText><![CDATA[This item is handmade, please allow up to 6-8 weeks to ship.]]></noteText>
+                        <skus><![CDATA[A-010,A-011,A-012,A-013,A-014,A-016,A-019,A-043,DuoHamper,StorageCombo]]></skus>
+                    </note4>
                 </notes>
             </basic_notes>
         </wsnyc_shippingnote>
