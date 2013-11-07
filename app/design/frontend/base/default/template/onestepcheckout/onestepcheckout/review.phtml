@@ -54,6 +54,15 @@
 </div>
 <?php endif;?>
 
+<!-- Gift message for order -->
+<?php if ($_helper->enableGiftMessage()):?>
+<div class="onestepcheckout-giftmessage">    
+	<?php if (!$this->getQuote()->isVirtual()): ?>
+    <?php echo Mage::helper('onestepcheckout/message')->getInline('onepage_checkout', $this->getQuote(), $this->getDontDisplayContainer()) ?>
+	<?php endif; ?>
+</div>
+<?php endif;?>
+
 <!-- Newsletter Subscriber -->
 <?php if ($_helper->isShowNewsletter()):?>
 <div class="onestepcheckout-newsletter">
@@ -67,13 +76,22 @@
 <?php $giftwrapAmount = $_helper->getOrderGiftwrapAmount();?>
 <?php $addGiftwrapUrl = $this->getUrl('onestepcheckout/ajax/add_giftwrap');?>
 <div class="onestepcheckout-giftwrap">
+    <div class="question-box">
+        <label for="onestepcheckout_giftwrap_checkbox"><?php echo $this->__('Would you like to add a gift box?');?>
+		(<span>+<?php echo Mage::helper('checkout')->formatPrice($giftwrapAmount); ?></span>)
+	</label>
+    </div>
+    <div class="image">
+            <img src="<?php echo $this->getSkinUrl('images/giftbox-regular.jpg') ?>">
+        </div>
+        <div class="description">
+    
 	<input class="onestepcheckout_giftwrap_checkbox" type="checkbox" name="onestepcheckout_giftwrap_checkbox" 
            id="onestepcheckout_giftwrap_checkbox" 
            onclick="addGiftwrap('<?php echo $addGiftwrapUrl ?>', '');"
            value="1" <?php if ($_helper->checkGiftwrapSession()):?> checked="checked"<?php endif;?>/>
-	<label for="onestepcheckout_giftwrap_checkbox"><?php echo $this->__('Gift wrap');?>
-		<span><?php echo Mage::helper('checkout')->formatPrice($giftwrapAmount); ?></span>
-	</label>
+	<?php echo $this->__('Yes! Please put my order in The Laundress Gift Box.');?>
+        </div>
 </div>
 <?php endif;?>
 
@@ -82,13 +100,21 @@
     <?php $giftwrapAmount = $_helper->getOrderGiftwrapAmount('holiday');?>
     <?php $addGiftwrapUrl = $this->getUrl('onestepcheckout/ajax/add_giftwrap');?>
     <div class="onestepcheckout-giftwrap">
+        <div class="question-box">
+        <label for="onestepcheckout_holiday_giftwrap_checkbox"><?php echo $this->__('Would you like to add a holiday gift box?');?>
+            (<span>+<?php echo Mage::helper('checkout')->formatPrice($giftwrapAmount); ?></span>)
+        </label>
+    </div>
+        <div class="image">
+            <img src="<?php echo $this->getSkinUrl('images/giftbox-holiday.jpg') ?>">
+        </div>
+        <div class="description">
         <input class="onestepcheckout_giftwrap_checkbox" type="checkbox" name="onestepcheckout_holiday_giftwrap_checkbox"
                id="onestepcheckout_holiday_giftwrap_checkbox"
                onclick="addGiftwrap('<?php echo $addGiftwrapUrl ?>', 'holiday_');"
                value="1" <?php if ($_helper->checkHolidayGiftwrapSession()):?> checked="checked"<?php endif;?>/>
-        <label for="onestepcheckout_holiday_giftwrap_checkbox"><?php echo $this->__('Holiday Gift wrap');?>
-            <span><?php echo Mage::helper('checkout')->formatPrice($giftwrapAmount); ?></span>
-        </label>
+        <?php echo $this->__('Yes! Please put my order in The Laundress Holiday Gift Box.');?>
+        </div>
     </div>
 <?php endif;?>
 
