@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Oversizeshipping>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Wsnyc_Oversizeshipping>
     </modules>
     <global>
@@ -19,5 +19,16 @@
                 </setup>
             </oversizeshipping_setup>
         </resources>
+        <events>
+            <sales_quote_address_collect_totals_after>
+                <observers>
+                    <append_price_to_shipping_for_oversized_items>
+                        <type>singleton</type>
+                        <class>Wsnyc_Oversizeshipping_Model_Observer</class>
+                        <method>appendPriceToShipping</method>
+                    </append_price_to_shipping_for_oversized_items>
+                </observers>
+            </sales_quote_address_collect_totals_after>
+        </events>
     </global>
 </config>
