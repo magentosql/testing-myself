@@ -216,7 +216,7 @@ body.active-clean-and-learn #blog-default-slideshow {
 	margin-bottom: 0;
 }
 body.active-clean-and-learn #blog-default-slideshow .slidesjs-pagination {
-	top:300px;
+	margin-top: -40px;
 }
 .clean-and-learn-index-related {
 	border-top: none !important;
@@ -283,6 +283,11 @@ body.active-clean-and-learn #blog-default-slideshow .slidesjs-pagination {
     margin-right: 12px;
     float: left;
 }
+	body.ask-the-laundress #post-list .item {
+		margin-right: 0;
+		float: none;
+	}
+
 	.wordpress-post-category-view #post-list .row-end {
 		margin-right: 0 !important;
 	}
@@ -290,10 +295,30 @@ body.active-clean-and-learn #blog-default-slideshow .slidesjs-pagination {
 			margin-right: 13px !important;
 		}
 
+/* special rules for clean and learn using the smae style as home */
+.wordpress-post-category-view.active-clean-and-learn #post-list .item {
+    float: none;
+    width: auto;
+}
 
+.wordpress-post-category-view.active-clean-and-learn.category-177 #post-list .item,
+.wordpress-post-category-view.active-clean-and-learn.category-183 #post-list .item,
+.wordpress-post-category-view.active-clean-and-learn.category-239 #post-list .item,
+.wordpress-post-category-view.active-clean-and-learn.category-203 #post-list .item,
+.wordpress-post-category-view.active-clean-and-learn.category-176 #post-list .item,
+.wordpress-post-category-view.active-clean-and-learn.open-resources #post-list .item {
+    float: left;
+    width: 229px;
+}
+                
+                
 .post-list .item .post-list-item-small {
     width: 230px;
     min-height: 370px;    
+}
+
+body.active-archive .post-list .item .post-list-item-small {
+	min-height: 350px;
 }
 
 .post-list .item .post-list-item-small h2 {
@@ -525,10 +550,14 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
     overflow: hidden;
 }
 
+.blog .standard-post-view {
+	position: relative;
+}
+
 .post-view h2 {
     font-family: "Sorts Mill Goudy Regular";
     font-size: 15px;
-    margin-bottom: 0.4em;
+    margin-bottom: -5px;
     text-align: center;
     text-transform: uppercase;
 }
@@ -572,7 +601,6 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
 }
 
 .blog .post-view .post-entry, .blog .post-list .post-entry {
-    width: 670px;
     margin: 0 auto 2em;   
 }
 
@@ -580,6 +608,31 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
     font-family: "Sorts Mill Goudy Regular", serif;
     font-size: 15px;
     line-height: 22px;
+}
+
+.post-view-fabric li {
+	font-family: "Sorts Mill Goudy Regular", serif;
+	font-size: 15px;
+	line-height: 22px;
+}
+
+.post-view-fabric .post-entry ul {
+	list-style: disc; 
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+
+.accordion ul {
+	display: block !important;
+	list-style: disc; 
+	list-style-type: disc;
+	list-style-position: outside;
+	padding-left: 20px;
+}
+
+.accordion ul li {
+	list-style: disc; 
+	list-style-type: disc;
 }
 
 .blog .post-view .related-posts .more-in {
@@ -617,8 +670,30 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
    text-align: right;
    float: right;
 }
+	.post-view .post-social.standard-social {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
 	.post-entry .post-social {
 		margin: 0 10px 0 0;
+	}
+	
+	.blog .post-social.fabric-social, .blog .post-social.material-social, .post-view .post-social.welove-people-social {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	
+	.post-view .post-social.standard-social {
+		top: 0;
+	}
+	
+	.post-view .post-social.welove-things-social {
+		position: absolute;
+		bottom: -50px;
+		left: 20px;
 	}
 
 .post-view > .post-social {
@@ -626,6 +701,7 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
 	right: 5px;
 	top: 15px;
 }
+
 
 .blog .post-social .post-social-links, .post-entry .post-social .post-social-links {
 	margin-top: 4px;
@@ -698,7 +774,8 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
 /* ----- things we love */
 .blog .post-view.post-view-welove-things .grid12-4 {
     padding-left: 2%;
-    width: 29.33%;   
+    width: 29.33%;
+    margin-bottom: 80px;
 }
 
 .blog .post-view.post-view-welove-things .post-entry {
@@ -718,6 +795,23 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
     overflow: hidden;
 }
 
+/* ---- people we love */
+
+.blog .post-view.post-view-welove-people .post-entry {
+    width: 715px;
+}
+
+.blog .post-view.post-view-welove-people .post-entry h4,
+.blog .post-view.post-view-welove-people .post-entry p strong {
+    font-family: "GillSansMTStd-Bold", serif;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.blog .post-view.post-view-welove-people .post-entry p {
+    font-size: 13px;
+}
+
 /* ---- pinterest style list */
 
 .pinterest-list li.p-list-item {
@@ -728,22 +822,21 @@ body.wordpress-search-index .post-list #post-list li .post-list-item {
 }
 
     .pinterest-list li.p-list-item .p-list-item-content {        
-        opacity: 0;
+        opacity: 0; 
         position: absolute;
         top: 0;
         right: 0;
         left: 0;
         bottom: 0;
         background-image: url('../images/blog_welove_plist-overlay.png');
-        padding: 12px 10px;
-        -moz-transition:opacity 300ms;
+        padding: 12px 10px;        
+	-moz-transition:opacity 300ms;
         -webkit-transition:opacity 300ms;
         -o-transition:opacity 300ms;
         transition:opacity 300ms;
     }        
-
     .pinterest-list li.p-list-item:hover .p-list-item-content {
-        opacity: 1.0;       
+        opacity: 1.0;
     }
     
     

@@ -34,7 +34,8 @@
 <head>
 <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php $helper = Mage::helper('wordpress/category'); ?>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().' category-'.$helper->getCurrentContext().'"':'' ?>>
 <?php echo $this->getChildHtml('after_body_start') ?>
 <div class="wrapper">
     <?php echo $this->getChildHtml('global_notices') ?>
