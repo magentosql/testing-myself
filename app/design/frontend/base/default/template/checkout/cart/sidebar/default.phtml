@@ -123,11 +123,16 @@
 
     <?php endif; //Can apply MSRP ?>
 
-        <?php if ($_options = $this->getOptionList()):?>
+        <?php 
+        if ($_options = $this->getOptionList()):
+        foreach ($_options as $optionPrime) {break;}
+        if (count($_options) != 1 || $optionPrime['label'] != "Monogram ID"):
+	?>
         <div class="truncated">
           <div class="truncated_full_value">
             <dl class="item-options">
                 <?php foreach ($_options as $_option) : ?>
+                <?php if ($_option['label'] == "Monogram ID") continue; ?>
                 <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
                 <dd>
                     <?php if (is_array($_option['value'])): ?>
@@ -141,6 +146,9 @@
           </div>
         <a href="#" onclick="return false;" class="details"><?php echo $this->__('Details') ?></a>
         </div>
-        <?php endif; ?>
+        <?php 
+          endif; 
+          endif;
+        ?>
     </div>
 </li>

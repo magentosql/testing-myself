@@ -25,6 +25,9 @@
  */
 ?>
 <?php $_option = $this->getOption(); ?>
+<?php if ($_option->getTitle() == "Monogram ID"): ?>
+<div class="hidden">
+<?php endif; ?>
 <dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->htmlEscape($_option->getTitle()) ?></label>
     <?php echo $this->getFormatedPrice() ?></dt>
 <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
@@ -39,3 +42,35 @@
     <?php endif; ?>
     </div>
 </dd>
+<?php if ($_option->getTitle() == "Monogram ID"): ?>
+</div>
+<script type="text/javascript">
+jQuery(function ($) {
+	$(document).ready(function () {
+		$("#monogram-check").change(function () {
+			var monId = $("#options_<?php echo $_option->getId() ?>_text");
+			if (!$(this).is(":checked")) {
+				monId.val('');
+			} else {
+				monId.val(createUUID());
+			}
+		});
+	});
+
+	function createUUID() {
+		var s = [];
+		var hexDigits = "0123456789abcdef";
+		for (var i = 0; i < 36; i++) {
+			s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+		}
+		s[14] = "4";
+		s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);
+		s[8] = s[13] = s[18] = s[23] = "-";
+
+		var uuid = s.join("");
+		return uuid;
+	}
+});
+
+</script>
+<?php endif; ?>

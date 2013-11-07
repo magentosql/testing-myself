@@ -1176,7 +1176,7 @@ ul.disc ul li { background:url(../images/infortis/_shared/cck/list/bullet-small.
 .accordion ul {
 	float:left;
 	display:block;
-	width:100%;
+	width:auto;
 	padding:0;
 	margin:0;
 }

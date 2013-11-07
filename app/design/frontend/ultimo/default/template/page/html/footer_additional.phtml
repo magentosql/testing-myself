@@ -120,6 +120,9 @@
 	        }
 	        
         });
+        
+        // Blog Slidebar level 2
+        $('.blog .sidebar ul.level1 li.active').next('ul.level2').css('display','block')
                 
 		<?php //Activate mobile menu ?>
 		activateMobileMenu(jQuery);
@@ -275,7 +278,7 @@
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
-		})
+		});
 
 		$(".minus").click(function(e){
 			e.preventDefault();
@@ -291,7 +294,7 @@
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
-		})
+		});
 
 
                 var washingItemsRequests = 0;

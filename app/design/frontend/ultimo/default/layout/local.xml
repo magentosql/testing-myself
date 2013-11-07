@@ -8,7 +8,7 @@
                     
 			<!-- jQuery -->
 			<action method="addJs"><script>infortis/jquery/jquery-1.7.2.min.js</script></action>
-			<action method="addJs"><script>infortis/jquery/jquery-noconflict.js</script></action>
+			<action method="addJs"><file>infortis/jquery/jquery-noconflict.js</file></action>
 
 			<!-- jQuery plugins -->
 			<action method="addJs"><script>infortis/jquery/plugins/jquery.easing.1.3.js</script></action>
@@ -28,7 +28,7 @@
 			<action ifconfig="ultimo/mainmenu/wide_menu" method="removeItem"><type>js</type><name>varien/menu.js</name><params/></action>
 			
 			<!-- CSS -->
-            <action method="addItem"><type>skin_css</type><name>css/fonts.css</name><params/></action>
+			<action method="addItem"><type>skin_css</type><name>css/fonts.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-nav.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-cck.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/itemslider.css</name><params/></action>
