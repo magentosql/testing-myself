@@ -483,9 +483,10 @@ function checkPaymentMethod(){
 	return pay;
 }
 
-function addGiftwrap(url){                                          
+function addGiftwrap(url, giftwraptype){
     var parameters = {};
-    if(!$('onestepcheckout_giftwrap_checkbox').checked) {
+    parameters['giftwraptype'] = giftwraptype;
+    if(!$('onestepcheckout_'+giftwraptype+'giftwrap_checkbox').checked) {
         parameters['remove'] = 1;
     }else{
 		var options = document.getElementsByName('payment[method]');

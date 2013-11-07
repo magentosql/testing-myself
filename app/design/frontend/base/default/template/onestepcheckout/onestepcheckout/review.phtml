@@ -62,20 +62,36 @@
 </div>
 <?php endif;?>
 
-<!-- Gift wrap for order -->
+<!-- Regular Gift wrap for order -->
 <?php if ($_helper->enableGiftWrap() && !$_helper->enableGiftwrapModule()):?>
 <?php $giftwrapAmount = $_helper->getOrderGiftwrapAmount();?>
 <?php $addGiftwrapUrl = $this->getUrl('onestepcheckout/ajax/add_giftwrap');?>
 <div class="onestepcheckout-giftwrap">
 	<input class="onestepcheckout_giftwrap_checkbox" type="checkbox" name="onestepcheckout_giftwrap_checkbox" 
            id="onestepcheckout_giftwrap_checkbox" 
-           onclick="addGiftwrap('<?php echo $addGiftwrapUrl ?>');"
+           onclick="addGiftwrap('<?php echo $addGiftwrapUrl ?>', '');"
            value="1" <?php if ($_helper->checkGiftwrapSession()):?> checked="checked"<?php endif;?>/>
 	<label for="onestepcheckout_giftwrap_checkbox"><?php echo $this->__('Gift wrap');?>
 		<span><?php echo Mage::helper('checkout')->formatPrice($giftwrapAmount); ?></span>
 	</label>
 </div>
 <?php endif;?>
+
+<!-- Holiday Gift wrap for order -->
+<?php if ($_helper->enableHolidayGiftWrap() && !$_helper->enableGiftwrapModule()):?>
+    <?php $giftwrapAmount = $_helper->getOrderGiftwrapAmount('holiday');?>
+    <?php $addGiftwrapUrl = $this->getUrl('onestepcheckout/ajax/add_giftwrap');?>
+    <div class="onestepcheckout-giftwrap">
+        <input class="onestepcheckout_giftwrap_checkbox" type="checkbox" name="onestepcheckout_holiday_giftwrap_checkbox"
+               id="onestepcheckout_holiday_giftwrap_checkbox"
+               onclick="addGiftwrap('<?php echo $addGiftwrapUrl ?>', 'holiday_');"
+               value="1" <?php if ($_helper->checkHolidayGiftwrapSession()):?> checked="checked"<?php endif;?>/>
+        <label for="onestepcheckout_holiday_giftwrap_checkbox"><?php echo $this->__('Holiday Gift wrap');?>
+            <span><?php echo Mage::helper('checkout')->formatPrice($giftwrapAmount); ?></span>
+        </label>
+    </div>
+<?php endif;?>
+
 <!-- Gift message for order -->
 <?php if ($_helper->enableGiftMessage()):?>
 <div class="onestepcheckout-giftmessage">    
