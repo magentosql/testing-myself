@@ -14,6 +14,9 @@ $helper = Mage::helper('wordpress/category');
 // id of current category
 $iCurrentCategoryId = $helper->getCurrentContext();
 
+// defined which post renderer to use for each section
+$aCategoriesRendererDefault = array(176, 177,183,203,239);
+
 ?>
 
 <div class="block block-related block-related-posts">
@@ -49,23 +52,57 @@ $iCurrentCategoryId = $helper->getCurrentContext();
         <strong>Specialty Resources</strong>                        
     </div>
     <?php } ?>
-
-    <?php $posts = $this->getPosts() ?>
-    <?php if (count($posts) > 0): ?>
-            <?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
-                    <?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
+    
+    <?php // list posts based on whats defined at the top ?>
+    <?php if(in_array($iCurrentCategoryId, $aCategoriesRendererDefault)) { ?>
+        
+            <?php $posts = $this->getPosts() ?>
+            <?php if (count($posts) > 0 && $iCurrentCategoryId != 239): ?>
+                    <?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+                            <?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
+                    <?php endif; ?>
+                    <div class="post-list">
+                            <ul id="post-list">
+                                    <?php foreach($posts as $post): ?>
+                                            <li class="item">          
+                                                <?php if(in_array($iCurrentCategoryId, $aCategoriesRendererDefault)) { ?>
+                                                    <?php echo $this->getPostRenderer($post)->toHtml() ?>
+                                                <?php } else { ?>
+                                                    <?php echo $this->getPostRenderer($post, 'wordpress/post/list/renderer/homepage.phtml')->toHtml() ?>
+                                                <?php } ?>                                                                                    
+                                            </li>
+                                    <?php endforeach; ?>
+                            </ul>
+                            <script type="text/javascript">decorateList($('post-list'));</script>
+                            <?php echo $this->getPagerHtml() ?>
+                    </div>
             <?php endif; ?>
-            <div class="post-list">
-                    <ul id="post-list">
-                            <?php foreach($posts as $post): ?>
-                                    <li class="item">
-                                            <?php echo $this->getPostRenderer($post)->toHtml() ?>
-                                    </li>
-                            <?php endforeach; ?>
-                    </ul>
-                    <script type="text/javascript">decorateList($('post-list'));</script>
-                    <?php echo $this->getPagerHtml() ?>
-            </div>
-    <?php endif; ?>
+    
+    <?php } else { ?>
+                
+            <?php 
+            $posts = $this->getPosts();            
+            $renderer = "wordpress/post/list/renderer/homepage.phtml";
+            ?>
+            <?php if (count($posts) > 0): ?>
+                    <?php if ($this->helper('wordpress/plugin_shareThis')->canDisplayOnPost()): ?>
+                            <?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
+                    <?php endif; ?>
+                    <div class="post-list">
+                            <ul id="post-list">
+                                    <?php foreach($posts as $post): ?>
+                                            <li class="item">                                                    
+                                                    <?php echo $this->getPostRenderer($post, $renderer)->toHtml(); ?>
+                                            </li>
+                                    <?php endforeach; ?>
+                            </ul>
+                            <script type="text/javascript">decorateList($('post-list'));</script>
+                            <?php echo $this->getPagerHtml() ?>
+                    </div>
+            <?php endif; ?>    
+    
+    <?php } ?> 
+     
+    
 
 </div>

@@ -2,6 +2,12 @@
 $helper = Mage::helper('wordpress/category');
 $featuredInCategories = $helper->getSubCategories(184);
 $inStoreCategories = $helper->getSubCategories(187);
+usort($featuredInCategories, function ($elem1, $elem2) {
+     return strcmp($elem1['name'], $elem2['name']);
+});
+usort($inStoreCategories, function ($elem1, $elem2) {
+     return strcmp($elem1['name'], $elem2['name']);
+});
 ?>
 
 <div class="wp-sidebar as-seen-in">

@@ -24,6 +24,18 @@ $aSliderActive = Array(
 
 ?>
 
+<div class="page-title">
+	<?php if($iCurrentCategoryId == 180) : ?>
+	<h1>Style</h1>
+	<?php elseif($iCurrentCategoryId == 181) : ?>
+	<h1>Culture</h1>
+	<?php elseif($iCurrentCategoryId == 182) : ?>
+	<h1>Travel</h1>
+	<?php elseif($iCurrentCategoryId == 309) : ?>
+	<h1>Entertaining</h1>
+	<?php endif ; ?>
+</div>
+
 <?php if(isset($aSliderActive[$iCurrentCategoryId])) { ?>
 <div id="blog-default-slideshow" class="blog-slideshow slideshow-with-details">     
     

@@ -14,12 +14,15 @@
 		<?php echo $this->helper('wordpress/plugin_shareThis')->getJavascriptHtml() ?>
 	<?php endif; ?>
                 
-        <?php if($post->getCustomField('wpcf-wide-featured-image')) { ?>
-                <div class="featured-image">
+        <?php 
+		/*
+		Commented out because it's showing wide-image which is not needed
+		if($post->getCustomField('wpcf-wide-featured-image')) { ?>
+                <div class="featured-image ">
                     <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
                     <img src="<?php print $post->getCustomField('wpcf-wide-featured-image'); ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
                 </div>
-        <?php } else if($featuredImage = $post->getFeaturedImage()): ?>    
+        <?php  } else*/ if($featuredImage = $post->getFeaturedImage()): ?>    
                 <div class="featured-image">                                         
                         <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('post-main') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
                 </div>

@@ -1,5 +1,8 @@
+<?php $iCurrentCategoryId = Mage::registry('wordpress_category'); ?>
+<?php if($iCurrentCategoryId->getId() == '177') { ?>
 <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cleanandlearn_washing_top')->toHtml() ?>
 
 <div class="top_block_text">       
 	<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cleanandlearn_washing_top_text')->toHtml() ?>
 </div>
+<?php } ?>

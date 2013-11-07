@@ -1,8 +1,20 @@
 <?php if ($post): ?>
 
-        <div class="page-title">
-                <h1>We Love</h1>
+	<div class="page-title">
+        <div class="grid12-3">&nbsp;
+            <?php if (($previous = $post->getPreviousPost()) !== false): ?>
+		<a href="<?php echo $previous->getPermalink() ?>" class="post-skip post-skip-previous" title="<?php echo $this->escapeHtml($previous->getPostTitle()) ?>">&larr; <?php echo $this->__('Previous Post') ?></a>
+	<?php endif; ?>
         </div>
+        <div class="grid12-6" >
+            <h1><?php print $post->getParentCategory()->getName(); ?></h1>
+        </div>
+        <div class="grid12-3" >&nbsp;
+            <?php if (($next = $post->getNextPost()) !== false): ?>
+		<a href="<?php echo $next->getPermalink() ?>" class="post-skip post-skip-next" title="<?php echo $this->escapeHtml($next->getPostTitle()) ?>"><?php echo $this->__('Next Post') ?> &rarr;</a>
+	<?php endif; ?>
+        </div>
+    </div>
 
 	<?php 
 		$helper = $this->helper('wordpress');
@@ -15,8 +27,14 @@
 	<div class="post-view post-view-welove-things">      
                                         
             <div class="grid12-8" >
-                <?php if ($featuredImage = $post->getFeaturedImage()): ?>                          
-                    <div class="featured-image"><img src="<?php echo $featuredImage->getImageByType('post-main-welove'); ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" width="635" /></div>
+                <?php 
+		if ($featuredImage = $post->getFeaturedImage()): 
+			$__image = $featuredImage->getImageByType('post-main-welove'); 
+			if (!$__image) {
+				$__image = $featuredImage->getImageByType('');
+			}
+		?>
+                    <div class="featured-image"><img src="<?php echo $__image; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" width="635" /></div>
                 <?php endif; ?>
             </div>
             
@@ -24,56 +42,74 @@
                 
                 <h3 class="label-category" ><?php print $post->getParentCategory()->getName(); ?></h3>
                 
-		<h2><?php echo $this->escapeHtml($post->getPostTitle()); ?></h2>                  
+				<h2><?php echo $this->escapeHtml($post->getPostTitle()); ?></h2>                  
                 <p class="post-date" ><?php echo $post->getPostDate(); ?></p>
                                 
-		<div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
-                    
-			<?php if ($post->isViewableForVisitor()): ?>				
-				<?php echo strip_tags($post->getPostContent()); ?>
-			<?php else: ?>
-				<?php echo $this->getPasswordProtectHtml() ?>
-			<?php endif; ?>                                                                                    
-                    
-		</div>
-                                
+				<div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
+		                    
+					<?php if ($post->isViewableForVisitor()): ?>				
+						<?php echo strip_tags($post->getPostContent()); ?>
+					<?php else: ?>
+						<?php echo $this->getPasswordProtectHtml() ?>
+					<?php endif; ?>                                                                                    
+		                    
+				</div>
+				
+				<div class="post-social welove-things-social">
+			    	<div>Share it on</div>
+			        <ul class="post-social-links">
+						<li class="odd"><a href="#share-facebook" class="share-facebook" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>
+						<li class="even"><a href="#" class="share-twitter" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-twitter.gif" alt="Twitter" width="21" height="18" border="0"></a></li>
+						<?php if($featuredImage = $post->getFeaturedImage()) : ?>
+						<li class="odd last"><a href="#" class="share-pinterest" data-url="<?php echo $post->getPermalink() ?>" data-img="<?php echo $post->getFeaturedImage()->getImageByType('post-main') ?>"><img src="/skin/frontend/ultimo/default/images/post-social-pinterest.gif" alt="Pinterest" width="21" height="18" border="0"></a></li>
+						<?php endif; ?>
+					</ul>
+			    </div>
+			    
             </div>
                         
             <?php
-                    // get all gallery blocks
-                    $numPostsToShow = 50;                       
-                                        
-                    $recentPostCollection = Mage::getModel('wordpress/post')->getCollection()
-                            ->addIsPublishedFilter()
-                            ->addPostTypeFilter('gallery-block')
-                            ->addMetaFieldToFilter('_wpcf_belongs_welovepost_id', $post->getId())
-                            ->setOrder('post_date', 'desc')
-                            ->setPageSize($numPostsToShow)
-                    ;
+                // get all gallery blocks
+                $numPostsToShow = 50;                       
+                                    
+                $recentPostCollection = Mage::getModel('wordpress/post')->getCollection()
+                        ->addIsPublishedFilter()
+                        ->addPostTypeFilter('gallery-block')
+                        ->addMetaFieldToFilter('_wpcf_belongs_welovepost_id', $post->getId())
+                        ->setOrder('post_date', 'desc')
+                        ->setPageSize($numPostsToShow)
+                ;
             ?>                                   
-            
+            <script type="text/javascript" >
+		jQuery(document).ready(function() {
+		jQuery('.p-list-item-image').on('mouseenter',function(e){
+			jQuery('.p-list-item-content').fadeOut(300);
+			jQuery(this).closest('li').find(".p-list-item-content").fadeIn(300);
+			e.stopPropagation();
+			});
+		jQuery('.p-list-item-content').on('mouseleave',function(e) {
+			jQuery(this).fadeOut(300);
+			e.stopPropagation();
+			});
+		});
+     	    </script>
             <div class="grid12-12 pinterest-list" >                    
                 <ul class="p-list" >     
                     <?php foreach($recentPostCollection AS $post) { ?>
                     <li class="p-list-item" id="post-<?php print $post->getId(); ?>" >
-                        <div class="p-list-item-image" >  
+                        <div class="p-list-item-image"	>  
                             <?php
                                 $imageHelper = Mage::helper('wordpress/image');
                                 $sImgUrl = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-hot-linked-image'), "post-list-thumb-weloveitem");   
-                                $sImgUrlLarge = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-hot-linked-image'), "medium");   
-                                
-                                // get height based on filename. It's the last 3 digits before the file ending
-                                $tmp = explode('.', $sImgUrl);
-                                $sFileExt = end($tmp);                               
-                                $iExtPos = strpos($sImgUrl, '.' . $sFileExt);
-                                $iImgHeight = substr($sImgUrl, $iExtPos-3, $iExtPos);                               
-                                $iImgHeight = str_replace('.' . $sFileExt, '', $iImgHeight);
-                                
+                                $sImgUrlLarge = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-hot-linked-image'), "post-list-weloveitem");  
+                                if (!$sImgUrlLarge) $sImgUrlLarge = $post->getCustomField('wpcf-hot-linked-image');
+                                                                                               
                             ?>
-                            <img src="<?php print $sImgUrl; ?>" alt="" width="230" height="<?php print $iImgHeight; ?>" />
+                            <img src="<?php print $sImgUrl; ?>" alt="" />
                         </div>
                         <div class="p-list-item-content" >
-                            <h3><?php print $post->getPostTitle(); ?></h3>                        
+                           
+			    <h3><?php print $post->getPostTitle(); ?></h3>  
                             <p class="p-list-item-entry" >
                                 <?php print $post->getCustomField('wpcf-gallery-block-description'); ?>
                             </p>
@@ -83,7 +119,7 @@
                             <div class="p-list-item-actions" >                                
                                 <a href="<?php print $sImgUrlLarge; ?>" class="p-list-item-button readmore" data-postid="<?php print $post->getId(); ?>" >Read More</a>                                
                                 <?php if($post->getCustomField('wpcf-shop-now-url')) { ?>
-                                <a href="<?php print $post->getCustomField('wpcf-shop-now-url'); ?>" class="p-list-item-button" >Shop Now</a>
+                                <a href="<?php print $post->getCustomField('wpcf-shop-now-url'); ?>" class="p-list-item-button btn-shopnow" >Shop Now</a>
                                 <?php } ?>
                             </div>
                             <div class="p-list-item-share" >
@@ -106,14 +142,38 @@
                 // Image links displayed as a group
                 jQuery('a.readmore').colorbox({
                     rel:'readmore',
-                    onComplete:function(){ 
-                        var $postItem = jQuery('#post-' + jQuery(this).attr('data-postid'));
-                        var longDesc = $postItem.find('.p-list-item-entry-full').html();
-                        var headline = $postItem.find('h3').html();
+                    onComplete:function(e){ 
                         
-                        var tldContent = jQuery('<div id="cBoxTldContent"></div>');
+                        // remove old contents
+                        jQuery('#cboxContent').find('#cBoxTldContent').remove();
+                        
+                        var $postItem = jQuery('#post-' + jQuery(this).attr('data-postid'));
+                        var longDesc = $postItem.find('.p-list-item-entry-full').html().trim();
+                        var headline = $postItem.find('h3').html();
+                        var shopnow = $postItem.find('.p-list-item-button.btn-shopnow').clone();
+                            
+                        var tldContent = jQuery('<div id="cBoxTldContent" style="position: absolute; background-color: rgba(255,255,255,0.9); right: 0; left: 0; bottom: 0px; text-align: left; padding: 20px 13px;"></div>');
+                            jQuery('<h3 style="font-family: \'Sorts Mill Goudy Regular\', serif; font-size: 15px; text-transform: uppercase; text-align: left;">' + headline + '</h3>').appendTo(tldContent);
+                            jQuery('<p style="text-align: left; font-family: \'Sorts Mill Goudy Regular\', serif; font-size: 15px;">' + longDesc + '</p>').appendTo(tldContent);      
+                            
+                            if(shopnow) {                                
+                                jQuery(shopnow).appendTo(tldContent);
+                            }
+                            
+                            shopnow.css({
+                                'background-color' : '#222222',
+                                color: '#fff',
+                                padding: '8px 12px',
+                                'font-family' : '"GillSansMTStd", sans-serif',
+                                'font-size' : '12px',
+                                'text-transform' : 'uppercase',
+                                display: 'inline-block',
+                                'margin-top' : '16px'
+                            });
+                            
                             tldContent.appendTo(jQuery('#cboxContent'));
-                                                    
+                               
+                        
                         
                         
                     }                  

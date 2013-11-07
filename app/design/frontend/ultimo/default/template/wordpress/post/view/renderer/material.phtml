@@ -25,13 +25,18 @@
 
                 <div class="grid4-4" >
                     <h4 class="label-category">How to Clean</h4>
-                    <h3 class="post-category"><?php echo $this->escapeHtml($post->getPostTitle()) ?></h3>                                    
+                    <h3 class="post-category material-post-name"><?php echo $this->escapeHtml($post->getPostTitle()) ?></h3>                                    
+                    <div class="post-social material-social">
+				    	<div>Share it on</div>
+				        <ul class="post-social-links">
+							<li class="odd"><a href="#share-facebook" class="share-facebook" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>
+							<li class="even"><a href="#" class="share-twitter" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-twitter.gif" alt="Twitter" width="21" height="18" border="0"></a></li>
+							<?php if($featuredImage = $post->getFeaturedImage()) : ?>
+							<li class="odd last"><a href="#" class="share-pinterest" data-url="<?php echo $post->getPermalink() ?>" data-img="<?php echo $post->getFeaturedImage()->getImageByType('post-main') ?>"><img src="/skin/frontend/ultimo/default/images/post-social-pinterest.gif" alt="Pinterest" width="21" height="18" border="0"></a></li>
+							<?php endif; ?>
+						</ul>
+				    </div>
                     <div class="post-entry entry std<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
-
-                             <div class="post-social" >
-                                <img src="/skin/frontend/ultimo/default/images/dummy_wp_social.gif" border="0" alt="" />
-                            </div>
-
 
                             <?php if ($post->isViewableForVisitor()): ?>				
                                     <?php echo $post->getPostContent() ?>
@@ -49,7 +54,7 @@
                     <ul id="accordion-howto" class="accordion">
                         <?php 
                             $cathelper = Mage::helper('wordpress/category');
-                            $steps = $cathelper->getStepsFor('fabric', $post->getId());
+                            $steps = $cathelper->getStepsFor('material', $post->getId());
                                                                                 
                             foreach($steps AS $key => $step) {                                      
                         ?>

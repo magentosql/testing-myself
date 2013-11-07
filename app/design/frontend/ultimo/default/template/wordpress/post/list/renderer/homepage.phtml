@@ -28,7 +28,8 @@
         </div>
         
         
-        <div class="post-action-bar">		
+        <div class="post-action-bar">
+        	<a href="<?php echo $post->getPermalink() ?>#disqus_thread" class="post-comment-button">Add a comment</a>		
 			<ul class="post-social-links">
 				<li class="first even">Share it on</li>
 				<li class="odd"><a href="#share-facebook" class="share-facebook" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>

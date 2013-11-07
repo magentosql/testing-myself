@@ -19,11 +19,26 @@ $iCurrentCategory = $helper->getCurrentContext();
             $data = $helper->getAllPostsByTag(305);                       
         ?>    
         
-        <?php foreach($data AS $post) { ?>            
+        <?php foreach($data AS $post) { ?>
+	    <?php
+		//$catHelper = Mage::helper('category/wordpress');
+		//$slideshowImages = $catHelper->getSlideshowImages($post->getId());
+ 		$slideshowImages = $post->getMetaValue('wpcf-slideshow-image');
+		$slideshowImage = $slideshowImages;
+		
+			?>            
             <div class="slidesjs-slide">
-                <?php if($post->getFeaturedImage()) { ?>
+		<a href="<?php print $post->getPermalink(); ?>">
+		<?php
+		      if ($slideshowImage!= ""){
+			?>
+				<img src="<?php print $slideshowImage; ?>" /> 
+			<?php
+			}	
+                 elseif($post->getFeaturedImage()) { ?>
                     <img src="<?php print $post->getFeaturedImage()->getImageByType('post-main'); ?>" />            
-                <?php } ?>                                
+                <?php } ?> 
+		</a>                               
                 <h2><?php print $post->getPostTitle(); ?></h2>
                 <p class="post-date" ><?php print $post->getPostDate(); ?></p>
                 <div class="read-more" >
@@ -38,7 +53,7 @@ $iCurrentCategory = $helper->getCurrentContext();
     jQuery(function() {
       jQuery('#blog-default-slideshow').slidesjs({
         width: 940,
-        height: 620,
+        height: 800,
         navigation: {
           effect: "slide"
         },

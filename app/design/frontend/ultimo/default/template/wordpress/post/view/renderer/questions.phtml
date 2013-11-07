@@ -17,11 +17,25 @@
         <?php if ($featuredImage = $post->getFeaturedImage()): ?> 
 		<div class="featured-image"><img src="<?php echo $featuredImage['guid']; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></div>
         <?php endif; ?>
-
-		<div class="ask-post-single<?php if (!$post->getFeaturedImage): ?> no-image<?php endif; ?>">                  
-			<h1 class="post-title"><?php echo $this->escapeHtml($post->getPostTitle()) ?></h3>
-			<p class="post-date"><?php echo $postDate ?></p>               
-			<div class="post-entry"><?php echo nl2br($answer[0]['meta_value']) ?></div>
+		
+		
+		<div class="standard-post-view">
+			<div class="post-social welove-people-social">
+		    	<div>Share it on</div>
+		        <ul class="post-social-links">
+					<li class="odd"><a href="#share-facebook" class="share-facebook" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-facebook.gif" alt="Facebook" width="21" height="18" border="0"></a></li>
+					<li class="even"><a href="#" class="share-twitter" data-url="<?php echo $post->getPermalink() ?>"><img src="/skin/frontend/ultimo/default/images/post-social-twitter.gif" alt="Twitter" width="21" height="18" border="0"></a></li>
+					<?php if($featuredImage = $post->getFeaturedImage()) : ?>
+					<li class="odd last"><a href="#" class="share-pinterest" data-url="<?php echo $post->getPermalink() ?>" data-img="<?php echo $post->getFeaturedImage()->getImageByType('post-main') ?>"><img src="/skin/frontend/ultimo/default/images/post-social-pinterest.gif" alt="Pinterest" width="21" height="18" border="0"></a></li>
+					<?php endif; ?>
+				</ul>
+		    </div>
+			
+			<div class="ask-post-single<?php if (!$post->getFeaturedImage): ?> no-image<?php endif; ?>">                  
+				<h1 class="post-title"><?php echo $this->escapeHtml($post->getPostTitle()) ?></h3>
+				<p class="post-date"><?php echo $postDate ?></p>               
+				<div class="post-entry"><?php echo nl2br($answer[0]['meta_value']) ?></div>
+			</div>
 		</div>
 	
 	</div>

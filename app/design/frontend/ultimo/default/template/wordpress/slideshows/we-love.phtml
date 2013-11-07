@@ -5,47 +5,71 @@
 
 // get helper
 $helper = Mage::helper('wordpress/category');                                                                      
-
 $data = $helper->getAllPostsByTag(321);                        
 
 ?>
 <div id="blog-welove-slideshow" class="blog-slideshow slideshow-with-details"> 
         
-        <?php foreach($data AS $post) { ?>            
-            <div class="slidesjs-slide">                
-                <?php if($post->getCustomField('wpcf-slideshow-image')) { ?>                
-                <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
-                    <?php
-                        $imageHelper = Mage::helper('wordpress/image');
-                        $img = $imageHelper->getImageSizeByURL($post->getCustomField('wpcf-slideshow-image'), "post-main-wide");                        
-                    ?>
-                    <img src="<?php print $img; ?>" />
-                </a>
-                <?php } else if($post->getFeaturedImage()) { ?>
-                <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
-                    <img src="<?php print $post->getFeaturedImage()->getImageByType('post-main-wide'); ?>" />
-                </a>
-                <?php } else { ?>                                
-                <a href="<?php print $post->getPermalink(); ?>" >
-                    <img src="http://placehold.it/959x424" />
-                </a>
-                <?php } ?>
-                <h2><?php print $post->getPostTitle(); ?></h2>
-                <p class="post-date" ><?php print $post->getPostDate(); ?></p>
-                
-                <p class="entry-summary" >
-                    <?php print $post->getExcerpt(); ?>
-                </p>
-                
-                <div class="read-more" >
-                    <a href="<?php print $post->getPermalink(); ?>" >Read more</a>
-                </div>                                      
-            </div>
-        <?php } ?>                       
+        <?php foreach($data AS $post) : ?>  
+        	
+        	<?php
+	        	$slideshowImages = $helper->getSlideshowImages($post->getId());
+        	?>
+        	
+        	<?php if($post->getMetaValue('wpcf-slideshow-image')) : ?>
+        		
+        		<?php foreach($slideshowImages AS $slideshowImage) : ?>
+	        		<div class="slidesjs-slide">                		                              
+		                <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+		                    <img src="<?php echo $slideshowImage ?>">
+		                </a>
+		                <h2><?php print $post->getPostTitle(); ?></h2>
+		                <p class="post-date" ><?php print $post->getPostDate(); ?></p>
+		                
+		                <p class="entry-summary" >
+		                    <?php print $post->getExcerpt(); ?>
+		                </p>
+		                
+		                <div class="read-more" >
+		                    <a href="<?php print $post->getPermalink(); ?>" >Read more</a>
+		                </div>                                      
+		            </div>
+	        	<?php endforeach ; ?>
+        	
+        	<?php else : ?>
+        	
+				<?php foreach($slideshowImages AS $slideshowImage) : ?>
+	        	
+	        		<div class="slidesjs-slide">                
+		                <?php if($post->getFeaturedImage()) : ?>
+		                <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>">
+		                    <img src="<?php print $post->getFeaturedImage()->getImageByType('post-main-wide'); ?>" />
+		                </a>
+		                <?php else : ?>                                
+		                <a href="<?php print $post->getPermalink(); ?>" >
+		                    <img src="http://placehold.it/959x424" />
+		                </a>
+		                <?php endif ; ?>
+		                <h2><?php print $post->getPostTitle(); ?></h2>
+		                <p class="post-date" ><?php print $post->getPostDate(); ?></p>
+		                
+		                <p class="entry-summary" >
+		                    <?php print $post->getExcerpt(); ?>
+		                </p>
+		                
+		                <div class="read-more" >
+		                    <a href="<?php print $post->getPermalink(); ?>" >Read more</a>
+		                </div>                                      
+		            </div>
+	        	<?php endforeach ; ?>
+        	
+        	<?php endif ; ?>
+        	
+
+        <?php endforeach ; ?>                       
 </div>
 
 
-<?php if(isset($data[1])) { ?>
 <script>
     jQuery(function() {
       
@@ -65,7 +89,6 @@ $data = $helper->getAllPostsByTag(321);
         },        
         callback: {
             complete: function(number) {
-                
                 // TODO: Height adaptation
                 //var currentSlide = jQuery(
                 /*
@@ -82,4 +105,3 @@ $data = $helper->getAllPostsByTag(321);
       });
     });
   </script>
-  <?php } ?>
