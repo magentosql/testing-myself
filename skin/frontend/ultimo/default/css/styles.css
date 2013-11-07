@@ -3756,3 +3756,27 @@ a:hover .caption.light3 p { background-color:rgba(255,255,255, 1); color:#000; }
 { display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
 
 .guest-select {width:305px !important;}
+
+
+/* onestep checkout gifboxes */
+.onestepcheckout-giftwrap{
+    border: 1px solid #ccc;
+    margin-top:10px
+}
+
+.onestepcheckout-giftwrap .image {
+display:inline-block;
+}
+
+.onestepcheckout-giftwrap .description {
+display:inline-block;
+}
+
+.onestepcheckout-giftwrap .question-box {
+background-color:#ccc;
+pading-left:5px;
+}
+
+.order-review-info .onestepcheckout-giftwrap{
+    padding-top:0px !important;
+}
