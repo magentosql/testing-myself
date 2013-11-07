@@ -38,8 +38,8 @@ $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 's
 Mage::app($mageRunCode, $mageRunType);
 
 $attrCode = 'monogram';
-$collection = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*')->addAttributeToFilter($attrCode, 1);
 Mage::app()->setCurrentStore(Mage_Core_Model_App::ADMIN_STORE_ID);
+$collection = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('*')->addAttributeToFilter($attrCode, 1);
 foreach($collection as $product) {
     $duplicate = $product->duplicate();
     $duplicate->setName($duplicate->getName() . ' with monogram');
