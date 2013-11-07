@@ -208,7 +208,11 @@
                 	<?php if ($gc['display_addtocart'] != 0): ?>
                     	<?php $btnClass = ($gc['display_addtocart'] == 1) ? ' display-onhover' : ''; ?>
 						<?php if ($_product->isSaleable()): ?>
+						    <?php if(!(bool)$_product->getData('monogram')): ?>
                             <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart<?php echo $btnClass; ?>" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                            <?php else: ?>
+                            <button type="button" title="<?php echo $this->__('Configure product') ?>" class="button btn-cart<?php echo $btnClass; ?>" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Configure product') ?></span></span></button>
+                            <?php endif; ?>
                         <?php else: ?>
                             <p class="availability out-of-stock<?php echo $btnClass; ?>"><span><?php echo $this->__('Out of stock') ?></span></p>
                         <?php endif; ?>
