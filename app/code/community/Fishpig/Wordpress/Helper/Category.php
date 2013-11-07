@@ -18,7 +18,7 @@ class Fishpig_Wordpress_Helper_Category extends Fishpig_Wordpress_Helper_Abstrac
 		$dbInfo = Mage::helper('wordpress/database');
 		$dbInfo->connect();
 		$table = $dbInfo->getReadAdapter();
-		$query = sprintf("SELECT t.term_id, t.parent, p.name, p.slug FROM %sterms as p left join %sterm_taxonomy as t on p.term_id = t.term_id WHERE t.parent= :catId", 
+		$query = sprintf("SELECT t.term_id, t.parent, p.name, p.slug, t.taxonomy FROM %sterms as p left join %sterm_taxonomy as t on p.term_id = t.term_id WHERE t.parent= :catId", 
 				$dbInfo->getTablePrefix(), 
 				$dbInfo->getTablePrefix()
 				);
@@ -131,6 +131,59 @@ class Fishpig_Wordpress_Helper_Category extends Fishpig_Wordpress_Helper_Abstrac
 		}
 		return $result;
 		
+	}
+	
+	public function getSlideshowImagesOld($postId) {
+		$dbInfo = Mage::helper('wordpress/database');
+		$dbInfo->connect();
+		$table = $dbInfo->getReadAdapter();
+		$query = sprintf("SELECT meta_value FROM `%spostmeta` WHERE meta_key='wpcf-slideshow-image' AND post_id = :id",
+			$dbInfo->getTablePrefix()
+			);
+		$query_result = $table->query($query, array(":id" => $postId));
+		
+		$result = array();
+		while ($row = $query_result->fetch()) {
+			array_push($result, $row['meta_value']);
+		}
+
+		return $result;
+	}
+	
+	public function getSlideshowImages($postId) {
+		$dbInfo = Mage::helper('wordpress/database');
+		$dbInfo->connect();
+		$table = $dbInfo->getReadAdapter();
+		$query = sprintf("SELECT meta_value FROM `%spostmeta` WHERE meta_key='_wpcf-slideshow-image-sort-order' AND post_id = :id",
+			$dbInfo->getTablePrefix()
+			);
+		$query_result = $table->query($query, array(":id" => $postId));
+		$result_order = $query_result->fetch();
+		$slideshowImages = unserialize($result_order['meta_value']);
+		ksort($slideshowImages);
+		
+		$result = array();
+		foreach ($slideshowImages as $ssImg) {
+			$img = $this->getSlideshowImageMeta($ssImg);
+			if ($img !== false) array_push($result, $img);
+		}
+		
+		return $result;
+	}
+	
+	private function getSlideshowImageMeta($metaId) {
+		$dbInfo = Mage::helper('wordpress/database');
+		$dbInfo->connect();
+		$table = $dbInfo->getReadAdapter();
+		$query = sprintf("SELECT meta_value FROM `%spostmeta` WHERE meta_key='wpcf-slideshow-image' AND meta_id = :id",
+			$dbInfo->getTablePrefix()
+			);
+		$query_result = $table->query($query, array(":id" => $metaId));
+		while ($row = $query_result->fetch()) {
+			return $row['meta_value'];
+		}
+
+		return false;
 	}
 	
 	public function filterByTermId($list, $id) {

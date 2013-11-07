@@ -19,6 +19,11 @@ class Fishpig_Wordpress_Block_Post_List_Pager extends Mage_Page_Block_Html_Pager
 		$this->setPageVarName($this->helper('wordpress/router')->getPostPagerVar());
 
 		$baseLimit = $this->helper('wordpress')->getWpOption('posts_per_page', 10);
+
+		if (strpos(Mage::helper('core/url')->getCurrentUrl(), "ask-the-laundress") !== false) {
+			$baseLimit = 5;
+		}
+
 		$currentLimit = $this->getRequest()->getParam('limit', $baseLimit);
 
 		if ($currentLimit%$baseLimit !== 0) {
