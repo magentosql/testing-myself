@@ -29,14 +29,6 @@ class Magestore_Onestepcheckout_Model_Observer extends Mage_Core_Controller_Vari
 			
 			}
 		}
-
-        $giftWrapType = Mage::getSingleton('core/session')->getGiftWrapType();
-        if($giftWrapType)
-        {
-            $commentContent = 'Chosen form of gift wrap : regular';
-            if($giftWrapType == 'holiday_') $commentContent = 'Chosen form of gift wrap : holiday';
-            $_order->setCustomerNote($commentContent)->save();
-        }
 	}
 	
 	/*
@@ -46,8 +38,6 @@ class Magestore_Onestepcheckout_Model_Observer extends Mage_Core_Controller_Vari
 		$helper = Mage::helper('onestepcheckout');
 		if ($helper->enableNotifyAdmin()) {
 			$_order = $observer->getEvent()->getOrder();
-            $_order->setCustomerNote('asfsadfsdfsadfasf')->save();
-            $_order->setOnestepcheckoutOrderComment('342523453245243532452534')->save();
 			$translate = Mage::getSingleton('core/translate');
 			$translate->setTranslateInline(false);
 			$paymentBlock = Mage::helper('payment')->getInfoBlock($_order->getPayment())
