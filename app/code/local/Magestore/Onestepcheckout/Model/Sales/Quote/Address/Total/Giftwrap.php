@@ -12,6 +12,7 @@ class Magestore_Onestepcheckout_Model_Sales_Quote_Address_Total_Giftwrap extends
         $giftWrapType = $session->getData('onestepcheckout_giftwrap_type');
         $giftwrap = $session->getData('onestepcheckout_giftwrap');
         if($giftWrapType == 'holiday_') $giftwrap = $session->getData('onestepcheckout_holiday_giftwrap');
+        Mage::getSingleton('core/session')->setGiftWrapType('$giftWrapType');
 
         if(!$giftwrap){
             return $this;
