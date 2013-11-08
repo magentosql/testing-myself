@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Monogramproducts>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wsnyc_Monogramproducts>
+    </modules>
+</config>

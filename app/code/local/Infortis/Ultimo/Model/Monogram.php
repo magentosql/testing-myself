@@ -6,14 +6,11 @@ class Infortis_Ultimo_Model_Monogram extends Mage_Core_Model_Abstract
     public function addMonogram($observer)
     {
         $request = Mage::app()->getFrontController()->getRequest();
-        $check = $request->getParam('monogram-check', 'off');
+        $event = $observer->getEvent();
+        $product = $event->getProduct();
+        $item = $event->getQuoteItem();
 
-        if($check == 'on'):
-        
-            $event = $observer->getEvent();
-            $product = $event->getProduct();
-            $item = $event->getQuoteItem();
-
+        if((int)$product->getMonogram()):
             $type = $request->getParam('monogram-type', '');
             $color = $request->getParam('monogram-color', '');
             $initials = $request->getParam('monogram-initials', '');
@@ -24,7 +21,15 @@ class Infortis_Ultimo_Model_Monogram extends Mage_Core_Model_Abstract
             $item->setData('monogram-check', $check);
             $item->getQuote()->save();
 
-            $specialPrice = $product->getPrice() + 16;
+            $monogramPrice = 16;
+
+            $monogramCustomPrice =
+                (float)Mage::getResourceModel('catalog/product')
+                    ->getAttributeRawValue($product->getId(), 'monogram_custom_price', $item->getStoreId());
+            if($monogramCustomPrice) {
+                $monogramPrice = $monogramCustomPrice;
+            }
+            $specialPrice = $product->getFinalPrice() + $monogramPrice;
 
             $item->setCustomPrice($specialPrice);
             $item->setOriginalCustomPrice($specialPrice);
