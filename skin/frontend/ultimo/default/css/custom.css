@@ -715,7 +715,7 @@ body .sidebar ul.level0 li a{line-height:1.2em}
 .itemslider-wrapper .itemslider-horizontal .slides>li:first-child{border-left:0}
 .itemslider-wrapper .itemslider-x.count-3{max-width:753px}
 .products-list .product-name a,.products-grid .product-name a,h3.product-name a{color:#222}
-.products-grid .online-exclusive{font-family:"Georgia",serif;font-style:italic;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#afafaf}
+.products-grid .online-exclusive{font-family:"Georgia",serif;font-style:italic;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#afafaf;text-align:center;}
 .products-grid .price-box{margin-top:0;margin-bottom:.25em}
 .itemslider-wrapper .products-grid .price-box .regular-price{font-size:14px}
 #bottom-cap{height:0 !important}
