@@ -29,7 +29,7 @@ class Infortis_Ultimo_Model_Monogram extends Mage_Core_Model_Abstract
             if($monogramCustomPrice) {
                 $monogramPrice = $monogramCustomPrice;
             }
-            $specialPrice = $product->getFinalPrice() + $monogramPrice;
+            $specialPrice = (float)$product->getFinalPrice() + $monogramPrice;
 
             $item->setCustomPrice($specialPrice);
             $item->setOriginalCustomPrice($specialPrice);
