@@ -478,7 +478,13 @@ class Magestore_Onestepcheckout_IndexController extends Mage_Core_Controller_Fro
 						}
 					}
 				}
-			}			
+			}
+
+            Mage::getSingleton("core/session")->unsetData('giftWrapBoxType');
+            if(isset($post['giftWrapBoxType']) && !empty($post['giftWrapBoxType']))
+            {
+                Mage::getSingleton("core/session")->setData('giftWrapBoxType', $post['giftWrapBoxType']);
+            }
 			
 			try {
 				$result = $this->getOnepage()->saveOrder();
