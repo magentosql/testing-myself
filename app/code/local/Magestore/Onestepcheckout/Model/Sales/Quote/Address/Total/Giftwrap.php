@@ -12,9 +12,12 @@ class Magestore_Onestepcheckout_Model_Sales_Quote_Address_Total_Giftwrap extends
         $giftWrapType = $session->getData('onestepcheckout_giftwrap_type');
         $giftwrap = $session->getData('onestepcheckout_giftwrap');
         if($giftWrapType == 'holiday_') $giftwrap = $session->getData('onestepcheckout_holiday_giftwrap');
+        Mage::getSingleton('core/session')->unsetData('giftWrapType');
 
         if(!$giftwrap){
             return $this;
+        } else {
+            Mage::getSingleton('core/session')->setData('giftWrapType' , $giftWrapType);
         }
 		
 		$items = $address->getAllItems();
@@ -31,6 +34,8 @@ class Magestore_Onestepcheckout_Model_Sales_Quote_Address_Total_Giftwrap extends
         }
      
         $wrapTotal = 0;
+
+
         if($giftwrapType == 1) {
             foreach ($items as $item){
 				if ($item->getProduct()->isVirtual() || $item->getParentItem()) {

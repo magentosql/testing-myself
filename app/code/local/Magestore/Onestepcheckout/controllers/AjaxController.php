@@ -9,6 +9,11 @@ class Magestore_Onestepcheckout_AjaxController extends Mage_Core_Controller_Fron
         if(!$remove){
             $session->setData('onestepcheckout_giftwrap_type', $type);
             $session->setData('onestepcheckout_' . $type . 'giftwrap', 1);
+
+            $commentContent = '<br /><b>Chosen form of gift wrap : regular</b><br />';
+            if($type == 'holiday_') $commentContent = '<br /><b>Chosen form of gift wrap : holiday</b><br />';
+            $session->setData('customer_comment', $commentContent);
+
         }
         else{
             $session->unsetData('onestepcheckout_' . $type . 'giftwrap');
