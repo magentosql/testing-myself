@@ -20,6 +20,7 @@ class Magestore_Onestepcheckout_Model_Observer extends Mage_Core_Controller_Vari
 	*/
 	public function saveOrderComment($observer) {
 		$_order = $observer->getEvent()->getOrder();
+
 		$customerComment = Mage::getSingleton('checkout/session')->getCustomerComment();
 		if ($customerComment != "") {
 			try {
@@ -29,14 +30,6 @@ class Magestore_Onestepcheckout_Model_Observer extends Mage_Core_Controller_Vari
 			
 			}
 		}
-
-        $giftWrapType = Mage::getSingleton('core/session')->getGiftWrapType();
-        if($giftWrapType)
-        {
-            $commentContent = 'Chosen form of gift wrap : regular';
-            if($giftWrapType == 'holiday_') $commentContent = 'Chosen form of gift wrap : holiday';
-            $_order->setCustomerNote($commentContent)->save();
-        }
 	}
 	
 	/*
@@ -46,8 +39,16 @@ class Magestore_Onestepcheckout_Model_Observer extends Mage_Core_Controller_Vari
 		$helper = Mage::helper('onestepcheckout');
 		if ($helper->enableNotifyAdmin()) {
 			$_order = $observer->getEvent()->getOrder();
-            $_order->setCustomerNote('asfsadfsdfsadfasf')->save();
-            $_order->setOnestepcheckoutOrderComment('342523453245243532452534')->save();
+
+            $giftWrapBoxType = Mage::getSingleton("core/session")->getData('giftWrapBoxType');
+            if($giftWrapBoxType == 'regular' || $giftWrapBoxType == 'holiday')
+            {
+                $_order->addStatusToHistory($_order->getStatus(), 'Chosen Gift Wrap Type: ' . $giftWrapBoxType, false);
+                $_order->save();
+                Mage::getSingleton("core/session")->unsetData('giftWrapBoxType');
+            }
+
+
 			$translate = Mage::getSingleton('core/translate');
 			$translate->setTranslateInline(false);
 			$paymentBlock = Mage::helper('payment')->getInfoBlock($_order->getPayment())

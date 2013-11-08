@@ -321,7 +321,6 @@ class Magestore_Onestepcheckout_Helper_Data extends Mage_Core_Helper_Abstract {
         return Mage::getStoreConfig('onestepcheckout/giftwrap/giftwrap_amount', $this->getStoreId());
     }
 
-
     public function enableHolidayGiftWrap()
     {
         return Mage::getStoreConfig('onestepcheckout/holiday_giftwrap/enable_holiday_giftwrap', $this->getStoreId());
