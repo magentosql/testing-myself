@@ -121,18 +121,18 @@
                 
             <div class="right-column grid12-3 persistent-grid2-1">
             	<?php echo $this->getPriceHtml($_product, true) ?>
-                <?php if($_product->isSaleable()): ?>
+                <?php /*if($_product->isSaleable()): ?>
                     <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
                 <?php else: ?>
                     <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
-                <?php endif; ?>
+                <?php endif;*/ ?>
                 
                 <?php
-                if ($isListAddtoSimple)
-					echo $templateHelper->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product));
-				else
-					echo $templateHelper->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-textlink');
-				?>
+                /*if ($isListAddtoSimple)
+                    echo $templateHelper->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product));
+                else
+                    echo $templateHelper->getCategoryAddtoLinks($_product, $this->getAddToCompareUrl($_product), 'addto-textlink');*/
+                ?>
             </div>
 
         </li>
@@ -204,7 +204,7 @@
                 ?>
                 </div>
                         
-                <div class="actions clearer">
+                <?php /*<div class="actions clearer">
                 	<?php if ($gc['display_addtocart'] != 0): ?>
                     	<?php $btnClass = ($gc['display_addtocart'] == 1) ? ' display-onhover' : ''; ?>
 						<?php if ($_product->isSaleable()): ?>
@@ -228,6 +228,7 @@
 						}
 					?>
                 </div> <!-- end: actions -->
+                 * */ ?>
             </li>
         <?php endforeach; ?>    
 	</ul>
