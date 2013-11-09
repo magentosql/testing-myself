@@ -7,9 +7,14 @@
     </modules>
     <global>
         <models>
-            <wsnyc_oversizeshipping_setup>
+            <oversizeshipping>
                 <class>Wsnyc_Oversizeshipping_Model</class>
-            </wsnyc_oversizeshipping_setup>
+            </oversizeshipping>
+            <sales>
+                <rewrite>
+                    <quote_address>Wsnyc_Oversizeshipping_Model_Rewrite_Sales_Quote_Address</quote_address>
+                </rewrite>
+            </sales>
         </models>
         <resources>
             <oversizeshipping_setup>
@@ -19,16 +24,5 @@
                 </setup>
             </oversizeshipping_setup>
         </resources>
-        <events>
-            <sales_quote_address_collect_totals_after>
-                <observers>
-                    <append_price_to_shipping_for_oversized_items>
-                        <type>singleton</type>
-                        <class>Wsnyc_Oversizeshipping_Model_Observer</class>
-                        <method>appendPriceToShipping</method>
-                    </append_price_to_shipping_for_oversized_items>
-                </observers>
-            </sales_quote_address_collect_totals_after>
-        </events>
     </global>
 </config>
