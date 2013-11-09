@@ -4,6 +4,9 @@
         <Wsnyc_Groundonly>
             <active>true</active>
             <codePool>local</codePool>
+            <depends>
+                <Unirgy_DropshipSplit />
+            </depends>
         </Wsnyc_Groundonly>
     </modules>
 </config>
