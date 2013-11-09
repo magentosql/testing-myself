@@ -7,9 +7,14 @@
     </modules>
     <global>
         <models>
-            <wsnyc_groundonly_setup>
-                <class>Wsnyc_Oversizeshipping_Model</class>
-            </wsnyc_groundonly_setup>
+            <groundonly>
+                <class>Wsnyc_Groundonly_Model</class>
+            </groundonly>
+            <sales>
+                <rewrite>
+                    <quote_address>Wsnyc_Groundonly_Model_Rewrite_Sales_Quote_Address</quote_address>
+                </rewrite>
+            </sales>
         </models>
         <resources>
             <groundonly_setup>
@@ -19,17 +24,6 @@
                 </setup>
             </groundonly_setup>
         </resources>
-        <events>
-            <sales_quote_address_collect_totals_after>
-                <observers>
-                    <recollect_shipping_method_for_ground_only_products>
-                        <type>singleton</type>
-                        <class>Wsnyc_Groundonly_Model_Observer</class>
-                        <method>recollectShippingMethods</method>
-                    </recollect_shipping_method_for_ground_only_products>
-                </observers>
-            </sales_quote_address_collect_totals_after>
-        </events>
         <wsnyc_groundonly>
             <allowed_shipping_methods>
                 <code1>freeshipping_freeshipping</code1>
