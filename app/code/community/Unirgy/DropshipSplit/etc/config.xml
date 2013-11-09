@@ -34,7 +34,6 @@
             </udsplit>
             <sales>
                 <rewrite>
-                    <quote_address>Unirgy_DropshipSplit_Model_Quote_Address</quote_address>
                     <quote_address_rate>Unirgy_DropshipSplit_Model_Quote_Rate</quote_address_rate>
                 </rewrite>
             </sales>
