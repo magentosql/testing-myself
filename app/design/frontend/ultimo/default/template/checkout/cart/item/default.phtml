@@ -73,7 +73,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                 if(isset($optionsArray['monogram-check'])) {
                     $monogramCheck = $optionsArray['monogram-check'];
                     $monogramColor = $optionsArray['monogram-color'];
-                    $monogramInitials = strtoupper($optionsArray['mongram-initials']);
+                    $monogramInitials = strtoupper($optionsArray['monogram-initials']);
                     $monogramType = $optionsArray['monogram-type'];
 
                     $monogramArray = array($monogramType, 'Color: ' . $monogramColor, 'Monogram Text: ' . $monogramInitials);
