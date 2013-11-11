@@ -44,6 +44,7 @@ foreach($collection as $product) {
     $duplicate = $product->duplicate();
     $duplicate->setName($duplicate->getName() . ' with monogram');
     $duplicate->setSku($product->getSku() . '-M');
+    $duplicate->setUrlKey($product->getUrlKey() . '-with-monogram');
     $duplicate->setStatus(1);
     $duplicate->getResource()->save($duplicate);
     $product->setData($attrCode, 0)->getResource()->saveAttribute($product, $attrCode);
