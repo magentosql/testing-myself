@@ -200,8 +200,13 @@ if ($_count) {
             <div class="add-monogram-content" id="monogram-content">  
                 
                 <img src="/media/wysiwyg/monograms/monogram-logo.gif" alt="Monograms" border="0" id="monogram-logo" />
-                
-                <h3>THE MONOGRAM SHOP (+$16.00)</h3>
+		<?php 
+		$monogramPrice = $_product->getMonogramCustomPrice();
+		if($monogramPrice <=0 ){
+			$monogramPrice = 16;
+		}
+		 ?>
+                <h3>THE MONOGRAM SHOP (+$<?php echo $monogramPrice ?>)</h3>
                 <p class="subline">Item ships in 1-2 weeks. All monogram sales are final.</p>
                 
                 <ol class="add-monogram-process">
