@@ -205,8 +205,9 @@ if ($_count) {
 		if($monogramPrice <=0 ){
 			$monogramPrice = 16;
 		}
+		$monogramPrice = Mage::helper('core')->currency($monogramPrice);
 		 ?>
-                <h3>THE MONOGRAM SHOP (+$<?php echo $monogramPrice ?>)</h3>
+                <h3>THE MONOGRAM SHOP (+<?php echo $monogramPrice ?>)</h3>
                 <p class="subline">Item ships in 1-2 weeks. All monogram sales are final.</p>
                 
                 <ol class="add-monogram-process">
