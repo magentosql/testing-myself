@@ -6,7 +6,7 @@ $_v = $this->getVendor();
 <tr class="udropship-cart-vendor-header">
     <td colspan="10" style="padding-top:5px; padding-bottom:0">
     <?php if ($_v->getId()): ?>
-        <h3><?php echo $_v->getVendorName() ?> - <?php echo $_v->getCity().', '.$_v->getRegionCode() ?></h3>
+        <h3><?php echo $_v->getVendorName() ?></h3>
     <?php else: ?>
         <h3><?php echo $this->__('Unknown vendor')?></h3>
     <?php endif ?>
