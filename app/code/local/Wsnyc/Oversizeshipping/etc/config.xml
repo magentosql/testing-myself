@@ -10,6 +10,11 @@
             <oversizeshipping>
                 <class>Wsnyc_Oversizeshipping_Model</class>
             </oversizeshipping>
+            <sales>
+                <rewrite>
+                    <quote_address>Wsnyc_Oversizeshipping_Model_Rewrite_Sales_Quote_Address</quote_address>
+                </rewrite>
+            </sales>
         </models>
         <resources>
             <oversizeshipping_setup>
