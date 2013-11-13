@@ -10,11 +10,6 @@
             <oversizeshipping>
                 <class>Wsnyc_Oversizeshipping_Model</class>
             </oversizeshipping>
-            <sales>
-                <rewrite>
-                    <quote_address>Wsnyc_Oversizeshipping_Model_Rewrite_Sales_Quote_Address</quote_address>
-                </rewrite>
-            </sales>
         </models>
         <resources>
             <oversizeshipping_setup>
@@ -24,5 +19,28 @@
                 </setup>
             </oversizeshipping_setup>
         </resources>
+        <events>
+            <udropship_process_vendor_carrier_single_rate_result>
+                <observers>
+                    <oversize_udropship_process_vendor_carrier_single_rate_result>
+                        <type>singleton</type>
+                        <class>Wsnyc_Oversizeshipping_Model_Observer</class>
+                        <method>updateShippingMethods</method>
+                    </oversize_udropship_process_vendor_carrier_single_rate_result>
+                </observers>
+            </udropship_process_vendor_carrier_single_rate_result>
+        </events>
     </global>
+    <default>
+        <carriers>
+            <wsnyc_oversizeshipping>
+            <active>1</active>
+            <model>oversizeshipping/carrier_shippingmethod</model>
+            <title>Extra</title>
+            <name>Oversize Shipping</name>
+            <price>0.00</price>
+            <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+            </wsnyc_oversizeshipping>
+        </carriers>
+    </default>
 </config>
