@@ -54,7 +54,11 @@
         </thead>
         <?php echo $this->getChildHtml('totals'); ?>
         <tbody>
-        <?php foreach($this->getItems() as $_item): $itemiterator++ ?>
+        <?php 
+            $itemiterator = 0;
+            foreach($this->getItems() as $_item): 
+            $itemiterator++ 
+        ?>
 	    <?php if(get_class($_item)!='Unirgy_DropshipSplit_Model_Cart_Vendor'): ?>
 	    <tr>
                 <td><?php echo $_item->getName() ?></td>
