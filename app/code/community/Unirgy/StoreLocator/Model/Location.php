@@ -29,13 +29,8 @@ class Unirgy_StoreLocator_Model_Location extends Mage_Core_Model_Abstract
 
     public function fetchCoordinates()
     {
-        $url = Mage::getStoreConfig('ustorelocator/general/google_geo_url');
-        if (!$url) {
-//            $url = "http://maps.google.com/maps/geo";
-            $url = "https://maps.googleapis.com/maps/api/geocode/json";
-        }
-        $url .= strpos($url, '?')!==false ? '&' : '?';
-//        $url .= 'q='.urlencode(preg_replace('#\r|\n#', ' ', $this->getAddress()))."&output=csv";
+        $url = "https://maps.googleapis.com/maps/api/geocode/json";
+        $url .= strpos($url, '?') !== false ? '&' : '?';
         $url .= 'address='.urlencode(preg_replace('#\r|\n#', ' ', $this->getAddress()))."&sensor=false";
 
         $cinit = curl_init();
@@ -46,20 +41,17 @@ class Unirgy_StoreLocator_Model_Location extends Mage_Core_Model_Abstract
         usleep(100000);// sleep for 0.1 sec to try avoid too many requests per second to Google
         $response = curl_exec($cinit);
         if (!is_string($response) || empty($response)) {
+            Mage::log($response, Zend_Log::ERR, 'storeLocator.log', true);
             return $this;
         }
-//        $result = explode(',', $response);
         $result = json_decode($response);
-//        if (sizeof($result)!=4 || $result[0]!='200') {
-//            //echo '<pre>'.$response.'</pre>';
-//            return $this;
-//        }
         if (strtolower($result->status) != 'ok') {
             //echo '<pre>'.$response.'</pre>';
+            Mage::log($result, Zend_Log::ERR, 'storeLocator.log', true);
             return $this;
         }
-//        $this->setLatitude($result[2])->setLongitude($result[3]);
-        $this->setLatitude($result->results[0]->geometry->location->lat)->setLongitude($result->results[0]->geometry->location->lng);
+        $this->setLatitude($result->results[0]->geometry->location->lat)
+            ->setLongitude($result->results[0]->geometry->location->lng);
         return $this;
     }
 

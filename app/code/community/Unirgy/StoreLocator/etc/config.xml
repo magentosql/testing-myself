@@ -25,7 +25,7 @@
 <config>
     <modules>
         <Unirgy_StoreLocator>
-            <version>2.1.2</version>
+            <version>2.1.5</version>
             <usimpleup remote="http://download.unirgy.com/simple/client_api/version/"
                 changelog="http://unirgy.com/support/portal/announcements"/>
         </Unirgy_StoreLocator>
@@ -170,6 +170,7 @@
             <general>
                 <!--<google_geo_url><![CDATA[http://maps.google.com/maps/geo]]></google_geo_url>-->
                 <distance_units>mi</distance_units>
+                <api_version>3</api_version>
                 <num_results>20</num_results>
                 <show_search>1</show_search>
                 <show_map>0</show_map>
@@ -179,6 +180,7 @@
                 <search_radius_options>25,100,200</search_radius_options>
                 <upload_overwrite>1</upload_overwrite>
                 <no_result>40,-100</no_result>
+                <multiple_results><![CDATA[Multiple results found, please pick one closest to your search]]></multiple_results>
             </general>
         </ustorelocator>
     </default>

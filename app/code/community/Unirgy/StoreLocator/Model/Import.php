@@ -11,6 +11,7 @@ class Unirgy_StoreLocator_Model_Import
 {
     const TITLE   = 'title';
     const ADDRESS = 'address';
+    protected $_tablesCleared;
     /**
      * @var array
      */
@@ -58,26 +59,63 @@ class Unirgy_StoreLocator_Model_Import
         $info = pathinfo($csvFile);
         $io->open(array('path' => $info['dirname']));
         $io->streamOpen($info['basename'], 'r');
+        $rawHeaders = $io->streamReadCsv();
+        $this->validateImportedCoolumns($rawHeaders, $io);
 
-        // check and skip headers
-        $headers = $this->_setHeaders($io->streamReadCsv());
-        if ($headers === false || count($headers) < 2) {
-            $io->streamClose();
-            Mage::throwException(
-                Mage::helper('ustorelocator')
-                    ->__('Invalid Store Locations File Format. Provide at least "title" and "address".')
-            );
+        $this->importDb($io, $rawHeaders);
+
+        return $this;
+    }
+
+    /**
+     * Import stores as objects, a bit slow for many stores
+     *
+     * @param Varien_Io_File $io
+     * @param array          $rawHeaders
+     * @return $this
+     */
+    protected function importObjects($io, $rawHeaders)
+    {
+        try {
+            $model = Mage::getModel("ustorelocator/location");
+            $rowNumber = 1;
+
+            while (false !== ($csvLine = $io->streamReadCsv())) {
+                $rowNumber++;
+
+                if (empty($csvLine)) {
+                    continue;
+                }
+                $importData = array_combine($rawHeaders, $csvLine);
+                $row = $this->_getImportRowAssoc($importData, $rowNumber);
+                if ($row !== false) {
+                    $tmp = clone $model;
+                    $tmp->setData($row);
+                    $tmp->save();
+                    unset($tmp);
+                }
+            }
+        } catch(Exception $e) {
+            Mage::log($e->getTraceAsString(), Zend_Log::CRIT, 'sl.log', true);
         }
+        return $this;
+    }
 
+    /**
+     * @param Varien_Io_File $io
+     * @param                $rawHeaders
+     * @return $this
+     */
+    protected function importDb($io, $rawHeaders)
+    {
         $resource = $this->_getLocationResource();
 
         /* @var $hlp Unirgy_StoreLocator_Helper_Data */
         $hlp = Mage::helper('ustorelocator');
-
         /* @var $adapter Varien_Db_Adapter_Pdo_Mysql */
         $adapter = $resource->getReadConnection();
         $adapter->beginTransaction();
-        $overwrite = $this->_shouldOverwrite();
+        $this->clearOldLocations($adapter, $resource);
         try {
             $rowNumber  = 1;
             $importData = array();
@@ -89,24 +127,14 @@ class Unirgy_StoreLocator_Model_Import
                     continue;
                 }
 
-                $row = $this->_getImportRow($csvLine, $rowNumber);
+                $row = $this->_getImportRowAssoc(array_combine($rawHeaders, $csvLine), $rowNumber);
                 if ($row !== false) {
-                    $importData[] = $row;
-                }
-
-                if ($rowNumber == 5000) {
-                    $this->_saveImportData($importData);
-                    $importData = array();
+                    $this->saveRow($row);
                 }
             }
 
             $io->streamClose();
 
-            if ($overwrite) {
-                $adapter->delete($resource->getMainTable());
-            }
-
-            $this->_saveImportData($importData);
             $adapter->commit();
             $hlp->populateEmptyGeoLocations();
         } catch (Mage_Core_Exception $e) {
@@ -128,7 +156,6 @@ class Unirgy_StoreLocator_Model_Import
             );
             Mage::throwException($error);
         }
-
         return $this;
     }
 
@@ -172,108 +199,101 @@ class Unirgy_StoreLocator_Model_Import
      * @param int   $rowNumber
      * @return array
      */
-    protected function _getImportRow($row, $rowNumber)
+    protected function _getImportRowAssoc($row, $rowNumber)
     {
-        $required  = array(self::TITLE, self::ADDRESS);
-        $hlp       = Mage::helper('ustorelocator');
-        $setAddr   = false;
-        $importRow = array();
-        foreach ($this->_importHeaders as $key => $field) {
-            if (in_array($field, $required) && (!isset($row[$key]) || empty($row[$key]))) {
-                $this->_importErrors[] = $hlp->__("Empty required field: '%s' in row: %s", $field, $rowNumber);
+        $required = array(self::TITLE, self::ADDRESS);
+        $hlp      = Mage::helper('ustorelocator');
 
+        $importRow = array();
+        foreach ($row as $key => $field) {
+            if (in_array($key, $required) && empty($field)) {
+                $this->_importErrors[] = $hlp->__("Empty required field: '%s' in row: %s", $key, $rowNumber);
                 return false;
             }
-            $value = isset($row[$key]) ? $row[$key] : null;
-            switch ($field) {
-                case 'latitude':
-                case 'longitude':
-                    if (empty($value)) {
-                        $value = 0;
-                    } else {
-                        $value = round(Mage::app()->getLocale()->getNumber($value), 9);
-                    }
-                    break;
-                case 'address_display':
-                    if (null === $value) {
-                        if (isset($importRow[self::ADDRESS])) { // if we have set look up address, use it
-                            $setAddr = false;
-                            $value   = $importRow[self::ADDRESS];
-                        } else {
-                            $setAddr = $key; // else set flag to update this field
-                        }
-                    }
-                    break;
-                case 'address' :
-                    if ($setAddr !== false) {
-                        $importRow[$setAddr] = $value; // if we are here, address is not empty
-                    }
-                    break;
-                case 'notes':
-                    if ($value === null) {
-                        $value = '';
-                    }
-                    break;
-                case 'phone':
-                case 'product_types':
-                case 'website_url':
-                case 'country':
-                case 'stores':
-                case 'icon':
-                    $length = isset($this->validationLength[$field]) ? $this->validationLength[$field] : null;
-                    if ($value === null) {
-                        $value = '';
-                    } else if ($length && strlen($value) > $length) {
-                        $this->_importErrors[] = $hlp->__(
-                            "Value for '%s' is too long. Max allowed length is %s",
-                            $field, $length
-                        );
-
-                        return false;
-                    }
-                    break;
-                case 'use_label':
-                    if ($value === null) {
-                        $value = 1;
-                    } else {
-                        $value = ($value == 1) ? 1 : 0;
-                    }
-                    break;
-                case 'is_featured':
-                    if ($value === null) {
-                        $value = 0;
-                    } else {
-                        $value = ($value == 1) ? 1 : 0;
-                    }
-                    break;
-                case 'zoom':
-                    if ($value === null) {
-                        $value = 10;
-                    } else {
-                        $value = (int)$value;
-                        if ($value < 1) {
-                            $value = 1;
-                        } else if ($value > 25) {
-                            $value = 25;
-                        }
-                    }
-                    break;
-                case 'udropship_vendor':
-                    $ud = Mage::getConfig()->getNode('modules/Unirgy_Dropship');
-                    if (!$ud || (string)$ud->active == 'false') {
-                        $value = null;
-                        break;
-                    }
-                    if ($value !== null) {
-                        $vendor = Mage::getModel('udropship/vendor');
-                        $value  = $vendor->getId();
-                    }
-                    break;
-            }
-            $importRow[$key] = $value;
+            $value           = !empty($field) ? $field : null;
+            $importRow[$key] = $this->cleanUpFieldData($key, $value);
         }
+        $this->validateImportRow($importRow);
+        $obj = new Varien_Object($importRow);
+        Mage::dispatchEvent("store_location_import_row_validate", array("row" => $obj));
+        return $obj->getData();
+    }
 
-        return $importRow;
+    protected function cleanUpFieldData($field, $value)
+    {
+        switch ($field) {
+            case 'latitude':
+            case 'longitude':
+                if (empty($value)) {
+                    $value = 0;
+                } else {
+                    $value = round(Mage::app()->getLocale()->getNumber($value), 9);
+                }
+                break;
+            case 'notes':
+                if ($value === null) {
+                    $value = '';
+                }
+                break;
+            case 'address_display':
+            case 'address':
+            case 'phone':
+            case 'product_types':
+            case 'website_url':
+            case 'country':
+            case 'stores':
+            case 'icon':
+                $length = isset($this->validationLength[$field]) ? $this->validationLength[$field] : null;
+                if ($value === null) {
+                    $value = '';
+                } else if ($length && strlen($value) > $length) {
+                    $this->_importErrors[] = $hlp->__(
+                        "Value for '%s' is too long. Max allowed length is %s",
+                        $field, $length
+                    );
+
+                    return false;
+                }
+                break;
+            case 'use_label':
+                if ($value === null) {
+                    $value = 1;
+                } else {
+                    $value = ($value == 1) ? 1 : 0;
+                }
+                break;
+            case 'is_featured':
+                if ($value === null) {
+                    $value = 0;
+                } else {
+                    $value = ($value == 1) ? 1 : 0;
+                }
+                break;
+            case 'zoom':
+                if ($value === null) {
+                    $value = 10;
+                } else {
+                    $value = (int)$value;
+                    if ($value < 1) {
+                        $value = 1;
+                    } else if ($value > 25) {
+                        $value = 25;
+                    }
+                }
+                break;
+            case 'udropship_vendor':
+                $ud = Mage::getConfig()->getNode('modules/Unirgy_Dropship');
+                if (!$ud || (string)$ud->active == 'false') {
+                    $value = null;
+                    break;
+                }
+                if ($value !== null) {
+                    $vendor = Mage::getModel('udropship/vendor');
+                    $value  = $vendor->getId();
+                }
+                break;
+        }
+        return $value;
     }
 
     protected function _saveImportData(array $data)
@@ -282,6 +302,25 @@ class Unirgy_StoreLocator_Model_Import
             $columns  = $this->_importHeaders;
             $resource = $this->_getLocationResource();
             $resource->getReadConnection()->insertArray($resource->getMainTable(), $columns, $data);
+        }
+    }
+
+    protected function saveRow($row)
+    {
+        if(!empty($row)){
+            $data = array();
+            foreach ($this->_importHeaders as $f) {
+                if(isset($row[$f])){
+                    $data[$f] = $row[$f];
+                }
+            }
+
+            $resource = $this->_getLocationResource();
+            $resource->getReadConnection()->insert($resource->getMainTable(), $data);
+            $id = $resource->getReadConnection()->lastInsertId($resource->getMainTable());
+            $row['location_id'] = $id;
+            $obj = new Varien_Object($row);
+            Mage::dispatchEvent("store_location_import_row_insert_after", array('row' => $obj));
         }
     }
 
@@ -322,5 +361,42 @@ class Unirgy_StoreLocator_Model_Import
         }
 
         return $ov;
+    }
+
+    /**
+     * @param Varien_Db_Adapter_Pdo_Mysql $adapter
+     * @param Unirgy_StoreLocator_Model_Mysql4_Location $resource
+     */
+    protected function clearOldLocations($adapter, $resource)
+    {
+        $overwrite = $this->_shouldOverwrite();
+        if ($overwrite && !$this->_tablesCleared) {
+            $adapter->delete($resource->getMainTable());
+            $this->_tablesCleared = true;
+        }
+    }
+
+    /**
+     * @param array $rawHeaders
+     * @param Varien_Io_File $io
+     */
+    protected function validateImportedCoolumns($rawHeaders, $io)
+    {
+        // check and skip headers
+        $headers = $this->_setHeaders($rawHeaders);
+        if ($headers === false || count($headers) < 2) {
+            $io->streamClose();
+            Mage::throwException(
+                Mage::helper('ustorelocator')
+                ->__('Invalid Store Locations File Format. Provide at least "title" and "address".')
+            );
+        }
+    }
+
+    protected function validateImportRow(&$importRow)
+    {
+        if(!$importRow['address_display'] && isset($importRow['address']) && $importRow['address']){
+            $importRow['address_display'] = $importRow['address'];
+        }
     }
 }

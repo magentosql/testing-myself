@@ -1,3 +1,9 @@
+===== 2.1.10 =====
+  * Fixed 2.1.9 bug shipping calculation does not include tax when shipping include tax
+
+===== 2.1.9 =====
+  * Added better processing of shipping tax in statements
+
 ===== 2.1.8 =====
   * Added save shipping price incl tax in udropship_shipping_details
 

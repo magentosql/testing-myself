@@ -468,4 +468,92 @@ class Unirgy_Dropship_Helper_Catalog extends Mage_Core_Helper_Abstract
     {
         return $this->_getCategoryChildren($cId, $active, $recursive, $orderBy);
     }
+
+    public function addProductAttributeToSelect($select, $attrCode, $entity_id)
+    {
+        $alias = $attrCode;
+        if (is_array($attrCode)) {
+            reset($attrCode);
+            $alias = key($attrCode);
+            $attrCode = current($attrCode);
+        }
+        $attribute = Mage::getSingleton('eav/config')->getAttribute(Mage_Catalog_Model_Product::ENTITY, $attrCode);
+        if (!$attribute || !$attribute->getAttributeId()) {
+            $select->columns(array($alias=>new Zend_Db_Expr("''")));
+            return $this;
+        }
+        $attributeId    = $attribute->getAttributeId();
+        $attributeTable = $attribute->getBackend()->getTable();
+        $adapter        = $select->getAdapter();
+        $store = Mage::app()->getStore()->getId();
+
+        if ($attribute->isScopeGlobal()) {
+            $_alias = 'ta_' . $attrCode;
+            $select->joinLeft(
+                array($_alias => $attributeTable),
+                "{$_alias}.entity_id = {$entity_id} AND {$_alias}.attribute_id = {$attributeId}"
+                . " AND {$_alias}.store_id = 0",
+                array()
+            );
+            $expression = new Zend_Db_Expr("{$_alias}.value");
+        } else {
+            $dAlias = 'tad_' . $attrCode;
+            $sAlias = 'tas_' . $attrCode;
+
+            $select->joinLeft(
+                array($dAlias => $attributeTable),
+                "{$dAlias}.entity_id = {$entity_id} AND {$dAlias}.attribute_id = {$attributeId}"
+                . " AND {$dAlias}.store_id = 0",
+                array()
+            );
+            $select->joinLeft(
+                array($sAlias => $attributeTable),
+                "{$sAlias}.entity_id = {$entity_id} AND {$sAlias}.attribute_id = {$attributeId}"
+                . " AND {$sAlias}.store_id = {$store}",
+                array()
+            );
+            $expression = $this->getCheckSql($this->getIfNullSql("{$sAlias}.value_id", -1) . ' > 0',
+                "{$sAlias}.value", "{$dAlias}.value");
+        }
+
+        $select->columns(array($alias=>$expression));
+
+        return $this;
+    }
+
+    public function getCaseSql($valueName, $casesResults, $defaultValue = null)
+    {
+        $expression = 'CASE ' . $valueName;
+        foreach ($casesResults as $case => $result) {
+            $expression .= ' WHEN ' . $case . ' THEN ' . $result;
+        }
+        if ($defaultValue !== null) {
+            $expression .= ' ELSE ' . $defaultValue;
+        }
+        $expression .= ' END';
+
+        return new Zend_Db_Expr($expression);
+    }
+
+    public function getCheckSql($expression, $true, $false)
+    {
+        if ($expression instanceof Zend_Db_Expr || $expression instanceof Zend_Db_Select) {
+            $expression = sprintf("IF((%s), %s, %s)", $expression, $true, $false);
+        } else {
+            $expression = sprintf("IF(%s, %s, %s)", $expression, $true, $false);
+        }
+
+        return new Zend_Db_Expr($expression);
+    }
+
+    public function getIfNullSql($expression, $value = 0)
+    {
+        if ($expression instanceof Zend_Db_Expr || $expression instanceof Zend_Db_Select) {
+            $expression = sprintf("IFNULL((%s), %s)", $expression, $value);
+        } else {
+            $expression = sprintf("IFNULL(%s, %s)", $expression, $value);
+        }
+
+        return new Zend_Db_Expr($expression);
+    }
 }

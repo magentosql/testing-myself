@@ -89,6 +89,8 @@ class Unirgy_StoreLocator_Adminhtml_LocationController extends Mage_Adminhtml_Co
                 $udVendor = $req->getParam('udropship_vendor');
 
                 if(empty($udVendor) && $udVendor !== 0) $udVendor = null;
+                $ds = $req->getParam('data_serialized');
+                $dataSerialized = json_encode($this->prepareSerializedData($ds));
 
                 $model = Mage::getModel('ustorelocator/location')
                 //->addData($req->getParams())
@@ -109,8 +111,9 @@ class Unirgy_StoreLocator_Adminhtml_LocationController extends Mage_Adminhtml_Co
                         ->setUseLabel($req->getParam('use_label'))
                         ->setZoom($req->getParam('zoom') ? $req->getParam('zoom'): 15) // set default location zoom to 15.
                         ->setStores($stores)
+                        ->setDataSerialized($dataSerialized)
                         ->setIcon($icon);
-                
+
                 $model->save();
 
                 Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('adminhtml')->__('Store location was successfully saved'));
@@ -130,6 +133,40 @@ class Unirgy_StoreLocator_Adminhtml_LocationController extends Mage_Adminhtml_Co
             }
         }
         $this->_redirect('*/*/');
+    }
+
+    /**
+     * Check submitted serialixed data for any actual values
+     * return only non empty data
+     *
+     * @param array|string $dataSerialized
+     * @return array
+     */
+    public function prepareSerializedData($dataSerialized)
+    {
+        if (!empty($dataSerialized)) {
+            $return = array();
+            if (!is_array($dataSerialized)) {
+                $dataSerialized = json_decode($dataSerialized);
+            }
+
+            foreach ($dataSerialized as $key => $value) {
+                if (!empty($value)) {
+                    // if value is array
+                    if (is_array($value)) {
+                        $return[$key] = $this->prepareSerializedData($value);
+                    } else { // end if value array
+                        $return[$key] = $value;
+                    }
+                } // end if !empty $value
+            } // end for each loop
+
+            if (!empty($return)) {
+                return $return;
+            }
+        } // end empty data check
+
+        return $dataSerialized;
     }
 
     public function getIconsDir()

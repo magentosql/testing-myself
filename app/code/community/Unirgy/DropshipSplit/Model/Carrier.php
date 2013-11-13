@@ -334,7 +334,9 @@ class Unirgy_DropshipSplit_Model_Carrier
                 'code' => $code,
                 'cost' => (float)$rate->getCost(),
                 'price' => (float)$rate->getPrice(),
-                'price_incl' => (float)Mage::helper('tax')->getShippingPrice($rate->getPrice(), true, $address),
+                'price_excl' => (float)$this->getShippingPrice($rate->getPrice(), $vendor, $address, 'base'),
+                'price_incl' => (float)$this->getShippingPrice($rate->getPrice(), $vendor, $address, 'incl'),
+                'tax' => (float)$this->getShippingPrice($rate->getPrice(), $vendor, $address, 'tax'),
                 'carrier_title' => $rate->getCarrierTitle(),
                 'method_title' => $rate->getMethodTitle(),
                 'is_free_shipping' => (int)$rate->getIsFwFreeShipping()
@@ -406,6 +408,11 @@ class Unirgy_DropshipSplit_Model_Carrier
         Mage::dispatchEvent('udropship_carrier_collect_after', array('request'=>$request, 'result'=>$result, 'address'=>$address, 'details'=>$details));
 
         return $result;
+    }
+
+    public function getShippingPrice($baseShipping, $vId, $address, $type)
+    {
+        return Mage::helper('udropship')->getShippingPrice($baseShipping, $vId, $address, $type);
     }
 
     public function getMyMethodPrice($cost, $request, $method='')

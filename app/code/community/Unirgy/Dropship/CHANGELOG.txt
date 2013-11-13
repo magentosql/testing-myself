@@ -1,3 +1,12 @@
+===== 2.2.10 =====
+  * Fixed 2.2.9 bug shipping calculation does not include tax when shipping include tax
+
+===== 2.2.9 =====
+  * Added better processing of shipping tax in statements
+
+===== 2.2.8 =====
+  * Fixed labels in vendor portal settings page billing address section had triple Email fields
+
 ===== 2.2.7 =====
   * Added dropship stock option "Split Bundle by vendors"
   * Fixed vendor save when there are huge number of products associated and no modifications made
