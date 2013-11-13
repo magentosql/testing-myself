@@ -3770,6 +3770,7 @@ display:inline-block;
 
 .onestepcheckout-giftwrap .description {
 display:inline-block;
+font-weight:bold;
 }
 
 .onestepcheckout-giftwrap .question-box {
@@ -3779,4 +3780,5 @@ pading-left:5px;
 
 .order-review-info .onestepcheckout-giftwrap{
     padding-top:0px !important;
+    font-weight: normal;
 }
