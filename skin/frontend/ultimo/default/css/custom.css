@@ -857,7 +857,7 @@ h1 span{text-transform:none}
 .ratings,.no-rating{color:#222}
 .availability{color:#666;font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;text-transform:uppercase}
 .gen-tabs-style1 .tabs a.current{box-shadow:0 -6px 15px #f7f7f7;color:#64b96a}
-.gen-tabs-style1 .tabs a{color:#222;background-color:#efefef;font-family:"GillSansMTStd-Bold";font-size:13px;padding:7px 35px;text-transform:uppercase}
+.gen-tabs-style1 .tabs a{color:#222;background-color:#efefef;font-family:"GillSansMTStd-Bold";font-size:13px;padding:7px 30px;text-transform:uppercase}
 .gen-tabs .tabs-panels .panel{padding:20px 0 20px 30px}
 .gen-tabs .tabs-panels .panel h3{font-family:"Sorts Mill Goudy Regular",serif;font-size:15px;font-weight:normal;text-transform:uppercase}
 .gen-tabs .tabs-panels .panel h4{font-family:"GillSansMTStd-Bold",sans-serif;font-size:15px;font-weight:normal;margin-bottom:0}
