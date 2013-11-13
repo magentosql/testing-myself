@@ -150,7 +150,7 @@ class Unirgy_StoreLocator_Block_Adminhtml_Location_Edit_Tab_Form extends Mage_Ad
              'name'      => 'latitude',
              'label'     => $hlp->__('Latitude'),
         ));
-        
+
         $fieldset->addField('longitude', 'text', array(
             'name'      => 'longitude',
             'label'     => $hlp->__('Longitude'),
@@ -168,9 +168,31 @@ class Unirgy_StoreLocator_Block_Adminhtml_Location_Edit_Tab_Form extends Mage_Ad
             )
         );
 
+        $fieldsetCustomFields = $form->addFieldset('custom_fields', array(
+            'legend'=>$hlp->__('Custom Fields')
+        ));
+
+        $fieldsetCustomFields->addField('custom1', 'text', array(
+            'name'      => 'data_serialized[custom1]',
+            'label'     => $hlp->__('Custom field 1'),
+        ));
+
+        $fieldsetCustomFields->addField('custom2', 'text', array(
+            'name'      => 'data_serialized[custom2]',
+            'label'     => $hlp->__('Custom field 2'),
+        ));
+
+        $fieldsetCustomFields->addField('custom3', 'text', array(
+            'name'      => 'data_serialized[custom3]',
+            'label'     => $hlp->__('Custom field 3'),
+        ));
+
         Mage::dispatchEvent('ustorelocator_adminhtml_edit_prepare_form', array('block'=>$this, 'form'=>$form));
 
         if (Mage::registry('location_data')) {
+            if (isset($data['data_serialized']) && !empty($data['data_serialized'])) {
+                $data = array_merge($data, json_decode($data['data_serialized'], true));
+            }
             $form->setValues($data);
         }
 

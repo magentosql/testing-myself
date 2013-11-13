@@ -18,15 +18,7 @@ function UnirgyStoreLocator(config) {
     var directionsService = new google.maps.DirectionsService();
     var config = config;
     var searched = false;
-    var styles = [
-	    {
-	      featureType: "all",
-	      elementType: "all",
-	      stylers: [
-	        { saturation: -100 }
-	      ]
-	    }
-	]; 
+    var loaded;
     var searchCallback = function (data) {
         hideLoader();
         var xml = data.responseXML;
@@ -42,7 +34,6 @@ function UnirgyStoreLocator(config) {
             return noResults(xml);
         }
         searched = true;
-        
         var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < entries.length; i++) {
             var entry = {};
@@ -70,7 +61,6 @@ function UnirgyStoreLocator(config) {
         config.sidebarEl.innerHTML = error;// 'No results found.';
         var gpoint = config.no_result || new google.maps.LatLng(40, -100);
         map.setCenter(gpoint);
-        failureMessage()
     }
 
     function initPagerLinks() {
@@ -93,10 +83,8 @@ function UnirgyStoreLocator(config) {
 
         initPagerLinks();
     }
-	
-	var totalEntries;
-    var searchCallbackJson = function (data) {    	
-    	
+
+    var searchCallbackJson = function (data) {
         hideLoader();
         var response = data.responseJSON;
         if (!response) {
@@ -106,10 +94,7 @@ function UnirgyStoreLocator(config) {
         if(response['pager_html']){
             setPager(response['pager_html']);
         }
-		
-		//Grabbing total entries for success message
-		totalEntries = entries.length;
-		
+
         clearAll(false);
 
         var sidebar = config.sidebarEl;
@@ -132,29 +117,7 @@ function UnirgyStoreLocator(config) {
         fitMap(bounds);
         createTagsRow();
         prepareDirections();
-        successMessage();
     };
-    
-    function successMessage() {
-    	var selectedRadius = jQuery('div.radius .current').html();
-    	var enteredAddress = jQuery('div.postal input').val();
-	    jQuery('.success-message').html('<h1>Great News!</h1><p>There are ' + totalEntries + ' stores within ' + selectedRadius + ' of ' + enteredAddress + '</p>');
-	    jQuery('#find-store-map-area').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0});
-        jQuery('#storelocator-results').css({opacity: 0.0, visibility: "visible"}).animate({opacity: 1.0});
-    }
-    
-    function loadingMessage() {
-    	var enteredAddress = jQuery('div.postal input').val();
-	    jQuery('.success-message').html('<h1>Loading</h1><p>Looking for locations near ' + enteredAddress + '.</p>');
-    }
-    
-    function failureMessage() {
-    	var selectedRadius = jQuery('div.radius .current').html();
-    	var enteredAddress = jQuery('div.postal input').val();
-	    jQuery('.success-message').html('<h1>Sorry</h1><p>No locations found within ' + selectedRadius + ' of ' + enteredAddress + '</p>');
-	    jQuery('#find-store-map-area').animate({opacity: 0}).css({opacity: 1.0, visibility: "hidden"});
-        jQuery('#storelocator-results').animate({opacity: 0}).css({opacity: 1.0, visibility: "hidden"});
-    }
 
     function noResults(xml) {
         var err_element = xml.documentElement.getElementsByTagName('error')[0];
@@ -176,11 +139,12 @@ function UnirgyStoreLocator(config) {
         params.loc_type = georesults.types[0];
         params.long_name = georesults.address_components[0].long_name;
         params.short_name = georesults.address_components[0].short_name;
+        params.formatted_name = georesults.formatted_address;
 
         postSearch(searchUrl, params, searchCallbackJson);
 //        postSearch(searchUrl, params, searchCallback);
     }
-    
+
     function clearAll(del) {
         clearMarkers(del);
         current_tags = {};
@@ -190,21 +154,19 @@ function UnirgyStoreLocator(config) {
     }
 
     function fitMap(bounds) {
-        map.fitBounds(bounds);
-        var zoom = map.getZoom();
-        if (map.getZoom() > config.min_zoom) {
-            map.setZoom(zoom);
+        if (bounds) {
+            map.fitBounds(bounds);
+        }
+        var mZoom = map.getZoom();
+        var confZoom = config.min_zoom;
+        if (mZoom > confZoom && !loaded) {
+            map.setZoom(confZoom);
         }
     }
 
     function postSearch(url, params, callback) {
         currentSearch = params;
-        new Ajax.Request(url, {
-        	method: 'post',
-        	parameters: params,
-        	onSuccess: callback,
-        	onLoading: loadingMessage()
-        });
+        new Ajax.Request(url, {method:'post', parameters:params, onSuccess:callback});
     }
 
     /**
@@ -282,15 +244,16 @@ function UnirgyStoreLocator(config) {
         var height = (addStar) ? 39 : 34;
         var iconSize = new google.maps.Size(width, height);
         var scaleSize = null;
+        var scheme = config.secure ? 'https': 'http';
         if (!m.icon) {
             var opts = config.iconOpts || {};
 
-            var primaryColor = opts.primaryColor || "000000";//e5e5e5
+            var primaryColor = opts.primaryColor || "DA7187";//e5e5e5
             var starColor = opts.starPrimaryColor || "FFFF00";
             var label = escapeUserText(opts.label) || "";
-            var labelColor = opts.labelColor || "FFFFFF";
+            var labelColor = opts.labelColor || "000000";
             var pinProgram = (addStar) ? "pin_star" : "pin";
-            var baseUrl = 'http://chart.apis.google.com/chart?chst=d_map_xpin_letter&chld='
+            var baseUrl = scheme + '://chart.googleapis.com/chart?chst=d_map_xpin_letter&chld='
             var iconUrl = baseUrl + pinProgram + "|";
             if (m.marker_label) {
                 iconUrl += m.marker_label;
@@ -327,12 +290,6 @@ function UnirgyStoreLocator(config) {
         marker.config = m;
         mapMarkers.push(marker);
         google.maps.event.addListener(marker, 'click', function () {
-        	
-        	
-        	//Animate back to map area
-        	var mapTopPosition = jQuery('#find-store-map-area').position();
-			jQuery("html, body").animate({scrollTop: jQuery('#find-store-map-area').offset().top - 95}, 600, "easeOutCubic");
-			
             var infoWindow = marker.infoWindow;
             if (!infoWindow) {
                 infoWindow = new google.maps.InfoWindow({
@@ -343,7 +300,7 @@ function UnirgyStoreLocator(config) {
             }
             if (marker.config.zoom) {
                 var zoom = Math.abs(parseInt(marker.config.zoom));
-                map.setZoom(15);
+                map.setZoom(zoom);
             }
             clearInfoWindows(infoWindow);
             infoWindow.open(map, marker);
@@ -355,8 +312,8 @@ function UnirgyStoreLocator(config) {
         var div = document.createElement('div');
         div.className = "sidebar-entry-container"
         div.id = "sidebar-entry-container-" + m.location_id;
-        var a = document.createElement('a');
-        a.href = "javascript:void(0)";
+        var aDiv = document.createElement('div');
+        $(aDiv).addClassName('sidebar-entry-wrapper');
         var icon = createLabeledMarkerIcon(m);
         var addStar = (m.is_featured === true) || false;
         var width = (addStar) ? 23 : 21;
@@ -364,11 +321,11 @@ function UnirgyStoreLocator(config) {
 //        var html = '<img src="' + icon.url + '" style="float:left" width="'+ width + '" height="' + height + '"/>';
         var html = '<img src="' + icon.url + '" style="float:left"/>';
         html += config.generateSidebarHtml(m);
-        a.innerHTML = html;
-        google.maps.event.addDomListener(a, 'click', function () {
+        aDiv.innerHTML = html;
+        google.maps.event.addDomListener(aDiv, 'click', function () {
             google.maps.event.trigger(marker, 'click');
         });
-        div.appendChild(a);
+        div.appendChild(aDiv);
         positionImage(div);
         return div;
     }
@@ -437,7 +394,7 @@ function UnirgyStoreLocator(config) {
             map.panTo(bounds.getCenter());
             fitMap(bounds);
         }
-		map.fitBounds(bounds);
+//        map.fitBounds(bounds);
     }
 
     function createTagsRow() {
@@ -506,11 +463,11 @@ function UnirgyStoreLocator(config) {
         if (!searched || !lastSearch){
             return;
         }
-        
+
         $H(current_locations).each(function(el){
             createDirectionsEntry(el.value);
         });
-        
+
         var directions = $$('.directions');
         directions.each(function (div) {
             var dir = $(div);
@@ -561,7 +518,7 @@ function UnirgyStoreLocator(config) {
             });
         });
     }
-    
+
     function initLocations() {
         var bounds = new google.maps.LatLngBounds();
         current_tags = {};
@@ -608,24 +565,18 @@ function UnirgyStoreLocator(config) {
         }
     }
     return {
-        load:function (options) {
+        load:function () {
             var myOptions = {
                 center: new google.maps.LatLng(40, -100),
-                mapTypeControlOptions: {
-					mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-				},
-                zoom: parseInt(config.min_zoom),
-                scrollWheel: false,
-                streetViewControl: false,
-                mapTypeControl: false
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: parseInt(config.min_zoom)
             };
-            
-            //Changing map to grayscale
-            var styledMap = new google.maps.StyledMapType(styles, {name: "Laundress"});
             map = new google.maps.Map(config.mapEl, myOptions);
-            map.mapTypes.set('map_style', styledMap);
-            map.setMapTypeId('map_style');
-            
+//            google.maps.event.addListener(map, 'zoom_changed', fitMap);
+            google.maps.event.addListener(map, 'idle', function(){
+                fitMap();
+                loaded = true;
+            });
             directionsDisplay = new google.maps.DirectionsRenderer();
             geocoder = new google.maps.Geocoder();
             initLocations();
@@ -641,10 +592,41 @@ function UnirgyStoreLocator(config) {
             directionsDisplay.setMap(null);
             geocoder.geocode({address:address, region: config.region}, function (result, status) {
                 params.address = address;
+//                console.log(result);
                 if (status != google.maps.GeocoderStatus.OK) {
                     alert(config.invalid_address_text);
+                    hideLoader();
                 } else {
-                    searchLocationsNear(params, result[0]); // send req params plus first result
+                    if(result.length > 1){
+                        hideLoader();
+                        var resultPicker = "<div id='sl-result-picker' class='fieldset'>" +
+                            "<p id='sl-result-picker-notice'>" +
+                            config.multiple_results +
+                            "</p> " +
+                            "<ul id='sl-results-list'>"
+
+                        result.each(function(e, i){
+                            resultPicker += '<li class="sl-result-item"><a id="r-'+i+'" class="sl-result">' + e.formatted_address + '</a></li>';
+                        });
+                        resultPicker += "</ul></div>";
+                        var theform = $("store_locator_form");
+                        theform.insert(resultPicker);
+                        var picker = $("sl-result-picker");
+                        if(picker){
+                            picker.select("a").each(function(el){
+                                el.observe('click', function(event){
+                                    Event.stop(event);
+                                    var r = event.target;
+                                    var idx = r.id.split('-')[1];
+                                    searchLocationsNear(params, result[idx]);
+                                    Element.remove(picker);
+                                });
+                            });
+                        }
+//                        console.log(resultPicker);
+                    } else {
+                        searchLocationsNear(params, result[0]); // send req params plus only result
+                    }
                 }
             });
             google.maps.event.trigger(map, "resize");

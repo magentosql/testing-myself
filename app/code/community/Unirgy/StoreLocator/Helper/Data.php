@@ -94,6 +94,10 @@ class Unirgy_StoreLocator_Helper_Data extends Mage_Core_Helper_Data
             if (!empty($item['is_featured'])) {
                 $item['is_featured'] = (boolean)$item['is_featured'];
             }
+
+            if (!empty($item['data_serialized'])) {
+                $item['custom_data'] = json_decode($item['data_serialized'], true);
+            }
         }
 
         return $data;

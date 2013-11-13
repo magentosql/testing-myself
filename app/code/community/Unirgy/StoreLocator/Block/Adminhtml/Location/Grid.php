@@ -111,7 +111,7 @@ class Unirgy_StoreLocator_Block_Adminhtml_Location_Grid extends Mage_Adminhtml_B
         $block->addItem('coordinates', array(
                                             'label'    => Mage::helper('ustorelocator')->__('Update coordinates'),
                                             'url'      => $this->getUrl('*/*/massCoordinates'),
-                                            'confirm'  => Mage::helper('ustorelocator')->__('Are you sure?'),
+//                                            'confirm'  => Mage::helper('ustorelocator')->__('Are you sure?'),
                                             'selected' => 'selected'
                                        ));
 

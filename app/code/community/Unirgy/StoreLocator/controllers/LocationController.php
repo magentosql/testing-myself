@@ -30,8 +30,13 @@ class Unirgy_StoreLocator_LocationController extends Mage_Core_Controller_Front_
             return $this->mapAjaxAction();
         }
         $this->loadLayout();
-        if (method_exists($this, '_title')) {
+        if (method_exists($this, '_title') && Mage::getStoreConfig('ustorelocator/general/page_title')) {
             $this->_title(Mage::getStoreConfig('ustorelocator/general/page_title'));
+        }
+        $pageLayout = Mage::getStoreConfig('ustorelocator/general/sl_layout');
+        if($pageLayout){
+            $this->getLayout()->helper('page/layout')
+                            ->applyTemplate($pageLayout);
         }
         $this->renderLayout();
     }
@@ -158,11 +163,17 @@ class Unirgy_StoreLocator_LocationController extends Mage_Core_Controller_Front_
                             $v = Mage::getBaseUrl('media') . $v;
                         } elseif ($k == 'is_featured') {
                             $v = (boolean)$v;
+                        } elseif ($k == 'data_serialized') {
+                            $k = 'custom_data';
+                            $v = json_decode($v, true);
                         }
                         $newNode[$k] = $v;
                     }
                 } // end fore each loc get data
                 $data['markers'][] = $newNode;
+            }
+            if(empty($data['markers'])){
+                $data['error'] = $this->__("No results found for <strong>\"%s\"</strong>", $request['formatted_name']);
             }
         } catch (Exception $e) {
             $data['error'] = $e->getMessage();
@@ -185,5 +196,6 @@ class Unirgy_StoreLocator_LocationController extends Mage_Core_Controller_Front_
             'pager_html' => $pagerHtml
         );
         $this->getResponse()->setHeader('Content-Type', 'application/json', true)->setBody(Zend_Json::encode($data));
+        return $this;
     }
 }

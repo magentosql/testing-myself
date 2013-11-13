@@ -1,3 +1,19 @@
+===== 2.1.5 =====
+  * Added option to pick result if more than one is returned.
+  * Added setting to configure multiple result text
+  * Added error text if no results are found to use search location "formatted address"
+  * Added logging if coordinates update fails* Changed regional biasing to use locale codes not country codes
+===== 2.1.4 =====
+  * added custom fields option. For now it is static, limited to custom1, 2 and 3
+  * fixed layout handle issue
+  * Fixed minimum map zoom level not working when there are no locations loaded
+===== 2.1.3 =====
+  * added back Google API key setting. It is optional but can be used to track usage.
+  * added layout chooser for map page.
+  * removed choosing geocoder url from settings since if it was stored before, it would not work with new google settings
+  * refactored import, added few events that are fired during import so that plugins can hook in and import 3rd party data
+    - store_location_import_row_validate - after SL validates imported data. Good to validate other data.
+    - store_location_import_row_insert_after - after row is saved in DB, it has row's ID as 'location_id' so that 3rd party data can use it for relations to saved location
 ===== 2.1.2 =====
   * added ability to reinstall module from within admin, not accessible via interface
   * fixed not working google geocoder link
