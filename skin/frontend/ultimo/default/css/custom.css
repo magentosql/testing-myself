@@ -829,7 +829,7 @@ h1 span{text-transform:none}
 .product-view .gen-slider-arrows3 .direction-nav .next,.product-view .gen-slider-arrows3 .direction-nav .prev{top:42px}
 .product-view .product-type-data{position:relative}
 .related-itemslider-wrapper .itemslider .slides img{max-width:none}
-.product-view .add-monogram{position:absolute;right:0;top:-13px}
+.product-view .add-monogram{float: right;top: -30px;}
 .product-view .add-monogram span.custom{float:left;margin-right:4px;margin-top:2px;display:none;}
 .product-view .add-monogram label{margin-top: 20px; font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;font-weight:normal;color:#222;padding:5px 0 5px 60px;background:url('../images/monogram-logo.gif') 5px top no-repeat}
 .product-view .add-monogram-content{-webkit-transition:opacity 1s ease-in-out,height 1s;-moz-transition:opacity 1s ease-in-out,height 1s;-o-transition:opacity 1s ease-in-out,height 1s;-ms-transition:opacity 1s ease-in-out,height 1s;transition:opacity 1s ease-in-out,height 1s;height:0;opacity:0;position:relative;}
@@ -923,21 +923,3 @@ body.cms-customer-service p{font-family:"GillSansMTStd",sans-serif;margin-bottom
 .col-main .one-step-checkout button.btn-checkout span{font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;font-weight:normal}
 .col-main .one-step-checkout label{font-family:"Georgia",serif;font-style:italic;color:#222 !important}
 .col-main .one-step-checkout .onestepcheckout-payment-methods .form-list{padding-left:0}
-
-/* ticket #21 - center price and name on product list */
-.products-grid .product-name {
-    text-align:center;
-}
-
-.products-grid .price-box{
-    text-align:center;
-}
-
-
-.shipping-note {font-style:italic;}
-
-.gift-messages {margin-top: 0px;}
-.order-review-info .onestepcheckout-giftmessage {padding-top: 15px;}
-.order-review-info .onestepcheckout-newsletter {margin-top: 30px;}
-
-ul.accordion li div ul li {display: list-item}
