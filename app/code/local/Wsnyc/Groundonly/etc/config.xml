@@ -34,6 +34,7 @@
             <allowed_shipping_methods>
                 <code1>freeshipping_freeshipping</code1>
                 <code2>fedex_GROUND_HOME_DELIVERY</code2>
+                <code3>wsnyc_oversizeshipping_wsnyc_oversizeshipping</code3>
             </allowed_shipping_methods>
         </wsnyc_groundonly>
     </global>
