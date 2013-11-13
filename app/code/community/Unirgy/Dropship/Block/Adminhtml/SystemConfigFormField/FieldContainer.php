@@ -13,6 +13,13 @@ class Unirgy_Dropship_Block_Adminhtml_SystemConfigFormField_FieldContainer exten
         return $this->setData('field_name', $fName);
     }
 
+    public function getFieldName()
+    {
+        return $this->getData('field_name')
+            ? $this->getData('field_name')
+            : ($this->getElement() ? $this->getElement()->getName() : '');
+    }
+
     protected $_idSuffix;
     public function resetIdSuffix()
     {

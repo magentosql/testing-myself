@@ -47,7 +47,7 @@ abstract class Unirgy_Dropship_Model_Vendor_Statement_Abstract extends Mage_Core
             'subtotal' => $this->getVendor()->getStatementSubtotalBase() == 'cost' ? $po->getTotalCost() : $po->getBaseTotalValue(),
             'shipping' => $po->getBaseShippingAmount(),
             'discount' => $po->getBaseDiscountAmount(),
-            'tax' => $po->getBaseTaxAmount(),
+            'tax' => $po->getBaseTaxAmount()+$po->getBaseShippingTax(),
             'handling' => $po->getBaseHandlingFee(),
             'trans_fee' => $po->getTransactionFee(),
             'adj_amount' => $po->getAdjustmentAmount(),

@@ -296,6 +296,9 @@ class Unirgy_Dropship_Model_Carrier
                         $detail = array(
                             'cost' => sprintf('%.4f', $rates[$k1]->getCost()),
                             'price' => sprintf('%.4f', $rates[$k1]->getPrice()),
+                            'price_excl' => sprintf('%.4f', $this->getShippingPrice($rates[$k1]->getPrice(), $vendor, $address, 'base')),
+                            'price_incl' => sprintf('%.4f', $this->getShippingPrice($rates[$k1]->getPrice(), $vendor, $address, 'incl')),
+                            'tax' => sprintf('%.4f', $this->getShippingPrice($rates[$k1]->getPrice(), $vendor, $address, 'tax')),
                             'est_code' => $rates[$k1]->getCarrier().'_'.$rates[$k1]->getMethod(),
                             'est_carrier_title' => $rates[$k1]->getCarrierTitle(),
                             'est_method_title' => $rates[$k1]->getMethodTitle(),
@@ -343,14 +346,23 @@ class Unirgy_Dropship_Model_Carrier
                             if (($oldRateBySeqNumber = @$ratesBySeqNumber[$curUdpoSeqNumber])) {
                                 $details['methods'][$scKey]['vendors'][$k]['cost'] -= $oldRateBySeqNumber['cost'];
                                 $details['methods'][$scKey]['vendors'][$k]['price'] -= $oldRateBySeqNumber['price'];
+                                $details['methods'][$scKey]['vendors'][$k]['price_excl'] -= $oldRateBySeqNumber['price_excl'];
+                                $details['methods'][$scKey]['vendors'][$k]['price_incl'] -= $oldRateBySeqNumber['price_incl'];
+                                $details['methods'][$scKey]['vendors'][$k]['tax'] -= $oldRateBySeqNumber['tax'];
                             }
                             $ratesBySeqNumber[$curUdpoSeqNumber] = $detail;
                             //if (is_array($snByVendor) && $curUdpoSeqNumber>=max(array_keys($snByVendor))) {
                                 $_resCost = $detail['cost'] + $details['methods'][$scKey]['vendors'][$k]['cost'];
                                 $_resPrice = $detail['price'] + $details['methods'][$scKey]['vendors'][$k]['price'];
+                                $_resPriceExcl = $detail['price_excl'] + $details['methods'][$scKey]['vendors'][$k]['price_excl'];
+                                $_resPriceIncl = $detail['price_incl'] + $details['methods'][$scKey]['vendors'][$k]['price_incl'];
+                                $_resTax = $detail['tax'] + $details['methods'][$scKey]['vendors'][$k]['tax'];
                                 $details['methods'][$scKey]['vendors'][$k] = $detail;
                                 $details['methods'][$scKey]['vendors'][$k]['cost'] = $_resCost;
                                 $details['methods'][$scKey]['vendors'][$k]['price'] = $_resPrice;
+                                $details['methods'][$scKey]['vendors'][$k]['price_excl'] = $_resPriceExcl;
+                                $details['methods'][$scKey]['vendors'][$k]['price_incl'] = $_resPriceIncl;
+                                $details['methods'][$scKey]['vendors'][$k]['tax'] = $_resTax;
                             //}
                             $details['methods'][$scKey]['vendors'][$k]['is_free_shipping'] = $detail['is_free_shipping'];
                             $details['methods'][$scKey]['vendors'][$k]['rates_by_seq_number'] = $ratesBySeqNumber;
@@ -436,6 +448,9 @@ class Unirgy_Dropship_Model_Carrier
                     'is_free_shipping' => 1,
                     'cost' => 0,
                     'price' => 0,
+                    'price_excl' => 0,
+                    'price_incl' => 0,
+                    'tax' => 0,
                     'title' => $s->getStoreTitle($quote->getStoreId())
                 );
                 if (!empty($method['wildcard_code'])) {
@@ -446,6 +461,9 @@ class Unirgy_Dropship_Model_Carrier
                 $totals[$mCode]['is_free_shipping'] = @$totals[$mCode]['is_free_shipping'] && @$rate['is_free_shipping'];
                 $totals[$mCode]['cost'] = $hlp->applyEstimateTotalCostMethod($totals[$mCode]['cost'], $rate['cost']);
                 $totals[$mCode]['price'] = $hlp->applyEstimateTotalPriceMethod($totals[$mCode]['price'], $rate['price']);
+                $totals[$mCode]['price_excl'] = $hlp->applyEstimateTotalPriceMethod($totals[$mCode]['price_excl'], $rate['price_excl']);
+                $totals[$mCode]['price_incl'] = $hlp->applyEstimateTotalPriceMethod($totals[$mCode]['price_incl'], $rate['price_incl']);
+                $totals[$mCode]['tax'] = $hlp->applyEstimateTotalPriceMethod($totals[$mCode]['tax'], $rate['tax']);
             }
         }
 #Mage::log($totals);
@@ -495,6 +513,11 @@ class Unirgy_Dropship_Model_Carrier
         Mage::dispatchEvent('udropship_carrier_collect_after', array('request'=>$request, 'result'=>$result, 'address'=>$address, 'details'=>$details));
 
         return $result;
+    }
+
+    public function getShippingPrice($baseShipping, $vId, $address, $type)
+    {
+        return Mage::helper('udropship')->getShippingPrice($baseShipping, $vId, $address, $type);
     }
 
     public function getMethodPrice($cost, $method='')
