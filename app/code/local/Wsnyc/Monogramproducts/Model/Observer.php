@@ -18,6 +18,7 @@ class Wsnyc_Monogramproducts_Model_Observer
             array('code' => 'monogram-color', 'label' => 'Monogram Color'),
             array('code' => 'monogram-initials', 'label' => 'Monogram Initials'),
         );
+
         foreach($monogramOptions as $monogram) {
             if(($monogramValue = $this->_getQuoteOption($monogram['code'], $options))) {
                 $monogramValue = Mage::helper('core')->htmlEscape($monogramValue);
