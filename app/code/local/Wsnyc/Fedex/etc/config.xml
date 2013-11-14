@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Wsnyc_Fedex>
+            <version>0.1.0</version>
+        </Wsnyc_Fedex>
+    </modules>
+    <global>
+        <models>
+            <fedex>
+                <class>Wsnyc_Fedex_Model</class>
+                <resourceModel>fedex_mysql4</resourceModel>
+            </fedex>
+            <usa>
+                <rewrite>
+                    <shipping_carrier_fedex>Wsnyc_Fedex_Model_Usa_Shipping_Carrier_Fedex</shipping_carrier_fedex>
+                </rewrite>
+            </usa>
+        </models>
+    </global>
+</config>
