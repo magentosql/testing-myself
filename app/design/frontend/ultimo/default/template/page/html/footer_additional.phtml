@@ -356,13 +356,14 @@
 	                         var price =  $('#item_price_' + id).val();
 	                         var params = 'product=' + id  + '&qty='+ qty;                                                                 
                                  
-                                 ajaxcart.addToCartHandle(url,params);
-	                         //washingAddToCart(url, params);
+                                 //ajaxcart.addToCartHandle(url,params);
+	                         washingAddToCart(url, params);
 	                     }
 	                 }
 	           });
+               location.href = '/checkout/cart';
                    
-                   $("html, body").delay(1300).animate({ scrollTop: "0px" });
+                   //$("html, body").delay(1300).animate({ scrollTop: "0px" });
 
 		})
 
