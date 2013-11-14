@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <config>
-	<menu>
+<!--	<menu>
 		<ajaxcart module="ajaxcart" translate="title">
 			<title>Ajax Cart</title>
 			<sort_order>71</sort_order>               
@@ -12,7 +12,7 @@
 				</settings>
 			</children>
 		</ajaxcart>
-	</menu>
+	</menu>-->
 	<acl>
 		<resources>
 			<all>
