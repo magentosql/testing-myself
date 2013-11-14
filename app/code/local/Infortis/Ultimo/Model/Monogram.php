@@ -9,7 +9,10 @@ class Infortis_Ultimo_Model_Monogram extends Mage_Core_Model_Abstract
         $event = $observer->getEvent();
         $product = $event->getProduct();
         $item = $event->getQuoteItem();
-
+        
+        /* later used on checkout page to show monogram details */
+        $groupedMonogramDetails = Mage::getModel('customer/session')->getData('grouped_monogram_details');
+        
         if((int)$product->getMonogram()):
             $type = $request->getParam('monogram-type', '');
             $color = $request->getParam('monogram-color', '');
@@ -21,8 +24,10 @@ class Infortis_Ultimo_Model_Monogram extends Mage_Core_Model_Abstract
                 $item->setData('monogram-type', $type);
                 $item->setData('monogram-color', $color);
                 $item->setData('monogram-initials', $initials);
-                $item->setData('monogram-check', $check);
+                $item->setData('monogram-check', 1);
  		$item->getQuote()->save();
+ 		
+ 		
 
                 $monogramCustomPrice =
                 (float)Mage::getResourceModel('catalog/product')
@@ -36,6 +41,13 @@ class Infortis_Ultimo_Model_Monogram extends Mage_Core_Model_Abstract
                 $item->setOriginalCustomPrice($specialPrice);
                 $item->getProduct()->setIsSuperMode(true);
                 $item->save();
+                
+                $groupedMonogramDetails[$item->getId()] = array(
+                        'monogram-type'=>$type,
+                        'monogram-color' => $color,
+                        'monogram-initials' => $initials,
+                        'monogram-check'=>1
+		      );
 
             } elseif($product->getTypeId()=='grouped') {
 		$groupedProducts = $product->getTypeInstance(true)->getAssociatedProducts($product);
@@ -62,10 +74,21 @@ class Infortis_Ultimo_Model_Monogram extends Mage_Core_Model_Abstract
                         $qitem->setData('monogram-type', $type);
                         $qitem->setData('monogram-color', $color);
                         $qitem->setData('monogram-initials', $initials);
-                        $qitem->setData('monogram-check', $check)->save();
+                        $qitem->setData('monogram-check', 1);
+                        $qitem->save();
+                        
+                        $groupedMonogramDetails[$qitem->getId()] = array(
+                        'monogram-type'=>$type,
+                        'monogram-color' => $color,
+                        'monogram-initials' => $initials,
+                        'monogram-check'=>1
+		      );
+                    
 		    } 
 		}
             }
+            
+            Mage::getModel('customer/session')->setData('grouped_monogram_details',$groupedMonogramDetails);
 
             $item->getQuote()->save();
 
