@@ -70,7 +70,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
 		/* variable set in Infortis/Ultimo/Model/Monogram.php */
 	 	$groupedMonogramDetails = Mage::getModel('customer/session')->getData('grouped_monogram_details');
 
-
+                $monogramCheck = 0;
 	 	if(isset($groupedMonogramDetails[$_item->getId()]['monogram-check'])){
 		    $monogramCheck = $groupedMonogramDetails[$_item->getId()]['monogram-check'];
                     $monogramColor = $groupedMonogramDetails[$_item->getId()]['monogram-color'];
@@ -95,7 +95,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                 */
 		?>
 		
-		<?php if ($monogramCheck==1):?>
+        <?php if ($monogramCheck==1):?>
         <ul class="item-monogram">
             <li><b>Monogram </b><?php echo implode(', ',$monogramArray); ?></li>
             <li><b>Shipping Note </b>Monogram Items will ship in 1-2 weeks. All monogram sales are final.</li>
