@@ -275,6 +275,7 @@
             
             qty++;
             $('#item_qty_' + id).text(qty);
+            $('#item_' + id + '_qty').val(qty);
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
@@ -291,6 +292,7 @@
                 qty = 0;
             }
             $('#item_qty_' + id).text(qty);
+            $('#item_' + id + '_qty').val(qty);
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
@@ -303,21 +305,15 @@
 
                 function washingItemRequestComplete()
                 {
-                     washingItemsRequests--;
-                     if(washingItemsRequests <= 0 && washingItemsLoopFinished)
-                     {
-                         setTimeout(function(){ window.location = '/checkout/cart/'; },1000 * washingItemsInCart);
-                     }
+
+                    setTimeout(function(){ window.location = '/checkout/cart/'; },2000);
+                     
                 }
 
 
                 function washingAddToCart(requestUrl, params)
                 {
                     this.url = requestUrl;
-                    if(window.location.href.match('https://') && !requestUrl.match('https://'))
-                        requestUrl = requestUrl.replace('http://','https://');
-                    if(!window.location.href.match('https://') && requestUrl.match('https://'))
-                        requestUrl = requestUrl.replace('https://','http://');
                     if (requestUrl.indexOf('?') != -1)
                         requestUrl += '&isajaxcart=true';
                     else
@@ -333,39 +329,34 @@
                                
                                washingItemsRequests--;
                             },
-                              onComplete: washingItemRequestComplete()
+                            onComplete: washingItemRequestComplete()
                     });
                 }
 		
         <?php //Washing Service Add to cart ?>
-		$(".washing-subtotal button").click(function(e){
-	        e.preventDefault();
-	            
-	            washingItemsRequests = 0; 
-	            washingItemsLoopFinished = false;
-	            var sum = 0;
-	           $('.qty').each(function() {
-	
-	                 if($(this).attr('id'))
-	                 {
-	                     var id = $(this).attr('id').substr(9);    
-	                     var qty =  $('#item_qty_' + id).text();
-	                     if(qty > 0)
-	                     {
-	                         var url =  $('#item_url_' + id).val(); 
-	                         var price =  $('#item_price_' + id).val();
-	                         var params = 'product=' + id  + '&qty='+ qty;                                                                 
-                                 
-                                 //ajaxcart.addToCartHandle(url,params);
-	                         washingAddToCart(url, params);
-	                     }
-	                 }
-	           });
-               location.href = '/checkout/cart';
-                   
-                   //$("html, body").delay(1300).animate({ scrollTop: "0px" });
+            $(".washing-subtotal button").click(function(e){
+                e.preventDefault();
 
-		})
+                    washingItemsRequests = 0;
+                    washingItemsLoopFinished = false;
+                    var sum = 0;
+
+                    var params=[];
+                   $('.qty').each(function() {
+
+                         if($(this).attr('id'))
+                         {
+                             var id = $(this).attr('id').substr(9);
+                             var qty =  $('#item_qty_' + id).text();
+                             if(qty > 0)
+                             {
+                                 params.push('item['+id+'][qty]='+qty);
+                             }
+                         }
+                   });
+
+                   washingAddToCart('<?php echo Mage::getUrl("washingservice/cart/add") ?>?' + params.join('&'));
+            });
 
 		
 		<?php //Products grid: item on hover ?>
