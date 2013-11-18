@@ -6,3 +6,4 @@ media/tmp/*
 var/*
 nbproject/
 wp/wordpress/wp-content
+.idea/
