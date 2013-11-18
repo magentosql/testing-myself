@@ -22,7 +22,7 @@
 </a>
 
 <div id="washing-service">
-	<form action="<?php echo $this->baseUrl('washingservice/cart/add'); ?>" method="post" class="clearer" id="product_addtocart_form">
+	<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" class="clearer" id="product_addtocart_form">
 	<h2>What can we wash?</h2>
 	<h3>Select your items below</h3>
 	<div class="small-horizontal-line"></div>
@@ -90,9 +90,18 @@
             			$url = $this->helper('checkout/cart')->getAddUrl($item, "");
             ?>
 			<div class="item-line">
-				<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
+				<?php /*<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
 				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />
+                                <input type="hidden" id="item_qty_<?php echo  $item->getId(); ?>" value="0" />
 				<span class="item-title"><?php echo $item->getName(); ?> <span>($<?php echo $price ?>)</span></span>
+				<div class="item-selector">
+					<a href="#" id="item_minus_<?php echo  $item->getId(); ?>" class="minus">-</a>
+					<span id="item_qty_<?php echo  $item->getId(); ?>" class="qty">0</span>
+					<a href="#" id="item_plus_<?php echo  $item->getId(); ?>" class="plus">+</a>
+					<span id="item_subtotal_<?php echo  $item->getId(); ?>" class="item-subtotal">$0</span>
+				</div>*/ ?>
+                                <input type="hidden" id="item_<?php echo  $item->getId(); ?>_qty" name="item[<?php echo  $item->getId(); ?>][qty]" value="0" />
+                                <span class="item-title"><?php echo $item->getName(); ?> <span>($<?php echo $price ?>)</span></span>
 				<div class="item-selector">
 					<a href="#" id="item_minus_<?php echo  $item->getId(); ?>" class="minus">-</a>
 					<span id="item_qty_<?php echo  $item->getId(); ?>" class="qty">0</span>

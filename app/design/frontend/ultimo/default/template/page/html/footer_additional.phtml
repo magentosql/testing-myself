@@ -275,6 +275,8 @@
             
             qty++;
             $('#item_qty_' + id).text(qty);
+            //set hidden field qty
+            $('#item_' + id+ '_qty').val(qty);
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
@@ -291,6 +293,8 @@
                 qty = 0;
             }
             $('#item_qty_' + id).text(qty);
+            //set hidden field qty
+            $('#item_' + id+ '_qty').val(qty);
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
@@ -338,7 +342,7 @@
                 }
 		
         <?php //Washing Service Add to cart ?>
-		$(".washing-subtotal button").click(function(e){
+		/*$(".washing-subtotal button").click(function(e){
 	        e.preventDefault();
 	            
 	            washingItemsRequests = 0; 
@@ -361,7 +365,7 @@
 	                     }
 	                 }
 	           });
-               location.href = '/checkout/cart';
+               location.href = '/checkout/cart';*/
                    
                    //$("html, body").delay(1300).animate({ scrollTop: "0px" });
 

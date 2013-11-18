@@ -11,7 +11,7 @@
             <washingservicecart>
                 <use>standard</use>
                 <args>
-                    <module>Baobaz_Arithmetic</module>
+                    <module>Wsnyc_WashingServiceCart</module>
                     <frontName>washingservice</frontName>
                 </args>
             </washingservicecart>
