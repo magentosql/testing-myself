@@ -89,11 +89,11 @@ if ($_count) {
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 
 <div class="product-nav" >
-    <?php if($url <> $prev_url): ?>
-    <a href="<?php echo $prev_url; ?>" class="effect" ><span></span> <?php echo $this->__('PREVIOUS PRODUCT') ?></a>
+    <?php if($url <> $next_url): ?>
+    <a href="<?php echo $next_url; ?>" class="effect" ><span></span> <?php echo $this->__('PREVIOUS PRODUCT') ?></a>
     <?php endif; ?>
-    <?php if($url <> $next_url): ?>    
-    <a href="<?php echo $next_url; ?>" class="next i-next effect" ><?php echo $this->__('NEXT PRODUCT') ?> <span></span></a>
+    <?php if($url <> $prev_url): ?>    
+    <a href="<?php echo $prev_url; ?>" class="next i-next effect" ><?php echo $this->__('NEXT PRODUCT') ?> <span></span></a>
     <?php endif; ?>    
 </div>
 <div class="product-view nested-container">
