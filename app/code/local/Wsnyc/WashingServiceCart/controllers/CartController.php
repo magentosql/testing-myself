@@ -7,14 +7,10 @@ extends Mage_Core_Controller_Front_Action {
     {
 
         $cart = Mage::getModel('checkout/cart');
-        $postdata = $this->getRequest()->getPost();
-
+        $postdata = $this->getRequest()->getParam('item');
         /* prepare array of product ids and quantities out of request params */
-        foreach ($postdata as $key => $qty) {
-            $parts = explode('_', $key);
-            if ($parts[0] == 'item' && $parts[2] == 'qty') {
-                $productQty[$parts[1]] = $qty;
-            }
+        foreach ($postdata as $prodid => $prodqty) {
+                $productQty[$prodid] = $prodqty['qty'];
         }
 
         foreach ($productQty as $productId => $qty) {
@@ -24,8 +20,6 @@ extends Mage_Core_Controller_Front_Action {
         $cart->save();
 
         Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
-        header("Status: 301");
-        header("Location: http://www.mywebsite.com");
     }
 
 }
