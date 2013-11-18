@@ -733,7 +733,7 @@ body.catalogsearch-result-index .page-title h1{vertical-align:bottom;display:inl
 #overlay img{width:auto;max-width:none}
 h1{font-family:"Sorts Mill Goudy Regular",serif;text-transform:uppercase}
 h1 span{text-transform:none}
-.breadcrumbs li,.breadcrumbs li a{color:#999;font-family:"Georgia";font-style:italic;font-size:12px}
+.breadcrumbs li,.breadcrumbs li a{color:#999;font-family:"Georgia","Times New Roman";font-style:italic;font-size:12px}
 .breadcrumbs li a:hover{color:#64b96a}
 .breadcrumbs li strong{color:#222}
 .grid3-1{display:inline;float:left;margin-right:2%;position:relative;width:31%}
