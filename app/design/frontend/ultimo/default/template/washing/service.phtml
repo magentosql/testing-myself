@@ -63,8 +63,8 @@
             			$url = $this->helper('checkout/cart')->getAddUrl($item, "");
             ?>
 			<div class="item-line">
-				<?php /*<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
-				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />*/ ?>
+				<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
+				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />
                                 <input type="hidden" id="item_<?php echo  $item->getId(); ?>_qty" name="item[<?php echo  $item->getId(); ?>][qty]" value="0" />
 				<span class="item-title"><?php echo $item->getName(); ?> <span>($<?php echo $price ?>)</span></span>
 				<div class="item-selector">
@@ -91,7 +91,7 @@
             			$url = $this->helper('checkout/cart')->getAddUrl($item, "");
             ?>
 			<div class="item-line">
-				<?php /*<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
+				<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
 				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />
                                 <input type="hidden" id="item_qty_<?php echo  $item->getId(); ?>" value="0" />
 				<span class="item-title"><?php echo $item->getName(); ?> <span>($<?php echo $price ?>)</span></span>
