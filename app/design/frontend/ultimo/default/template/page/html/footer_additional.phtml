@@ -316,10 +316,6 @@
                 function washingAddToCart(requestUrl, params)
                 {
                     this.url = requestUrl;
-                    if(window.location.href.match('https://') && !requestUrl.match('https://'))
-                        requestUrl = requestUrl.replace('http://','https://');
-                    if(!window.location.href.match('https://') && requestUrl.match('https://'))
-                        requestUrl = requestUrl.replace('https://','http://');
                     if (requestUrl.indexOf('?') != -1)
                         requestUrl += '&isajaxcart=true';
                     else
@@ -335,17 +331,21 @@
                                
                                washingItemsRequests--;
                             },
-                              onComplete: washingItemRequestComplete()
+                            onComplete: washingItemRequestComplete()
                     });
                 }
 		
         <?php //Washing Service Add to cart ?>
-		/*$(".washing-subtotal button").click(function(e){
+		$(".washing-subtotal button").click(function(e){
 	        e.preventDefault();
 	            
 	            washingItemsRequests = 0; 
 	            washingItemsLoopFinished = false;
 	            var sum = 0;
+                    
+                    
+                    params = '';
+                    
 	           $('.qty').each(function() {
 	
 	                 if($(this).attr('id'))
@@ -355,19 +355,27 @@
 	                     if(qty > 0)
 	                     {
 	                         var url =  $('#item_url_' + id).val(); 
-	                         var price =  $('#item_price_' + id).val();
-	                         var params = 'product=' + id  + '&qty='+ qty;                                                                 
+	                         //var price =  $('#item_price_' + id).val();
+	                         var params = params + '&item[' + id  + '][qty]='+ qty;                                                                 
                                  
                                  //ajaxcart.addToCartHandle(url,params);
-	                         washingAddToCart(url, params);
+	                         
 	                     }
 	                 }
 	           });
+                   
+                   if(window.location.href.match('https://') && !url.match('https://'))
+                        protocol = 'https'
+                    
+                    if(!window.location.href.match('https://') && url.match('https://'))
+                        protocol = 'http'
+                    
+                   washingAddToCart(protocol + '<?php echo 'washingservice/cart/add' ?>', params);
                    //location.href = '/checkout/cart';
                    
                    //$("html, body").delay(1300).animate({ scrollTop: "0px" });
 
-		})*/
+		})
 
 		
 		<?php //Products grid: item on hover ?>
