@@ -57,7 +57,7 @@ class Mage_Shipping_Model_Carrier_Freeshipping
         $this->_updateFreeMethodQuote($request);
 
         if (($request->getFreeShipping())
-            || ($request->getBaseSubtotal() >= $this->getConfigData('free_shipping_subtotal'))
+            || ($request->getPackageValueWithDiscount() >= $this->getConfigData('free_shipping_subtotal'))
         ) {
             $method = Mage::getModel('shipping/rate_result_method');
 
