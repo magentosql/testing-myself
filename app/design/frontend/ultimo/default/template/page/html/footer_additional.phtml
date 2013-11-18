@@ -275,6 +275,7 @@
             
             qty++;
             $('#item_qty_' + id).text(qty);
+            $('#item_' + id + '_qty').val(qty);
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
@@ -291,6 +292,7 @@
                 qty = 0;
             }
             $('#item_qty_' + id).text(qty);
+            $('#item_' + id + '_qty').val(qty);
             
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
@@ -304,10 +306,10 @@
                 function washingItemRequestComplete()
                 {
                      washingItemsRequests--;
-                     if(washingItemsRequests <= 0 && washingItemsLoopFinished)
+                     /*if(washingItemsRequests <= 0 && washingItemsLoopFinished)
                      {
                          setTimeout(function(){ window.location = '/checkout/cart/'; },1000 * washingItemsInCart);
-                     }
+                     }*/
                 }
 
 
