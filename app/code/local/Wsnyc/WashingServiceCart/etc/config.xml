@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Wsnyc_WashingServiceCart>
+            <version>0.0.1</version>
+        </Wsnyc_WashingServiceCart>
+    </modules>
+    
+    <frontend>
+        <routers>
+            <washingservicecart>
+                <use>standard</use>
+                <args>
+                    <module>Baobaz_Arithmetic</module>
+                    <frontName>washingservice</frontName>
+                </args>
+            </washingservicecart>
+        </routers>   
+    </frontend>
+</config>

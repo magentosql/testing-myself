@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Wsnyc_WashingServiceCart>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wsnyc_WashingServiceCart>
+    </modules>
+</config>
