@@ -20,6 +20,7 @@ extends Mage_Core_Controller_Front_Action {
         $cart->save();
 
         Mage::getSingleton('checkout/session')->setCartWasUpdated(true);
+        $this->getResponse()->setHttpResponseCode(200);
     }
 
 }
