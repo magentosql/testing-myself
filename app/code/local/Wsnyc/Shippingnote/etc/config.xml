@@ -47,7 +47,7 @@
                       <signature_required>
                          <to_order>*</to_order>
                       </signature_required>
-                <sales_convert_quote>
+                </sales_convert_quote>
         </fieldsets>
         <events>
             <sales_order_save_before>

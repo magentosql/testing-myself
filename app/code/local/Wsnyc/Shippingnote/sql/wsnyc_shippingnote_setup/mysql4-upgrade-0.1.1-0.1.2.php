@@ -15,4 +15,6 @@ $this->addAttribute('sales_flat_order', 'signature_required', array(
     'default' => 0,
 ));
 
+$installer->addAttribute("quote", "signature_required", array("type"=>"int"));
+
 $installer->endSetup();
