@@ -9,14 +9,14 @@ class Wsnyc_Shippingnote_Model_Observer{
 
         $possibleSignatureValues = Mage::getStoreConfig('onestepcheckout/survey/survey_values');
         $possibleSignatureValues = unserialize($possibleSignatureValues);
-
+        
         $selectedAnswer = strtolower($possibleSignatureValues[$selectedKey]['value']);
         if($selectedAnswer=='yes'){ 
                 $order->setSignatureRequired(1);
         } else { 
                 $order->setSignatureRequired(0);
         }
-
+                
     }
 
 }
