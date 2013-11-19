@@ -543,7 +543,7 @@ if ($_count) {
                                             if(!empty($blockcontent)) { ?>
                                             <div class="fragrance-details" >                                                   
                                                 <h4><?php echo $block->getTitle(); ?></h4>
-                                                <?php echo strip_tags($this->getChildHtml($blockname));  ?>
+                                                <?php echo strip_tags($this->getChildHtml($blockname),'<img>');  ?>
                                             </div>
                                         <?php 
                                             }
