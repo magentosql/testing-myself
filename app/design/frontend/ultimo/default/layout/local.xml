@@ -397,8 +397,8 @@
                         <block type="cms/block" name="block_attribute_scent_le_labo_santal_33">
                             <action method="setBlockId"><block_id>block_attribute_scent_le_labo_santal_33</block_id></action>
                         </block>
-                        <block type="cms/block" name="block_attribute_scent_no_247">
-                            <action method="setBlockId"><block_id>block_attribute_scent_no_247</block_id></action>
+                        <block type="cms/block" name="block_attribute_scent_no247">
+                            <action method="setBlockId"><block_id>block_attribute_scent_no247</block_id></action>
                         </block>
                         <block type="cms/block" name="block_attribute_scent_sport">
                             <action method="setBlockId"><block_id>block_attribute_scent_sport</block_id></action>
