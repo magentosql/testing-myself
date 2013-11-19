@@ -17,4 +17,12 @@ class Wsnyc_Shippingnote_Model_Sales_Order extends Mage_Sales_Model_Order {
         }
         return '';
     }
+    
+    public function getSignatureRequired(){
+        $flag = parent::getSignatureRequired();
+        if ($flag){
+            return 'Yes';
+        }
+        return 'No';
+    }
 }
