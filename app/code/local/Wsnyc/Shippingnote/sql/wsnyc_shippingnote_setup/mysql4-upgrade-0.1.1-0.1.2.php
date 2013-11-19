@@ -4,7 +4,7 @@ $installer = $this;
 $installer->startSetup();
 $setup = new Mage_Eav_Model_Entity_Setup('core_setup');
 
-$this->addAttribute('sales_flat_order', 'signature_required', array(
+$this->addAttribute('order', 'signature_required', array(
     'label' => 'Is signature required?',
     'type' => 'int',
     'input' => 'text',
@@ -15,6 +15,6 @@ $this->addAttribute('sales_flat_order', 'signature_required', array(
     'default' => 0,
 ));
 
-$installer->addAttribute("sales_flat_quotequote", "signature_required", array("type"=>"int"));
+$installer->addAttribute("quote", "signature_required", array("type"=>"int"));
 
 $installer->endSetup();
