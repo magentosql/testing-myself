@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Shippingnote>
-            <version>0.1.1</version>
+            <version>0.1.2</version>
         </Wsnyc_Shippingnote>
     </modules>
     <global>
@@ -42,5 +42,23 @@
                 </notes>
             </basic_notes>
         </wsnyc_shippingnote>
+        <fieldsets>
+            <sales_convert_quote>
+                      <signature_required>
+                         <to_order>*</to_order>
+                      </signature_required>
+                <sales_convert_quote>
+        </fieldsets>
+        <events>
+            <sales_order_save_before>
+                <observers>
+                    <wsnyc_signaturerequired>
+                       <type>model</type>
+                       <class>wsnyc_shippingnote/observer</class>
+                       <method>salesOrderSaveBefore</method>
+                    </wsnyc_signaturerequired>
+                </observers>
+            </sales_order_save_before>
+       </events>
     </global>
 </config>
