@@ -30,15 +30,6 @@
 <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
 <h2 class="sub-title"><?php echo $this->__('Thank you for your order. We appreciate your business and Happy Laundering!') ?></h2>
 
-<br/>For GROUND orders, please allow between 3-5 business days for your order to ship.
-<br/>For EXPRESS orders placed by 10:30 am EST, the order will ship the same day. If placed after 10:30 am EST, the order will ship the next business day.
-<br/>If you have any questions, please e-mail <?php echo Mage::getStoreConfig('trans_email/ident_support/email'); ?> or call us Monday-Friday 9am-6pm EST at <?php echo Mage::getStoreConfig('general/store_information/phone'); ?>
-<br/>
-<br/>ORDER CANCELLATION: We can only accept cancellations of orders before midnight Eastern Standard Time on the same day the order is placed.
-<br/><br/>THE LAUNDRESS RETURN/DAMAGE POLICY: The Laundress does not accept any returns of their products. If your shipment has been damaged in transit, please contact us right away and either keep or photo document the packaging for claims.
-<br/><br/>BRABANTIA RETURN/DAMAGE POLICY:. For all questions/issues, please first notify The Laundress. Brabantia will not accept returns without an authorization number. Credits will not be issued for used merchandise. If your Brabantia item was received damaged, you must make a claim within 72 hours of receipt of merchandise. Save all damaged cartons until claims are settled.
-<br/><br/>JIFFY RETURN POLICY: Jiffy offers a 1 year warranty from date of purchase, within in that 1 year any damaged steamer can be sent directly to the Jiffy warehouse with proof of purchase (include $9.90 handling fee) and Jiffy will repair free of charge, cord damage excluded. For any other concerns regarding Jiffy Steamers please contact The Laundress.
-
 <?php if ($this->getOrderId()):?>
 <?php if ($this->getCanViewOrder()) :?>
     <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
@@ -53,6 +44,15 @@
     </p>
 <?php endif;?>
 <?php endif;?>
+
+<br/>For GROUND orders, please allow between 3-5 business days for your order to ship.
+<br/>For EXPRESS orders placed by 10:30 am EST, the order will ship the same day. If placed after 10:30 am EST, the order will ship the next business day.
+<br/>If you have any questions, please e-mail <?php echo Mage::getStoreConfig('trans_email/ident_support/email'); ?> or call us Monday-Friday 9am-6pm EST at <?php echo Mage::getStoreConfig('general/store_information/phone'); ?>
+<br/>
+<br/>ORDER CANCELLATION: We can only accept cancellations of orders before midnight Eastern Standard Time on the same day the order is placed.
+<br/><br/>THE LAUNDRESS RETURN/DAMAGE POLICY: The Laundress does not accept any returns of their products. If your shipment has been damaged in transit, please contact us right away and either keep or photo document the packaging for claims.
+<br/><br/>BRABANTIA RETURN/DAMAGE POLICY:. For all questions/issues, please first notify The Laundress. Brabantia will not accept returns without an authorization number. Credits will not be issued for used merchandise. If your Brabantia item was received damaged, you must make a claim within 72 hours of receipt of merchandise. Save all damaged cartons until claims are settled.
+<br/><br/>JIFFY RETURN POLICY: Jiffy offers a 1 year warranty from date of purchase, within in that 1 year any damaged steamer can be sent directly to the Jiffy warehouse with proof of purchase (include $9.90 handling fee) and Jiffy will repair free of charge, cord damage excluded. For any other concerns regarding Jiffy Steamers please contact The Laundress.
 
 <?php if ($this->getAgreementRefId()): ?>
     <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
