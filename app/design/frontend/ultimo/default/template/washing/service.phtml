@@ -100,14 +100,6 @@
 					<span id="item_qty_<?php echo  $item->getId(); ?>" class="qty">0</span>
 					<a href="#" id="item_plus_<?php echo  $item->getId(); ?>" class="plus">+</a>
 					<span id="item_subtotal_<?php echo  $item->getId(); ?>" class="item-subtotal">$0</span>
-				</div>*/ ?>
-                                <input type="hidden" id="item_<?php echo  $item->getId(); ?>_qty" name="item[<?php echo  $item->getId(); ?>][qty]" value="0" />
-                                <span class="item-title"><?php echo $item->getName(); ?> <span>($<?php echo $price ?>)</span></span>
-				<div class="item-selector">
-					<a href="#" id="item_minus_<?php echo  $item->getId(); ?>" class="minus">-</a>
-					<span id="item_qty_<?php echo  $item->getId(); ?>" class="qty">0</span>
-					<a href="#" id="item_plus_<?php echo  $item->getId(); ?>" class="plus">+</a>
-					<span id="item_subtotal_<?php echo  $item->getId(); ?>" class="item-subtotal">$0</span>
 				</div>
 			</div>
 			<?php endforeach; ?>
