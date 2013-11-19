@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Shippingnote>
-            <version>0.1.2</version>
+            <version>0.1.3</version>
         </Wsnyc_Shippingnote>
     </modules>
     <global>
@@ -10,6 +10,11 @@
             <wsnyc_shippingnote_setup>
                 <class>Wsnyc_Shippingnote_Model</class>
             </wsnyc_shippingnote_setup>
+            <sales>
+                <rewrite>
+                    <order>Wsnyc_Shippingnote_Model_Sales_Order</order>
+                </rewrite>
+            </sales>
         </models>
         <resources>
             <wsnyc_shippingnote_setup>
