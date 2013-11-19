@@ -1,20 +1,9 @@
 <?php
 
-$installer = $this;
+$installer = new Mage_Sales_Model_Mysql4_Setup('sales_setup');
 $installer->startSetup();
-$setup = new Mage_Eav_Model_Entity_Setup('core_setup');
 
-$this->addAttribute('order', 'signature_required', array(
-    'label' => 'Is signature required?',
-    'type' => 'int',
-    'input' => 'text',
-    'visible' => true,
-    'required' => false,
-    'position' => 1,
-    'visible_on_front'  => false,
-    'default' => 0,
-));
-
-$installer->addAttribute("quote", "signature_required", array("type"=>"int"));
+$installer->addAttribute('order', 'signature_required', array('type' => 'int','label' => 'Is signature required?'));
+$installer->addAttribute('quote', 'signature_required', array('type' => 'int','label' => 'Is signature required?'));
 
 $installer->endSetup();

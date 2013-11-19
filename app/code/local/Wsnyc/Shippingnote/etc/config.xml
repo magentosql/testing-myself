@@ -54,7 +54,7 @@
                 <observers>
                     <wsnyc_signaturerequired>
                        <type>model</type>
-                       <class>wsnyc_shippingnote/observer</class>
+                       <class>wsnyc_shippingnote_setup/observer</class>
                        <method>salesOrderSaveBefore</method>
                     </wsnyc_signaturerequired>
                 </observers>
