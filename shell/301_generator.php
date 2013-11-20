@@ -50,7 +50,7 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                         $newLinkItem = trim($newLinkItem);
                                         if(!empty($newLinkItem))
                                         {
-                                            $newLinkItem = str_replace('http://thelaund.nextmp.net/', '^', $newLinkItem);
+                                            $newLinkItem = str_replace('http://thelaund.nextmp.net/', '/', $newLinkItem);
                                             $newLinkItem = str_replace('.', '\.', $newLinkItem);
                                             //echo 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . ' [R=301,L]' . "\n";
 
@@ -67,7 +67,7 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                     }
                                 }
                                 else{
-                                    $newLink = str_replace('http://thelaund.nextmp.net/', '^', $newLink);
+                                    $newLink = str_replace('http://thelaund.nextmp.net/', '/', $newLink);
                                     $newLink = str_replace('.', '\.', $newLink);
                                     //echo 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
                                     if(strpos($newLink, '/#') !== false)
