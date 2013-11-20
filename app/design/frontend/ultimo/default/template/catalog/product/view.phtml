@@ -306,7 +306,7 @@ if ($_count) {
 				</div>
             </div> <!-- end: product-secondary-column -->
         <?php endif; ?>
-        <div style="float: left">
+        <div style="float: left; width: 565px;">
         <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
 			<?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
         		<div class="box-additional grid-full">
@@ -543,7 +543,7 @@ if ($_count) {
                                             if(!empty($blockcontent)) { ?>
                                             <div class="fragrance-details" >                                                   
                                                 <h4><?php echo $block->getTitle(); ?></h4>
-                                                <?php echo strip_tags($this->getChildHtml($blockname),'<img>');  ?>
+                                                <?php echo strip_tags($this->getChildHtml($blockname));  ?>
                                             </div>
                                         <?php 
                                             }
