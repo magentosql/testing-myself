@@ -71,7 +71,15 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                     $newLink = str_replace('http://thelaund.nextmp.net/', '^', $newLink);
                                     $newLink = str_replace('.', '\.', $newLink);
                                     //echo 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
-                                    $current .= 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
+                                    if(strpos($oldLink, '/#') !== false)
+                                    {
+                                        $flag = '[NE,R=301,L]';
+                                    } else{
+                                        $flag = '[R=301,L]';
+                                    }
+                                    $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . $flag . "\n";
+                                    $current .= $rewriteRule;
+                                    //$current .= 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
                                 }
 
                                 file_put_contents($newFile, $current);
