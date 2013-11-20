@@ -56,9 +56,9 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
 
                                             if(strpos($oldLink, '/#') !== false)
                                             {
-                                                $flag = '[NE,R=301,L]';
+                                                $flag = ' [NE,R=301,L]';
                                             } else{
-                                                $flag = '[R=301,L]';
+                                                $flag = ' [R=301,L]';
                                             }
                                             $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . $flag . "\n";
 
@@ -73,11 +73,11 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                     //echo 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
                                     if(strpos($oldLink, '/#') !== false)
                                     {
-                                        $flag = '[NE,R=301,L]';
+                                        $flag = ' [NE,R=301,L]';
                                     } else{
-                                        $flag = '[R=301,L]';
+                                        $flag = ' [R=301,L]';
                                     }
-                                    $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . $flag . "\n";
+                                    $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLink . $flag . "\n";
                                     $current .= $rewriteRule;
                                     //$current .= 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
                                 }
