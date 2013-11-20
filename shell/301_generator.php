@@ -36,8 +36,8 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
 
                             if(substr($newLink, 0, 1) == '/' && strpos($newLink, '#') === false)
                             {
-                                $newLink = substr($newLink, 1);
-                                $newLink  =  '^' . $newLink;
+                                //$newLink = substr($newLink, 1);
+                                //$newLink  =  '^' . $newLink;
                             }
 
                             if(!empty($newLink))
