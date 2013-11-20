@@ -181,7 +181,7 @@ class Magestore_Onestepcheckout_IndexController extends Mage_Core_Controller_Fro
 				else {
 					$error = true;
 					//$message = $this->__('Coupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode));
-                    $message = $this->__('If you are seeing this error but have a valid coupon please email help@thelaundress.com or call us at 1800-123-4567');
+                    $message = $this->__('If you are seeing this error but have a valid coupon please email customerservice@thelaundress.com or call us at 212.209.0074');
 
 				}
 			} else {
