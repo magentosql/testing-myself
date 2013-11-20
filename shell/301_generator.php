@@ -54,7 +54,7 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                             $newLinkItem = str_replace('.', '\.', $newLinkItem);
                                             //echo 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . ' [R=301,L]' . "\n";
 
-                                            if(strpos($oldLink, '/#') !== false)
+                                            if(strpos($oldLink, '#') !== false)
                                             {
                                                 $flag = ' [NE,R=301,L]';
                                             } else{
@@ -63,7 +63,6 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                             $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . $flag . "\n";
 
                                             $current .= $rewriteRule;
-
                                         }
                                     }
                                 }
@@ -71,7 +70,7 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                     $newLink = str_replace('http://thelaund.nextmp.net/', '^', $newLink);
                                     $newLink = str_replace('.', '\.', $newLink);
                                     //echo 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
-                                    if(strpos($oldLink, '/#') !== false)
+                                    if(strpos($oldLink, '#') !== false)
                                     {
                                         $flag = ' [NE,R=301,L]';
                                     } else{
