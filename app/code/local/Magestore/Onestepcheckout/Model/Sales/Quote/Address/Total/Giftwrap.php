@@ -9,9 +9,15 @@ class Magestore_Onestepcheckout_Model_Sales_Quote_Address_Total_Giftwrap extends
 			return;
 		} 
         $session = Mage::getSingleton('checkout/session');
-		$giftwrap = $session->getData('onestepcheckout_giftwrap');
+        $giftWrapType = $session->getData('onestepcheckout_giftwrap_type');
+        $giftwrap = $session->getData('onestepcheckout_giftwrap');
+        if($giftWrapType == 'holiday_') $giftwrap = $session->getData('onestepcheckout_holiday_giftwrap');
+        Mage::getSingleton('core/session')->unsetData('giftWrapType');
+
         if(!$giftwrap){
             return $this;
+        } else {
+            Mage::getSingleton('core/session')->setData('giftWrapType' , $giftWrapType);
         }
 		
 		$items = $address->getAllItems();
@@ -21,8 +27,15 @@ class Magestore_Onestepcheckout_Model_Sales_Quote_Address_Total_Giftwrap extends
         
 		$giftwrapType = $_helper->getGiftwrapType();
 		$giftwrapAmount = $_helper->getGiftwrapAmount();
+        if($giftWrapType == 'holiday_')
+        {
+            $giftwrapType = $_helper->getHolidayGiftwrapType();
+            $giftwrapAmount = $_helper->getHolidayGiftwrapAmount();
+        }
      
         $wrapTotal = 0;
+
+
         if($giftwrapType == 1) {
             foreach ($items as $item){
 				if ($item->getProduct()->isVirtual() || $item->getParentItem()) {
@@ -56,14 +69,19 @@ class Magestore_Onestepcheckout_Model_Sales_Quote_Address_Total_Giftwrap extends
 
 	public function fetch(Mage_Sales_Model_Quote_Address $address) 
 	{
+        $session = Mage::getSingleton('checkout/session');
+        $giftWrapType = $session->getData('onestepcheckout_giftwrap_type');
 		$_helper = Mage::helper('onestepcheckout');
 		$active = $_helper->enableGiftWrap();
 		if (!$active)
 		{
 			return;
 		} 
-		$amount = $address->getOnestepcheckoutGiftwrapAmount();		
+		$amount = $address->getOnestepcheckoutGiftwrapAmount();
+
 		$title = Mage::helper('sales')->__('Gift Wrap');
+        if($giftWrapType == 'holiday_') $title = Mage::helper('sales')->__('Holiday Gift Wrap');
+
 		if ($amount!=0) {
 			$address->addTotal(array(
 					'code'=>$this->getCode(),

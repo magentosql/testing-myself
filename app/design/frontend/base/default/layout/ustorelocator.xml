@@ -23,7 +23,17 @@
  */
 -->
 <layout>
+    <ustorelocator_map_handle>
+        <block type="ustorelocator/map" template="unirgy/storelocator/map.phtml" name="ustorelocator.map">
+            <block type="page/html_pager" name="ustorelocator.locations.pager"/>
+        </block>
+    </ustorelocator_map_handle>
     <ustorelocator_location_map>
+        <reference name="root">
+            <action method="setTemplate">
+                <name>page/1column.phtml</name>
+            </action>
+        </reference>
         <reference name="head">
             <action method="addJs">
                 <script>storelocator/map.js</script>
@@ -39,8 +49,6 @@
         </reference>
     </ustorelocator_location_map>
     <ustorelocator_location_mapJson>
-        <block type="ustorelocator/map" template="unirgy/storelocator/map.phtml" name="ustorelocator.map">
-            <block type="page/html_pager" name="ustorelocator.locations.pager"/>
-        </block>
+        <update handle="ustorelocator_map_handle"/>
     </ustorelocator_location_mapJson>
 </layout>

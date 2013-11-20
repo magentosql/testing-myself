@@ -13,10 +13,10 @@
 	<div class="post-entry entry<?php if ($post->getFeaturedImage): ?> post-entry-with-image<?php endif; ?>">
 		<?php if ($post->isViewableForVisitor()): ?>
 			<?php if($featuredImage = $post->getFeaturedImage()): ?>    
-                                <div class="featured-image">                                         
-                                        <a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('post-main') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
-                                </div>
-                        <?php endif; ?>
+                <div class="featured-image">                                         
+                	<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $featuredImage->getImageByType('post-main') ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/></a>
+                </div>
+            <?php endif; ?>
 			<?php if ($this->displayExcerptInFeed() || $post->hasMoreTag()): ?>
 				<?php echo $post->getPostExcerpt() ?>
 			<?php else: ?>

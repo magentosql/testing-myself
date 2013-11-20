@@ -31,23 +31,23 @@ html.touch .add-monogram input#monogram-check{float:left;margin-right:5px;displa
 #nav ul.level0 .nested-container .custom-block p{color:#777}
 #nav ul.level0 .nested-container .custom-block a{color:inherit}
 #nav ul.level0 .nested-container .custom-block a:hover{color:#64b96a}
-body.cms-contact-corporate .col-main{border-bottom:1px solid #222;color:#58595b}
-body.cms-contact-corporate h3{color:black}
-body.cms-contact-corporate .spacer{padding:0 7px}
-body.cms-contact-corporate .col-main .grid4-2{width:46%}
-body.cms-contact-corporate .col-main .grid4-2.left{margin-left:0;float:left}
-body.cms-contact-corporate .col-main .grid4-2.right{float:right;margin-right:0}
-body.cms-contact-corporate .col-main .grid4-2>div{padding:20px 0}
-body.cms-contact-corporate .col-main .grid4-2 .international-q{padding:10px 0 20px}
-body.cms-contact-corporate .box-note{border-top:1px solid #222;font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;color:black}
-body.cms-contact-corporate .box-note span{text-transform:uppercase;font-size:10px;display:block;color:black}
-body.cms-contact-corporate .press{border-top:1px solid #222}
-body.cms-contact-corporate .distribution{border-top:1px solid #222}
-body.cms-contact-corporate p{font-family:"GillSansMTStd",sans-serif;font-size:14px}
-body.cms-contact-corporate p span{font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;color:#58595b}
-body.cms-contact-corporate a.email{font-family:"GillSansMTStd",sans-serif;font-size:14px}
-body.cms-contact li.nav-contact-us a,body.cms-contact-find-a-store li.nav-find-a-store a,body.cms-contact-corporate li.nav-corporate a,body.cms-faq li.nav-faq-orders a,body.cms-washing-service-faq li.nav-faq-washing a,body.cms-contact-shipping li.nav-shipping a,body.cms-contact-privacypolicy li.nav-privacy a,body.cms-contact-terms li.nav-terms a{color:#64b96a}
-body.cms-contact-privacypolicy span{font-family:inherit}
+body.cms-customer-service-contact-us .col-main{border-bottom:1px solid #222;color:#58595b}
+body.cms-customer-service-contact-us h3{color:black}
+body.cms-customer-service-contact-us .spacer{padding:0 7px}
+body.cms-customer-service-contact-us .col-main .grid4-2{width:46%}
+body.cms-customer-service-contact-us .col-main .grid4-2.left{margin-left:0;float:left}
+body.cms-customer-service-contact-us .col-main .grid4-2.right{float:right;margin-right:0}
+body.cms-customer-service-contact-us .col-main .grid4-2>div{padding:20px 0}
+body.cms-customer-service-contact-us .col-main .grid4-2 .international-q{padding:10px 0 20px}
+body.cms-customer-service-contact-us .box-note{border-top:1px solid #222;font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;color:black}
+body.cms-customer-service-contact-us .box-note span{text-transform:uppercase;font-size:10px;display:block;color:black}
+body.cms-customer-service-contact-us .press{border-top:1px solid #222}
+body.cms-customer-service-contact-us .distribution{border-top:1px solid #222}
+body.cms-customer-service-contact-us p{font-family:"GillSansMTStd",sans-serif;font-size:14px}
+body.cms-customer-service-contact-us p span{font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;color:#58595b}
+body.cms-customer-service-contact-us a.email{font-family:"GillSansMTStd",sans-serif;font-size:14px}
+body.cms-customer-service li.nav-contact-us a,body.cms-customer-service-find-a-store li.nav-find-a-store a,body.cms-customer-service-contact-us li.nav-corporate a,body.cms-faq li.nav-faq-orders a,body.cms-washing-service-faq li.nav-faq-washing a,body.cms-customer-service-shipping li.nav-shipping a,body.cms-customer-service-privacypolicy li.nav-privacy a,body.cms-customer-service-terms li.nav-terms a{color:#64b96a}
+body.cms-customer-service-privacypolicy span{font-family:inherit}
 .ajaxcart-content button.btn-cart span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;text-transform:uppercase}
 .ajaxcart-content button.btn-cart:hover span{background-color:#64b96a;color:white}
 .blog-fabrics-atoz a{color:#222}
@@ -77,7 +77,7 @@ body.wishlist-index-index .grid-col2-main{width:74%;margin-right:0}
 .my-wishlist .product-name a:hover{color:#64b96a}
 .cms-page-view p{font-family:"GillSansMTStd",sans-serif}
 .gen-tabs .tabs a{transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-moz-transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-webkit-transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-o-transition:color 300ms ease-in-out,background-color 300ms ease-in-out}
-body.cms-contact-shipping .std ul{list-style:disc;font-family:"GillSansMTStd",sans-serif;padding-left:30px}
+body.cms-customer-service-shipping .std ul{list-style:disc;font-family:"GillSansMTStd",sans-serif;padding-left:30px}
 html{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
 body{border-top:5px solid black;border-bottom:5px solid black;width:100%;min-width:1024px}
 .wrapper{border-top:0}
@@ -91,7 +91,7 @@ body{border-top:5px solid black;border-bottom:5px solid black;width:100%;min-wid
 #nav li.nav-5 a.level-top{width:163px}
 #nav li.nav-6 a.level-top{width:112px}
 #nav.mobile{display:block}
-body.cms-contact #nav>li.nav-6>a,body.cms-contact-find-a-store #nav>li.nav-6>a,body.cms-contact-corporate #nav>li.nav-6>a,body.cms-faq #nav>li.nav-6>a,body.cms-washing-service-faq #nav>li.nav-6>a,body.cms-contact-shipping #nav>li.nav-6>a,body.cms-contact-privacypolicy #nav>li.nav-6>a,body.cms-contact-terms #nav>li.nav-6>a{background-color:#222;color:#fff}
+body.cms-customer-service #nav>li.nav-6>a,body.cms-customer-service-find-a-store #nav>li.nav-6>a,body.cms-customer-service-contact-us #nav>li.nav-6>a,body.cms-faq #nav>li.nav-6>a,body.cms-washing-service-faq #nav>li.nav-6>a,body.cms-customer-service-shipping #nav>li.nav-6>a,body.cms-customer-service-privacypolicy #nav>li.nav-6>a,body.cms-customer-service-terms #nav>li.nav-6>a{background-color:#222;color:#fff}
 body.is-blog #nav>li.nav-5>a{background-color:#222;color:#fff}
 body.ask-the-laundress #nav>li.nav-4>a{background-color:#222;color:#fff}
 body.ask-the-laundress #nav>li.nav-5>a{background-color:white !important;color:#222 !important}
@@ -375,7 +375,7 @@ body.ask-the-laundress.wordpress-post-view .ask-sidebar{margin-top:178px}
 body.ask-the-laundress.wordpress-post-view .featured-image{border:0;padding:0;margin:0 0 20px 0}
 body.ask-the-laundress.wordpress-post-view .featured-image img{max-width:100%}
 body.ask-the-laundress.wordpress-post-view .ask-content{width:700px}
-body.ask-the-laundress.wordpress-post-view .ask-post-single{width:575px;margin:0 auto}
+body.ask-the-laundress.wordpress-post-view .ask-post-single{width:560px;margin:0 auto}
 body.ask-the-laundress.wordpress-post-view .no-image{margin-top:50px}
 body.ask-the-laundress.wordpress-post-view .post-title{font-family:'Sorts Mill Goudy Regular',serif;font-size:15px;text-transform:uppercase;text-align:center;margin:0 auto}
 body.ask-the-laundress.wordpress-post-view .post-date{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:11px;font-style:italic;text-align:center;margin-bottom:20px}
@@ -432,9 +432,9 @@ body.cms-our-story .why-the-laundress .green>div:first-of-type>p{padding:3px 30p
 body.cms-our-story .why-the-laundress .green p b{color:#222}
 body.cms-our-story .why-the-laundress .green>div:first-of-type>p:first-of-type{font-family:"GillSansMTStd",sans-serif;line-height:1em;font-size:13px;color:#58595b;padding-top:10px}
 body.cms-our-story .why-the-laundress .green>div:first-of-type>p:first-of-type span{font-family:'bodoni-bookbookitalic',serif;font-weight:normal;font-style:italic;font-size:55px;display:block;color:black;padding:15px 0}
-body.cms-our-story .why-the-laundress .green .green-split div{width:185px;border-top:1px solid #dadada;border-bottom:20px solid #222;height:116px}
+body.cms-our-story .why-the-laundress .green .green-split div{width:200px;border-top:1px solid #dadada;border-bottom:20px solid #222;height:116px}
 body.cms-our-story .why-the-laundress .green .green-split div:first-of-type{float:left;background:url('../images/green_2.gif') top left no-repeat;position:relative;z-index:1}
-body.cms-our-story .why-the-laundress .green .green-split div:last-of-type{float:right;background:url('../images/green_3.gif') top left no-repeat}
+body.cms-our-story .why-the-laundress .green .green-split div:last-of-type{float:right;background:url('../images/green_3.gif') top left no-repeat; padding-right:20px;}
 body.cms-our-story .why-the-laundress .green .green-split div p{line-height:1.38em;padding:8px 0 0 45px;margin:0;color:#58595b;font-size:13px}
 body.cms-our-story .why-the-laundress .green .green-split div:last-of-type p:first-of-type{padding-top:15px}
 body.cms-our-story .why-the-laundress .green .green-split div p:first-of-type{font-family:'Georgia',Arial,Helvetica,sans-serif;font-size:22px;line-height:1.1em;font-style:italic;text-transform:uppercase}
@@ -455,8 +455,8 @@ body.cms-our-story .closing-quote{width:626px;height:179px;clear:both;margin:0 a
 body.cms-our-story .closing-quote p{font-family:'Sorts Mill Goudy Regular',serif;font-size:19px;line-height:1.26em;color:black;padding:24px 30px 0 28px}
 body.cms-our-story .closing-quote p i{font-family:'Georgia',Arial,Helvetica,sans-serif}
 body.cms-our-story .closing-quote p span{display:block;text-align:right}
-.cms-contact-find-a-store .col-main .page-title{display:none}
-body.cms-contact-find-a-store .grid-col2-main{width:74%;margin-right:0}
+.cms-customer-service-find-a-store .col-main .page-title{display:none}
+body.cms-customer-service-find-a-store .grid-col2-main{width:74%;margin-right:0}
 .find-store-top{margin:22px 0 0 0;padding-bottom:30px}
 .find-store-top h1{font-family:'Sorts Mill Goudy Regular',serif;font-size:18px;text-transform:uppercase;margin:0 0 5px 0}
 .find-store-top p{font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;padding:0 300px 0 0}
@@ -472,9 +472,9 @@ body.cms-contact-find-a-store .grid-col2-main{width:74%;margin-right:0}
 .find-store-top form.custom .city input{width:144px}
 .find-store-top form.custom .postal label{padding-left:3px}
 .find-store-top form.custom .city label{padding-left:3px}
-body.cms-contact-find-a-store .find-store-top button.button{margin-top:18px}
-body.cms-contact-find-a-store .find-store-top button.button span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif;padding:11px 35px}
-body.cms-contact-find-a-store .find-store-top button.button:hover span{background-color:#64b96a}
+body.cms-customer-service-find-a-store .find-store-top button.button{margin-top:18px}
+body.cms-customer-service-find-a-store .find-store-top button.button span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif;padding:11px 35px}
+body.cms-customer-service-find-a-store .find-store-top button.button:hover span{background-color:#64b96a}
 #find-store-map-area{height:320px;padding:3px;border-top:1px solid #222;position:fixed;top:0;left:0}
 #find-store-map-results .sidebar-entry-container{padding:20px 0;border-bottom:1px solid #bdc2c1}
 #find-store-map-results .sidebar-entry-container img,#find-store-map-results .sidebar-entry-container .directions{display:none}
@@ -715,7 +715,7 @@ body .sidebar ul.level0 li a{line-height:1.2em}
 .itemslider-wrapper .itemslider-horizontal .slides>li:first-child{border-left:0}
 .itemslider-wrapper .itemslider-x.count-3{max-width:753px}
 .products-list .product-name a,.products-grid .product-name a,h3.product-name a{color:#222}
-.products-grid .online-exclusive{font-family:"Georgia",serif;font-style:italic;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#afafaf}
+.products-grid .online-exclusive{font-family:"Georgia",serif;font-style:italic;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#afafaf;text-align:center;}
 .products-grid .price-box{margin-top:0;margin-bottom:.25em}
 .itemslider-wrapper .products-grid .price-box .regular-price{font-size:14px}
 #bottom-cap{height:0 !important}
@@ -733,7 +733,7 @@ body.catalogsearch-result-index .page-title h1{vertical-align:bottom;display:inl
 #overlay img{width:auto;max-width:none}
 h1{font-family:"Sorts Mill Goudy Regular",serif;text-transform:uppercase}
 h1 span{text-transform:none}
-.breadcrumbs li,.breadcrumbs li a{color:#999;font-family:"Georgia";font-style:italic;font-size:12px}
+.breadcrumbs li,.breadcrumbs li a{color:#999;font-family:"Georgia","Times New Roman";font-style:italic;font-size:12px}
 .breadcrumbs li a:hover{color:#64b96a}
 .breadcrumbs li strong{color:#222}
 .grid3-1{display:inline;float:left;margin-right:2%;position:relative;width:31%}
@@ -829,10 +829,10 @@ h1 span{text-transform:none}
 .product-view .gen-slider-arrows3 .direction-nav .next,.product-view .gen-slider-arrows3 .direction-nav .prev{top:42px}
 .product-view .product-type-data{position:relative}
 .related-itemslider-wrapper .itemslider .slides img{max-width:none}
-.product-view .add-monogram{position:absolute;right:0;top:15px}
-.product-view .add-monogram span.custom{float:left;margin-right:4px;margin-top:2px}
-.product-view .add-monogram label{font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;font-weight:normal;color:#222;padding:5px 0 5px 60px;background:url('../images/monogram-logo.gif') 5px top no-repeat}
-.product-view .add-monogram-content{-webkit-transition:opacity 1s ease-in-out,height 1s;-moz-transition:opacity 1s ease-in-out,height 1s;-o-transition:opacity 1s ease-in-out,height 1s;-ms-transition:opacity 1s ease-in-out,height 1s;transition:opacity 1s ease-in-out,height 1s;height:0;opacity:0;position:relative;overflow:hidden}
+.product-view .add-monogram{float: right;top: -30px;}
+.product-view .add-monogram span.custom{float:left;margin-right:4px;margin-top:2px;display:none;}
+.product-view .add-monogram label{margin-top: 20px; font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;font-weight:normal;color:#222;padding:5px 0 5px 60px;background:url('../images/monogram-logo.gif') 5px top no-repeat}
+.product-view .add-monogram-content{-webkit-transition:opacity 1s ease-in-out,height 1s;-moz-transition:opacity 1s ease-in-out,height 1s;-o-transition:opacity 1s ease-in-out,height 1s;-ms-transition:opacity 1s ease-in-out,height 1s;transition:opacity 1s ease-in-out,height 1s;height:0;opacity:0;position:relative;}
 .product-view .add-monogram-content.opened{height:370px;opacity:1}
 .product-view .add-monogram-content #monogram-logo{position:absolute;top:3px;left:0}
 .product-view .add-monogram-content h3{text-transform:uppercase;margin-bottom:0}
@@ -857,7 +857,7 @@ h1 span{text-transform:none}
 .ratings,.no-rating{color:#222}
 .availability{color:#666;font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;text-transform:uppercase}
 .gen-tabs-style1 .tabs a.current{box-shadow:0 -6px 15px #f7f7f7;color:#64b96a}
-.gen-tabs-style1 .tabs a{color:#222;background-color:#efefef;font-family:"GillSansMTStd-Bold";font-size:13px;padding:7px 35px;text-transform:uppercase}
+.gen-tabs-style1 .tabs a{color:#222;background-color:#efefef;font-family:"GillSansMTStd-Bold";font-size:13px;padding:7px 30px;text-transform:uppercase}
 .gen-tabs .tabs-panels .panel{padding:20px 0 20px 30px}
 .gen-tabs .tabs-panels .panel h3{font-family:"Sorts Mill Goudy Regular",serif;font-size:15px;font-weight:normal;text-transform:uppercase}
 .gen-tabs .tabs-panels .panel h4{font-family:"GillSansMTStd-Bold",sans-serif;font-size:15px;font-weight:normal;margin-bottom:0}
@@ -872,9 +872,9 @@ h1 span{text-transform:none}
 .gen-tabs .tabs-panels .panel h2{font-family:"GillSansMTStd-Bold",sans-serif;font-style:normal;font-size:14px;color:#222}
 .gen-tabs .tabs-panels .panel ul li a{color:#222}
 .gen-tabs .tabs-panels .panel ul li a:hover{color:#64b96a}
-body.cms-contact .std{margin-top:40px}
+body.cms-customer-service .std{margin-top:40px}
 .cms-page-view h3{font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;font-weight:normal;margin-bottom:0;text-transform:uppercase}
-body.cms-contact p{font-family:"GillSansMTStd",sans-serif;margin-bottom:1.6em}
+body.cms-customer-service p{font-family:"GillSansMTStd",sans-serif;margin-bottom:1.6em}
 .cms-page-view p.box-note{border-top:1px solid #222;border-bottom:1px solid #222;padding:20px}
 .cms-page-view address{color:#58595b;font-family:"Sorts Mill Goudy Regular",serif;font-size:14px;margin-bottom:0}
 .cms-page-view .std .contactus-contact>a{background-color:#848484;color:#fff;float:left;font-family:"GillSansMTStd",sans-serif;font-weight:normal;margin-right:20px;padding:14px 30px;text-transform:uppercase}
@@ -889,11 +889,11 @@ body.cms-contact p{font-family:"GillSansMTStd",sans-serif;margin-bottom:1.6em}
 .sidebar #sidebar-contact .block .block-content ul.vertnav{background-color:transparent;line-height:24px}
 .sidebar #sidebar-contact .block .block-content ul.vertnav li a{border-bottom:0;font-family:"Georgia",serif;font-size:13px;font-style:italic;text-decoration:none}
 .cms-corporate #distributors h3{border-bottom:1px solid #222;font-size:14px;text-transform:none}
-.cms-contact .left-content{padding-left:10px;position:relative;z-index:9;width:50%}
+.cms-customer-service .left-content{padding-left:10px;position:relative;z-index:9;width:50%}
 .cms-page-view .col2-left-layout .col-main h2{font-family:"Sorts Mill Goudy Regular",serif;line-height:1.2em;text-transform:uppercase;margin-top:1.8em}
-.cms-contact .std h2+p{color:#666;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px}
-.cms-contact .std{min-height:600px}
-.cms-contact .std .grid4-3{border-bottom:1px solid #222}
+.cms-customer-service .std h2+p{color:#666;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px}
+.cms-customer-service .std{min-height:600px}
+.cms-customer-service .std .grid4-3{border-bottom:1px solid #222}
 .cms-faq.cms-page-view .col-main h3{margin-right:30px}
 .cms-faq.cms-page-view .col-main h3,.cms-faq.cms-page-view .col-main>div.std>p.subline{display:inline-block;font-family:"Sorts Mill Goudy Regular",serif;font-size:18px}
 .cms-faq.cms-page-view .col-main>div.std>p.subline{color:#666}

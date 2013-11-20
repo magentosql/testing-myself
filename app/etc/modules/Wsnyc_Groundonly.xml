@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Groundonly>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Wsnyc_Oversizeshipping />
+            </depends>
+        </Wsnyc_Groundonly>
+    </modules>
+</config>

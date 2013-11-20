@@ -383,7 +383,7 @@ body.active-archive .blog-nav-list .nav-archive
 
 .post-action-bar .post-comment-button {
 	float: left;
-	width: 165px;
+	width: 140px;
 	color: black;
 	background: url('../images/post-comment-button.gif') center right no-repeat;
 	margin-left: 5px;
@@ -400,11 +400,9 @@ body.active-archive .blog-nav-list .nav-archive
 
 	.post-action-bar .post-social-links li {
 		display: inline-block;
-		width: 21px;
 		margin-left: 15px;
 	}
 		.post-action-bar .post-social-links li.first {
-			width: 90px;
 			margin: 0;
 		}
 		.post-action-bar .post-social-links li img {
@@ -519,6 +517,31 @@ body.active-archive .blog-nav-list .nav-archive
 	line-height: 2em;
 }
 
+.blog .sidebar ul.level2 {
+	padding: 0 0 10px 20px;
+	display: none;
+}
+
+	.blog .sidebar ul.level2 li span {
+		font-family: Arial, sans-serif;
+		font-size: 12px;
+		font-style: normal;
+	}
+	
+.fabric-subnav, .material-subnav {
+	margin-left: 15px;
+	height: 0;
+	width: 80%;
+	background: url('../images/fabric_nav_border.gif') 0 0 no-repeat;
+	overflow-y: scroll;
+	position: relative;
+}
+
+	.fabric-subnav li, .material-subnav li {
+		padding: 0 0 5px 5px;
+	}
+
+
 /* Homepage */
 body.wordpress-index-index .col-main {
 	width: 713px;
@@ -623,13 +646,12 @@ body.as-seen-in-cat .post-list .item h2 {
 }
 
 .as-seen-in-post-content p {
-	padding: 0 10px 50px 25px;
+	padding: 0 10px 25px 25px;
 	width: 530px;
 	margin: 0 auto;
 	font-family: 'Sorts Mill Goudy Regular', serif;
 	font-size: 15px;
 	color: black;
-	border-bottom: 1px solid #222222;
 }
 .as-seen-in-post-content p.post-date {
 	line-height: 1em;
@@ -723,5 +745,150 @@ body.we-love-post .post-entry {
 }
 
 
+/* Archive page */
+#archive_top_select {width: 100%;float: left;border-bottom: 2px solid #000;font-family: "GillSansMTStd", sans-serif;}
+#archive_top_select form {float: right;background-color: #000;padding: 5px 0 5px 10px;}
+#archive_top_select form span {color: #fff;float: left;margin-right: 10px;font-weight: bold;line-height: 28px}
+
+#archive_top_select .dropdown {
+	width: auto !important;
+	text-transform: uppercase;
+}
+
+#archive_top_select .dropdown a.current {
+	background-color: black !important;
+	border: none !important;
+	color: white !important;
+	line-height: 28px !important;
+	padding-right: 28px !important;
+}
+
+#archive_top_select .dropdown ul {
+	left: auto !important;
+	right: 0;
+	top: 35px !important;
+}
+
+#archive_top_select .dropdown ul li {
+	padding: 3px !important;
+}
+
+#archive_top_select .dropdown ul li:hover::after,#archive_top_select .dropdown ul li.selected:after {
+	display: none;
+}
+
+body.active-archive ul#post-list {
+	float: left;
+	width: 100%;
+}
+
+body.active-archive .pager {
+	float: left;
+	width: 100%;
+}
+
+#popular-area { display:inline-block; width:100%; }
+body.ask-the-laundress .post-entry, body.active-clean-and-learn .accordion {font-family: 'Sorts Mill Goudy Regular',serif;font-size: 15px;}
 
 
+/* Popular question area */
+#popular-area {
+	border-top: 1px solid black;
+	padding-top: 30px;
+	margin-top: 30px;
+}
+
+#popular-area h1 {
+	color: #999;
+	text-transform: uppercase;
+	font-size: 18px;
+	margin: 0 0 0 305px;
+}
+
+#popular-area .question-popular {
+	border-bottom: 1px solid #222222;
+	overflow: hidden;
+	position: relative;
+	padding-top: 30px;
+}
+	#popular-area .question-popular:first-of-type {
+		padding-top: 10px;
+	}
+
+#popular-area .question-popular-image {
+	width: 285px;
+	min-height: 194px;
+	padding: 0 0 20px 20px;
+	float: left;
+}
+
+#popular-area .question-popular-content {
+	width: 655px;
+	float: left;
+}
+
+#popular-area .question-popular h3 {
+	font-family:"GillSansMTStd",sans-serif;
+	font-size: 15px;
+	color: #6e6e6e;
+}
+	#popular-area .question-popular h3 b {
+		font-family:"GillSansMTStd-Bold",sans-serif;
+		font-weight: normal;
+	}
+
+#popular-area .question-popular .post-title {
+	font-family:"Sorts Mill Goudy Regular",serif;
+	font-size: 35px;
+	line-height: 36px;
+	text-transform: uppercase;
+	padding-right: 50px;
+	display: block;
+}
+
+#popular-area .question-popular .post-date {
+	display: block;
+	font-family:'Georgia',Arial,Helvetica,sans-serif;
+	font-style: italic;
+	font-size: 11px;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+#popular-area .question-popular p {
+	font-family:"Sorts Mill Goudy Regular",serif;
+	font-size: 14px;
+	color: black;
+	padding: 30px 150px 15px 0;
+}
+
+#popular-area .question-popular .read-more {
+	padding: 13px 25px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: inline-block;
+	background-color: #222222;
+	font-family:"GillSansMTStd",sans-serif;
+	font-size: 12px;
+	line-height: 1em;
+	color: white;
+	text-transform: uppercase;
+}
+
+	#popular-area .question-popular .read-more:hover {
+		background-color: #64b96a;
+	}
+
+
+.blog .post-view .post-entry p span {font-family: "Sorts Mill Goudy Regular", serif !important;}
+
+.accordion li div a {
+    padding: 0;
+    display: inline;
+    cursor: pointer;
+}
+
+.post-entry p img {
+    border: none;
+}

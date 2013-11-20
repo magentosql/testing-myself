@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Oversizeshipping>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Unirgy_DropshipSplit />
+            </depends>
+        </Wsnyc_Oversizeshipping>
+    </modules>
+</config>

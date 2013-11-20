@@ -24,7 +24,6 @@
 							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(229) ?>" width="229" height="229" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" /></a>
 							<div class="product-details">
 								<p class="product-name"><a href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></p>
-								<?php echo $this->getPriceHtml($_product, true, '-blog-related') ?>
 							</div>
 						</div>
 					</li>

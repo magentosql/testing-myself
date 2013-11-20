@@ -227,14 +227,14 @@ class Unirgy_Dropship_Block_Vendor_Preferences extends Mage_Core_Block_Template
                     'position' => 7,
                     'name' => 'billing_telephone',
                     'type' => 'text',
-                    'label' => 'Email',
+                    'label' => 'Telephone',
                     'note'  => 'Leave empty to use default'
                 ),
                 'billing_fax' => array(
                     'position' => 8,
                     'name' => 'billing_fax',
                     'type' => 'text',
-                    'label' => 'Email',
+                    'label' => 'Fax',
                     'note'  => 'Leave empty to use default'
                 ),
             ),

@@ -180,7 +180,9 @@ class Magestore_Onestepcheckout_IndexController extends Mage_Core_Controller_Fro
 				}
 				else {
 					$error = true;
-					$message = $this->__('Coupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode));
+					//$message = $this->__('Coupon code "%s" is not valid.', Mage::helper('core')->htmlEscape($couponCode));
+                    $message = $this->__('If you are seeing this error but have a valid coupon please email customerservice@thelaundress.com or call us at 212.209.0074');
+
 				}
 			} else {
 				$message = $this->__('Coupon code was canceled.');
@@ -478,7 +480,13 @@ class Magestore_Onestepcheckout_IndexController extends Mage_Core_Controller_Fro
 						}
 					}
 				}
-			}			
+			}
+
+            Mage::getSingleton("core/session")->unsetData('giftWrapBoxType');
+            if(isset($post['giftWrapBoxType']) && !empty($post['giftWrapBoxType']))
+            {
+                Mage::getSingleton("core/session")->setData('giftWrapBoxType', $post['giftWrapBoxType']);
+            }
 			
 			try {
 				$result = $this->getOnepage()->saveOrder();

@@ -1,0 +1,71 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_item = $this->getItem() ?>
+<?php $_order = $this->getItem()->getOrder() ?>
+<?php //Image for product
+$product = Mage::getModel('catalog/product')
+->setStoreId($_item->getOrder()->getStoreId())
+->load($_item->getProductId());
+?> 
+<tr>
+	<td width="275" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0">
+		<table width="275" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
+			<tr>
+				<td valign="top" width="72">
+					<img src="<?php echo Mage::helper('catalog/image')->init($product, 'image')->resize(72,109); ?>" alt="" width="72" height="109" border="0">
+				</td>
+				<td valign="top" align="left" style="padding-left:20px">
+					<div style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#000000;font-size:12px;text-transform:uppercase"><?php echo $this->htmlEscape($_item->getName()) ?></div>
+					<div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px"> <?php echo $this->escapeHtml($_item->getDescription()) ?></div>
+					<?php if ($this->getItemOptions()): ?>
+			            <?php foreach ($this->getItemOptions() as $option): ?>
+			            <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px"><span style="font-weight:bold"><?php echo $option['label'] ?></span>  <?php echo (isset($option['print_value']) ? $option['print_value'] : nl2br($this->escapeHtml($option['value']))) ?></div>
+			            <?php endforeach; ?>
+			        <?php endif; ?>
+
+                    <?php
+                    $shippingNote = $product->getShippingNote(); ?>
+                    <?php if(!empty($shippingNote)): ?>
+                        <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px">
+                            Shipping note<br />
+                            <?php echo $shippingNote ?>
+                        </div>
+                    <?php endif; ?>
+				</td>
+			</tr>
+		</table>
+	</td>
+	<td width="85" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
+		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#666666;font-size:13px"><?php echo $_item->getQtyOrdered()*1 ?></span>
+	</td>
+	<td width="85" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
+		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#666666;font-size:12px; font-weight:bold"><?php echo $_order->formatPrice($_item->getRowTotal()) ?></span>
+	</td>
+	<td width="75" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
+		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#222222;font-size:12px; font-weight:bold"><?php echo $_order->formatPrice($_item->getRowTotal()*$_item->getQtyOrdered()) ?></span>
+	</td>
+</tr>

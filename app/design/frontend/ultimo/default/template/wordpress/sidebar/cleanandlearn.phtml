@@ -6,6 +6,8 @@ $sub_categories_177 = $helper->getSubCategories(177);
 $sub_categories_183 = $helper->getSubCategories(183);
 $sub_categories_203 = $helper->getSubCategories(203);
 $ingredient_pages = $helper->getAllPostsByPostType("ingredients");
+$fabric_pages = $helper->getAllPostsByPostType("fabric");
+$material_pages = $helper->getAllPostsByPostType("material");
 
 // if we are in the main clean & learn category, collapse all sections
 $iCurrentCategoryId = (int)$helper->getCurrentContext();
@@ -26,7 +28,33 @@ if(Mage::registry('wordpress_post_type')) {
             
             <ul>
                 <?php ($iCurrentPostTypeId == 5 && $iCurrentPostTypeId != null) ? $class = "active" : $class = "" ?>
-            	<li class="level0 nav-1 item odd <?php print $class; ?>"><a href="/blog/byfabric/"><span><?php $label = $helper->filterByTermId($sub_categories_177, 270); echo $label['name']; ?></span></a></li>
+            	<li class="level0 nav-1 washingguide-li item odd <?php print $class; ?>"><a href="/blog/byfabric/"><span><?php $label = $helper->filterByTermId($sub_categories_177, 270); echo $label['name']; ?></span></a></li>
+            	
+            	<?php //Load fabric posts. Height set to 0 unless we're on a fabric page ?>
+            	<ul class="fabric-subnav">
+            		<?php foreach($fabric_pages as $fabric_page): ?>
+           				<li><a href="<?php echo $fabric_page->getPermalink() ?>"><span><?php echo $this->escapeHtml($fabric_page->getPostTitle()) ?></span></a></li>
+           			 <?php endforeach; ?>
+            	</ul>
+            	<script type="text/javascript">
+            	jQuery(function($) {
+	            	var fabricPostTitle = $('div.post-view-fabric h3.fabric-post-name').html();
+	            	
+	            	if(fabricPostTitle) {
+		            	var activeFabric = $('.fabric-subnav li a span:contains("'+fabricPostTitle+'")').position().top;
+						
+						$(".fabric-subnav").css('height', '91px');
+		            	$('.fabric-subnav li a span:contains("'+fabricPostTitle+'")').css('color', '#64b96a');
+		            	$(".fabric-subnav").animate({scrollTop: activeFabric});
+	            	}
+	            	
+	            	if($('.washingguide-li').hasClass('active')) {
+		            	$(".fabric-subnav").css('height', '91px');
+	            	}
+	            	
+            	});
+            	</script>
+            	
             	<?php foreach($sub_categories_177 as $category) : ?>
 	            	<?php if($category['term_id'] != 270) : ?>
                                 <?php ($category['term_id'] == $iCurrentCategoryId) ? $class = "active" : $class = ""; ?>                                
@@ -44,7 +72,33 @@ if(Mage::registry('wordpress_post_type')) {
         <div class="block-content">
         	<ul>
                 <?php ($iCurrentPostTypeId == 6 && $iCurrentPostTypeId != null) ? $class = "active" : $class = "" ?>
-                <li class="level0 nav-1 item odd <?php print $class; ?>"><a href="/blog/bymaterial/"><span><?php $label = $helper->filterByTermId($sub_categories_183, 252); echo $label['name']; ?></span></a></li>
+                <li class="level0 nav-1 cleaningguide-li item odd <?php print $class; ?>"><a href="/blog/bymaterial/"><span><?php $label = $helper->filterByTermId($sub_categories_183, 252); echo $label['name']; ?></span></a></li>
+                
+                <?php //Load fabric posts. Height set to 0 unless we're on a fabric page ?>
+            	<ul class="material-subnav">
+            		<?php foreach($material_pages as $material_page): ?>
+           				<li><a href="<?php echo $material_page->getPermalink() ?>"><span><?php echo $this->escapeHtml($material_page->getPostTitle()) ?></span></a></li>
+           			 <?php endforeach; ?>
+            	</ul>
+            	<script type="text/javascript">
+            	jQuery(function($) {
+	            	var materialPostTitle = $('div.post-view-fabric h3.material-post-name').html();
+	            	
+	            	if(materialPostTitle) {
+		            	var activeMaterial = $('.material-subnav li a span:contains("'+materialPostTitle+'")').position().top;
+						
+						$(".material-subnav").css('height', '91px');
+		            	$('.material-subnav li a span:contains("'+materialPostTitle+'")').css('color', '#64b96a');
+		            	$(".material-subnav").animate({scrollTop: activeMaterial});
+	            	}
+	            	
+	            	if($('.cleaningguide-li').hasClass('active')) {
+		            	$(".material-subnav").css('height', '91px');
+	            	}
+	            	
+            	});
+            	</script>
+                
             	<?php foreach($sub_categories_183 as $category) : ?>
                     <?php if($category['term_id'] != 252) { ?>
                             <?php ($category['term_id'] == $iCurrentCategoryId) ? $class = "active" : $class = ""; ?>
@@ -63,25 +117,31 @@ if(Mage::registry('wordpress_post_type')) {
             <ul> 
                 <li class="level0 nav-1 first item odd"><a href="/blog/category/cleanandlearn/learn-more/ingredients/"><span>OUR INGREDIENTS</span></a>               		 
                		<ul class="level1" id="wp-menu-learnmore-ingredients">
-               		
                			<?php foreach($ingredient_pages as $catpage): ?>
                				<li class="level1 nav-2"><a href="<?php echo $catpage->getPermalink() ?>"><span><?php echo $this->escapeHtml($catpage->getPostTitle()) ?></span></a></li>
                			 <?php endforeach; ?>
-               			 
                 	</ul>
-                	
-                	</li>
-                        <li class="level0 nav-1 first item odd"><a href="/blog/category/cleanandlearn/learn-more/specialty-resources/"><span>SPECIALTY RESOURCES</span></a>
-
-                                <ul class="level1" id="wp-menu-learnmore-resources" >
-                                        <?php foreach($sub_categories_203 as $category) : ?>                                    
-                                                    <?php ($category['term_id'] == $iCurrentCategoryId) ? $class = "active" : $class = ""; ?>
-                                                    <li class="level1 nav-2 <?php print $class; ?>" ><a href="/blog/category/<?php echo $category['slug'] ?>"><span><?php echo $category['name'] ?></span></a></li>
-                                                        <?php endforeach ; ?>
-                                </ul>
-
-                        </li>
-
+                </li>
+                <li class="level0 nav-1 first item odd"><a href="/blog/category/cleanandlearn/learn-more/specialty-resources/"><span>SPECIALTY RESOURCES</span></a>
+                    <ul class="level1" id="wp-menu-learnmore-resources" >
+                        <?php foreach($sub_categories_203 as $category) : ?>
+                        	<?php
+	                        	$tertiaryCategoryList = $helper->getSubCategories($category['term_id']);
+                        	?>
+                            <?php ($category['term_id'] == $iCurrentCategoryId) ? $class = "active" : $class = ""; ?>
+                            <li class="level1 nav-2 <?php print $class; ?>" ><a href="/blog/category/<?php echo $category['slug'] ?>"><span><?php echo $category['name'] ?></span></a></li>
+                            
+                            <?php if($tertiaryCategoryList) : ?>
+							<ul class="level2">
+								<?php foreach($tertiaryCategoryList as $tertiaryCategory) : ?>
+								<li class="level2" ><a href="/blog/category/<?php echo $tertiaryCategory['slug'] ?>"><span><?php echo $tertiaryCategory['name'] ?></span></a></li>
+								<?php endforeach ; ?>
+							</ul>
+							<?php endif ; ?>
+							
+						<?php endforeach ; ?>
+                    </ul>
+                </li>
             </ul>	
         </div>     
     </div>   

@@ -7,7 +7,8 @@
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-nav.css</name><params/></action>
 			<!-- jQuery -->
             <action method="addJs"><script>infortis/jquery/jquery-1.7.2.min.js</script></action>
-			<action method="addJs"><script>infortis/jquery/jquery-noconflict.js</script></action>
+	    
+	    <!--already in local.xml: <action method="addJs"><script>infortis/jquery/jquery-noconflict.js</script></action>-->
 			<action method="addJs"><script>infortis/jquery/plugins/jquery.flexslider-min.js</script></action>
 			<action method="addJs"><script>infortis/jquery/plugins/jquery.easing.1.3.js</script></action>
         </reference>

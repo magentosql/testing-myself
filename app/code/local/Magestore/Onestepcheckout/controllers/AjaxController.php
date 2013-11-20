@@ -3,15 +3,23 @@ class Magestore_Onestepcheckout_AjaxController extends Mage_Core_Controller_Fron
 	
 	public function add_giftwrapAction()
     {
+        $type   = $this->getRequest()->getPost('giftwraptype', '');
         $remove = $this->getRequest()->getPost('remove', false);
 		$session = Mage::getSingleton('checkout/session');
         if(!$remove){
-            $session->setData('onestepcheckout_giftwrap', 1);
+            $session->setData('onestepcheckout_giftwrap_type', $type);
+            $session->setData('onestepcheckout_' . $type . 'giftwrap', 1);
+
+            $commentContent = '<br /><b>Chosen form of gift wrap : regular</b><br />';
+            if($type == 'holiday_') $commentContent = '<br /><b>Chosen form of gift wrap : holiday</b><br />';
+            $session->setData('customer_comment', $commentContent);
+
         }
         else{
-            $session->unsetData('onestepcheckout_giftwrap');
-            $session->unsetData('onestepcheckout_giftwrap_amount');
-        }        
+            $session->unsetData('onestepcheckout_' . $type . 'giftwrap');
+            $session->unsetData('onestepcheckout_' . $type . 'giftwrap_amount');
+        }
+
         $this->loadLayout(false);
         $this->renderLayout();
 	}

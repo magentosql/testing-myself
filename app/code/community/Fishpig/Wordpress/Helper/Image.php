@@ -15,7 +15,7 @@ class Fishpig_Wordpress_Helper_Image extends Fishpig_Wordpress_Helper_Abstract
 			
 			$dbInfo->connect();
 			$table = $dbInfo->getReadAdapter();
-			$query = sprintf("SELECT wposts.ID FROM %sposts wposts, %spostmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND  wposts.post_type = 'attachment' AND meta_value = :url",
+			$query = sprintf("SELECT wposts.ID FROM %sposts wposts, %spostmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND  wposts.post_type = 'attachment' AND (meta_value = :url OR guid = :url)",
 				$dbInfo->getTablePrefix(), $dbInfo->getTablePrefix());
 			
 			$url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $url );

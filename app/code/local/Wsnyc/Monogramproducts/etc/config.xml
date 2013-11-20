@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Monogramproducts>
+            <version>0.1.0</version>
+        </Wsnyc_Monogramproducts>
+    </modules>
+    <global>
+        <models>
+            <wsnyc_monogramproducts_setup>
+                <class>Wsnyc_Monogramproducts_Model</class>
+            </wsnyc_monogramproducts_setup>
+        </models>
+        <resources>
+            <monogramproducts_setup>
+                <setup>
+                    <module>Wsnyc_Monogramproducts</module>
+                    <class>Wsnyc_Monogramproducts_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </monogramproducts_setup>
+        </resources>
+        <events>
+            <sales_convert_quote_item_to_order_item>
+                <observers>
+                    <wsnyc_add_monogram_to_order_item>
+                        <type>singleton</type>
+                        <class>Wsnyc_Monogramproducts_Model_Observer</class>
+                        <method>addMonogramToOrderItem</method>
+                    </wsnyc_add_monogram_to_order_item>
+                 </observers>
+            </sales_convert_quote_item_to_order_item>
+        </events>
+    </global>
+</config>

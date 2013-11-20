@@ -174,8 +174,12 @@ function showLoading() {
 
 function save_address_information(save_address_url) {
 	var form = $('one-step-checkout-form');
-	var shipping_method = $RF(form, 'shipping_method');
-	var parameters = {shipping_method: shipping_method};
+	var shipping_methods = jQuery('.shipment-methods');
+	var parameters = {};
+    shipping_methods.each(function() {
+        var $this = jQuery(this);
+        parameters[$this.attr('name')] = $this.val();
+    });
 	
 	get_billing_data(parameters);	
 	get_shipping_data(parameters);	
@@ -228,13 +232,19 @@ function save_address_information(save_address_url) {
 	});
 }
 
+jQuery(document).ready(function() {
+   jQuery(document).on('change', 'select.shipment-methods', function() {
+       save_shipping_method(shipping_method_url);
+   });
+});
+
 function save_shipping_method(shipping_method_url, enable_update_payment) {
 	if(typeof enable_update_payment == 'undefined')	{
 		var enable_update_payment = false;
 	}
 	
 	var form = $('one-step-checkout-form');
-	var shipping_method = $RF(form, 'shipping_method');
+	var shipping_methods = jQuery('.shipment-methods');
 	var payment_method = $RF(form, 'payment[method]');
 	
 	//reload payment only if this feature is enabled in admin - show image loading
@@ -248,9 +258,12 @@ function save_shipping_method(shipping_method_url, enable_update_payment) {
 	review.update('<div class="ajax-loader3"></div>');
 	
 	var parameters = {
-		shipping_method: shipping_method,
 		payment_method: payment_method
 	};
+	shipping_methods.each(function() {
+	    var $this = jQuery(this);
+	    parameters[$this.attr('name')] = $this.val();
+	});
 	
 	//Find payment parameters and include 
 	var items = $$('input[name^=payment]', 'select[name^=payment]');
@@ -483,9 +496,10 @@ function checkPaymentMethod(){
 	return pay;
 }
 
-function addGiftwrap(url){                                          
+function addGiftwrap(url, giftwraptype) {
     var parameters = {};
-    if(!$('onestepcheckout_giftwrap_checkbox').checked) {
+    parameters['giftwraptype'] = giftwraptype;
+    if(!$('onestepcheckout_'+giftwraptype+'giftwrap_checkbox').checked) {
         parameters['remove'] = 1;
     }else{
 		var options = document.getElementsByName('payment[method]');

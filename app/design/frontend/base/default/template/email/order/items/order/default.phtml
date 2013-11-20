@@ -50,8 +50,7 @@ $product = Mage::getModel('catalog/product')
                     <?php
                     $shippingNote = $product->getShippingNote(); ?>
                     <?php if(!empty($shippingNote)): ?>
-                        <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px">
-                            Shipping note<br />
+                        <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px; font-style: italic;">
                             <?php echo $shippingNote ?>
                         </div>
                     <?php endif; ?>

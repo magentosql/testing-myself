@@ -39,7 +39,12 @@ abstract class Fishpig_Wordpress_Block_Post_List_Wrapper_Abstract extends Mage_C
 	{
 		parent::__construct();
 
-		$urlParts = explode('/', Mage::helper('core/url')->getCurrentUrl());
+		$simpleUrl = Mage::helper('core/url')->getCurrentUrl();
+		if (strpos($simpleUrl, '?') !== false) {
+			$simpleUrlParts = explode('?', $simpleUrl);
+			$simpleUrl = $simpleUrlParts[0];
+		}
+		$urlParts = explode('/', $simpleUrl);
 		$basePath = Mage::getBaseDir('design') . '/frontend/' . Mage::getDesign()->getPackageName() . '/default/template/';
 		$templatePath = 'wordpress/post/list.phtml';
 		$i = 0;

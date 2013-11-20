@@ -542,25 +542,25 @@
 						</notification_email>
 					</fields>
 				</order_notification>
-				<giftwrap translate="label comment">
-                    <label>Giftwrap Configuration</label>
+				<holiday_giftwrap translate="label comment">
+                    <label>Holiday Giftwrap Configuration</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-						<enable_giftwrap translate="label">
-							<label>Enable Gift wrap</label>
+						<enable_holiday_giftwrap translate="label">
+							<label>Enable Holiday Gift wrap</label>
 							<frontend_type>select</frontend_type>
 							<source_model>adminhtml/system_config_source_yesno</source_model>
 							<sort_order>14</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
-						</enable_giftwrap>
-                        <giftwrap_type translate="label">
-							<label>Giftwrap Type</label>
+						</enable_holiday_giftwrap>
+                        <holiday_giftwrap_type translate="label">
+							<label>Holiday Giftwrap Type</label>
 							<frontend_type>select</frontend_type>
 							<source_model>onestepcheckout/giftwrap</source_model>
 							<sort_order>15</sort_order>                          
@@ -568,22 +568,65 @@
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
                             <depends>
-                                <enable_giftwrap>1</enable_giftwrap>
+                                <enable_holiday_giftwrap>1</enable_holiday_giftwrap>
                             </depends>
-						</giftwrap_type>
-                        <giftwrap_amount translate="label">
-							<label>Giftwrap Fee</label>
+						</holiday_giftwrap_type>
+                        <holiday_giftwrap_amount translate="label">
+							<label>Holiday Giftwrap Fee</label>
 							<frontend_type>text</frontend_type>							
 							<sort_order>16</sort_order>
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>1</show_in_store>
                             <depends>
-                                <enable_giftwrap>1</enable_giftwrap>
+                                <enable_holiday_giftwrap>1</enable_holiday_giftwrap>
                             </depends>
 							<comment><![CDATA[Please enter giftwrap fee.]]></comment>
-						</giftwrap_amount>
+						</holiday_giftwrap_amount>
 					</fields>
+                </holiday_giftwrap>
+                <giftwrap translate="label comment">
+                    <label>Regular Giftwrap Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_giftwrap translate="label">
+                            <label>Enable Gift wrap</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_giftwrap>
+                        <giftwrap_type translate="label">
+                            <label>Giftwrap Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>onestepcheckout/giftwrap</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable_giftwrap>1</enable_giftwrap>
+                            </depends>
+                        </giftwrap_type>
+                        <giftwrap_amount translate="label">
+                            <label>Giftwrap Fee</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable_giftwrap>1</enable_giftwrap>
+                            </depends>
+                            <comment><![CDATA[Please enter giftwrap fee.]]></comment>
+                        </giftwrap_amount>
+                    </fields>
                 </giftwrap>
 				<giftmessage translate="label comment">
                     <label>Gift message Configuration</label>

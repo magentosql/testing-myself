@@ -1,0 +1,53 @@
+<?php
+/*
+** We want this below the post list, but FishPig doesn't let us do this
+** So right now it's inside a placeholder with display:none
+** Once the page loads, it will get auto-appended to the content with jQuery
+** SO: Do not edit placeholder-popular, all styles would be in the "popular-area" div
+** Sorry. Fishpig. Argh.
+*/
+?>
+<div id="placeholder-popular" class="hidden">
+	<div id="popular-area">
+		<h1>Most Popular</h1>
+
+		<?php
+			$helper = Mage::helper('wordpress/category');
+			$posts = $helper->getAllPostsByTag(327);
+			foreach ($posts as $post): 
+				$sent_from = $post->getMetaValues('wpcf-question-sent-from');
+				
+				$featuredImage = $post->getFeaturedImage();
+				$imageHelper = Mage::helper('wordpress/image');
+                $img = $imageHelper->getImageSizeByURL($featuredImage['guid'], "thumbnail");
+		?>
+
+			<div class="question-popular">
+				<div class="question-popular-image">
+					<?php if ($img) : ?> 
+						<img src="<?php echo $img ?>" width="237" height="194" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"/>						
+			        <?php endif ; ?>
+				</div>
+				<div class="question-popular-content">
+					<?php if ($sent_from != null): ?>
+						<h3><b>SENT FROM</b>: <?php echo $sent_from[0]['meta_value']; ?></h3>
+					<?php endif; ?>
+					<span class="post-title"><?php echo $post->getPostTitle(); ?></span>
+					<span class="post-date"><?php echo $post->getPostDate(); ?></span>
+					<p><?php echo $post->getPostExcerpt(); ?></p>
+					<a class="read-more" href="<?php echo $post->getPermalink(); ?>">Read More</a>
+				</div>
+			</div>
+
+		<?php endforeach; ?>
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+jQuery(function ($) {
+	$(document).ready(function () {
+		$('#placeholder-popular').parent().append($('#placeholder-popular').children());
+	});
+});
+</script>

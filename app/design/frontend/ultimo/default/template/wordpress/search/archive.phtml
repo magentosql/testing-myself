@@ -1,0 +1,59 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+ $catHelper = Mage::helper('wordpress/category');
+ 
+ $subcats = $catHelper->getSubCategories(0);
+ function catSort($a, $b) {
+    if ($a['name'] == $b['name']) return 0;
+    return ($a['name'] < $b['name']) ? -1 : 1;
+ }
+ uasort($subcats, 'catSort');
+
+ $currCat = Mage::app()->getRequest()->getParam('category');
+ $currYear = Mage::app()->getRequest()->getParam('year');
+?>
+<div class="page-title">
+	<h1>Archive</h1>
+	
+	<div id="archive_top_select">
+	    <form action="/blog/archive" method="get" id="archive_form" class="custom">
+	        <span>FILTER BY:</span>
+	        <select name="category" id="archive_category">
+	               <option value="" disabled selected>Category</option>
+    	            <?php foreach ($subcats as $catInfo): ?>
+	               <?php if ($catInfo['taxonomy'] != 'category') continue; ?>
+	               <?php if ($catInfo['name'] == 'Ask The Laundress') continue; ?>
+	               <option<?php if ($catInfo['term_id'] == $currCat) echo " selected"; ?> value="<?php echo $catInfo['term_id'] ?>"><?php echo $catInfo['name'] ?></option>
+	            <?php endforeach; ?>
+	        </select>
+	
+	        <select name="year" id="archive_year">
+	            <option value="" disabled selected>Year</option>
+	            <?php foreach ($catHelper->getYearList() as $year): ?>
+	                <option<?php if ($year == $currYear) echo " selected"; ?>><?php echo $year ?></option>
+	            <?php endforeach; ?>
+	        </select>
+	    </form>
+	</div>
+	
+	<script type="text/javascript">
+	jQuery(function ($) { 
+	    $(document).ready(function () {
+	        $("#archive_form select").change(function () {
+	            $("#archive_form").submit();
+	        });
+	    });
+	});
+	</script>
+	
+</div>
+<?php if ($posts = $this->getPostListHtml()): ?>
+	<?php echo $posts ?>
+<?php else: ?>
+	<p class="note-msg"><?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?></p>
+<?php endif; ?>

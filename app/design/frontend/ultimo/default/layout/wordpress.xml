@@ -305,6 +305,7 @@
       </reference>
       <reference name="content">
          <block type="wordpress/homepage" name="wordpress_homepage" template="ask-the-laundress/ask-the-laundress.phtml" />
+         <block type="core/template" after="-" name="featured_atl_posts" template="ask-the-laundress/featured.phtml" />
       </reference>
    </wordpress_post_customtype_view_question>
    
@@ -693,6 +694,9 @@
       <reference name="left">
          <block type="core/template" name="wordpress_sidebar_left" template="wordpress/sidebar/cleanandlearn.phtml" />
       </reference>
+      <reference name="content">
+         <remove name="wordpress_disqus" />
+      </reference>
    </wordpress_post_view_INGREDIENTS>
    
    <wordpress_post_customtype_view_ingredients>
@@ -917,6 +921,7 @@
    
    <!-- NEW ARCHIVE -->
    <wordpress_post_archive>
+      <remove name="breadcrumbs" />
       <reference name="root">
          <action method="setTemplate">
             <template>page/1column-blog.phtml</template>
@@ -934,7 +939,7 @@
          </action>
       </reference>
       <reference name="content">
-         <block type="wordpress/homepage" name="wordpress_homepage" template="wordpress/search/result.phtml">
+         <block type="wordpress/homepage" name="wordpress_homepage" template="wordpress/search/archive.phtml">
             <block type="wordpress/post_list" name="wordpress_post_list" as="post_list" template="wordpress/post/list.phtml">
                <block type="wordpress/post_list_pager" name="wordpress_post_list_pager" as="pager" />
             </block>

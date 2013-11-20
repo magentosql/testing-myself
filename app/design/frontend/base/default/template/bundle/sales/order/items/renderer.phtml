@@ -342,6 +342,7 @@
         <?php if($_options = $this->getItemOptions()): ?>
         <dl class="item-options">
         <?php foreach ($_options as $_option) : ?>
+        <?php if ($_option['label'] == 'Monogram ID') continue; ?>
             <dt><?php echo $this->htmlEscape($_option['label']) ?></dt>
             <?php if (!$this->getPrintStatus()): ?>
                 <?php $_formatedOptionValue = $this->getFormatedOptionValue($_option) ?>

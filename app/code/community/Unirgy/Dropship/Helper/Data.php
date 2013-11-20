@@ -3240,6 +3240,59 @@ class Unirgy_Dropship_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig('udropship/statement/enable_refunds');
     }
 
+    public function getShippingPrice($baseShipping, $vId, $address, $type)
+    {
+        $hlp = Mage::helper('udropship');
+        $isUdtax = $hlp->isModuleActive('Unirgy_DropshipVendorTax');
+        $calc   = Mage::getSingleton('tax/calculation');
+        $config = Mage::getSingleton('tax/config');
+
+        if ($vId instanceof Unirgy_Dropship_Model_Vendor) {
+            $vId = $vId->getId();
+        }
+
+        $store              = $address->getQuote()->getStore();
+        $storeTaxRequest    = $calc->getRateOriginRequest($store);
+        $addressTaxRequest  = $calc->getRateRequest(
+            $address,
+            $address->getQuote()->getBillingAddress(),
+            $address->getQuote()->getCustomerTaxClassId(),
+            $store
+        );
+
+        $priceIncludesTax = $config->shippingPriceIncludesTax($store);
+
+        $shippingTaxClass = $config->getShippingTaxClass($store);
+        $storeTaxRequest->setProductClassId($shippingTaxClass);
+        $addressTaxRequest->setProductClassId($shippingTaxClass);
+
+        if ($isUdtax) {
+            Mage::helper('udtax')->setVendorClassId($storeTaxRequest, $vId);
+            Mage::helper('udtax')->setVendorClassId($addressTaxRequest, $vId);
+        }
+
+        $rate = $calc->getRate($addressTaxRequest);
+
+        if ($priceIncludesTax) {
+            $storeRate      = $calc->getStoreRate($addressTaxRequest, $store);
+            $baseStoreTax   = $calc->calcTaxAmount($baseShipping, $storeRate, true, false);
+            $baseShipping   = $calc->round($baseShipping - $baseStoreTax);
+            $baseTax        = $calc->round($calc->calcTaxAmount($baseShipping, $rate, false, false), $rate, false, 'base');
+            $baseTaxShipping= $baseShipping + $baseTax;
+        } else {
+            $baseTax        = $calc->round($calc->calcTaxAmount($baseShipping, $rate, false, false), $rate, false, 'base');
+            $baseTaxShipping= $baseShipping + $baseTax;
+        }
+
+        $result = $baseShipping;
+        if ($type == 'tax') {
+            $result = $baseTax;
+        } elseif ($type == 'incl') {
+            $result = $baseTaxShipping;
+        }
+        return $result;
+    }
+
     public function filterObjectsInDump($data)
     {
         $result = '';

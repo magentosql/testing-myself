@@ -67,23 +67,38 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif;?>
         
         <?php
-        $additionalOptions = $_item->getOptionByCode('info_buyRequest'); 
-	 	$optionsArray =  unserialize($additionalOptions->getValue());
+		/* variable set in Infortis/Ultimo/Model/Monogram.php */
+	 	$groupedMonogramDetails = Mage::getModel('customer/session')->getData('grouped_monogram_details');
+
+                $monogramCheck = 0;
+	 	if(isset($groupedMonogramDetails[$_item->getId()]['monogram-check'])){
+		    $monogramCheck = $groupedMonogramDetails[$_item->getId()]['monogram-check'];
+                    $monogramColor = $groupedMonogramDetails[$_item->getId()]['monogram-color'];
+                    $monogramInitials = strtoupper($groupedMonogramDetails[$_item->getId()]['monogram-initials']);
+                    $monogramType = $groupedMonogramDetails[$_item->getId()]['monogram-type'];
+
+                    $monogramArray = array($monogramType, 'Color: ' . $monogramColor, 'Monogram Text: ' . $monogramInitials);
+	 	}
 	 	
+	 	//was used before, but only worked for simple
+                /*
+                $additionalOptions = $_item->getOptionByCode('info_buyRequest'); 
+	 	$optionsArray =  unserialize($additionalOptions->getValue());
                 if(isset($optionsArray['monogram-check'])) {
                     $monogramCheck = $optionsArray['monogram-check'];
                     $monogramColor = $optionsArray['monogram-color'];
-                    $monogramInitials = strtoupper($optionsArray['mongram-initials']);
+                    $monogramInitials = strtoupper($optionsArray['monogram-initials']);
                     $monogramType = $optionsArray['monogram-type'];
 
                     $monogramArray = array($monogramType, 'Color: ' . $monogramColor, 'Monogram Text: ' . $monogramInitials);
                 }
+                */
 		?>
 		
-		<?php if (isset($optionsArray['monogram-check'])):?>
+        <?php if ($monogramCheck==1):?>
         <ul class="item-monogram">
             <li><b>Monogram </b><?php echo implode(', ',$monogramArray); ?></li>
-            <li><b>Shipping Note </b>Monogram Items will ship in 1-2 weeks.</li>
+            <li><b>Shipping Note </b>Monogram Items will ship in 1-2 weeks. All monogram sales are final.</li>
         </ul>
         <?php endif;?>
 
@@ -92,8 +107,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             $shippingNote = $pr->getShippingNote(); ?>
         <?php if(!empty($shippingNote)): ?>
         <dl>
-            <dt>Shipping note</dt>
-            <dd><?php echo $shippingNote ?></dd>
+            <dd class="shipping-note"><?php echo $shippingNote ?></dd>
         </dl>
         <?php endif; ?>
         

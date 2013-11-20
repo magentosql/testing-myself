@@ -320,6 +320,21 @@ class Magestore_Onestepcheckout_Helper_Data extends Mage_Core_Helper_Abstract {
 	{
         return Mage::getStoreConfig('onestepcheckout/giftwrap/giftwrap_amount', $this->getStoreId());
     }
+
+    public function enableHolidayGiftWrap()
+    {
+        return Mage::getStoreConfig('onestepcheckout/holiday_giftwrap/enable_holiday_giftwrap', $this->getStoreId());
+    }
+
+    public function getHolidayGiftwrapType()
+    {
+        return Mage::getStoreConfig('onestepcheckout/holiday_giftwrap/holiday_giftwrap_type', $this->getStoreId());
+    }
+
+    public function getHolidayGiftwrapAmount()
+    {
+        return Mage::getStoreConfig('onestepcheckout/holiday_giftwrap/holiday_giftwrap_amount', $this->getStoreId());
+    }
 	
 	public function isCustomerLoggedIn()
 	{
@@ -335,6 +350,12 @@ class Magestore_Onestepcheckout_Helper_Data extends Mage_Core_Helper_Abstract {
 	{
         $session = Mage::getSingleton('checkout/session');
         return $session->getData('onestepcheckout_giftwrap');
+    }
+
+    public function checkHolidayGiftwrapSession()
+    {
+        $session = Mage::getSingleton('checkout/session');
+        return $session->getData('onestepcheckout_holiday_giftwrap');
     }
 	
 	public function isHideShippingMethod() 
@@ -485,8 +506,8 @@ class Magestore_Onestepcheckout_Helper_Data extends Mage_Core_Helper_Abstract {
 		return $moduleGiftwrap;
 	}
 	
-	public function getOrderGiftwrapAmount(){
-		$amount = $this->getGiftwrapAmount();		
+	public function getOrderGiftwrapAmount($type = 'regular'){
+		$amount = ($type == 'regular' ? $this->getGiftwrapAmount() : $this->getHolidayGiftwrapAmount());
 		$giftwrapAmount = 0;
 		// $freeBoxes = 0;
 		$items = Mage::getSingleton('checkout/cart')->getItems();
