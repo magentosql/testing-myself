@@ -33,6 +33,7 @@ $product = Mage::getModel('catalog/product')
 ?> 
 <tr>
 	<td width="275" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0">
+            default
 		<table width="275" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
 			<tr>
 				<td valign="top" width="72">
@@ -63,9 +64,9 @@ $product = Mage::getModel('catalog/product')
 		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#666666;font-size:13px"><?php echo $_item->getQtyOrdered()*1 ?></span>
 	</td>
 	<td width="85" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
-		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#666666;font-size:12px; font-weight:bold"><?php echo $_order->formatPrice($_item->getRowTotal()) ?></span>
+		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#666666;font-size:12px; font-weight:bold"><?php echo $_order->formatPrice($_item->getPrice()) ?></span>
 	</td>
 	<td width="75" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
-		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#222222;font-size:12px; font-weight:bold"><?php echo $_order->formatPrice($_item->getRowTotal()*$_item->getQtyOrdered()) ?></span>
+		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#222222;font-size:12px; font-weight:bold"><?php echo $_order->formatPrice($_item->getRowTotal()) ?></span>
 	</td>
 </tr>
