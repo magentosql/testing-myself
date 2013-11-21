@@ -34,7 +34,7 @@ if (!$_error && $this->getErrorsOnly()) {
 
 <tr class="udropship-cart-vendor-footer">
     <td colspan="10">
-        <div class="udsplit-vendor-subtotal" style="float:right">
+        <div class="udsplit-vendor-subtotal" style="float:right">ewq
             <?php /*<?php echo $this->__('Subtotal:')?>
             <strong><?php echo Mage::helper('core')->formatPrice($this->getSubtotal()) ?></strong>
 */ ?>
@@ -69,7 +69,7 @@ if (!$_error && $this->getErrorsOnly()) {
             </select>
         <?php endif; ?>
         <?php else: ?>
-            <?php echo $this->getShippingMethod('carrier_title').' - '.$this->getShippingMethod('method_title') ?>
+            <?php echo /*$this->getShippingMethod('carrier_title').' - '.*/ $this->getShippingMethod('method_title') ?>
             (<strong><?php echo $this->getShippingPrice($this->getShippingMethod('price'), $this->helper('tax')->displayShippingPriceIncludingTax()) ?></strong>)
         <?php endif; ?>
         <?php endif; ?>
