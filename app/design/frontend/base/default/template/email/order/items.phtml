@@ -29,15 +29,10 @@
 <tr>
 	<td width="520" colspan="2" style="padding-top:35px">
 		<table width="520" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
-			<tr>
-				<td width="275" style="border-bottom:1px solid #666666;padding-bottom:5px"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase;padding-left:3px">Product</span></td>
-				<td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Quantity</span></td>
-				<td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Price</span></td>
-				<td width="75" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Subtotal</span></td>
-			</tr>
+			
                         <?php $lastVendor = ''; ?>
 			<?php $i=0; foreach ($_order->getAllItems() as $_item): ?>
-                         <?php $newVendor = Mage::helper('udropship')->getVendor($item->getUdropshipVendor())->getVendorName();
+                         <?php $newVendor = Mage::helper('udropship')->getVendor($_item->getUdropshipVendor())->getVendorName();
                          if($newVendor!=$lastVendor): ?>
                         <tr>
                             <td>
@@ -45,6 +40,12 @@
                                 <?php echo $newVendor ?>
                             </td>
                         </tr>
+                        <tr>
+				<td width="275" style="border-bottom:1px solid #666666;padding-bottom:5px"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase;padding-left:3px">Product</span></td>
+				<td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Quantity</span></td>
+				<td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Price</span></td>
+				<td width="75" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Subtotal</span></td>
+			</tr>
                         <?php endif; ?>
                          
 		    <?php if($_item->getParentItem()) continue; else $i++; ?>
