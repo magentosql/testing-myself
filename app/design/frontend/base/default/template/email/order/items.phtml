@@ -35,8 +35,8 @@
                          <?php $newVendor = Mage::helper('udropship')->getVendor($_item->getUdropshipVendor())->getVendorName();
                          if($newVendor!=$lastVendor): ?>
                         <tr>
-                            <td>
-                                <strong>Shipping for following items: </strong><br/>
+                            <td colspan="4">
+                                <br /><strong>Shipping for following items: </strong>
                                 <?php echo $newVendor ?>
                             </td>
                         </tr>
@@ -46,7 +46,9 @@
 				<td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Price</span></td>
 				<td width="75" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Subtotal</span></td>
 			</tr>
-                        <?php endif; ?>
+                        <?php 
+                        $lastVendor = $newVendor;
+                        endif; ?>
                          
 		    <?php if($_item->getParentItem()) continue; else $i++; ?>
 		        <?php echo $this->getItemHtml($_item) ?>
