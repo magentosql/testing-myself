@@ -6,6 +6,7 @@ class Wsnyc_Shippingnote_Model_Observer{
         $order = $observer->getOrder();
         $signatureSurvey = Mage::app()->getFrontController()->getRequest()->getParams();
         $selectedKey = $signatureSurvey['billing']['onestepcheckout-survey'];
+        $laundressComment = $signatureSurvey['billing']['onestepcheckout_comment'];
 
         $possibleSignatureValues = Mage::getStoreConfig('onestepcheckout/survey/survey_values');
         $possibleSignatureValues = unserialize($possibleSignatureValues);
@@ -16,6 +17,7 @@ class Wsnyc_Shippingnote_Model_Observer{
         } else { 
                 $order->setSignatureRequired(0);
         }
+        $order->setOnestepcheckoutLaundressComment($laundressComment);
                 
     }
 
