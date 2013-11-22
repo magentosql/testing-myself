@@ -35,7 +35,18 @@
 				<td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Price</span></td>
 				<td width="75" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Subtotal</span></td>
 			</tr>
+                        <?php $lastVendor = ''; ?>
 			<?php $i=0; foreach ($_order->getAllItems() as $_item): ?>
+                         <?php $newVendor = Mage::helper('udropship')->getVendor($item->getUdropshipVendor())->getVendorName();
+                         if($newVendor!=$lastVendor): ?>
+                        <tr>
+                            <td>
+                                <strong>Shipping for following items: </strong><br/>
+                                <?php echo $newVendor ?>
+                            </td>
+                        </tr>
+                        <?php endif; ?>
+                         
 		    <?php if($_item->getParentItem()) continue; else $i++; ?>
 		        <?php echo $this->getItemHtml($_item) ?>
 		    <?php endforeach; ?>
