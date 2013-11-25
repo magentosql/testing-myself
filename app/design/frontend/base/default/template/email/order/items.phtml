@@ -25,6 +25,12 @@
  */
 ?>
 <?php $_order = $this->getOrder() ?>
+<?php 
+    $quote = Mage::getModel('sales/quote')->load($_item->getOrder()->getQuoteId());
+    $address = $quote->getShippingAddress();
+    $details = $address->getUdropshipShippingDetails();
+    $details = $details ? Zend_Json::decode($details) : array();
+?>
 <?php if ($_order): ?>
 <tr>
 	<td width="520" colspan="2" style="padding-top:35px">
@@ -37,7 +43,9 @@
                         <tr>
                             <td colspan="4">
                                 <br /><strong>Shipping for following items: </strong>
-                                <?php echo $newVendor ?>
+                                <?php 
+                                echo $newVendor.' - '.$details['methods'][$_item->getUdropshipVendor()]['carrier_title'].' - '.$details['methods'][$_item->getUdropshipVendor()]['method_title'];
+                                ?>
                             </td>
                         </tr>
                         <tr>
