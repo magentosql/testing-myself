@@ -5,19 +5,30 @@ class Magestore_Onestepcheckout_AjaxController extends Mage_Core_Controller_Fron
     {
         $type   = $this->getRequest()->getPost('giftwraptype', '');
         $remove = $this->getRequest()->getPost('remove', false);
-		$session = Mage::getSingleton('checkout/session');
+        $session = Mage::getSingleton('checkout/session');
+        
+        $gift_regular = '<br /><b>Chosen form of gift wrap : regular</b><br />';
+        $gift_holiday = '<br /><b>Chosen form of gift wrap : holiday</b><br />';
+                
         if(!$remove){
             $session->setData('onestepcheckout_giftwrap_type', $type);
             $session->setData('onestepcheckout_' . $type . 'giftwrap', 1);
 
-            $commentContent = '<br /><b>Chosen form of gift wrap : regular</b><br />';
-            if($type == 'holiday_') $commentContent = '<br /><b>Chosen form of gift wrap : holiday</b><br />';
+            $commentContent = $gift_regular;
+            if($type == 'holiday_') {
+                $commentContent = $gift_holiday;
+            }
             $session->setData('customer_comment', $commentContent);
 
         }
         else{
             $session->unsetData('onestepcheckout_' . $type . 'giftwrap');
             $session->unsetData('onestepcheckout_' . $type . 'giftwrap_amount');
+            /* also remove giftwrap comment */
+            $currentComment = $session->getData('customer_comment', $commentContent);
+            $currentComment = str_replace($gift_regular,'',$currentComment);
+            $currentComment = str_replace($gift_holiday,'',$currentComment);
+            $session->setData('customer_comment', $currentComment);
         }
 
         $this->loadLayout(false);
