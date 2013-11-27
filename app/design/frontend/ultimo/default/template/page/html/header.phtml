@@ -72,6 +72,36 @@
 </script>
 <?php endif; ?>
 
+<?php 
+    $block = Mage::getModel('cms/block')->load('freeship-info');
+    $cookie = Mage::getSingleton('core/cookie');
+    $cookie->set('freeship-info', '1' ,time()+31536000,'/');
+?>
+<?php if($block->getIsActive()): ?>
+
+<div style='display:none'>
+    <div id="inline_freeship_colorbox"><?php echo $block->getContent() ?></div>
+</div>
+    <style>
+        #inline_freeship_colorbox {text-align: left}
+        #inline_freeship_colorbox p {padding: 5px 0px 5px 0px}
+        #inline_freeship_colorbox ul {padding: 10px 0px 10px 25px}
+        #inline_freeship_colorbox ul, #inline_colorbox ul li {list-style: circle;}
+    </style>
+<script type="text/javascript">
+    jQuery(function($) {
+        $(".openFreeshipPopup").colorbox({
+            inline  : true,
+            opacity : 0.5,
+            speed   : 300,
+            width   : 750
+        });
+
+        <?php if(!$cookie->get('holiday-order')): ?>$('.openFreeshipPopup').click();<?php endif; ?>
+    });
+</script>
+<?php endif; ?>
+
 <div class="header-container" id="top">
 
     <div class="header container<?php if($headerCss) echo " " . implode(" ", $headerCss); ?>">
@@ -81,7 +111,7 @@
             	<div class="block_header_top_help item item-left"><?php echo $tmp; ?></div>
             <?php endif; ?>
             <div class="item item-right hide-below-960">
-            	<div class="welcome-msg"><b class="no-italic">FREE SHIPPING</b> for orders over <b>$100</b></div>
+                <div  class="welcome-msg"><a href="#inline_freeship_colorbox" class="openFreeshipPopup"><b class="no-italic">FREE SHIPPING</b> for orders over <b>$100</b></a></div>
                 <?php
                     $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier');
                 ?>
