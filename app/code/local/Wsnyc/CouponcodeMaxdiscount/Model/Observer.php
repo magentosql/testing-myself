@@ -32,6 +32,11 @@ class Wsnyc_CouponcodeMaxdiscount_Model_Observer {
             $request = Mage::getSingleton('core/app')->getRequest();
             $quote = $observer->getEvent()->getQuote();
             $usedCouponCode = (string) $request->getParam('coupon_code');
+            
+            //use session coupon if no coupon sent over
+            if ($quote->getCouponCode() != '' && !$usedCouponCode) {
+                $usedCouponCode = $quote->getCouponCode();
+            }
 
             //this is given with $ value - 100 means $100 is max discount client can get
             $coupon = Mage::getModel('salesrule/coupon')->loadByCode($usedCouponCode);
