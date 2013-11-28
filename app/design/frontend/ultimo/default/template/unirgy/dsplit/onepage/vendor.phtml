@@ -48,7 +48,7 @@ if (!$_error && $this->getErrorsOnly()) {
             <input type="checkbox" name="shipping_method" checked="checked" style="display:none" disabled="disabled" />
             <select name="shipping_method[<?php echo $_v->getId()?>]" class="shipment-methods" style="width:auto">
             <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
-                <optgroup label="<?php echo $this->getCarrierName($code) ?>">
+        <?php /*<optgroup label="<?php echo $this->getCarrierName($code) ?>">*/ ?>
                 <?php foreach ($_rates as $_rate): ?>
                 <?php if ($_rate->getErrorMessage()): ?>
                     <?php //echo $_rate->getErrorMessage() ?>
@@ -64,7 +64,7 @@ if (!$_error && $this->getErrorsOnly()) {
                     </option>
                 <?php endif ?>
                 <?php endforeach; ?>
-                </optgroup>
+                <?php /*</optgroup>*/ ?>
             <?php endforeach; ?>
             </select>
         <?php endif; ?>
