@@ -12,8 +12,23 @@ class Wsnyc_CouponcodeMaxdiscount_Model_Observer {
 
     public function checkoutCartCouponPost($observer) {
 
-        
-        if (Mage::app()->getRequest()->getActionName() == 'add_coupon') {
+        $request = Mage::app()->getRequest();
+        $actionName = Mage::app()->getRequest()->getActionName();
+        $key = $request->getModuleName().'_'.$request->getControllerName().'_'.$request->getActionName();
+        //Mage::log($key);
+
+        //run this code on following places
+        if (in_array(
+                $key,
+                array(
+                        'onestepcheckout_index_add_coupon',
+                        'checkout_cart_index',
+                        'checkout_cart_updatePost',
+                        'onestepcheckout_index_save_shipping'  
+                )
+            )
+        ){  
+
             $request = Mage::getSingleton('core/app')->getRequest();
             $quote = $observer->getEvent()->getQuote();
             $usedCouponCode = (string) $request->getParam('coupon_code');
@@ -79,10 +94,6 @@ class Wsnyc_CouponcodeMaxdiscount_Model_Observer {
                     }
                 } 
             }
-            
-
         }
-        
     }
-
 }
