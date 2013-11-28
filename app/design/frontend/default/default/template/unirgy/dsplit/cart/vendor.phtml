@@ -34,7 +34,7 @@ $_v = $this->getVendor();
         <?php echo $this->__('Select Shipping:')?>
         <select name="cart[estimate_method][<?php echo $_v->getId()?>]" class="shipment-methods" style="width:auto">
         <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
-            <optgroup label="<?php echo $this->getCarrierName($code) ?>">
+            <?php /*<optgroup label="<?php echo $this->getCarrierName($code) ?>">*/ ?>
             <?php foreach ($_rates as $_rate): ?>
             <?php if ($_rate->getErrorMessage()): ?>
                 <?php //echo $_rate->getErrorMessage() ?>
@@ -50,7 +50,7 @@ $_v = $this->getVendor();
                 </option>
             <?php endif ?>
             <?php endforeach; ?>
-            </optgroup>
+        <?php /*</optgroup>*/ ?>
         <?php endforeach; ?>
         </select>
         <?php endif; ?>
