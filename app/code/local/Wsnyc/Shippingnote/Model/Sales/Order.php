@@ -25,4 +25,23 @@ class Wsnyc_Shippingnote_Model_Sales_Order extends Mage_Sales_Model_Order {
         }
         return 'No';
     }
+    
+    /**
+     * Overriden to order them by shipment vendor
+     * @return type
+     */
+    public function getAllItems()
+    {
+        $items = array();
+        $itemsCollection = $this->getItemsCollection();
+        $itemsCollection->setOrder('udropship_vendor');
+        foreach ($itemsCollection as $item) {
+
+            if (!$item->isDeleted()) {
+                $items[] =  $item;
+            }
+        }
+        return $items;
+    }
+
 }
