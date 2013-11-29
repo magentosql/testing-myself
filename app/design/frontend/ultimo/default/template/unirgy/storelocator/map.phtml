@@ -101,6 +101,7 @@ var ex;
             var url = '';
             if(m.website_url){
                 url = m.website_url.replace(/\s/,'');
+                url = url.replace('http://','');
                 div.insert('<span class="website">' + url + '</span>');
             }
 
@@ -133,7 +134,7 @@ var ex;
                 div.insert(m.phone + '<br/>');
             }
             if(url.length > 5) {
-                div.insert('<a href="' + (url.match(/@/) ? 'mailto:' : '') + url + '"><strong>' + url + '</strong></a><br/>')
+                div.insert('<a href="' + (url.match(/@/) ? 'mailto:' : '') + url + '"><strong>' + url.replace('http://','') + '</strong></a><br/>')
             }
             div.insert('<p>' + m.notes + '</p>');
             container.update(div);
@@ -144,7 +145,7 @@ var ex;
     Event.observe(window, 'load', function () {
         storeLocator.load();
 
-<?php if ($_initialLocations && $_initialLocations != '{}'): ?>
+<?php if (true || $_initialLocations && $_initialLocations != '{}'): ?>
         $('storelocator-results').style.visibility = 'visible';
 <?php endif ?>
     }); 
