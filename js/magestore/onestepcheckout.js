@@ -339,6 +339,7 @@ function add_coupon_code(add_coupon_url) {
 				alert(response.message);
 			}
 			else {
+                                review.update('<div class="ajax-loader1"></div>');
 				review.update(response.review_html);
 				$('remove_coupon_code_button').show();
 				if(onestepcheckoutinadmin) recollectTotal();
