@@ -172,7 +172,7 @@ function showLoading() {
 	
 }
 
-function save_address_information(save_address_url) {
+function save_address_information(save_address_url,block_payment_update) {
 	var form = $('one-step-checkout-form');
 	var shipping_methods = jQuery('.shipment-methods');
 	var parameters = {};
@@ -189,8 +189,10 @@ function save_address_information(save_address_url) {
 		shipping_method_section.update('<div class="ajax-loader1"></div>');
 	}
 	
+        if(block_payment_update === false){
 	var payment_method_section = $$('div.onestepcheckout-payment-methods')[0];
 	payment_method_section.update('<div class="ajax-loader2">&nbsp;</div>');
+        }
 	
 	var review = $('checkout-review-load');
 	review.update('<div class="ajax-loader3"></div>');
@@ -209,8 +211,12 @@ function save_address_information(save_address_url) {
 					if(typeof shipping_method_section != 'undefined') {	
 						shipping_method_section.update(response.shipping_method);
 					}
-					payment_method_section.update(response.payment_method);
+                                        
+                                        if(block_payment_update === false){
+					   payment_method_section.update(response.payment_method);
+                                        }
 					// show payment form if available
+                                        
 					if($RF(form, 'payment[method]') != null)    {
 						try    {
 							var payment_method = $RF(form, 'payment[method]');
@@ -220,6 +226,7 @@ function save_address_information(save_address_url) {
 
 						}
 					}
+                                    
 					review.update(response.review);
 					save_shipping_method(shipping_method_url);
 					$('onestepcheckout-button-place-order').disabled = false;
@@ -332,7 +339,7 @@ function add_coupon_code(add_coupon_url) {
 		onFailure: '',
 		parameters: parameters,
 		onSuccess: function(transport) {
-                    	save_address_information(save_address_url);
+                    	save_address_information(save_address_url,true);
 			var response = getResponseText(transport);
 			if (response.error) {				
 				review.update(response.review_html);
