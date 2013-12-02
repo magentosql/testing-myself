@@ -366,6 +366,7 @@ function remove_coupon_code(add_coupon_url) {
 		onFailure: '',
 		parameters: parameters,
 		onSuccess: function(transport) {
+                        save_address_information(save_address_url,true);
 			var response = getResponseText(transport);
 			if (response.error) {				
 				review.update(response.review_html);
