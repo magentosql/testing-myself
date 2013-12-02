@@ -50,6 +50,7 @@
 									<?php for ($_i=2, $_n=$this->helper('customer/address')->getStreetLines(); $_i<=$_n; $_i++): ?>
 										<input style="margin-bottom:10px;" type="text" title="<?php echo $this->__('Street Address '.$_i) ?>" name="shipping[street][]" id="shipping:street<?php echo $_i?>" value="<?php echo $this->htmlEscape($this->getShippingAddress()->getStreet($_i)) ?>" class="input-text" />
 									<?php endfor ?>
+                                                                        <br/>Please note: We do not ship to PO Boxes
 								<?php elseif($helper->getFieldEnable($i)=='country'): ?>
 									<label for="shipping:country_id"><?php echo $this->__('Country') ?>
 										<?php if($helper->getFieldRequire($helper->getFieldEnable($i))): ?>
