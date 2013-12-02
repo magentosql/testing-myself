@@ -58,10 +58,14 @@
             	$containerclass = $this->getNextContainer($containerclass);
             	$numitems = count($items);
             	$index = 0;
+                $additional = array();
+                                if(Mage::app()->getRequest()->isSecure()){
+                                    $additional = array('_secure'=>true);
+                                }
             		foreach($items as $item):
             			$price = intval($item->getPrice());
-            			$url = $this->helper('checkout/cart')->getAddUrl($item, "");
-            ?>
+            			$url = $this->helper('checkout/cart')->getAddUrl($item, $additional);
+                                ?>
 			<div class="item-line">
 				<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
 				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />
@@ -86,10 +90,14 @@
             	$containerclass = $this->getNextContainer($containerclass);
             	$numitems = count($items);
             	$index = 0;
+                $additional = array();
+                                if(Mage::app()->getRequest()->isSecure()){
+                                    $additional = array('_secure'=>true);
+                                }
             		foreach($items as $item):
             			$price = intval($item->getPrice());
-            			$url = $this->helper('checkout/cart')->getAddUrl($item, "");
-            ?>
+            			$url = $this->helper('checkout/cart')->getAddUrl($item, $additional);
+                                ?>
 			<div class="item-line">
 				<input type="hidden" id="item_url_<?php echo  $item->getId(); ?>" value="<?php echo $url; ?>" />
 				<input type="hidden" id="item_price_<?php echo  $item->getId(); ?>" value="<?php echo $price ?>" />
