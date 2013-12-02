@@ -33,18 +33,21 @@ $_v = $this->getVendor();
         <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
         <?php echo $this->__('Select Shipping:')?>
         <select name="cart[estimate_method][<?php echo $_v->getId()?>]" class="shipment-methods" style="width:auto">
-            <?php 
+            <?php
             //get lowest shipping cost and its code
             $_oldPrice = 99999; //just price that won't be topped by any shipping method
             foreach ($_shippingRateGroups as $code => $_rates):
                 foreach ($_rates as $_rate):
-                    $_price = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
-                    if($_price < $_oldPrice){
+                    $price = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
+                    $_price = str_replace('$', '', $price);
+                    $_oldPrice = str_replace('$', '', $_oldPrice);
+                    if ($_price < $_oldPrice) {
                         $lowestCode = $_rate->getCode();
+                        $_oldPrice = $price;
                     }
                 endforeach;
             endforeach;
-        ?>
+            ?>
         <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
             <?php /*<optgroup label="<?php echo $this->getCarrierName($code) ?>">*/ ?>
             <?php foreach ($_rates as $_rate): ?>
