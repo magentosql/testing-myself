@@ -354,8 +354,13 @@
                              }
                          }
                    });
-
-                   washingAddToCart('<?php echo Mage::getUrl("washingservice/cart/add") ?>?' + params.join('&'));
+                   <?php 
+                    $additional = array();
+                    if(Mage::app()->getRequest()->isSecure()){
+                        $additional = array('_secure'=>true);
+                    }
+                   ?>
+                   washingAddToCart('<?php echo Mage::getUrl("washingservice/cart/add",$additional) ?>?' + params.join('&'));
             });
 
 		
