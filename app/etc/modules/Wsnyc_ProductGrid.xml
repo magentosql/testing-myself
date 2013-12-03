@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Wsnyc_ProductGrid>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wsnyc_ProductGrid>
+    </modules>
+</config>
