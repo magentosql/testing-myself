@@ -114,6 +114,8 @@ function UnirgyStoreLocator(config) {
             parseTags(entry);
             current_locations[entry.location_id] = entry;
         }
+        config.mapEl.style.visibility = 'visible';
+
         fitMap(bounds);
         createTagsRow();
         prepareDirections();
