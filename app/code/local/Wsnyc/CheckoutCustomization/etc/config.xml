@@ -56,11 +56,18 @@
             <quote>
                 <totals>
                     <giftwrap>
-                        <class>wsnyc_checkoutcustomization/sales_quote_address_total_giftwrap</class>
+                        <class>wsnyc_checkoutcustomization/total_giftwrap</class>
                         <before>grand_total</before>
                     </giftwrap>
                 </totals>
             </quote>
         </sales>
     </global>
+    <default>
+        <sales>
+            <totals_sort>
+                <giftwrap>1150</giftwrap>
+            </totals_sort>
+        </sales>
+    </default>
 </config>
