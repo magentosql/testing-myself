@@ -24,6 +24,7 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php $_helper = Mage::helper('onestepcheckout');?>
 <?php $_item = $this->getItem()?>
 <tr>
     <td><h3 class="product-name"><?php echo $this->htmlEscape($this->getProductName()) ?></h3>
@@ -151,3 +152,15 @@
     </td>
     <?php endif; ?>
 </tr>
+<?php if($_helper->checkHolidayGiftwrapSession() || $_helper->checkGiftwrapSession()):?>
+<tr>
+    <td style="text-align: right">Ship</td>
+    <td></td>
+    <td>
+        <select class="gift-box" name="gift[<?php echo $_item->getProductId()?>]" value="1">
+            <option value="1">Gift Boxed</option>
+            <option value="0">Normally</option>
+        </select>
+    </td>
+</tr>
+<?php endif;?>
