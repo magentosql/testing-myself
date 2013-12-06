@@ -1,12 +1,10 @@
 <?php
 class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_Quote_Address_Total_Abstract {
     public function collect(Mage_Sales_Model_Quote_Address $address) {
-
         parent::collect($address);
         if (($address->getAddressType() == 'billing')) {
             return $this;
         }
-
         $session = Mage::getSingleton('checkout/session');
 
         $allowGiftMessages = $session->getData('allow_gift_messages');
@@ -23,7 +21,6 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
 
         $giftwrapAmount = $session->getData('gift_wrap_fee');
 
-
         $wrapTotal = 0;
         if($allowGiftMessagesForItems) {
             foreach ($items as $item){
@@ -37,7 +34,6 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
             $wrapTotal = $giftwrapAmount;
         }
 
-
         $session->setData('giftwrapTotalAmount',$wrapTotal);
         $address->setGrandTotal($address->getGrandTotal() + $wrapTotal);
         $address->setBaseGrandTotal($address->getBaseGrandTotal() + $wrapTotal);
@@ -46,7 +42,6 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
 
     public function fetch(Mage_Sales_Model_Quote_Address $address)
     {
-
         if (($address->getAddressType() == 'billing')) {
             $session = Mage::getSingleton('checkout/session');
 
@@ -55,7 +50,8 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
             $allowGiftMessagesForItems = $session->getData('allow_gift_messages_for_items');
             $holidayGiftWrapOrder = $session->getData('gift_wrap_order');
             $holidayGiftWrapItems = $session->getData('gift_wrap_items');
-            $giftWrapFee = $session->getData('giftwrapTotalAmount');
+
+            $giftWrapFee = $session->getData('gift_wrap_fee');
 
             if (!$allowGiftMessages)
             {
@@ -78,7 +74,6 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
             }
 
             $title = Mage::helper('sales')->__('Gift Wrap (type: ' . $giftwrapType . ')');
-
 
             if ($amount!=0) {
                 $address->addTotal(array(

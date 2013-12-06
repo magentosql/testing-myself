@@ -22,7 +22,7 @@ class Wsnyc_Fedex_Model_Usa_Shipping_Carrier_Fedex extends Mage_Usa_Model_Shippi
     
             // Order is important
             // WSNYC ADDED 'RATED_ACCOUNT_PACKAGE'
-            Mage::log('rated account package');
+            //Mage::log('rated account package');
             foreach (array('RATED_ACCOUNT_SHIPMENT', 'RATED_ACCOUNT_PACKAGE', 'RATED_LIST_SHIPMENT', 'RATED_LIST_PACKAGE') as $rateType) {
                 if (!empty($rateTypeAmounts[$rateType])) {
                     $amount = $rateTypeAmounts[$rateType];
