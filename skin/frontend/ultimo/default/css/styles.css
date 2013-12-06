@@ -3782,3 +3782,7 @@ pading-left:5px;
     padding-top:0px !important;
     font-weight: normal;
 }
+
+.discount-form small{
+    font-size:smaller;
+}

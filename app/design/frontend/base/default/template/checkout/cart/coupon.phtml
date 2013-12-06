@@ -33,6 +33,7 @@
             <div class="input-box">
                 <input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" />
             </div>
+            <small><?php echo $this->__('Only one promotion code (including discounts and vouchers) can be used per order.') ?></small>
             <div class="buttons-set">
                 <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="button" onclick="discountForm.submit(false)" value="<?php echo $this->__('Apply Coupon') ?>"><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
                 <?php if(strlen($this->getCouponCode())): ?>
