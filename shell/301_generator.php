@@ -31,8 +31,12 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                             $oldLink = str_replace('http://store.thelaundress.com/','^', $oldLink);
                             $oldLink = str_replace('.','\.', $oldLink);
 
+                            if(substr($oldLink, 1, 1) == ' ' || substr($oldLink, 1, 1) == '(') continue;
+
                             $newLink = $data[1];
                             $newLink = trim($newLink);
+
+                            $rewriteQuery = array();
 
                             if(substr($newLink, 0, 1) == '/' && strpos($newLink, '#') === false)
                             {
@@ -60,7 +64,23 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                             } else{
                                                 $flag = ' [R=301,L]';
                                             }
-                                            $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . $flag . "\n";
+
+                                            if(strpos($oldLink, '?') !== false)
+                                            {
+                                                $oldLinkQuery = explode('?',$oldLink);
+                                                if(!in_array($oldLinkQuery[1], $rewriteQuery))
+                                                {
+                                                    $rewriteRule     = "\n" . 'RewriteCond %{QUERY_STRING} ^' . $oldLinkQuery[1] . '$' . "\n";
+                                                    $rewriteRule    .= 'RewriteRule ' . $oldLinkQuery[0]  . ' ' . $newLinkItem . '?' . $flag . "\n" . "\n";
+                                                    $rewriteQuery[]  = $oldLinkQuery[1];
+                                                }
+
+
+                                            } else {
+                                                $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLinkItem . $flag . "\n";
+                                            }
+
+
 
                                             $current .= $rewriteRule;
                                         }
@@ -76,7 +96,17 @@ class Mage_Shell_301_Generator extends Mage_Shell_Abstract
                                     } else{
                                         $flag = ' [R=301,L]';
                                     }
-                                    $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLink . $flag . "\n";
+
+                                    if(strpos($oldLink, '?') !== false)
+                                    {
+                                        $oldLinkQuery = explode('?',$oldLink);
+                                        $rewriteRule = "\n" . 'RewriteCond %{QUERY_STRING} ^' . $oldLinkQuery[1] . '$' . "\n";;
+                                        $rewriteRule .= 'RewriteRule ' . $oldLinkQuery[0]  . ' ' . $newLink . '?' . $flag . "\n" . "\n";
+
+                                    } else {
+                                        $rewriteRule = 'RewriteRule ' . $oldLink  . ' ' . $newLink . $flag . "\n";
+                                    }
+
                                     $current .= $rewriteRule;
                                     //$current .= 'RewriteRule ' . $oldLink  . ' ' . $newLink . ' [R=301,L]' . "\n";
                                 }
