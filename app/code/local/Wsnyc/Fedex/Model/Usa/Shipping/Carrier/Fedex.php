@@ -22,7 +22,7 @@ class Wsnyc_Fedex_Model_Usa_Shipping_Carrier_Fedex extends Mage_Usa_Model_Shippi
     
             // Order is important
             // WSNYC ADDED 'RATED_ACCOUNT_PACKAGE'
-            Mage::log('rated account package');
+            //Mage::log('rated account package');
             foreach (array('RATED_ACCOUNT_SHIPMENT', 'RATED_ACCOUNT_PACKAGE', 'RATED_LIST_SHIPMENT', 'RATED_LIST_PACKAGE') as $rateType) {
                 if (!empty($rateTypeAmounts[$rateType])) {
                     $amount = $rateTypeAmounts[$rateType];
@@ -36,5 +36,90 @@ class Wsnyc_Fedex_Model_Usa_Shipping_Carrier_Fedex extends Mage_Usa_Model_Shippi
         }
     
         return $amount;
+    }
+
+    /**
+     * Forming request for rate estimation depending to the purpose
+     *
+     * @param string $purpose
+     * @return array
+     */
+    protected function _formRateRequest($purpose)
+    {
+        $r = $this->_rawRequest;
+        $ratesRequest = array(
+            'WebAuthenticationDetail' => array(
+                'UserCredential' => array(
+                    'Key'      => $r->getKey(),
+                    'Password' => $r->getPassword()
+                )
+            ),
+            'ClientDetail' => array(
+                'AccountNumber' => $r->getAccount(),
+                'MeterNumber'   => $r->getMeterNumber()
+            ),
+            'Version' => $this->getVersionInfo(),
+            'RequestedShipment' => array(
+                'DropoffType'   => $r->getDropoffType(),
+                'ShipTimestamp' => date('c'),
+                'PackagingType' => $r->getPackaging(),
+                /*'TotalInsuredValue' => array(
+                    'Amount'  => $r->getValue(),
+                    'Currency' => '',/*$this->getCurrencyCode()
+                ),*/
+                'Shipper' => array(
+                    'Address' => array(
+                        'PostalCode'  => $r->getOrigPostal(),
+                        'CountryCode' => $r->getOrigCountry()
+                    )
+                ),
+                'Recipient' => array(
+                    'Address' => array(
+                        'PostalCode'  => $r->getDestPostal(),
+                        'CountryCode' => $r->getDestCountry(),
+                        'Residential' => (bool)$this->getConfigData('residence_delivery')
+                    )
+                ),
+                'ShippingChargesPayment' => array(
+                    'PaymentType' => 'SENDER',
+                    'Payor' => array(
+                        'AccountNumber' => $r->getAccount(),
+                        'CountryCode'   => $r->getOrigCountry()
+                    )
+                ),
+                'CustomsClearanceDetail' => array(
+                    'CustomsValue' => array(
+                        'Amount' => $r->getValue(),
+                        'Currency' => $this->getCurrencyCode()
+                    )
+                ),
+                'RateRequestTypes' => 'LIST',
+                'PackageCount'     => '1',
+                'PackageDetail'    => 'INDIVIDUAL_PACKAGES',
+                'RequestedPackageLineItems' => array(
+                    '0' => array(
+                        'Weight' => array(
+                            'Value' => (float)$r->getWeight(),
+                            'Units' => 'LB'
+                        ),
+                        'GroupPackageCount' => 1,
+                    )
+                )
+            )
+        );
+
+        if ($purpose == parent::RATE_REQUEST_GENERAL) {
+            /*$ratesRequest['RequestedShipment']['RequestedPackageLineItems'][0]['InsuredValue'] = array(
+                'Amount'  => $r->getValue(),
+                'Currency' => $this->getCurrencyCode()
+            );*/
+        } else if ($purpose == parent::RATE_REQUEST_SMARTPOST) {
+            $ratesRequest['RequestedShipment']['ServiceType'] = parent::RATE_REQUEST_SMARTPOST;
+            $ratesRequest['RequestedShipment']['SmartPostDetail'] = array(
+                'Indicia' => ((float)$r->getWeight() >= 1) ? 'PARCEL_SELECT' : 'PRESORTED_STANDARD',
+                'HubId' => $this->getConfigData('smartpost_hubid')
+            );
+        }
+        return $ratesRequest;
     }
 }
