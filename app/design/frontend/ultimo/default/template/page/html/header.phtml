@@ -94,7 +94,8 @@
             inline  : true,
             opacity : 0.5,
             speed   : 300,
-            width   : 750
+            width   : 750,
+            closeButton : true
         });
 
         <?php if(!$cookie->get('holiday-order')): ?>$('.openFreeshipPopup').click();<?php endif; ?>
@@ -111,7 +112,7 @@
             	<div class="block_header_top_help item item-left"><?php echo $tmp; ?></div>
             <?php endif; ?>
             <div class="item item-right hide-below-960">
-                <div  class="welcome-msg"><a href="#inline_freeship_colorbox" class="openFreeshipPopup"><b class="no-italic">FREE SHIPPING</b> for orders over <b>$100</b></a></div>
+                <div  class="welcome-msg"><a href="#inline_freeship_colorbox" class="openFreeshipPopup"><b class="no-italic">FREE SHIPPING</b> for orders over <b>$100</b> using code <b>FREESHIP</b></a></div>
                 <?php
                     $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier');
                 ?>
