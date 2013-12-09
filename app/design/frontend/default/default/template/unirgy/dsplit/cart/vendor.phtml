@@ -49,7 +49,7 @@ $_v = $this->getVendor();
             endforeach;
             ?>
         <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
-            <optgroup label="<?php echo $this->getCarrierName($code) ?>">
+            <?php /*<optgroup label="<?php echo $this->getCarrierName($code) ?>">*/ ?>
             <?php foreach ($_rates as $_rate): ?>
             <?php if ($_rate->getErrorMessage()): ?>
                 <?php //echo $_rate->getErrorMessage() ?>
@@ -65,7 +65,7 @@ $_v = $this->getVendor();
                 </option>
             <?php endif ?>
             <?php endforeach; ?>
-            </optgroup>
+        <?php /*</optgroup>*/ ?>
         <?php endforeach; ?>
         </select>
         <?php endif; ?>
