@@ -62,6 +62,13 @@
                 <?php echo $this->getItemExtraInfoHtml($_item) ?>
             </tbody>
         <?php endforeach; ?>
+        <?php if($_order['gift_boxed_separately']):?>
+        <tr>
+            <td>
+                <b>Information: Gift(s) should be boxed separately!</b>
+            </td>
+        </tr>
+        <?php endif; ?>
     </table>
   </div>
 </div>

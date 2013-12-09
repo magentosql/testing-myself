@@ -5,17 +5,26 @@ class Wsnyc_MultiGiftBoxed_Model_Observer
     public function saveGiftBoxedInfo($observer)
     {
         $order = $observer->getEvent()->getOrder();
-        $request = Mage::getSingleton('core/app')->getRequest();
+        $session = Mage::getSingleton('checkout/session');
+        $order = $observer->getEvent()->getOrder();
         $items = $order->getAllItems();
-        $post = $request->getPost();
+        $giftBoxedItems = $session->getData('gift_boxed_items');
+        $allowGiftMessagesForItems  = (int)$session->getData('allow_gift_messages_for_items');
         foreach($items as $item)
         {
-            $item->setGiftBoxed($post['gift'][$item->getProductId()]);
+            $item->setGiftBoxed($giftBoxedItems[$item->getProductId()]);
             $item->save();
         }
 
-        $order->setGiftBoxedSeparately($post['gift_boxed_separately']);
+        $order->setGiftBoxedSeparately($allowGiftMessagesForItems);
         $order->save();
+
+        $session->unsetData('allow_gift_messages');
+        $session->unsetData('allow_gift_messages_for_order');
+        $session->unsetData('allow_gift_messages_for_items');
+        $session->unsetData('gift_wrap_order');
+        $session->unsetData('gift_wrap_items');
+        $session->unsetData('gift_wrap_fee');
 
     }
 }

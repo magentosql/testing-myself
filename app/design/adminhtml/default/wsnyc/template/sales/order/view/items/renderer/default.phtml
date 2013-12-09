@@ -38,7 +38,7 @@
         </div>
         <?php endif ?>
     </td>
-    <td class="a-right"><?php echo $_item->getGiftBoxed() ?></td>
+    <td class="a-right"><?php echo (int)$_item->getGiftBoxed() ?></td>
     <td class="a-center"><?php echo $_item->getStatus() ?></td>
     <td class="a-right"><?php echo $this->displayPriceAttribute('original_price') ?></td>
     <td class="a-right">
