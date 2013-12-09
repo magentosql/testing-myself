@@ -11,6 +11,7 @@ class Wsnyc_CheckoutCustomization_Model_Observer extends Mage_Core_Controller_Va
         $allowGiftMessagesForItems  = $request->getPost('allow_gift_messages_for_items', false);
         $holidayGiftWrapOrder       = $request->getPost('gift_wrap_order', false);
         $holidayGiftWrapItems       = $request->getPost('gift_wrap_items', false);
+        $giftBoxedItems             = $request->getPost('gift', false);
 
         $giftWrapFee = 0;
         if($allowGiftMessages)
@@ -36,13 +37,14 @@ class Wsnyc_CheckoutCustomization_Model_Observer extends Mage_Core_Controller_Va
         $session->setData('gift_wrap_order', $holidayGiftWrapOrder);
         $session->setData('gift_wrap_items', $holidayGiftWrapItems);
         $session->setData('gift_wrap_fee', $giftWrapFee);
+        $session->setData('gift_boxed_items', $giftBoxedItems);
     }
 
     public function addGiftWrapInfoToOrder($observer)
     {
         $session = Mage::getSingleton('checkout/session');
         $order = $observer->getEvent()->getOrder();
-        $countedItems = count($order->getAllVisibleItems());
+        //$countedItems = count($order->getAllVisibleItems());
 
         $allowGiftMessages = $session->getData('allow_gift_messages');
         $allowGiftMessagesForOrder = $session->getData('allow_gift_messages_for_order');
@@ -50,6 +52,7 @@ class Wsnyc_CheckoutCustomization_Model_Observer extends Mage_Core_Controller_Va
         $holidayGiftWrapOrder = $session->getData('gift_wrap_order');
         $holidayGiftWrapItems = $session->getData('gift_wrap_items');
         $giftWrapFee = $session->getData('gift_wrap_fee');
+        $giftBoxedItems = $session->getData('gift_boxed_items');
 
         if($allowGiftMessages)
         {
@@ -64,7 +67,11 @@ class Wsnyc_CheckoutCustomization_Model_Observer extends Mage_Core_Controller_Va
             }
             else if($allowGiftMessagesForItems) {
 
-                $giftWrapFee = $giftWrapFee * $countedItems;
+                foreach($giftBoxedItems as $_item)
+                {
+                    if ($_item) $giftWrapFee += $giftWrapFee;
+                }
+
                 $order->setOnestepcheckoutGiftwrapAmount($giftWrapFee);
                 if($holidayGiftWrapItems && $holidayGiftWrapItems == 'holiday') {
                     $giftwrapType = 'holiday';
@@ -72,12 +79,5 @@ class Wsnyc_CheckoutCustomization_Model_Observer extends Mage_Core_Controller_Va
             }
             $order->setOnestepcheckoutGiftwrapType($giftwrapType);
         }
-
-        $session->unsetData('allow_gift_messages');
-        $session->unsetData('allow_gift_messages_for_order');
-        $session->unsetData('allow_gift_messages_for_items');
-        $session->unsetData('gift_wrap_order');
-        $session->unsetData('gift_wrap_items');
-        $session->unsetData('gift_wrap_fee');
     }
 }

@@ -231,6 +231,15 @@ billing.onSave = function(evt){
                                          <textarea id="gift-message-<?php echo $_item->getId() ?>-message" onchange="toogleRequired('gift-message-<?php echo $_item->getId() ?>-message', ['gift-message-<?php echo $_item->getId() ?>-from','gift-message-<?php echo $_item->getId() ?>-to'])" class="input-text validation-passed giftmessage-area" name="giftmessage[<?php echo $_item->getId() ?>][message]" title="<?php echo $this->__('Message') ?>" rows="5" cols="40"><?php echo $this->getEscaped($this->getMessage($_item)->getMessage()) ?></textarea>
                                      </div>
                                  </li>
+                                 <li class="fields">
+                                     <div class="field">
+                                         <label for="gift-boxed-<?php echo $_item->getId() ?>-from"><?php echo $this->__('Ship') ?></label>
+                                         <select class="gift-box" name="gift[<?php echo $_item->getProductId()?>]" value="1">
+                                             <option value="1">Gift Boxed</option>
+                                             <option value="0">Normally</option>
+                                         </select>
+                                     </div>
+                                 </li>
                              </ul>
                              <script type="text/javascript">
                              //<![CDATA[
@@ -384,6 +393,15 @@ billing.onSave = function(evt){
                                      <label for="gift-message-<?php echo $_item->getId() ?>-message"><?php echo $this->__('Message') ?></label>
                                      <div class="input-box">
                                          <textarea id="gift-message-<?php echo $_item->getId() ?>-message" onchange="toogleRequired('gift-message-<?php echo $_item->getId() ?>-message', ['gift-message-<?php echo $_item->getId() ?>-from','gift-message-<?php echo $_item->getId() ?>-to'])" class="input-text validation-passed  giftmessage-area" name="giftmessage[<?php echo $_item->getId() ?>][message]" title="<?php echo $this->__('Message') ?>" rows="5" cols="10"><?php echo $this->getEscaped($this->getMessage($_item)->getMessage()) ?></textarea>
+                                     </div>
+                                 </li>
+                                 <li class="fields">
+                                     <div class="field">
+                                         <label for="gift-boxed-<?php echo $_item->getId() ?>-from"><?php echo $this->__('Ship') ?></label>
+                                         <select class="gift-box" name="gift[<?php echo $_item->getProductId()?>]" value="1">
+                                             <option value="1">Gift Boxed</option>
+                                             <option value="0">Normally</option>
+                                         </select>
                                      </div>
                                  </li>
                              </ul>

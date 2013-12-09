@@ -15,6 +15,6 @@ $installer->run("
             JOIN {$this->getTable('sales_flat_order')} AS `o`
                 ON oi.order_id=o.entity_id
             SET `oi`.`gift_boxed`=1
-            WHERE `o`.`onestepcheckout_giftwrap_amount`>0
+            WHERE `o`.`gift_message_id`>0
     ");
 $installer->endSetup(); 

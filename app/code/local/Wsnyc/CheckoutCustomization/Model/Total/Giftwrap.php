@@ -10,6 +10,7 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
         $allowGiftMessages = $session->getData('allow_gift_messages');
         $allowGiftMessagesForItems = $session->getData('allow_gift_messages_for_items');
 
+
         if(!$allowGiftMessages){
             return $this;
         }
@@ -20,6 +21,7 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
         }
 
         $giftwrapAmount = $session->getData('gift_wrap_fee');
+        $giftBoxedItems = $session->getData('gift_boxed_items');
 
         $wrapTotal = 0;
         if($allowGiftMessagesForItems) {
@@ -27,7 +29,13 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
                 if ($item->getProduct()->isVirtual() || $item->getParentItem()) {
                     continue;
                 }
-                $wrapTotal += $giftwrapAmount * ($item->getQty());
+                foreach($giftBoxedItems as $id_product=>$boxed)
+                {
+                    if($item->getProductId() == $id_product && $boxed)
+                    {
+                        $wrapTotal += $giftwrapAmount * ($item->getQty());
+                    }
+                }
             }
         }
         else {
