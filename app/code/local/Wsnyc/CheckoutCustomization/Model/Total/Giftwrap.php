@@ -29,11 +29,11 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
                 if ($item->getProduct()->isVirtual() || $item->getParentItem()) {
                     continue;
                 }
-                foreach($giftBoxedItems as $id_product=>$boxed)
+                foreach($giftBoxedItems as $id=>$boxed)
                 {
-                    if($item->getProductId() == $id_product && $boxed)
+                    if($item->getId() == $id && $boxed)
                     {
-                        $wrapTotal += $giftwrapAmount * ($item->getQty());
+                        $wrapTotal += $giftwrapAmount;// * ($item->getQty());
                     }
                 }
             }
@@ -58,6 +58,7 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
             $allowGiftMessagesForItems = $session->getData('allow_gift_messages_for_items');
             $holidayGiftWrapOrder = $session->getData('gift_wrap_order');
             $holidayGiftWrapItems = $session->getData('gift_wrap_items');
+            $giftBoxedAmount = $session->getData('giftwrapTotalAmount');
 
             $giftWrapFee = $session->getData('gift_wrap_fee');
 
@@ -65,7 +66,9 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
             {
                 return;
             }
-            $amount = $giftWrapFee;
+
+            //$amount = $giftWrapFee;
+            $amount = $giftBoxedAmount;
 
             $giftwrapType = 'regular';
             if($allowGiftMessagesForOrder)

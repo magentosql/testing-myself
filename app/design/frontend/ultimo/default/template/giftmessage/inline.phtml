@@ -271,7 +271,7 @@ billing.onSave = function(evt){
                                  <li class="fields">
                                      <div class="field">
                                          <label for="gift-boxed-<?php echo $_item->getId() ?>-from"><?php echo $this->__('Ship') ?></label>
-                                         <select class="gift-box" name="gift[<?php echo $_item->getProductId()?>]" value="1">
+                                         <select class="gift-box" name="gift[<?php echo $_item->getId()?>]" value="1">
                                              <option value="1">Gift Boxed</option>
                                              <option value="0">Normally</option>
                                          </select>
@@ -417,7 +417,7 @@ billing.onSave = function(evt){
                                  <li class="fields">
                                      <div class="field">
                                          <label for="gift-boxed-<?php echo $_item->getId() ?>-from"><?php echo $this->__('Ship') ?></label>
-                                         <select class="gift-box" name="gift[<?php echo $_item->getProductId()?>]" value="1">
+                                         <select class="gift-box" name="gift[<?php echo $_item->getId()?>]" value="1">
                                              <option value="1">Gift Boxed</option>
                                              <option value="0">Normally</option>
                                          </select>
