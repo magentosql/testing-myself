@@ -12,7 +12,7 @@ class Wsnyc_MultiGiftBoxed_Model_Observer
         $allowGiftMessagesForItems  = (int)$session->getData('allow_gift_messages_for_items');
         foreach($items as $item)
         {
-            $item->setGiftBoxed($giftBoxedItems[$item->getProductId()]);
+            $item->setGiftBoxed($giftBoxedItems[$item->getQuoteItemId()]);
             $item->save();
         }
 
