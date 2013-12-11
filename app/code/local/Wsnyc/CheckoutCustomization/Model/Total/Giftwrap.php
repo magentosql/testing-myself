@@ -8,7 +8,7 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
         $session = Mage::getSingleton('checkout/session');
 
         $allowGiftMessages = $session->getData('allow_gift_messages');
-        $allowGiftMessagesForItems = $session->getData('allow_gift_messages_for_items');
+//        $allowGiftMessagesForItems = $session->getData('allow_gift_messages_for_items');
 
 
         if(!$allowGiftMessages){
@@ -21,30 +21,30 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
         }
 
         $giftwrapAmount = $session->getData('gift_wrap_fee');
-        $giftBoxedItems = $session->getData('gift_boxed_items');
+//        $giftBoxedItems = $session->getData('gift_boxed_items');
 
         $wrapTotal = 0;
-        if($allowGiftMessagesForItems) {
-            foreach ($items as $item){
-                if ($item->getProduct()->isVirtual() || $item->getParentItem()) {
-                    continue;
-                }
-                foreach($giftBoxedItems as $id=>$boxed)
-                {
-                    if($item->getId() == $id && $boxed)
-                    {
-                        $wrapTotal += $giftwrapAmount;// * ($item->getQty());
-                    }
-                }
-            }
-        }
-        else {
-            $wrapTotal = $giftwrapAmount;
-        }
+//        if($allowGiftMessagesForItems) {
+//            foreach ($items as $item){
+//                if ($item->getProduct()->isVirtual() || $item->getParentItem()) {
+//                    continue;
+//                }
+//                foreach($giftBoxedItems as $id=>$boxed)
+//                {
+//                    if($item->getId() == $id && $boxed)
+//                    {
+//                        $wrapTotal += $giftwrapAmount;// * ($item->getQty());
+//                    }
+//                }
+//            }
+//        }
+//        else {
+//            $wrapTotal = $giftwrapAmount;
+//        }
 
-        $session->setData('giftwrapTotalAmount',$wrapTotal);
-        $address->setGrandTotal($address->getGrandTotal() + $wrapTotal);
-        $address->setBaseGrandTotal($address->getBaseGrandTotal() + $wrapTotal);
+        $session->setData('giftwrapTotalAmount',$giftwrapAmount);
+        $address->setGrandTotal($address->getGrandTotal() + $giftwrapAmount);
+        $address->setBaseGrandTotal($address->getBaseGrandTotal() + $giftwrapAmount);
         return $this;
     }
 

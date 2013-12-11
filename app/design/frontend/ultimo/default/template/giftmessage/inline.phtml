@@ -211,7 +211,7 @@ billing.onSave = function(evt){
                          <input type="radio" name="gift_wrap_items" value="regular" />
                          <label for="gift_wrap_order">I want to pack in regular gift wrap
                              <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee() != 0): ?>
-                                 $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee(); ?> each
+                                 $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee(); ?>
                              <?php endif; ?>
                          </label>
                          <div class="image">
@@ -224,7 +224,7 @@ billing.onSave = function(evt){
                              <input type="radio" name="gift_wrap_items" value="holiday" />
                              <label for="gift_wrap_order">I want to pack in holiday gift wrap
                                  <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee() != 0): ?>
-                                     $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee(); ?> each
+                                     $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee(); ?>
                                  <?php endif; ?>
                              </label>
                              <div class="image">
