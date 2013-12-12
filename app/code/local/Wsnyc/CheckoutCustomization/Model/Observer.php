@@ -40,6 +40,20 @@ class Wsnyc_CheckoutCustomization_Model_Observer extends Mage_Core_Controller_Va
         $session->setData('gift_boxed_items', $giftBoxedItems);
     }
 
+    public function saveCommentAndSignature($observer)
+    {
+        $event = $observer->getEvent();
+        $request = $event->getRequest();
+
+        $laundressComment          = $request->getPost('laundress_comment', false);
+        $requiresSignature         = $request->getPost('requires_signature', false);
+
+        $session = Mage::getSingleton('checkout/session');
+        $session->setData('laundress_comment', $laundressComment);
+        $session->setData('requires_signature', $requiresSignature);
+
+    }
+
     public function addGiftWrapInfoToOrder($observer)
     {
         $session = Mage::getSingleton('checkout/session');

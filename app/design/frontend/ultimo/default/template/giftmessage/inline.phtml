@@ -205,7 +205,6 @@ billing.onSave = function(evt){
                     <label for="allow_gift_messages_for_items"><?php echo $this->__('Add gift options for Individual Items') ?></label>
                 </p>
                 <div id="allow-gift-messages-for-items-container">
-                 <p><?php echo $this->__('You can leave this box blank if you do not wish to add a gift message for the item.') ?></p>
                  <ol>
                      <div id="holiday-gift-wrap">
                          <input type="radio" name="gift_wrap_items" value="regular" />
@@ -234,6 +233,7 @@ billing.onSave = function(evt){
                              <br/><br/>
                          <?php endif; ?>
                      </div>
+                     <p><?php echo $this->__('You can leave this box blank if you do not wish to add a gift message for the item.') ?></p>
                  <?php foreach($this->getItems() as $_index=>$_item): ?>
                  <?php $_product=$_item->getProduct() ?>
                  <li class="item">
