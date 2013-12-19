@@ -884,6 +884,24 @@
 		</reference>
 	
 	</cms_index_index>
-	
+    <!--Email -->
+    <sales_email_order_items>
+        <reference name="order_totals">
+            <block type="wsnyc_checkoutcustomization/sales_order_totals_giftwrap" name="giftwrap" />
+            <block type="wsnyc_checkoutcustomization/sales_order_totals_discount" name="onestepcheckout_discount" />
+        </reference>
+    </sales_email_order_items>
+    <sales_email_order_invoice_items>
+        <reference name="invoice_totals">
+            <block type="wsnyc_checkoutcustomization/sales_order_totals_giftwrap" name="giftwrap" />
+            <block type="wsnyc_checkoutcustomization/sales_order_totals_discount" name="onestepcheckout_discount" />
+        </reference>
+    </sales_email_order_invoice_items>
+    <sales_email_order_creditmemo_items>
+        <reference name="creditmemo_totals">
+            <block type="wsnyc_checkoutcustomization/sales_order_totals_giftwrap" name="giftwrap" />
+            <block type="wsnyc_checkoutcustomization/sales_order_totals_discount" name="onestepcheckout_discount" />
+        </reference>
+    </sales_email_order_creditmemo_items>
 
 </layout>
