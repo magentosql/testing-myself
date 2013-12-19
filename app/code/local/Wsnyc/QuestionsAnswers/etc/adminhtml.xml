@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<adminhtml>
+    <menu>
+        <questionsanswers module="wsnyc_questionsanswers" translate="title">
+            <title>Q&amp;A</title>
+            <sort_order>89</sort_order>
+            <children>
+                <category>
+                    <title>Categories</title>
+                    <sort_order>6</sort_order>
+                    <action>adminhtml/questionsanswerscategory</action>
+                </category>
+                <question>
+                    <title>Questions</title>
+                    <sort_order>46</sort_order>
+                    <action>adminhtml/questionsanswersquestion</action>
+                </question>
+            </children>
+        </questionsanswers>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <questionsanswers translate="title" module="wsnyc_questionsanswers">
+                        <title>Q&amp;A</title>
+                        <children>
+                            <category translate="title">
+                                <title>Categories</title>
+                                <sort_order>800</sort_order>
+                            </category>
+                            <question translate="title">
+                                <title>Questions</title>
+                                <sort_order>800</sort_order>
+                            </question>
+                        </children>
+                    </questionsanswers>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>

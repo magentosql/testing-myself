@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <asklaundress_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/category" name="questionsanswers_index_index" template="wsnyc/questionsanswers/index.phtml"></block>
+        </reference>
+    </asklaundress_index_index>
+    <asklaundress_questions_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/question" name="questionsanswers_index_questions" template="wsnyc/questionsanswers/questions.phtml"></block>
+        </reference>
+    </asklaundress_questions_index>
+</layout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Wsnyc_QuestionsAnswers>
+            <version>0.0.1</version>
+        </Wsnyc_QuestionsAnswers>
+    </modules>
+    <frontend>
+        <routers>
+            <asklaundress><!--css body class -->
+                <use>standard</use>
+                <args>
+                    <module>Wsnyc_QuestionsAnswers</module>
+                    <frontName>asklaundress</frontName><!-- url part-->
+                </args>
+            </asklaundress>
+        </routers>
+        <layout>
+            <updates>
+                <wsnyc_questionsanswers module="wsnyc_questionsanswers">
+                    <file>wsnyc_questionsanswers.xml</file>
+                </wsnyc_questionsanswers>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <helpers>
+            <wsnyc_questionsanswers>
+                <class>Wsnyc_QuestionsAnswers_Helper</class>
+            </wsnyc_questionsanswers>
+        </helpers>
+        <resources>
+            <wsnyc_questionsanswers_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </wsnyc_questionsanswers_read>
+            <wsnyc_questionsanswers_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </wsnyc_questionsanswers_write>
+            <wsnyc_questionsanswers_setup>
+                <setup>
+                    <module>Wsnyc_QuestionsAnswers</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </wsnyc_questionsanswers_setup>
+        </resources>
+        <models>
+            <wsnyc_questionsanswers>
+                <class>Wsnyc_QuestionsAnswers_Model</class>
+                <resourceModel>wsnyc_questionsanswers_resource</resourceModel>
+            </wsnyc_questionsanswers>
+            <wsnyc_questionsanswers_resource>
+                <class>Wsnyc_QuestionsAnswers_Model_Resource</class>
+                <entities>
+                    <category><table>wsnyc_questionsanswers_category</table></category>
+                    <question><table>wsnyc_questionsanswers_question</table></question>
+                    <answer><table>wsnyc_questionsanswers_answer</table></answer>
+                    <questionproduct><table>wsnyc_questionsanswers_questionproduct</table></questionproduct>
+                </entities>
+            </wsnyc_questionsanswers_resource>
+        </models>
+        <blocks>
+            <wsnyc_questionsanswers>
+                <class>Wsnyc_QuestionsAnswers_Block</class>
+            </wsnyc_questionsanswers>
+        </blocks>
+
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Wsnyc_QuestionsAnswers after="Mage_Adminhtml">Wsnyc_QuestionsAnswers_Adminhtml</Wsnyc_QuestionsAnswers>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <wsnyc_questionsanswers_admin module="wsnyc_questionsanswers">
+                    <file>wsnyc_questionsanswers.xml</file>
+                </wsnyc_questionsanswers_admin>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

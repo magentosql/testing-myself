@@ -1,0 +1,41 @@
+<?php
+$questions = $this->getQuestionCollection();
+$_helper = $this->helper('catalog/output');
+$theme = $this->helper('ultimo');
+
+?>
+
+<div id="wsnyc-questionsanswers-question-wrapper">
+<?php foreach($questions as $question): ?>
+
+    <div class="wsnyc-questionsanswers-question-item">
+        <div class="wsnyc-questionsanswers-question">Q: <?php echo nl2br($question->getQuestionText()); ?></div>
+        <?php $answers = $question->getAnswersCollection(); ?>
+        <div class="wsnyc-questionsanswers-answer">
+            A:<?php foreach($answers as $answer): ?>
+                <?php echo nl2br($answer->getAnswerText());?>
+            <?php endforeach; ?>
+        </div>
+        <div class="wsnyc-questionsanswers-question-products">
+            <?php $associatedProducts = $question->getProductsCollection(); ?>
+            <?php if($associatedProducts->count()): ?>
+            <h1>Shop the laundress</h1>
+            <?php foreach($associatedProducts as $product): ?>
+                <?php $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$product->getProductSku()); ?>
+                <?php if(!$_product) continue; ?>
+                <img width="<?php echo 100 ?>" height="<?php echo 100 ?>" src="<?php echo $theme->getImgUrl($this, $_product, 100, 100, 'small_image'); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+
+                <?php if($_product->isSaleable()): ?>
+                    <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo Mage::getBlockSingleton('catalog/product_list')->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                <?php endif; ?>
+
+            <?php endforeach;?>
+            <?php endif; ?>
+        </div>
+    </div>
+<hr/>
+<?php endforeach; ?>
+</div>
+
+

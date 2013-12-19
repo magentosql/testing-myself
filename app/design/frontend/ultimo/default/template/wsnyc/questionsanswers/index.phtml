@@ -1,0 +1,11 @@
+<h1>Ask the Laundress</h1>
+<?php $categories = $this->getCategoryCollection(); ?>
+<?php foreach($categories as $cat): ?>
+    <div class="wsnyc-questionsanswers-category">
+    <h4><?php echo $cat->getName() ?></h4>
+    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wsnyc_questionsanswers/'.$cat->getImage() ?>" alt="<?php echo $cat->getName() ?>" />
+    <?php foreach($cat->getSubcategoriesCollection() as $subcat): ?>
+        <li><a href="<?php echo Mage::getUrl('asklaundress/questions',array('id'=>$subcat->getId())) ?>"><?php echo $subcat->getName() ?></a></li>
+    <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>

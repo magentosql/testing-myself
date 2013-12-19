@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_questionsanswerscategory_index>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/adminhtml_questionsanswerscategory" name="wsnyc_questionsanswers_category" />
+        </reference>
+    </adminhtml_questionsanswerscategory_index>
+    <adminhtml_questionsanswersquestion_index>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/adminhtml_questionsanswersquestion" name="wsnyc_questionsanswers_question" />
+        </reference>
+    </adminhtml_questionsanswersquestion_index>
+</layout>
