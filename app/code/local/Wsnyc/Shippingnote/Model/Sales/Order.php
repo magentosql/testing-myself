@@ -10,17 +10,26 @@ class Wsnyc_Shippingnote_Model_Sales_Order extends Mage_Sales_Model_Order {
     }
     
     public function getGiftwrapBoxType(){
-        $commentInfo = parent::getOnestepcheckoutOrderComment();
-        $parts = explode(' : ',$commentInfo);
-        if(isset($parts[1])){
-            return strip_tags($parts[1]);
-        }
-        return '';
+        //$commentInfo = parent::getOnestepcheckoutOrderComment();
+        //$parts = explode(' : ',$commentInfo);
+        //if(isset($parts[1])){
+        //    return strip_tags($parts[1]);
+        //}
+        return parent::getOnestepcheckoutGiftwrapType();
     }
     
     public function getSignatureRequired(){
         $flag = parent::getSignatureRequired();
         if ($flag){
+            return 'Yes';
+        }
+        return 'No';
+    }
+
+    public function getBoxedSeparately()
+    {
+        $separately = parent::getGiftBoxedSeparately();
+        if($separately){
             return 'Yes';
         }
         return 'No';
@@ -33,8 +42,10 @@ class Wsnyc_Shippingnote_Model_Sales_Order extends Mage_Sales_Model_Order {
     public function getAllItems()
     {
         $items = array();
-        $itemsCollection = $this->getItemsCollection();
-        $itemsCollection->setOrder('udropship_vendor');
+        $itemsCollection = Mage::getResourceModel('sales/order_item_collection');
+        $itemsCollection = $itemsCollection->addFieldToFilter('order_id',$this->getId());
+        $itemsCollection = $itemsCollection->setOrder('udropship_vendor')->load();
+
         foreach ($itemsCollection as $item) {
 
             if (!$item->isDeleted()) {
