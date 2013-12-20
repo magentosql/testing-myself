@@ -23,7 +23,33 @@
             <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
         </reference>
         <reference name="content">
-            <block type="wsnyc_questionsanswers/question" name="questionsanswers_index_questions" template="wsnyc/questionsanswers/questions.phtml"></block>
+            <block type="wsnyc_questionsanswers/question" name="questionsanswers_questions_index" template="wsnyc/questionsanswers/questions.phtml"></block>
         </reference>
     </asklaundress_questions_index>
+    <asklaundress_questions_ask>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="questionsanswers_questions_ask" template="wsnyc/questionsanswers/askquestion.phtml"></block>
+        </reference>
+    </asklaundress_questions_ask>
+    <asklaundress_questions_search>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/search" name="questionsanswers_questions_search" template="wsnyc/questionsanswers/search.phtml"></block>
+        </reference>
+    </asklaundress_questions_search>
 </layout>

@@ -1,0 +1,7 @@
+<?php $questions = $this->getQuestions() ?>
+
+<?php if($questions->count()): ?>
+    <?php foreach($questions as $question): ?>
+        <?php echo $question->getQuestionText(); ?><hr/>
+    <?php endforeach; ?>
+<?php endif; ?>
