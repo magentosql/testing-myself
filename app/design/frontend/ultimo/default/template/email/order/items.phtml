@@ -1,0 +1,99 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_order = $this->getOrder() ?>
+<?php 
+    $quote = Mage::getModel('sales/quote')->load($_order->getQuoteId());
+    $address = $quote->getShippingAddress();
+    $details = $address->getUdropshipShippingDetails();
+    $details = $details ? Zend_Json::decode($details) : array();
+?>
+<?php if ($_order): ?>
+<tr>
+    <?php if($_order->getGiftBoxedSeparately()):?>
+        <td width="570" colspan="2" style="padding-top:35px">
+            <table width="570" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
+    <?php else: ?>
+    	<td width="520" colspan="2" style="padding-top:35px">
+		    <table width="520" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
+    <?php endif;?>
+                        <?php $lastVendor = ''; ?>
+			<?php $i=0; foreach ($_order->getAllItems() as $_item): ?>
+                         <?php $newVendor = Mage::helper('udropship')->getVendor($_item->getUdropshipVendor())->getVendorName();
+                         if($newVendor!=$lastVendor): ?>
+                        <tr>
+                            <td colspan="4">
+                                <br /><strong>Shipping for following items: </strong>
+                                <?php 
+                                echo $newVendor.' - '.$details['methods'][$_item->getUdropshipVendor()]['method_title'];
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+				<td width="275" style="border-bottom:1px solid #666666;padding-bottom:5px"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase;padding-left:3px">Product</span></td>
+                <?php if($_order->getGiftBoxedSeparately()):?>
+                    <td width="50" style="border-bottom:1px solid #666666;padding-bottom:5px"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase;padding-left:3px">Boxed</span></td>
+                <?php endif;?>
+                <td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Quantity</span></td>
+				<td width="85" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Price</span></td>
+				<td width="75" style="border-bottom:1px solid #666666;padding-bottom:5px;text-align:center"><span style="font-family:Goudy Old Style, Garamond, Big Caslon, Times New Roman, serif;color:#999999;font-size:11px;text-transform:uppercase">Subtotal</span></td>
+			</tr>
+                        <?php 
+                        $lastVendor = $newVendor;
+                        endif; ?>
+                         
+		    <?php if($_item->getParentItem()) continue; else $i++; ?>
+		        <?php echo $this->getItemHtml($_item) ?>
+		    <?php endforeach; ?>
+
+			<tr>
+				<td width="275" style="border-bottom:1px solid #666666"></td>
+                <?php if($_order->getGiftBoxedSeparately()):?>
+                    <td width="50" style="border-bottom:1px solid #666666"></td>
+                <?php endif;?>
+				<td width="85" style="border-bottom:1px solid #666666"></td>
+				<td width="85" style="border-bottom:1px solid #666666"></td>
+				<td width="75" style="border-bottom:1px solid #666666"></td>
+			</tr>
+		</table>
+	</td>
+</tr>
+<tr>
+	<td width="520" colspan="2">
+		<table width="520" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
+			<tr>
+				<td width="260"></td>
+				<td width="260" style="padding-top:15px">
+					<table width="260" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:0 auto">
+						<?php echo $this->getChildHtml('order_totals') ?>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</td>
+</tr>
+
+<?php endif; ?>

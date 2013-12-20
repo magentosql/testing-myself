@@ -59,6 +59,11 @@ $product = Mage::getModel('catalog/product')
 			</tr>
 		</table>
 	</td>
+    <?php if($_order->getGiftBoxedSeparately()):?>
+        <td width="50" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
+            <span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#666666;font-size:13px"><?php echo (int)$_item->getGiftBoxed() ?></span>
+        </td>
+    <?php endif;?>
 	<td width="85" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
 		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#666666;font-size:13px"><?php echo $_item->getQtyOrdered()*1 ?></span>
 	</td>
@@ -69,3 +74,29 @@ $product = Mage::getModel('catalog/product')
 		<span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#222222;font-size:12px; font-weight:bold"><?php echo $_order->formatPrice($_item->getRowTotal()) ?></span>
 	</td>
 </tr>
+<?php if($_item->getGiftMessageId()):?>
+<tr>
+    <td width="275" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0">
+        <span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#222222;font-size:12px; font-weight:bold">Message:</span><br />
+        <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px">
+            <?php echo Mage::getModel('giftmessage/message')->load($_item->getGiftMessageId())->getMessage();?>
+        </div>
+    </td>
+    <?php if($_order->getGiftBoxedSeparately()):?>
+        <td width="50" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center"></td>
+    <?php endif;?>
+    <td width="85" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
+        <span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#222222;font-size:12px; font-weight:bold">From:</span><br />
+        <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px">
+            <?php echo Mage::getModel('giftmessage/message')->load($_item->getGiftMessageId())->getSender();?>
+        </div>
+    </td>
+    <td width="85" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center">
+        <span style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#222222;font-size:12px; font-weight:bold">To:</span><br />
+        <div style="font-family:Gill Sans, Gill Sans MT, Calibri, sans-serif;color:#999999;font-size:12px;padding-top:3px">
+            <?php echo Mage::getModel('giftmessage/message')->load($_item->getGiftMessageId())->getRecipient();?>
+        </div>
+    </td>
+    <td width="75" valign="top" style="border-bottom:1px solid #ebebeb;padding:10px 0 10px 0;text-align:center"></td>
+</tr>
+<?php endif;?>
