@@ -8,6 +8,7 @@
         </reference>
         <reference name="head">
             <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/masonry.pkgd.min.js</name></action>
         </reference>
         <reference name="content">
             <block type="wsnyc_questionsanswers/category" name="questionsanswers_index_index" template="wsnyc/questionsanswers/index.phtml"></block>

@@ -1,16 +1,27 @@
 <h1>Ask the Laundress</h1>
-<div class="asklaundress-button"><a href="/asklaundress/questions/ask">Ask a Question</a></div>
-<div class="asklaundress-button">View Archives</div>
-<div class="asklaundress-button">Recent Questions</div>
-<div class="asklaundress-button">Videos</div>
-<div class="asklaundress-search"><form action="/asklaundress/questions/search" method="post"><input name="questionsanswersquery" /></form></div>
+<div class="wsnyc-questionsanswers-button"><a href="/asklaundress/questions/ask">Ask a Question</a></div>
+<div class="wsnyc-questionsanswers-button">View Archives</div>
+<div class="wsnyc-questionsanswers-button">Recent Questions</div>
+<div class="wsnyc-questionsanswers-button">Videos</div>
+
+<div class="wsnyc-questionsanswers-searchholder">
+    <form action="/asklaundress/questions/search" method="post">
+        <input class="wsnyc-questionsanswers-search" name="questionsanswersquery" placeholder="Search Ask The Laundress" />
+    </form>
+</div>
+
+<div id="container" class="js-masonry"
+     data-masonry-options='{ "columnWidth": 287, "itemSelector": ".item" }'>
 <?php $categories = $this->getCategoryCollection(); ?>
 <?php foreach($categories as $cat): ?>
-    <div class="wsnyc-questionsanswers-category">
-    <h4><?php echo $cat->getName() ?></h4>
+    <div class="wsnyc-questionsanswers-category item">
     <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wsnyc_questionsanswers/'.$cat->getImage() ?>" alt="<?php echo $cat->getName() ?>" />
+    <h4><?php echo $cat->getName() ?></h4>
+        <ul>
     <?php foreach($cat->getSubcategoriesCollection() as $subcat): ?>
         <li><a href="<?php echo Mage::getUrl('asklaundress/questions',array('id'=>$subcat->getId())) ?>"><?php echo $subcat->getName() ?></a></li>
     <?php endforeach; ?>
+        </ul>
     </div>
 <?php endforeach; ?>
+</div>

@@ -1,20 +1,49 @@
 <?php
+
+$categories = $this->getMainCategoryCollection();
 $questions = $this->getQuestionCollection();
 $_helper = $this->helper('catalog/output');
 $theme = $this->helper('ultimo');
 
 ?>
+<h1 class="wsnyc-questionsanswers-title">Ask the Laundress</h1>
+
+<div class="wsnyc-questionsanswers-button"><a href="/asklaundress/questions/ask">Ask a Question</a></div>
+<div class="wsnyc-questionsanswers-button">View Archives</div>
+<div class="wsnyc-questionsanswers-button">Recent Questions</div>
+<div class="wsnyc-questionsanswers-button">Videos</div>
+
+<div class="wsnyc-questionsanswers-searchholder">
+    <form action="/asklaundress/questions/search" method="post">
+        <input class="wsnyc-questionsanswers-search" name="questionsanswersquery" placeholder="Search Ask The Laundress" />
+    </form>
+</div>
+
+<div class="wsnyc-questionsanswers-menu-holder">
+    <?php foreach($categories as $cat): ?>
+        <div class="wsnyc-questionsanswers-menu-category">
+            <a href=""><?php echo $cat->getName(); ?></a>
+        </div>
+    <?php endforeach; ?>
+</div>
 
 <div id="wsnyc-questionsanswers-question-wrapper">
 <?php foreach($questions as $question): ?>
-
+    <?php $answers = $question->getAnswersCollection(); ?>
+    <?php if($answers->count()): ?>
     <div class="wsnyc-questionsanswers-question-item">
-        <div class="wsnyc-questionsanswers-question">Q: <?php echo nl2br($question->getQuestionText()); ?></div>
-        <?php $answers = $question->getAnswersCollection(); ?>
-        <div class="wsnyc-questionsanswers-answer">
-            A:<?php foreach($answers as $answer): ?>
-                <?php echo nl2br($answer->getAnswerText());?>
-            <?php endforeach; ?>
+        <div class="wsnyc-questionsanswers-question-holder">
+            <div class="wsnyc-questionsanswers-question">
+                <span class="big-letter">Q:</span>
+                <span class="wsnyc-questionsanswers-question-text"><?php echo nl2br($question->getQuestionText()); ?></span>
+            </div>
+            <div class="wsnyc-questionsanswers-answer">
+                <span class="big-letter">A:</span><?php foreach($answers as $answer): ?>
+                <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
+                <?php endforeach; ?>
+            </div>
+            <br/>
+            Social buttons here
         </div>
         <div class="wsnyc-questionsanswers-question-products">
             <?php $associatedProducts = $question->getProductsCollection(); ?>
@@ -23,16 +52,17 @@ $theme = $this->helper('ultimo');
             <?php foreach($associatedProducts as $product): ?>
                 <?php $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$product->getProductSku()); ?>
                 <?php if(!$_product) continue; ?>
-                <img width="<?php echo 100 ?>" height="<?php echo 100 ?>" src="<?php echo $theme->getImgUrl($this, $_product, 100, 100, 'small_image'); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
-                <?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
-
-                <?php if($_product->isSaleable()): ?>
-                    <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo Mage::getBlockSingleton('catalog/product_list')->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
-                <?php endif; ?>
-
-            <?php endforeach;?>
+                    <div class="wsnyc-questionsanswers-question-product">
+                        <img width="<?php echo 200 ?>" height="<?php echo 200 ?>" src="<?php echo $theme->getImgUrl($this, $_product, 200, 200, 'small_image'); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                        <br/><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                        <?php if($_product->isSaleable()): ?>
+                            <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo Mage::getBlockSingleton('catalog/product_list')->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach;?>
             <?php endif; ?>
         </div>
+    <?php endif; ?>
     </div>
 <hr/>
 <?php endforeach; ?>

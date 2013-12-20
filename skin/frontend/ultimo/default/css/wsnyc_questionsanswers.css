@@ -1,14 +1,118 @@
+.wsnyc-questionsanswers-title{
+    text-align: center;
+}
+
+
+.wsnyc-questionsanswers-button{
+    border:1px solid #ccc;
+    display:inline-block;
+    padding:0px 20px;
+    height:25px;
+    padding-top:6px;
+    text-transform: uppercase;
+    margin-right:5px;
+}
+
+.wsnyc-questionsanswers-searchholder{
+    display:inline-block;
+    padding-top:2px;
+    margin-top:2px;
+    margin-left:170px;
+}
+
+.wsnyc-questionsanswers-search{
+    border:1px solid #ccc;
+    display:inline-block;
+    padding:0px 10px;
+    height:25px;
+    padding-top:4px;
+    padding-bottom:2px;
+    width:200px;
+    background: url('../images/wsnyc-questionsanswers-search.gif') no-repeat;
+    background-position: 95% 50%;
+}
+
+
+
 .wsnyc-questionsanswers-category{
-    border: 1px solid #000;
+    border: 2px solid #000;
     display:inline-block;
     padding:7px;
+    margin-right:28px;
+    width:25%;
+    margin-top:20px;
 }
 
 .wsnyc-questionsanswers-category img{
-    width:200px;
-    height:50px;
+    width:287px;
+    height:134px;
+}
+
+.wsnyc-questionsanswers-category ul{
+    list-style: none;
+}
+
+.wsnyc-questionsanswers-question-text{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.wsnyc-questionsanswers-answer-text{
+    color:#aaa;
+    font-weight: normal;
 }
 
 .wsnyc-questionsanswers-question-item{
     margin-bottom:20px;
+}
+
+/*questions page*/
+
+.wsnyc-questionsanswers-menu-holder{
+    background-color: #000;
+    margin-top:20px;
+    height:30px;
+    display: block;
+    padding-top:15px;
+}
+
+.wsnyc-questionsanswers-menu-category{
+    display: inline-block;
+    height:20px;
+    padding-left:15px;
+    margin-right:20px;
+}
+.wsnyc-questionsanswers-menu-category a{
+    color: #fff;
+}
+
+.wsnyc-questionsanswers-question-holder{
+    margin:30px auto;
+    width:70%;
+}
+
+.wsnyc-questionsanswers-question-holder .big-letter{
+    font-size:2em;
+}
+
+.wsnyc-questionsanswers-question-products{
+    text-align:center;
+
+}
+.wsnyc-questionsanswers-question-product{
+    display:inline-block;
+    width:28%;
+    text-align:center;
+}
+
+.wsnyc-questionsanswers-question-product button.button span {
+    background-color: #000 !important;
+    height:30px !important;
+}
+
+.wsnyc-questionsanswers-question-product button.button span span {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 32px !important;
 }

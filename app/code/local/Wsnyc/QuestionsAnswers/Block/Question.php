@@ -7,5 +7,10 @@ class Wsnyc_QuestionsAnswers_Block_Question
         //add filter by category
         $collection = Mage::getResourceModel('wsnyc_questionsanswers/question_collection');
         $this->setQuestionCollection($collection);
+        unset($collection);
+        $collection = Mage::getResourceModel('wsnyc_questionsanswers/category_collection');
+        $collection->addFieldToFilter('parent_id',array('eq'=>0));
+        $this->setMainCategoryCollection($collection);
+        unset($collection);
     }
 }
