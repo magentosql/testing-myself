@@ -12,6 +12,7 @@ class Wsnyc_QuestionsAnswers_Block_Search
 
             $collection = Mage::getResourceModel('wsnyc_questionsanswers/question_collection');
             $collection->addFieldToFilter('question_text',array('like'=>'%'.$phrase.'%'));
+            $collection->addFieldToFilter('published',array('eq'=>'1'));
             $select = $collection->getSelect()->joinLeft(
                 array(
                     'answers'=> Mage::getSingleton('core/resource')->getTableName('wsnyc_questionsanswers/answer')

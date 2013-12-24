@@ -7,6 +7,7 @@ class Wsnyc_QuestionsAnswers_Block_Question
         //add filter by category
         $collection = Mage::getResourceModel('wsnyc_questionsanswers/question_collection');
         $collection->addFieldToFilter('category_id',array('eq'=>Mage::app()->getRequest()->getParam('id')));
+        $collection->addFieldToFilter('published',array('eq'=>'1'));
         $this->setQuestionCollection($collection);
         unset($collection);
 

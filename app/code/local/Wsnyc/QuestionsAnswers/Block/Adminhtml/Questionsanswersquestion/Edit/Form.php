@@ -40,6 +40,19 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit_Form
             ));
         }
 
+        $fieldset->addField('from_backend', 'hidden', array(
+            'name' => 'from_backend',
+            'values' => '1'
+        ));
+
+        $fieldset->addField('published', 'select', array(
+            'name'      => 'published',
+            'label'     => Mage::helper('checkout')->__('Published'),
+            'title'     => Mage::helper('checkout')->__('Published'),
+            'required'  => true,
+            'values' => array(1=>'Yes',0 => 'No')
+        ));
+
         $fieldset->addField('category_id', 'select', array(
             'name'      => 'category_id',
             'label'     => Mage::helper('checkout')->__('Category'),
@@ -66,7 +79,7 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit_Form
             'name'      => 'products',
             'label'     => Mage::helper('checkout')->__('Associated Product SKUs'),
             'title'     => Mage::helper('checkout')->__('Associated Product SKUs'),
-            'required'  => true,
+            'required'  => false,
             'note'   =>'One SKU per line'
         ));
 
@@ -84,6 +97,10 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit_Form
         $data = $model->getData();
         $data['answer_text'] = $answer->getAnswerText();
         $data['products'] = implode(PHP_EOL,$questionProducts);
+
+        if(!$model->getId()){
+            $data['from_backend']=1;
+        }
 
         $form->setValues($data);
 

@@ -46,7 +46,19 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Grid exten
             )
         );
 
+        $this->addColumn('published',
+            array(
+                'header'=> $this->__('Published'),
+                'index' => 'published'
+            )
+        );
 
+        $this->addColumn('from_backend',
+            array(
+                'header'=> $this->__('Added by admin'),
+                'index' => 'from_backend'
+            )
+        );
 
         return parent::_prepareColumns();
     }
