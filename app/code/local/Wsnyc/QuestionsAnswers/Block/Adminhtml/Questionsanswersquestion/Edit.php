@@ -7,6 +7,7 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit
      */
     public function __construct()
     {
+        $this->_objectId = 'question_id';
         $this->_blockGroup = 'wsnyc_questionsanswers';
         $this->_controller = 'adminhtml_questionsanswersquestion';
 
