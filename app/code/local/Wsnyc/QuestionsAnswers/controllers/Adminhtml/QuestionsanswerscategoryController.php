@@ -130,6 +130,29 @@ class Wsnyc_QuestionsAnswers_Adminhtml_QuestionsanswerscategoryController
     }
 
     /**
+     * Delete the question
+     *
+     */
+    public function deleteAction()
+    {
+        if ($objectId = $this->getRequest()->getParam('category_id')) {
+            $object = Mage::getModel('wsnyc_questionsanswers/category')->load($objectId);
+
+            if ($object->getId()) {
+                try {
+                    $object->delete();
+                    $this->_getSession()->addSuccess($this->__('The category was deleted.'));
+                }
+                catch (Exception $e) {
+                    $this->_getSession()->addError($e->getMessage());
+                }
+            }
+        }
+
+        $this->_redirect('*/*');
+    }
+
+    /**
      * Check currently called action by permissions for current user
      *
      * @return bool

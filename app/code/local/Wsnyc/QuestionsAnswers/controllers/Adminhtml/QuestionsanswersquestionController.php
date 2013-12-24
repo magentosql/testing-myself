@@ -137,6 +137,29 @@ class Wsnyc_QuestionsAnswers_Adminhtml_QuestionsanswersquestionController
     }
 
     /**
+     * Delete the question
+     *
+     */
+    public function deleteAction()
+    {
+        if ($objectId = $this->getRequest()->getParam('question_id')) {
+            $object = Mage::getModel('wsnyc_questionsanswers/question')->load($objectId);
+
+            if ($object->getId()) {
+                try {
+                    $object->delete();
+                    $this->_getSession()->addSuccess($this->__('The question was deleted.'));
+                }
+                catch (Exception $e) {
+                    $this->_getSession()->addError($e->getMessage());
+                }
+            }
+        }
+
+        $this->_redirect('*/*');
+    }
+
+    /**
      * Check currently called action by permissions for current user
      *
      * @return bool
