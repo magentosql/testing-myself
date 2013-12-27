@@ -39,6 +39,20 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Grid exten
             )
         );
 
+        $this->addColumn('asked_email',
+            array(
+                'header'=> $this->__('Email'),
+                'index' => 'asked_email'
+            )
+        );
+
+        $this->addColumn('asked_name',
+            array(
+                'header'=> $this->__('Name'),
+                'index' => 'asked_name'
+            )
+        );
+
         $this->addColumn('question_text',
             array(
                 'header'=> $this->__('Question'),

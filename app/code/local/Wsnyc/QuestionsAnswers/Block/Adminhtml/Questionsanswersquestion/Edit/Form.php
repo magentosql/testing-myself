@@ -61,6 +61,20 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit_Form
             'values' => Mage::getModel('wsnyc_questionsanswers/source_subcategory')->toOptionArray()
         ));
 
+        $fieldset->addField('asked_name', 'text', array(
+            'name'      => 'asked_name',
+            'label'     => Mage::helper('checkout')->__('Askers Name'),
+            'title'     => Mage::helper('checkout')->__('Askers Name'),
+            'required'  => true,
+        ));
+
+        $fieldset->addField('asked_email', 'text', array(
+            'name'      => 'asked_email',
+            'label'     => Mage::helper('checkout')->__('Askers Email'),
+            'title'     => Mage::helper('checkout')->__('Askers Email'),
+            'required'  => true,
+        ));
+
         $fieldset->addField('question_text', 'textarea', array(
             'name'      => 'question_text',
             'label'     => Mage::helper('checkout')->__('Question Text'),
