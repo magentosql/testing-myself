@@ -103,7 +103,8 @@ billing.onSave = function(evt){
     <div class="gift-messages">
         <h3><?php echo $this->__('Do you have any gift items in your order?'); ?></h3>
         <p class="control">
-            <input type="checkbox" name="allow_gift_messages" id="allow_gift_messages" value="1" onclick="toogleVisibilityOnObjects(this, ['allow-gift-message-container']);"<?php if($this->getItemsHasMesssages() || $this->getEntityHasMessage()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+<!--            <input type="checkbox" name="allow_gift_messages" id="allow_gift_messages" value="1" onclick="toogleVisibilityOnObjects(this, ['allow-gift-message-container']);" --><?php //if($this->getItemsHasMesssages() || $this->getEntityHasMessage() || true): ?><!-- checked="checked" --><?php //endif; ?><!-- class="checkbox" />-->
+            <input type="checkbox" name="allow_gift_messages" id="allow_gift_messages" value="1" onclick="toogleVisibilityOnObjects(this, ['allow-gift-message-container']);" checked="checked" class="checkbox" />
             <label for="allow_gift_messages"><?php echo $this->__('Add gift options.') ?></label>
         </p>
     </div>
@@ -139,34 +140,36 @@ billing.onSave = function(evt){
                     </script>
                 <?php endif; ?>
                 <div class="allow-gift-messages-for-order-container" id="allow-gift-messages-for-order-container" style="display:none">
-                    <p><?php echo $this->__('You can leave this box blank if you do not wish to add a gift message for whole order.') ?></p>
-                    <div id="holiday-gift-wrap">
-                        <input type="radio" name="gift_wrap_order" value="regular" />
-                        <label for="gift_wrap_order">I want to pack in regular gift wrap
-                            <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee() != 0): ?>
-                                $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee(); ?>
-                            <?php endif; ?>
-                        </label>
-                        <div class="image">
-                            <img src="<?php echo $this->getSkinUrl('images/giftbox-regular.jpg') ?>">
-                        </div>
-                        <?php echo $this->__('Please note: The Feather Duster, Broom, Beckel Canvas, Jiffy, and Brabantia items cannot be gift wrapped'); ?>
-                        <br/><br/>
-                        <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->isHolidayEnabled()): ?>
-                            <br />
-                            <input type="radio" name="gift_wrap_order" value="holiday" />
-                            <label for="gift_wrap_order">I want to pack in holiday gift wrap
-                                <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee() != 0): ?>
-                                    $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee(); ?>
+                    <div class="holiday-gift-wrap">
+                        <div class="holiday-gift-wrap-item">
+                            <input type="radio" name="gift_wrap_order" value="regular" />
+                            <label for="gift_wrap_order">I want to pack in regular gift wrap
+                                <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee() != 0): ?>
+                                    $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee(); ?>
                                 <?php endif; ?>
                             </label>
                             <div class="image">
-                                <img src="<?php echo $this->getSkinUrl('images/giftbox-holiday.jpg') ?>">
+                                <img src="<?php echo $this->getSkinUrl('images/giftbox-regular.jpg') ?>">
                             </div>
-                            <?php echo $this->__('Please note: The Feather Duster, Broom, Beckel Canvas, Jiffy, and Brabantia items cannot be gift wrapped'); ?>
-                            <br/><br/>
-                        <?php endif; ?>
+                        </div>
+                            <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->isHolidayEnabled()): ?>
+                        <div class="holiday-gift-wrap-item">
+                                <input type="radio" name="gift_wrap_order" value="holiday" />
+                                <label for="gift_wrap_order">I want to pack in holiday gift wrap
+                                    <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee() != 0): ?>
+                                        $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee(); ?>
+                                    <?php endif; ?>
+                                </label>
+                                <div class="image">
+                                    <img src="<?php echo $this->getSkinUrl('images/giftbox-holiday.jpg') ?>">
+                                </div>
+                        </div>
+                            <?php endif; ?>
+                        <div style="clear: both"></div>
+                        <?php echo $this->__('Please note: The Feather Duster, Broom, Beckel Canvas, Jiffy, and Brabantia items cannot be gift wrapped'); ?>
+                        <br />
                     </div>
+                    <p><?php echo $this->__('You can leave this box blank if you do not wish to add a gift message for whole order.') ?></p>
                     <input type="hidden" name="giftmessage[<?php echo $this->getEntity()->getId() ?>][type]"  value="quote" />
                     <ul class="form-list">
                         <li class="fields">
@@ -206,34 +209,37 @@ billing.onSave = function(evt){
                 </p>
                 <div id="allow-gift-messages-for-items-container">
                  <ol>
-                     <div id="holiday-gift-wrap">
-                         <input type="radio" name="gift_wrap_items" value="regular" />
-                         <label for="gift_wrap_order">I want to pack in regular gift wrap
-                             <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee() != 0): ?>
-                                 $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee(); ?>
-                             <?php endif; ?>
-                         </label>
-                         <div class="image">
-                             <img src="<?php echo $this->getSkinUrl('images/giftbox-regular.jpg') ?>">
-                         </div>
-                         <?php echo $this->__('Please note: The Feather Duster, Broom, Beckel Canvas, Jiffy, and Brabantia items cannot be gift wrapped'); ?>
-                         <br/><br/>
-                         <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->isHolidayEnabled()): ?>
-                             <br />
-                             <input type="radio" name="gift_wrap_items" value="holiday" />
-                             <label for="gift_wrap_order">I want to pack in holiday gift wrap
-                                 <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee() != 0): ?>
-                                     $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee(); ?>
+                     <div class="holiday-gift-wrap">
+                         <div class="holiday-gift-wrap-item">
+                             <input type="radio" name="gift_wrap_items" value="regular" />
+                             <label for="gift_wrap_order">I want to pack in regular gift wrap
+                                 <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee() != 0): ?>
+                                     $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getRegularGiftWrapFee(); ?>
                                  <?php endif; ?>
                              </label>
                              <div class="image">
-                                 <img src="<?php echo $this->getSkinUrl('images/giftbox-holiday.jpg') ?>">
+                                 <img src="<?php echo $this->getSkinUrl('images/giftbox-regular.jpg') ?>">
                              </div>
-                             <?php echo $this->__('Please note: The Feather Duster, Broom, Beckel Canvas, Jiffy, and Brabantia items cannot be gift wrapped'); ?>
-                             <br/><br/>
+                         </div>
+                         <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->isHolidayEnabled()): ?>
+                             <div class="holiday-gift-wrap-item">
+                                 <input type="radio" name="gift_wrap_items" value="holiday" />
+                                 <label for="gift_wrap_order">I want to pack in holiday gift wrap
+                                     <?php if(Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee() != 0): ?>
+                                         $<?php echo Mage::getModel('wsnyc_checkoutcustomization/config')->getHolidayGiftWrapFee(); ?>
+                                     <?php endif; ?>
+                                 </label>
+                                 <div class="image">
+                                     <img src="<?php echo $this->getSkinUrl('images/giftbox-holiday.jpg') ?>">
+                                 </div>
+                             </div>
                          <?php endif; ?>
+                         <div style="clear: both"></div>
+                         <?php echo $this->__('Please note: The Feather Duster, Broom, Beckel Canvas, Jiffy, and Brabantia items cannot be gift wrapped'); ?>
+                         <br />
                      </div>
                      <p><?php echo $this->__('You can leave this box blank if you do not wish to add a gift message for the item.') ?></p>
+
                  <?php foreach($this->getItems() as $_index=>$_item): ?>
                  <?php $_product=$_item->getProduct() ?>
                  <li class="item">
