@@ -69,7 +69,7 @@ class Mage_Adminhtml_Block_Sales_Order_Totals extends Mage_Adminhtml_Block_Sales
             'code'      => 'giftwrap',
             'value'     => $this->getSource()->getOnestepcheckoutGiftwrapAmount(),
             'base_value'=> $this->getSource()->getOnestepcheckoutGiftwrapAmount(),
-            'label'     => $this->helper('sales')->__('Gitf Wrap')
+            'label'     => $this->helper('sales')->__('Gift Wrap')
         ));
         return $this;
     }
