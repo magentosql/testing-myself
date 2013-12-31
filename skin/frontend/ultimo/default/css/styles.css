@@ -3786,3 +3786,12 @@ pading-left:5px;
 .discount-form small{
     font-size:smaller;
 }
+
+.holiday-gift-wrap{
+    margin-bottom: 20px;
+}
+
+.holiday-gift-wrap-item{
+    width:270px;
+    float: left;
+}
