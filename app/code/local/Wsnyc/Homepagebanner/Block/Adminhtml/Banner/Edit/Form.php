@@ -19,4 +19,13 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Form
         $this->setForm($form);
         return parent::_prepareForm();
 	}
+
+//    protected function _prepareLayout()
+//    {
+//        $return = parent::_prepareLayout();
+//        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+//            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+//        }
+//        return $return;
+//    }
 }

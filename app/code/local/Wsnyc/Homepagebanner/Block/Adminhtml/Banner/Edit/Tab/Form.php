@@ -70,8 +70,9 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Tab_Form
             'label' => Mage::helper('wsnyc_homepagebanner')->__('Content'),
             'title' => Mage::helper('wsnyc_homepagebanner')->__('Content'),
             'style' => 'width:280px; height:100px;',
-            'wysiwyg' => false,
             'required' => true,
+            'config' => Mage::getSingleton('cms/wysiwyg_config')->getConfig(),
+
         ));
 
         $fieldset->addField('position', 'text', array(
@@ -91,6 +92,15 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Tab_Form
         $form->setValues($data);
 
         return parent::_prepareForm();
+    }
+
+    protected function _prepareLayout()
+    {
+        $return = parent::_prepareLayout();
+        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+        }
+        return $return;
     }
 
 }

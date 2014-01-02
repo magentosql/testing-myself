@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <layout version="0.1.0">
     <default>
+
         <reference name="head">
             <!-- CSS -->
             <action method="addItem"><type>skin_css</type><name>css/homepagebanner/owl.carousel.css</name></action>
