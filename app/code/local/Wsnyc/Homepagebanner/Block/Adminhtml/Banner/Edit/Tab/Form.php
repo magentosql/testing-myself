@@ -34,7 +34,7 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Tab_Form
 
         $fieldset->addField('filename', 'image', array(
             'label' => Mage::helper('wsnyc_homepagebanner')->__('Image File'),
-            'required' => false,
+            'required' => true,
             'name' => 'filename',
         ));
 
@@ -55,8 +55,14 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Tab_Form
 
         $fieldset->addField('weblink', 'text', array(
             'label' => Mage::helper('wsnyc_homepagebanner')->__('Web Url'),
-            'required' => false,
+            'required' => true,
             'name' => 'weblink',
+        ));
+
+        $fieldset->addField('webname', 'text', array(
+            'label' => Mage::helper('wsnyc_homepagebanner')->__('Web Name'),
+            'required' => true,
+            'name' => 'webname',
         ));
 
         $fieldset->addField('content', 'editor', array(
@@ -65,7 +71,13 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Tab_Form
             'title' => Mage::helper('wsnyc_homepagebanner')->__('Content'),
             'style' => 'width:280px; height:100px;',
             'wysiwyg' => false,
-            'required' => false,
+            'required' => true,
+        ));
+
+        $fieldset->addField('position', 'text', array(
+            'label' => Mage::helper('wsnyc_homepagebanner')->__('Position'),
+            'required' => true,
+            'name' => 'position',
         ));
 
 

@@ -1,0 +1,44 @@
+<?php $cfg = $this->getSlideshowCfg() ?>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+
+        jQuery("#owl-demo").owlCarousel({
+
+            navigation : <?php echo $cfg['navigation']?>, // Show next and prev buttons
+            slideSpeed : <?php echo $cfg['slideSpeed']?>,
+            paginationSpeed : <?php echo $cfg['paginationSpeed']?>,
+            singleItem : <?php echo $cfg['singleItem']?>,
+            slideNames : [<?php foreach($this->getBanners() as $banner)
+            {
+                echo '"'.$banner['title'].'",' ;
+            }
+        ?>]
+        });
+
+    });
+</script>
+<div id="owl-demo" class="owl-carousel owl-theme">
+    <?php foreach($this->getBanners() as $banner):?>
+        <div class="item" style="position:relative;">
+            <img src="/media/<?php echo $banner['filename']?>" alt="<?php echo $banner['title']?>" >
+            <div style="position:absolute; top:30px;left:620px;border:4px solid white;width:300px; margin: 4px;background-color: white">
+                <div style="border:4px solid #222">
+                    <div style="margin:4px;border:1px solid #222">
+                        <div style="margin:20px">
+                            <h2 style="border: 0;color: #222;font-family: 'Halo Handletter';font-size: 40px;font-weight: normal;padding:0px;margin:-20px 0px -5px 0px"><?php echo $banner['title']?></h2>
+                            <p style="font-family: 'GillSansMTStd',sans-serif;font-size: 14px;font-weight: normal;font-style: normal;">
+                                A kasjdfhkasj  aks dhfask<?php echo $banner['content']?>
+                            </p>
+                            <br />
+                            <a href="<?php echo $banner['weblink']?>" style="font-weight: bold; text-transform: uppercase;padding-top:10px">
+                                <?php echo ($banner['webname'])?$banner['webname']:'Read More'?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+
+
+</div>

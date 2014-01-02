@@ -8,11 +8,4 @@
         </reference>
     </wsnyc_homepagebanner_adminhtml_banner_list>
 
-    <!--<wsnyc_homepagebanner_adminhtml_banner_grid>&lt;!&ndash;For AJAX grid action &ndash;&gt;-->
-        <!--<remove name="root" />-->
-        <!--<block type="wsnyc_homepagebanner/adminhtml_banner_grid"-->
-               <!--name="wsnyc_homepagebanner.banner.grid"-->
-               <!--output="toHtml" />-->
-    <!--</wsnyc_homepagebanner_adminhtml_banner_grid>-->
-
 </layout>

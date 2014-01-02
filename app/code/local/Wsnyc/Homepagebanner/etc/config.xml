@@ -49,6 +49,15 @@
             </wsnyc_homepagebanner>
         </blocks>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <wsnyc_homepagebanner>
+                    <file>wsnyc/homepagebanner.xml</file>
+                </wsnyc_homepagebanner>
+            </updates>
+        </layout>
+    </frontend>
     <admin>
         <routers>
             <!--<adminhtml>-->
@@ -76,4 +85,14 @@
             </updates>
         </layout>
     </adminhtml>
+    <default>
+        <wsnyc_homepagebanner>
+            <general>
+                <navigation>false</navigation><!--Show next and prev buttons-->
+                <slideSpeed>300</slideSpeed>
+                <paginationSpeed>400</paginationSpeed>
+                <singleItem>true</singleItem>
+            </general>
+        </wsnyc_homepagebanner>
+    </default>
 </config>

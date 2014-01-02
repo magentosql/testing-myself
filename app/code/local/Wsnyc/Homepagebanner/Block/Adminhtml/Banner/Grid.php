@@ -28,10 +28,31 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Grid
             'index' => 'banner_id',
         ));
 
+        $this->addColumn('filename', array(
+            'header' => Mage::helper('wsnyc_homepagebanner')->__('Image'),
+            'align' => 'left',
+            'index' => 'filename',
+            'width' => 270,
+            'renderer' => 'Wsnyc_Homepagebanner_Block_Adminhtml_Template_Grid_Renderer_Image'
+        ));
+
         $this->addColumn('banner_title', array(
             'header' => Mage::helper('wsnyc_homepagebanner')->__('Title'),
             'align' => 'left',
             'index' => 'title',
+        ));
+
+        $this->addColumn('webname', array(
+            'header' => Mage::helper('wsnyc_homepagebanner')->__('Web Name'),
+            'align' => 'right',
+            'index' => 'webname',
+        ));
+
+        $this->addColumn('position', array(
+            'header' => Mage::helper('wsnyc_homepagebanner')->__('Position'),
+            'align' => 'right',
+            'index' => 'position',
+            'width' => '80px',
         ));
 
         $this->addColumn('status', array(
