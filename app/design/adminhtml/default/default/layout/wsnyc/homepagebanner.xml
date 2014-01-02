@@ -7,5 +7,10 @@
                    name="wsnyc_homepagebanner.banner.list" />
         </reference>
     </wsnyc_homepagebanner_adminhtml_banner_list>
+    <wsnyc_homepagebanner_adminhtml_banner_edit>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><flag>1</flag></action>
+        </reference>
+    </wsnyc_homepagebanner_adminhtml_banner_edit>
 
 </layout>

@@ -65,8 +65,8 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Tab_Form
             'name' => 'webname',
         ));
 
-        $fieldset->addField('content', 'editor', array(
-            'name' => 'content',
+        $fieldset->addField('banner_content', 'editor', array(
+            'name' => 'banner_content',
             'label' => Mage::helper('wsnyc_homepagebanner')->__('Content'),
             'title' => Mage::helper('wsnyc_homepagebanner')->__('Content'),
             'style' => 'width:280px; height:100px;',
