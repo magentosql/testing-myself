@@ -19,7 +19,7 @@
     <h4><?php echo $cat->getName() ?></h4>
         <ul>
     <?php foreach($cat->getSubcategoriesCollection() as $subcat): ?>
-        <li><a href="<?php echo Mage::getUrl('asklaundress/questions',array('id'=>$subcat->getId())) ?>"><?php echo $subcat->getName() ?></a></li>
+        <li><a href="<?php echo $subcat->getUrlRewrite();//Mage::getUrl('asklaundress/questions',array('id'=>$subcat->getId())) ?>"><?php echo $subcat->getName() ?></a></li>
     <?php endforeach; ?>
         </ul>
     </div>

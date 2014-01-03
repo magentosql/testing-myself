@@ -81,11 +81,23 @@ class Wsnyc_QuestionsAnswers_Adminhtml_QuestionsanswerscategoryController
                     unset($postData['image']);
             }
 
+
+
+
+
             $model = Mage::getSingleton('wsnyc_questionsanswers/category');
             $model->setData($postData);
 
+            //create category url identifier in format: category/subcategory
+
             try {
                 $model->save();
+
+                if ($model->getParentId() > 0) {
+                    $parent = Mage::getModel('wsnyc_questionsanswers/category')->load($model->getParentId());
+                    $model->setIdentifier(Mage::getSingleton('wsnyc_questionsanswers/category')->formatUrlKey($parent->getName() . '/' . $model->getName()));
+                    $model->save();
+                }
 
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('The category has been saved.'));
                 $this->_redirect('*/*/');
@@ -161,5 +173,7 @@ class Wsnyc_QuestionsAnswers_Adminhtml_QuestionsanswerscategoryController
     {
         return Mage::getSingleton('admin/session')->isAllowed('questionsanswers/category');
     }
+
+
 
 }
