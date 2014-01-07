@@ -1,6 +1,10 @@
 <?php
-class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_Quote_Address_Total_Abstract {
-    public function collect(Mage_Sales_Model_Quote_Address $address) {
+class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap
+    extends Mage_Sales_Model_Quote_Address_Total_Abstract
+{
+
+    public function collect(Mage_Sales_Model_Quote_Address $address)
+    {
         parent::collect($address);
         if (($address->getAddressType() == 'billing')) {
             return $this;
@@ -43,6 +47,10 @@ class Wsnyc_CheckoutCustomization_Model_Total_Giftwrap extends Mage_Sales_Model_
 //        }
 
         $session->setData('giftwrapTotalAmount',$giftwrapAmount);
+
+        $address->setSubtotal($address->getSubtotal()+$giftwrapAmount);
+        $address->setBaseSubtotal($address->getBaseSubtotal()+$giftwrapAmount);
+
         $address->setGrandTotal($address->getGrandTotal() + $giftwrapAmount);
         $address->setBaseGrandTotal($address->getBaseGrandTotal() + $giftwrapAmount);
         return $this;
