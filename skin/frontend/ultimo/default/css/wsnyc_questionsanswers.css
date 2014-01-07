@@ -13,11 +13,15 @@
     margin-right:5px;
 }
 
+.wsnyc-questionsanswers-button.first{
+    margin-left:30px;
+}
+
 .wsnyc-questionsanswers-searchholder{
     display:inline-block;
     padding-top:2px;
     margin-top:2px;
-    margin-left:170px;
+    margin-left:70px;
 }
 
 .wsnyc-questionsanswers-search{
@@ -27,7 +31,7 @@
     height:25px;
     padding-top:4px;
     padding-bottom:2px;
-    width:200px;
+    width:240px;
     background: url('../images/wsnyc-questionsanswers-search.gif') no-repeat;
     background-position: 95% 50%;
 }
