@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Wsnyc_Shippingnote_Model_Observer{
 
@@ -14,15 +14,19 @@ class Wsnyc_Shippingnote_Model_Observer{
 
         $possibleSignatureValues = Mage::getStoreConfig('onestepcheckout/survey/survey_values');
         $possibleSignatureValues = unserialize($possibleSignatureValues);
-        
-        $selectedAnswer = strtolower($possibleSignatureValues[$requiresSignature]['value']);
-        if($selectedAnswer=='yes'){ 
+
+        if(isset($possibleSignatureValues[$requiresSignature])){
+            $selectedAnswer = strtolower($possibleSignatureValues[$requiresSignature]['value']);
+            if($selectedAnswer=='yes'){
                 $order->setSignatureRequired(1);
-        } else { 
+            } else {
                 $order->setSignatureRequired(0);
+            }
+        } else {
+            $order->setSignatureRequired(0);
         }
         $order->setOnestepcheckoutLaundressComment($laundressComment);
-                
+
     }
 
 }
