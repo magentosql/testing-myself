@@ -1,5 +1,5 @@
 <?php
-class Wsnyc_CheckoutCustomization_Model_Observer extends Mage_Core_Controller_Varien_Action {
+class Wsnyc_CheckoutCustomization_Model_Observer {
 
     public function saveGiFtWrapInfo($observer)
     {
