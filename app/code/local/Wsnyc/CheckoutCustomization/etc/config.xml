@@ -66,6 +66,14 @@
                     </giftwrap>
                 </totals>
             </quote>
+            <order_invoice>
+                <totals>
+                    <giftwrap>
+                        <class>wsnyc_checkoutcustomization/invoice_total_giftwrap</class>
+                        <before>grand_total</before>
+                    </giftwrap>
+                </totals>
+            </order_invoice>
         </sales>
     </global>
     <default>
