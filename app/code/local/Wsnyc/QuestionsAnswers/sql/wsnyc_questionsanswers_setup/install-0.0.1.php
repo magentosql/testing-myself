@@ -37,7 +37,6 @@ $table = $installer->getConnection()->newTable($installer->getTable('wsnyc_quest
 $installer->getConnection()->createTable($table);
 
 /* Question table */
-
 $table = $installer->getConnection()->newTable($installer->getTable('wsnyc_questionsanswers/question'))
     ->addColumn('question_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'unsigned' => true,
@@ -67,15 +66,7 @@ $table = $installer->getConnection()->newTable($installer->getTable('wsnyc_quest
     ->setComment('wsnyc_questionsanswers/question entity table');
 $installer->getConnection()->createTable($table);
 
-/**
- * Answer table:
- * answer_id
- * question_id
- * answer_text
- * answer_email
- * answer_name
- * created_at
- */
+/* Answer table */
 $table = $installer->getConnection()->newTable($installer->getTable('wsnyc_questionsanswers/answer'))
     ->addColumn('answer_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'unsigned' => true,
@@ -101,13 +92,7 @@ $table = $installer->getConnection()->newTable($installer->getTable('wsnyc_quest
     ->setComment('wsnyc_questionsanswers/answer entity table');
 $installer->getConnection()->createTable($table);
 
-/**
- * Question-Product table:
- * questionproduct_id
- * question_id
- * product_id
- * created_at
- */
+/* Question-Product table */
 $table = $installer->getConnection()->newTable($installer->getTable('wsnyc_questionsanswers/questionproduct'))
     ->addColumn('questionproduct_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'unsigned' => true,

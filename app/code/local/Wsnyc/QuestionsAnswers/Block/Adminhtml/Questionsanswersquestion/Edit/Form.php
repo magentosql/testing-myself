@@ -53,6 +53,14 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit_Form
             'values' => array(1=>'Yes',0 => 'No')
         ));
 
+        $fieldset->addField('featured', 'select', array(
+            'name'      => 'featured',
+            'label'     => Mage::helper('checkout')->__('Featured'),
+            'title'     => Mage::helper('checkout')->__('Featured'),
+            'required'  => true,
+            'values' => array(1=>'Yes',0 => 'No')
+        ));
+
         $fieldset->addField('category_id', 'select', array(
             'name'      => 'category_id',
             'label'     => Mage::helper('checkout')->__('Category'),

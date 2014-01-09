@@ -53,4 +53,13 @@
             <block type="wsnyc_questionsanswers/search" name="questionsanswers_questions_search" template="wsnyc/questionsanswers/search.phtml"></block>
         </reference>
     </asklaundress_questions_search>
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="preface">
+            <block type="wsnyc_questionsanswers/question_featured" name="wsnyc_questionsanswers.carousel" as="question_featured" template="wsnyc/questionsanswers/featured.phtml" after="homepagebanner.carousel">
+            </block>
+        </reference>
+    </cms_index_index>
 </layout>

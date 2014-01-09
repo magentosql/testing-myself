@@ -120,3 +120,57 @@
     font-weight: bold;
     line-height: 32px !important;
 }
+
+/*featured*/
+.wsnyc-questionsanswers-featured-question {
+    vertical-align:top;
+    display:inline-block;
+    width:43%;
+    margin-left:10px;
+}
+
+.wsnyc-questionsanswers-featured-answer {
+    display:inline-block;
+    width:43%;
+    margin-left:10px;
+}
+
+.wsnyc-questionsanswers-featured-answer-letter{
+    display:inline-block;
+    vertical-align:top;
+    width:4%;
+    font-size:4em !important;
+    margin-top:10px;
+}
+
+.wsnyc-questionsanswers-featured-question-letter{
+    display:inline-block;
+    vertical-align:top;
+    margin-top:10px;
+    width:4%;
+    font-size:4em !important;
+}
+
+#wsnyc-questionsanswers-featured-prev{
+    display:inline-block;
+    vertical-align:middle;
+}
+
+#wsnyc-questionsanswers-featured-next{
+    display:inline-block;
+    vertical-align:middle;
+}
+
+.wsnyc-questionsanswers-featured{
+    width:90% !important;
+    display:inline-block !important;
+}
+
+#wsnyc-questionsanswers-featured-holder{
+    margin-top:10px;
+}
+
+.wsnyc_questionsanswers-middle{
+    width;100%;
+    text-align: center;
+}

@@ -74,6 +74,13 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Grid exten
             )
         );
 
+        $this->addColumn('featured',
+            array(
+                'header'=> $this->__('Featured'),
+                'index' => 'featured'
+            )
+        );
+
         return parent::_prepareColumns();
     }
 

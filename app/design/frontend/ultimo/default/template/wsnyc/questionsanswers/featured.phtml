@@ -1,0 +1,71 @@
+<?php
+$questions = $this->getQuestionCollection();
+?>
+<?php $cfg = $this->getSlideshowCfg() ?>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+
+        jQuery("#qa-featured").owlCarousel({
+
+            navigation : false, // Show next and prev buttons
+            slideSpeed : 300,
+            paginationSpeed : 400,
+            pagination: true,
+            singleItem : true,
+            slideNames : [<?php $i=1; foreach($questions as $question)
+            {
+                echo '"Question '.$i.'",' ;
+                $i++;
+            }
+        ?>]
+        });
+
+        var qa_featured_owl = jQuery("#qa-featured").data('owlCarousel');
+
+        jQuery(".wsnyc-questionsanswers-featured .owl-controls").hide();
+
+        jQuery('#wsnyc-questionsanswers-featured-prev').click(function(){
+            qa_featured_owl.prev();
+        });
+
+        jQuery('#wsnyc-questionsanswers-featured-next').click(function(){
+            qa_featured_owl.next();
+        });
+
+    });
+</script>
+
+<div id="wsnyc-questionsanswers-featured-holder">
+    <h1 class="wsnyc_questionsanswers-middle">Ask The Laundress</h1>
+    <div id="wsnyc-questionsanswers-featured-prev"><<</div>
+    <div id="qa-featured" class="owl-carousel owl-theme wsnyc-questionsanswers-featured">
+        <?php foreach($questions as $question): ?>
+            <div class="item" style="position:relative;">
+
+
+                <?php $answers = $question->getAnswersCollection(); ?>
+                <?php if($answers->count()): ?>
+                    <div class="wsnyc-questionsanswers-featured-question-letter">Q</div>
+                    <div class="wsnyc-questionsanswers-featured-question">
+                        <span class="wsnyc-questionsanswers-question-text"><?php echo nl2br($question->getQuestionText()); ?></span>
+                    </div>
+                    <div class="wsnyc-questionsanswers-featured-answer-letter">A</div>
+                    <div class="wsnyc-questionsanswers-featured-answer">
+                        <?php foreach($answers as $answer): ?>
+                            <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
+                        <?php endforeach; ?>
+                        <br/><br/>
+                        Read Full Article
+                        <br/><br/>
+                        [View Archives]
+                    </div>
+                <?php endif; ?>
+
+            </div>
+        <?php endforeach;?>
+    </div>
+    <div id="wsnyc-questionsanswers-featured-next">>></div>
+</div>
+
+
+

@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_QuestionsAnswers>
-            <version>0.0.3</version>
+            <version>0.0.4</version>
         </Wsnyc_QuestionsAnswers>
     </modules>
     <frontend>
