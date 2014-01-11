@@ -8,6 +8,7 @@
             slideSpeed : <?php echo $cfg['slideSpeed']?>,
             paginationSpeed : <?php echo $cfg['paginationSpeed']?>,
             singleItem : <?php echo $cfg['singleItem']?>,
+            autoPlay: 5000,
             slideNames : [<?php foreach($this->getBanners() as $banner)
             {
                 echo '"'.$banner['title'].'",' ;
