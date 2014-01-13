@@ -75,9 +75,8 @@
 .wsnyc-questionsanswers-menu-holder{
     background-color: #000;
     margin-top:20px;
-    height:30px;
     display: block;
-    padding-top:15px;
+    padding:10px 0;
 }
 
 .wsnyc-questionsanswers-menu-category{
@@ -177,6 +176,5 @@
 
 #wsnyc-questionsanswers-container{
     width:100%;
-    text-align: center;
     margin-left:60px;
 }

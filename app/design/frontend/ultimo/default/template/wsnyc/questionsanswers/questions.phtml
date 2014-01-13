@@ -1,16 +1,14 @@
 <?php
-
-$categories = $this->getMainCategoryCollection();
+$siblings = $this->getSiblingCategoryCollection();
 $questions = $this->getQuestionCollection();
 $_helper = $this->helper('catalog/output');
 $theme = $this->helper('ultimo');
-
 ?>
 
 <?php echo $this->getChildHtml('wsnyc_questionsanswers_topmenu'); ?>
 
 <div class="wsnyc-questionsanswers-menu-holder">
-    <?php foreach($categories as $cat): ?>
+    <?php foreach($siblings as $cat): ?>
         <div class="wsnyc-questionsanswers-menu-category">
             <a href=""><?php echo $cat->getName(); ?></a>
         </div>
