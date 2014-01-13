@@ -170,7 +170,13 @@
     margin-top:10px;
 }
 
-.wsnyc_questionsanswers-middle{
-    width;100%;
+.wsnyc-questionsanswers-middle{
+    width:100%;
     text-align: center;
+}
+
+#wsnyc-questionsanswers-container{
+    width:100%;
+    text-align: center;
+    margin-left:60px;
 }

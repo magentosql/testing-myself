@@ -6,18 +6,8 @@ $_helper = $this->helper('catalog/output');
 $theme = $this->helper('ultimo');
 
 ?>
-<h1 class="wsnyc-questionsanswers-title">Ask the Laundress</h1>
 
-<div class="wsnyc-questionsanswers-button first"><a href="/asklaundress/questions/ask">Ask a Question</a></div>
-<div class="wsnyc-questionsanswers-button">View Archives</div>
-<div class="wsnyc-questionsanswers-button">Recent Questions</div>
-<div class="wsnyc-questionsanswers-button">Videos</div>
-
-<div class="wsnyc-questionsanswers-searchholder">
-    <form action="/asklaundress/questions/search" method="post">
-        <input class="wsnyc-questionsanswers-search" name="questionsanswersquery" placeholder="Search Ask The Laundress" />
-    </form>
-</div>
+<?php echo $this->getChildHtml('wsnyc_questionsanswers_topmenu'); ?>
 
 <div class="wsnyc-questionsanswers-menu-holder">
     <?php foreach($categories as $cat): ?>

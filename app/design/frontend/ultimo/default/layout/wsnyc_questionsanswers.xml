@@ -11,7 +11,9 @@
             <action method="addItem"><type>skin_js</type><name>js/masonry.pkgd.min.js</name></action>
         </reference>
         <reference name="content">
-            <block type="wsnyc_questionsanswers/category" name="questionsanswers_index_index" template="wsnyc/questionsanswers/index.phtml"></block>
+            <block type="wsnyc_questionsanswers/category" name="questionsanswers_index_index" template="wsnyc/questionsanswers/index.phtml">
+                <block type="core/template" name="wsnyc_questionsanswers_topmenu" template="wsnyc/questionsanswers/topmenu.phtml"></block>
+            </block>
         </reference>
     </asklaundress_index_index>
     <asklaundress_questions_index>
@@ -24,7 +26,9 @@
             <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
         </reference>
         <reference name="content">
-            <block type="wsnyc_questionsanswers/question" name="questionsanswers_questions_index" template="wsnyc/questionsanswers/questions.phtml"></block>
+            <block type="wsnyc_questionsanswers/question" name="questionsanswers_questions_index" template="wsnyc/questionsanswers/questions.phtml">
+                <block type="core/template" name="wsnyc_questionsanswers_topmenu" template="wsnyc/questionsanswers/topmenu.phtml"></block>
+            </block>
         </reference>
     </asklaundress_questions_index>
     <asklaundress_questions_ask>
