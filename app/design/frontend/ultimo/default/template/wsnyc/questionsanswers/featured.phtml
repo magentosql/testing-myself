@@ -1,7 +1,6 @@
 <?php
 $questions = $this->getQuestionCollection();
 ?>
-<?php $cfg = $this->getSlideshowCfg() ?>
 <script type="text/javascript">
     jQuery(document).ready(function() {
 
@@ -55,9 +54,9 @@ $questions = $this->getQuestionCollection();
                             <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
                         <?php endforeach; ?>
                         <br/><br/>
-                        Read Full Article
+                        <a href="<?php echo Mage::getModel('wsnyc_questionsanswers/category')->load($question->getCategoryId())->getUrlRewrite(); ?>">Read Full Article</a>
                         <br/><br/>
-                        [View Archives]
+                        <div class="wsnyc-questionsanswers-button"><a href="/asklaundress">View Archives</a></div>
                     </div>
                 <?php endif; ?>
 
