@@ -102,6 +102,7 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
 
         $block = Mage::getSingleton('core/layout')->createBlock('checkout/onepage_shipping_method_available');
         $rates = $block->getShippingRates();
+        $firstMethod='';
         foreach ($rates as $code => $value) {
             Mage::log($code);
             if ($code == 'freeshipping') {
