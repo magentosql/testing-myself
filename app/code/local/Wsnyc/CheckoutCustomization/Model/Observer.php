@@ -92,4 +92,46 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
             $order->setOnestepcheckoutGiftwrapType($giftwrapType);
         }
     }
+
+    public function setShippingAddress($observer)
+    {
+        $quote = $observer->getEvent()->getQuote();
+        $customer = $quote->getCustomer();
+
+        $shippingAddress = $quote->getShippingAddress();
+
+        $block = Mage::getSingleton('core/layout')->createBlock('checkout/onepage_shipping_method_available');
+        $rates = $block->getShippingRates();
+        foreach ($rates as $code => $value) {
+            Mage::log($code);
+            if ($code == 'freeshipping') {
+                $firstMethod = 'freeshipping_freeshipping';
+                $quote->getShippingAddress()->setFreeShipping(1);
+                $quote->setTotalsCollectedFlag(false);
+            }
+        }
+
+        if ($shippingAddress->getShippingMethod() == '' && $firstMethod=='freeshipping_freeshipping') {
+            $customerShippingAddressId = $customer->getDefaultShipping();
+            $customerShippingAddress = Mage::getModel('customer/address')->load($customerShippingAddressId);
+
+            $shippingAddress->setStreet($customerShippingAddress->getStreet())
+                ->setFirstname($customerShippingAddress->getFirstname())
+                ->setLastname($customerShippingAddress->getLastname())
+                ->setRegionId($customerShippingAddress->getRegionId())
+                ->setCountryId($customerShippingAddress->getCountryId())
+                ->setPostcode($customerShippingAddress->getPostcode())
+                ->setRegion($customerShippingAddress->getRegion())
+                ->setCity($customerShippingAddress->getCity())
+                ->setCustomerId($customer->getId())
+                ->setShippingMethod($firstMethod)
+                ->setShippingAmount(0)
+                ->setBaseShippingAmount(0)
+                ->setSubtotalWithDiscount(0)
+                ->setBaseSubtotalWithDiscount(0)
+                ->setShippingInclTax(0);
+
+            $quote->setShippingAddress($shippingAddress);
+        }
+    }
 }
