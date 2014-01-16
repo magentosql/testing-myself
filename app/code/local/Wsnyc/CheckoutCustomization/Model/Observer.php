@@ -111,7 +111,7 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
             }
         }
 
-        if ($shippingAddress->getShippingMethod() == '' && $firstMethod=='freeshipping_freeshipping') {
+        if ($firstMethod=='freeshipping_freeshipping') {
             $customerShippingAddressId = $customer->getDefaultShipping();
             $customerShippingAddress = Mage::getModel('customer/address')->load($customerShippingAddressId);
 
