@@ -3795,3 +3795,8 @@ pading-left:5px;
     width:270px;
     float: left;
 }
+
+/*place udropship subtotal on the rightside */
+.udropship-cart-vendor-footer td {
+    text-align: right;
+}
