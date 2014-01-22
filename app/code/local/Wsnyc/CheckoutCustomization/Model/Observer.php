@@ -139,6 +139,9 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
             $quote->setTotalsCollectedFlag(false);
         } else {
             //no freeshipiing found use other cheapest
+	    if(!is_array($allrates)){
+                $allrates = array(''=>'');
+            }
             asort($allrates);
             $allrates = array_filter($allrates);
             foreach($allrates as $key => $price){
