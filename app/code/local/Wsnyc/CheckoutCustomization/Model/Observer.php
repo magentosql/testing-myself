@@ -98,24 +98,11 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
         $quote = $observer->getEvent()->getQuote();
         $customer = $quote->getCustomer();
 
-        $shippingAddress = $quote->getShippingAddress();
+        $customerShippingAddressId = $customer->getDefaultShipping();
+        $customerShippingAddress = Mage::getModel('customer/address')->load($customerShippingAddressId);
 
-        $block = Mage::getSingleton('core/layout')->createBlock('checkout/onepage_shipping_method_available');
-        $rates = $block->getShippingRates();
-        $firstMethod='';
-        foreach ($rates as $code => $value) {
-            Mage::log($code);
-            if ($code == 'freeshipping') {
-                $firstMethod = 'freeshipping_freeshipping';
-                $quote->getShippingAddress()->setFreeShipping(1);
-                $quote->setTotalsCollectedFlag(false);
-            }
-        }
-
-        if ($firstMethod=='freeshipping_freeshipping') {
-            $customerShippingAddressId = $customer->getDefaultShipping();
-            $customerShippingAddress = Mage::getModel('customer/address')->load($customerShippingAddressId);
-
+        if($customerShippingAddressId){
+            $shippingAddress = $quote->getShippingAddress();
             $shippingAddress->setStreet($customerShippingAddress->getStreet())
                 ->setFirstname($customerShippingAddress->getFirstname())
                 ->setLastname($customerShippingAddress->getLastname())
@@ -124,15 +111,44 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
                 ->setPostcode($customerShippingAddress->getPostcode())
                 ->setRegion($customerShippingAddress->getRegion())
                 ->setCity($customerShippingAddress->getCity())
-                ->setCustomerId($customer->getId())
-                ->setShippingMethod($firstMethod)
-                ->setShippingAmount(0)
+                ->setCustomerId($customer->getId());
+        }
+
+        $rates = $shippingAddress->collectShippingRates()
+            ->getGroupedAllShippingRates();
+
+        $firstMethod='';
+        foreach ($rates as $carrier) {
+            foreach ($carrier as $rate) {
+                if ($rate->getCode() == 'freeshipping_freeshipping'){
+                    $firstMethod = $rate->getCode();
+                }
+                $allrates[$rate->getCode()] = $rate->getPrice();
+            }
+        }
+
+
+        if ($firstMethod=='freeshipping_freeshipping') {
+            $shippingAddress->setShippingMethod($firstMethod)->setShippingAmount(0)
                 ->setBaseShippingAmount(0)
                 ->setSubtotalWithDiscount(0)
                 ->setBaseSubtotalWithDiscount(0)
                 ->setShippingInclTax(0);
-
             $quote->setShippingAddress($shippingAddress);
+            $quote->getShippingAddress()->setFreeShipping(1);
+            $quote->setTotalsCollectedFlag(false);
+        } else {
+            //no freeshipiing found use other cheapest
+            asort($allrates);
+            $allrates = array_filter($allrates);
+            foreach($allrates as $key => $price){
+                $shippingAddress->setShippingMethod($key);
+                $quote->setShippingAddress($shippingAddress);
+                $quote->getShippingAddress()->setFreeShipping(0);
+                $quote->setTotalsCollectedFlag(false);
+                break;
+            }
         }
+
     }
 }
