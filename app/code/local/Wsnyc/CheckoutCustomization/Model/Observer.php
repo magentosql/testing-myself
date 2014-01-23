@@ -101,8 +101,9 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
         $customerShippingAddressId = $customer->getDefaultShipping();
         $customerShippingAddress = Mage::getModel('customer/address')->load($customerShippingAddressId);
 
+        $shippingAddress = $quote->getShippingAddress();
+
         if($customerShippingAddressId){
-            $shippingAddress = $quote->getShippingAddress();
             $shippingAddress->setStreet($customerShippingAddress->getStreet())
                 ->setFirstname($customerShippingAddress->getFirstname())
                 ->setLastname($customerShippingAddress->getLastname())
@@ -118,6 +119,7 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
             ->getGroupedAllShippingRates();
 
         $firstMethod='';
+        $allrates = array();
         foreach ($rates as $carrier) {
             foreach ($carrier as $rate) {
                 if ($rate->getCode() == 'freeshipping_freeshipping'){
@@ -126,7 +128,6 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
                 $allrates[$rate->getCode()] = $rate->getPrice();
             }
         }
-
 
         if ($firstMethod=='freeshipping_freeshipping') {
             $shippingAddress->setShippingMethod($firstMethod)->setShippingAmount(0)
@@ -139,7 +140,7 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
             $quote->setTotalsCollectedFlag(false);
         } else {
             //no freeshipiing found use other cheapest
-	    if(!is_array($allrates)){
+	        if(!is_array($allrates)){
                 $allrates = array(''=>'');
             }
             asort($allrates);
