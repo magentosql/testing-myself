@@ -21,6 +21,7 @@ $theme = $this->helper('ultimo');
     <?php if($answers->count()): ?>
     <div class="wsnyc-questionsanswers-question-item">
         <div class="wsnyc-questionsanswers-question-holder">
+            <a name="q<?php echo $question->getId() ?>"></a>
             <div class="wsnyc-questionsanswers-question">
                 <span class="big-letter">Q:</span>
                 <span class="wsnyc-questionsanswers-question-text"><?php echo nl2br($question->getQuestionText()); ?></span>

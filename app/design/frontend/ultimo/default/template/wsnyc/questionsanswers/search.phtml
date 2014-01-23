@@ -1,7 +1,16 @@
 <?php $questions = $this->getQuestions() ?>
+<?php $categoryUrls = array(); ?>
 
 <?php if($questions->count()): ?>
     <?php foreach($questions as $question): ?>
-        <?php echo $question->getQuestionText(); ?><hr/>
+        <div class="search-answer">
+            <?php
+            if(!$categoryUrls[$question->getCategoryId()]){
+                $category =Mage::getModel('wsnyc_questionsanswers/category')->load($question->getCategoryId());
+                $categoryUrls[$question->getCategoryId()] = $category->getUrlRewrite();
+            }
+            ?>
+            <a href="<?php echo $categoryUrls[$question->getCategoryId()]; ?>#q<?php echo $question->getId() ?>"><?php echo $question->getQuestionText(); ?></a>
+        </div>
     <?php endforeach; ?>
 <?php endif; ?>
