@@ -6,7 +6,7 @@ $theme = $this->helper('ultimo');
 ?>
 
 <div class="wsnyc-questionanswers-cartoon-container">
-<div class="wsnyc-questionanswers-cartoon"></div>
+    <div class="wsnyc-questionanswers-cartoon"></div>
 </div>
 
 
@@ -15,22 +15,24 @@ $theme = $this->helper('ultimo');
 <div class="wsnyc-questionsanswers-menu-holder">
     <?php foreach($siblings as $cat): ?>
         <div class="wsnyc-questionsanswers-menu-category">
-            <a href=""><?php echo $cat->getName(); ?></a>
+
+            <a href="<?php echo $cat->getUrlRewrite()?>" class="<?php echo $cat->getId() == $this->getCategoryId() ? 'selected':''?>"><?php echo $cat->getName(); ?></a>
+            <?php //var_dump($cat->debug()); ?>
         </div>
     <?php endforeach; ?>
 </div>
 
 <div class="wsnyc-questionsanswers-breadcrumbs">
-<?php $parent = Mage::getModel('wsnyc_questionsanswers/category')->load($siblings->getFirstItem()->getParentId()); ?>
-<?php $self = Mage::getModel('wsnyc_questionsanswers/category')->load($this->getCategoryId()); ?>
-<a href="<?php echo Mage::getUrl('asklaundress/');?>">Ask the Laundress</a> <span class="wsnyc-questionsanswers-breadcrumbs-sep">&#9658;</span>
-<?php echo $parent->getName(); ?> <span class="wsnyc-questionsanswers-breadcrumbs-sep">&#9658;</span>
-<?php echo $self->getName(); ?>
+    <?php $parent = Mage::getModel('wsnyc_questionsanswers/category')->load($siblings->getFirstItem()->getParentId()); ?>
+    <?php $self = Mage::getModel('wsnyc_questionsanswers/category')->load($this->getCategoryId()); ?>
+    <a href="<?php echo Mage::getUrl('asklaundress/');?>">Ask the Laundress</a> <span class="wsnyc-questionsanswers-breadcrumbs-sep">&#9658;</span>
+    <?php echo $parent->getName(); ?> <span class="wsnyc-questionsanswers-breadcrumbs-sep">&#9658;</span>
+    <?php echo $self->getName(); ?>
 
 </div>
 
 <div id="wsnyc-questionsanswers-question-wrapper">
-<?php foreach($questions as $question): ?>
+    <?php foreach($questions as $question): ?>
     <?php $answers = $question->getAnswersCollection(); ?>
     <?php if($answers->count()): ?>
     <div class="wsnyc-questionsanswers-question-item">
@@ -42,19 +44,30 @@ $theme = $this->helper('ultimo');
             </div>
             <div class="wsnyc-questionsanswers-answer">
                 <span class="big-letter">A:</span><?php foreach($answers as $answer): ?>
-                <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
+                    <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
                 <?php endforeach; ?>
             </div>
             <br/>
-            Social buttons here
+            <!-- AddThis Button BEGIN -->
+            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                <a class="addthis_button_preferred_1"></a>
+                <a class="addthis_button_preferred_2"></a>
+                <a class="addthis_button_preferred_3"></a>
+                <a class="addthis_button_preferred_4"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+            </div>
+            <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52dd8d2772b45f10"></script>
+            <!-- AddThis Button END -->
         </div>
         <div class="wsnyc-questionsanswers-question-products">
             <?php $associatedProducts = $question->getProductsCollection(); ?>
             <?php if($associatedProducts->count()): ?>
-            <h1>Shop the laundress</h1>
-            <?php foreach($associatedProducts as $product): ?>
-                <?php $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$product->getProductSku()); ?>
-                <?php if(!$_product) continue; ?>
+                <h1>Shop the laundress</h1>
+                <?php foreach($associatedProducts as $product): ?>
+                    <?php $_product = Mage::getModel('catalog/product')->loadByAttribute('sku',$product->getProductSku()); ?>
+                    <?php if(!$_product) continue; ?>
                     <div class="wsnyc-questionsanswers-question-product">
                         <img width="<?php echo 200 ?>" height="<?php echo 200 ?>" src="<?php echo $theme->getImgUrl($this, $_product, 200, 200, 'small_image'); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
                         <br/><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
@@ -65,10 +78,8 @@ $theme = $this->helper('ultimo');
                 <?php endforeach;?>
             <?php endif; ?>
         </div>
-    <?php endif; ?>
     </div>
-<hr/>
-<?php endforeach; ?>
+            <hr/>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>
-
-
