@@ -2,6 +2,19 @@
     text-align: center;
 }
 
+.wsnyc-questionanswers-cartoon{
+    width: 393px;
+    height: 1273px;
+    background: url('../images/laundress-cartoon.png') no-repeat left top;
+    left: -400px;
+    position: absolute;
+    
+}
+
+.wsnyc-questionanswers-cartoon-container{
+    position: relative;
+}
+
 
 .wsnyc-questionsanswers-button{
     border:1px solid #ccc;
@@ -47,6 +60,13 @@
     margin-top:20px;
 }
 
+.wsnyc-questionsanswers-category h4{
+    font-size: 24px;
+    font-family: "Sorts Mill Goudy Regular",serif;
+    padding: 20px 0 0 0;
+    line-height: 30px;
+}
+
 .wsnyc-questionsanswers-category img{
     width:287px;
     height:134px;
@@ -56,14 +76,42 @@
     list-style: none;
 }
 
+.wsnyc-questionsanswers-category ul li{
+    margin: 3px 0;
+}
+
+.wsnyc-questionsanswers-category ul a{
+    font-family: 'GillSansMTStd',sans-serif;
+    font-size: 13px;
+    color: #000;
+}
+
+.wsnyc-questionsanswers-answer {
+    margin-top: 15px;
+}
+
 .wsnyc-questionsanswers-question-text{
+    font-family: "Sorts Mill Goudy Regular",serif;
+    font-style: italic;
     font-size:20px;
     font-weight:bold;
 }
 
 .wsnyc-questionsanswers-answer-text{
-    color:#aaa;
+    font-size:18px;
+    color:#666;
     font-weight: normal;
+    font-family: 'GillSansMTStd',sans-serif;
+}
+
+.wsnyc-questionsanswers-featured-question .wsnyc-questionsanswers-question-text{
+    font-family: 'GillSansMTStd',sans-serif;
+    font-style: normal;
+    font-size:16px;
+}
+
+.wsnyc-questionsanswers-featured-answer .wsnyc-questionsanswers-answer-text{
+    font-size:14px;
 }
 
 .wsnyc-questionsanswers-question-item{
@@ -74,11 +122,31 @@
 
 .wsnyc-questionsanswers-menu-holder{
     background-color: #000;
-    margin-top:20px;
+    margin-top:5px;
     display: block;
     padding:10px 0;
+    text-align: center;
+    font-family: 'GillSansMTStd',sans-serif;
+    font-size: 14px;
 }
 
+.wsnyc-questionsanswers-breadcrumbs{
+    margin: 10px 0 0 5px;
+    color: #777;
+    font-family: 'GillSansMTStd',sans-serif;
+    font-size: 14px;
+}
+
+.wsnyc-questionsanswers-breadcrumbs-sep {
+    font-size: 11px;
+}
+
+.wsnyc-questionsanswers-menu-category-parent{
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 15px;
+
+}
 .wsnyc-questionsanswers-menu-category{
     display: inline-block;
     height:20px;
@@ -88,6 +156,9 @@
 .wsnyc-questionsanswers-menu-category a{
     color: #fff;
 }
+.wsnyc-questionsanswers-menu-category a.selected{
+    color: #64b96a;
+}
 
 .wsnyc-questionsanswers-question-holder{
     margin:30px auto;
@@ -95,7 +166,14 @@
 }
 
 .wsnyc-questionsanswers-question-holder .big-letter{
-    font-size:2em;
+    font-size:2.5em;
+    font-family: "Sorts Mill Goudy Regular",serif;
+    font-weight: bold;
+    margin-left: -45px;
+    width: 45px;
+    margin-top: 7px;
+    display: block;
+    float: left;
 }
 
 .wsnyc-questionsanswers-question-products{
@@ -124,13 +202,13 @@
 .wsnyc-questionsanswers-featured-question {
     vertical-align:top;
     display:inline-block;
-    width:43%;
+    width:30%;
     margin-left:10px;
 }
 
 .wsnyc-questionsanswers-featured-answer {
     display:inline-block;
-    width:43%;
+    width:56%;
     margin-left:10px;
 }
 
@@ -138,16 +216,18 @@
     display:inline-block;
     vertical-align:top;
     width:4%;
+    font-family: "Sorts Mill Goudy Regular",serif;
     font-size:4em !important;
-    margin-top:10px;
+    margin-top:20px;
 }
 
 .wsnyc-questionsanswers-featured-question-letter{
     display:inline-block;
     vertical-align:top;
-    margin-top:10px;
+    margin-top:20px;
     width:4%;
     font-size:4em !important;
+    font-family: "Sorts Mill Goudy Regular",serif;
 }
 
 #wsnyc-questionsanswers-featured-prev{
@@ -179,7 +259,24 @@
     margin-left:60px;
 }
 
-/*search page*/
-.search-answer{
-    margin-bottom:15px;
+/*search*/
+.search-question:first-child {
+    border-top: none;
 }
+.search-question {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 4px solid #ccc;
+    font-size: 16px;
+}
+
+.search-answer {
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+h2.questionsanswers-subheading {
+    margin-top: 15px;
+}
+

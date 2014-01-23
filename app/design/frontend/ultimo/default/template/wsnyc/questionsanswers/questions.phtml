@@ -5,6 +5,11 @@ $_helper = $this->helper('catalog/output');
 $theme = $this->helper('ultimo');
 ?>
 
+<div class="wsnyc-questionanswers-cartoon-container">
+<div class="wsnyc-questionanswers-cartoon"></div>
+</div>
+
+
 <?php echo $this->getChildHtml('wsnyc_questionsanswers_topmenu'); ?>
 
 <div class="wsnyc-questionsanswers-menu-holder">
@@ -13,6 +18,15 @@ $theme = $this->helper('ultimo');
             <a href=""><?php echo $cat->getName(); ?></a>
         </div>
     <?php endforeach; ?>
+</div>
+
+<div class="wsnyc-questionsanswers-breadcrumbs">
+<?php $parent = Mage::getModel('wsnyc_questionsanswers/category')->load($siblings->getFirstItem()->getParentId()); ?>
+<?php $self = Mage::getModel('wsnyc_questionsanswers/category')->load($this->getCategoryId()); ?>
+<a href="<?php echo Mage::getUrl('asklaundress/');?>">Ask the Laundress</a> <span class="wsnyc-questionsanswers-breadcrumbs-sep">&#9658;</span>
+<?php echo $parent->getName(); ?> <span class="wsnyc-questionsanswers-breadcrumbs-sep">&#9658;</span>
+<?php echo $self->getName(); ?>
+
 </div>
 
 <div id="wsnyc-questionsanswers-question-wrapper">
