@@ -41,7 +41,6 @@ $questions = $this->getQuestionCollection();
         <?php foreach($questions as $question): ?>
             <div class="item" style="position:relative;">
 
-
                 <?php $answers = $question->getAnswersCollection(); ?>
                 <?php if($answers->count()): ?>
                     <div class="wsnyc-questionsanswers-featured-question-letter">Q</div>
@@ -54,9 +53,7 @@ $questions = $this->getQuestionCollection();
                             <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
                         <?php endforeach; ?>
                         <br/><br/>
-                        <a href="<?php echo Mage::getModel('wsnyc_questionsanswers/category')->load($question->getCategoryId())->getUrlRewrite(); ?>">Read Full Article</a>
-                        <br/><br/>
-                        <div class="wsnyc-questionsanswers-button"><a href="/asklaundress">View Archives</a></div>
+                        <div class="wsnyc-questionsanswers-button"><a href="/asklaundress">View all Ask The Laundress</a></div>
                     </div>
                 <?php endif; ?>
 
