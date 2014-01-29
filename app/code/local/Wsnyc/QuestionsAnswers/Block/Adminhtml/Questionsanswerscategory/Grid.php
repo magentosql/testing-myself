@@ -48,8 +48,15 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswerscategory_Grid exten
 
         $this->addColumn('image',
             array(
-                'header'=> $this->__('Image'),
+                'header'=> $this->__('Index Image'),
                 'index' => 'image'
+            )
+        );
+
+        $this->addColumn('wide_image',
+            array(
+                'header'=> $this->__('Wide Image'),
+                'index' => 'wide_image'
             )
         );
 

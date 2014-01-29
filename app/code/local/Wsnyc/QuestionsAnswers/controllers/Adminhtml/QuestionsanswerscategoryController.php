@@ -56,6 +56,7 @@ class Wsnyc_QuestionsAnswers_Adminhtml_QuestionsanswerscategoryController
     {
         if ($postData = $this->getRequest()->getPost()) {
 
+            //index image
             if($_FILES['image']['name'] != '') {
 
                 try {
@@ -81,7 +82,31 @@ class Wsnyc_QuestionsAnswers_Adminhtml_QuestionsanswerscategoryController
                     unset($postData['image']);
             }
 
+            //wide image
+            if($_FILES['wide_image']['name'] != '') {
 
+                try {
+
+                    $uploader = new Varien_File_Uploader('wide_image');
+                    $uploader->setAllowedExtensions(array('jpg','jpeg','gif','png'));
+                    $uploader->setAllowRenameFiles(false);
+                    $uploader->setFilesDispersion(false);
+
+                    $path = Mage::getBaseDir('media') . DS .'wsnyc_questionsanswers'. DS . 'wide' . DS;
+
+                    $result = $uploader->save($path, $_FILES['wide_image']['name']);
+                } catch (Exception $e) {
+
+                }
+
+                $postData['wide_image'] = $result['file'];
+
+            } else {
+                if(isset($postData['wide_image']['delete']) && $postData['wide_image']['delete'] == 1)
+                    $postData['wide_image'] = '';
+                else
+                    unset($postData['wide_image']);
+            }
 
 
 
@@ -96,6 +121,7 @@ class Wsnyc_QuestionsAnswers_Adminhtml_QuestionsanswerscategoryController
                 if ($model->getParentId() > 0) {
                     $parent = Mage::getModel('wsnyc_questionsanswers/category')->load($model->getParentId());
                     $model->setIdentifier(Mage::getSingleton('wsnyc_questionsanswers/category')->formatUrlKey($parent->getName() . '/' . $model->getName()));
+                    $model->setParentName($parent->getName());
                     $model->save();
                 }
 

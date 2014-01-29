@@ -56,9 +56,17 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswerscategory_Edit_Form
         ));
 
         $fieldset->addField('image', 'image', array(
-            'label'     => Mage::helper('wsnyc_questionsanswers')->__('Category Image'),
+            'label'     => Mage::helper('wsnyc_questionsanswers')->__('Index Category Image'),
             'required'  => false,
             'name'      => 'image',
+            'note' =>'240px wide'
+        ));
+
+        $fieldset->addField('wide_image', 'image', array(
+            'label'     => Mage::helper('wsnyc_questionsanswers')->__('Wide Category Image'),
+            'required'  => false,
+            'name'      => 'wide_image',
+            'note' =>'960px wide'
         ));
 
 

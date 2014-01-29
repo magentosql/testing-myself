@@ -31,6 +31,8 @@ $theme = $this->helper('ultimo');
 
 </div>
 
+<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'wsnyc_questionsanswers/wide/'.$parent->getWideImage() ?>" alt="<?php echo $parent->getName() ?>" />
+
 <div id="wsnyc-questionsanswers-question-wrapper">
     <?php foreach($questions as $question): ?>
     <?php $answers = $question->getAnswersCollection(); ?>
