@@ -121,7 +121,7 @@
 /*questions page*/
 
 .wsnyc-questionsanswers-menu-holder{
-    background-color: #000;
+    border: 3px solid #000;
     margin-top:5px;
     display: block;
     padding:10px 0;
@@ -154,7 +154,7 @@
     margin-right:20px;
 }
 .wsnyc-questionsanswers-menu-category a{
-    color: #fff;
+    color: #000;
 }
 .wsnyc-questionsanswers-menu-category a.selected{
     color: #64b96a;

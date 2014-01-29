@@ -22,6 +22,7 @@ class Wsnyc_QuestionsAnswers_Block_Search
             )->orwhere('answer_text LIKE ?', '%'.$phrase.'%');
 
             $this->setData('questions',$collection);
+            $this->setData('phrase', $phrase);
 
         } else {
             Mage::getSingleton('core/session')->addSuccess($this->__('You have not entered a phrase to search for'));
