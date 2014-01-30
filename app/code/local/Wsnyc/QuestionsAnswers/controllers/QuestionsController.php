@@ -17,7 +17,7 @@ class Wsnyc_QuestionsAnswers_QuestionsController
         $request = $this->getRequest();
         if($request->isPost()){
 
-            $questionText = $request->getParam('ask_title').PHP_EOL.$request->getParam('ask_text');
+            $questionText = $request->getParam('ask_title').PHP_EOL.$request->getParam('question_text');
             $question = Mage::getModel('wsnyc_questionsanswers/question');
 
             try{
