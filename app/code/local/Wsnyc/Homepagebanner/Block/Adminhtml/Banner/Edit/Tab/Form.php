@@ -75,6 +75,21 @@ class Wsnyc_Homepagebanner_Block_Adminhtml_Banner_Edit_Tab_Form
 
         ));
 
+        $fieldset->addField('banner_content_position', 'select', array(
+            'label' => Mage::helper('wsnyc_homepagebanner')->__('Content Position'),
+            'name' => 'banner_content_position',
+            'values' => array(
+                array(
+                    'value' => 1,
+                    'label' => Mage::helper('wsnyc_homepagebanner')->__('Left'),
+                ),
+                array(
+                    'value' => 2,
+                    'label' => Mage::helper('wsnyc_homepagebanner')->__('Right'),
+                ),
+            ),
+        ));
+
         $fieldset->addField('position', 'text', array(
             'label' => Mage::helper('wsnyc_homepagebanner')->__('Position'),
             'required' => true,

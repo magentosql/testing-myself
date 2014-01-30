@@ -85,7 +85,7 @@ class Wsnyc_Homepagebanner_Adminhtml_BannerController
 
     public function saveAction() {
         if ($data = $this->getRequest()->getPost()) {
-            if ($data['filename']['delete'] == 1) {
+            if (array_key_exists('delete', $data['filename']) && $data['filename']['delete'] == 1) {
                 $data['filename'] = '';
             } elseif (is_array($data['filename'])) {
                 $data['filename'] = $data['filename']['value'];
