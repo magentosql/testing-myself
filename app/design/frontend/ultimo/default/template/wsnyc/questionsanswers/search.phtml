@@ -1,0 +1,25 @@
+<?php echo $this->getChildHtml('wsnyc_questionsanswers_topmenu'); ?>
+<?php $questions = $this->getQuestions() ?>
+<?php $categoryUrls = array(); ?>
+
+<h2 class="questionsanswers-subheading">Search results for <em>&quot;<?php echo $this->getPhrase(); ?>&quot;</em></h2>
+<?php if($questions->count()): ?>
+    <?php foreach($questions as $question): ?>
+        <div class="search-answer">
+            <?php
+            if(!isset($categoryUrls[$question->getCategoryId()])){
+                $category =Mage::getModel('wsnyc_questionsanswers/category')->load($question->getCategoryId());
+                $categoryUrls[$question->getCategoryId()] = $category->getUrlRewrite();
+            }
+            ?>
+            <div class="search-question">
+                <a href="<?php echo $categoryUrls[$question->getCategoryId()]; ?>#q<?php echo $question->getId() ?>"><?php echo $question->getQuestionText(); ?></a>
+            </div>
+            <?php foreach ($question->getAnswersCollection() as $answer): ?>
+                <div class="search-answer">
+                    <?php echo $answer->getAnswerText(); ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <asklaundress_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/masonry.pkgd.min.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/category" name="questionsanswers_index_index" template="wsnyc/questionsanswers/index.phtml">
+                <block type="core/template" name="wsnyc_questionsanswers_topmenu" template="wsnyc/questionsanswers/topmenu.phtml"></block>
+            </block>
+        </reference>
+    </asklaundress_index_index>
+    <asklaundress_questions_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/question" name="questionsanswers_questions_index" template="wsnyc/questionsanswers/questions.phtml">
+                <block type="core/template" name="wsnyc_questionsanswers_topmenu" template="wsnyc/questionsanswers/topmenu.phtml"></block>
+            </block>
+        </reference>
+    </asklaundress_questions_index>
+    <asklaundress_questions_ask>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="questionsanswers_questions_ask" template="wsnyc/questionsanswers/askquestion.phtml"></block>
+        </reference>
+    </asklaundress_questions_ask>
+    <asklaundress_questions_search>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="wsnyc_questionsanswers/search" name="questionsanswers_questions_search" template="wsnyc/questionsanswers/search.phtml"></block>
+        </reference>
+    </asklaundress_questions_search>
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/wsnyc_questionsanswers.css</name></action>
+        </reference>
+        <reference name="preface">
+            <block type="wsnyc_questionsanswers/question_featured" name="wsnyc_questionsanswers.carousel" as="question_featured" template="wsnyc/questionsanswers/featured.phtml" after="homepagebanner.carousel">
+            </block>
+        </reference>
+    </cms_index_index>
+</layout>

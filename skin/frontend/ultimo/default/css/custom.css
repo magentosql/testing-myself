@@ -685,6 +685,8 @@ body.checkout-onepage-success .buttons-set{margin:20px}
 #ask-question-submit:hover{background:#64b96a}
 #ask-question-background{background-color:#333;width:100%;height:100%;position:fixed;left:0;top:0;z-index:10000;opacity:.8;display:none}
 #ask_title{width:683px;height:20px;border:1px solid #ddd;margin:0;padding:5px}
+#ask_name{width:683px;height:20px;border:1px solid #ddd;margin:0;padding:5px;margin-bottom: 10px}
+#ask_email{width:683px;height:20px;border:1px solid #ddd;margin:0;padding:5px;margin-bottom: 10px}
 #ask_text{width:683px;height:100px;border:1px solid #ddd;margin:10px 0 0 0;padding:5px}
 .ask-search-sidebar{margin-top:100px}
 .order-info-box{background-color:transparent}

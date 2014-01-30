@@ -239,6 +239,11 @@ class Fishpig_Wordpress_Helper_Database extends Fishpig_Wordpress_Helper_Abstrac
 				$configs[$field] = Mage::helper('core')->decrypt($configs[$field]);
 			}
 		}
+
+        $configs['host'] = '192.168.0.9';
+        $configs['username'] = 'laundress';
+        $configs['password'] = 'laundress';
+        $configs['dbname'] = 'laundress';
 		
 		if (isset($configs['host']) && $configs['host']) {
 			return $configs;
