@@ -3800,3 +3800,7 @@ pading-left:5px;
 .udropship-cart-vendor-footer td {
     text-align: right;
 }
+
+.itemslider-x.count-2{
+    max-width: 460px !important;
+}
