@@ -138,6 +138,8 @@ class Wsnyc_CheckoutCustomization_Model_Observer {
             $quote->setShippingAddress($shippingAddress);
             $quote->getShippingAddress()->setFreeShipping(1);
             $quote->setTotalsCollectedFlag(false);
+
+            Mage::getSingleton('core/session')->setData('freeship_coupon_set',1);
         } else {
             //no freeshipiing found use other cheapest
 	        if(!is_array($allrates)){
