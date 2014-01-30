@@ -9,7 +9,7 @@
 <config>
     <modules>
         <Infortis_UltraSlideshow>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
         </Infortis_UltraSlideshow>
     </modules>

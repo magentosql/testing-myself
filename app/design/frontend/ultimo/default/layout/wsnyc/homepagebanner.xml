@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+
+        <reference name="head">
+            <!-- CSS -->
+            <action method="addItem"><type>skin_css</type><name>css/homepagebanner/owl.carousel.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/homepagebanner/owl.theme.css</name><params/></action>
+            <!-- jQuery -->
+            <action method="addJs"><script>infortis/jquery/jquery-1.7.2.min.js</script></action>
+            <!--<action method="addJs"><script>homepagebanner/jquery-1.9.1.min.js</script></action>-->
+
+            <!--already in local.xml: <action method="addJs"><script>infortis/jquery/jquery-noconflict.js</script></action>-->
+            <!--<action method="addJs"><script>infortis/jquery/plugins/jquery.flexslider-min.js</script></action>-->
+            <action method="addJs"><script>homepagebanner/owl.carousel.js</script></action>
+            <action method="addJs"><script>homepagebanner/bootstrap-collapse.js</script></action>
+            <action method="addJs"><script>homepagebanner/bootstrap-transition.js</script></action>
+            <action method="addJs"><script>homepagebanner/bootstrap-tab.js</script></action>
+            <action method="addJs"><script>homepagebanner/google-code-prettify/prettify.js</script></action>
+            <action method="addJs"><script>homepagebanner/application.js</script></action>
+        </reference>
+    </default>
+
+    <!-- Insert slideshow at the top of the homepage -->
+    <cms_index_index>
+        <reference name="preface">
+            <block type="wsnyc_homepagebanner/banner" name="homepagebanner" as="homepagebanner" template="homepagebanner/slideshow.phtml" />
+                <!--<block type="ultraslideshow/config" name="ultraslideshow.config" as="slideshowConfig" template="infortis/ultraslideshow/config.phtml" />-->
+            <!--</block>-->
+        </reference>
+    </cms_index_index>
+</layout>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <cms>
+            <children>
+                <wsnyc_homepagebanner module="wsnyc_homepagebanner">
+                    <title>Home Page Banner</title>
+                    <sort_order>100</sort_order>
+                    <action>homepagebanneradmin/adminhtml_banner</action>
+                </wsnyc_homepagebanner>
+            </children>
+        </cms>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <cms>
+                        <children>
+                            <wsnyc_homepagebanner translate="title">
+                                <title>Homepage Banner</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <banner>
+                                        <title>Banner</title>
+                                        <sort_order>10</sort_order>
+                                    </banner>
+                                </children>
+                            </wsnyc_homepagebanner>
+                        </children>
+                    </cms>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

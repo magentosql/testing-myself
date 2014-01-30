@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <!-- app/design/adminhtml/default/default/layout/wsnyc/homepagebanner.xml -->
+    <wsnyc_homepagebanner_adminhtml_banner_list>
+        <reference name="content">
+            <block type="wsnyc_homepagebanner/adminhtml_banner"
+                   name="wsnyc_homepagebanner.banner.list" />
+        </reference>
+    </wsnyc_homepagebanner_adminhtml_banner_list>
+    <wsnyc_homepagebanner_adminhtml_banner_edit>
+        <reference name="head">
+            <action method="setCanLoadTinyMce"><flag>1</flag></action>
+        </reference>
+    </wsnyc_homepagebanner_adminhtml_banner_edit>
+
+</layout>

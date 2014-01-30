@@ -148,6 +148,9 @@ abstract class Varien_Data_Form_Element_Abstract extends Varien_Data_Form_Abstra
 
     protected function _escape($string)
     {
+        if(is_array($string)) {
+            return '';
+        }
         return htmlspecialchars($string, ENT_COMPAT);
     }
 
