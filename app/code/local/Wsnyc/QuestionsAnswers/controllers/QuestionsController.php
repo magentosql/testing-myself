@@ -48,8 +48,8 @@ class Wsnyc_QuestionsAnswers_QuestionsController
 
         $emailTemplate  = Mage::getModel('core/email_template')->loadDefault('admin_question_notifier');
         $emailTemplate->setTemplateSubject('New Question in Ask The Laundress!');
-        $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/ident_support/email'));
-        $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/ident_support/name'));
+        $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/email'));
+        $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/name'));
 
         $templateVariables = array();
         $templateVariables['asked_email'] = $question->getAskedEmail();
@@ -57,8 +57,8 @@ class Wsnyc_QuestionsAnswers_QuestionsController
         $templateVariables['question_text'] = $question->getQuestionText();
 
         $emailTemplate->send(
-            Mage::getStoreConfig('trans_email/ident_support/email'),
-            Mage::getStoreConfig('trans_email/ident_support/name'),
+            Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/email'),
+            Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/name'),
             $templateVariables
         );
     }
