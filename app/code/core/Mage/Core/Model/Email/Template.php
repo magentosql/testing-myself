@@ -295,6 +295,11 @@ class Mage_Core_Model_Email_Template extends Mage_Core_Model_Template
      */
     public function isValidForSend()
     {
+        Mage::log(Mage::getStoreConfigFlag('system/smtp/disable'));
+        Mage::log($this->getSenderName());
+        Mage::log($this->getSenderEmail());
+        Mage::log($this->getTemplateSubject());
+
         return !Mage::getStoreConfigFlag('system/smtp/disable')
             && $this->getSenderName()
             && $this->getSenderEmail()

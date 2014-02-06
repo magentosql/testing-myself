@@ -24,11 +24,31 @@
         </layout>
     </frontend>
     <global>
+        <blocks>
+            <wsnyc_questionsanswers>
+                <class>Wsnyc_QuestionsAnswers_Block</class>
+            </wsnyc_questionsanswers>
+        </blocks>
         <helpers>
             <wsnyc_questionsanswers>
                 <class>Wsnyc_QuestionsAnswers_Helper</class>
             </wsnyc_questionsanswers>
         </helpers>
+        <models>
+            <wsnyc_questionsanswers>
+                <class>Wsnyc_QuestionsAnswers_Model</class>
+                <resourceModel>wsnyc_questionsanswers_resource</resourceModel>
+            </wsnyc_questionsanswers>
+            <wsnyc_questionsanswers_resource>
+                <class>Wsnyc_QuestionsAnswers_Model_Resource</class>
+                <entities>
+                    <category><table>wsnyc_questionsanswers_category</table></category>
+                    <question><table>wsnyc_questionsanswers_question</table></question>
+                    <answer><table>wsnyc_questionsanswers_answer</table></answer>
+                    <questionproduct><table>wsnyc_questionsanswers_questionproduct</table></questionproduct>
+                </entities>
+            </wsnyc_questionsanswers_resource>
+        </models>
         <resources>
             <wsnyc_questionsanswers_read>
                 <connection>
@@ -49,27 +69,16 @@
                 </connection>
             </wsnyc_questionsanswers_setup>
         </resources>
-        <models>
-            <wsnyc_questionsanswers>
-                <class>Wsnyc_QuestionsAnswers_Model</class>
-                <resourceModel>wsnyc_questionsanswers_resource</resourceModel>
-            </wsnyc_questionsanswers>
-            <wsnyc_questionsanswers_resource>
-                <class>Wsnyc_QuestionsAnswers_Model_Resource</class>
-                <entities>
-                    <category><table>wsnyc_questionsanswers_category</table></category>
-                    <question><table>wsnyc_questionsanswers_question</table></question>
-                    <answer><table>wsnyc_questionsanswers_answer</table></answer>
-                    <questionproduct><table>wsnyc_questionsanswers_questionproduct</table></questionproduct>
-                </entities>
-            </wsnyc_questionsanswers_resource>
-        </models>
-        <blocks>
-            <wsnyc_questionsanswers>
-                <class>Wsnyc_QuestionsAnswers_Block</class>
-            </wsnyc_questionsanswers>
-        </blocks>
-
+        <template>
+            <email>
+                <admin_question_notifier module="wsnyc_questionsanswers">
+                    <label>Wsnyc QuestionsAnswers Admin Notifier</label>
+                    <!-- app/locale/en_US/template/email/wsnyc_questionsanswers_admin_notifier.html -->
+                    <file>wsnyc_questionsanswers_admin_notifier.html</file>
+                    <type>html</type>
+                </admin_question_notifier>
+            </email>
+        </template>
     </global>
     <admin>
         <routers>
