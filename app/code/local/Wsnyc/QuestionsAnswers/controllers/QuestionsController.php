@@ -26,6 +26,9 @@ class Wsnyc_QuestionsAnswers_QuestionsController
                     ->setAskedName($request->getParam('ask_name'))
                     ->setAskedEmail($request->getParam('ask_email'))
                     ->save();
+
+                $this->_sendEmailToAdmin($question);
+
                 Mage::getSingleton('core/session')->addSuccess($this->__('Your question has been successfully sent'));
             } catch(Exception $e) {
                 Mage::getSingleton('core/session')->addError($this->__('There was an error sending the question, please try again later'));
@@ -39,5 +42,24 @@ class Wsnyc_QuestionsAnswers_QuestionsController
     public function searchAction(){
         $this->loadLayout();
         $this->renderLayout();
+    }
+
+    private function _sendEmailToAdmin(Wsnyc_QuestionsAnswers_Model_Question $question){
+
+        $emailTemplate  = Mage::getModel('core/email_template')->loadDefault('admin_question_notifier');
+        $emailTemplate->setTemplateSubject('New Question in Ask The Laundress!');
+        $emailTemplate->setSenderEmail(Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/email'));
+        $emailTemplate->setSenderName(Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/name'));
+
+        $templateVariables = array();
+        $templateVariables['asked_email'] = $question->getAskedEmail();
+        $templateVariables['asked_name'] = $question->getAskedName();
+        $templateVariables['question_text'] = $question->getQuestionText();
+
+        $emailTemplate->send(
+            Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/email'),
+            Mage::getStoreConfig('trans_email/wsnyc_questionsanswers_admin_notify/name'),
+            $templateVariables
+        );
     }
 }
