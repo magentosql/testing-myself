@@ -280,3 +280,22 @@ h2.questionsanswers-subheading {
     margin-top: 15px;
 }
 
+#questionsanswers-question-ask-form .validation-advice{
+    font-size:10px;
+    margin-bottom:10px;
+}
+
+#ask_name{
+    margin-bottom: 0px !important;
+}
+
+#ask_email{
+    margin-bottom: 0px !important;
+    margin-top: 10px !important;
+}
+
+#ask_title{
+    margin-top: 10px !important;
+}
+
+
