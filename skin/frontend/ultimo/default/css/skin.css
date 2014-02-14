@@ -539,11 +539,10 @@ div.action-box.addto-textlink.clearer {float: left; margin-left: 20px; width: 54
 
 #inline_freeship_colorbox
 {
-    width: 600px;
-    height: 290px;
-    padding: 80px 50px 70px 10px;
-    background: url('../images/2013FreeShipInfo.jpg') top left no-repeat;
-
+    background-repeat:no-repeat;
+    width:566px;
+    height:274px;
+    background-image: url('../images/FreeShippingPopup.jpg');
 }
 
 #cboxClose {display: none}
