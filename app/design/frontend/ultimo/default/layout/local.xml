@@ -536,21 +536,34 @@
 	
 	
 	<!-- CART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<checkout_cart_index>
+        <checkout_cart_index>
+            <reference name="root">
+                <action method="setTemplate"><template>page/1column.phtml</template></action>
+            </reference>
+            <reference name="head">
+                <action method="addCss">
+                    <file>css/wsnyc/checkout.css</file>
+                </action>
+            </reference>
+            <!-- Custom static blocks -->
+            <reference name="checkout.cart">
+                <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
+                <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
 
-		<!-- Custom static blocks -->
-		<reference name="checkout.cart">
-		
-			<block type="cms/block" name="block_cart_below_table">
-                <action method="setBlockId"><block_id>block_cart_below_table</block_id></action>
-            </block>
-			<block type="cms/block" name="block_cart_below_totals">
-                <action method="setBlockId"><block_id>block_cart_below_totals</block_id></action>
-            </block>
-			
-		</reference>
-		
-	</checkout_cart_index>
+                <block type="cms/block" name="block_cart_below_table">
+                    <action method="setBlockId">
+                        <block_id>block_cart_below_table</block_id>
+                    </action>
+                </block>
+                <block type="cms/block" name="block_cart_below_totals">
+                    <action method="setBlockId">
+                        <block_id>block_cart_below_totals</block_id>
+                    </action>
+                </block>
+
+            </reference>
+
+        </checkout_cart_index>
 	
 	
 	<!-- CHECKOUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -903,5 +916,4 @@
             <block type="wsnyc_checkoutcustomization/sales_order_totals_discount" name="onestepcheckout_discount" />
         </reference>
     </sales_email_order_creditmemo_items>
-
 </layout>

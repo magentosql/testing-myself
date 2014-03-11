@@ -1,0 +1,70 @@
+body.checkout-cart-index .breadcrumbs {position: relative; top: 10px;}
+body.checkout-cart-index .cart .above-cart {margin-top: -28px;}
+body.checkout-cart-index .cart .page-title {display: inline-block; margin-left: 259px; margin-top: -35px; background: url('../../images/my-bag.png') no-repeat center center; padding: 0 45px 20px;}
+body.checkout-cart-index .cart .page-title h1 {visibility: hidden;}
+body.checkout-cart-index .cart:before {content: " "; display: block; height: 1px; width: 100%; position: relative; top: 50px; border-bottom: 5px solid black;}
+body.checkout-cart-index .cart form {width: 70%; display: inline-block; float: left; margin-top: 25px;}
+body.checkout-cart-index .cart #discount-coupon-form {width: 273px; margin-left: 15px; background: #f8f8f8; margin-top: 88px; display: block;}
+body.checkout-cart-index .cart #discount-coupon-form .discount-form {border-bottom: 1px solid #ddd; width: 100%;}
+body.checkout-cart-index .cart #discount-coupon-form .discount {padding: 0 10px 10px;}
+body.checkout-cart-index .cart #discount-coupon-form .discount h2 {border-bottom: none; font-family: Arial, Helvetica, sans-serif;}
+body.checkout-cart-index .cart #discount-coupon-form * {max-width: 251px;}
+body.checkout-cart-index .cart #discount-coupon-form .input-box {text-transform: uppercase; width: 67%; display: inline-block; vertical-align: top;}
+body.checkout-cart-index .cart #discount-coupon-form .input-box.two-buttons {width: 45%;}
+body.checkout-cart-index .cart #discount-coupon-form .coupon-messages {font-family: "GillSansMTStd",sans-serif; padding: 10px 10px 0 0; font-size: 0.75rem; text-transform: uppercase;}
+body.checkout-cart-index .cart .totals .totals-inner #shopping-cart-totals-table tbody tr th + td {text-align: right !important;}
+body.checkout-cart-index .cart .cart-collaterals .totals {float: none; margin-left: 10px;}
+body.checkout-cart-index .cart .cart-collaterals .totals th {text-align: left !important; float: none;}
+body.checkout-cart-index .cart .cart-collaterals .totals th + td.a-right {float: right;}
+body.checkout-cart-index .cart #discount-coupon-form .buttons-set {display: inline-block; margin: 0;}
+body.checkout-cart-index .cart #discount-coupon-form .buttons-set button span span {height: 30px; line-height: 30px; padding: 0 15px; font-weight: bold; text-transform: uppercase;}
+body.checkout-cart-index .cart #discount-coupon-form .buttons-set button.one-of-two span span {padding: 0 7px;}
+body.checkout-cart-index .cart #discount-coupon-form .buttons-set button + button.one-of-two span span {padding: 0 5px;}
+body.checkout-cart-index .cart .cart-collaterals {text-transform: uppercase; width: 273px; margin-left: 15px; background: #f8f8f8; padding-top: 0; display: inline-block; margin-top: 0;}
+body.checkout-cart-index .cart .cart-collaterals * {max-width: 252px;}
+body.checkout-cart-index .cart .cart-collaterals .totals {width: 252px; font-weight: normal; font-size: 0.875rem; color: #000;}
+body.checkout-cart-index .cart .cart-collaterals .totals td:last-of-type {padding: 1px 5px 1px 0}
+body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tfoot td {padding: 7px 5px 1px 0; border-top: 1px solid #ddd; }
+body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tfoot strong{font-size: 0.875rem;}
+body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tbody tr:last-child th, body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tbody tr:last-child td {margin-bottom: 5px;}
+body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types button {width: 100%;}
+body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types button + button {margin-top: 10px;}
+body.checkout-cart-index .cart .cart-free-shipping {height: 75px; padding: 11px 25px 20px 13px; border: 10px solid #ddd; font-family: Bitter, georgia, serif; margin: 10px 0 5px;}
+body.checkout-cart-index .cart .cart-free-shipping h3 {font-size: 1.5rem; font-weight: normal;}
+body.checkout-cart-index .cart .cart-free-shipping p {text-transform: none; font-size: 1.2rem;}
+body.checkout-cart-index .item-remove {display: block; color: #000; text-decoration: underline; font-size: 0.75rem; text-transform: uppercase; margin: 40px 0 10px;}
+body.checkout-cart-index .item-remove:hover {text-decoration: none;}
+body.checkout-cart-index .cart-table .standard-items .col-img a {border: none;}
+body.checkout-cart-index .data-table tr th {border: none;}
+body.checkout-cart-index .data-table tr td {border: none;}
+body.checkout-cart-index .data-table tr {background: none;}
+body.checkout-cart-index .data-table tr.product-row > th:first-child, 
+body.checkout-cart-index .data-table tr.product-row > td:first-child,
+body.checkout-cart-index .data-table tr.heading-row > th:first-child, 
+body.checkout-cart-index .data-table tr.heading-row > td:first-child {border-left: 3px solid #ddd;}
+body.checkout-cart-index .data-table tr.product-row > th:last-child, 
+body.checkout-cart-index .data-table tr.product-row > td:last-child, 
+body.checkout-cart-index .data-table tr.heading-row > th:last-child, 
+body.checkout-cart-index .data-table tr.heading-row > td:last-child {border-right: 3px solid #ddd;}
+body.checkout-cart-index .data-table tr.product-row > td {padding-top: 45px;}
+body.checkout-cart-index .data-table tr.product-row > td:first-child {padding-top: 15px;}
+body.checkout-cart-index .data-table .udropship-cart-vendor-header {border: 3px solid #ddd; border-left: none; border-right: none;}
+body.checkout-cart-index .data-table .udropship-cart-vendor-header:first-child {border-top: none;}
+body.checkout-cart-index .data-table tr.product-row .col-img {position: relative;}
+body.checkout-cart-index .data-table tr.product-row .col-img:before {content: " "; display: block; border-top: 1px solid #ddd; width: 640px; height: 1px; position: absolute; top: 0; left: 14px;}
+body.checkout-cart-index .heading-row th {text-transform: uppercase; font-size: 0.75rem;}
+body.checkout-cart-index .heading-row th:nth-child(2) {display: inline-block;width: 65px;}
+body.checkout-cart-index .heading-row th:first-child {padding-left: 65px;}
+body.checkout-cart-index .data-table tr.product-row .product-name {text-transform: uppercase;}
+body.checkout-cart-index .data-table tr.product-row.last {border-bottom: 3px solid #ddd;}
+body.checkout-cart-index .data-table .udropship-cart-vendor-header h3 {font-size: 1rem; font-weight: normal; padding-top: 30px;}
+body.checkout-cart-index .data-table .udropship-cart-vendor-header td {padding-left: 0;}
+body.checkout-cart-index .bottom-totals {font-family: "GillSansMTStd",sans-serif;  font-size: 1rem; text-align: right;}
+body.checkout-cart-index .bottom-totals .bottom-totals-first-row {padding: 10px 17px;}
+body.checkout-cart-index .bottom-totals .bottom-totals-second-row {background: #f8f8f8; font-weight: bold; padding: 10px 17px; font-size: 1.1rem;}
+body.checkout-cart-index .bottom-totals .bottom-totals-first-row > span:first-child {margin-right: 40px;}
+body.checkout-cart-index .bottom-totals .bottom-totals-second-row > span:first-child {margin-right: 36px; text-transform: uppercase;}
+body.checkout-cart-index .bottom-totals .price {margin-right: 0;}
+body.checkout-cart-index .cart.empty-cart .page-title {display: block; background: url('../../images/my-bag.png') no-repeat center center; padding: 0 45px 20px; margin: -35px auto 0px !important;}
+body.checkout-cart-index  .block_cart_below_totals p {padding: 0 0 10px 15px; font-size: 0.7rem;}
+

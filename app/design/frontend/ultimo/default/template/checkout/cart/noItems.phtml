@@ -26,44 +26,32 @@
 ?>
 
 <div class="cart empty-cart">
-	<form action="#" method="post">
-		<fieldset>
-			<table id="shopping-cart-table" class="data-table cart-table">
-				<thead>
-					<tr>
-						<th class="col-img" rowspan="<?php echo $mergedCells; ?>">
-							<?php if($this->getContinueShoppingUrl()): ?>
-								<button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('<&nbsp;&nbsp;Continue Shopping') ?></span></span></button>
-							<?php endif; ?>
-						</th>
-						<th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"></span></th>
-						<th class="col-edit" rowspan="<?php echo $mergedCells; ?>"></th>
-						<th class="col-unit-price a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"></span></th>
-						<th rowspan="<?php echo $mergedCells; ?>" class="a-center"></th>
-						<th class="a-center" colspan="<?php echo $mergedCells; ?>"></th>
-						<th class="col-delete a-center" rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
-					</tr>
-				</thead>
-				
-				<tbody class="standard-items">
-					<tr class="standard-title-spacer">
-						<td colspan="50"></td>
-					</tr>
-				</tbody>
-			
-			</table>
-		</fieldset>
-	</form>
-	<div class="empty-cart-message">
-		<h2>START SHOPPING!</h2>
-		<p>Your shopping bag is empty</p>
-	</div>
-	<div class="cart-collaterals">
-		<div class="cart-promo-1">
-			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cart_promo_empty_block1')->toHtml() ?>
-		</div>
-		<div class="cart-promo-2">
-			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cart_promo_empty_block2')->toHtml() ?>
-		</div>
-	</div>
+        <div class="above-cart">
+    </div>
+        <div class="page-title"><h1>My Bag</h1></div>
+    <form action="#" method="post">
+        <fieldset>
+            <table id="shopping-cart-table" class="data-table cart-table">
+
+                <tbody class="standard-items">
+                    <tr class="standard-title-spacer">
+                        <td colspan="50"></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </fieldset>
+    </form>
+    <div class="empty-cart-message">
+        <h2>START SHOPPING!</h2>
+        <p>Your shopping bag is empty</p>
+    </div>
+    <div class="cart-collaterals">
+        <div class="cart-promo-1">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cart_promo_empty_block1')->toHtml() ?>
+        </div>
+        <div class="cart-promo-2">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cart_promo_empty_block2')->toHtml() ?>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_CartCouponCodeMessages>
+            <version>0.1.0</version>
+        </Wsnyc_CartCouponCodeMessages>
+    </modules>
+    <global>
+        <helpers>
+            <cartcouponcodemessages>
+                <class>Wsnyc_CartCouponCodeMessages_Helper</class>
+            </cartcouponcodemessages>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <checkout>
+                <use>standard</use>
+                <args>
+                    <modules>
+                        <Wsnyc_CartCouponCodeMessages before="Mage_Checkout">Wsnyc_CartCouponCodeMessages_Checkout</Wsnyc_CartCouponCodeMessages>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+    </frontend>
+</config> 
