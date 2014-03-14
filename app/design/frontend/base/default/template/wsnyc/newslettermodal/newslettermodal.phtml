@@ -1,0 +1,95 @@
+<?php $block = Mage::getModel('cms/block')->load('newsletter-info'); ?>
+<?php if($block->getIsActive()): ?>
+    <?php $cookie = Mage::getSingleton('core/cookie'); ?>
+    <?php $cookie->set('newsletter-info', '1' ,time()+31536000,'/'); ?>
+        <div style='display:none'>
+        <div id="inline_newsletter_colorbox" class="newsletter-popup">
+            <div>
+                <div>
+            <div class="logo-wrapper v-item">
+                <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
+            </div>
+            <div class="newsletter-cms-content"><?php echo $block->getContent() ?></div>
+
+            <!-- Begin MailChimp Signup Form -->
+            <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+            <div id="mc_embed_signup">
+                <form action="http://thelaundress.us6.list-manage2.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=e78a29d4ea" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div class="mc-field-group">
+                        <label for="mce-FNAME">First Name </label>
+                        <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="mce-LNAME">Last Name </label>
+                        <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+                    </div>
+                    <div class="mc-field-group">
+                        <label for="dummy-email">Email
+                        </label>
+                        <input type="email" class="required email" id="dummy-email" />
+                        <div class="email-error-message"><?php echo $this->__('Please enter a valid email address'); ?></div>
+                        <span class="real-email-wrapper"><input type="hidden" name="EMAIL" value="" class="required email" id="mce-EMAIL"></span>
+                    </div>
+                    <div id="mce-responses" class="clear" >
+                        <div class="response" id="mce-error-response" style="display:none"></div>
+                        <div class="response" id="mce-success-response" style="display:none"></div>
+                    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;"><input type="text" name="b_d3d48e75efd637e646b0beb3c_e78a29d4ea" value=""></div>
+                    <div class="clear">
+                        <button class="button no-thanks-button" onclick="jQuery.colorbox.close(); return false;"><?php echo $this->__('No thanks') ?></button>
+                        <input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button">
+                    </div>
+                </form>
+                
+            </div>
+            <div class="newsletter-icon-set">
+                <a href="http://www.pinterest.com/thelaundressny/"><i class="fa fa-pinterest"></i></a>
+                <a href="https://www.facebook.com/thelaundressnyc"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/TheLaundressNY"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.youtube.com/user/TheLaundressnyc"><i class="fa fa-youtube"></i></a>
+                <a href="http://blog.thelaundress.com/wordpress/"><i class="fa fa-rss"></i></a>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $(".openNewsletterPopup").colorbox({
+                inline  : true,
+                opacity : 0.5,
+                speed   : 300,
+                width   : 760,
+                height  : 470,
+                closeButton : true,
+                className: 'newsletter-colorbox'
+            });
+
+            <?php if(!$cookie->get('newsletter-info')): ?>$('.openNewsletterPopup').click();<?php endif; ?>
+        });
+        
+        jQuery('#dummy-email').blur(function() {
+            jQuery('.real-email-wrapper').html('<input type="hidden" name="EMAIL" value="' + jQuery('#dummy-email').val() + '" class="required email" id="mce-EMAIL">')
+        });
+        
+        jQuery('#mc-embedded-subscribe').click(function() {
+            if(!validateEmail(jQuery('#dummy-email').val())) {
+                jQuery('.email-error-message').css('visibility', 'visible');
+                return false;
+            } else {
+                
+                jQuery('#cboxContent .newsletter-cms-content').html('<img class="thank-you-message" src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/newsletter-thankyou.png" alt="<?php echo $this->__('Thank you for subscribing!'); ?>" /><button class="button thanks-button" onclick="jQuery.colorbox.close(); return false;"><?php echo $this->__('Close'); ?></button>');
+                jQuery('#cboxContent .clear').hide();
+                jQuery('#cboxContent .mc-field-group').hide();
+                jQuery('#cboxContent .#mce-responses').html('');
+            }
+        });
+        function validateEmail(email) { 
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        } 
+    </script>
+<?php endif; ?>
+
+    

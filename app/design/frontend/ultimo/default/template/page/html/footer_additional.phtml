@@ -5,9 +5,9 @@
 ?>
 
 <?php
-	//Get grid configuration array
-	$theme = $this->helper('ultimo');
-	$gc = $theme->getCfgGroup('category_grid');
+    //Get grid configuration array
+    $theme = $this->helper('ultimo');
+    $gc = $theme->getCfgGroup('category_grid');
 ?>
 
 
@@ -18,272 +18,272 @@
 
     jQuery(function($) {
         var $doc = $(document)
-        
-        $.fn.foundationCustomForms      ? $doc.foundationCustomForms() : null;                        
-        $.fn.hoverBanner()              ? jQuery('.page-banners .banner a').hoverBanner() : null;                
-        
+
+        $.fn.foundationCustomForms      ? $doc.foundationCustomForms() : null;
+        $.fn.hoverBanner()              ? jQuery('.page-banners .banner a').hoverBanner() : null;
+
     });
 
 </script>
 
-<script type="text/javascript">                                
-        
-	<?php //Products grid: set equal height for grid items ?>
-	<?php if ($gc['equal_height']): ?>
-	function setGridItemsEqualHeight($)
-	{
-		var SPACING = 20;
-		if ($(window).width() >= 480)
-		{
-			$('.category-products-grid').removeClass("auto-height");
-			
-			var gridItemMaxHeight = 0;
-			$('.category-products-grid > .item').each(function() {
-				$(this).css("height", "auto");
-				
-				////////////////////////////////////////////////////////////////
-				<?php if ($gc['display_addtocart'] == 2 || $gc['display_addtolinks'] == 2): ?>
-					var actionsHeight = $(this).find('.actions').height();
-					$(this).css("padding-bottom", (actionsHeight + SPACING) + "px"); //Set new padding
-				<?php endif; ?>
-				////////////////////////////////////////////////////////////////
-				
-				gridItemMaxHeight = Math.max(gridItemMaxHeight, $(this).height());
-			});
-			
-			//Apply max height
-			$('.category-products-grid > .item').css("height", gridItemMaxHeight + "px");
-		}
-		else
-		{
-			$('.category-products-grid').addClass("auto-height");
-			$('.category-products-grid > .item').css("height", "auto");
-			$('.category-products-grid > .item').css("padding-bottom", "20px");
-		}
-	}
-	<?php endif; ?>
-	
-	<?php //Mobile menu ?>
-	function activateMobileMenu($)
-	{
-		if ($(window).width() < 960)
-		{
-			$('#mobnav').show();
-			$('.vertnav-top').addClass('mobile');
-			$('#nav').addClass('mobile');
-		}
-		else
-		{
-			$('#nav').removeClass('mobile');
-			$('.vertnav-top').removeClass('mobile');
-			$('#mobnav').hide();
-		}
-	}
-	
-	
+<script type="text/javascript">
 
-	jQuery(function($) {
-		
-		// Add class to every 3rd post list so we can remove padding without using CSS3 (IE8 Support)
-		$('body.wordpress-post-category-view .grid4-3 .post-list li:nth-child(3n+3)').addClass('row-end');
-		$('body.wordpress-post-customtype-view .in-col1 .post-list li:nth-child(4n+4)').addClass('row-end');
-		$('body.wordpress-post-category-view .in-col1 .post-list li:nth-child(4n+4)').addClass('row-end'); 
-		                                              
+    <?php //Products grid: set equal height for grid items ?>
+    <?php if ($gc['equal_height']): ?>
+    function setGridItemsEqualHeight($)
+    {
+        var SPACING = 20;
+        if ($(window).width() >= 480)
+        {
+            $('.category-products-grid').removeClass("auto-height");
+
+            var gridItemMaxHeight = 0;
+            $('.category-products-grid > .item').each(function() {
+                $(this).css("height", "auto");
+
+                ////////////////////////////////////////////////////////////////
+                <?php if ($gc['display_addtocart'] == 2 || $gc['display_addtolinks'] == 2): ?>
+                    var actionsHeight = $(this).find('.actions').height();
+                    $(this).css("padding-bottom", (actionsHeight + SPACING) + "px"); //Set new padding
+                <?php endif; ?>
+                ////////////////////////////////////////////////////////////////
+
+                gridItemMaxHeight = Math.max(gridItemMaxHeight, $(this).height());
+            });
+
+            //Apply max height
+            $('.category-products-grid > .item').css("height", gridItemMaxHeight + "px");
+        }
+        else
+        {
+            $('.category-products-grid').addClass("auto-height");
+            $('.category-products-grid > .item').css("height", "auto");
+            $('.category-products-grid > .item').css("padding-bottom", "20px");
+        }
+    }
+    <?php endif; ?>
+
+    <?php //Mobile menu ?>
+    function activateMobileMenu($)
+    {
+        if ($(window).width() < 960)
+        {
+            $('#mobnav').show();
+            $('.vertnav-top').addClass('mobile');
+            $('#nav').addClass('mobile');
+        }
+        else
+        {
+            $('#nav').removeClass('mobile');
+            $('.vertnav-top').removeClass('mobile');
+            $('#mobnav').hide();
+        }
+    }
+
+
+
+    jQuery(function($) {
+
+        // Add class to every 3rd post list so we can remove padding without using CSS3 (IE8 Support)
+        $('body.wordpress-post-category-view .grid4-3 .post-list li:nth-child(3n+3)').addClass('row-end');
+        $('body.wordpress-post-customtype-view .in-col1 .post-list li:nth-child(4n+4)').addClass('row-end');
+        $('body.wordpress-post-category-view .in-col1 .post-list li:nth-child(4n+4)').addClass('row-end');
+
         $('body.blog-as-seen-in .post-list li:nth-child(2n+2)').addClass('row-end');
         $('body.blog-as-seen-in .post-list li:nth-child(3n+3)').removeClass('row-end');
-        
-        // Mailchimp AJAX
-		var $newsletterForm = $('#mc-embedded-subscribe-form');
 
-		$('#mc-embedded-subscribe-form button[type="submit"]').click(function(e){
-			e.preventDefault();
-			if($('#mc-embedded-subscribe-form input').val().length == 0 ){
-     
-			} else {
-				$.ajax({
-					type: $newsletterForm.attr('method'),
-			        url: $newsletterForm.attr('action'),
-			        data: $newsletterForm.serialize(),
-			        cache: false,
-			        dataType: 'json',
-			        contentType: "application/json; charset=utf-8",
-			        error: function(err) {alert('Please try again later.');},
-			        success: function(data){
-				        if(data.result != "success") {
-				        	responseMsg = data.msg.slice(4);
-					        alert(responseMsg);
-				        } else {
-					        $('#mc-embedded-subscribe-form input.input-text').val('').attr("placeholder", "Thank you for subscribing!");
-				        }
-			        }
-		        });
-	        }
-	        
+        // Mailchimp AJAX
+        var $newsletterForm = $('#mc-embedded-subscribe-form');
+
+        $('#mc-embedded-subscribe-form button[type="submit"]').click(function(e){
+            e.preventDefault();
+            if($('#mc-embedded-subscribe-form input').val().length == 0 ){
+
+            } else {
+                $.ajax({
+                    type: $newsletterForm.attr('method'),
+                    url: $newsletterForm.attr('action'),
+                    data: $newsletterForm.serialize(),
+                    cache: false,
+                    dataType: 'json',
+                    contentType: "application/json; charset=utf-8",
+                    error: function(err) {alert('Please try again later.');},
+                    success: function(data){
+                        if(data.result != "success") {
+                            responseMsg = data.msg.slice(4);
+                            alert(responseMsg);
+                        } else {
+                            $('#mc-embedded-subscribe-form input.input-text').val('').attr("placeholder", "Thank you for subscribing!");
+                        }
+                    }
+                });
+            }
+
         });
-        
+
         // Blog Slidebar level 2
         $('.blog .sidebar ul.level1 li.active').next('ul.level2').css('display','block')
-                
-		<?php //Activate mobile menu ?>
-		activateMobileMenu(jQuery);
-		
-		<?php //Toggle mobile menu ?>
-		$('#mobnav-trigger').toggle(function() {
-			$(this).addClass('active');
-			$('.vertnav-top').addClass('show');
-		}, function() {
-			$(this).removeClass('active');
-			$('.vertnav-top').removeClass('show');
-		});                          
-                
-		<?php //Drop-dowm main menu ?>
-		$("#nav > li").hover(function() {
-			$(this).find(".level0").stop(true, true).delay(150).fadeIn(300, "easeOutCubic");
-		}, function() {
-			$(this).find(".level0").stop(true, true).delay(150).fadeOut(300, "easeInCubic");
-		});
-		
-		<?php //Mini-cart drop-down ?>
-		$("#mini-cart").hover(function() {
-			$(this).addClass('hover');
-			$("#mini-cart .block-content").stop(true, true).delay(300).fadeIn(500, "easeOutCubic");
-		}, function() {
-			$("#mini-cart .block-content").stop(true, true).delay(300).fadeOut(500, "easeInCubic");
-		});
-		
-		<?php //Drop-down button animation: on click and on hover ?>
-		$(".dropdown-button").mouseenter(function() {
-			$(this).click();
-		});
-		$(".dropdown-button").click(function() {
-			$(this).addClass('hover');
-			var el = $(this).find("ul");
-			if ($(window).width() >= 480)
-				el.stop(true, true).delay(300).fadeIn(500, "easeOutCubic");
-			else
-				el.show();
 
-			//Positionning
-			var x = el.offset().left;
-			if (x < 0)
-			{
-				var space = $(this).offset().left;
-				el.css("left", (-1)*space);
-				el.css("right", "auto");
-			}
-		}).mouseleave(function() {			
-			var el = $(this).find("ul");
-			if ($(window).width() >= 480)
-				el.stop(true, true).delay(300).fadeOut(500, "easeInCubic");
-			else
-				el.hide();
-			el.css("left", "");
-			el.css("right", "");
-		});
-		
-		<?php //Back to top ?>
-		$(window).scroll(function(){
-			if ($(this).scrollTop() > 500)
-			{
-				$('.scroll-to-top').fadeIn();
-			}
-			else
-			{
-				$('.scroll-to-top').fadeOut();
-			}
-		});
-		$('.scroll-to-top').click(function(){
-			$("html, body").animate({scrollTop: 0}, 600, "easeOutCubic");
-			return false;
-		});
-		
-		<?php //Washing Service Fade in ?>
-		$(".select-type a").click(function(e){
-			e.preventDefault();
-			
-			//Don't continue if the section is already selected
-			if($(this).hasClass('active')){
-				return;
-			}
-			
-			$(".select-type a").removeClass('active');
-			$(".select-type a h5").removeClass('check');
-			
-			$(this).addClass('active');
-			$(this).children('h5').addClass('check');
-			
-			$('.select-quantity > div').css('display', 'none');
-			
-			if($(this).hasClass('clothing') || $(this).hasClass('clothing-and-household')){
-				$('.clothing-section').fadeIn();
-			}
-			
-			if($(this).hasClass('household') || $(this).hasClass('clothing-and-household')){
-				$('.household-section').fadeIn();
-			}
-			
-			$('.washing-subtotal').fadeIn();
-			$('.select-quantity > h3').fadeIn();
-			
-		});
+        <?php //Activate mobile menu ?>
+        activateMobileMenu(jQuery);
+
+        <?php //Toggle mobile menu ?>
+        $('#mobnav-trigger').toggle(function() {
+            $(this).addClass('active');
+            $('.vertnav-top').addClass('show');
+        }, function() {
+            $(this).removeClass('active');
+            $('.vertnav-top').removeClass('show');
+        });
+
+        <?php //Drop-dowm main menu ?>
+        $("#nav > li").hover(function() {
+            $(this).find(".level0").stop(true, true).delay(150).fadeIn(300, "easeOutCubic");
+        }, function() {
+            $(this).find(".level0").stop(true, true).delay(150).fadeOut(300, "easeInCubic");
+        });
+
+        <?php //Mini-cart drop-down ?>
+        $("#mini-cart").hover(function() {
+            $(this).addClass('hover');
+            $("#mini-cart .block-content").stop(true, true).delay(300).fadeIn(500, "easeOutCubic");
+        }, function() {
+            $("#mini-cart .block-content").stop(true, true).delay(300).fadeOut(500, "easeInCubic");
+        });
+
+        <?php //Drop-down button animation: on click and on hover ?>
+        $(".dropdown-button").mouseenter(function() {
+            $(this).click();
+        });
+        $(".dropdown-button").click(function() {
+            $(this).addClass('hover');
+            var el = $(this).find("ul");
+            if ($(window).width() >= 480)
+                el.stop(true, true).delay(300).fadeIn(500, "easeOutCubic");
+            else
+                el.show();
+
+            //Positionning
+            var x = el.offset().left;
+            if (x < 0)
+            {
+                var space = $(this).offset().left;
+                el.css("left", (-1)*space);
+                el.css("right", "auto");
+            }
+        }).mouseleave(function() {
+            var el = $(this).find("ul");
+            if ($(window).width() >= 480)
+                el.stop(true, true).delay(300).fadeOut(500, "easeInCubic");
+            else
+                el.hide();
+            el.css("left", "");
+            el.css("right", "");
+        });
+
+        <?php //Back to top ?>
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 500)
+            {
+                $('.scroll-to-top').fadeIn();
+            }
+            else
+            {
+                $('.scroll-to-top').fadeOut();
+            }
+        });
+        $('.scroll-to-top').click(function(){
+            $("html, body").animate({scrollTop: 0}, 600, "easeOutCubic");
+            return false;
+        });
+
+        <?php //Washing Service Fade in ?>
+        $(".select-type a").click(function(e){
+            e.preventDefault();
+
+            //Don't continue if the section is already selected
+            if($(this).hasClass('active')){
+                return;
+            }
+
+            $(".select-type a").removeClass('active');
+            $(".select-type a h5").removeClass('check');
+
+            $(this).addClass('active');
+            $(this).children('h5').addClass('check');
+
+            $('.select-quantity > div').css('display', 'none');
+
+            if($(this).hasClass('clothing') || $(this).hasClass('clothing-and-household')){
+                $('.clothing-section').fadeIn();
+            }
+
+            if($(this).hasClass('household') || $(this).hasClass('clothing-and-household')){
+                $('.household-section').fadeIn();
+            }
+
+            $('.washing-subtotal').fadeIn();
+            $('.select-quantity > h3').fadeIn();
+
+        });
 
         function updateWashingItemsPrice()
         {
            var sum = 0;
-           
+
            $('.qty').each(function() {
 
                  if($(this).attr('id'))
                  {
-                     var id = $(this).attr('id').substr(9);    
+                     var id = $(this).attr('id').substr(9);
                      var qty =  $('#item_qty_' + id).text();
                      if(qty > 0)
                      {
-                          var price =  $('#item_price_' + id).val(); 
+                          var price =  $('#item_price_' + id).val();
                           sum +=  price * qty;
                      }
                  }
            });
-		   
-		   if(sum > 0) {
-			   	$(".washing-subtotal button").fadeIn();
-	        } else if(sum == 0) {
-	            $(".washing-subtotal button").fadeOut();
-	        }
-		   
+
+           if(sum > 0) {
+                   $(".washing-subtotal button").fadeIn();
+            } else if(sum == 0) {
+                $(".washing-subtotal button").fadeOut();
+            }
+
            $('.subtotal span').text("$" + sum + ".00");
-           
+
         }
-        
+
         function updateWashingItemSubtotal(id,qty,price) {
-        	var subtotal = qty * price;
-        	if (subtotal > 999) {
-	        	$('#item_subtotal_' + id).css('font-size','12px');
-        	} else {
-	        	$('#item_subtotal_' + id).css('font-size','14px');
-        	}
-        	
-	        $('#item_subtotal_' + id).text("$" + subtotal);
+            var subtotal = qty * price;
+            if (subtotal > 999) {
+                $('#item_subtotal_' + id).css('font-size','12px');
+            } else {
+                $('#item_subtotal_' + id).css('font-size','14px');
+            }
+
+            $('#item_subtotal_' + id).text("$" + subtotal);
         }
-		
-		<?php //Washing Service Product Selector ?>
-		$(".plus").click(function(e){
-			e.preventDefault();
+
+        <?php //Washing Service Product Selector ?>
+        $(".plus").click(function(e){
+            e.preventDefault();
             var id = $(this).attr('id').substr(10);
             var qty =  $('#item_qty_' + id).text();
             var price =  $('#item_price_' + id).val();
-            
+
             qty++;
             $('#item_qty_' + id).text(qty);
             $('#item_' + id + '_qty').val(qty);
-            
+
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
-		});
+        });
 
-		$(".minus").click(function(e){
-			e.preventDefault();
-	        var id = $(this).attr('id').substr(11);
+        $(".minus").click(function(e){
+            e.preventDefault();
+            var id = $(this).attr('id').substr(11);
             var qty =  $('#item_qty_' + id).text();
             var price =  $('#item_price_' + id).val();
             qty--;
@@ -293,10 +293,10 @@
             }
             $('#item_qty_' + id).text(qty);
             $('#item_' + id + '_qty').val(qty);
-            
+
             updateWashingItemSubtotal(id,qty,price);
             updateWashingItemsPrice();
-		});
+        });
 
 
                 var washingItemsRequests = 0;
@@ -307,7 +307,7 @@
                 {
 
                     setTimeout(function(){ window.location = '/checkout/cart/'; },2000);
-                     
+
                 }
 
 
@@ -326,13 +326,13 @@
                            postBody: params,
                            parameters: params,
                            onException: function (xhr, e){
-                               
+
                                washingItemsRequests--;
                             },
                             onComplete: washingItemRequestComplete()
                     });
                 }
-		
+
         <?php //Washing Service Add to cart ?>
             $(".washing-subtotal button").click(function(e){
                 e.preventDefault();
@@ -354,7 +354,7 @@
                              }
                          }
                    });
-                   <?php 
+                   <?php
                     $additional = array();
                     if(Mage::app()->getRequest()->isSecure()){
                         $additional = array('_secure'=>true);
@@ -363,205 +363,205 @@
                    washingAddToCart('<?php echo Mage::getUrl("washingservice/cart/add",$additional) ?>?' + params.join('&'));
             });
 
-		
-		<?php //Products grid: item on hover ?>
-		<?php if ($gc['hover_effect']): ?>
-		
-			var startHeight;
-			var bpad;
-			$('.category-products-grid > .item').hover(function() {
 
-				startHeight = $(this).height();
-				$(this).css("height", "auto"); //Release height
-				$(this).find(".display-onhover").fadeIn(400, "easeInCubic"); //Show elements visible on hover
-				var h2 = $(this).height();
-				
-				<?php //Compare start height with on-hover height, calculate the difference ?>
-				////////////////////////////////////////////////////////////////
-				var addtocartHeight = 0;
-				var addtolinksHeight = 0;
-				
-				<?php if ($gc['display_addtocart'] == 1): //if displayed on hover ?>
-					addtocartHeight = $(this).find('.btn-cart').height();
-				<?php endif; ?>
-				
-				<?php if ($gc['display_addtolinks'] == 1): //if displayed on hover (but when is NOT on image) ?>
-					var addtolinksEl = $(this).find('.add-to-links');
-					if (addtolinksEl.hasClass("addto-onimage") == false)
-						addtolinksHeight = addtolinksEl.height();
-				<?php endif; ?>
-				
-				<?php if ($gc['equal_height']
-					&& ($gc['display_addtocart'] == 1 || $gc['display_addtolinks'] == 1)):
-				?>
-					var h3 = h2 + addtocartHeight + addtolinksHeight;
-					var diff = 0;
-					if (h3 < startHeight)
-					{
-						$(this).height(startHeight);
-					}
-					else
-					{
-						$(this).height(h3); <?php //Apply height explicitly ?>
-						diff = h3 - startHeight;
-					}
-				<?php else: ?>
-					var diff = 0;
-					if (h2 < startHeight)
-					{
-						$(this).height(startHeight);
-					}
-					else
-					{
-						$(this).height(h2);
-						diff = h2 - startHeight;
-					}
-				<?php endif; ?>
-				////////////////////////////////////////////////////////////////
+        <?php //Products grid: item on hover ?>
+        <?php if ($gc['hover_effect']): ?>
 
-				$(this).css("margin-bottom", "-" + diff + "px"); <?php //Apply difference as nagative margin ?>
-				
-			}, function() {
-				
-				//Clean up
-				$(this).find(".display-onhover").hide();
-				$(this).css("margin-bottom", "");
+            var startHeight;
+            var bpad;
+            $('.category-products-grid > .item').hover(function() {
 
-				<?php //Return the default height. If "Egual Height" disabled, unset item's height. ?>
-				<?php if ($gc['equal_height']): ?>
-					$(this).height(startHeight);
-				<?php else: ?>
-					$(this).css("height", "");
-				<?php endif; ?>
-				
-			});
-		
-		<?php else: ?>
-		
-			<?php //Display elements visible on hover ?>
-			$('.category-products-grid > .item').hover(function() {
-				$(this).find(".display-onhover").fadeIn(400, "easeInCubic");
-			}, function() {
-				$(this).find(".display-onhover").hide();
-			});
-		
-		<?php endif; ?>		
-                
-		/* On resize */
-		var t;
-		$(window).resize(function() {
-			clearTimeout(t);
-			t = setTimeout(function() {
+                startHeight = $(this).height();
+                $(this).css("height", "auto"); //Release height
+                $(this).find(".display-onhover").fadeIn(400, "easeInCubic"); //Show elements visible on hover
+                var h2 = $(this).height();
 
-				<?php //Products grid: equal height of items ?>
-				<?php if ($gc['equal_height']): ?>
-					setGridItemsEqualHeight($);
-				<?php endif; ?>
-				
-				<?php //Itemsliders rollback ?>
-				$('.itemslider').each(function(index){
-					var s = $(this).data('flexslider');
-					if (s != null) s.flexAnimate(0);
-				});
-				
-				<?php //Activate mobile menu ?>
-				activateMobileMenu($);
-				
-			}, 100);
-		});
+                <?php //Compare start height with on-hover height, calculate the difference ?>
+                ////////////////////////////////////////////////////////////////
+                var addtocartHeight = 0;
+                var addtolinksHeight = 0;
+
+                <?php if ($gc['display_addtocart'] == 1): //if displayed on hover ?>
+                    addtocartHeight = $(this).find('.btn-cart').height();
+                <?php endif; ?>
+
+                <?php if ($gc['display_addtolinks'] == 1): //if displayed on hover (but when is NOT on image) ?>
+                    var addtolinksEl = $(this).find('.add-to-links');
+                    if (addtolinksEl.hasClass("addto-onimage") == false)
+                        addtolinksHeight = addtolinksEl.height();
+                <?php endif; ?>
+
+                <?php if ($gc['equal_height']
+                    && ($gc['display_addtocart'] == 1 || $gc['display_addtolinks'] == 1)):
+                ?>
+                    var h3 = h2 + addtocartHeight + addtolinksHeight;
+                    var diff = 0;
+                    if (h3 < startHeight)
+                    {
+                        $(this).height(startHeight);
+                    }
+                    else
+                    {
+                        $(this).height(h3); <?php //Apply height explicitly ?>
+                        diff = h3 - startHeight;
+                    }
+                <?php else: ?>
+                    var diff = 0;
+                    if (h2 < startHeight)
+                    {
+                        $(this).height(startHeight);
+                    }
+                    else
+                    {
+                        $(this).height(h2);
+                        diff = h2 - startHeight;
+                    }
+                <?php endif; ?>
+                ////////////////////////////////////////////////////////////////
+
+                $(this).css("margin-bottom", "-" + diff + "px"); <?php //Apply difference as nagative margin ?>
+
+            }, function() {
+
+                //Clean up
+                $(this).find(".display-onhover").hide();
+                $(this).css("margin-bottom", "");
+
+                <?php //Return the default height. If "Egual Height" disabled, unset item's height. ?>
+                <?php if ($gc['equal_height']): ?>
+                    $(this).height(startHeight);
+                <?php else: ?>
+                    $(this).css("height", "");
+                <?php endif; ?>
+
+            });
+
+        <?php else: ?>
+
+            <?php //Display elements visible on hover ?>
+            $('.category-products-grid > .item').hover(function() {
+                $(this).find(".display-onhover").fadeIn(400, "easeInCubic");
+            }, function() {
+                $(this).find(".display-onhover").hide();
+            });
+
+        <?php endif; ?>
+
+        /* On resize */
+        var t;
+        $(window).resize(function() {
+            clearTimeout(t);
+            t = setTimeout(function() {
+
+                <?php //Products grid: equal height of items ?>
+                <?php if ($gc['equal_height']): ?>
+                    setGridItemsEqualHeight($);
+                <?php endif; ?>
+
+                <?php //Itemsliders rollback ?>
+                $('.itemslider').each(function(index){
+                    var s = $(this).data('flexslider');
+                    if (s != null) s.flexAnimate(0);
+                });
+
+                <?php //Activate mobile menu ?>
+                activateMobileMenu($);
+
+            }, 100);
+        });
 
 
 
         <?php //Product View: Monogram selection ?>
-        
+
         //Set var for first time Monogram panel opens
         var firstMonogramOpen = false;
-        
+
         //Open Monogram panel
         jQuery('#monogram-check').change(function(e) {
-            
+
             if(jQuery('#monogram-check').is(':checked')) {
                 jQuery('#monogram-content').addClass('opened');
                 jQuery('#monogram-content').delay(1000).css('overflow', 'visible');
-                
+
                 //Run only if first time panel is opened
                 if(firstMonogramOpen === true){
                     jQuery('.add-to-cart button').prop("disabled", true).css('cursor','default');
                     jQuery('.add-to-cart button').stop().fadeTo("fast", 0);
                     jQuery('#monogram-initials').prop("disabled", true);
                 }
-                
+
                 //Set name attr from data-name
                 jQuery('.add-monogram-process input, .add-monogram-process select').each(function(){
                     var dataName = jQuery(this).attr('data-name');
                     jQuery(this).attr('name', dataName);
                 });
-				
+
                 firstMonogramOpen = false;
-                
+
             } else {
             //Monogram panel closed
                 jQuery('#monogram-content').removeClass('opened');
                 jQuery('#monogram-content').css('overflow', 'hidden');
-                
+
                 jQuery('.add-to-cart button').prop("disabled", false);
-				jQuery('.add-to-cart button').css('cursor', 'pointer');
-				jQuery('.add-to-cart button').stop().fadeTo("fast", 1);
-				
-				//Remove name attr to stop monogram submission to cart
-				jQuery('.add-monogram-process input, .add-monogram-process select').removeAttr('name');
-            }                                                            
+                jQuery('.add-to-cart button').css('cursor', 'pointer');
+                jQuery('.add-to-cart button').stop().fadeTo("fast", 1);
+
+                //Remove name attr to stop monogram submission to cart
+                jQuery('.add-monogram-process input, .add-monogram-process select').removeAttr('name');
+            }
         }).click();
-        
+
         //Step one Monogram type selection
-        jQuery('.add-monogram-list li img').click(function(e) {                
+        jQuery('.add-monogram-list li img').click(function(e) {
             var monogramtype = jQuery(e.target);
-            
+
             jQuery('.add-monogram-list li').removeClass('selected');
-            monogramtype.parent().addClass('selected');                                        
+            monogramtype.parent().addClass('selected');
             jQuery('#monogram-type').val(monogramtype.attr('alt'));
-            
+
             //Enable color selection
             jQuery('.monogram-step-2').removeClass('monogram-step-disabled');
-            
+
             //Enable text input
-            jQuery('li.monogram-step-3').removeClass('monogram-step-disabled');                
+            jQuery('li.monogram-step-3').removeClass('monogram-step-disabled');
             jQuery('#monogram-initials').prop("disabled", false);
         });
-                
-        //Step three text input
-		jQuery('input#monogram-initials').keyup(function(){
-			var value = jQuery(this).val();
-			if(value.length > 0){
-				jQuery('.add-to-cart button').prop("disabled", false);
-				jQuery('.add-to-cart button').css('cursor', 'pointer');
-				jQuery('.add-to-cart button').stop().fadeTo("fast", 1);
-			} else {
-				jQuery('.add-to-cart button').prop("disabled", true).css('cursor','default');
-				jQuery('.add-to-cart button').stop().fadeTo("fast", 0);
-			}					
-		});    
 
-	}); /* end: jQuery(){...} */
-	 
-	// social sharing
+        //Step three text input
+        jQuery('input#monogram-initials').keyup(function(){
+            var value = jQuery(this).val();
+            if(value.length > 0){
+                jQuery('.add-to-cart button').prop("disabled", false);
+                jQuery('.add-to-cart button').css('cursor', 'pointer');
+                jQuery('.add-to-cart button').stop().fadeTo("fast", 1);
+            } else {
+                jQuery('.add-to-cart button').prop("disabled", true).css('cursor','default');
+                jQuery('.add-to-cart button').stop().fadeTo("fast", 0);
+            }
+        });
+
+    }); /* end: jQuery(){...} */
+
+    // social sharing
         jQuery(".share-facebook").click(function (evt) { sharePageToFacebook(evt, jQuery(evt.target).closest('a').attr('data-url')) });
         jQuery(".share-twitter").click(function (evt) { sharePageToTwitter(evt, jQuery(evt.target).closest('a').attr('data-url')) });
         jQuery(".share-pinterest").click(function (evt) {  sharePageToPinterest(evt, jQuery(evt.target).closest('a').attr('data-url'), jQuery(evt.target).closest('a').attr('data-img')) });
-		
-	
+
+
 </script>
 
 <script type="text/javascript" >
-    
-        jQuery(window).load(function(){		                
-                                            
+
+        jQuery(window).load(function(){
+
                 // masonry lists
                 if(jQuery('.p-list').length != 0) {
                     var container = document.querySelector('.p-list');
                     var msnry = new Masonry( container, {
                       // options
-                      columnWidth: 240, 
+                      columnWidth: 240,
                       itemSelector: '.p-list-item'
                     });
                 }
@@ -571,8 +571,8 @@
                 <?php //Products grid: equal height of items ?>
                 <?php if ($gc['equal_height']): ?>
                         setGridItemsEqualHeight(jQuery);
-                <?php endif; ?>                                    
+                <?php endif; ?>
 
         }); /* end: jQuery(window).load(){...} */
-        
+
 </script>

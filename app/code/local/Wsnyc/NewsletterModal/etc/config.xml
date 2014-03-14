@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_NewsletterModal>
+            <version>0.1.0</version>
+        </Wsnyc_NewsletterModal>
+    </modules>
+    <global>
+        <blocks>
+            <newslettermodal>
+                <class>Wsnyc_NewsletterModal_Block</class>
+            </newslettermodal>
+        </blocks>
+        <helpers>
+            <newslettermodal>
+                <class>Wsnyc_NewsletterModal_Helper</class>
+            </newslettermodal>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <newslettermodal>
+                    <file>wsnyc/newslettermodal.xml</file>
+                </newslettermodal>
+            </updates>
+        </layout>
+    </frontend>
+</config> 
