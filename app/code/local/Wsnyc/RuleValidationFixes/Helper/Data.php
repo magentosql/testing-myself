@@ -1,0 +1,5 @@
+<?php
+class Wsnyc_RuleValidationFixes_Helper_Data extends Mage_Core_Helper_Abstract
+{
+}
+	 

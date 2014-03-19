@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_RuleValidationFixes>
+            <version>0.1.0</version>
+        </Wsnyc_RuleValidationFixes>
+    </modules>
+    <global>
+        <models>
+            <rulevalidationfixes>
+                <class>Wsnyc_RuleValidationFixes_Model</class>
+            </rulevalidationfixes>
+            <salesrule>
+                <rewrite>
+                    <validator>Wsnyc_RuleValidationFixes_Model_Salesrule_Validator</validator>
+                </rewrite>
+            </salesrule>
+        </models>
+        <helpers>
+            <rulevalidationfixes>
+                <class>Wsnyc_RuleValidationFixes_Helper</class>
+            </rulevalidationfixes>
+        </helpers>
+    </global>
+</config> 
