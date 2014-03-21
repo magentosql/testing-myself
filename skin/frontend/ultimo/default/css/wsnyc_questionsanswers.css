@@ -1,5 +1,11 @@
 .wsnyc-questionsanswers-title{
+    width: 739px;
+    height: 96px;
+    margin: -7px 0 22px;
+    background: url('../images/ask-the-laundress.jpg') no-repeat center center;
     text-align: center;
+    font-size: 1px;
+    color: white;
 }
 
 .wsnyc-questionanswers-cartoon{
