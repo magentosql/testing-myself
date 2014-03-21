@@ -39,59 +39,81 @@
 			$headerCss[] = 'stretched';
 ?>
 
-<?php
-    $block = Mage::getModel('cms/block')->load('holiday-orders');
-    $cookie = Mage::getSingleton('core/cookie');
-    $cookie->set('holiday-order', '1' ,time()+31536000,'/');
-?>
-
-
+<?php $block = Mage::getModel('cms/block')->load('holiday-orders'); ?>
 <?php if($block->getIsActive()): ?>
+    <?php $cookie = Mage::getSingleton('core/cookie'); ?>
+    <?php $cookie->set('holiday-order', '1' ,time()+31536000,'/');?>
+    <div style='display:none'>
+        <a href="#inline_colorbox" class="openHolidayPopup">Open holiday Popup</a>
+        <div id="inline_colorbox"><?php echo $block->getContent() ?></div>
+    </div>
+        <style>
+            #inline_colorbox {text-align: left}
+            #inline_colorbox p {padding: 5px 0px 5px 0px}
+            #inline_colorbox ul {padding: 10px 0px 10px 25px}
+            #inline_colorbox ul, #inline_colorbox ul li {list-style: circle;}
+        </style>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $(".openHolidayPopup").colorbox({
+                inline  : true,
+                opacity : 0.5,
+                speed   : 300,
+                width   : 750
+            });
 
-<div style='display:none'>
-    <a href="#inline_colorbox" class="openHolidayPopup">Open holiday Popup</a>
-    <div id="inline_colorbox"><?php echo $block->getContent() ?></div>
-</div>
-    <style>
-        #inline_colorbox {text-align: left}
-        #inline_colorbox p {padding: 5px 0px 5px 0px}
-        #inline_colorbox ul {padding: 10px 0px 10px 25px}
-        #inline_colorbox ul, #inline_colorbox ul li {list-style: circle;}
-    </style>
-<script type="text/javascript">
-    jQuery(function($) {
-        $(".openHolidayPopup").colorbox({
-            inline  : true,
-            opacity : 0.5,
-            speed   : 300,
-            width   : 750
+            <?php if(!$cookie->get('holiday-order')): ?>$('.openHolidayPopup').click();<?php endif; ?>
         });
+    </script>
+<?php endif; ?>
 
-        <?php if(!$cookie->get('holiday-order')): ?>$('.openHolidayPopup').click();<?php endif; ?>
-    });
-</script>
+<?php $block = Mage::getModel('cms/block')->load('freeship-info'); ?>
+<?php if($block->getIsActive()): ?>
+    <?php $cookie = Mage::getSingleton('core/cookie'); ?>
+    <?php $cookie->set('freeship-info', '1' ,time()+31536000,'/'); ?>
+    <div style='display:none'>
+        <div id="inline_freeship_colorbox"><?php echo $block->getContent() ?></div>
+    </div>
+        <style>
+            #inline_freeship_colorbox {text-align: left}
+            #inline_freeship_colorbox p {padding: 5px 0px 5px 0px}
+            #inline_freeship_colorbox ul {padding: 10px 0px 10px 25px}
+            #inline_freeship_colorbox ul, #inline_colorbox ul li {list-style: circle;}
+            .freeship-colorbox #cboxClose {top: 6px !important; left: 547px !important;}
+        </style>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $(".openFreeshipPopup").colorbox({
+                inline  : true,
+                opacity : 0.5,
+                speed   : 300,
+                width   : 750,
+                closeButton : true,
+                className: 'freeship-colorbox'
+            });
+        });
+    </script>
 <?php endif; ?>
 
 <?php 
-    $block = Mage::getModel('cms/block')->load('freeship-info');
+    $block = Mage::getModel('cms/block')->load('free_hotel_laundry');
     $cookie = Mage::getSingleton('core/cookie');
-    $cookie->set('freeship-info', '1' ,time()+31536000,'/');
+    $cookie->set('free_hotel_laundry', '1' ,time()+31536000,'/');
 ?>
 <?php if($block->getIsActive()): ?>
 
 <div style='display:none'>
-    <div id="inline_freeship_colorbox"><?php echo $block->getContent() ?></div>
+    <div id="inline_free_hotel_laundry_colorbox"><?php echo $block->getContent() ?></div>
 </div>
     <style>
-        #inline_freeship_colorbox {text-align: left}
-        #inline_freeship_colorbox p {padding: 5px 0px 5px 0px}
-        #inline_freeship_colorbox ul {padding: 10px 0px 10px 25px}
-        #inline_freeship_colorbox ul, #inline_colorbox ul li {list-style: circle;}
-        #cboxContent #cboxClose {position: absolute; top: 6px; left: 535px; background: url('<?php echo Mage::getDesign()->getSkinUrl(); ?>images/colorbox/colorbox-controls.png') no-repeat -99px 0; width: 25px; height: 25px; text-indent: -9999px; display: block;}
+        #inline_free_hotel_laundry_colorbox {text-align: left}
+        #inline_free_hotel_laundry_colorbox p {padding: 5px 0px 5px 0px}
+        #inline_free_hotel_laundry_colorbox ul {padding: 10px 0px 10px 25px}
+        #inline_free_hotel_laundry_colorbox ul, #inline_colorbox ul li {list-style: circle;}
     </style>
 <script type="text/javascript">
     jQuery(function($) {
-        $(".openFreeshipPopup").colorbox({
+        $(".openFreeHotelPopup2").colorbox({
             inline  : true,
             opacity : 0.5,
             speed   : 300,
@@ -99,7 +121,6 @@
             closeButton : true
         });
 
-        <?php if(!$cookie->get('holiday-order')): ?>$('.openFreeshipPopup').click();<?php endif; ?>
     });
 </script>
 <?php endif; ?>
@@ -114,14 +135,17 @@
             <?php endif; ?>
             <div class="item item-right hide-below-960">
                 <div  class="welcome-msg"><a href="#inline_freeship_colorbox" class="openFreeshipPopup"><b class="no-italic">FREE SHIPPING</b> for orders over <b>$100</b></a></div>
-                <?php /*<div><span style="color: red">Celebrate Gwen's Birthday: Enter <b>GWEN14</b> at Check-Out & Save 25%!</span></div>*/ ?>
-                <?php
+                <?php if(!Mage::getStoreConfig('advanced/modules_disable_output/Wsnyc_HotelModal')) : ?>
+                    <div  class="welcome-msg free-bag-msg"><a href="#inline_hotel_colorbox" class="openHotelPopup"><b class="no-italic">FREE Hotel Laundry Bag with Every Purchase!</a></div>
+                <?php endif; ?>
+                    
+               <?php
                     $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier');
                 ?>
                 <?php if($holidayPage &&  $holidayPage->getData('is_active')): ?>
                     <div class="welcome-msg" style="background: none; margin-top: -8px;"><b class="no-italic"><a href="#inline_colorbox" class="openHolidayPopup">Holiday shipping information</a></div>
                 <?php endif; ?>
-			</div>
+            </div>
             
             <?php echo $this->getChildHtml('currency'); ?>
             <?php echo $this->getChildHtml('store_language'); ?>

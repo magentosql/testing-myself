@@ -1,0 +1,48 @@
+<?php $block = Mage::getModel('cms/block')->load('hotel-info'); ?>
+<?php if($block->getIsActive()): ?>
+    <?php $cookie = Mage::getSingleton('core/cookie'); ?>
+    <?php $cookie->set('newsletter-info', '1' ,time()+31536000,'/'); ?>
+    <div style='display:none'>
+        <div id="inline_hotel_colorbox" class="hotel-popup">
+            <div>
+                <div>
+                    <div class="logo-wrapper v-item">
+                        <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
+                    </div>
+                    <img src="<?php echo Mage::getBaseUrl('skin') ?>frontend/base/default/images/hotel-popup-free-gift.png" alt="Free Gift with purchase details" class="free-gift-img" />
+                    <div class="hotel-cms-content">
+                        <?php echo $block->getContent() ?>
+                    </div>
+
+                    <div class="call-us-message">
+                        <p><?php echo $this->__('Please call us at (212) 209-0074 with any questions.'); ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $(".openHotelPopup").colorbox({
+                inline  : true,
+                opacity : 0.5,
+                speed   : 300,
+                width   : 510,
+                height  : 460,
+                closeButton : true,
+                className: 'hotel-colorbox',
+                onCleanup: function() {
+                    jQuery('#inline_hotel_colorbox').parent().siblings( "#cboxClose" ).attr('class','noclass');
+                },
+                onComplete: function() {
+                    jQuery('#inline_hotel_colorbox').parent().siblings( "#cboxClose" ).attr('class','hotel-close');
+                },
+                
+            });
+        });
+        
+        
+    </script>
+<?php endif; ?>
+
+    

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <file>css/wsnyc/hotelmodal.css</file>
+            </action>
+            <action method="addCss">
+                <file>css/wsnyc/font-awesome.css</file>
+            </action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="hotelmodal/hotel" name="hotel-modal" as="hotel-modal" />
+        </reference>
+    </default>
+</layout>

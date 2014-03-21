@@ -147,10 +147,13 @@
         <div class="totals">
             <div class="totals-inner">
                 <?php echo $this->getChildHtml('totals'); ?>
+                <div class="free-bag-checkout">
+                    <a href="#inline_hotel_colorbox" class="openHotelPopup"><?php echo $this->__('FREE Hotel Laundry Bag with Every Purchase!'); ?></a>
+                </div>
                 <div class="checkout-types">
                     <button type="button" title="Checkout" class="button btn-proceed-checkout btn-checkout" onclick="window.location='/checkout/onepage/';"><span><span><?php echo $this->__('Proceed to Checkout'); ?></span></span></button>
-                                        <button type="button" title="Checkout" class="button btn-continue btn-international" onclick="window.location='/index.php/internationalcheckout';"><span><span><?php echo $this->__('International Checkout'); ?></span></span></button>
-                                </div>
+                    <button type="button" title="Checkout" class="button btn-continue btn-international" onclick="window.location='/index.php/internationalcheckout';"><span><span><?php echo $this->__('International Checkout'); ?></span></span></button>
+                </div>
 
             </div>
             
