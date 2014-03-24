@@ -36,7 +36,10 @@ $questions = $this->getQuestionCollection();
 
 <div id="wsnyc-questionsanswers-featured-holder">
     <h1 class="wsnyc-questionsanswers-middle">Ask The Laundress</h1>
-    <div id="wsnyc-questionsanswers-featured-prev"><<</div>
+    <div id="wsnyc-questionsanswers-image">
+        <img src="<?php echo Mage::getBaseUrl('skin')?>frontend/ultimo/default/images/ask-the-laundress-photo.jpg" alt="Q&A" />     
+    </div>
+    <div id="wsnyc-questionsanswers-featured-prev"><span></span></div>
     <div id="qa-featured" class="owl-carousel owl-theme wsnyc-questionsanswers-featured">
         <?php foreach($questions as $question): ?>
             <div class="item" style="position:relative;">
@@ -53,14 +56,14 @@ $questions = $this->getQuestionCollection();
                             <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
                         <?php endforeach; ?>
                         <br/><br/>
-                        <div class="wsnyc-questionsanswers-button"><a href="/asklaundress">View all Ask The Laundress</a></div>
                     </div>
+                    <div class="wsnyc-questionsanswers-button"><a href="<?php echo Mage::getBaseUrl() ?>asklaundress"><img src="<?php echo Mage::getBaseUrl('skin')?>frontend/ultimo/default/images/more-ask-the-laundress.png" alt="View More Questions" /></a></div>
                 <?php endif; ?>
 
             </div>
         <?php endforeach;?>
     </div>
-    <div id="wsnyc-questionsanswers-featured-next">>></div>
+    <div id="wsnyc-questionsanswers-featured-next"><span></span></div>
 </div>
 
 

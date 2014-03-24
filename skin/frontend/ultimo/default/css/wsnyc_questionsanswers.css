@@ -14,7 +14,7 @@
     background: url('../images/laundress-cartoon.png') no-repeat left top;
     left: -400px;
     position: absolute;
-    
+
 }
 
 .wsnyc-questionanswers-cartoon-container{
@@ -23,13 +23,9 @@
 
 
 .wsnyc-questionsanswers-button{
-    border:1px solid #ccc;
-    display:inline-block;
-    padding:0px 20px;
-    height:25px;
-    padding-top:6px;
     text-transform: uppercase;
-    margin-right:5px;
+    color: #000;
+    font-size: 0.875rem;
 }
 
 .wsnyc-questionsanswers-button.first{
@@ -206,58 +202,89 @@
 
 /*featured*/
 .wsnyc-questionsanswers-featured-question {
-    vertical-align:top;
-    display:inline-block;
-    width:30%;
-    margin-left:10px;
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+    height: 95px;
+    overflow: hidden;
 }
 
 .wsnyc-questionsanswers-featured-answer {
-    display:inline-block;
-    width:56%;
-    margin-left:10px;
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+    height: 95px;
+    overflow: hidden;
+}
+
+#wsnyc-questionsanswers-image {
+    display: inline-block;
+    float: left;
+    margin-left: 2%;
 }
 
 .wsnyc-questionsanswers-featured-answer-letter{
-    display:inline-block;
-    vertical-align:top;
-    width:4%;
+    vertical-align: top;
+    padding: 27px 0px 1px 3px;
+    font-size: 3rem !important;
     font-family: "Sorts Mill Goudy Regular",serif;
-    font-size:4em !important;
-    margin-top:20px;
+    background: #000;
+    color: #fff;
+    height: 23px;
+    width: 47px;
 }
 
 .wsnyc-questionsanswers-featured-question-letter{
-    display:inline-block;
-    vertical-align:top;
-    margin-top:20px;
-    width:4%;
-    font-size:4em !important;
+    vertical-align: top;
+    padding: 23px 0px 1px 4px;
+    font-size: 2.7rem !important;
     font-family: "Sorts Mill Goudy Regular",serif;
+    background: #000;
+    color: #fff;
+    height: 27px;
+    width: 48px;
 }
 
 #wsnyc-questionsanswers-featured-prev{
     display:inline-block;
     vertical-align:middle;
+    position: absolute;
+    top: 50%;
+    left: 0;
 }
 
 #wsnyc-questionsanswers-featured-next{
     display:inline-block;
     vertical-align:middle;
+    position: absolute;
+    top: 50%;
+    right: 0;
 }
 
 .wsnyc-questionsanswers-featured{
-    width:90% !important;
+    width:42% !important;
     display:inline-block !important;
+    float: right;
+    margin-right: 3%;
 }
 
 #wsnyc-questionsanswers-featured-holder{
-    margin-top:10px;
+    margin-top: -10px;
+    position: relative;
+    height: 384px;
+    padding: 22px 0;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
 }
 
 .wsnyc-questionsanswers-middle{
     width:100%;
     text-align: center;
+    background: url('../images/ask-thelaundress-homepage-h.png') no-repeat center center;
+    margin-bottom: 15px;
+    text-indent: -9999px;
 }
 
 #wsnyc-questionsanswers-container{
@@ -304,4 +331,20 @@ h2.questionsanswers-subheading {
     margin-top: 10px !important;
 }
 
+#wsnyc-questionsanswers-featured-next span {
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 11px solid #000;
+    display: inline-block; 
+}
 
+#wsnyc-questionsanswers-featured-prev span {
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-right: 11px solid #000;
+    display: inline-block; 
+}
