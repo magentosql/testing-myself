@@ -23,6 +23,21 @@
 
 
 .wsnyc-questionsanswers-button{
+    border:1px solid #ccc;
+    display:inline-block;
+    padding:0px 20px;
+    height:25px;
+    padding-top:6px;
+    text-transform: uppercase;
+    margin-right:5px;
+    color: #000;
+    font-size: 0.75rem;
+}
+
+.cms-home .wsnyc-questionsanswers-button{
+    border: none; 
+    padding: 0; 
+    margin: 0;
     text-transform: uppercase;
     color: #000;
     font-size: 0.875rem;
@@ -279,12 +294,18 @@
     border-top: 2px solid black;
 }
 
-.wsnyc-questionsanswers-middle{
+.cms-home .wsnyc-questionsanswers-middle{
     width:100%;
     text-align: center;
-    background: url('../images/ask-thelaundress-homepage-h.png') no-repeat center center;
     margin-bottom: 15px;
     text-indent: -9999px;
+}
+
+.cms-home .wsnyc-questionsanswers-middle{ 
+    background: url('../images/ask-thelaundress-homepage-h.png') no-repeat center center;
+}
+.asklaundress-index-index .wsnyc-questionsanswers-middle{ 
+    margin: -7px 0 22px 111px;
 }
 
 #wsnyc-questionsanswers-container{
