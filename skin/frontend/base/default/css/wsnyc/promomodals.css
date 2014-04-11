@@ -1,0 +1,28 @@
+#cboxLoadedContent {width: 720px !important; overflow: auto; height: 428px !important;}
+#cboxContent #cboxClose.freeshipping-close {position: absolute; top: 18px; left: 428px; background: url('../../images/promomodals-close.png') no-repeat center center; width: 31px; height: 20px; text-indent: -9999px; display: block;}
+#cboxContent #cboxClose.freeshipping-close:hover {background: url('../../images/promomodals-close.png') no-repeat center center;}
+#inline_freeshipping_colorbox.freeshipping-popup .logo-wrapper {margin-left: 36px; padding-top: 5px;}
+#inline_freeshipping_colorbox.freeshipping-popup .logo-wrapper .logo {padding: 0 10px 20px; border-bottom: 4px solid #ccc; display: inline-block; width: 95px; margin: 20px 0 0 140px}
+#inline_freeshipping_colorbox.freeshipping-popup .logo-wrapper .logo a {right: 89px;}
+#inline_freeshipping_colorbox.freeshipping-popup .page-title {display: none;}
+#inline_freeshipping_colorbox.freeshipping-popup {height: 428px !important; overflow: hidden;}
+#inline_freeshipping_colorbox.freeshipping-popup > div {width: 459px !important; height: 385px !important; background: #fefefe; padding: 5px 4px 5px 5px; border: 3px solid #000;}
+#inline_freeshipping_colorbox.freeshipping-popup > div > div {border: 1px solid #000; text-align: left; width: 456px; height: 383px;background: #fefefe;}
+#inline_freeshipping_colorbox.freeshipping-popup .free-gift-img {margin: 10px 28px -5px;}
+#inline_freeshipping_colorbox.freeshipping-popup p {padding: 5px 0px;}
+#inline_freeshipping_colorbox.freeshipping-popup ul {padding: 10px 0px 10px 25px}
+#inline_freeshipping_colorbox.freeshipping-popup ul, #inline_colorbox ul li {list-style: circle;}
+#inline_freeshipping_colorbox.freeshipping-popup .freeshipping-cms-content {width: 400px; padding: 0 36px 0 23px; font-size: 0.75rem;}
+#inline_freeshipping_colorbox.freeshipping-popup .freeshipping-cms-content li {list-style-type: disc;}
+#inline_freeshipping_colorbox.freeshipping-popup .freeshipping-cms-content p, #inline_freeshipping_colorbox.freeshipping-popup .freeshipping-cms-content li {padding: 5px 0;}
+#inline_freeshipping_colorbox.freeshipping-popup .call-us-message {display: inline-block; width: 115px; border-top: 4px solid #ccc; margin-left: 172px; margin-top: 7px;}
+#inline_freeshipping_colorbox.freeshipping-popup .call-us-message p {display: block; width: 340px; position: relative; right: 90px; padding-top: 18px;}
+#inline_freeshipping_colorbox.freeshipping-popup h3 {text-align: center;padding: 20px 0 0;font-size: 1.5rem; font-family: "Sorts Mill Goudy Regular",serif; text-transform: uppercase;}
+.catalog-product-view #cboxLoadedContent {position: relative;bottom: 10px;right: 10px;}
+.header .welcome-msg.freeshipping-msg {background: none; padding-left: 0;}
+.header .welcome-msg.freeshipping-msg .freeshipping-modal-launcher-icon {margin-right: 11px; color: black; margin-left: 2px; font-size: 1rem;}
+.header .welcome-msg.freeshipping-msg span {font-weight: normal; font-style: italic;}
+#inline_freeshipping_colorbox.freeshipping-popup .email-error-message {display: inline-block; visibility: hidden; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
+.header-top .welcome-msg.free-bag-msg {background: none; padding-left: 0;}
+.free-bag-checkout {padding: 0 0 10px 15px; font-size: 0.7rem; margin: 10px 0 -20px -15px; color: #333; font-style: italic;}
+.free-bag-checkout .openFreeshippingPopup {padding-left: 0; cursor: pointer;}

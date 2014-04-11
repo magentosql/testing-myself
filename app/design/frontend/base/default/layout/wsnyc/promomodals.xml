@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <file>css/wsnyc/promomodals.css</file>
+            </action>
+            <action method="addCss">
+                <file>css/wsnyc/font-awesome.css</file>
+            </action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="promomodals/modal" name="free-shipping-modal" as="free-shipping-modal" template="wsnyc/promomodals/freeshipping.phtml"/>
+        </reference>
+    </default>
+</layout>
