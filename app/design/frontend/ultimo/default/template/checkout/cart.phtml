@@ -160,10 +160,12 @@
             </div>
             
         </div>
-
-        <div class="cart-free-shipping">
-            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('cart_promo_block')->toHtml() ?>
-        </div>
+        <?php $freeShippingBlock = Mage::getModel('cms/block')->load('cart_promo_block', 'identifier'); ?>
+        <?php if($freeShippingBlock->getIsActive()): ?>
+            <div class="cart-free-shipping">
+                <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($freeShippingBlock->getContent()); ?>
+            </div>
+        <?php endif; ?>
         <?php if ($tmpHtml = $this->getChildHtml('block_cart_below_totals')): ?>
             <div class="block_cart_below_totals"><?php echo $tmpHtml; ?></div>
         <?php endif; ?>
