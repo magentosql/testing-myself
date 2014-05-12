@@ -1,6 +1,6 @@
 <?php echo $this->getChildHtml('wsnyc_questionsanswers_topmenu'); ?>
-<h2 class="questionsanswers-subheading">Got a mysterious stain or a truly terrible laundry&nbsp;quandary? </h2>
-<p>Send Us your questions and we will provide answers! Be sure to include what you can of the fabric &amp; stain type, as well as relevant washing history.<br>
+<h2 class="questionsanswers-subheading"><?php echo $this->__('Got a mysterious stain or a truly terrible laundry&nbsp;quandary?'); ?></h2>
+<p><?php echo $this->__('Send Us your questions and we will provide answers! Be sure to include what you can of the fabric &amp; stain type, as well as relevant washing history.'); ?><br>
     &nbsp;<br>
 </p>
 <form id="questionsanswers-question-ask-form" name="ask-question-box" method="post" action="">
@@ -8,6 +8,8 @@
     <input type="text" name="ask_email" class="validate-email required-entry" id="ask_email" placeholder="Your Email" />
     <input type="text" name="ask_title" class="required-entry" id="ask_title" placeholder="Question Title" />
     <textarea id="ask_text" class="required-entry" name="question_text" ></textarea>
+    <br />
+    <input type="checkbox" name="ask_newsletter" id="ask_newsletter"><label for="ask_newsletter"><?php echo $this->__('Be the first to hear about exclusive promotions, discounts, insider tips and news from Gwen & Lindsey.'); ?></label>
     <p><img id="ask-loader" src="/skin/frontend/ultimo/default/images/ajax-loader.gif"><input type="submit" id="ask-question-submit" value="ASK QUESTION"></p>
 </form>
 <script>
