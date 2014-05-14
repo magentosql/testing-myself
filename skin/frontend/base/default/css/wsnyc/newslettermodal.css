@@ -42,7 +42,7 @@
 .header .welcome-msg.newsletter-msg .newsletter-modal-launcher-icon {margin-right: 11px; color: black; margin-left: 2px; font-size: 1rem;}
 .header .welcome-msg.newsletter-msg span {font-weight: normal; font-style: italic;}
 .footer-container .footer-top-container .footer .links {display: inline-block;}
-.footer-container .footer-top-container .footer .newsletter-msg {height: 16px; position: relative; top: 2px;color: #000; font-style: italic; border-left: 1px solid #d9d9d9; margin-left: -3px; padding-left: 8px; display: inline-block; font-size: 0.875rem;}
-.footer-container .footer-top-container .footer .newsletter-msg a {color: #222; position: relative; bottom: 1px;}
+.footer-container .footer-top-container .footer .newsletter-msg {height: 16px; position: relative; top: 2px;color: #000; font-style: italic; border-left: 1px solid #d9d9d9; margin-left: -3px; padding-left: 8px; display: inline-block; font-family: "Georgia"; font-size: 13px;}
+.footer-container .footer-top-container .footer .newsletter-msg a {color: #222; position: relative; bottom: 2px;}
 #inline_newsletter_colorbox.newsletter-popup .email-error-message {display: inline-block; visibility: hidden; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
 .footer-form.newsletter-form button#mc-embedded-subscribe {clear: none; width: auto; display: block; margin: 0; display: inline-block; float: left;}
