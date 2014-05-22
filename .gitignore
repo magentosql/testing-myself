@@ -3,6 +3,8 @@ app/etc/local.xml
 downloader/*
 media/catalog/product/cache/*
 media/tmp/*
+media/*
+.htaccess
 var/*
 nbproject/
 wp/wordpress/wp-content
