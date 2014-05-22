@@ -688,10 +688,11 @@ body.checkout-onepage-success .buttons-set{margin:20px}
 #ask_name{width:683px;height:20px;border:1px solid #ddd;margin:0;padding:5px;margin-bottom: 10px}
 #ask_email{width:683px;height:20px;border:1px solid #ddd;margin:0;padding:5px;margin-bottom: 10px}
 #ask_text{width:683px;height:100px;border:1px solid #ddd;margin:10px 0 0 0;padding:5px}
-label[for="ask_newsletter"]::before {content: "✔"; color: #fff; width: 20px; height: 13px; display: inline-block; border: 5px solid black; padding: 5px 0 2px; font-size: 1.5rem; margin-right: 10px;}
 #ask_newsletter:checked + label[for="ask_newsletter"]::before {color: #000;}
 #ask_newsletter {display: none;}
-label[for="ask_newsletter"] {font-family: 'Sorts Mill Goudy Regular',serif; font-size: 14px; margin: 8px 0 4px; display: inline-block;}
+#questionsanswers-question-ask-form .button {float: left;margin-top: 8px;}
+label[for="ask_newsletter"] {font-family: serif; font-size: 14px; line-height: 10px;margin: 15px 0 4px 36px; display: inline-block;width: 540px;}
+label[for="ask_newsletter"]::before {content: "✔"; color: #fff; width: 14px; height: 14px; display: inline-block; border: 3px solid black;  font-size: 12px; text-align: center;margin-right: 6px;margin-left: -30px;line-height: 13px;}
 .ask-search-sidebar{margin-top:100px}
 .order-info-box{background-color:transparent}
 .order-info-box .col-1{border-right:0}
