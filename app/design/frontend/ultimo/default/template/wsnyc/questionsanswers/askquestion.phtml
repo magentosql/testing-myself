@@ -9,8 +9,15 @@
     <input type="text" name="ask_title" class="required-entry" id="ask_title" placeholder="Question Title" />
     <textarea id="ask_text" class="required-entry" name="question_text" ></textarea>
     <br />
-    <input type="checkbox" name="ask_newsletter" id="ask_newsletter"><label for="ask_newsletter"><?php echo $this->__('Be the first to hear about exclusive promotions, discounts, insider tips and news from Gwen & Lindsey.'); ?></label>
-    <p><img id="ask-loader" src="/skin/frontend/ultimo/default/images/ajax-loader.gif"><input type="submit" id="ask-question-submit" value="ASK QUESTION"></p>
+    <p class="button">
+      <img id="ask-loader" src="/skin/frontend/ultimo/default/images/ajax-loader.gif">
+      <input type="submit" id="ask-question-submit" value="ASK QUESTION">
+    </p>
+    <input type="checkbox" name="ask_newsletter" id="ask_newsletter">
+    <label for="ask_newsletter">
+      <?php echo $this->__('Be the first to hear about exclusive promotions, discounts, insider tips and news from Gwen & Lindsey.'); ?>
+    </label>
+    
 </form>
 <script>
     var askForm = new VarienForm('questionsanswers-question-ask-form');
