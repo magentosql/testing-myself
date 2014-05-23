@@ -15,6 +15,7 @@ class Wsnyc_QuestionsAnswers_QuestionsController
     public function askAction(){
 
         $request = $this->getRequest();
+        $success = 0;
         if($request->isPost()){
 
             $questionText = $request->getParam('ask_title').PHP_EOL.$request->getParam('question_text');
@@ -30,6 +31,7 @@ class Wsnyc_QuestionsAnswers_QuestionsController
                 $this->_sendEmailToAdmin($question);
 
                 Mage::getSingleton('core/session')->addSuccess($this->__('Your question has been successfully sent'));
+                $success = 1;
             } catch(Exception $e) {
                 Mage::getSingleton('core/session')->addError($this->__('There was an error sending the question, please try again later'));
             }
@@ -53,6 +55,9 @@ class Wsnyc_QuestionsAnswers_QuestionsController
         }
 
         $this->loadLayout();
+        if ($request->isPost() && $success) {
+          $this->getLayout()->getBlock('questionsanswers_questions_ask')->setEvent('question_subscription');
+        }
         $this->renderLayout();
     }
 
