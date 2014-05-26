@@ -1,6 +1,6 @@
 #cboxLoadedContent {width: 720px !important; overflow: auto; height: 428px !important;}
-#cboxContent #cboxClose.freeshipping-close {position: absolute; top: 18px; left: 428px; background: url('../../images/promomodals-close.png') no-repeat center center; width: 31px; height: 20px; text-indent: -9999px; display: block;}
-#cboxContent #cboxClose.freeshipping-close:hover {background: url('../../images/promomodals-close.png') no-repeat center center;}
+#cboxContent #cboxClose.modal-close {position: absolute; top: 18px; left: 428px; background: url('../../images/promomodals-close.png') no-repeat center center; width: 31px; height: 20px; text-indent: -9999px; display: block;}
+#cboxContent #cboxClose.modal-close:hover {background: url('../../images/promomodals-close.png') no-repeat center center;}
 #inline_freeshipping_colorbox.freeshipping-popup .logo-wrapper {margin-left: 36px; padding-top: 5px;}
 #inline_freeshipping_colorbox.freeshipping-popup .logo-wrapper .logo {padding: 0 10px 20px; border-bottom: 4px solid #ccc; display: inline-block; width: 95px; margin: 20px 0 0 140px}
 #inline_freeshipping_colorbox.freeshipping-popup .logo-wrapper .logo a {right: 89px;}
@@ -45,5 +45,4 @@
 .promotion-modal .call-us-message {display: inline-block; width: 115px; border-top: 4px solid #ccc; margin-left: 172px; margin-top: 7px;}
 .promotion-modal .call-us-message p {display: block; width: 340px; position: relative; right: 90px; padding-top: 18px;}
 .promotion-modal h3 {text-align: center;padding: 20px 0 0;font-size: 1.5rem; font-family: "Sorts Mill Goudy Regular",serif; text-transform: uppercase;}
-#cboxContent #cboxClose {position: absolute; top: 18px; left: 428px; background: url('../../images/promomodals-close.png') no-repeat center center; width: 31px; height: 20px; text-indent: -9999px; display: block;}
-#cboxContent #cboxClose:hover {background: url('../../images/promomodals-close.png') no-repeat center center;}
+#cboxContent #cboxClose {display: none;}
