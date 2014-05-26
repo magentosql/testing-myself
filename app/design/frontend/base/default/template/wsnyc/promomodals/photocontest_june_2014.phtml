@@ -1,17 +1,16 @@
-<?php $block = Mage::getModel('cms/block')->load('modal-freeshipping-info'); ?>
-<?php if(Mage::getStoreConfig('wsnyc_promotions/promotions/freeshipping_may_2014_enabled')): ?>
-    <?php $cookie = Mage::getSingleton('core/cookie'); ?>
-    <?php $cookie->set('free-shipping-info', '1' ,time()+31536000,'/'); ?>
-    <div style='display:none'>
-        <div id="inline_freeshipping_colorbox" class="freeshipping-popup">
+<?php if(Mage::getStoreConfig('wsnyc_promotions/promotions/photocontest_june_2014_enabled')): ?>
+    <?php $block = Mage::getModel('cms/block')->load('modal-photocontest_june_2014'); ?>
+    <?php Mage::getSingleton('core/cookie')->set('modal-photocontest_june_2014', '1' ,time()+31536000,'/'); ?>
+    <div style="display:none">
+        <div id="modal_photocontest_june_2014" class="promotion-modal">
             <div>
                 <div>
                     <div class="logo-wrapper v-item">
                         <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
                     </div>
-                    <h3>Free Shipping Details</h3>
+                    <h3><?php $this->__('The Laundress Wash & Win Photo Contest') ?></h3>
                     <div class="freeshipping-cms-content">
-                        <?php echo $block->getContent() ?>
+                        <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($block->getContent()) ?>
                     </div>
 
                     <div class="call-us-message">
@@ -23,19 +22,19 @@
     </div>
     <script type="text/javascript">
         jQuery(function($) {
-            $(".openFreeshippingPopup").colorbox({
+            jQuery('a[href="#modal_photocontest_june_2014"]').colorbox({
                 inline  : true,
                 opacity : 0.5,
                 speed   : 300,
                 width   : 510,
                 height  : 460,
                 closeButton : true,
-                className: 'freeshipping-colorbox',
+                className: 'photocontest_june_2014',
                 onCleanup: function() {
-                    jQuery('#inline_freeshipping_colorbox').parent().siblings( "#cboxClose" ).attr('class','noclass');
+                    jQuery('#modal_photocontest_june_2014').parent().siblings( "#cboxClose" ).attr('class','noclass');
                 },
                 onComplete: function() {
-                    jQuery('#inline_freeshipping_colorbox').parent().siblings( "#cboxClose" ).attr('class','freeshipping-close');
+                    jQuery('#modal_photocontest_june_2014').parent().siblings( "#cboxClose" ).attr('class','photocontest_june_2014-close');
                 },
                 
             });

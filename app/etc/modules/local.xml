@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Fishpig_Wordpress>
+            <active>false</active>
+            <codePool>community</codePool>
+        </Fishpig_Wordpress>
+        <Fishpig_Wordpress_Addon_AllInOneSEO>
+            <active>false</active>
+            <codePool>community</codePool>
+        </Fishpig_Wordpress_Addon_AllInOneSEO>
+        <Fishpig_Wordpress_Addon_WordPressSEO>
+            <active>false</active>
+            <codePool>community</codePool>
+        </Fishpig_Wordpress_Addon_WordPressSEO>
+        <Fishpig_Wordpress_Addon_CPT>
+            <active>false</active>
+            <codePool>community</codePool>
+            <depends>
+                <Fishpig_Wordpress />
+            </depends>
+        </Fishpig_Wordpress_Addon_CPT>
+    </modules>
+</config>

@@ -26,3 +26,24 @@
 .header-top .welcome-msg.free-bag-msg {background: none; padding-left: 0;}
 .free-bag-checkout {padding: 0 0 10px 15px; font-size: 0.7rem; margin: 10px 0 -20px -15px; color: #333; font-style: italic;}
 .free-bag-checkout .openFreeshippingPopup {padding-left: 0; cursor: pointer;}
+
+.header-msg a {padding-left: 28px; font-style: normal;}
+.promotion-modal .logo-wrapper {margin-left: 36px; padding-top: 5px;}
+.promotion-modal .logo-wrapper .logo {padding: 0 10px 20px; border-bottom: 4px solid #ccc; display: inline-block; width: 95px; margin: 20px 0 0 140px}
+.promotion-modal .logo-wrapper .logo a {right: 89px;}
+.promotion-modal .page-title {display: none;}
+.promotion-modal {height: 428px !important; overflow: hidden;}
+.promotion-modal > div {width: 459px !important; height: 385px !important; background: #fefefe; padding: 5px 4px 5px 5px; border: 3px solid #000;}
+.promotion-modal > div > div {border: 1px solid #000; text-align: left; width: 456px; height: 383px;background: #fefefe;}
+.promotion-modal .free-gift-img {margin: 10px 28px -5px;}
+.promotion-modal p {padding: 5px 0px;}
+.promotion-modal ul {padding: 10px 0px 10px 25px}
+.promotion-modal ul, #inline_colorbox ul li {list-style: circle;}
+.promotion-modal .freeshipping-cms-content {width: 400px; padding: 0 36px 0 23px; font-size: 0.75rem;}
+.promotion-modal .freeshipping-cms-content li {list-style-type: disc;}
+.promotion-modal .freeshipping-cms-content p, #inline_freeshipping_colorbox.freeshipping-popup .freeshipping-cms-content li {padding: 5px 0;}
+.promotion-modal .call-us-message {display: inline-block; width: 115px; border-top: 4px solid #ccc; margin-left: 172px; margin-top: 7px;}
+.promotion-modal .call-us-message p {display: block; width: 340px; position: relative; right: 90px; padding-top: 18px;}
+.promotion-modal h3 {text-align: center;padding: 20px 0 0;font-size: 1.5rem; font-family: "Sorts Mill Goudy Regular",serif; text-transform: uppercase;}
+#cboxContent #cboxClose {position: absolute; top: 18px; left: 428px; background: url('../../images/promomodals-close.png') no-repeat center center; width: 31px; height: 20px; text-indent: -9999px; display: block;}
+#cboxContent #cboxClose:hover {background: url('../../images/promomodals-close.png') no-repeat center center;}

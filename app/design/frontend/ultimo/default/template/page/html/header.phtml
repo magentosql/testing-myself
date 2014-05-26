@@ -137,8 +137,11 @@
                 <?php if(!Mage::getStoreConfig('advanced/modules_disable_output/Wsnyc_HotelModal')) : ?>
                 <div  class="welcome-msg free-bag-msg"><a href="#inline_hotel_colorbox" class="openHotelPopup"><b class="no-italic"><?php echo $this->__('FREE Hotel Laundry Bag with Every Purchase!') ?></b></a></div>
                 <?php endif; ?>
-                <?php if(!Mage::getStoreConfig('advanced/modules_disable_output/Wsnyc_PromoModals')) : ?>
+                <?php if(Mage::getStoreConfig('wsnyc_promotions/promotions/freeshipping_may_2014_enabled')): ?>
                     <div  class="welcome-msg"><a href="#inline_freeshipping_colorbox" class="openFreeshippingPopup"><b class="no-italic"><?php echo $this->__('FREE SHIPPING on all purchases through May 31st using code FREESHIPSPRING') ?></b></a></div>
+                <?php endif; ?>
+                <?php if(Mage::getStoreConfig('wsnyc_promotions/promotions/photocontest_june_2014_enabled')): ?>
+                    <div class="header-msg"><a href="#modal_photocontest_june_2014"><b class="no-italic"><?php echo $this->__('Enter the Wash & Win Photo Contest for a chance to win $500 worth of FREE products!') ?></b></a></div>
                 <?php endif; ?>
                 <?php $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier'); ?>
                 <?php if($holidayPage &&  $holidayPage->getData('is_active')): ?>
