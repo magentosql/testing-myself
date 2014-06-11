@@ -21,5 +21,8 @@
 </form>
 <script>
     var askForm = new VarienForm('questionsanswers-question-ask-form');
+    <?php if ($this->getEvent() == 'question_subscription'):?>
+    _gaq.push(['_trackEvent', 'asklaundres', 'signup', 'Ask Laundress Singup',, false]);
+    <?php endif; ?>
 </script>
 <br/>
