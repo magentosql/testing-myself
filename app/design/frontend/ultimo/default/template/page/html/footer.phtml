@@ -102,14 +102,15 @@
 
     <div class="footer-top-container section-container">
         <div class="footer-top footer container<?php if($classString['top']) echo " " . $classString['top']; ?>">
-
-                   <?php //Custom footer links - override default Magento footer links ?>
-                    <?php if ($tmp = $this->getChildHtml('block_footer_links')): ?>
-                        <?php echo $tmp; ?>
-					<?php endif; ?>
-                   <div  class="newsletter-msg"><a href="#inline_newsletter_colorbox" class="openNewsletterPopup"><b class="no-italic"><?php echo $this->__('Sign up to get exclusive offers and insider tips!'); ?></a></div>
-
-                    
+            <?php //Custom footer links - override default Magento footer links ?>
+            <?php if ($tmp = $this->getChildHtml('block_footer_links')): ?>
+                <?php echo $tmp; ?>
+            <?php endif; ?>
+            <div  class="newsletter-msg">
+                <a href="#inline_newsletter_colorbox" class="openNewsletterPopup">
+                    <b class="no-italic"><?php echo $this->__('Sign up to get exclusive offers and insider tips!'); ?></b>
+                </a>
+            </div>
         </div> <!-- end: footer-top -->
     </div>
 
@@ -131,22 +132,31 @@
                     </ul>
                 </div>
             </div>
-            
-	        <div class="footer-form newsletter-form">
-                        <form action="http://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-					    	<label for="mce-EMAIL" class="float-left">Sign Up For Updates By Email</label>
-					        <div>
-					            <div class="input-box float-left effect">
-					                <input type="email" placeholder="Enter email address" name="EMAIL"  id="mce-EMAIL" value="" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+
+            <div class="footer-form newsletter-form">
+                <form action="http://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+					    	    <label for="mce-EMAIL" class="float-left">Sign Up For Updates By Email</label>
+					            <div>
+					                <div class="input-box float-left effect">
+					                    <input type="email" placeholder="Enter email address" name="EMAIL"  id="mce-EMAIL" value="" title="<?php echo $this->__('Email Address') ?>" class="input-text required-entry validate-email" />
+                          </div>
+					                <button type="submit" name="subscribe" id="mc-embedded-subscribe"  title="<?php echo $this->__('GO') ?>" class="button btn-inline float-left effect"><span><?php echo $this->__('GO') ?></span></button>
 					            </div>
-					            <button type="submit" name="subscribe" id="mc-embedded-subscribe"  title="<?php echo $this->__('GO') ?>" class="button btn-inline float-left effect"><span><?php echo $this->__('GO') ?></span></button>
-					        </div>
-                            <div id="mce-responses" class="clear">
-                                <div class="response" id="mce-error-response" style="display:none"></div>
-                                <div class="response" id="mce-success-response" style="display:none"></div>
-                            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                            <div style="position: absolute; left: -5000px;"><input type="text" name="b_d3d48e75efd637e646b0beb3c_dbfb7e7934" value=""></div>
-					    </form>						
+                      <div id="mce-responses" class="clear">
+                          <div class="response" id="mce-error-response" style="display:none"></div>
+                          <div class="response" id="mce-success-response" style="display:none"></div>
+                      </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                      <div style="position: absolute; left: -5000px;"><input type="text" name="b_d3d48e75efd637e646b0beb3c_dbfb7e7934" value=""></div>
+                </form>
+            </div>
+            <div class="footer-form find-form">
+                <form action="<?php echo Mage::getBaseUrl() ?>customer-service/find-a-store/" method="post" id="find-validate-detail">
+                    <label for="find" class="float-right">FIND THE LAUNDRESS IN STORES</label>
+                    <div style="position:relative" class="float-right">
+                        <div class="input-box float-left">
+                            <input type="text" placeholder="Enter your city or zip" name="address-to-find" id="find" title="<?php echo $this->__('Zip Code/Postal Code') ?>" class="input-text required-entry" />
+                        </div>
+                        <button type="submit" title="<?php echo $this->__('GO') ?>" class="button btn-inline float-left"><span><?php echo $this->__('GO') ?></span></button>
                     </div>
                 </form>
             </div>
@@ -311,6 +321,9 @@
             $('#mc-embedded-subscribe-form').each(function(){
                 this.reset();
             });
+            if (typeof(_gaq) == 'object') {
+              _gaq.push(['_trackEvent', 'newsletter', 'signup', 'Newsletter Signup',, false]);
+            }
         } else {
             var index = -1;
             var msg;
