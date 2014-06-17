@@ -9,6 +9,7 @@
         <reference name="after_body_start">
             <block type="promomodals/modal" name="free-shipping-modal" as="free-shipping-modal" template="wsnyc/promomodals/freeshipping.phtml"/>
             <block type="promomodals/modal" name="free-shipping-over-100" as="free-shipping-over-100" template="wsnyc/promomodals/freeshipping_over_100.phtml"/>
+            <block type="promomodals/modal" name="free-shipping-over-50" as="free-shipping-over-50" template="wsnyc/promomodals/freeshipping_over_50.phtml"/>
             <block type="promomodals/modal" name="photo-contest-modal" as="photo-contest-modal" template="wsnyc/promomodals/photocontest_june_2014.phtml"/>
         </reference>
     </default>

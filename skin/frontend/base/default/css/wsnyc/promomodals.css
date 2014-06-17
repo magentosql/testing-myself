@@ -29,7 +29,8 @@
 
 .header-msg a {padding-left: 28px; font-style: normal;}
 .promotion-modal .logo-wrapper {margin-left: 36px; padding-top: 5px;}
-.promotion-modal .logo-wrapper .logo {padding: 0 10px 20px; border-bottom: 4px solid #ccc; display: inline-block; width: 95px; margin: 20px 0 0 140px}
+.promotion-modal .logo-wrapper .logo {padding: 0 10px 20px; border-bottom: 4px solid #ccc; display: inline-block; width: 95px; margin: 20px 0 0 136px}
+.promotion-modal .logo-wrapper .logo.no-header {padding-bottom: 50px;}
 .promotion-modal .logo-wrapper .logo a {right: 89px;}
 .promotion-modal .page-title {display: none;}
 .promotion-modal {height: 428px !important; overflow: hidden;}
