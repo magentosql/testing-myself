@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_PromoModals>
-            <version>0.3.0</version>
+            <version>0.4.0</version>
         </Wsnyc_PromoModals>
     </modules>
     <global>
@@ -51,6 +51,7 @@
             <promotions>
                 <freeshipping_may_2014_enabled>1</freeshipping_may_2014_enabled>
                 <photocontest_june_2014_enabled>1</photocontest_june_2014_enabled>
+                <freeshipping_over_100_enabled>0</freeshipping_over_100_enabled>
             </promotions>
         </wsnyc_promotions>
     </default>

@@ -1,17 +1,19 @@
-<?php $block = Mage::getModel('cms/block')->load('modal-freeshipping-info'); ?>
-<?php if(Mage::getStoreConfig('wsnyc_promotions/promotions/freeshipping_may_2014_enabled')): ?>
-    <?php $cookie = Mage::getSingleton('core/cookie'); ?>
-    <?php $cookie->set('free-shipping-info', '1' ,time()+31536000,'/'); ?>
-    <div style='display:none'>
-        <div id="inline_freeshipping_colorbox" class="freeshipping-popup">
+<?php $_modalName = 'freeshipping_over_100'; ?>
+
+<?php if(Mage::getStoreConfig('wsnyc_promotions/promotions/' . $_modalName . '_enabled')): ?>
+
+    <?php $block = Mage::getModel('cms/block')->load('modal-' . $_modalName); ?>
+    <?php Mage::getSingleton('core/cookie')->set('modal-' . $_modalName, '1' ,time()+31536000,'/'); ?>
+    <div style="display:none">
+        <div id="modal_<?php echo $_modalName ?>" class="promotion-modal">
             <div>
                 <div>
                     <div class="logo-wrapper v-item">
                         <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
                     </div>
-                    <h3><?php echo $this->__('Free Shipping Details'); ?></h3>
+                    <h3><?php echo $this->__($block->getTitle()) ?></h3>
                     <div class="freeshipping-cms-content">
-                        <?php echo $block->getContent() ?>
+                        <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($block->getContent()) ?>
                     </div>
 
                     <div class="call-us-message">
@@ -23,19 +25,19 @@
     </div>
     <script type="text/javascript">
         jQuery(function($) {
-            $(".openFreeshippingPopup").colorbox({
+            jQuery('a[href="#modal_<?php echo $_modalName ?>"]').colorbox({
                 inline  : true,
                 opacity : 0.5,
                 speed   : 300,
                 width   : 510,
                 height  : 460,
                 closeButton : true,
-                className: 'freeshipping-colorbox',
+                className: '<?php echo $_modalName ?>',
                 onCleanup: function() {
-                    jQuery('#inline_freeshipping_colorbox').parent().siblings( "#cboxClose" ).attr('class','noclass');
+                    jQuery('#modal_<?php echo $_modalName ?>').parent().siblings( "#cboxClose" ).attr('class','noclass');
                 },
                 onComplete: function() {
-                    jQuery('#inline_freeshipping_colorbox').parent().siblings( "#cboxClose" ).attr('class','modal-close');
+                    jQuery('#modal_<?php echo $_modalName ?>').parent().siblings( "#cboxClose" ).attr('class','modal-close');
                 },
                 
             });
