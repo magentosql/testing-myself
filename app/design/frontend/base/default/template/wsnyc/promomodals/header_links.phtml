@@ -11,7 +11,7 @@
     <div class="header-msg"><a href="#modal_freeshipping_over_50"><b class="no-italic"><?php echo $this->__('Free shipping on orders of $50 or more') ?></b></a></div>
 <?php endif; ?>
 <?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/photocontest_june_2014_enabled')): ?>
-    <div class="header-msg"><a href="#modal_photocontest_june_2014"><b class="no-italic"><?php echo $this->__('Enter the Wash & Win Photo Contest for a chance to win $500 worth of FREE products!') ?></b></a></div>
+    <div class="header-msg"><a href="#modal_photocontest_june_2014"><b class="no-italic"><?php echo $this->__('Vote Now to Choose Your Favorite Stainfighters for our Wash & Win Photo Contest') ?></b></a></div>
 <?php endif; ?>
 <?php $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier'); ?>
 <?php if ($holidayPage && $holidayPage->getData('is_active')): ?>
