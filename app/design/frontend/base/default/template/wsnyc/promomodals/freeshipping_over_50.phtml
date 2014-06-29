@@ -9,8 +9,9 @@
             <div>
                 <div>
                     <div class="logo-wrapper v-item">
-                        <h1 class="logo no-header"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
+                        <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
                     </div>
+                    <h3><?php echo $this->__('Free Shipping Details') ?></h3>
                     <div class="freeshipping-cms-content">
                         <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($block->getContent()) ?>
                     </div>
