@@ -544,18 +544,20 @@ if ($_count) {
                                             <?php echo strip_tags($this->getChildHtml($blockname));  ?>
                                         </div>
                                     <?php endif; ?>
-                                    <div class="more-description-button"><?php echo $this->__('More Info'); ?></div>
-                                    <div class="more-description-content" style="display: none;">
-                                        <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getMoreDescription()) ?>  
-                                    </div>
-                                    <script type="text/javascript">
-                                        jQuery('.more-description-button').click(function() {
-                                            jQuery('.more-description-content').toggle();
-                                            jQuery(this).text(function(i, text) {
-                                                return text === "<?php echo $this->__('More Info'); ?>" ? "<?php echo $this->__('Less Info'); ?>" : "<?php echo $this->__('More Info'); ?>";
-                                            })
-                                        });
-                                    </script>
+                                    <?php if($_product->getMoreDescription()) : ?>
+                                        <div class="more-description-button"><?php echo $this->__('More Info'); ?></div>
+                                        <div class="more-description-content" style="display: none;">
+                                            <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getMoreDescription()) ?>  
+                                        </div>
+                                        <script type="text/javascript">
+                                            jQuery('.more-description-button').click(function() {
+                                                jQuery('.more-description-content').toggle();
+                                                jQuery(this).text(function(i, text) {
+                                                    return text === "<?php echo $this->__('More Info'); ?>" ? "<?php echo $this->__('Less Info'); ?>" : "<?php echo $this->__('More Info'); ?>";
+                                                })
+                                            });
+                                        </script>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <?php endif; ?>
