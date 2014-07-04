@@ -3804,3 +3804,21 @@ pading-left:5px;
 .itemslider-x.count-2{
     max-width: 460px !important;
 }
+
+/* catalog product view more info button */
+.more-description-button {
+    padding: 5px;
+    margin: 20px auto;
+    width: 100px;
+    border: solid 1px #fff;
+    text-transform: uppercase;
+    color: #999;
+    background: #eee;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,.2);
+    box-shadow: 0 0 5px 2px rgba(0,0,0,.2);
+    border-radius: 8px;
+}

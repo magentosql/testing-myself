@@ -502,57 +502,65 @@ if ($_count) {
                 <div id="product-tabs" class="gen-tabs gen-tabs-style1">
 
 		        <ul class="tabs clearer">    
-                                <?php if(!empty($sTabDetails)) { ?>
+                                <?php if(!empty($sTabDetails)) : ?>
                                 <li id="tab-description"><a href="#" class="current">Details</a></li>
-                                <?php } ?>
-                                <?php if(!empty($sTabHowtovideo)) { ?> 
+                                <?php endif; ?>
+                                <?php if(!empty($sTabHowtovideo)) : ?> 
                                 <li><a href="#" class=""><?php print $sTabHowtovideoLabel; ?></a></li>        
-                                <?php } ?>
-                                <?php if(!empty($sTabResults)) { ?>
+                                <?php endif; ?>
+                                <?php if(!empty($sTabResults)) : ?>
                                 <li><a href="#" class=""><?php print $sTabResultsLabel; ?></a></li>
-                                <?php } ?>
-                                <?php if(!empty($sTabIngredients)) { ?> 
+                                <?php endif; ?>
+                                <?php if(!empty($sTabIngredients)) : ?> 
                                 <li><a href="#" class=""><?php print $sTabIngredientsLabel; ?></a></li>        
-                                <?php } ?>
-                                <?php if(!empty($sTabHowtouse)) { ?> 
+                                <?php endif; ?>
+                                <?php if(!empty($sTabHowtouse)) : ?> 
                                 <li><a href="#" class=""><?php print $sTabHowtouseLabel; ?></a></li>        
-                                <?php } ?>                                
-                                <?php if(!empty($sTabMadeof)) { ?>
+                                <?php endif; ?>                                
+                                <?php if(!empty($sTabMadeof)) : ?>
                                 <li><a href="#" class=""><?php print $sTabMadeofLabel; ?></a></li>        
-                                <?php } ?>
-                                <?php if($_product->getMonogram()) { ?>
-                                    <?php if(!empty($sTabMonogram)) { ?>
+                                <?php endif; ?>
+                                <?php if($_product->getMonogram()) : ?>
+                                    <?php if(!empty($sTabMonogram)) : ?>
                                     <li><a href="#" class=""><?php print $sTabMonogramLabel; ?></a></li>        
-                                    <?php } ?>
-                                <?php } ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                         </ul>
                 
                         <div class="tabs-panels">
-                            <?php if(!empty($sTabDetails)) { ?>
-                            <h2 class="acctab" id="acctab-description">Details</h2>
+                            <?php if(!empty($sTabDetails)) : ?>
+                            <h2 class="acctab" id="acctab-description"><?php echo $this->__('Details') ?></h2>
                             <div class="panel" style="display: block;">    
-                                <h2>Details</h2>
+                                <h2><?php echo $this->__('Details') ?></h2>
                                 <div class="std">                                    
                                     <h3><?php print $title; ?></h3> 
                                     <p><?php print $sTabDetails; ?></p>                                   
-                                        <?php                    
-                                            $find = array(' ', ':', '');
-                                            $blockname = strtolower('block_attribute_scent_' . str_replace($find, '_', $_product->getAttributeText('scent')));
-                                            $blockcontent = strip_tags($this->getChildHtml($blockname));
-                                            $block = Mage::getModel('cms/block')->load($blockname);                                            
-                                            if(!empty($blockcontent)) { ?>
-                                            <div class="fragrance-details" >                                                   
-                                                <h4><?php echo $block->getTitle(); ?></h4>
-                                                <?php echo strip_tags($this->getChildHtml($blockname));  ?>
-                                            </div>
-                                        <?php 
-                                            }
-                                        ?>                                                    
+                                    <?php $find = array(' ', ':', ''); ?>
+                                    <?php $blockname = strtolower('block_attribute_scent_' . str_replace($find, '_', $_product->getAttributeText('scent'))); ?>
+                                    <?php $blockcontent = strip_tags($this->getChildHtml($blockname)); ?>                                         
+                                    <?php if(!empty($blockcontent)) : ?>
+                                        <div class="fragrance-details" >                                                   
+                                            <h4><?php echo Mage::getModel('cms/block')->load($blockname)->getTitle(); ?></h4>
+                                            <?php echo strip_tags($this->getChildHtml($blockname));  ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="more-description-button"><?php echo $this->__('More Info'); ?></div>
+                                    <div class="more-description-content" style="display: none;">
+                                        <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getMoreDescription()) ?>  
+                                    </div>
+                                    <script type="text/javascript">
+                                        jQuery('.more-description-button').click(function() {
+                                            jQuery('.more-description-content').toggle();
+                                            jQuery(this).text(function(i, text) {
+                                                return text === "<?php echo $this->__('More Info'); ?>" ? "<?php echo $this->__('Less Info'); ?>" : "<?php echo $this->__('More Info'); ?>";
+                                            })
+                                        });
+                                    </script>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php endif; ?>
                             
-                            <?php if(!empty($sTabHowtovideo)) { ?>
+                            <?php if(!empty($sTabHowtovideo)) : ?>
                             <h2 class="acctab"><?php print $sTabHowtovideoLabel; ?></h2>
                             <div class="panel" style="display: none;">
                                 <div class="std clearer">                                                                        
@@ -568,59 +576,59 @@ if ($_count) {
                                         <?php } ?>
                                     </div>
                                     <div class="grid12-4" style="text-align: center;" >
-                                        <?php if($_product->getHowToVideo2() != null) { ?>
+                                        <?php if($_product->getHowToVideo2() != null) : ?>
                                         <iframe width="250" height="187" src="<?php print str_replace('http://youtu.be/', '//www.youtube.com/embed/', $_product->getHowToVideo2()); ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
                                         <h4 class="label-category" ><?php print $_product->getHowToVideo2Category(); ?></h4>
                                         <h3><?php print $_product->getHowToVideo2Title(); ?></h3>
-                                        <?php } ?>
+                                        <?php endif; ?>
                                     </div>                                                           
                                 </div>                                
                             </div>
-                            <?php } ?>   
+                            <?php endif; ?>   
                             
-                            <?php if(!empty($sTabResults)) { ?>
+                            <?php if(!empty($sTabResults)) : ?>
                             <h2 class="acctab"><?php print $sTabResultsLabel; ?></h2>
                             <div class="panel" style="display: none;">
                                 <div class="std">                                    
                                     <?php print $sTabResults; ?>                                  
                                 </div>                                
                             </div>   
-                            <?php } ?>
-                            <?php if(!empty($sTabIngredients)) { ?>
+                            <?php endif; ?>
+                            <?php if(!empty($sTabIngredients)) : ?>
                             <h2 class="acctab"><?php print $sTabIngredientsLabel; ?></h2>
                             <div class="panel" style="display: none;">
                                 <div class="std">
                                     <?php print $sTabIngredients; ?>
                                 </div>                                
                             </div>
-                            <?php } ?>
-                            <?php if(!empty($sTabHowtouse)) { ?>
+                            <?php endif; ?>
+                            <?php if(!empty($sTabHowtouse)) : ?>
                             <h2 class="acctab"><?php print $sTabHowtouseLabel; ?></h2>
                             <div class="panel" style="display: none;">
                                 <div class="std clearer">                                                                        
                                     <?php print $sTabHowtouse; ?>                                    
                                 </div>                                
                             </div>
-                            <?php } ?>                                                                               
+                            <?php endif; ?>                                                                               
                             
-                            <?php if(!empty($sTabMadeof)) { ?>
+                            <?php if(!empty($sTabMadeof)) : ?>
                             <h2 class="acctab"><?php print $sTabMadeofLabel; ?></h2>
                             <div class="panel" style="display: none;">
                                 <div class="std">
                                     <?php print $sTabMadeof; ?>
                                 </div>                                
                             </div>
-                            <?php } ?>
-                            <?php if($_product->getMonogram()) { ?>
-                                <?php if(!empty($sTabMonogram)) { ?>
+                            <?php endif; ?>
+                            <?php if($_product->getMonogram()) : ?>
+                                <?php if(!empty($sTabMonogram)) : ?>
                                 <h2 class="acctab"><?php print $sTabMonogramLabel; ?></h2>
                                 <div class="panel tab-monogram-shop" style="display: none;">
                                     <div class="std">
                                         <?php print $sTabMonogram; ?>
                                     </div>                                
                                 </div>
-                                <?php } ?>
-                            <?php } ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </div>                    
                 </div>
 </div>
@@ -635,12 +643,11 @@ if ($_count) {
 
 	</div> <!-- end: box-tabs -->
     
-    <?php
-		if (isset($section['related']))
-			// echo '<div class="box-additional '. $sidebarGridClass .'"><div class="box-additional-inner">'. $section['related'] .'</div></div>';	
-                    echo '<div class="box-additional box-up-sell '. $upsellGridClass .' '. $upsellClasses .'">'. $section['related'] .'</div>';
-		if (isset($section['upsell']))
-			echo '<div class="box-additional box-up-sell '. $upsellGridClass .' '. $upsellClasses .'">'. $section['upsell'] .'</div>';
-	?>
+        <?php
+        if (isset($section['related']))
+            echo '<div class="box-additional box-up-sell ' . $upsellGridClass . ' ' . $upsellClasses . '">' . $section['related'] . '</div>';
+        if (isset($section['upsell']))
+            echo '<div class="box-additional box-up-sell ' . $upsellGridClass . ' ' . $upsellClasses . '">' . $section['upsell'] . '</div>';
+        ?>
     
                            
