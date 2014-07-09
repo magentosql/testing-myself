@@ -11,6 +11,7 @@
             <block type="promomodals/modal" name="free-shipping-over-100" as="free-shipping-over-100" template="wsnyc/promomodals/freeshipping_over_100.phtml"/>
             <block type="promomodals/modal" name="free-shipping-over-50" as="free-shipping-over-50" template="wsnyc/promomodals/freeshipping_over_50.phtml"/>
             <block type="promomodals/modal" name="photo-contest-modal" as="photo-contest-modal" template="wsnyc/promomodals/photocontest_june_2014.phtml"/>
+            <block type="promomodals/modal" name="lindsey14-modal" as="lindsey14-modal" template="wsnyc/promomodals/lindsey14.phtml"/>
         </reference>
     </default>
 </layout>

@@ -13,6 +13,9 @@
 <?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/photocontest_june_2014_enabled')): ?>
     <div class="header-msg"><a href="#modal_photocontest_june_2014"><b class="no-italic"><?php echo $this->__('Vote Now to Choose Your Favorite Stainfighters for our Wash & Win Photo Contest') ?></b></a></div>
 <?php endif; ?>
+<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/lindsey14_enabled')): ?>
+    <div class="header-msg"><a href="#modal_lindsey14"><b class="no-italic"><?php echo $this->__('Save 25% on your order using code LINDSEY14') ?></b></a></div>
+<?php endif; ?>
 <?php $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier'); ?>
 <?php if ($holidayPage && $holidayPage->getData('is_active')): ?>
     <div class="welcome-msg" style="background: none; margin-top: -8px;"><b class="no-italic"><a href="#inline_colorbox" class="openHolidayPopup"><?php echo $this->__('Holiday shipping information') ?></a></b></div>
