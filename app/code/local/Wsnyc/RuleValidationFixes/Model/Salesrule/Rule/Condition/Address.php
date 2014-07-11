@@ -30,8 +30,8 @@ class Wsnyc_RuleValidationFixes_Model_SalesRule_Rule_Condition_Address extends M
     public function loadAttributeOptions()
     {
         $attributes = array(
-            'base_subtotal' => Mage::helper('salesrule')->__('Subtotal (possibly already discounted by other rules)'),
-            'quote_id' => Mage::helper('salesrule')->__('Subtotal'),
+            'base_subtotal' => Mage::helper('salesrule')->__('Subtotal (discounts not taken into consideration)'),
+            'quote_id' => Mage::helper('salesrule')->__('Subtotal (possibly already discounted by other rules)'),
             'total_qty' => Mage::helper('salesrule')->__('Total Items Quantity'),
             'weight' => Mage::helper('salesrule')->__('Total Weight'),
             'payment_method' => Mage::helper('salesrule')->__('Payment Method'),
