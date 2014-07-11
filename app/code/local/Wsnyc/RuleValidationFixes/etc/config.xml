@@ -13,6 +13,7 @@
             <salesrule>
                 <rewrite>
                     <validator>Wsnyc_RuleValidationFixes_Model_Salesrule_Validator</validator>
+                    <rule_condition_address>Wsnyc_RuleValidationFixes_Model_Salesrule_Rule_Condition_Address</rule_condition_address>
                 </rewrite>
             </salesrule>
         </models>

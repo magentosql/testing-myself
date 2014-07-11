@@ -80,6 +80,46 @@ class Wsnyc_CartCouponCodeMessages_Checkout_CartController extends Mage_Checkout
             $this->_goBack();
             return;
         }
+        
+        if (strlen($couponCode)) {
+                
+                $oCoupon = Mage::getModel('salesrule/coupon')->load($couponCode, 'code');
+                $rule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
+                $cond = unserialize($rule->getConditionsSerialized());
+                foreach($cond['conditions'] as $condition) {
+                    if($condition['attribute'] == 'quote_id') {
+                        $quote = Mage::getModel('checkout/session')->getQuote();                        
+                        $totals = $quote->getTotals();
+                        foreach ($totals as $total) {
+                            if($total->getCode() == 'subtotal') {
+                                $subtotal = $total->getValue();
+                            } elseif ($total->getCode() == 'discount') {
+                                $discount = $total->getValue();
+                            }
+                        }
+                        $discountedData = $subtotal + $discount;
+                        if($condition['operator'] == '>=') {
+                            if($discountedData < $condition['value']) {
+                                $this->_getSession()->addError(
+                                    $this->__('You have either entered an invalid code or the code has restrictions for certain items in your cart.')
+                                );
+                                $this->_goBack();
+                                return;
+                            }
+                        }
+                        if($condition['operator'] == '>') {
+                            if($discountedData <= $condition['value']) {
+                                $this->_getSession()->addError(
+                                    $this->__('You have either entered an invalid code or the code has restrictions for certain items in your cart.')
+                                );
+                                $this->_goBack();
+                                return;
+                            }
+                        }
+                    }
+                }
+        }
+        
 
         try {
             $this->_getQuote()->getShippingAddress()->setCollectShippingRates(true);
