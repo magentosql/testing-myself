@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Redirects>
+            <version>0.1.0</version>
+        </Wsnyc_Redirects>
+    </modules>
+    <global>
+        <helpers>
+            <redirects>
+                <class>Wsnyc_Redirects_Helper</class>
+            </redirects>
+        </helpers>
+        <models>
+            <redirects>
+                <class>Wsnyc_Redirects_Model</class>
+            </redirects>
+        </models>
+        
+    </global>
+    <frontend>
+<!--        <routers>
+            <catalog>
+                <args>
+                    <modules>
+                        <Wsnyc_Redirects before="Mage_Adminhtml">Wsnyc_Redirects</Wsnyc_Redirects>
+                    </modules>
+                </args>
+            </catalog>
+        </routers>-->
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <controller_action_before>
+                        <class>redirects/observer</class>
+                        <method>redirectToNiceUrl</method>
+                    </controller_action_before>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </frontend>
+</config> 
