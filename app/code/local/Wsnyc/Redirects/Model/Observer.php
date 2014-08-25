@@ -18,7 +18,7 @@ class Wsnyc_Redirects_Model_Observer {
                     Mage::app()->getResponse()->setRedirect($rewrittenUrl, 301)->sendResponse();
                 }                
             }
-        } elseif ($request->getRouteName() == 'asklaundress') {
+        } elseif ($request->getRouteName() == 'asklaundress' || $request->getRouteName() == 'cms') {
             if(ltrim($request->getPathInfo(),'/') == ltrim($request->getOriginalPathInfo(),'/')) {
                 $redirectCollection = Mage::getModel('core/url_rewrite')->getCollection()
                         ->addFieldToFilter('target_path', array('eq' => ltrim($request->getPathInfo(),'/')))
@@ -29,6 +29,49 @@ class Wsnyc_Redirects_Model_Observer {
                     Mage::app()->getResponse()->setRedirect($rewrittenUrl, 301)->sendResponse();
                 } 
             }
+        } 
+    }
+    
+    public function addCmsRedirect($observer) {
+        $page = $observer->getDataObject();
+        if($page->getOrigData()) {
+            $newUrl = $page->getIdentifier();
+            foreach($page->getStores() as $store) {
+                Mage::getModel('core/url_rewrite')
+                        ->setIsSystem(0)
+                        ->setOptions('RP')
+                        ->setIdPath($newUrl.'-custom-redirect')
+                        ->setTargetPath($newUrl)
+                        ->setRequestPath($page->getOrigData('identifier'))
+                        ->setStoreId($store)
+                        ->save();
+                Mage::getModel('core/url_rewrite')
+                        ->setIsSystem(0)
+                        ->setOptions()
+                        ->setIdPath($newUrl.'-custom-redirect-2')
+                        ->setTargetPath('cms/page/view/id/'.$page->getId())
+                        ->setRequestPath($newUrl)
+                        ->setStoreId($store)
+                        ->save();
+            }
+        }
+    }
+    
+    public function addCategoryRedirect($observer) {
+        
+        $category = $observer->getDataObject();
+        if($category->getCategoryId()) {
+            $originalObject = Mage::getModel('wsnyc_questionsanswers/category')->load($category->getCategoryId(),'category_id');
+            $parentObject = Mage::getModel('wsnyc_questionsanswers/category')->load($category->getParentId(),'category_id');
+            $newIdentifier = str_replace(" ", "-", strtolower($parentObject->getName())) . "/" . str_replace(" ", "-", strtolower($category->getName()));
+            Mage::getModel('core/url_rewrite')
+                    ->setIsSystem(0)
+                    ->setOptions('RP')
+                    ->setIdPath($newIdentifier . '-custom-redirect')
+                    ->setTargetPath($newIdentifier)
+                    ->setRequestPath($originalObject->getIdentifier())
+                    ->setStoreId(0)
+                    ->save();        
         }
     }
 }

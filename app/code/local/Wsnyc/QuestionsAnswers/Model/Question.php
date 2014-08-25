@@ -1,7 +1,8 @@
 <?php
 class Wsnyc_QuestionsAnswers_Model_Question
-    extends Mage_Core_Model_Abstract
-{
+    extends Mage_Core_Model_Abstract {
+    
+    protected $_eventPrefix = 'questionsanswers_question';
 
     public function _construct()
     {
