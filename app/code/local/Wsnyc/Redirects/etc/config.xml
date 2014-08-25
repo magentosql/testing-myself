@@ -35,7 +35,7 @@
                 <observers>
                     <wsnyc_redirects_addcmsredirect>
                         <class>redirects/observer</class>
-                        <method>addRedirect</method>
+                        <method>addCmsRedirect</method>
                     </wsnyc_redirects_addcmsredirect>
                 </observers>
             </cms_page_save_after>
