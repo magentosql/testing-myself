@@ -111,4 +111,12 @@
             </updates>
         </layout>
     </adminhtml>
+    <default>
+        <sitemap>
+            <asklaundress>
+                <changefreq>daily</changefreq>
+                <priority>0.2</priority>
+            </asklaundress>
+        </sitemap>
+    </default>
 </config>
