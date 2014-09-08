@@ -27,7 +27,6 @@
 
 <?php $_product = $this->getProduct(); ?>
 <?php $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product); ?>
-
 <ul class="add-to-links">
 <?php if ($this->helper('wishlist')->isAllow()) : ?>
     <li class="first"><a href="<?php echo $_wishlistSubmitUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
@@ -35,4 +34,5 @@
 	<li class="social"><a href="#" class="share-facebook facebook">Facebook</a></li>
 	<li class="social"><a href="#" class="share-twitter twitter">Twitter</a></li>
 	<li class="social"><a href="#" class="share-pinterest pintrest" data-img="<?php echo $_product->getMediaConfig()->getMediaUrl($_product->getData('image')) ?>">Pinterest</a></li>
+	<li class="social"><a href="#" class="share-google google">Google+</a></li>
 </ul>

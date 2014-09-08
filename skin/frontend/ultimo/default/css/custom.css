@@ -156,16 +156,21 @@ ul.links li a{display:inline-block}
 #footer-card .contact-details .phone:hover{color:#64b96a}
 #footer-card .social-icons{position:absolute;top:335px;width:100%;text-align:center}
 #footer-card .social-icons ul li{display:inline}
-#footer-card .social-icons ul li a,.add-to-links li.social a{display:inline-block;height:18px;text-indent:-9999px}
-#footer-card .social-icons ul li a.pintrest,.add-to-links li.social a.pintrest{width:14px;background:url('../images/pintrest.gif') 0 0 no-repeat;position:relative}
-.add-to-links li.social a.pintrest{margin-left:5px}
-#footer-card .social-icons ul li a.facebook,.add-to-links li.social a.facebook{width:14px;background:url('../images/facebook.gif') 0 0 no-repeat;margin-left:19px;position:relative}
+#footer-card .social-icons ul li a,.add-to-links li.social a{display:inline-block;height: 36px;text-indent:-9999px}
+#footer-card .social-icons ul li a.pintrest,.add-to-links li.social a.pintrest{width: 28px;background: url('../images/pintrest.png') 0 0 no-repeat;position:relative}
+.add-to-links li.social a.pintrest{margin-left: 0px;}
+#footer-card .social-icons ul li a.facebook,.add-to-links li.social a.facebook{width: 28px;background: url('../images/facebook.png') 0 0 no-repeat;margin-left:19px;position:relative}
+#footer-card .social-icons ul li a.facebook,.add-to-links li.social a.google {width: 28px; background: url('../images/gooleplus.png') 0 0 no-repeat;}
 .add-to-links li.social a.facebook{margin-left:0}
-#footer-card .social-icons ul li a.twitter,.add-to-links li.social a.twitter{width:19px;background:url('../images/twitter.gif') 0 0 no-repeat;margin-left:20px;position:relative}
-.add-to-links li.social a.twitter{margin-left:5px}
+#footer-card .social-icons ul li a.twitter,.add-to-links li.social a.twitter{width: 28px;background: url('../images/twitter.png') 0 0 no-repeat;margin-left:20px;position:relative}
+.add-to-links li.social a.twitter{margin-left: 0px;}
 #footer-card .social-icons ul li a.youtube{width:40px;background:url('../images/youtube.gif') 0 0 no-repeat;margin-left:15px;position:relative}
 #footer-card .social-icons ul li a.rss{width:15px;background:url('../images/rss.gif') 0 0 no-repeat;margin-left:18px;position:relative}
-#footer-card .social-icons ul li a.pintrest:after,#footer-card .social-icons ul li a.facebook:after,#footer-card .social-icons ul li a.twitter:after,#footer-card .social-icons ul li a.youtube:after,#footer-card .social-icons ul li a.rss:after,.add-to-links li.social a.pintrest:after,.add-to-links li.social a.facebook:after,.add-to-links li.social a.twitter:after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background-image:inherit;background-position:0 -20px;opacity:0;-webkit-transition:opacity .2s;-moz-transition:opacity .2s;-o-transition:opacity .2s}
+#footer-card .social-icons ul li a.pintrest:after, 
+#footer-card .social-icons ul li a.facebook:after, 
+#footer-card .social-icons ul li a.twitter:after, 
+#footer-card .social-icons ul li a.youtube:after, 
+#footer-card .social-icons ul li a.rss:after {content:"";position:absolute;top:0;left:0;bottom:0;right:0;background-image:inherit;background-position:0 -20px;opacity:0;-webkit-transition:opacity .2s;-moz-transition:opacity .2s;-o-transition:opacity .2s}
 #footer-card .social-icons ul li a.pintrest:hover:after,#footer-card .social-icons ul li a.facebook:hover:after,#footer-card .social-icons ul li a.twitter:hover:after,#footer-card .social-icons ul li a.youtube:hover:after,#footer-card .social-icons ul li a.rss:hover:after,.add-to-links li.social a.pintrest:hover:after,.add-to-links li.social a.facebook:hover:after,.add-to-links li.social a.twitter:hover:after{opacity:1}
 .footer-bottom-container{padding:53px 0 25px 0}
 .footer-bottom{width:558px;margin:0 auto}
