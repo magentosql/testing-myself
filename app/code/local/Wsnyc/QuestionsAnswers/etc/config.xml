@@ -79,6 +79,17 @@
                 </admin_question_notifier>
             </email>
         </template>
+        <events>
+            <sitemap_generate_before_close>
+                <observers>
+                    <add_questions_to_sitemap>
+                        <type>singleton</type>
+                        <class>wsnyc_questionsanswers/observer</class>
+                        <method>addQuestionsToSitemap</method>
+                    </add_questions_to_sitemap>
+                </observers>
+            </sitemap_generate_before_close>
+        </events>
     </global>
     <admin>
         <routers>
@@ -100,4 +111,12 @@
             </updates>
         </layout>
     </adminhtml>
+    <default>
+        <sitemap>
+            <asklaundress>
+                <changefreq>daily</changefreq>
+                <priority>0.2</priority>
+            </asklaundress>
+        </sitemap>
+    </default>
 </config>
