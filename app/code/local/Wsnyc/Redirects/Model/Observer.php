@@ -37,8 +37,8 @@ class Wsnyc_Redirects_Model_Observer {
         if($page->getOrigData()) {
             $newUrl = $page->getIdentifier();
             foreach($page->getStores() as $store) {
-                Mage::getModel('core/url_rewrite')
-                        ->setIsSystem(0)
+                $rewrite = Mage::getModel('core/url_rewrite')->load($page->getOrigData('identifier'), 'request_path');                
+                $rewrite->setIsSystem(0)
                         ->setOptions('RP')
                         ->setIdPath($newUrl.'-custom-redirect')
                         ->setTargetPath($newUrl)
