@@ -21,12 +21,6 @@
  */
 -->
 <layout version="0.1.0">
-    <default>        
-        <reference name="top.links">			
-            <block type="promotionalgift/toplink" name="promotionalgift-toplink"/>
-        </reference>
-    </default>
-    
     <onestepcheckout_index_index>
         <reference name="head">
             <action method="addJs">
@@ -470,59 +464,7 @@
             </action>
         </reference>
     </checkout_multishipping_overview>
-    <catalog_product_view>
-        <reference name="head">
-            <action method="addJs">
-                <script>magestore/promotionalgift/tooltip/tooltip.js</script>
-            </action>
-        </reference>
-        <reference name="product.info" >
-            <block type="promotionalgift/category_productgift_freegift" as="other" name="freegift" template="promotionalgift/category/productgift/freegift.phtml"/>
-        </reference>
-    </catalog_product_view>
-	
-    <!-- Show promotional gift on category and search page-->
-    <catalog_category_default>
-        <reference name="head">
-            <action method="addJs">
-                <script>magestore/promotionalgift/tooltip/tooltip.js</script>
-            </action>
-            <action method="addCss">
-                <stylesheet>css/magestore/promotionalgift.css</stylesheet>
-            </action>
-        </reference>
-        <reference name="before_body_end">
-            <block type="promotionalgift/promotionalcatalogpage" name="promotionalgift.product" after="-" template="promotionalgift/product.phtml" />
-        </reference>
-    </catalog_category_default>
-    <catalog_category_layered>
-        <reference name="head">
-            <action method="addJs">
-                <script>magestore/promotionalgift/tooltip/tooltip.js</script>
-            </action>
-            <action method="addCss">
-                <stylesheet>css/magestore/promotionalgift.css</stylesheet>
-            </action>
-        </reference>
-        <reference name="before_body_end">
-            <block type="promotionalgift/promotionalcatalogpage" name="promotionalgift.product" after="-" template="promotionalgift/product.phtml" />
-        </reference>
-    </catalog_category_layered>
-    <catalogsearch_result_index>
-        <reference name="head">
-            <action method="addJs">
-                <script>magestore/promotionalgift/tooltip/tooltip.js</script>
-            </action>
-            <action method="addCss">
-                <stylesheet>css/magestore/promotionalgift.css</stylesheet>
-            </action>
-        </reference>
-        <reference name="before_body_end">
-            <block type="promotionalgift/promotionalcatalogpage" name="promotionalgift.product" after="-" template="promotionalgift/product.phtml" />
-        </reference>
-    </catalogsearch_result_index>
-    <!-- end Show promotional gift on category and search page-->
-	
+    
     <checkout_cart_index>
         <reference name="after_body_start">
             <block type="promotionalgift/ajaxcart" name="ajaxcart-promotionalgift" before="-" />
