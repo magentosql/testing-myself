@@ -16,7 +16,7 @@
 
 .jcarousel-skin-tango .jcarousel-container-horizontal {
     /* width: 245px; */
-    padding: 20px 40px;
+    padding: 20px 20px;
 }
 
 .jcarousel-skin-tango .jcarousel-container-vertical {
@@ -97,6 +97,7 @@
 .jcarousel-skin-tango .jcarousel-next-disabled-horizontal:active {
     cursor: default;
     background-position: -96px 0;
+    display: none !important;
 }
 
 .jcarousel-skin-tango .jcarousel-prev-horizontal {
@@ -130,6 +131,7 @@
 .jcarousel-skin-tango .jcarousel-prev-disabled-horizontal:active {
     cursor: default;
     background-position: -96px 0;
+    display:  none !important;
 }
 
 /**

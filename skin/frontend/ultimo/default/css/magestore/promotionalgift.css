@@ -80,9 +80,9 @@
 .promotional-srule{
 	width: 100%;
 	display: block;
-	border: 1px solid #C5C4C4;	
+	border: 0px;	
 	margin-bottom: 25px; 
-	margin-top: 20px;
+	margin-top: 0px;
 }
 
 .promotional-title{
@@ -91,7 +91,8 @@
     border-bottom: 1px dashed #C5C4C4;	
     color: #0A263C;
     font-size: 12px;
-    padding: 10px;
+    
+	padding: 10px;
     /* width: 879px; */
 }
 
@@ -103,9 +104,9 @@
 }
 
 .promotional-title .main-title{
-	background: url('../../images/promotionalgift/promotionalgift-scart.png') no-repeat scroll 0 0 transparent;
 	display: block;
-    padding: 0 0 0 28px;
+    
+	padding: 0px;
 }
 
 .promotional-title-hide .main-title{

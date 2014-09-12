@@ -272,7 +272,7 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
                         }
                     </script>
                     <div class="promotional-title" style="border-bottom:none">
-                        <a href="#; return false" onclick="showCampaign('<?php echo $ruleId ?>')"><span style="font-size:12px;font-weight: bold;margin-left: 15px" class="main-title"><?php echo $this->__($rule->getName()) ?></span></a>
+                        <a href="#; return false" onclick="showCampaign('<?php echo $ruleId ?>')"><span style="font-size:12px;font-weight: bold;" class="main-title"><?php echo $this->__($rule->getName()) ?></span></a>
                         <input type="hidden" id="numberFreeItems_<?php echo $rule->getId(); ?>" value="<?php echo $numberFreeItems; ?>" />
                         <input type="hidden" id="ruleid_<?php echo $rule->getId(); ?>" value="<?php echo $rule->getId(); ?>" />
                     </div>	

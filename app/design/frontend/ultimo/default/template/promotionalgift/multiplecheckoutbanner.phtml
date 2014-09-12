@@ -50,7 +50,7 @@ $helper = Mage::helper('promotionalgift');
                 <?php if ($numberRules < count($ruleIds)) { ?>
                     <div><?php echo $this->__("Please select %s campaign(s) from the following campaign(s)", $numberRules) ?></div>
                 <?php } else { ?>
-                    <div><?php echo $this->__("Please select gift(s) from the following campaign(s)") ?></div>
+                    <div><?php echo $this->__("Please select one sample of our specialty detergents") ?></div>
                 <?php } ?>
             </div>
             <?php
@@ -144,14 +144,14 @@ $helper = Mage::helper('promotionalgift');
                                                                                                                                                                         
                     </script>
                     <div class="promotional-title" style="border-bottom:none">
-                        <a href="#" onclick="showCampaign('<?php echo $ruleId ?>')"><span style="font-size:12px;font-weight: bold;margin-left: 15px" class="main-title"><?php echo $this->__($rule->getName()) ?></span></a>
+                        <a href="#" onclick="showCampaign('<?php echo $ruleId ?>')"><span style="font-size:12px;font-weight: bold;" class="main-title"><?php echo $this->__($rule->getName()) ?></span></a>
                         <input type="hidden" id="numberFreeItems_<?php echo $rule->getId(); ?>" value="<?php echo $numberFreeItems; ?>" />
                         <input type="hidden" id="ruleid_<?php echo $rule->getId(); ?>" value="<?php echo $rule->getId(); ?>" />
                     </div>	
                     <div id="promotional-srule-<?php echo $ruleId ?>" class="promotional-srule" style="border-right:none;border-left:none;">
                         <div id="promotional-shoppingcart-table-<?php echo $ruleId ?>" class="jcarousel-skin-tango">																	
                             <?php if ($totalItems > 1): ?>
-                                <h5 class="child-title"><?php echo $this->__('Please select %s promotional offers from the followings', $numberFreeItems); ?></h5>							
+                                <h5 class="child-title"><?php echo $this->__('Please select %s of the below', $numberFreeItems); ?></h5>							
                             <?php endif ?>
                             <ul id="images" style="height:250px">					
                                 <?php foreach ($items as $item): ?>
