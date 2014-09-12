@@ -1,5 +1,7 @@
 <?php
 class Wsnyc_QuestionsAnswers_Model_Category extends Mage_Core_Model_Abstract {
+    
+    protected $_eventPrefix = 'questionsanswers_category';
 
     public function _construct()
     {
