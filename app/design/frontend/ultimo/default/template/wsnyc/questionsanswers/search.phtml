@@ -5,7 +5,7 @@
 <h2 class="questionsanswers-subheading">Search results for <em>&quot;<?php echo $this->getPhrase(); ?>&quot;</em></h2>
 <?php if($questions->count()): ?>
     <?php foreach($questions as $question): ?>
-        <div class="search-answer">
+        <div class="search-answer-wrapper">
             <?php
             if(!isset($categoryUrls[$question->getCategoryId()])){
                 $category =Mage::getModel('wsnyc_questionsanswers/category')->load($question->getCategoryId());
