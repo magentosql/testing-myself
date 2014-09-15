@@ -279,7 +279,7 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
                     <div id="promotional-srule-<?php echo $ruleId ?>" class="promotional-srule" style="border-right:none;border-left:none;">
                         <div id="promotional-shoppingcart-table-<?php echo $ruleId ?>" class="jcarousel-skin-tango">																	
                             <?php if ($totalItems > 1): ?>
-                                <h5 class="child-title"><?php echo $this->__('Please select %s of the below', $numberFreeItems); ?></h5>							
+                                <h5 class="child-title"><?php echo $this->__('Please select one of the below'); ?></h5>
                             <?php endif ?>
                             <ul id="images" style="height:250px">					
                                 <?php foreach ($items as $item): ?>
