@@ -318,16 +318,36 @@
     border-top: none;
 }
 .search-question {
-    margin-top: 10px;
-    padding-top: 10px;
+    margin-bottom: 15px;
     border-top: 4px solid #ccc;
     font-size: 16px;
+    font-style: italic;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 35%;
+    float: left;
 }
-
 .search-answer {
+    font-style: normal;    
+    padding-left: 25px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 65%;
+    float: right;
+}
+.search-answer-wrapper {
     font-size: 14px;
     font-style: italic;
     margin-top: 5px;
+    margin: 0px 0px 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px dotted #333;
+    overflow: hidden;
+}
+.search-answer-wrapper:last-child {
+    border-bottom: 0px;
 }
 
 h2.questionsanswers-subheading {
