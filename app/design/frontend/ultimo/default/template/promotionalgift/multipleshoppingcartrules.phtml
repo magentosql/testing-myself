@@ -122,12 +122,7 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
         if ($ruleIds && count($ruleIds) > 0) {
             ?>
             <div class="promotional-title">
-                <h2 class="main-title"><?php echo $this->__($mainTitle) ?></h2>
-                <?php if ($numberRules < count($ruleIds)) { ?>
-                    <div><?php echo $this->__("Please select %s campaign(s) from the following campaign(s)", $numberRules) ?></div>
-                <?php } else { ?>
-                    <div><?php echo $this->__("Please select one sample of our specialty detergent") ?></div>
-                <?php } ?>
+                <h2 class="main-title"><?php echo $this->__($mainTitle) ?></h2>                
             </div>
             <?php
             foreach ($ruleIds as $ruleId):
@@ -271,8 +266,7 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
                                                                                                                                                                                                                             
                         }
                     </script>
-                    <div class="promotional-title" style="border-bottom:none">
-                        <a href="#; return false" onclick="showCampaign('<?php echo $ruleId ?>')"><span style="font-size:12px;font-weight: bold;" class="main-title"><?php echo $this->__($rule->getName()) ?></span></a>
+                    <div>
                         <input type="hidden" id="numberFreeItems_<?php echo $rule->getId(); ?>" value="<?php echo $numberFreeItems; ?>" />
                         <input type="hidden" id="ruleid_<?php echo $rule->getId(); ?>" value="<?php echo $rule->getId(); ?>" />
                     </div>	
