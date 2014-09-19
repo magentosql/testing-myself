@@ -186,18 +186,26 @@ border: 1px solid #D7D7D7;
     width: 100%;
 }
 
+.promotional-srule h2 {
+    font-size: 13px;
+	
+    line-height: 16px;
+}
+
 .promotional-button{
-	height: 30px;
+	height: auto;
+	overflow: hidden;
+	text-align: center;
 }
 
 .addgift{
-	float: left;
-	margin-left: 45px !important;
+	float: none;
+	text-align: center;
 }
 
 .stootip-head {
 	float: left;	
-	padding: 20px 0 0 20px;
+	padding: 5px 0px 0px 5px;
 	font-weight: bold !important;
 	width: 100%;
 }
@@ -226,31 +234,29 @@ border: 1px solid #D7D7D7;
 }
 
 .stootip-product-name{
-	font-size: 15px !important;
-	margin-left: 20px;
+	font-size: 13px !important;
+	margin-left: 5px;
 	font-weight: bold;	
-	width: 85%
-}
+	width: 96%;}
 
 .stootip-rule-name{
-	margin-left: 20px;
-	margin-top: 15px;
-	font-size: 15px !important;
-	width: 85%;
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 13px !important;
+	width: 96%;
 }
 
 .stootip-product-qty{
-	margin-left: 20px;
-	margin-top: 15px;
-	font-size: 15px !important;
-	width: 85%;
+	margin-left: 5px;
+	margin-top: 5px;
+	font-size: 13px !important;
+	width: 96%;
 }
 
 .stootip-head-title{
-	width: 85%;
+	width: 96%;
 	font-style: italic;
 	font-size: 15px;
 	font-weight: bold;
 	border-bottom: 1px dotted #959595;
-	padding-bottom: 10px;
 }

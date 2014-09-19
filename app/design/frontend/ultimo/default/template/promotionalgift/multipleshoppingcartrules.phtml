@@ -275,7 +275,7 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
                             <?php if ($totalItems > 1): ?>
                                 <h5 class="child-title"><?php echo $this->__('Please select one of the below'); ?></h5>
                             <?php endif ?>
-                            <ul id="images" style="height:250px">					
+                            <ul id="images">
                                 <?php foreach ($items as $item): ?>
                                     <?php $product = Mage::getModel('catalog/product')->load($item['product_id']); ?>					
                                     <?php if ($product->getStatus() == 1): ?>
@@ -292,13 +292,9 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
                                                     </a>															
                                                 </div>						
                                                 <?php $productName = $product->getName() ?>
-                                                <?php
-                                                if (strlen($productName) >= 15) {
-                                                    $productName = substr($productName, 0, 14);
-                                                    $productName = $productName . '...';
-                                                }
-                                                ?>
-                                                <h2 class="product-name" style="text-align:center;"><?php echo $_helper->productAttribute($product, $productName, 'name') ?></h2>
+                                                <h2 class="product-name" style="text-align:center;">
+                                                    <?php echo $_helper->productAttribute($product, $productName . $productName, 'name') ?>
+                                                </h2>
                                                 <div class="price-box" style="text-align:center;">
                                                     <p class="old-price">
                                                         <span class="price-label">Regular Price:</span>
@@ -321,7 +317,7 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
 														</p>
 													<?php endif;?>
                                                 </div>
-                                                <div class="promotional-button" style="padding-left: 7px">
+                                                <div class="promotional-button">
                                                     <?php
                                                     if ($product->getHasOptions() || $product->getTypeId() == 'grouped' || $product->getTypeId() == 'giftvoucher') {
                                                         $urlProduct = $product->getUrlPath();
