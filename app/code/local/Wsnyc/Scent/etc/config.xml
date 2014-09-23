@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Scent>
+            <version>1.0.0</version>
+        </Wsnyc_Scent>
+    </modules>
+    <global>
+        <blocks>
+            <scent>
+                <class>Wsnyc_Scent_Block</class>
+            </scent>
+        </blocks>
+    </global>
+</config>
