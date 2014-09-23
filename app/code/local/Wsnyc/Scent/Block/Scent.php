@@ -12,7 +12,6 @@ class Wsnyc_Scent_Block_Scent extends Mage_Catalog_Block_Product_View_Attributes
         $_product = $this->getProduct();
         $scent = str_replace(array(' ', ':'), '_', $_product->getAttributeText('scent'));
         $identifier = strtolower('block_attribute_scent_' . $scent);
-        var_dump($identifier);
         $cmsBlock = Mage::getModel('cms/block')->load($identifier, 'identifier');
         
         $html = '';
