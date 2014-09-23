@@ -194,8 +194,11 @@ border: 1px solid #D7D7D7;
 
 .promotional-button{
 	height: auto;
-	overflow: hidden;
-	text-align: center;
+    overflow: hidden;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    margin: 0px 38px;
 }
 
 .addgift{

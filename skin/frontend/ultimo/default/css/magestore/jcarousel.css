@@ -37,7 +37,9 @@
     width:  75px;
     height: 245px;
 }
-
+.jcarousel-skin-tango #images {
+    padding: 0px 0px 60px 0px !important;
+}
 .jcarousel-skin-tango .jcarousel-item {
     width: 190px;
 }
