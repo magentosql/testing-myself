@@ -49,34 +49,37 @@ class Wsnyc_RuleValidationFixes_Model_Salesrule_Validator extends Mage_SalesRule
         }
         
         $cond = unserialize($rule->getConditionsSerialized());
-        foreach($cond['conditions'] as $condition) {
-            if($condition['attribute'] == 'quote_id') {
-                $quote = Mage::getModel('checkout/session')->getQuote();                        
-                $totals = $quote->getTotals();
-                foreach ($totals as $total) {
-                    if($total->getCode() == 'subtotal') {
-                        $subtotal = $total->getValue();
-                    } elseif ($total->getCode() == 'discount') {
-                        $discount = $total->getValue();
+        if ($cond) {            
+            foreach($cond['conditions'] as $condition) {            
+                if($condition['attribute'] == 'quote_id') {
+                    $discount = 0;
+                    $quote = Mage::getModel('checkout/session')->getQuote();                        
+                    $totals = $quote->getTotals();
+                    foreach ($totals as $total) {
+                        if($total->getCode() == 'subtotal') {
+                            $subtotal = $total->getValue();
+                        } elseif ($total->getCode() == 'discount') {
+                            $discount = $total->getValue();
+                        }
                     }
-                }
-                $discountedData = $subtotal + $discount;
-                if($condition['operator'] == '>=') {
-                    if($discountedData < $condition['value']) {
-                        $rule->setIsValidForAddress($address, false);
-                        return false;
+                    $discountedData = $subtotal + $discount;
+                    if($condition['operator'] == '>=') {
+                        if($discountedData < $condition['value']) {
+                            $rule->setIsValidForAddress($address, false);
+                            return false;
+                        }
                     }
-                }
-                if($condition['operator'] == '>') {
-                    if($discountedData <= $condition['value']) {
-                        $rule->setIsValidForAddress($address, false);
-                        return false;
+                    if($condition['operator'] == '>') {
+                        if($discountedData <= $condition['value']) {
+                            $rule->setIsValidForAddress($address, false);
+                            return false;
+                        }
                     }
                 }
             }
         }
         
-        if ($rule->hasIsValidForAddress($address) && !$address->isObjectNew()) {
+        if ($rule->hasIsValidForAddress($address) && !$address->isObjectNew()) {            
             return $rule->getIsValidForAddress($address);
         }
 
@@ -141,7 +144,7 @@ class Wsnyc_RuleValidationFixes_Model_Salesrule_Validator extends Mage_SalesRule
         return true;
     }
     public function processFreeShipping(Mage_Sales_Model_Quote_Item_Abstract $item)
-    {
+    {        
         $address = $this->_getAddress($item);
         $item->setFreeShipping(false);
         $allRules = $this->_getRules();
