@@ -372,55 +372,22 @@
 			</block>
 			
 			<!-- Custom static blocks -->
-                        <block type="cms/block" name="block_product_monogram_shop">
-                            <action method="setBlockId"><block_id>block_product_monogram_shop</block_id></action>
-                        </block>                        
-			<block type="cms/block" name="block_product_primary_bottom">
-                            <action method="setBlockId"><block_id>block_product_primary_bottom</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_product_secondary_bottom">
-                            <action method="setBlockId"><block_id>block_product_secondary_bottom</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_product_replace_related">
-                            <action method="setBlockId"><block_id>block_product_replace_related</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_product_replace_upsell">
-                            <action method="setBlockId"><block_id>block_product_replace_upsell</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_classic">
-                            <action method="setBlockId"><block_id>block_attribute_scent_classic</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_baby">
-                            <action method="setBlockId"><block_id>block_attribute_scent_baby</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_le_labo_santal_33">
-                            <action method="setBlockId"><block_id>block_attribute_scent_le_labo_santal_33</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_no247">
-                            <action method="setBlockId"><block_id>block_attribute_scent_no247</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_sport">
-                            <action method="setBlockId"><block_id>block_attribute_scent_sport</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_cedar">
-                            <action method="setBlockId"><block_id>block_attribute_scent_cedar</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_lady">
-                            <action method="setBlockId"><block_id>block_attribute_scent_lady</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_le_labo_rose_31">
-                            <action method="setBlockId"><block_id>block_attribute_scent_le_labo_rose_31</block_id></action>
-                        </block>
-                        <block type="cms/block" name="block_attribute_scent_unscented__for_the_home">
-                            <action method="setBlockId"><block_id>block_attribute_scent_unscented__for_the_home</block_id></action>
-                        </block>  
-                        <block type="cms/block" name="block_attribute_scent_unscented__detergent">
-                            <action method="setBlockId"><block_id>block_attribute_scent_unscented__detergent</block_id></action>
-                        </block>     
-                        <block type="cms/block" name="block_attribute_scent_unscented__fabric_care">
-                            <action method="setBlockId"><block_id>block_attribute_scent_unscented__fabric_care</block_id></action>
-                        </block>     
-			
+            <block type="cms/block" name="block_product_monogram_shop">
+                <action method="setBlockId"><block_id>block_product_monogram_shop</block_id></action>
+            </block>                        
+            <block type="cms/block" name="block_product_primary_bottom">
+                <action method="setBlockId"><block_id>block_product_primary_bottom</block_id></action>
+            </block>
+            <block type="cms/block" name="block_product_secondary_bottom">
+                <action method="setBlockId"><block_id>block_product_secondary_bottom</block_id></action>
+            </block>
+            <block type="cms/block" name="block_product_replace_related">
+                <action method="setBlockId"><block_id>block_product_replace_related</block_id></action>
+            </block>
+            <block type="cms/block" name="block_product_replace_upsell">
+                <action method="setBlockId"><block_id>block_product_replace_upsell</block_id></action>
+            </block>
+            <block type="scent/scent" name="product.fragrance" as="fragrance" template="catalog/product/view/scent.phtml" />
 		</reference> <!-- end: product.info -->
 		
 		<!-- Second part of adding reviews to tabs. See the first part in product.info section in info_tabs block -->

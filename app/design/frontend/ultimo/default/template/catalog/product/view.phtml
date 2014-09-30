@@ -146,13 +146,7 @@ if ($_count) {
                 </div>
             <?php endif;?>
             
-            <div class="fragrance" >       
-                <?php                    
-                    $find = array(' ', ':', '');
-                    $blockname = strtolower('block_attribute_scent_' . str_replace($find, '_', $_product->getAttributeText('scent')));                    
-                    echo $this->getChildHtml($blockname);                    
-                ?>                
-            </div>
+            <?php echo $this->getChildHtml('fragrance');?>
             <script type="text/javascript">
                 jQuery(function($){
 
