@@ -1,0 +1,48 @@
+<?php $_modalName = 'woolinitiative'; ?>
+
+<?php if(Mage::getStoreConfig('wsnyc_promotions/promotions/' . $_modalName . '_enabled')): ?>
+
+    <?php $block = Mage::getModel('cms/block')->load('modal-' . $_modalName); ?>
+    <?php Mage::getSingleton('core/cookie')->set('modal-' . $_modalName, '1' ,time()+31536000,'/'); ?>
+    <div style="display:none">
+        <div id="modal_<?php echo $_modalName ?>" class="promotion-modal">
+            <div>
+                <div>
+                    <div class="logo-wrapper v-item">
+                        <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
+                    </div>
+                    <h3><?php echo $block->getTitle() ?></h3>
+                    <div class="freeshipping-cms-content">
+                        <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($block->getContent()) ?>
+                    </div>
+
+                    <div class="call-us-message">
+                        <p><?php echo $this->__('Please call us at (212) 209-0074 with any questions.'); ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(function($) {
+            jQuery('a[href="#modal_<?php echo $_modalName ?>"]').colorbox({
+                inline  : true,
+                opacity : 0.5,
+                speed   : 300,
+                width   : 510,
+                height  : 460,
+                closeButton : true,
+                className: '<?php echo $_modalName ?>',
+                onCleanup: function() {
+                    jQuery('#modal_<?php echo $_modalName ?>').parent().siblings( "#cboxClose" ).attr('class','noclass');
+                },
+                onComplete: function() {
+                    jQuery('#modal_<?php echo $_modalName ?>').parent().siblings( "#cboxClose" ).attr('class','modal-close');
+                },
+                
+            });
+        });
+    </script>
+<?php endif; ?>
+
+    
