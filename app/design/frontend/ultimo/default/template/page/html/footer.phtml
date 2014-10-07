@@ -134,7 +134,7 @@
             </div>
 
             <div class="footer-form newsletter-form">
-                <form action="http://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <form action="http://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form-footer" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 					    	    <label for="mce-EMAIL" class="float-left">Sign Up For Updates By Email</label>
 					            <div>
 					                <div class="input-box float-left effect">
@@ -252,7 +252,11 @@
             var options = { errorClass: 'mce_inline_error', errorElement: 'div', onkeyup: function(){}, onfocusout:function(){}, onblur:function(){}  };
             var mce_validator = $("#mc-embedded-subscribe-form").validate(options);
             $("#mc-embedded-subscribe-form").unbind('submit');//remove the validator so we can get into beforeSubmit on the ajaxform, which then calls the validator
-            options = { url: 'http://thelaundress.us6.list-manage1.com/subscribe/post-json?u=d3d48e75efd637e646b0beb3c&id=dbfb7e7934&c=?', type: 'GET', dataType: 'json', contentType: "application/json; charset=utf-8",
+            options = { 
+                url: 'http://thelaundress.us6.list-manage1.com/subscribe/post-json?u=d3d48e75efd637e646b0beb3c&id=dbfb7e7934&c=?', 
+                type: 'GET', 
+                dataType: 'json', 
+                contentType: "application/json; charset=utf-8",
                 beforeSubmit: function(){
                     $('#mce_tmp_error_msg').remove();
                     $('.datefield','#mc_embed_signup').each(
@@ -306,8 +310,8 @@
                     return mce_validator.form();
                 },
                 success: mce_success_cb
-            };
-            $('#mc-embedded-subscribe-form').ajaxForm(options);
+            };            
+            $('form[name="mc-embedded-subscribe-form"]').first().ajaxForm(options);
 
 
         });
