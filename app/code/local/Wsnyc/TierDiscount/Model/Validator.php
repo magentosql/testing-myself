@@ -8,6 +8,7 @@ class Wsnyc_TierDiscount_Model_Validator extends Mage_SalesRule_Model_Validator 
      */    
     const TIER_DISCOUNT_ACTION = 'tier_discount';
     
+    protected $_cartQty;
     
     /**
      * Check if rule uses tier discount
@@ -24,7 +25,7 @@ class Wsnyc_TierDiscount_Model_Validator extends Mage_SalesRule_Model_Validator 
             return;
         }
         
-        $cartQty = $event->getQuote()->getItemsQty();
+        $cartQty = $this->_getCartQty($event->getQuote());
         $tierDiscounts = $this->_getTierValues($rule);        
         $discount = $this->_getDiscount($tierDiscounts, $cartQty);
         if (!$discount) {
@@ -90,5 +91,24 @@ class Wsnyc_TierDiscount_Model_Validator extends Mage_SalesRule_Model_Validator 
             }
         }        
         return $current;
+    }
+    
+    /**
+     * Get quantity of all items in cart without fully discounted items
+     * 
+     * @param Mage_Sales_Model_Quote $quote
+     * @return int
+     */
+    protected function _getCartQty(Mage_Sales_Model_Quote $quote) {
+        if (null === $this->_cartQty) {
+            $cartQty = 0;
+            foreach($quote->getAllVisibleItems() as $item) {
+                if ($item->getBasePrice() > 0) {
+                    $cartQty += $item->getQty();
+                }
+            }
+            $this->_cartQty = $cartQty;
+        }
+        return $this->_cartQty;
     }
 }
