@@ -6,7 +6,7 @@ class Wsnyc_TierDiscount_Model_Observer {
         $form = $observer->getEvent()->getForm();
         $options = $form->getElement('simple_action')->getValues();
         $options[] = array(
-            'value' => Wsnyc_TierDiscount_Model_Observer::TIER_DISCOUNT_ACTION,
+            'value' => Wsnyc_TierDiscount_Model_Validator::TIER_DISCOUNT_ACTION,
             'label' => Mage::helper('tier_discount')->__('Tier Discount'),
         );
         $form->getElement('simple_action')->setValues($options);
