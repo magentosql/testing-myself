@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_MultipleWebsites>
+            <version>0.1.0</version>
+        </Wsnyc_MultipleWebsites>
+    </modules>
+    <global>
+        <helpers>
+            <multiplewebsites>
+                <class>Wsnyc_MultipleWebsites_Helper</class>
+            </multiplewebsites>
+        </helpers>
+        <resources>
+            <multiplewebsites_setup>
+                <setup>
+                    <module>Wsnyc_MultipleWebsites</module>
+                </setup>
+            </multiplewebsites_setup>
+        </resources>
+    </global>
+</config>
