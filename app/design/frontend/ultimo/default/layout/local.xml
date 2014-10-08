@@ -206,6 +206,14 @@
 			</block>                                              
 			
 		</reference>
+        
+        <reference name="before_body_end">
+            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />
+        </reference>
+        
+        <reference name="after_body_start">
+            <block type="core/template" name="tracking.metrics" template="tracking/metrics.phtml" />
+        </reference>
 		
 		
 		<!-- Add blocks to the footer ====================================================================== -->
@@ -546,6 +554,13 @@
 		<!--</reference>-->
 	<!---->
 	<!--</checkout_onepage_index>-->
+    
+        <checkout_onepage_success>
+            <reference name="before_body_end">
+                <block type="core/template" name="google.conversion" template="tracking/conversion.phtml" />
+                <block type="core/template" name="ppc.conversion" template="tracking/ppc-conversion.phtml" />
+            </reference>
+        </checkout_onepage_success>
 
 
 	<!-- SEARCH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
