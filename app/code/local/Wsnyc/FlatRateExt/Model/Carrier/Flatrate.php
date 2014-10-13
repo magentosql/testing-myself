@@ -19,10 +19,10 @@ class Wsnyc_FlatRateExt_Model_Carrier_Flatrate extends Mage_Shipping_Model_Carri
         $min = $this->getConfigData('min_amount');
         $max = $this->getConfigData('max_amount');
         $value = $this->getConfigData('order_base') ? $request->getPackageValueWithDiscount() : $request->getPackageValue();
-        if ($min && $min > $value) {
+        if ($min && $min >= $value) {
             return false;
         }
-        if ($max && $max < $value) {
+        if ($max && $max <= $value) {
             return false;
         }        
         return true;
