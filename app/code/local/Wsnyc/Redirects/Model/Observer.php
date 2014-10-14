@@ -34,8 +34,9 @@ class Wsnyc_Redirects_Model_Observer {
     
     public function addCmsRedirect($observer) {
         $page = $observer->getDataObject();
-        if($page->getOrigData()) {
-            $newUrl = $page->getIdentifier();
+        $oldUrl = $page->getOrigData('identifier');
+        $newUrl = $page->getIdentifier();        
+        if($page->getOrigData() && $oldUrl != $newUrl) {
             foreach($page->getStores() as $store) {
                 $rewrite = Mage::getModel('core/url_rewrite')->load($page->getOrigData('identifier'), 'request_path');                
                 $rewrite->setIsSystem(0)
@@ -45,8 +46,8 @@ class Wsnyc_Redirects_Model_Observer {
                         ->setRequestPath($page->getOrigData('identifier'))
                         ->setStoreId($store)
                         ->save();
-                Mage::getModel('core/url_rewrite')
-                        ->setIsSystem(0)
+                $newRewrite = Mage::getModel('core/url_rewrite')->load($newUrl, 'request_path');                
+                $newRewrite->setIsSystem(0)
                         ->setOptions()
                         ->setIdPath($newUrl.'-custom-redirect-2')
                         ->setTargetPath('cms/page/view/id/'.$page->getId())
