@@ -2,15 +2,30 @@
 <config>
     <modules>
         <Wsnyc_MultipleWebsites>
-            <version>0.1.0</version>
+            <version>0.10.0</version>
         </Wsnyc_MultipleWebsites>
     </modules>
     <global>
+        <blocks>
+            <multiplewebsites>
+                <class>Wsnyc_MultipleWebsites_Block</class>
+            </multiplewebsites>
+            <adminhtml>
+                <rewrite>
+                    <customer_group_edit_form>Wsnyc_MultipleWebsites_Block_Adminhtml_Customer_Group_Edit_Form</customer_group_edit_form>
+                </rewrite>
+            </adminhtml>
+        </blocks>
         <helpers>
             <multiplewebsites>
                 <class>Wsnyc_MultipleWebsites_Helper</class>
             </multiplewebsites>
         </helpers>
+        <models>
+            <multiplewebsites>
+                <class>Wsnyc_MultipleWebsites_Model</class>
+            </multiplewebsites>
+        </models>
         <resources>
             <multiplewebsites_setup>
                 <setup>
@@ -19,4 +34,54 @@
             </multiplewebsites_setup>
         </resources>
     </global>
+    <frontend>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <checkwholesitelogin>
+                        <type>singleton</type>
+                        <class>multiplewebsites/observer</class>
+                        <method>processWholesaleWebsiteLoginWorkflow</method>
+                    </checkwholesitelogin>
+                </observers>
+            </controller_action_predispatch>
+            <sales_quote_address_collect_totals_before>
+                <observers>
+                    <reports>
+                        <class>multiplewebsites/observer</class>
+                        <method>applyCustomerGroupPriceMultiplier</method>
+                    </reports>
+                </observers>
+            </sales_quote_address_collect_totals_before>
+            <controller_action_predispatch_checkout_cart_add>
+                <observers>
+                    <reports>
+                        <class>multiplewebsites/observer</class>
+                        <method>checkQuantityMultiplier</method>
+                    </reports>
+                </observers>
+            </controller_action_predispatch_checkout_cart_add>
+            <controller_action_postdispatch_checkout_cart_add>
+                <observers>
+                    <reports>
+                        <class>multiplewebsites/observer</class>
+                        <method>displayQuantityMultiplierErrorMessage</method>
+                    </reports>
+                </observers>
+            </controller_action_postdispatch_checkout_cart_add>
+        </events>
+    </frontend>
+    <adminhtml>
+        <events>
+            <controller_action_postdispatch_adminhtml_customer_group_save>
+                <observers>
+                    <checkwholesitelogin>
+                        <type>singleton</type>
+                        <class>multiplewebsites/observer</class>
+                        <method>saveAdditionalCustomerGroupData</method>
+                    </checkwholesitelogin>
+                </observers>
+            </controller_action_postdispatch_adminhtml_customer_group_save>
+        </events>
+    </adminhtml>
 </config>
