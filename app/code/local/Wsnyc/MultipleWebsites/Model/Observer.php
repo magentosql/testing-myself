@@ -14,6 +14,7 @@ class Wsnyc_MultipleWebsites_Model_Observer {
                 $parentQuantityMultiplier = 1;
             }
             $children = Mage::app()->getRequest()->getParam('super_group');
+            $errors = array();
             foreach($children as $productId => $desiredQty) {
                 $product = Mage::getModel('catalog/product')->load($productId);
                 $quantityMultiplier = $product->getQtyMultiplier();
@@ -22,8 +23,11 @@ class Wsnyc_MultipleWebsites_Model_Observer {
                 }
                 if($desiredQty%$quantityMultiplier != 0) {
                     $children[$productId] = '0';
-                    Mage::getSingleton('customer/session')->addError("The quantity of " . $product->getName() . " is incorrect. This product can only be boughtin a quantity that's a multiplier of " . $quantityMultiplier);
+                    $errors[$product->getName()] = $quantityMultiplier;
                 }
+            }
+            if(count($errors) > 0) {
+                Mage::app()->getRequest()->setParam('quantity_errors', $errors);
             }
             Mage::app()->getRequest()->setParam('super_group', $children);
         } else {
@@ -38,18 +42,20 @@ class Wsnyc_MultipleWebsites_Model_Observer {
             }
             if($qtyOrdered%$quantityMultiplier != 0) {
                 Mage::app()->getRequest()->setParam('product', 0);
-                Mage::getSingleton('core/session')->addError("Product quantity is incorrect. It can only be bought in a quantity that's a multiplier of " . $quantityMultiplier);
-                $url = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
-                Mage::app()->getFrontController()->getResponse()->setRedirect($url);
-                Mage::app()->getResponse()->sendResponse();
-                exit;
+                Mage::app()->getRequest()->setParam('quantity_errors', array($product->getName() => $quantityMultiplier));
             }
         }
-//        if (!$product->getId()) {
-//            return;
-//        }
-//        Zend_Debug::dump(Mage::app()->getRequest()->getParams());
-//        die();
+    }
+    
+    public function displayQuantityMultiplierErrorMessage() {
+        if(Mage::app()->getRequest()->getParam('quantity_errors')) {
+            foreach(Mage::app()->getRequest()->getParam('quantity_errors') as $name => $qty) {
+                Mage::getSingleton('core/session')->addError("The quantity of " . $name . " is incorrect. This product can only be bought in a quantity that's a multiplier of " . $qty);
+            }           
+            $url = Mage::helper('core/http')->getHttpReferer() ? Mage::helper('core/http')->getHttpReferer()  : Mage::getUrl();
+            Mage::app()->getFrontController()->getResponse()->setRedirect($url);
+            Mage::app()->getResponse()->sendResponse();
+        }
     }
     
     public function processWholesaleWebsiteLoginWorkflow() {

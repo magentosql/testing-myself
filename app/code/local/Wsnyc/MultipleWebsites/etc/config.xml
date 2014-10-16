@@ -47,26 +47,26 @@
             </controller_action_predispatch>
             <sales_quote_address_collect_totals_before>
                 <observers>
-                    <reports>
+                    <pricemultiplier>
                         <class>multiplewebsites/observer</class>
                         <method>applyCustomerGroupPriceMultiplier</method>
-                    </reports>
+                    </pricemultiplier>
                 </observers>
             </sales_quote_address_collect_totals_before>
             <controller_action_predispatch_checkout_cart_add>
                 <observers>
-                    <reports>
+                    <quantitycheck>
                         <class>multiplewebsites/observer</class>
                         <method>checkQuantityMultiplier</method>
-                    </reports>
+                    </quantitycheck>
                 </observers>
             </controller_action_predispatch_checkout_cart_add>
             <controller_action_postdispatch_checkout_cart_add>
                 <observers>
-                    <reports>
+                    <quantitycheck>
                         <class>multiplewebsites/observer</class>
                         <method>displayQuantityMultiplierErrorMessage</method>
-                    </reports>
+                    </quantitycheck>
                 </observers>
             </controller_action_postdispatch_checkout_cart_add>
         </events>
