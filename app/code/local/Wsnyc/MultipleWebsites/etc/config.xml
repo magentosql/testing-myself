@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_MultipleWebsites>
-            <version>0.10.0</version>
+            <version>0.11.0</version>
         </Wsnyc_MultipleWebsites>
     </modules>
     <global>
@@ -33,6 +33,16 @@
                 </setup>
             </multiplewebsites_setup>
         </resources>
+        <events>
+            <sales_quote_address_collect_totals_before>
+                <observers>
+                    <pricemultiplier>
+                        <class>multiplewebsites/observer</class>
+                        <method>applyCustomerGroupPriceMultiplier</method>
+                    </pricemultiplier>
+                </observers>
+            </sales_quote_address_collect_totals_before>
+        </events>
     </global>
     <frontend>
         <events>
@@ -45,14 +55,6 @@
                     </checkwholesitelogin>
                 </observers>
             </controller_action_postdispatch>
-            <sales_quote_address_collect_totals_before>
-                <observers>
-                    <pricemultiplier>
-                        <class>multiplewebsites/observer</class>
-                        <method>applyCustomerGroupPriceMultiplier</method>
-                    </pricemultiplier>
-                </observers>
-            </sales_quote_address_collect_totals_before>
             <controller_action_predispatch_checkout_cart_add>
                 <observers>
                     <quantitycheck>

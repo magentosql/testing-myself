@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_PurchaseOrderGroupLimit>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wsnyc_PurchaseOrderGroupLimit>
+    </modules>
+</config>

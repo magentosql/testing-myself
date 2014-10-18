@@ -90,7 +90,7 @@ class Wsnyc_MultipleWebsites_Model_Observer {
     }
     
     public function applyCustomerGroupPriceMultiplier($observer) {
-        if(Mage::app()->getWebsite()->getCode() != 'wholesale') {
+        if(Mage::app()->getWebsite()->getCode() != 'wholesale' && Mage::app()->getWebsite()->getId() != 0) {
             return;
         }
         $cartItems = $observer->getEvent()->getQuoteAddress()->getQuote()->getAllVisibleItems();

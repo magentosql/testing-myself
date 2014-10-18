@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+   <sections>
+        <payment translate="label" module="payment">
+            <groups>
+                <purchaseorder translate="label">
+                    <fields>
+                        <customergroups translate="label">
+                            <label>Customer Groups Allowed</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>49</sort_order>
+                            <source_model>adminhtml/system_config_source_customer_group_multiselect</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </customergroups>
+                    </fields>
+                </purchaseorder>
+            </groups>
+        </payment>
+   </sections>
+</config>

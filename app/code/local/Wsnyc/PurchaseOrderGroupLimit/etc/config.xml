@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_PurchaseOrderGroupLimit>
+            <version>0.1.0</version>
+        </Wsnyc_PurchaseOrderGroupLimit>
+    </modules>
+    <global>
+        <helpers>
+            <purchaseordergrouplimit>
+                <class>Wsnyc_PurchaseOrderGroupLimit_Helper</class>
+            </purchaseordergrouplimit>
+        </helpers>
+        <models>
+            <purchaseordergrouplimit>
+                <class>Wsnyc_PurchaseOrderGroupLimit_Model</class>
+            </purchaseordergrouplimit>
+        </models>
+        <events>
+            <payment_method_is_active>
+                <observers>
+                    <customergroupcheck>
+                        <class>purchaseordergrouplimit/observer</class>
+                        <method>onPaymentMethodIsActive</method>
+                    </customergroupcheck>
+                </observers>
+            </payment_method_is_active>
+        </events>
+    </global>
+</config> 
