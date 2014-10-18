@@ -36,7 +36,7 @@
     </global>
     <frontend>
         <events>
-            <controller_action_predispatch>
+            <controller_action_postdispatch>
                 <observers>
                     <checkwholesitelogin>
                         <type>singleton</type>
@@ -44,7 +44,7 @@
                         <method>processWholesaleWebsiteLoginWorkflow</method>
                     </checkwholesitelogin>
                 </observers>
-            </controller_action_predispatch>
+            </controller_action_postdispatch>
             <sales_quote_address_collect_totals_before>
                 <observers>
                     <pricemultiplier>

@@ -68,6 +68,7 @@ class Wsnyc_MultipleWebsites_Model_Observer {
             $isWholesaleAllowed = true;
         }
         if($isWholesaleAllowed == false && $request->getModuleName() != 'customer' && $request->getControllerName() != 'account' && $request->getActionName() != 'login' && $request->getActionName() != 'loginPost') {
+            Mage::getSingleton('customer/session')->logout();
             Mage::getSingleton('customer/session')->addError(Mage::helper('multiplewebsites')->__('You need to be logged in as a Wholesaler or a Distributor to be able to browse the wholesale store.'));
             Mage::app()->getResponse()->setRedirect(Mage::getUrl("customer/account/login"));
         }        
@@ -121,30 +122,6 @@ class Wsnyc_MultipleWebsites_Model_Observer {
                             $newPrice += $this->_processPrice($newPrice, $singleOption['price']*$priceMultiplier, $singleOption['price_type']);
                         }
                     }
-                }
-            }
-
-            if($basePrice == $newPrice) {
-                $newPrice = NULL;
-            }
-
-            $requestData = Mage::app()->getFrontController()->getRequest()->getParams();
-            if(isset($requestData['item'][$quoteItem->getId()]['custom_price'])) {
-                $requestedCustomPrice = (float)$requestData['item'][$quoteItem->getId()]['custom_price'];
-                if(
-                    (is_null($newPrice) || (float)$newPrice != $requestedCustomPrice)
-                    && $requestedCustomPrice >= 0
-                ) {
-                    $newPrice = $requestedCustomPrice;
-                }
-            }
-
-            if(!isset($requestData['update_items'])) {
-                $itemCustomPrice = $quoteItem->getCustomPrice();
-                if(is_numeric($itemCustomPrice)
-                   && (float)$itemCustomPrice >= 0
-                ) {
-                    $newPrice = $itemCustomPrice;
                 }
             }
 
