@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_NoShippingNeeded>
+            <active>true</active>
+            <codePool>local</codePool>            
+            <depends>
+                <Mage_Shipping />
+            </depends>
+        </Wsnyc_NoShippingNeeded>
+    </modules>
+</config>
