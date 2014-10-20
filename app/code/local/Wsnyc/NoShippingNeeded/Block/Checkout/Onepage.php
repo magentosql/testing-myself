@@ -8,7 +8,12 @@ class Wsnyc_NoShippingNeeded_Block_Checkout_Onepage extends Mage_Checkout_Block_
         $stepCodes = $this->_getStepCodes();
 
         if ($this->isCustomerLoggedIn()) {
-            $stepCodes = array_diff($stepCodes, array('login', 'shipping_method'));
+            if(Mage::helper('noshippingneeded')->checkIfShippingMethodStepShouldBeIgnored()) {
+                $stepCodes = array_diff($stepCodes, array('login', 'shipping', 'shipping_method'));
+            } else {
+                $stepCodes = array_diff($stepCodes, array('login'));
+            }
+            
         }
 
         foreach ($stepCodes as $step) {

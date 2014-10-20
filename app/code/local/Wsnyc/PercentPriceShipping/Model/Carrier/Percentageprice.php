@@ -4,15 +4,9 @@ class Wsnyc_PercentPriceShipping_Model_Carrier_Percentageprice extends Mage_Ship
 
     protected $_code = 'percentageprice';
 
-    /**
-     * Collect rates for this shipping method based on information in $request 
-     * 
-     * @param Mage_Shipping_Model_Rate_Request $data 
-     * @return Mage_Shipping_Model_Rate_Result 
-     */
     public function collectRates(Mage_Shipping_Model_Rate_Request $request) {
         $result = Mage::getModel('shipping/rate_result');
-        if(Mage::app()->getWebsite()->getCode() == 'wholesale') {
+        if(Mage::helper('percentpriceshipping')->checkIfShippingMethodIsAllowed()) {
             $method = Mage::getModel('shipping/rate_result_method')->setCarrier($this->_code)
                         ->setCarrierTitle($this->getConfigData('title'))
                         ->setMethod($this->_code)
@@ -24,13 +18,10 @@ class Wsnyc_PercentPriceShipping_Model_Carrier_Percentageprice extends Mage_Ship
         return $result;
     }
 
-    /**
-     * Get allowed shipping methods
-     *
-     * @return array
-     */
     public function getAllowedMethods() {
-        return array($this->_code => $this->getConfigData('name'));
+        if(Mage::helper('percentpriceshipping')->checkIfShippingMethodIsAllowed()) {
+            return array($this->_code => $this->getConfigData('name'));
+        }
     }
 
 }

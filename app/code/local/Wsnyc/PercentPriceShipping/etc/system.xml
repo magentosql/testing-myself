@@ -46,6 +46,16 @@
                             <show_in_store>1</show_in_store>
                             <comment>Number only - e.g. inserting 3 means that the cost will be 3% of the Cart Subtotal.</comment>
                         </price>
+                        <customergroups translate="label">
+                            <label>Customer Groups Allowed</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>85</sort_order>
+                            <source_model>adminhtml/system_config_source_customer_group_multiselect</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                        </customergroups>
                         <description translate="label">
                             <label>Description</label>
                             <frontend_type>textarea</frontend_type>
