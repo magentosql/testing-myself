@@ -29,6 +29,18 @@
                             </wsnyc_homepagebanner>
                         </children>
                     </cms>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <wsnyc_homepagebanner translate="title" module="wsnyc_homepagebanner">
+                                        <title>Home Page Banner</title>
+                                        <sort_order>1</sort_order> 
+                                    </wsnyc_homepagebanner>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
                 </children>
             </admin>
         </resources>
