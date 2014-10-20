@@ -93,7 +93,7 @@
                 <paginationSpeed>400</paginationSpeed>
                 <autoPlay>5000</autoPlay>
                 <singleItem>true</singleItem>
-                <explanation>Please remember that all time values are in milliseconds. (1s = 1000ms)</explanation>
+                <explanation>Please remember that all animation speed values are in milliseconds. (1s = 1000ms)</explanation>
             </general>
         </wsnyc_homepagebanner>
     </default>
