@@ -71,6 +71,23 @@
                     </quantitycheck>
                 </observers>
             </controller_action_postdispatch_checkout_cart_add>
+            <controller_action_predispatch_checkout_cart_updatePost>
+                <observers>
+                    <quantitycheck>
+                        <class>multiplewebsites/observer</class>
+                        <method>checkUpdateQuantityMultiplier</method>
+                    </quantitycheck>
+                </observers>
+            </controller_action_predispatch_checkout_cart_updatePost>
+            <controller_action_postdispatch_checkout_cart_updatePost>
+                <observers>
+                    <quantitycheck>
+                        <class>multiplewebsites/observer</class>
+                        <method>displayQuantityMultiplierErrorMessage</method>
+                    </quantitycheck>
+                </observers>
+            </controller_action_postdispatch_checkout_cart_updatePost>
+            <!-- @TODO do a quantity check on sales_order_reorder -->
         </events>
     </frontend>
     <adminhtml>

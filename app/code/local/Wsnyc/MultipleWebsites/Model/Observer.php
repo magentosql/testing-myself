@@ -47,6 +47,44 @@ class Wsnyc_MultipleWebsites_Model_Observer {
         }
     }
     
+    public function checkUpdateQuantityMultiplier($e) {
+        $cartChanges = Mage::app()->getRequest()->getParam('cart');
+        $errors = array();
+        foreach($cartChanges as $cartItemId => $dataRequested) {
+            try {
+                $quoteItem = Mage::getModel('sales/quote_item')->load($cartItemId);
+                $product = Mage::getModel('catalog/product')->load($quoteItem->getProductId());
+                $quantityMultiplier = $product->getQtyMultiplier();
+                if($quantityMultiplier == null) {
+                    $parentProduct = $this->getFirstGroupedParentUrl($product);
+                    if($parentProduct != null && $parentProduct->getQtyMultiplier() != null) {
+                        $quantityMultiplier = $parentProduct->getQtyMultiplier();
+                    } else {
+                        $quantityMultiplier = 1;
+                    }
+                }
+                foreach ($dataRequested as $dataType => $dataValue) {
+                    if($dataType == 'qty' && $dataValue%$quantityMultiplier != 0) {
+                        unset($dataRequested[$dataType]);
+                        $errors[$product->getName()] = $quantityMultiplier;
+                    }
+                }
+                $cartChanges[$cartItemId] = $dataRequested;
+            } catch (Exception $e) {
+                Mage::log("Error while updating quote item's quantity: " . $e->getMessage());
+            }
+        }
+        foreach ($cartChanges as $cartItemId => $dataRequested) {
+            if(empty($dataRequested)) {
+                unset($cartChanges[$cartItemId]);
+            }
+        }
+        Mage::app()->getRequest()->setParam('cart', $cartChanges);
+        if(count($errors) > 0) {
+            Mage::app()->getRequest()->setParam('quantity_errors', $errors);
+        }
+    }
+    
     public function displayQuantityMultiplierErrorMessage() {
         if(Mage::app()->getRequest()->getParam('quantity_errors')) {
             foreach(Mage::app()->getRequest()->getParam('quantity_errors') as $name => $qty) {
@@ -133,5 +171,14 @@ class Wsnyc_MultipleWebsites_Model_Observer {
             }
         }
     }
+    
+    protected function getFirstGroupedParentUrl($product) {
+        $arrayOfParentIds = Mage::getSingleton("catalog/product_type_grouped")->getParentIdsByChild($product->getId());
+        if(isset($arrayOfParentIds[0])) {
+            return Mage::getModel('catalog/product')->load($arrayOfParentIds[0]);
+        } else {
+            return null;
+        }
+    } 
 }
 
