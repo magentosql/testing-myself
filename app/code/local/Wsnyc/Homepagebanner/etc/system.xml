@@ -18,28 +18,14 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <slideSpeed translate="label comment">
-                            <label>Slide Speed</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>10</sort_order>
+                        <explanation translate="label comment">
+                            <label>Note</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                            <comment>This value should be in milliseconds</comment>
-                        </slideSpeed>
-                    </fields>
-                    <fields>
-                        <paginationSpeed translate="label comment">
-                            <label>Pagination Speed</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-                            <comment>This value should be in milliseconds and it determines how long image stays on the front</comment>
-                        </paginationSpeed>
-                    </fields>
-                    <fields>
+                        </explanation>
                         <navigation translate="label comment">
                             <label>Navigation Arrows</label>
                             <frontend_type>select</frontend_type>
@@ -50,6 +36,35 @@
                             <show_in_store>1</show_in_store>
                             <comment>Determines control arrows visibility</comment>
                         </navigation>
+                        <slideSpeed translate="label comment">
+                            <label>Slide Speed</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This value should be in milliseconds</comment>
+                            <depends><navigation>0</navigation></depends>
+                        </slideSpeed>
+                        <paginationSpeed translate="label comment">
+                            <label>Pagination Speed</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This value should be in milliseconds and it determines slide speed when navigated</comment>
+                            <depends><navigation>1</navigation></depends>
+                        </paginationSpeed>
+                        <autoPlay translate="label comment">
+                            <label>AutoPlay Speed</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This value should be in milliseconds and it determines how long image stays on the front before being changed</comment>
+                        </autoPlay>
                     </fields>
                 </general>
             </groups>
