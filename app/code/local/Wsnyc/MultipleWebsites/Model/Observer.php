@@ -48,6 +48,9 @@ class Wsnyc_MultipleWebsites_Model_Observer {
     }
     
     public function checkUpdateQuantityMultiplier($e) {
+        if(Mage::app()->getWebsite()->getCode() != 'wholesale') {
+            return;
+        }
         $cartChanges = Mage::app()->getRequest()->getParam('cart');
         $errors = array();
         foreach($cartChanges as $cartItemId => $dataRequested) {
@@ -56,7 +59,7 @@ class Wsnyc_MultipleWebsites_Model_Observer {
                 $product = Mage::getModel('catalog/product')->load($quoteItem->getProductId());
                 $quantityMultiplier = $product->getQtyMultiplier();
                 if($quantityMultiplier == null) {
-                    $parentProduct = $this->getFirstGroupedParentUrl($product);
+                    $parentProduct = $this->_getFirstGroupedParentUrl($product);
                     if($parentProduct != null && $parentProduct->getQtyMultiplier() != null) {
                         $quantityMultiplier = $parentProduct->getQtyMultiplier();
                     } else {
@@ -172,7 +175,7 @@ class Wsnyc_MultipleWebsites_Model_Observer {
         }
     }
     
-    protected function getFirstGroupedParentUrl($product) {
+    protected function _getFirstGroupedParentUrl($product) {
         $arrayOfParentIds = Mage::getSingleton("catalog/product_type_grouped")->getParentIdsByChild($product->getId());
         if(isset($arrayOfParentIds[0])) {
             return Mage::getModel('catalog/product')->load($arrayOfParentIds[0]);
