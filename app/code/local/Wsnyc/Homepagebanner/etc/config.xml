@@ -91,7 +91,9 @@
                 <navigation>false</navigation><!--Show next and prev buttons-->
                 <slideSpeed>300</slideSpeed>
                 <paginationSpeed>400</paginationSpeed>
+                <autoPlay>5000</autoPlay>
                 <singleItem>true</singleItem>
+                <explanation>Please remember that all animation speed values are in milliseconds. (1s = 1000ms)</explanation>
             </general>
         </wsnyc_homepagebanner>
     </default>
