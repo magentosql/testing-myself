@@ -32,6 +32,7 @@ class Wsnyc_Homepagebanner_Block_Banner extends Mage_Core_Block_Template
         $cfg['slideSpeed']		= $h->getCfg('general/slideSpeed');
         $cfg['paginationSpeed']		= $h->getCfg('general/paginationSpeed');
         $cfg['singleItem']		= $h->getCfg('general/singleItem');
+        $cfg['autoPlay']        = $h->getCfg('general/autoPlay');
 
         return $cfg;
     }
