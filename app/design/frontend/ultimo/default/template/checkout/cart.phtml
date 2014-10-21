@@ -187,3 +187,10 @@
         -->
     </div>
 </div>
+<?php if(Mage::getSingleton('core/session')->getData('freeship_coupon_set')==1): ?>
+    <script type="text/javascript">
+        alert('FREESHIP coupon has been applied to your order');
+    </script>
+<?php
+    Mage::getSingleton('core/session')->setData('freeship_coupon_set',0);
+endif; ?>

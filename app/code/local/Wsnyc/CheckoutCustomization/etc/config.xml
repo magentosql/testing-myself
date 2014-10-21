@@ -39,6 +39,15 @@
                     </othershippingmenthod_comment_save>
                 </observers>
             </checkout_type_onepage_save_order>
+            <sales_quote_collect_totals_after>
+                <observers>
+                    <checkoutcustomization_setshipping_observer>
+                        <type>singleton</type>
+                        <class>wsnyc_checkoutcustomization/observer</class>
+                        <method>setShippingAddress</method>
+                    </checkoutcustomization_setshipping_observer>
+                </observers>
+            </sales_quote_collect_totals_after>
         </events>
         <blocks>
             <wsnyc_checkoutcustomization>
