@@ -7,6 +7,8 @@ class Wsnyc_CategoryDescriptions_Block_Adminhtml_Rule_Edit_Tab_Form extends Mage
         $this->setForm($form);
         $fieldset = $form->addFieldset('rule_form', array('legend' => Mage::helper('wsnyc_categorydescriptions')->__('General Information')));
 
+        $fieldset->addField('rule_id', 'hidden', array('name' => 'rule_id',));
+        
         $fieldset->addField('name', 'text', array(
             'label' => Mage::helper('wsnyc_categorydescriptions')->__('Name'),
             'class' => 'required-entry',
