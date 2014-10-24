@@ -1,9 +1,9 @@
 <?php
 
 class Wsnyc_PromotionalGiftExt_Model_Shoppingcartrule extends Magestore_Promotionalgift_Model_Shoppingcartrule {
-    
+
     const DEFAULT_VENDOR_XML_PATH = 'promotionalgift/general/vendor';
-    
+
     /**
      * Fetch rules only if there is default vendor items in cart
      * 
@@ -14,10 +14,10 @@ class Wsnyc_PromotionalGiftExt_Model_Shoppingcartrule extends Magestore_Promotio
         if ($this->_checkCartItems()) {
             return parent::getAvailableRule($ruleIds);
         }
-        
+
         return null;
     }
-    
+
     /**
      * Check if cart has items from default vendor
      * 
@@ -25,17 +25,18 @@ class Wsnyc_PromotionalGiftExt_Model_Shoppingcartrule extends Magestore_Promotio
      */
     protected function _checkCartItems() {
         $hasDefaultVendor = true;
-        $vendorId = Mage::getStoreConfig(self::DEFAULT_VENDOR_XML_PATH);
-        if (Mage::helper('core')->isModuleEnabled('Unirgy_Dropship') && $vendorId != 0) {
+        $ids = Mage::getStoreConfig(self::DEFAULT_VENDOR_XML_PATH);
+        if (Mage::helper('core')->isModuleEnabled('Unirgy_Dropship') && $ids != null) {
+            $vendorIds = explode(',', $ids);
             $hasDefaultVendor = false;
             foreach (Mage::getModel('checkout/cart')->getItems() as $item) {
-                if ($item->getUdropshipVendor() == $vendorId) {
+                if (in_array($item->getUdropshipVendor(), $vendorIds)) {
                     $hasDefaultVendor = true;
                     break;
                 }
             }
         }
-        
-        return $hasDefaultVendor;        
+        return $hasDefaultVendor;
     }
+
 }
