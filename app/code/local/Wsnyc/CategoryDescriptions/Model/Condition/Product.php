@@ -3,15 +3,6 @@
 class Wsnyc_CategoryDescriptions_Model_Condition_Product extends Mage_Rule_Model_Condition_Product_Abstract {
 
     /**
-     * Add special attributes
-     *
-     * @param array $attributes
-     */
-    protected function _addSpecialAttributes(array &$attributes) {
-        //prevent adding attribute by parent
-    }
-
-    /**
      * Load attribute options
      *
      * @return Wsnyc_CategoryDescriptions_Model_Condition_Product
@@ -31,10 +22,9 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Product extends Mage_Rule_Model
             }
             $attributes[$attribute->getAttributeCode()] = $attribute->getFrontendLabel();
         }
-
-        $this->_addSpecialAttributes($attributes);
-
         asort($attributes);
+        $attributes['category_ids'] = Mage::helper('catalogrule')->__('Category');
+
         $this->setAttributeOption($attributes);
 
         return $this;

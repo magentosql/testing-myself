@@ -15,7 +15,7 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Combine extends Mage_Rule_Model
     public function getNewChildSelectOptions() {
         
         $conditions = array_merge_recursive(parent::getNewChildSelectOptions(), array(
-            array('value' => 'wsnyc_categorydescriptions/condition_product_attribute', 'label' => Mage::helper('salesrule')->__('Product attribute combination')),
+            array('value' => 'wsnyc_categorydescriptions/condition_product_attribute', 'label' => Mage::helper('salesrule')->__('Filters combination')),
             array('value' => 'wsnyc_categorydescriptions/condition_combine', 'label' => Mage::helper('salesrule')->__('Conditions combination')),           
         ));
 

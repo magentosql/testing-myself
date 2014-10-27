@@ -72,14 +72,13 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Product_Attribute extends Mage_
         $productCondition = Mage::getModel('wsnyc_categorydescriptions/condition_product');
         $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
         $pAttributes = array();
-        $iAttributes = array();
         foreach ($productAttributes as $code => $label) {
             $pAttributes[] = array('value' => 'wsnyc_categorydescriptions/condition_product|' . $code, 'label' => $label);
         }
-
+        
         $conditions = array(
             array('value'=>'', 'label'=>Mage::helper('rule')->__('Please choose a condition to add...')),
-            array('label' => Mage::helper('catalog')->__('Product Attribute'), 'value' => $pAttributes),
+            array('label' => Mage::helper('catalog')->__('Attributes'), 'value' => $pAttributes)
         );
         return $conditions;
     }

@@ -50,7 +50,7 @@ class Wsnyc_CategoryDescriptions_Block_Adminhtml_Rule_Edit_Tab_Conditions extend
 
         $renderer = Mage::getBlockSingleton('adminhtml/widget_form_renderer_fieldset')
             ->setTemplate('promo/fieldset.phtml')
-            ->setNewChildUrl($this->getUrl('*/category_description/newConditionHtml'));
+            ->setNewChildUrl($this->getUrl('*/category_description/newConditionHtml/form/rule_conditions_fieldset'));
 
         $fieldset = $form->addFieldset('conditions_fieldset', array(
             'legend'=>Mage::helper('wsnyc_categorydescriptions')->__('Apply the rule only if the following conditions are met (leave blank for all products)')
