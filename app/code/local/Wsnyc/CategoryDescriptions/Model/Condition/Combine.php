@@ -4,7 +4,7 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Combine extends Mage_Rule_Model
 
     public function __construct() {
         parent::__construct();
-        $this->setType('wsnyc_categorydescription/condition_combine');
+        $this->setType('wsnyc_categorydescriptions/condition_combine');
     }
 
     /**

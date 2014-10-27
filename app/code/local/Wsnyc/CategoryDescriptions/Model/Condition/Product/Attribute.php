@@ -4,7 +4,7 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Product_Attribute extends Mage_
 
     public function __construct() {
         parent::__construct();
-        $this->setType('wsnyc_categorydescription/condition_product_attribute');
+        $this->setType('wsnyc_categorydescriptions/condition_product_attribute');
     }
 
     /**

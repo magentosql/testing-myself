@@ -7,7 +7,6 @@
         </reference>
         <reference name="left">
             <block type="wsnyc_categorydescriptions/adminhtml_rule_edit_tabs" name="category_description_edit_tabs" />
-            <block type="adminhtml/template" template="promo/salesrulejs.phtml" name="category_description_edit_jsinit"/>
         </reference>
         <reference name="content">
             <block type="wsnyc_categorydescriptions/adminhtml_rule_edit" name="category_description_edit"></block>

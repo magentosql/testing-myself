@@ -64,8 +64,6 @@ class Wsnyc_CategoryDescriptions_Adminhtml_Category_DescriptionController extend
             }
             unset($postData['rule']);
             $rule->loadPost($postData);
-            Mage::log($postData);
-            Mage::log($rule->debug());
             $session->setRuleData($rule->getData());
             
             $rule->save();

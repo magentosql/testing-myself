@@ -50,7 +50,7 @@ class Wsnyc_CategoryDescriptions_Model_Rule extends Mage_Core_Model_Abstract {
                 if (is_array($conditions) && !empty($conditions)) {
                     $this->_conditions->loadArray($conditions);
                 }
-            }
+            }            
             $this->unsConditionsSerialized();
         }
 
@@ -126,6 +126,22 @@ class Wsnyc_CategoryDescriptions_Model_Rule extends Mage_Core_Model_Abstract {
         }
 
         return $arr;
+    }
+
+    /**
+     * Prepare data before saving
+     *
+     * @return Mage_Rule_Model_Abstract
+     */
+    protected function _beforeSave() {
+        // Serialize conditions
+        if ($this->getConditions()) {
+            $this->setConditionsSerialized(serialize($this->getConditions()->asArray()));
+            $this->unsConditions();
+        }
+
+        parent::_beforeSave();
+        return $this;
     }
 
 }
