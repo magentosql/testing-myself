@@ -1,6 +1,23 @@
 <?php
 
 class Wsnyc_CategoryDescriptions_Model_Condition_Product extends Mage_Rule_Model_Condition_Product_Abstract {
+    
+    /**
+     * Set available operator options
+     * 
+     * @return array
+     */
+    public function getDefaultOperatorInputByType()
+    {
+        if (null === $this->_defaultOperatorInputByType) {
+            parent::getDefaultOperatorInputByType();
+            $this->_defaultOperatorInputByType['category'] = array('()', '!()');
+            if (!in_array('category', $this->_arrayInputTypes)) {
+                $this->_arrayInputTypes[] = 'category';
+            }
+        }
+        return $this->_defaultOperatorInputByType;
+    }
 
     /**
      * Load attribute options
@@ -31,21 +48,27 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Product extends Mage_Rule_Model
     }
 
     /**
-     * Validate Product Rule Condition
+     * Validate Attribute Rule Condition
      *
      * @param Varien_Object $object
-     *
      * @return bool
      */
     public function validate(Varien_Object $object) {
-        $product = false;
-        if ($object->getProduct() instanceof Mage_Catalog_Model_Product) {
-            $product = $object->getProduct();
-        } else {
-            $product = Mage::getModel('catalog/product')
-                    ->load($object->getProductId());
+
+        if ($this->getAttribute() == 'category_ids') {
+            $oneOf = in_array($object->getCategoryId(), explode(',', $this->getValue()));
+            return $this->getOperator() == '()' ? $oneOf : !$oneOf;
         }
-        return parent::validate($product);
+        else {
+            foreach($object->getFilters() as $filter) {
+                if ($filter->getAttribute() == $this->getAttribute()) {
+                    $is = $filter->getValue() == $this->getValue();
+                    return $this->getOperator() == '==' ? $is : !$is;
+                }
+            }
+        }
+        
+        return false;
     }
 
 }

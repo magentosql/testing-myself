@@ -20,6 +20,8 @@ class Wsnyc_CategoryDescriptions_Adminhtml_Category_DescriptionController extend
         $ruleModel = Mage::getModel('wsnyc_categorydescriptions/rule')->load($ruleId);
 
         if ($ruleModel->getId() || $ruleId == 0) {
+            
+            $ruleModel->getConditions()->setJsFormObject('rule_conditions_fieldset');
 
             Mage::register('rule_data', $ruleModel);
 

@@ -54,4 +54,25 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Combine extends Mage_Rule_Model
         $html .= '<li>' . $this->getNewChildElement()->getHtml() . '</li></ul>';
         return $html;
     }
+    
+    public function validate(Varien_Object $object) {
+        if (!$this->getConditions()) {
+            return true;
+        }
+
+        $all = $this->getAggregator() === 'all';
+        $true = (bool) $this->getValue();
+
+        foreach ($this->getConditions() as $cond) {
+            $validated = $cond->validate($object);
+
+            if ($all && $validated !== $true) {
+                return false;
+            } elseif (!$all && $validated === $true) {
+                return true;
+            }
+        }
+        return $all ? true : false;
+    }
+
 }

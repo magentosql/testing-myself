@@ -74,4 +74,17 @@
             </updates>
         </layout>
     </adminhtml>
+    <frontend>
+        <events>
+            <controller_action_layout_render_before_catalog_category_view>
+                <observers>
+                    <set_category_description>
+                        <type>singleton</type>
+                        <class>wsnyc_categorydescriptions/observer</class>
+                        <method>setCategoryDescription</method>
+                    </set_category_description>
+                </observers>
+            </controller_action_layout_render_before_catalog_category_view>
+        </events>
+    </frontend>
 </config>
