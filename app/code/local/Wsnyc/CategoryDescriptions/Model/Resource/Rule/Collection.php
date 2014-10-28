@@ -17,7 +17,7 @@ class Wsnyc_CategoryDescriptions_Model_Resource_Rule_Collection extends Mage_Cor
             $store = Mage::app()->getStore()->getStoreId();
         }        
         $this->join(array('store' => 'wsnyc_categorydescriptions/store'), 'main_table.rule_id = store.rule_id', null);
-        $this->addFieldToFilter('store.store_id', array('eq' => $store));
+        $this->addFieldToFilter('store.store_id', array('in' => array(Mage_Core_Model_App::ADMIN_STORE_ID, $store)));
         
         return $this;
     }

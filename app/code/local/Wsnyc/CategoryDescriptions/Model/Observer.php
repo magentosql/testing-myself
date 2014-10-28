@@ -23,7 +23,7 @@ class Wsnyc_CategoryDescriptions_Model_Observer {
                         ->addTimeRestrictions()
                         ->orderByPriority();
         
-        foreach($rules as $rule) {
+        foreach($rules as $rule) {            
             if ($rule->getConditions()->validate($object)) {
                 //found matching rule
                 return $rule;
