@@ -18,7 +18,11 @@ class Wsnyc_CategoryDescriptions_Model_Observer {
     
     protected function _findRule(Varien_Object $object) {
         
-        $rules = Mage::getModel('wsnyc_categorydescriptions/rule')->getCollection();
+        $rules = Mage::getModel('wsnyc_categorydescriptions/rule')->getCollection()
+                        ->addStoreFilter()
+                        ->addTimeRestrictions()
+                        ->orderByPriority();
+        
         foreach($rules as $rule) {
             if ($rule->getConditions()->validate($object)) {
                 //found matching rule

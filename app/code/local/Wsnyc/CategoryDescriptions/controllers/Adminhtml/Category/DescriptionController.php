@@ -52,6 +52,7 @@ class Wsnyc_CategoryDescriptions_Adminhtml_Category_DescriptionController extend
         if ($this->getRequest()->getPost()) {
             
             $postData = $this->getRequest()->getPost();
+            $postData = $this->_filterDates($postData, array('from_date', 'to_date'));
             if ($postData['rule_id'] == '') {
                 //empty string won't save new rule
                 $postData['rule_id'] = null;

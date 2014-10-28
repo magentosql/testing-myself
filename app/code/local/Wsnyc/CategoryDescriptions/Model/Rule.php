@@ -95,8 +95,7 @@ class Wsnyc_CategoryDescriptions_Model_Rule extends Mage_Core_Model_Abstract {
     }
 
     public function loadPost(array $data) {
-        $arr = $this->_convertFlatToRecursive($data);
-        Mage::log($arr);
+        $arr = $this->_convertFlatToRecursive($data);        
         if (isset($arr['conditions'])) {
             $this->getConditions()->setConditions(array())->loadArray($arr['conditions'][1]);
         }

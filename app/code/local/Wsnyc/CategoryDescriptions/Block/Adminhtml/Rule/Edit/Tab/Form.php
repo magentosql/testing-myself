@@ -38,6 +38,30 @@ class Wsnyc_CategoryDescriptions_Block_Adminhtml_Rule_Edit_Tab_Form extends Mage
                 'required' => true,
                 'values' => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(false, true),
             ));
+        
+        $dateFormatIso = Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT);
+        $fieldset->addField('from_date', 'date', array(
+            'name'   => 'from_date',
+            'label'  => Mage::helper('salesrule')->__('From Date'),
+            'title'  => Mage::helper('salesrule')->__('From Date'),
+            'image'  => $this->getSkinUrl('images/grid-cal.gif'),
+            'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
+            'format'       => $dateFormatIso
+        ));
+        $fieldset->addField('to_date', 'date', array(
+            'name'   => 'to_date',
+            'label'  => Mage::helper('salesrule')->__('To Date'),
+            'title'  => Mage::helper('salesrule')->__('To Date'),
+            'image'  => $this->getSkinUrl('images/grid-cal.gif'),
+            'input_format' => Varien_Date::DATE_INTERNAL_FORMAT,
+            'format'       => $dateFormatIso
+        ));
+
+        $fieldset->addField('sort_order', 'text', array(
+            'name' => 'sort_order',
+            'label' => Mage::helper('salesrule')->__('Priority'),
+            'after_element_html' => '<p class="note"><span>' . $this->__('Higher priority takes precedence') .'</span></p>'
+        ));
 
         $fieldset->addField('description', 'editor', array(
             'name' => 'description',
