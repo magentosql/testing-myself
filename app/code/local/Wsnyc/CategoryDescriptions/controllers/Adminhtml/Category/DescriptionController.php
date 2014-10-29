@@ -83,6 +83,22 @@ class Wsnyc_CategoryDescriptions_Adminhtml_Category_DescriptionController extend
         $this->_redirect('*/*/');
     }
     
+    public function deleteAction() {
+        if ($this->getRequest()->getParam('id') > 0) {
+            try {
+                $rule = Mage::getModel('wsnyc_categorydescriptions/rule');
+                $rule->setId($this->getRequest()->getParam('id'))->delete();
+
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('wsnyc_categorydescriptions')->__('Rule was successfully deleted'));
+                $this->_redirect('*/*/');
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+            }
+        }
+        $this->_redirect('*/*/');
+    }
+
     public function newConditionHtmlAction() {
         $id = $this->getRequest()->getParam('id');
         $typeArr = explode('|', str_replace('-', '/', $this->getRequest()->getParam('type')));
