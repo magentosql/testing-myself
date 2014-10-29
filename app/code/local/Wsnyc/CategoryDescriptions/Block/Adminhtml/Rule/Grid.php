@@ -31,6 +31,12 @@ class Wsnyc_CategoryDescriptions_Block_Adminhtml_Rule_Grid extends Mage_Adminhtm
             'align' => 'left',
             'index' => 'name',
         ));
+        
+        $this->addColumn('sort_order', array(
+            'header' => Mage::helper('wsnyc_categorydescriptions')->__('Priority'),
+            'align' => 'left',
+            'index' => 'sort_order',
+        ));
 
         $this->addColumn('is_active', array(
             'header' => Mage::helper('wsnyc_categorydescriptions')->__('Status'),

@@ -23,8 +23,8 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Product_Attribute extends Mage_
      */
     public function validate(Varien_Object $object) {
         $all = $this->getAggregator() == 'all';
-        foreach($this->getConditions() as $condition) {
-            $validated = $condition->validate($object);
+        foreach($this->getConditions() as $condition) {            
+            $validated = $condition->validate($object);            
             if ($all && !$validated) {
                 return false;
             }
@@ -45,11 +45,11 @@ class Wsnyc_CategoryDescriptions_Model_Condition_Product_Attribute extends Mage_
      * @return array
      */
     public function getNewChildSelectOptions() {
-        $productCondition = Mage::getModel('wsnyc_categorydescriptions/condition_product');
-        $productAttributes = $productCondition->loadAttributeOptions()->getAttributeOption();
+        $filterCondition = Mage::getModel('wsnyc_categorydescriptions/condition_filter');
+        $productAttributes = $filterCondition->loadAttributeOptions()->getAttributeOption();
         $conditions = array(array('value'=>'', 'label'=>Mage::helper('rule')->__('Please choose a condition to add...')));
         foreach ($productAttributes as $code => $label) {
-            $conditions[] = array('value' => 'wsnyc_categorydescriptions/condition_product|' . $code, 'label' => $label);
+            $conditions[] = array('value' => 'wsnyc_categorydescriptions/condition_filter|' . $code, 'label' => $label);
         }
         
         return $conditions;

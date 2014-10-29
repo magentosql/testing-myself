@@ -44,10 +44,10 @@ class Wsnyc_CategoryDescriptions_Model_Observer {
              */
             if ($filter->getFilter()->getData('attribute_model')) {
                 $attribute = $filter->getFilter()->getAttributeModel();                
-                $filters[] = new Varien_Object(array(
-                    'attribute' => $attribute->getAttributeCode(),
-                    'value' => $filter->getValue()
-                ));
+                if (!array_key_exists($attribute->getAttributeCode(), $filters)) {
+                    $filters[$attribute->getAttributeCode()] = array();
+                }
+                $filters[$attribute->getAttributeCode()][] = $filter->getValue();   
             }
         }
         return $filters;
