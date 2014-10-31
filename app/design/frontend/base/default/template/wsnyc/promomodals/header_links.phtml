@@ -20,7 +20,7 @@
     <div class="header-msg"><a href="#modal_woolinitiative"><b class="no-italic"><?php echo $this->__("We're donating $1 for every Wool & Cashmere Shampoo!") ?></b></a></div>
 <?php endif; ?>
 <?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/novembergift_enabled')): ?>
-    <div class="header-msg"><a href="#modal_novembergift"><b class="no-italic"><?php echo $this->__("Our gift to you: 15% off Laundress products with code NOVEMBERGIFT.") ?></b></a></div>
+    <div class="header-msg"><a href="#modal_novembergift"><b class="no-italic"><?php echo $this->__("Our gift to you: 15% off with code NOVEMBERGIFT") ?></b></a></div>
 <?php endif; ?>
 <?php $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier'); ?>
 <?php if ($holidayPage && $holidayPage->getData('is_active')): ?>
