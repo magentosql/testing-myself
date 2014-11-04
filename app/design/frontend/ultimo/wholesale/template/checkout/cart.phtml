@@ -1,0 +1,188 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+/**
+ * - Removed top "checkout" button
+ * - Added table wrapper (to show background image)
+ * - Changed "continue shopping" button and "update cart" button
+ * - Added class 'last' in table header last cells
+ * - Rearranged layout of 'cart-collaterals'
+ */
+?>
+<?php $_quote = $quote = Mage::getSingleton('checkout/cart')->getQuote(); ?>
+<div class="breadcrumbs">
+    <ul>
+        <li class="home">
+            <a href="/" title="Go to Home Page">Home</a>
+            <span>/ </span>
+        </li>
+        <li>
+            <a href="/my-account/" title="">My Account</a>
+            <span>/ </span>
+        </li>
+        <li>
+            <strong>My Bag</strong>
+        </li>
+    </ul>
+</div>
+<div class="cart">
+
+    <div class="above-cart">
+        <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+        <button type="button" title="Checkout" class="button btn-proceed-checkout btn-checkout" onclick="window.location='/checkout/onepage/';"><span><span>Checkout</span></span></button>
+    </div>
+
+    <div class="page-title"><h1>My Bag</h1></div>
+
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post">
+        <fieldset>
+            <table id="shopping-cart-table" class="data-table cart-table">
+                <col class="col-img" width="1" />
+                <col />
+                <col class="col-edit" width="1" />
+            <!-- <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                <col class="col-wish" width="1" />
+            <?php endif ?> -->
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col class="col-unit-price" width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col class="col-unit-price" width="1" />
+            <?php endif; ?>
+                <col width="1" />
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col class="<?php if($this->helper('tax')->displayCartBothPrices()) echo 'col-total-excl'; else echo 'col-total'; ?>" width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col class="<?php if($this->helper('tax')->displayCartBothPrices()) echo 'col-total-incl'; else echo 'col-total'; ?>" width="1" />
+            <?php endif; ?>
+                <col class="col-delete" width="1" />
+
+            <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+                <tfoot>
+                    <tr>
+                        <td colspan="50" class="a-right">
+                        <?php if($this->getContinueShoppingUrl()): ?>
+                            <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><?php echo $this->__('<&nbsp;&nbsp;Continue Shopping') ?></span></span></button>
+                        <?php endif; ?>
+                            <button type="submit" name="update_cart_action" value="update_qty" title="<?php echo $this->__('Update My Bag'); ?>" class="button btn-update"><span><span><?php echo $this->__('Update My Bag'); ?></span></span></button>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody class="standard-items">
+                    <?php //Standard items
+                        $hasWashingItem = false;
+                        foreach($this->getItems() as $_item):
+                            $product  = $_item->getProduct();
+                            //$additionalOptions = $_item->getOptionByCode('additional_data');
+                            $additionalOptions = $_item->getOptionByCode('info_buyRequest');
+                            error_log("ItemID: " . $_item->getId());
+                            if(!empty($additionalOptions)):
+                                error_log("Info: " . $additionalOptions->getValue());
+                            endif;
+
+                            if(!in_array(28, $product->getCategoryIds())):
+                                echo $this->getItemHtml($_item);
+                            else:
+                                $hasWashingItem = true;
+                            endif;
+                        endforeach; ?>
+                </tbody>
+                <?php if($hasWashingItem): ?>
+                <tbody class="washing-items">
+                    <tr class="washing-title-spacer">
+                        <td colspan="50"><h1>Washing Service</h1></td>
+                    </tr>
+                    <?php //Washing items
+                        foreach($this->getItems() as $_item):
+                            $product  = $_item->getProduct();
+                            if(in_array(28, $product->getCategoryIds())):
+                                echo $this->getItemHtml($_item);
+                            endif;
+                        endforeach; ?>
+                </tbody>
+                <?php endif; ?>
+            </table>
+            <script type="text/javascript">decorateTable('shopping-cart-table')</script>
+        </fieldset>
+                <div class="bottom-totals">
+                    <div class="bottom-totals-second-row">
+                        <span class="totals-bottom-text"><?php echo $this->__('Total'); ?></span><span><?php echo Mage::helper('core')->formatPrice($_quote->getSubtotal(), true); ?></span>
+                    </div>
+                </div>
+    </form>
+    <div class="cart-collaterals">
+        <div class="totals">
+            <div class="totals-inner">
+                <?php echo $this->getChildHtml('totals'); ?>
+                <?php if(!Mage::getStoreConfig('advanced/modules_disable_output/Wsnyc_HotelModal')) : ?>
+                    <div class="free-bag-checkout">
+                        <a href="#inline_hotel_colorbox" class="openHotelPopup"><?php echo $this->__('FREE Hotel Laundry Bag with Every Purchase!'); ?></a>
+                    </div>
+                <?php endif; ?>
+                <div class="checkout-types">
+                    <button type="button" title="Checkout" class="button btn-proceed-checkout btn-checkout" onclick="window.location='/checkout/onepage/';"><span><span><?php echo $this->__('Proceed to Checkout'); ?></span></span></button>
+                    <button type="button" title="Checkout" class="button btn-continue btn-international" onclick="window.location='/index.php/internationalcheckout';"><span><span><?php echo $this->__('International Checkout'); ?></span></span></button>
+                </div>
+
+            </div>
+            
+        </div>
+        <?php $freeShippingBlock = Mage::getModel('cms/block')->load('cart_promo_block', 'identifier'); ?>
+        <?php if($freeShippingBlock->getIsActive()): ?>
+            <div class="cart-free-shipping">
+                <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($freeShippingBlock->getContent()); ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($tmpHtml = $this->getChildHtml('block_cart_below_totals')): ?>
+            <div class="block_cart_below_totals"><?php echo $tmpHtml; ?></div>
+        <?php endif; ?>
+        <!--
+
+        <?php if ($tmpHtml = $this->getChildHtml('block_cart_below_table')): ?>
+            <div class="block_cart_below_table grid-full alpha omega"><?php echo $tmpHtml; ?></div>
+        <?php endif; ?>
+
+        <div class="grid12-6 alpha persistent-grid2-1">
+            <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+        </div>
+        <div class="grid12-6 omega persistent-grid2-1 float-right">
+            <?php echo $this->getChildHtml('coupon') ?>
+        </div>
+        <div class="grid-full alpha omega">
+            <?php echo $this->getChildHtml('crosssell') ?>
+        </div>
+        -->
+    </div>
+</div>
