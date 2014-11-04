@@ -146,29 +146,10 @@ class Wsnyc_MultipleWebsites_Model_Observer {
                     }
                 }
             }
-            $newPrice = $basePrice;
-            if (is_array($quoteItem->getOptions())) {
-                foreach ($quoteItem->getOptions() as $itemOption) {
-                    $data = @unserialize($itemOption->getValue());
-                    if($data && isset($data['options']) ) {
-                        $optionArray = array();
-                        foreach($data['options'] as $option => $value) {
-                            $optionData = $this->_getOptionValueData($value);
-                            if($optionData) {
-                                $optionArray[] = $optionData;
-                            }
-
-                        }
-                        foreach($optionArray as $singleOption) {
-                            $newPrice += $this->_processPrice($newPrice, $singleOption['price']*$priceMultiplier, $singleOption['price_type']);
-                        }
-                    }
-                }
-            }
 
             if($basePrice) {
-                $quoteItem->setCustomPrice($newPrice);
-                $quoteItem->setOriginalCustomPrice($newPrice);
+                $quoteItem->setCustomPrice($basePrice);
+                $quoteItem->setOriginalCustomPrice($basePrice);
                 $quoteItem->getProduct()->setIsSuperMode(true);
                 $quoteItem->save();
             }
