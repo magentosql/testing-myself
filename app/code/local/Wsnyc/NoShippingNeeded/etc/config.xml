@@ -37,6 +37,14 @@
                     </ignoreshippingmethod>
                 </observers>
             </controller_action_postdispatch_checkout_onepage_saveBilling> 
+            <controller_action_postdispatch_checkout_onepage_savePayment>
+                <observers>
+                    <ignoreshippingmethod>
+                        <class>noshippingneeded/observer</class>
+                        <method>setNoShipping</method>
+                    </ignoreshippingmethod>
+                </observers>
+            </controller_action_postdispatch_checkout_onepage_savePayment> 
         </events>
     </frontend>
     <default>
