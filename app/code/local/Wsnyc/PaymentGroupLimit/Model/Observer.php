@@ -3,6 +3,9 @@
 class Wsnyc_PaymentGroupLimit_Model_Observer {
 
     public function onPaymentMethodIsActive(Varien_Event_Observer $observer) {
+        if($observer->getQuote() == null) {
+            return;
+        }
         $event = $observer->getEvent();
         $method = $event->getMethodInstance();
         $result = $event->getResult();

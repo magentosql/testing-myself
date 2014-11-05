@@ -101,6 +101,17 @@
                     </tr>
                 </tfoot>
                 <tbody class="standard-items">
+                    <tr class="udropship-cart-vendor-header">
+                        <td colspan="10" style="padding-top:5px; padding-bottom:0">
+                            <h3><?php echo $this->__('Cart Items') ?></h3>
+                        </td>
+                    </tr>
+                    <tr class="heading-row">
+                        <th colspan="3"><?php echo $this->__('Product') ?></th>
+                        <th><?php echo $this->__('Unit Price') ?></th>
+                        <th><?php echo $this->__('Quantity') ?></th>
+                        <th><?php echo $this->__('Subtotal') ?></th>
+                    </tr>
                     <?php //Standard items
                         $hasWashingItem = false;
                         foreach($this->getItems() as $_item):
