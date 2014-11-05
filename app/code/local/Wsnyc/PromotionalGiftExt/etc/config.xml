@@ -17,4 +17,11 @@
             </promotionalgift>
         </models>
     </global>
+    <default>
+        <promotionalgift>
+            <general>
+                <allow_virtual>0</allow_virtual>
+            </general>
+        </promotionalgift>
+    </default>
 </config>
