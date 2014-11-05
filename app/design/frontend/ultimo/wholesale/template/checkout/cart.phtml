@@ -160,7 +160,8 @@
             
         </div>
         <?php $freeShippingBlock = Mage::getModel('cms/block')->load('cart_promo_block', 'identifier'); ?>
-        <?php if($freeShippingBlock->getIsActive()): ?>
+        <?php $storeAllowed = array_intersect(array(Mage::app()->getStore()->getStoreId(), '0'), $freeShippingBlock->getStoreId()); ?>
+        <?php if($freeShippingBlock->getIsActive() && !empty($storeAllowed)): ?>
             <div class="cart-free-shipping">
                 <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($freeShippingBlock->getContent()); ?>
             </div>
