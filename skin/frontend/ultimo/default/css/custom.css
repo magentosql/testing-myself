@@ -84,12 +84,12 @@ body{border-top:5px solid black;border-bottom:5px solid black;width:100%;min-wid
 .header{padding-bottom:20px}
 #nav li a{padding:0}
 #nav li a span{display:inline}
-#nav li.nav-1 a.level-top{width:207px}
-#nav li.nav-2 a.level-top{width:142px}
+#nav li.nav-1 a.level-top{width: 237px;}
+#nav li.nav-2 a.level-top{width: 172px;}
 #nav li.nav-3 a.level-top{width:160px}
-#nav li.nav-4 a.level-top{width:176px}
-#nav li.nav-5 a.level-top{width:163px}
-#nav li.nav-6 a.level-top{width:112px}
+#nav li.nav-4 a.level-top{width: 206px;}
+#nav li.nav-5 a.level-top{width: 193px;}
+#nav li.nav-6 a.level-top{width: 152px;}
 #nav.mobile{display:block}
 body.cms-customer-service #nav>li.nav-6>a,body.cms-customer-service-find-a-store #nav>li.nav-6>a,body.cms-customer-service-contact-us #nav>li.nav-6>a,body.cms-faq #nav>li.nav-6>a,body.cms-washing-service-faq #nav>li.nav-6>a,body.cms-customer-service-shipping #nav>li.nav-6>a,body.cms-customer-service-privacypolicy #nav>li.nav-6>a,body.cms-customer-service-terms #nav>li.nav-6>a{background-color:#222;color:#fff}
 body.is-blog #nav>li.nav-5>a{background-color:#222;color:#fff}
