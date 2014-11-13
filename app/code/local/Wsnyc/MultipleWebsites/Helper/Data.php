@@ -19,5 +19,25 @@ class Wsnyc_MultipleWebsites_Helper_Data extends Mage_Core_Helper_Abstract {
             return 0;
         }        
     }
+    
+    public function adminCheckIfOrderIsWholesale() {
+        $request = Mage::app()->getRequest();
+        if($request->getModuleName() == 'thelaund_admin' && Mage::getSingleton('adminhtml/session_quote')) {
+            if(Mage::getModel('core/website')->load(Mage::getModel('core/store')->load(Mage::getSingleton('adminhtml/session_quote')->getStoreId())->getWebsiteId())->getCode() == 'wholesale') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    public function checkIfAdminOrderCreateRequest() {
+        $request = Mage::app()->getRequest();
+        if($request->getModuleName() == 'thelaund_admin' && $request->getControllerName() == 'sales_order_create' && $request->getActionName() == 'index') {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 	 

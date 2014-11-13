@@ -63,7 +63,10 @@ if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_price) {
         <?php endif ?>
         <hr style="margin:10px 0"/>
     <?php endforeach ?>
-        <button type="button" onclick="udsplitSetShippingMethod()"><?php echo $this->__('Update Shipping Methods')?></button> <input type="checkbox" id="collect_shipping_rates" value="1" <?php if (!$_hasRates): ?>checked="checked"<?php endif ?> /> <label for="collect_shipping_rates"><?php echo $this->__('Refresh Rates') ?></label>
+        <?php if(!Mage::helper('multiplewebsites')->adminCheckIfOrderIsWholesale()) : ?>
+            <button type="button" onclick="udsplitSetShippingMethod()"><?php echo $this->__('Update Shipping Methods')?></button> <input type="checkbox" id="collect_shipping_rates" value="1" <?php if (!$_hasRates): ?>checked="checked"<?php endif ?> /> <label for="collect_shipping_rates"><?php echo $this->__('Refresh Rates') ?></label>
+        <?php endif; ?>
+            <?php // echo Mage::helper('multiplewebsites')->test() ?>
     </div>
     <?php if (false && $_rate = $this->getActiveMethodRate()): ?>
         <div id="order-shipping-method-info">
