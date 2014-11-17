@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_MultipleWebsites>
-            <version>0.12.0</version>
+            <version>0.13.0</version>
         </Wsnyc_MultipleWebsites>
     </modules>
     <global>
