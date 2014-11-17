@@ -91,6 +91,13 @@
         </events>
     </frontend>
     <adminhtml>
+        <layout>
+            <updates>
+                <multiplewebsites>
+                    <file>wsnyc/multiplewebsites.xml</file>
+                </multiplewebsites>
+            </updates>
+        </layout>
         <events>
             <controller_action_postdispatch_adminhtml_customer_group_save>
                 <observers>
