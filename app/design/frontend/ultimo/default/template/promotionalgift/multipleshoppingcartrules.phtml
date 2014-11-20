@@ -336,6 +336,11 @@ if (($helper->showFreeGift() == 'cart') || ($helper->showFreeGift() == 'both') &
                                         </li>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
+                                <script type="text/javascript">
+                                    jQuery('.addgift').click(function() {
+                                        jQuery('.addgift').attr('onclick', 'return 0');
+                                    });
+                                </script>
                             </ul>					
                         </div>
                     </div>

@@ -217,7 +217,12 @@ $helper = Mage::helper('promotionalgift');
                                         </div>	
                                     </li>
                                     <?php endif; ?>
-                <?php endforeach; ?>
+                                <?php endforeach; ?>
+                                <script type="text/javascript">
+                                    jQuery('.addgift').click(function() {
+                                        jQuery('.addgift').attr('onclick', 'return 0');
+                                    });
+                                </script>
                             </ul>					
                         </div>
                     </div>

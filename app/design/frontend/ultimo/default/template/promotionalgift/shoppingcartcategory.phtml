@@ -130,17 +130,14 @@
 		$helper = Mage::helper('promotionalgift');
 		$items = array();
 		$rules = $this->getCatagoryRuleCurrent();
-        $title = Mage::getStoreConfig('promotionalgift/general/catalogtitle');
-		// if(!$rule)
-			// $rule = $this->getShoppingcartRule();	
+        $title = Mage::getStoreConfig('promotionalgift/general/catalogtitle');		
 		if($rules != false){
 			foreach($rules as $rule){
 				$ruleId = $rule->getId();
 				if(isset($ruleId) && $ruleId > 0)
 					$items[] = array('rule_id'=>$ruleId,'items'=>$helper->getCategoryRuleFreeGifts($ruleId));
 			}
-		}
-		//zend_debug::dump($items);die();
+		}		
 	?>
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
@@ -152,14 +149,11 @@
 	</script>
 	<?php if(count($items)):?>
 		<?php 
-			$totalItems = 0;//count($items);//$this->getTotalItem($rule);
+			$totalItems = 0;
 			foreach($items as $itemRule)
 			{
-					$totalItems+= count($itemRule['items']);
-					//zend_debug::dump($totalItems);
-			}//die();
-			//$numberFreeItems = $rule->getNumberItemFree();
-			//if($numberFreeItems > $totalItems)
+					$totalItems+= count($itemRule['items']);					
+			}
 			$numberFreeItems = $totalItems;
 			$_helper = $this->helper('catalog/output');
 		?>
@@ -281,8 +275,7 @@
 			var itemEditOptionIds = '<?php echo $this->getEidtItemOptionIds()?>';
 			var itemEditIds = itemEditIds.split(',');			
 			var itemEditOptionIds = itemEditOptionIds.split(',');			
-			//Disable edit link
-			// var giftEdit = $$('a[title^=Edit item parameters]');	
+			//Disable edit link			
 			var giftEdit = $$('a[title^=<?php echo $this->__('Edit item parameters'); ?>]');
 			for(var i=0; i<giftEdit.length; i++){				
 				for(var j=0; j<itemEditOptionIds.length; j++){		
@@ -335,23 +328,20 @@
 </div>
 <script type="text/javascript">
 	function addPromotionalGiftCategoryRule(productid,qty,urlproduct,categoryruleid)
-	{			//alert('<?php echo $this->getUrl()?>');
+	{
 		var categoryitemIds = new Array();	
-		// var categoryruleid = '';
-		// if($('categoryruleid'))
-			// var categoryruleid = $('categoryruleid').value;
-		categoryitemIds[0] = productid+'_'+qty;//alert(categoryitemIds[0]);
+		categoryitemIds[0] = productid+'_'+qty;
+        console.log(categoryitemIds);
 		categoryitemIds = categoryitemIds.filter(function(){return true});			
+        console.log(categoryitemIds);
 		if(categoryitemIds == ''){
-			alert('<?php echo $this->__("Please select %s from %s Promotional gifts provided!",$numberFreeItems,$totalItems);?>');
+			alert('<?php echo $this->__("Please select %s from %s Promotional gifts provided!",isset($numberFreeItems)?$numberFreeItems:0,isset($totalItems)?$totalItems:0);?>');
 			return;				
 		}
 		if(urlproduct=='0')
 		var url = '<?php echo $this->getUrl('promotionalgift/index/addPromotionalGiftsCategoryRule')?>'+'items/'+categoryitemIds+'/categoryruleid/'+categoryruleid; 
 		else
 		var url = '<?php echo $this->getUrl()?>'+urlproduct+'?options=cart&items='+categoryitemIds+'&categoryruleid='+categoryruleid;
-		// $('add-free-gift').disabled=true;
-		//alert(url);
 		setLocation(url);
 	}
 </script>

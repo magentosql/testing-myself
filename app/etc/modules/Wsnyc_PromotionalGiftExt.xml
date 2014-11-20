@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_PromotionalGiftExt>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Unirgy_Dropship />
+                <Magestore_Promotionalgift />
+            </depends>
+        </Wsnyc_PromotionalGiftExt>
+    </modules>
+</config>
