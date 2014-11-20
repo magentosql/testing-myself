@@ -14,6 +14,7 @@
             <block type="promomodals/modal" name="lindsey14-modal" as="lindsey14-modal" template="wsnyc/promomodals/lindsey14.phtml"/>
             <block type="promomodals/modal" name="woolinitiative-modal" as="woolinitiative-modal" template="wsnyc/promomodals/woolinitiative.phtml"/>
             <block type="promomodals/modal" name="novembergift-modal" as="novembergift-modal" template="wsnyc/promomodals/novembergift.phtml"/>
+            <block type="promomodals/modal" name="blackfriday-modal" as="blackfriday-modal" template="wsnyc/promomodals/blackfriday.phtml"/>
         </reference>
     </default>
 </layout>

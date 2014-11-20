@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_PromoModals>
-            <version>0.8.1</version>
+            <version>0.9.0</version>
         </Wsnyc_PromoModals>
     </modules>
     <global>
@@ -56,6 +56,7 @@
                 <lindsey14_enabled>0</lindsey14_enabled>
                 <woolinitiative_enabled>0</woolinitiative_enabled>
                 <novembergift_enabled>0</novembergift_enabled>
+                <blackfriday_enabled>1</blackfriday_enabled>
             </promotions>
         </wsnyc_promotions>
     </default>
