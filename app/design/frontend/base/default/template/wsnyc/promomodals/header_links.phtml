@@ -23,7 +23,7 @@
     <div class="header-msg"><a href="#modal_novembergift"><b class="no-italic"><?php echo $this->__("Our gift to you: 15% off with code NOVEMBERGIFT") ?></b></a></div>
 <?php endif; ?>
     <?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/blackfriday_enabled')): ?>
-    <div class="header-msg"><a href="#modal_blackfriday"><b class="no-italic"><?php echo $this->__("Black Friday & Cyber Monday Special: 25% off with code HOLIDAY") ?></b></a></div>
+    <div class="header-msg"><a href="#modal_blackfriday"><b class="no-italic"><?php echo $this->__("Black Friday & Cyber Monday: 25% off with code HOLIDAY") ?></b></a></div>
 <?php endif; ?>
 <?php $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier'); ?>
 <?php if ($holidayPage && $holidayPage->getData('is_active')): ?>

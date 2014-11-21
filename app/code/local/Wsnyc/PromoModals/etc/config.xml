@@ -56,7 +56,7 @@
                 <lindsey14_enabled>0</lindsey14_enabled>
                 <woolinitiative_enabled>0</woolinitiative_enabled>
                 <novembergift_enabled>0</novembergift_enabled>
-                <blackfriday_enabled>1</blackfriday_enabled>
+                <blackfriday_enabled>0</blackfriday_enabled>
             </promotions>
         </wsnyc_promotions>
     </default>
