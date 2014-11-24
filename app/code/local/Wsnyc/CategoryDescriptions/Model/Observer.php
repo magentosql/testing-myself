@@ -12,7 +12,7 @@ class Wsnyc_CategoryDescriptions_Model_Observer {
         $object->setCategoryId(Mage::registry('current_category')->getId());
         $object->setFilters($this->_getUsedFilters());
         if ($rule = $this->_findRule($object)) {
-            Mage::registry('current_category')->setDescription($rule->getDescription());
+            Mage::register('current_rule', $rule, true);
         }
     }
     
