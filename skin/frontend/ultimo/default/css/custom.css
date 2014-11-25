@@ -278,12 +278,12 @@ body.category-washing-service h2{font-family:'Sorts Mill Goudy Regular',serif;fo
 body.category-washing-service h3{font-family:"GillSansMTStd",sans-serif;font-size:14px;line-height:1em;color:#000;text-transform:uppercase;text-align:center;margin:3px 0 0 0}
 body.category-washing-service h4{font-size:22px;line-height:1em;font-family:'Georgia',Arial,Helvetica,sans-serif;font-style:italic;font-weight:normal;text-transform:uppercase;padding:0;margin:0}
 body.category-washing-service h3.selection-title{color:#222;font-family:"Halo Handletter";font-size:48px;line-height:1.38em;font-weight:normal;text-align:center;text-transform:none}
-.washing-service-list {margin-top: 40px;}
-.washing-service-list li {display: block;margin: 0px 0px 30px 0px;}
+.washing-service-list {margin-top: 40px;overflow: hidden;display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;}
+.washing-service-list li {display: block;margin: 0px 30px 30px 0px;width: 30%;float: left;overflow: hidden;}
 .washing-service-list li > a {position: relative;display: block;}
-.washing-service-list li > a img {opacity: 0.6;}
-.washing-service-list li > a span {position: absolute;color: #666;font-weight: bold;font-size: 32px;text-align: center;width: 100%;background: rgba(255,255,255,0.4);display: block;padding: 10px 0px;line-height: initial;top: 48%;}
-.washing-service-list li > a:hover span {background: rgba(255,255,255,0.8);color: #000;}
+.washing-service-list li > a img {opacity: 0.8;}
+.washing-service-list li > a span {position: absolute;color: #666;font-weight: bold;font-size: 13px;text-align: center;width: 100%;background: rgba(255,255,255,0.4);display: block;padding: 10px 0px;line-height: initial;top: 42%;}
+.washing-service-list li > a:hover span {background: rgba(255,255,255,0.7);color: #000;}
 .washing-service-list li > a:hover img {opacity: 1;}
 body.ask-the-laundress .std,body.ask-the-laundress-post .std{margin:0}
 body.ask-the-laundress .grid-full,body.ask-the-laundress-post .grid-full{width:100%;margin:0}
