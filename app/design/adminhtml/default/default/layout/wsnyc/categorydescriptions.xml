@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_category_description_edit>
+        <reference name="head">
+            <action method="setCanLoadExtJs"><flag>1</flag></action>
+            <action method="setCanLoadRulesJs"><flag>1</flag></action>
+        </reference>
+        <reference name="left">
+            <block type="wsnyc_categorydescriptions/adminhtml_rule_edit_tabs" name="category_description_edit_tabs" />
+        </reference>
+        <reference name="content">
+            <block type="wsnyc_categorydescriptions/adminhtml_rule_edit" name="category_description_edit"></block>
+        </reference>
+    </adminhtml_category_description_edit>
+</layout>
