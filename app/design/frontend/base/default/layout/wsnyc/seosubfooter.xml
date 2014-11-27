@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="before_body_end">
+            <block type="seosubfooter/footer" name="blurb.footer" as="blurb.footer" before="-" />
+        </reference>
+    </default>
+</layout>
