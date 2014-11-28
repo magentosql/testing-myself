@@ -17,11 +17,24 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
     /**
      * Check if current page should show blurb
      * 
-     * @todo Add attributes to category, product, cms and question forms that would set this value
+     * @todo Add attributes to ask the laundress page that would set this value
      * @return boolean
      */
     public function shouldShowBlurb() {
-        return true;
+        
+        if (Mage::registry('product')) {            
+            return Mage::registry('product')->getSeosubfooterShow();
+        }
+        elseif (Mage::registry('current_category')) {            
+            return Mage::registry('current_category')->getSeosubfooterShow();
+        }        
+        elseif (Mage::registry('current_page')) {
+            return Mage::registry('current_page')->getSeosubfooterShow();
+        }
+        elseif (Mage::registry('show_blurb')) {
+            return Mage::registry('show_blurb');
+        }
+        return false;
     }
     
     public function getBlurb() {

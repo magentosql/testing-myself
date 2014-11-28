@@ -1,6 +1,6 @@
 <?php
 /**
- * @var Zefir_Dealers_Model_Resource_Setup $installer
+ * @var Wsnyc_SeoSubfooter_Model_Resource_Setup $installer
  */
 $installer = $this;  
 $installer->startSetup();
