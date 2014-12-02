@@ -13,6 +13,7 @@
             <adminhtml>
                 <rewrite>
                     <customer_group_edit_form>Wsnyc_MultipleWebsites_Block_Adminhtml_Customer_Group_Edit_Form</customer_group_edit_form>
+                    <customer_grid>Wsnyc_MultipleWebsites_Block_Adminhtml_Customer_Grid</customer_grid>
                 </rewrite>
             </adminhtml>
         </blocks>
