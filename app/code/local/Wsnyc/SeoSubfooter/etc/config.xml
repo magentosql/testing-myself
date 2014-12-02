@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_SeoSubfooter>
-            <version>0.2</version>
+            <version>0.2.1</version>
         </Wsnyc_SeoSubfooter>
     </modules>
     <global>
@@ -124,6 +124,15 @@
                     </add_seosubfooter_enable_field>
                 </observers>
             </adminhtml_cms_page_edit_tab_meta_prepare_form>
+            <adminhtml_cms_page_edit_tab_main_prepare_form>
+                <observers>
+                    <add_seosubfooter_link_field>
+                        <type>singleton</type>
+                        <model>seosubfooter/observer</model>
+                        <method>addSeoSubfooterFieldToMainForm</method>
+                    </add_seosubfooter_link_field>
+                </observers>
+            </adminhtml_cms_page_edit_tab_main_prepare_form>
         </events>
     </adminhtml>
 </config>

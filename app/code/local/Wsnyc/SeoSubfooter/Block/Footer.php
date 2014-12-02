@@ -3,10 +3,14 @@
 class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
     
     /**
-     *
      * @var Wsnyc_SeoSubfooter_Model_Blurb
      */
     protected $_blurb;
+    
+    /**
+     * @var Mage_Cms_Model_Resource_Page_Collection
+     */
+    protected $_links;
 
 
     protected function _construct() {
@@ -45,5 +49,19 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
         }
         
         return $this->_blurb;
+    }
+    
+    public function getLinks() {
+        if (null === $this->_links) {
+            $this->_links = Mage::getModel('cms/page')->getCollection()
+                                    ->addFieldToFilter('seosubfooter_link', array('eq' => 1))
+                                    ->addFieldToFilter('is_active', array('eq' => 1));
+        }
+        
+        return $this->_links;
+    }
+    
+    public function getPageUrl(Mage_Cms_Model_Page $page) {
+        return Mage::getUrl(null, array('_direct' => $page->getIdentifier()));
     }
 }

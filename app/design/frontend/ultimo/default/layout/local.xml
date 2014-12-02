@@ -208,8 +208,7 @@
 		</reference>
         
         <reference name="before_body_end">
-            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />
-            <action method="unsetChild"><alias>blurb.footer</alias></action>
+            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />            
         </reference>
         
         <reference name="after_body_start">
@@ -294,10 +293,7 @@
 				<block type="cms/block" name="block_edgebox_bottom_right">
 					<action method="setBlockId"><block_id>block_edgebox_bottom_right</block_id></action>
 				</block>                
-			</block>
-            
-            <action method="insert"><blockName>blurb.footer</blockName></action>
-			
+			</block>			
 		</reference>
 		
     </default>
