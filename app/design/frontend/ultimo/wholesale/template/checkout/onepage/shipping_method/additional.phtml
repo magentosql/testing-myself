@@ -32,24 +32,6 @@
     <label for="onestepcheckout_comment"><?php echo $this->__('Add Comments for The Laundress');?></label><br/>
     <textarea id="onestepcheckout_comment" name="laundress_comment" col="15"></textarea>
 </div>
-<?php if(Mage::getStoreConfig('onestepcheckout/survey/enable_survey', $this->getStoreId())):?>
-    <?php
-    $selectedSurveyFields = $this->getRequest()->getPost('onestepcheckout-survey', false);
-    $surveyValues = unserialize(Mage::getStoreConfig('onestepcheckout/survey/survey_values', $this->getStoreId()));
-    ?>
-    <div class="onestepcheckout-survey" id="">
-        <label for="id_survey"><?php echo $this->__('Is a signature required for your order?');//$_helper->getSurveyQuestion(); ?></label><br>
-        <select style="" name="requires_signature" id="id_survey">
-            <option value=""><?php echo $this->__('Please choose'); ?></option>
-            <?php foreach($surveyValues as $value => $label):
-                $selected= (!empty($selectedSurveyFields) && $selectedSurveyFields == $value) ? ' selected' : '';
-                ?>
-                <option value="<?php echo $value?>" <?php echo $selected;?>><?php echo $label['value']?></option>
-            <?php endforeach;?>
-        </select>
-    </div>
-<?php endif;?>
-
 
 <?php if(Mage::getStoreConfigFlag('carriers/billtoaccountnumber/active')) : ?>
     
@@ -68,7 +50,6 @@
         });
         thirdPartyNumber.blur(function() {
             if(thirdPartyNumber.val() != '') {
-//                console.log(thirdPartyNumber.val());
                 thirdPartyNumberProcessing(thirdPartyNumber.val());
             }
         });
