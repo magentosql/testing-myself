@@ -17,3 +17,10 @@
 .seo-links li:first-child {
     margin-top: 0px;
 }
+.seosubfooter-page .page-title {
+    display: none;
+}
+.seosubfooter-page .col-main .std {
+    margin: 30px auto;
+    width: 70%;
+}

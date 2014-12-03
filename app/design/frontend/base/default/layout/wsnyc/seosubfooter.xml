@@ -8,4 +8,9 @@
             <block type="seosubfooter/footer" name="blurb.footer" as="blurb.footer" before="-" />
         </reference>
     </default>
+    <cms_page>
+        <reference name="root">
+            <action method="addBodyClass"><class helper="seosubfooter/getCmsPageBodyClass" /></action>
+        </reference>
+    </cms_page>
 </layout>
