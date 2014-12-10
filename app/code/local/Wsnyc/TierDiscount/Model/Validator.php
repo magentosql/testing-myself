@@ -25,7 +25,7 @@ class Wsnyc_TierDiscount_Model_Validator extends Mage_SalesRule_Model_Validator 
             return;
         }
         
-        $cartQty = $this->_getCartQty($event->getQuote());
+        $cartQty = $this->_getCartQty($event->getQuote(), $rule);
         $tierDiscounts = $this->_getTierValues($rule);        
         $discount = $this->_getDiscount($tierDiscounts, $cartQty);
         if (!$discount) {
@@ -99,11 +99,12 @@ class Wsnyc_TierDiscount_Model_Validator extends Mage_SalesRule_Model_Validator 
      * @param Mage_Sales_Model_Quote $quote
      * @return int
      */
-    protected function _getCartQty(Mage_Sales_Model_Quote $quote) {
+    protected function _getCartQty(Mage_Sales_Model_Quote $quote, $rule) {
         if (null === $this->_cartQty) {
             $cartQty = 0;
             foreach($quote->getAllVisibleItems() as $item) {
-                if ($item->getBasePrice() > 0) {
+                //count only items that are not fully discounted and that fulfil actions
+                if ($item->getBasePrice() > 0 && $rule->getActions()->validate($item)) {
                     $cartQty += $item->getQty();
                 }
             }
