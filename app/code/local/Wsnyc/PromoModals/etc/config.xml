@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_PromoModals>
-            <version>0.9.0</version>
+            <version>1.0.0</version>
         </Wsnyc_PromoModals>
     </modules>
     <global>
@@ -16,6 +16,20 @@
                 <class>Wsnyc_PromoModals_Helper</class>
             </promomodals>
         </helpers>
+        <models>
+            <promomodals>
+                <class>Wsnyc_PromoModals_Model</class>
+                <resourceModel>promomodals_resource</resourceModel>
+            </promomodals>            
+            <promomodals_resource>
+                <class>Wsnyc_PromoModals_Model_Resource</class>
+                <entities>
+                    <modal>
+                        <table>wsnyc_promomodal</table>
+                    </modal>
+                </entities>
+            </promomodals_resource>
+        </models>
         <resources>
             <promomodals_setup>
                 <setup>
@@ -36,6 +50,17 @@
                 </connection>
             </promomodals_read>
         </resources>
+        <events>
+            <salesrule_rule_save_after>
+                <observers>
+                    <save_rule_modal_data>
+                        <type>singleton</type>
+                        <class>promomodals/observer</class>
+                        <method>saveModalData</method>
+                    </save_rule_modal_data>    
+                </observers>                
+            </salesrule_rule_save_after>
+        </events>
     </global>
     <frontend>
         <layout>
@@ -46,6 +71,15 @@
             </updates>
         </layout>
     </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <promomodals>
+                    <file>wsnyc/promomodals.xml</file>
+                </promomodals>
+            </updates>
+        </layout>
+    </adminhtml>
     <default>
         <wsnyc_promotions>
             <promotions>

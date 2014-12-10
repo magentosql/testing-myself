@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Shopping Cart Price Rule -->
+    <adminhtml_promo_quote_edit>
+        <reference name="promo_quote_edit_tabs">            
+            <block type="promomodals/adminhtml_tab_modal" name="promo_quote_edit_tab_modal" />
+            <action method="addTab"><name>modal_section</name><block>promo_quote_edit_tab_modal</block></action>
+        </reference>
+    </adminhtml_promo_quote_edit>
+</layout>
