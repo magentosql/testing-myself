@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Seo>
+            <version>1.0.0</version>
+        </Wsnyc_Seo>
+    </modules>
+    <global>
+        <blocks>
+            <page>
+                <rewrite>
+                    <html_head>Wsnyc_Seo_Block_Head</html_head>
+                </rewrite>
+            </page>    
+        </blocks>        
+    </global>
+</config>

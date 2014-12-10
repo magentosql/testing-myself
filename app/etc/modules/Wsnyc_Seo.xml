@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Seo>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Diglin_UIOptimization />
+            </depends>
+        </Wsnyc_Seo>
+    </modules>
+</config>

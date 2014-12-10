@@ -122,4 +122,17 @@ class Wsnyc_Fedex_Model_Usa_Shipping_Carrier_Fedex extends Mage_Usa_Model_Shippi
         }
         return $ratesRequest;
     }
+    
+    public function getMethodPrice($cost, $method = '') {
+        if ($method == $this->getConfigData($this->_freeMethod) 
+                && $this->getConfigData('free_shipping_enable') 
+                && $this->getConfigData('free_shipping_subtotal') <= $this->_rawRequest->getValueWithDiscount()
+        ) {
+            $price = '0.00';
+        } else {
+            $price = $this->getFinalPriceWithHandlingFee($cost);
+        }
+        return $price;
+    }
+
 }

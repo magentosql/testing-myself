@@ -53,7 +53,14 @@
 <?php if(!Mage::registry('current_product')) { ?>
 <div class="page-title category-title">
     <?php if(Mage::registry('current_category')): ?>
-        <h1><?php echo Mage::registry('current_category')->getName(); ?></h1>
+    <div class="col2-set">
+        <h1 class="col-1">
+            <?php echo Mage::registry('current_category')->getName(); ?>
+        </h1>
+        <?php if (Mage::registry('current_rule')):?>
+        <div class="col-2"><?php echo Mage::registry('current_rule')->getDescription();?></div>
+        <?php endif;?>    
+    </div>
     <?php elseif(Mage::getSingleton('cms/page')->getTitle()): ?>
         <h1><?php echo Mage::getSingleton('cms/page')->getTitle() ?></h1>
     <?php else: ?>

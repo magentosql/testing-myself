@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_PromotionalGiftExt>
+            <version>1.0.0</version>
+        </Wsnyc_PromotionalGiftExt>
+    </modules>
+    <global>
+        <models>
+            <promotionalgift_ext>
+                <class>Wsnyc_PromotionalGiftExt_Model</class>
+            </promotionalgift_ext>
+            <promotionalgift>
+                <rewrite>
+                    <shoppingcartrule>Wsnyc_PromotionalGiftExt_Model_Shoppingcartrule</shoppingcartrule>
+                </rewrite>
+            </promotionalgift>
+        </models>
+    </global>
+    <default>
+        <promotionalgift>
+            <general>
+                <allow_virtual>0</allow_virtual>
+            </general>
+        </promotionalgift>
+    </default>
+</config>
