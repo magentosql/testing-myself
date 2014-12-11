@@ -1,5 +1,5 @@
 .blurb {
-    margin: 70px 0px 10px 0px;    
+    margin: 150px 0px 10px 0px;    
 }
 
 .blurb.std {
@@ -28,4 +28,8 @@
 .seosubfooter-page .col-main .std {
     margin: 30px auto;
     width: 70%;
+}
+.seosubfooter-page .col-main .std p {
+    font-size: 1.5em;
+    line-height: initial;
 }
