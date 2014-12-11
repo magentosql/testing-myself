@@ -208,7 +208,7 @@
 		</reference>
         
         <reference name="before_body_end">
-            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />
+            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />            
         </reference>
         
         <reference name="after_body_start">
@@ -292,9 +292,8 @@
 				</block>
 				<block type="cms/block" name="block_edgebox_bottom_right">
 					<action method="setBlockId"><block_id>block_edgebox_bottom_right</block_id></action>
-				</block>
-			</block>
-			
+				</block>                
+			</block>			
 		</reference>
 		
     </default>

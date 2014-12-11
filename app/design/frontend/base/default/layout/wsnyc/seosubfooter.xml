@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><file>css/wsnyc/seosubfooter.css</file></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="seosubfooter/footer" name="blurb.footer" as="blurb.footer" before="-" />
+        </reference>
+    </default>
+    <cms_page>
+        <reference name="root">
+            <action method="addBodyClass"><class helper="seosubfooter/getCmsPageBodyClass" /></action>
+        </reference>
+    </cms_page>
+</layout>
