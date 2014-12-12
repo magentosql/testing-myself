@@ -38,10 +38,18 @@
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
                         </ftp_password>
+                        <ftp_filename>
+                            <label>FTP Filename</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_filename>
                         <retailer_code>
                             <label>Retailer Code</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>40</sort_order>
+                            <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -49,7 +57,7 @@
                         <client_code>
                             <label>Client Code</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>50</sort_order>
+                            <sort_order>60</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>0</show_in_website>
                             <show_in_store>0</show_in_store>

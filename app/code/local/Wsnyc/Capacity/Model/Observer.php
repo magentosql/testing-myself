@@ -4,8 +4,18 @@ class Wsnyc_Capacity_Model_Observer {
     
     const XML_PATH_RETAILER_CODE = 'shipping/capacity/retailer_code';
     const XML_PATH_CLIENT_CODE = 'shipping/capacity/client_code';
+    const XML_PATH_FTP_FILENAME = 'shipping/capacity/ftp_filename';
     
+    /**
+     *
+     * @var string
+     */
     protected $_tmpCsvDir;
+    
+    /**
+     * @var int
+     */
+    protected static $_run = 0;
     
     protected $_cols = array('PickTicketID', 'MasterOrderID', 'ReleaseFlag', 'Reship850Flag', 'OrderType', 'SpecialProcessingFlag', 
         'CapacityImportID', 'PONumber', 'RetailerCode', 'StoreNumber', 'ShipToLocation', 'ClientCode', 'DropshipID', 
@@ -28,11 +38,18 @@ class Wsnyc_Capacity_Model_Observer {
      */
     public function processShipment($observer = null) {
         
+        if (0 !== self::$_run) {
+            //since we are saving the shipment after upload 
+            //we need to make sure not to go into the loop
+            return;
+        }        
+        self::$_run = 1;
+        
         /**
          * @var Mage_Sales_Model_Order_Shipment $shipment
          */
-        $shipment = $observer->getEvent()->getShipment();         
-        
+        $shipment = $observer->getEvent()->getShipment();
+        //$shipment = Mage::getModel('sales/order_shipment')->load(1);
         if (!$this->_shouldSendInfo($shipment)) {
             //shipment already send or not yet shipped
             return;
@@ -42,9 +59,15 @@ class Wsnyc_Capacity_Model_Observer {
         $shipment->setCapacitySendStatus(1)->save();
     }
     
-    protected function _prepareData($shipment) {
+    /**
+     * Prepare shipment data
+     * 
+     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @return string
+     */
+    protected function _prepareData(Mage_Sales_Model_Order_Shipment $shipment) {
         $this->_checkDir();
-        $filename = $this->_tmpCsvDir . DS . 'capacity_csv_' . $shipment->getId() . '.csv';
+        $filename = $this->_tmpCsvDir . DS . $this->_getFilename($shipment);
         $fp = fopen($filename, 'w');
         fputcsv($fp, $this->_cols, "\t", '"');
         $i = 1;        
@@ -121,6 +144,12 @@ class Wsnyc_Capacity_Model_Observer {
         return $filename;
     }
     
+    /**
+     * Upload data to the server 
+     * 
+     * @param Mage_Sales_Model_Order_Shipment $filename
+     * @return boolean
+     */
     protected function _sendData($filename) {
         
         /**
@@ -131,13 +160,32 @@ class Wsnyc_Capacity_Model_Observer {
         $success = $ftp->upload($filename);
         $ftp->close();
         return $success;
-    }    
+    }
     
-    protected function _shouldSendInfo($shipment) {        
+    /**
+     * Create filename
+     * 
+     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @return string
+     */
+    protected function _getFilename(Mage_Sales_Model_Order_Shipment $shipment) {        
+        return Mage::getStoreConfig(self::XML_PATH_FTP_FILENAME)
+                . '_'. $shipment->getIncrementId()
+                . '_' . date('Ymd\TGis')
+                .'.txt';
+    }
+    
+    /**
+     * Check if shipment info should be sent
+     * 
+     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @return boolean
+     */
+    protected function _shouldSendInfo(Mage_Sales_Model_Order_Shipment $shipment) {        
         
         $udropship = Mage::getConfig()->getModuleConfig('Unirgy_Dropship')->is('active', 'true') ? $shipment->getUdropshipStatus() : 1;
         
-        return $udropship && !$shipment->getCapacitySendStatus();
+        return true;//$udropship && !$shipment->getCapacitySendStatus();
     }
     
     /**

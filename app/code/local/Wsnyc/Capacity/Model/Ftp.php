@@ -102,7 +102,7 @@ class Wsnyc_Capacity_Model_Ftp {
     }
     
     public function upload($filePath) {
-        //$this->setFtpPasv();
+        $this->setFtpPasv();
         $fileName = 'IN/' . basename($filePath);
         
         if (!ftp_put($this->_ftpConnection, $fileName, $filePath, FTP_BINARY)) {
