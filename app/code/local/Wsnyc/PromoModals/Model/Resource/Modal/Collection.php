@@ -15,10 +15,24 @@ class Wsnyc_PromoModals_Model_Resource_Modal_Collection extends Mage_Core_Model_
      * Add status field filter to dealer collection
      *
      * @param int $status
-     * @return Zefir_Dealers_Model_Resource_Dealer_Collection $this
+     * @return \Wsnyc_PromoModals_Model_Resource_Modal_Collection
      */
     public function addStatusFilter($status = 1) {
-        $this->addFieldToFilter('is_active', array('eq' => $status));
+        $this->addFieldToFilter('main_table.modal_is_active', array('eq' => $status));
+        if (Mage::getStoreConfig('wsnyc_promotions/promotions/check_rule')) {
+            $this->join(array('rule' => 'salesrule/rule'), 'main_table.rule_id=rule.rule_id', '');
+            $this->addFieldToFilter('rule.is_active', array('eq' => 1));
+        }        
+        return $this;
+    }
+    
+    /**
+     * Sort collection by modal_sort_order column
+     * 
+     * @return \Wsnyc_PromoModals_Model_Resource_Modal_Collection
+     */
+    public function addSort($direction = self::SORT_ORDER_ASC) {
+        $this->setOrder('main_table.modal_sort_order', $direction);
         return $this;
     }
 }

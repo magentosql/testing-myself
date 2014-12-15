@@ -75,11 +75,19 @@ class Wsnyc_PromoModals_Block_Adminhtml_Tab_Modal extends Mage_Adminhtml_Block_W
             'required' => false,
         ));
         
-        $fieldset->addField('modal_description', 'textarea', array(
+        $fieldset->addField('modal_sort_order', 'text', array(
+            'name' => 'modal_sort_order',
+            'label' => Mage::helper('promomodals')->__('Priority'),
+            'title' => Mage::helper('promomodals')->__('Priority'),
+            'required' => false,
+        ));
+        
+        $fieldset->addField('modal_description', 'editor', array(
             'name' => 'modal_description',
             'label' => Mage::helper('promomodals')->__('Description'),
             'title' => Mage::helper('promomodals')->__('Description'),
-            'style' => 'height: 100px;',
+            'style' => 'height: 200px;width: 550px',
+            'wysiwyg' => true,
         ));
 
         $form->setValues($model->getData());
