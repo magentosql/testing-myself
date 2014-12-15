@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+  <menu>
+    <cms>
+      <children>
+        <seoblurbs translate="title" module="seosubfooter">
+          <title>SEO Footer Blurbs</title>
+          <action>adminhtml/seosubfooter</action>
+          <sort_order>100</sort_order>
+        </seoblurbs>
+      </children>
+    </cms>
+  </menu>
+  <acl>
+    <resources>
+      <all>
+        <title>Allow Everything</title>
+      </all>
+      <admin>
+        <children>
+          <cms>
+            <children>
+              <seoblurbs translate="title">
+                <title>SEO Footer Blurbs</title>
+                <sort_order>100</sort_order>
+              </seoblurbs>
+            </children>
+          </cms>
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</config>

@@ -208,7 +208,7 @@
 		</reference>
         
         <reference name="before_body_end">
-            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />
+            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />            
         </reference>
         
         <reference name="after_body_start">
@@ -292,9 +292,8 @@
 				</block>
 				<block type="cms/block" name="block_edgebox_bottom_right">
 					<action method="setBlockId"><block_id>block_edgebox_bottom_right</block_id></action>
-				</block>
-			</block>
-			
+				</block>                
+			</block>			
 		</reference>
 		
     </default>
@@ -519,6 +518,11 @@
                     <file>css/wsnyc/checkout.css</file>
                 </action>
             </reference>
+            <reference name="checkout.cart.form.before">
+                <block type="cms/block" name="holiday-message">
+                    <action method="setBlockId"><blockId>holiday-message</blockId></action>
+                </block>
+            </reference>
             <!-- Custom static blocks -->
             <reference name="checkout.cart">
                 <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
@@ -555,12 +559,12 @@
 	<!---->
 	<!--</checkout_onepage_index>-->
     
-        <checkout_onepage_success>
-            <reference name="before_body_end">
-                <block type="core/template" name="google.conversion" template="tracking/conversion.phtml" />
-                <block type="core/template" name="ppc.conversion" template="tracking/ppc-conversion.phtml" />
-            </reference>
-        </checkout_onepage_success>
+    <checkout_onepage_success>
+        <reference name="before_body_end">
+            <block type="core/template" name="google.conversion" template="tracking/conversion.phtml" />
+            <block type="core/template" name="ppc.conversion" template="tracking/ppc-conversion.phtml" />
+        </reference>
+    </checkout_onepage_success>
 
 
 	<!-- SEARCH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->

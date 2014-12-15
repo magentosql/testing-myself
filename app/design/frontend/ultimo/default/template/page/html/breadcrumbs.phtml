@@ -50,7 +50,7 @@
     </ul>
 </div>
 
-<?php if(!Mage::registry('current_product')) { ?>
+<?php if(!Mage::registry('current_product') && !Mage::getSingleton('cms/page')->getSeosubfooterLink()) { ?>
 <div class="page-title category-title">
     <?php if(Mage::registry('current_category')): ?>
     <div class="col2-set">
