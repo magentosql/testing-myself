@@ -185,7 +185,7 @@ class Wsnyc_Capacity_Model_Observer {
         
         $udropship = Mage::getConfig()->getModuleConfig('Unirgy_Dropship')->is('active', 'true') ? $shipment->getUdropshipStatus() : 1;
         
-        return true;//$udropship && !$shipment->getCapacitySendStatus();
+        return $udropship && !$shipment->getCapacitySendStatus();
     }
     
     /**
