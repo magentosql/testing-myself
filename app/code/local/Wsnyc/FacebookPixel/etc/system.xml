@@ -1,0 +1,52 @@
+<config>
+    <sections>
+        <facebook_pixel translate="label" module="wsnyc_fbpixel">
+            <tab>sales</tab>
+            <label>Facebook Settings</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>                
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <enabled translate="label"  module="wsnyc_fbpixel">
+                            <label>Enable Amazon Tracking Pixel</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>              
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <pixel_id translate="label"  module="wsnyc_fbpixel">
+                            <label>Pixel ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pixel_id>
+                        <track_conversion translate="label"  module="wsnyc_fbpixel">
+                            <label>Enable Amazon Tracking Pixel</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>              
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </track_conversion>
+                    </fields>
+                </general>                
+            </groups>
+        </facebook_pixel>
+    </sections>
+</config>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block type="wsnyc_fbpixel/pixel" name="facbook_pixel" template="wsnyc/fbpixel/pixel.phtml" />            
+        </reference>
+    </default>
+    <checkout_onepage_success>
+        <reference name="head">            
+            <block type="wsnyc_fbpixel/pixel" name="facbook_conversion_pixel" template="wsnyc/fbpixel/conversion.phtml" />
+        </reference>
+    </checkout_onepage_success>
+</layout>
