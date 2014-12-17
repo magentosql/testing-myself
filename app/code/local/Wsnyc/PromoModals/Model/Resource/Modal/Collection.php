@@ -29,7 +29,6 @@ class Wsnyc_PromoModals_Model_Resource_Modal_Collection extends Mage_Core_Model_
             $this->addFieldToFilter('rule.to_date', array(
                 array('null' => true), array('gteq' => $today)
             ));
-            Mage::log($this->getSelect()->__toString());
         }        
         return $this;
     }
