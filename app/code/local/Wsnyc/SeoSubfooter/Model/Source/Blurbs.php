@@ -36,7 +36,7 @@ class Wsnyc_SeoSubfooter_Model_Source_Blurbs extends Mage_Core_Model_Abstract {
     }
     
     protected function _prepareList() {
-        $collection = Mage::getModel('seosubfooter/blurb')->getCollection()->addStatusFilter()->setOrder('title', 'ASC');
+        $collection = Mage::getModel('seosubfooter/blurb')->getCollection()->setOrder('title', 'ASC');
         $list = array();
         foreach($collection as $blurb) {
             $list[$blurb->getId()] = $blurb->getTitle();
