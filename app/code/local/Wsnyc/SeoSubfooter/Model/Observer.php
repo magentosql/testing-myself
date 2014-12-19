@@ -17,6 +17,14 @@ class Wsnyc_SeoSubfooter_Model_Observer {
             'title' => Mage::helper('cms')->__('Show SEO Subfooter'),
             'options' => Mage::getModel('eav/entity_attribute_source_boolean')->getOptionArray(),
         ));
+        
+        $blurbSelection = Mage::getModel('seosubfooter/source_blurbs')->getAllOptions();        
+        $fieldset->addField('seosubfooter_blurb', 'multiselect', array(
+            'name' => 'seosubfooter_blurb[]',
+            'label' => Mage::helper('cms')->__('Limit Blurbs Selection'),
+            'title' => Mage::helper('cms')->__('Limit Blurbs Selection'),
+            'values' => $blurbSelection,
+        ));
     }
     
     public function addSeoSubfooterFieldToMainForm(Varien_Event_Observer $observer) {
@@ -30,6 +38,20 @@ class Wsnyc_SeoSubfooter_Model_Observer {
             'note'      => Mage::helper('cms')->__('If this is SEO Landing Page it will be used in the link section of the blurb'),
             'options' => Mage::getModel('eav/entity_attribute_source_boolean')->getOptionArray(),
         ));
+    }
+    
+    public function prepareCmsLimitFieldData(Varien_Event_Observer $observer) {
+        $page = $observer->getEvent()->getPage();
+        $page->setSeosubfooterBlurb(implode(',', $page->getSeosubfooterBlurb()));
+    }
+    
+    public function prepareAskLimitFieldData(Varien_Event_Observer $observer) {
+        $model = $observer->getEvent()->getObject();
+        Mage::log($model->debug());
+        if (is_array($model->getSeosubfooterBlurb())) {
+            $model->setSeosubfooterBlurb(implode(',', $model->getSeosubfooterBlurb()));
+        }
+        Mage::log($model->debug());
     }
     
     /**
@@ -49,6 +71,6 @@ class Wsnyc_SeoSubfooter_Model_Observer {
     public function setAskPageBlurb(Varien_Event_Observer $observer) {
         $categoryId = Mage::app()->getRequest()->getParam('id');
         $category = Mage::getModel('wsnyc_questionsanswers/category')->load($categoryId);
-        Mage::register('show_blurb', $category->getSeosubfooterShow());
+        Mage::register('ask_category', $category);
     }
 }
