@@ -49,7 +49,7 @@ class Wsnyc_Capacity_Model_Observer {
          * @var Mage_Sales_Model_Order_Shipment $shipment
          */
         $shipment = $observer->getEvent()->getShipment();
-        //$shipment = Mage::getModel('sales/order_shipment')->load(1);
+        //$shipment = Mage::getModel('sales/order_shipment')->load(31);
         if (!$this->_shouldSendInfo($shipment)) {
             //shipment already send or not yet shipped
             return;

@@ -24,16 +24,19 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
     }
     
     public function getStreet($address, $line = 1) {
-        $street = $address->getStreet(-1);        
-        if (strlen($street) > 128) {
+        $street = $address->getStreet(-1);
+        if (strstr($street, "\n")) {
+            $streetLines = explode("\n", $street);
+        }
+        elseif (strlen($street) > 128) {
             $streetLines = explode("\n", wordwrap($street, 200, "\n"));            
         }
         else {
             $streetLines = array(0 => $street, 1 => null);
         }
         
-        return $line == 1 ? $streetLines[0] : $streetLines[1];
-    }
+        return $line == 1 ? str_replace("\n", ' ', $streetLines[0]) : str_replace("\n", ' ', $streetLines[1]);
+    }   
     
     public function getShippingMethod($shipment) {
         $method = $shipment->getUdropshipMethod();
