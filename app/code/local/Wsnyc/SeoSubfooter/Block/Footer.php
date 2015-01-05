@@ -43,8 +43,8 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
 
     public function getBlurb() {
         if (null === $this->_blurb) {
-            if ($this->_getCurrentObject()) {
-                $text = $this->_getCurrentObject()->getSeosubfooterText();
+            $text = trim($this->_getCurrentObject()->getSeosubfooterText());
+            if ($text) {
                 $blurb = Mage::getModel('seosubfooter/blurb')->setData(array(
                     'blurb_content' => $text
                 ));
