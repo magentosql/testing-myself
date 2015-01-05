@@ -8,11 +8,13 @@
 <?php if ($this->shouldShowBlurb()): ?>
 <div class="blurb std container">
     <h4>
-    <?php if ($this->getBlurb()->getUrl()):?>
-        <a href="<?php echo $this->getBlurb()->getUrl();?>"><?php echo $this->getBlurb()->getTitle();?></a>
-    <?php else: ?>
-        <?php echo $this->getBlurb()->getTitle();?>
-    <?php endif; ?>        
+        <?php if ($this->getBlurb()->getTitle()):?>
+            <?php if ($this->getBlurb()->getUrl()):?>
+                <a href="<?php echo $this->getBlurb()->getUrl();?>"><?php echo $this->getBlurb()->getTitle();?></a>
+            <?php else: ?>
+                <?php echo $this->getBlurb()->getTitle();?>
+            <?php endif; ?>
+        <?php endif; ?>
     </h4>
     <div>
         <?php echo $this->getBlurb()->getFilteredContent();?>

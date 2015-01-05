@@ -40,20 +40,25 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
         }
         return false;
     }
-    
+
     public function getBlurb() {
         if (null === $this->_blurb) {
-            $collection = Mage::getModel('seosubfooter/blurb')->getCollection()->setCurPage(1)->setPageSize(1)->addStatusFilter();
-            $collection->getSelect()->order(new Zend_Db_Expr('RAND()'));            
-            if ($blurbs = $this->_getSelectedBlurbs()) {                
-                $collection->addFieldToFilter('blurb_id', array('in' => $blurbs));
+            if ($this->_getCurrentObject()) {
+                $text = $this->_getCurrentObject()->getSeosubfooterText();
+                $blurb = Mage::getModel('seosubfooter/blurb')->setData(array(
+                    'blurb_content' => $text
+                ));
             }
-            $this->_blurb = $collection->getFirstItem();
+            else {
+                $blurb = $this->_getRandomBlurb();
+            }
+
+            $this->_blurb = $blurb;
         }
-        
+
         return $this->_blurb;
     }
-    
+
     public function getLinks() {
         if (null === $this->_links) {
             $this->_links = Mage::getModel('cms/page')->getCollection()
@@ -66,6 +71,39 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
     
     public function getPageUrl(Mage_Cms_Model_Page $page) {
         return Mage::getUrl(null, array('_direct' => $page->getIdentifier()));
+    }
+
+    /**
+     * Get object of the current page
+     *
+     * @return bool|Varien_Object
+     */
+    protected function _getCurrentObject() {
+
+        $object = false;
+        if (Mage::registry('product')) {
+            $object = Mage::registry('product');
+        }
+        elseif (Mage::registry('current_category')) {
+            $object = Mage::registry('current_category');
+        }
+        elseif (Mage::registry('current_page')) {
+            $object = Mage::registry('current_page');
+        }
+        elseif (Mage::registry('ask_category')) {
+            $object = Mage::registry('ask_category');
+        }
+
+        return $object;
+    }
+
+    protected function _getRandomBlurb() {
+        $collection = Mage::getModel('seosubfooter/blurb')->getCollection()->setCurPage(1)->setPageSize(1)->addStatusFilter();
+        $collection->getSelect()->order(new Zend_Db_Expr('RAND()'));
+        if ($blurbs = $this->_getSelectedBlurbs()) {
+            $collection->addFieldToFilter('blurb_id', array('in' => $blurbs));
+        }
+        return $collection->getFirstItem();
     }
     
     protected function _getSelectedBlurbs() {

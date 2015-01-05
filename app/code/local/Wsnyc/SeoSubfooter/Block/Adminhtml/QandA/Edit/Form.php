@@ -2,6 +2,12 @@
 
 class Wsnyc_SeoSubfooter_Block_Adminhtml_QandA_Edit_Form extends Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswerscategory_Edit_Form {
 
+    protected function _prepareLayout() {
+        $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+        return parent::_prepareLayout();
+    }
+
+
     protected function _prepareForm() {
         $model = Mage::registry('wsnyc_questionsanswers');
 
@@ -67,6 +73,14 @@ class Wsnyc_SeoSubfooter_Block_Adminhtml_QandA_Edit_Form extends Wsnyc_Questions
             'required' => false,
             'name' => 'wide_image',
             'note' => '960px wide'
+        ));
+
+        $fieldset->addField('seosubfooter_text', 'editor', array(
+            'name' => 'seosubfooter_text',
+            'label' => Mage::helper('cms')->__('SEO Subfooter Text'),
+            'title' => Mage::helper('cms')->__('SEO Subfooter Text'),
+            'style' => 'height:26em;',
+            'config'    => Mage::getSingleton('cms/wysiwyg_config')->getConfig(),
         ));
 
 

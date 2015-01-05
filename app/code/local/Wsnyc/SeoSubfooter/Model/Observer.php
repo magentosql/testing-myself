@@ -25,6 +25,14 @@ class Wsnyc_SeoSubfooter_Model_Observer {
             'title' => Mage::helper('cms')->__('Limit Blurbs Selection'),
             'values' => $blurbSelection,
         ));
+
+        $fieldset->addField('seosubfooter_text', 'editor', array(
+            'name' => 'seosubfooter_text',
+            'label' => Mage::helper('cms')->__('SEO Subfooter Text'),
+            'title' => Mage::helper('cms')->__('SEO Subfooter Text'),
+            'style' => 'height:26em;',
+            'config'    => Mage::getSingleton('cms/wysiwyg_config')->getConfig(),
+        ));
     }
     
     public function addSeoSubfooterFieldToMainForm(Varien_Event_Observer $observer) {
