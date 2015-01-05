@@ -134,7 +134,7 @@
             	<div class="block_header_top_help item item-left"><?php echo $tmp; ?></div>
             <?php endif; ?>
             <div class="item item-right hide-below-960">
-                <?php echo Mage::app()->getLayout()->createBlock('core/template')->setTemplate('wsnyc/promomodals/header_links.phtml')->toHtml(); ?>
+                <?php echo $this->getChildHtml('promomodals-links'); ?>
             </div>
             
             <?php echo $this->getChildHtml('currency'); ?>

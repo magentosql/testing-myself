@@ -123,16 +123,55 @@ class Wsnyc_Fedex_Model_Usa_Shipping_Carrier_Fedex extends Mage_Usa_Model_Shippi
         return $ratesRequest;
     }
     
+
     public function getMethodPrice($cost, $method = '') {
-        if ($method == $this->getConfigData($this->_freeMethod) 
-                && $this->getConfigData('free_shipping_enable') 
-                && $this->getConfigData('free_shipping_subtotal') <= $this->_rawRequest->getValueWithDiscount()
+        if ($method == $this->getConfigData($this->_freeMethod)
+            && $this->getConfigData('free_shipping_enable')
+            && $this->getConfigData('free_shipping_subtotal') <= $this->_rawRequest->getValueWithDiscount()
         ) {
             $price = '0.00';
-        } else {
+        }
+        else {
             $price = $this->getFinalPriceWithHandlingFee($cost);
         }
         return $price;
+    }
+
+    /**
+     * Add flat rate functionality
+     * 
+     * @param mixed $response
+     * @return Mage_Shipping_Model_Rate_Result
+     */
+    protected function _prepareRateResponse($response) {
+        $result = parent::_prepareRateResponse($response);
+        if ($this->getConfigData('flatrate_enable')) {
+            $result = $this->_applyFlatrate($result);
+        }
+        return $result;
+    }
+    
+    /**
+     * Check and apply flat rate
+     * 
+     * @param mixed $result
+     * @return Mage_Shipping_Model_Rate_Result
+     */
+    protected function _applyFlatrate($result) {
+        $request = $this->_request;
+        $value = $this->getConfigData('order_base') ? $request->getPackageValueWithDiscount() : $request->getPackageValue();
+        if ($value < $this->getConfigData('flatrate_subtotal')) {
+            $flatrate_method = $this->getConfigData('flatrate_method');
+            foreach($result->getAllRates() as $rate) {
+                if ($rate->getMethod() == $flatrate_method) {
+                    $price = $rate->getPrice();
+                    $cost = $rate->getCost() - $price;
+                    $rate->setPrice($this->getConfigData('flatrate_price'));
+                    $rate->setCost($cost + $this->getConfigData('flatrate_price'));
+                }
+            }
+        }
+        return $result;
     }
 
 }

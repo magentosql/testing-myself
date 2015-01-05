@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <carriers>
+            <groups>
+                <flatrate>
+                    <fields>
+                        <min_amount translate="label">
+                            <label>Minimal Order Amount</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Minimal order amount for Method to be available</comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </min_amount>
+                        <max_amount translate="label">
+                            <label>Max Order Amount</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Maximal order amount for this method to be available</comment>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </max_amount>
+                        <order_base translate="label">
+                            <label>Compare Max and Min Order Amount after discount</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_base>
+                    </fields>
+                </flatrate>
+            </groups>
+        </carriers>
+    </sections>
+</config>
