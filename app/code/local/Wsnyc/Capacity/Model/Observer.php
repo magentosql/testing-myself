@@ -102,7 +102,7 @@ class Wsnyc_Capacity_Model_Observer {
                 'Y', //ShipResidentialFlag
                 $this->helper()->getShippingMethod($shipment), //ShipMethod
                 null, //ThirdPartyAccount
-                $shipment->getOrder()->getSignatureRequired(), //SignatureRequired
+                substr($shipment->getOrder()->getSignatureRequired(),0,1), //SignatureRequired
                 null, //ShipComment
                 null, //GiftWrapFlag
                 null, //GiftFrom
