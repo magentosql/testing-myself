@@ -145,7 +145,7 @@ ul.links li a{display:inline-block}
 #footer-card .social-icons ul li a.pintrest,.add-to-links li.social a.pintrest{width: 28px;background: url('../images/pintrest.png') 0 0 no-repeat;position:relative}
 .add-to-links li.social a.pintrest{margin-left: 0px;}
 #footer-card .social-icons ul li a.facebook,.add-to-links li.social a.facebook{width: 28px;background: url('../images/facebook.png') 0 0 no-repeat;margin-left:19px;position:relative}
-#footer-card .social-icons ul li a.facebook,.add-to-links li.social a.google {width: 28px; background: url('../images/gooleplus.png') 0 0 no-repeat;}
+#footer-card .social-icons ul li a.google,.add-to-links li.social a.google {width: 28px; background: url('../images/gooleplus.png') 0 0 no-repeat;margin-left: 19px;}
 .add-to-links li.social a.facebook{margin-left:0}
 #footer-card .social-icons ul li a.twitter,.add-to-links li.social a.twitter{width: 28px;background: url('../images/twitter.png') 0 0 no-repeat;margin-left:20px;position:relative}
 .add-to-links li.social a.twitter{margin-left: 0px;}
