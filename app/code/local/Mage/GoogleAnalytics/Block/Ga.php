@@ -90,8 +90,7 @@ class Mage_GoogleAnalytics_Block_Ga extends Mage_Core_Block_Template
         if ($pageName && preg_match('/^\/.*/i', $pageName)) {
             $optPageURL = ", '{$this->jsQuoteEscape($pageName)}'";
         }
-        return "ga('create', '{$this->jsQuoteEscape($accountId)}', 'auto', {'allowLinker': true});
-                ga('send', 'pageview');";
+        return "ga('create', '{$this->jsQuoteEscape($accountId)}', 'auto', {'allowLinker': true});\nga('send', 'pageview');\n";
     }
 
     /**
@@ -126,11 +125,12 @@ class Mage_GoogleAnalytics_Block_Ga extends Mage_Core_Block_Template
             foreach ($order->getAllVisibleItems() as $item) {
                 $result[] = sprintf("ga('ecommerce:addItem', {'id': '%s', 'name': '%s', 'sku': '%s', 'category': '%s', 'price': '%s', 'quantity': '%s'});",
                                 $order->getIncrementId(),
+                                $this->jsQuoteEscape($item->getName()),
                                 $this->jsQuoteEscape($item->getSku()),
                                 null, // there is no "category" defined for the order item
                                 $item->getBasePrice(),
                                 $item->getQtyOrdered()
-                            );                
+                            );
             }
             $result[] = "ga('ecommerce:send');";
         }

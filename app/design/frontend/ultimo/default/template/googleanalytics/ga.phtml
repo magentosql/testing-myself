@@ -35,10 +35,11 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     
     <?php echo $this->_getPageTrackingCode($accountId) ?>
-    <?php echo $this->_getOrdersTrackingCode() ?>
-
     ga('require', 'linker');
     ga('linker:autoLink', ['blog.thelaundress.com']);
+    <?php echo $this->_getOrdersTrackingCode() ?>
+
+
 //]]>
 </script>
 <!-- END GOOGLE ANALYTICS CODE -->
