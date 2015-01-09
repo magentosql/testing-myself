@@ -1,7 +1,10 @@
 <?php
 
 class Wsnyc_Capacity_Model_Observer {
-    
+
+    /**
+     * Xpath for settings parameters
+     */
     const XML_PATH_RETAILER_CODE = 'shipping/capacity/retailer_code';
     const XML_PATH_CLIENT_CODE = 'shipping/capacity/client_code';
     const XML_PATH_FTP_FILENAME = 'shipping/capacity/ftp_filename';
@@ -73,7 +76,10 @@ class Wsnyc_Capacity_Model_Observer {
         $i = 1;        
         $shipping = $shipment->getOrder()->getShippingAddress();
         $billing = $shipment->getOrder()->getBillingAddress();
-        foreach($shipment->getOrder()->getAllItems() as $item) {            
+        foreach($shipment->getAllItems() as $item) {
+            /**
+             * @var Mage_Sales_Model_Order_Shipment_Item $item
+             */
             $fields = array(
                 $shipment->getIncrementId(), //PickTicketID
                 $shipment->getOrder()->getIncrementId(), //MasterOrderID
@@ -127,14 +133,14 @@ class Wsnyc_Capacity_Model_Observer {
                 null, //ShippingTaxRate
                 null, //OrderDiscountRate
                 null, //OrderDiscountAmount
-                $i, //ItemLineNumber
+                $i++, //ItemLineNumber
                 $item->getSku(), //ItemProductID
-                $item->getQtyOrdered(), //ItemUnitAmount
+                $item->getPrice(), //ItemUnitAmount
                 null, //ItemDiscountRate
                 null, //ItemTaxRate
-                $item->getQtyInvoiced(), //ItemOrderQuantity
-                $item->getQtyShipped(), //ItemShipQuantity
-                $i++, //BuyerItemNumber
+                $item->getQty(), //ItemOrderQuantity
+                $item->getQty(), //ItemShipQuantity
+                null, //BuyerItemNumber
                 "EOL" //EndOfLine
             );
             fputcsv($fp, $fields, "\t", '"');

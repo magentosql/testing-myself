@@ -49,14 +49,14 @@
             </sales_order_shipment_save_after>
         </events>
     </global>
-<!--    <crontab>
-        <jobs>
-            <shipment_test>
-                <schedule><cron_expr>0 1 * * *</cron_expr></schedule>
-                <run><model>capacity/observer::processShipment</model></run>
-            </shipment_test>
-        </jobs>
-    </crontab>-->
+    <!--<crontab>-->
+        <!--<jobs>-->
+            <!--<shipment_test>-->
+                <!--<schedule><cron_expr>0 1 * * *</cron_expr></schedule>-->
+                <!--<run><model>capacity/observer::processShipment</model></run>-->
+            <!--</shipment_test>-->
+        <!--</jobs>-->
+    <!--</crontab>-->
     <default>
         <shipping>
             <capacity>

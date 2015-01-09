@@ -1,7 +1,12 @@
 <?php
 
 class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
-    
+
+    /**
+     * Map of magento shipping method code to capacity methods names
+     *
+     * @var array
+     */
     protected $_fedexMethods = array(
         'GROUND_HOME_DELIVERY' => 'FedEx Home',
         'FEDEX_GROUND' => 'FedEx Ground',
@@ -10,11 +15,22 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
         'STANDARD_OVERNIGHT' => 'FedEx Standard Overnight',
         'INTERNATIONAL_ECONOMY' => 'International Economy',
         'INTERNATIONAL_GROUND' => 'International Ground',
-        'INTERNATIONAL_PRIORITY' => 'International Priority'
+        'INTERNATIONAL_PRIORITY' => 'International Priority',
+        'SMART_POST' => 'Other'
     );
-    
+
+    /**
+     * Default method
+     * @var string
+     */
     protected $_otherMethod = 'Other';
 
+    /**
+     * Get region code for shipping address
+     *
+     * @param Varien_Object $address
+     * @return string|null
+     */
     public function getRegion($address) {
         if (in_array($address->getCountry(), array('US', 'CA')) && $address->getRegionId()) {
             $region = Mage::getModel('directory/region')->load($address->getRegionId());
@@ -22,7 +38,14 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
         }
         return null;
     }
-    
+
+    /**
+     * Format street
+     *
+     * @param Varien_Object $address
+     * @param int $line
+     * @return mixed
+     */
     public function getStreet($address, $line = 1) {
         $street = $address->getStreet(-1);
         if (strstr($street, "\n")) {
@@ -36,9 +59,15 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
         }
         
         return $line == 1 ? str_replace("\n", ' ', $streetLines[0]) : str_replace("\n", ' ', $streetLines[1]);
-    }   
-    
-    public function getShippingMethod($shipment) {
+    }
+
+    /**
+     * Get Capacity shipping method code for magento shipping
+     *
+     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @return string
+     */
+    public function getShippingMethod(Mage_Sales_Model_Order_Shipment $shipment) {
         $method = $shipment->getUdropshipMethod();
         if (strstr($method, 'fedex_')) {
             $fedexMethod = str_replace('fedex_', null, $method);        
@@ -48,6 +77,9 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
             else {
                 return $this->_otherMethod;
             }
+        }
+        elseif('freeshipping_freeshipping' === $method) {
+            return $this->_fedexMethods['FEDEX_GROUND'];
         }
         
         return $this->_otherMethod;
