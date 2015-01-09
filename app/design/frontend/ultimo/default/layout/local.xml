@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
 	<default>
-	
+
 		<reference name="head">
-                
-                        <!-- Add a CSS file called local.css. This is so we can override the default gravitywell.css changes in other theme variants -->                        
-                    
+
+            <!-- Add a CSS file called local.css. This is so we can override the default gravitywell.css changes in other theme variants -->
+
 			<!-- jQuery -->
 			<action method="addJs"><script>infortis/jquery/jquery-1.7.2.min.js</script></action>
 			<action method="addJs"><file>infortis/jquery/jquery-noconflict.js</file></action>
@@ -15,39 +15,40 @@
 			<action method="addJs"><script>infortis/jquery/plugins/jquery.flexslider-min.js</script></action>
 			<action method="addJs"><script>infortis/jquery/plugins/tabs.min.js</script></action>
 			<action method="addJs"><script>infortis/jquery/plugins/jquery.accordion.js</script></action>
-                        <action method="addJs"><script>ultimo/jquery/plugins/jquery.hover.js</script></action>			                        
-                        <action method="addJs"><script>slidesjs/jquery.slides.min.js</script></action>			                        
-                        <action method="addJs"><script>socialshare/share.js</script></action>	 
-                        
+            <action method="addJs"><script>ultimo/jquery/plugins/jquery.hover.js</script></action>
+            <action method="addJs"><script>slidesjs/jquery.slides.min.js</script></action>
+            <action method="addJs"><script>socialshare/share.js</script></action>
+
 			<!-- Other JS scripts -->
-                        <action method="addJs"><script>infortis/jquery/plugins/jquery.accordion.js</script></action>
-                        <action method="addJs"><script>ultimo/jquery/plugins/jquery.hover.js</script></action>
-                        <action method="addJs"><script>masonry/masonry.min.js</script></action>
+            <action method="addJs"><script>infortis/jquery/plugins/jquery.accordion.js</script></action>
+            <action method="addJs"><script>ultimo/jquery/plugins/jquery.hover.js</script></action>
+            <action method="addJs"><script>masonry/masonry.min.js</script></action>
 			<!--<action method="addItem"><type>skin_js</type><name>js/scripts.js</name></action>-->
 			<action ifconfig="ultimo/mainmenu/wide_menu" method="removeItem"><type>js</type><name>varien/menu.js</name><params/></action>
-			
+
 			<!-- CSS -->
 			<action method="addItem"><type>skin_css</type><name>css/fonts.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-nav.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-cck.css</name><params/></action>
 			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/itemslider.css</name><params/></action>
-                        <action method="addItem"><type>skin_css</type><name>css/skin.css</name><params/></action>                        
-			<action method="addItem"><type>skin_css</type><name>css/skin.css</name><params/></action>              
-                        <action method="addItem"><type>skin_css</type><name>css/colorbox.css</name><params/></action>              
-                                  
-			<action method="addItem"
-				ifconfig="ultimo/mainmenu/standard_menu"><type>skin_css</type><name>css/menu-classic.css</name><params/></action>
-			<action method="addItem"
-				ifconfig="ultimo/mainmenu/wide_menu"><type>skin_css</type><name>css/menu-wide.css</name><params/></action>
-			
+            <action method="addItem"><type>skin_css</type><name>css/skin.css</name><params/></action>
+			<action method="addItem"><type>skin_css</type><name>css/skin.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>css/colorbox.css</name><params/></action>
+
+			<action method="addItem" ifconfig="ultimo/mainmenu/standard_menu"><type>skin_css</type><name>css/menu-classic.css</name><params/></action>
+			<action method="addItem" ifconfig="ultimo/mainmenu/wide_menu"><type>skin_css</type><name>css/menu-wide.css</name><params/></action>
+
 			<!-- CSS for IE -->
 			<action method="addCssIe"><css>css/styles-ie.css</css></action>
 			<action method="addItem"><type>skin_css</type><name>css/styles-ie7.css</name><params/><if>lte IE 7</if></action>
 			<action method="addItem"><type>skin_css</type><name>css/styles-ie8.css</name><params/><if>lte IE 8</if></action>
-			
+
+			<action method="addItem"><type>skin_js</type><name>flipclock/flipclock.js</name></action>
+			<action method="addItem"><type>skin_css</type><name>flipclock/flipclock.css</name></action>
+
 		</reference>
-		
-		
+
+
 		<!-- Root containers ====================================================================== -->
 		<reference name="root">
 			<action method="addBodyClass" ifconfig="ultimo_design/effects/shadow">
@@ -55,16 +56,16 @@
 			</action>
 
 			<block type="core/text_list" name="preface" as="preface" translate="label">
-                            <label>Page Preface</label>
-                        </block>
+                <label>Page Preface</label>
+            </block>
 			<block type="core/text_list" name="postscript" as="postscript" translate="label">
-                            <label>Page Postscript</label>
-                        </block>
+                <label>Page Postscript</label>
+            </block>
 		</reference>
-		
-		
+
+
 		<!-- Remove sidebar blocks ====================================================================== -->
-		
+
 		<!-- Uncomment these tags to remove selected blocks -->
 		<!--
 		<remove name="right.reports.product.viewed" />
@@ -80,11 +81,11 @@
 		<remove name="right.permanent.callout"/>
 		<remove name="left.permanent.callout"/>
 		<remove name="product.clone_prices"/>
-		
-		
+
+
 		<!-- Right ====================================================================== -->
 		<reference name="right">
-		
+
 			<action method="unsetChild"><name>cart_sidebar</name></action>
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
 			<action method="unsetChild"><name>right.reports.product.compared</name></action>
@@ -93,102 +94,104 @@
 			<action method="unsetChild"><name>sale.reorder.sidebar</name></action>
 			<action method="unsetChild"><name>right.poll</name></action>
 			<action method="unsetChild"><name>paypal.partner.right.logo</name></action>
-			
+
 			<!-- Custom static blocks -->
 			<block type="cms/block" name="block_right_top" before="-">
 				<action method="setBlockId"><block_id>block_right_top</block_id></action>
 			</block>
-			
+
 			<block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml" />
-			
+
 			<block type="cms/block" name="block_right_bottom" after="-">
 				<action method="setBlockId"><block_id>block_right_bottom</block_id></action>
 			</block>
-			
+
 		</reference>
-		
+
 
 		<!-- Left ====================================================================== -->
 		<reference name="left">
-			
+
 			<remove name="left.newsletter"/> <!-- Move newsletter to the footer -->
 			<action method="unsetChild"><name>tags_popular</name></action>
 
 			<block type="reports/product_viewed" name="left.reports.product.viewed" template="reports/product_viewed.phtml" />
-			
-			<block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>			
-			
+
+			<block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>
+
         </reference>
-		
-		
+
+
 		<!-- Header ====================================================================== -->
 		<reference name="header">
-		
+
 			<!-- Add mini cart to the header -->
-			<!-- IMPORTANT: new template file -->			
+			<!-- IMPORTANT: new template file -->
 			<block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/mini.phtml" before="-">
-                            <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
-                            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
-                            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
-                            <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
-                                <label>Shopping Cart Sidebar Extra Actions</label>
-                            </block>
-                            <block type="cms/block" name="block_mini_cart_above_products">
-                                    <action method="setBlockId"><block_id>block_mini_cart_above_products</block_id></action>
-                            </block>
-                        </block>
-			
+				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+				<block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+					<label>Shopping Cart Sidebar Extra Actions</label>
+				</block>
+				<block type="cms/block" name="block_mini_cart_above_products">
+					<action method="setBlockId"><block_id>block_mini_cart_above_products</block_id></action>
+				</block>
+			</block>
+
 			<!-- Add currency switcher to the header -->
 			<block type="directory/currency" name="currency" template="directory/currency.phtml"/>
-			
+
 			<!--<block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
 			<action ifconfig="ultimo/header/compare" method="unsetChild"><name>catalog.compare.sidebar</name></action>-->
-			
+
 			<!-- Custom top links - override default Magento top links -->
 			<block type="cms/block" name="block_header_top_links">
 				<action method="setBlockId"><block_id>block_header_top_links</block_id></action>
 			</block>
-			
+
 			<!-- Custom static blocks -->
 			<block type="cms/block" name="block_header_top_links2">
 				<action method="setBlockId"><block_id>block_header_top_links2</block_id></action>
 			</block>
-			
+
 			<block type="cms/block" name="block_header_top_help">
-                            <action method="setBlockId"><block_id>block_header_top_help</block_id></action>
-                        </block>
-                        
+				<action method="setBlockId"><block_id>block_header_top_help</block_id></action>
+			</block>
+
 			<block type="cms/block" name="block_header_links_upper">
 				<action method="setBlockId"><block_id>block_header_links_upper</block_id></action>
 			</block>
-                        
+
 			<block type="cms/block" name="block_header_top_right">
 				<action method="setBlockId"><block_id>block_header_top_right</block_id></action>
 			</block>
-			
+
+			<block type="core/template" name="flash_promo_counter" template="page/html/header_counter.phtml" />
+
 		</reference>
-		
-		
+
+
 		<!-- Top links (user menu) ====================================================================== -->
 		<reference name="top.links">
-					
+
 			<!-- Remove "checkout" and "cart" links -->
 			<remove name="checkout_cart_link" />
 			<remove name="wishlist_link" />
                         <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
-                        
+
 		</reference>
-		
+
 		<!-- Main menu ====================================================================== -->
 		<reference name="top.menu">
-		
+
 			<action method="unsetChild"><name>catalog.topnav</name></action>
 			<block type="ultimo/navigation" name="catalog.topnav.menu" template="page/html/topmenu.phtml"/>
-			
+
                 </reference>
-		
+
 		<reference name="catalog.topnav.menu">
-		
+
                         <block type="cms/block" name="block_header_nav_home">
 				<action method="setBlockId"><block_id>block_header_nav_home</block_id></action>
 			</block>
@@ -197,36 +200,36 @@
 			</block>
                         <block type="cms/block" name="block_header_nav_laundry_featured">
 				<action method="setBlockId"><block_id>block_header_nav_laundry_featured</block_id></action>
-			</block> 
+			</block>
                         <block type="cms/block" name="block_header_nav_whatsnew">
 				<action method="setBlockId"><block_id>block_header_nav_whatsnew</block_id></action>
 			</block>
                         <block type="cms/block" name="block_header_nav_featured">
 				<action method="setBlockId"><block_id>block_header_nav_featured</block_id></action>
-			</block>                                              
-			
+			</block>
+
 		</reference>
-        
+
         <reference name="before_body_end">
-            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />            
+            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />
         </reference>
-        
+
         <reference name="after_body_start">
             <block type="core/template" name="tracking.metrics" template="tracking/metrics.phtml" />
         </reference>
-		
-		
+
+
 		<!-- Add blocks to the footer ====================================================================== -->
 		<reference name="footer">
-		
+
 			<!-- Move newsletter to the footer -->
             <block type="newsletter/subscribe" name="newsletter" as="newsletter" template="newsletter/subscribe.phtml"/>
-			
+
 			<!-- Custom footer links - override default Magento footer links (id: footer_links) -->
 			<block type="cms/block" name="block_footer_links">
 				<action method="setBlockId"><block_id>block_footer_links</block_id></action>
 			</block>
-			
+
 			<!-- Custom static blocks -->
 			<block type="cms/block" name="block_footer_links2">
 				<action method="setBlockId"><block_id>block_footer_links2</block_id></action>
@@ -237,7 +240,7 @@
 			<block type="cms/block" name="block_footer_primary_bottom_right">
                 <action method="setBlockId"><block_id>block_footer_primary_bottom_right</block_id></action>
             </block>
-			
+
 			<block type="cms/block" name="block_footer_column1">
                 <action method="setBlockId"><block_id>block_footer_column1</block_id></action>
             </block>
@@ -275,14 +278,14 @@
 			<block type="cms/block" name="block_footer_row2_column6">
                 <action method="setBlockId"><block_id>block_footer_row2_column6</block_id></action>
             </block>
-			
+
 			<block type="cms/block" name="block_footer_payment">
                 <action method="setBlockId"><block_id>block_footer_payment</block_id></action>
             </block>
 			<block type="cms/block" name="block_footer_bottom">
                 <action method="setBlockId"><block_id>block_footer_bottom</block_id></action>
             </block>
-			
+
 			<block type="core/template" name="footer.additional" template="page/html/footer_additional.phtml">
 				<block type="cms/block" name="block_edgebox_right">
 					<action method="setBlockId"><block_id>block_edgebox_right</block_id></action>
@@ -292,44 +295,44 @@
 				</block>
 				<block type="cms/block" name="block_edgebox_bottom_right">
 					<action method="setBlockId"><block_id>block_edgebox_bottom_right</block_id></action>
-				</block>                
-			</block>			
+				</block>
+			</block>
 		</reference>
-		
+
     </default>
-	
+
 	<!-- 3 COLUMN PAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<page_three_columns>
-	
+
 		<reference name="right">
 			<action method="unsetChild"><name>paypal.partner.right.logo</name></action>
 		</reference>
-		
+
 		<reference name="left">
 			<action method="unsetChild"><name>wishlist</name></action>
 		</reference>
-	
+
 	</page_three_columns>
-	
-	
+
+
 	<!-- USER LOGGED IN/OUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<customer_logged_out>
-		
+
             <reference name="top.links">
                 <action method="addLink" translate="label title"><label>Create Account</label><url>customer/account/create</url><title>Create Account</title><prepare>true</prepare><urlParams/><position>30</position></action>
                 <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
             </reference>
-		
+
 	</customer_logged_out>
 
 	<!-- PRODUCT VIEW %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<catalog_product_view>
-	
+
 		<!-- Change default template for product view. IMPORTANT: same as 'review_product_list'. -->
 		<reference name="root">
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 		</reference>
-		
+
 		<!-- Insert related products into product view (section "product.info") and remove them from the right column -->
 		<!-- IMPORTANT: new template file -->
 		<reference name="right">
@@ -338,12 +341,12 @@
 		<reference name="product.info">
 			<block type="catalog/product_list_related" name="catalog.product.related" template="catalog/product/list/related.phtml"/>
 		</reference>
-		
+
 		<reference name="product.info">
-		
+
 			<!-- Change review summary template: removed links to review page. IMPORTANT: new template file. -->
 			<action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/summary_nolinks.phtml</template></action>
-			
+
 			<!-- Uncomment to use default Magento image style -->
 			<!--
 			<block type="catalog/product_view_media" name="product.info.media" as="media" template="catalog/product/view/media.phtml"/>
@@ -353,35 +356,35 @@
 			<block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
 				<action method="addTab" translate="title" module="catalog"><alias>description</alias><title>Details</title><block>catalog/product_view_description</block><template>catalog/product/view/description.phtml</template></action>
 				<!-- action method="addTab" translate="title" module="catalog"><alias>additional</alias><title>Additional Information</title><block>catalog/product_view_attributes</block><template>catalog/product/view/attributes.phtml</template></action -->
-				
+
 				<!-- Add reviews (first part). IMPORTANT: see the second part: reference name="tabreviews" -->
 				<!-- IMPORTANT: Do not change 'tabreviews' alias. It is needed in JS script in catalog/product/view.phtml -->
 				<!-- action method="addTab" translate="title" module="catalog"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action -->
-				
+
 				<!-- Add tags -->
 				<!-- action method="addTab" translate="title" module="tag"><alias>product.tags</alias><title>Product Tags</title><block>tag/product_list</block><template>tag/list.phtml</template></action -->
-				
-				<!-- Add custom tabs -->                                 				                                
+
+				<!-- Add custom tabs -->
 				<block type="cms/block" name="block_product_tab2">
 					<action method="setBlockId"><block_id>block_product_tab2</block_id></action>
-				</block>                                
+				</block>
                                 <block type="cms/block" name="block_product_tab1">
 					<action method="setBlockId"><block_id>block_product_tab1</block_id></action>
 				</block>
-				
+
 			</block>
 			<!-- end: Add tabs -->
-			
+
 			<!-- Up-sells: set columns count and max number of displayed items -->
 			<block type="catalog/product_list_upsell" name="product.info.upsell" as="upsell_products" template="catalog/product/list/upsell.phtml">
 				<action method="setColumnCount"><columns>4</columns></action>
 				<action method="setItemLimit"><type>upsell</type><limit>24</limit></action>
 			</block>
-			
+
 			<!-- Custom static blocks -->
             <block type="cms/block" name="block_product_monogram_shop">
                 <action method="setBlockId"><block_id>block_product_monogram_shop</block_id></action>
-            </block>                        
+            </block>
             <block type="cms/block" name="block_product_primary_bottom">
                 <action method="setBlockId"><block_id>block_product_primary_bottom</block_id></action>
             </block>
@@ -396,7 +399,7 @@
             </block>
             <block type="scent/scent" name="product.fragrance" as="fragrance" template="catalog/product/view/scent.phtml" />
 		</reference> <!-- end: product.info -->
-		
+
 		<!-- Second part of adding reviews to tabs. See the first part in product.info section in info_tabs block -->
 		<reference name="tabreviews">
 			<block type="review/form" name="product.review.form" as="review_form">
@@ -406,12 +409,12 @@
 				</block>
 			</block>
         </reference>
-		
+
 		<!-- Remove product tags block (tags are already inserted as a tab) -->
 		<reference name="product.info.additional">
 			<action method="unsetChild"><name>product_tag_list</name></action>
 		</reference>
-		
+
 		<!-- Remove "add to wishlist/compare" links from options box. It is already inserted on product view. -->
 		<reference name="product.info.options.wrapper.bottom">
 			<action method="unsetChild"><name>product.info.addto</name></action>
@@ -421,10 +424,10 @@
 
 
 	<!-- CATEGORY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	
+
 	<!-- Default category (without layered navigation) -->
 	<catalog_category_default>
-	
+
 		<reference name="root">
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 		</reference>
@@ -438,7 +441,7 @@
                 <action method="setBlockId"><block_id>block_category_above_collection</block_id></action>
             </block>
                  <block type="ultimo/washing" name="block_category_washing"   template="washing/service.phtml" >
-            </block>  
+            </block>
 
 
 	     <block type="cms/block" name="block_category_above_empty_collection">
@@ -447,16 +450,16 @@
 			<block type="cms/block" name="block_category_below_collection">
                 <action method="setBlockId"><block_id>block_category_below_collection</block_id></action>
             </block>
-			
+
 		</reference>
-		
+
 		<!-- Remove currency switcher from sidebar -->
 		<reference name="left">
 			<action method="unsetChild"><name>currency</name></action>
-			
+
 			<!-- Sidebar navigation (categories) -->
 			<block type="ultimo/navigation" name="infortis.vertnav" template="page/html/sidemenu.phtml" before="-" />
-                        
+
                         <block type="cms/block" name="block_left_tiles">
 				<action method="setBlockId"><block_id>block_left_tiles</block_id></action>
 			</block>
@@ -466,25 +469,25 @@
 
 	<!-- Category with layered navigation -->
 	<catalog_category_layered>
-	
+
 		<reference name="root">
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 		</reference>
-		
+
 		<reference name="left">
 			<!-- Keep layered navigation always on top. Replace: after="currency" with: before="-" -->
 			<action method="unsetChild"><name>catalog.leftnav</name></action>
                         <block type="catalog/layer_view" name="catalog.leftnav" before="-" template="catalog/layer/view.phtml"/>
-			
+
 			<!-- Remove currency switcher from sidebar -->
 			<action method="unsetChild"><name>currency</name></action>
-			
+
 			<!-- Sidebar navigation (categories) -->
 			<block type="ultimo/navigation" name="infortis.vertnav" template="page/html/sidemenu.phtml" before="-" />
                 </reference>
-		
+
 		<reference name="product_list">
-		
+
 			<!-- Custom static blocks -->
 			<block type="cms/block" name="block_category_above_collection">
                             <action method="setBlockId"><block_id>block_category_above_collection</block_id></action>
@@ -495,19 +498,19 @@
 			<block type="cms/block" name="block_category_below_collection">
                             <action method="setBlockId"><block_id>block_category_below_collection</block_id></action>
                         </block>
-			
+
 		</reference>
-		
+
 	</catalog_category_layered>
-	
+
 	<!-- IMPORTANT: deprecated -->
 	<catalog_category_layered_nochildren>
 		<reference name="root">
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 		</reference>
 	</catalog_category_layered_nochildren>
-	
-	
+
+
 	<!-- CART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
         <checkout_cart_index>
             <reference name="root">
@@ -542,8 +545,8 @@
             </reference>
 
         </checkout_cart_index>
-	
-	
+
+
 	<!-- CHECKOUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<!--<checkout_onepage_index>-->
 		<!---->
@@ -558,7 +561,7 @@
 		<!--</reference>-->
 	<!---->
 	<!--</checkout_onepage_index>-->
-    
+
     <checkout_onepage_success>
         <reference name="before_body_end">
             <block type="core/template" name="google.conversion" template="tracking/conversion.phtml" />
@@ -568,38 +571,38 @@
 
 
 	<!-- SEARCH %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	
+
 	<!-- Quick search -->
 	<catalogsearch_result_index>
-	
+
 		<reference name="root">
 			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
 		</reference>
-		
+
 		<reference name="left">
 			<!-- Keep layered navigation always on top. Replace: after="currency" with: before="-" -->
 			<!--<action method="unsetChild"><name>catalogsearch.leftnav</name></action>
 			<block type="catalogsearch/layer" name="catalogsearch.leftnav" before="-" template="catalog/layer/view.phtml"/>-->
-			
+
 			<!-- Remove currency switcher from sidebar -->
 			<action method="unsetChild"><name>currency</name></action>
         </reference>
-	
+
 	</catalogsearch_result_index>
-	
+
 	<!-- Advanced search -->
 	<catalogsearch_advanced_index>
-	
+
 		<!-- Remove (right) currency switcher from sidebar -->
 		<reference name="left">
 			<action method="unsetChild"><name>right_currency</name></action>
 		</reference>
-		
+
 	</catalogsearch_advanced_index>
-	
+
 	<!-- Advanced search results -->
 	<catalogsearch_advanced_result>
-	
+
 		<reference name="content">
 			<!-- IMPORTANT: first remove previous version of the block -->
 			<action method="unsetChild"><name>catalogsearch_advanced_result</name></action>
@@ -621,14 +624,14 @@
                 <action method="setListCollection"/>
             </block>
         </reference>
-		
+
 		<!-- Remove (right) currency switcher from RIGHT sidebar -->
 		<reference name="right">
 			<action method="unsetChild"><name>right_currency</name></action>
 		</reference>
-		
+
 	</catalogsearch_advanced_result>
-	
+
 	<!-- Popular terms
 	<catalogsearch_term_popular>
 	</catalogsearch_term_popular>
@@ -642,7 +645,7 @@
 		<reference name="root">
             <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
-		
+
 	</review_product_list>
 
 
@@ -651,11 +654,11 @@
 		<reference name="root">
             <action method="setHeaderTitle" translate="title" module="customer"><title>Password forgotten</title></action>
         </reference>
-		
+
 		<reference name="left">
 			<!-- Remove cart from the left column -->
 			<action method="unsetChild"><name>cart_sidebar</name></action>
-			
+
 			<!-- Remove Compare block, it is already inserted in DEFAULT section -->
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
 		</reference>
@@ -756,7 +759,7 @@
 
 	<!-- ALL CMS PAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<cms_page>
-	
+
 		<!-- Custom static blocks -->
 		<!-- IMPORTANT: These blocks are removed from home page and 404 no route -->
                 <reference name="content">
@@ -772,18 +775,18 @@
 			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
 			<action method="unsetChild"><name>right.reports.product.compared</name></action>
 			<action method="unsetChild"><name>left.reports.product.viewed</name></action>
-			
+
 			<action method="unsetChild"><name>wishlist</name></action>
 			<action method="unsetChild"><name>right.poll</name></action>
 			<action method="unsetChild"><name>tags_popular</name></action>
-			
+
 			<action method="unsetChild"><name>paypal.partner.right.logo</name></action>
 			<action method="unsetChild"><name>block_left_top</name></action>
 			<action method="unsetChild"><name>block_left_bottom</name></action>
                 </reference>
 	</cms_page>
-	
-	<!-- Remove static blocks displayed on CMS pages from these pages: home page, 404 no route 
+
+	<!-- Remove static blocks displayed on CMS pages from these pages: home page, 404 no route
 		IMPORTANT: make sure that you use correct ID -->
 	<cms_index_noroute>
 		<remove name="i_block_cms_page_top"/>
@@ -797,33 +800,33 @@
 	</cms_index_defaultnoroute>
 	<cms_index_index>
 		<remove name="i_block_cms_page_top"/>
-		
+
 		<!-- Uncomment to allow MAP functionality on home page -->
 		<!--<update handle="MAP_popup" />-->
     </cms_index_index>
-	
-	
+
+
 	<!-- HOME PAGE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<cms_index_index>
-	
+
 		<!-- Preface ====================================================================== -->
 		<reference name="preface">
                     <block type="cms/block" name="block_home_preface">
                         <action method="setBlockId"><block_id>block_home_preface</block_id></action>
                     </block>
 		</reference>
-		
+
                 <!-- Content ====================================================================== -->
 		<reference name="content">
-                    
+
 		</reference>
-                
+
 		<!-- Left column ====================================================================== -->
 		<reference name="left">
                     <block type="core/text_list" name="home_left" as="home_left" translate="label" before="-">
                         <label>Home Left</label>
                     </block>
-			
+
                     <!-- Disable left sidebar blocks on home page -->
                     <action ifconfig="ultimo/sidebar_blocks_home/compare" method="unsetChild"><name>catalog.compare.sidebar</name></action>
                     <action ifconfig="ultimo/sidebar_blocks_home/compared" method="unsetChild"><name>right.reports.product.compared</name></action>
@@ -837,7 +840,7 @@
                     <action ifconfig="ultimo/sidebar_blocks_home/block_left_top" method="unsetChild"><name>block_left_top</name></action>
                     <action ifconfig="ultimo/sidebar_blocks_home/block_left_bottom" method="unsetChild"><name>block_left_bottom</name></action>
 		</reference>
-		
+
 		<reference name="home_left">
                     <block type="cms/block" name="block_home_left1">
                         <action method="setBlockId"><block_id>block_home_left1</block_id></action>
@@ -849,19 +852,19 @@
                         <action method="setBlockId"><block_id>block_home_left3</block_id></action>
                     </block>
 		</reference>
-		
+
 		<!-- Right column ====================================================================== -->
 		<reference name="right">
 			<block type="core/text_list" name="home_right" as="home_right" translate="label" before="-">
                             <label>Home Left</label>
                         </block>
-			
+
 			<!-- Disable right sidebar blocks on home page -->
 			<action ifconfig="ultimo/sidebar_blocks_home/paypal" method="unsetChild"><name>paypal.partner.right.logo</name></action>
 			<action ifconfig="ultimo/sidebar_blocks_home/block_right_top" method="unsetChild"><name>block_right_top</name></action>
 			<action ifconfig="ultimo/sidebar_blocks_home/block_right_bottom" method="unsetChild"><name>block_right_bottom</name></action>
 		</reference>
-		
+
 		<reference name="home_right">
 			<!-- block type="cms/block" name="block_home_right1">
                             <action method="setBlockId"><block_id>block_home_right1</block_id></action>
@@ -873,14 +876,14 @@
                             <action method="setBlockId"><block_id>block_home_right3</block_id></action>
                         </block -->
 		</reference>
-		
+
 		<!-- Postscript ====================================================================== -->
 		<reference name="postscript">
                     <block type="cms/block" name="block_home_postscript">
                         <action method="setBlockId"><block_id>block_home_postscript</block_id></action>
                     </block>
 		</reference>
-	
+
 	</cms_index_index>
     <!--Email -->
     <sales_email_order_items>

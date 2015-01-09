@@ -1,0 +1,6 @@
+<div class="clock"></div>
+<script type="text/javascript">
+    var remaining = <?php echo strtotime('26-01-2015 16:00') - Mage::getModel('core/date')->timestamp();?>;
+    var face = remaining > 3600*24 ? 'DailyCounter' : 'HourlyCounter';
+    var clock = jQuery('.clock').FlipClock(remaining, {clockFace: face, countdown: true});
+</script>

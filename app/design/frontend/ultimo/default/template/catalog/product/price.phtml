@@ -410,6 +410,8 @@
     }    
     $_exclTax = $_taxHelper->getPrice($_firstproduct, $price);
     $_inclTax = $_taxHelper->getPrice($_firstproduct, $price, true);
+    $_minimalPriceExclTax = $_taxHelper->getPrice($_firstproduct, $_minimalPriceValue);
+    $_minimalPriceInclTax = $_taxHelper->getPrice($_firstproduct, $_minimalPriceValue, true);
     ?>
     <?php if ($this->getDisplayMinimalPrice() && $_minimalPriceValue): ?>
         <div class="price-box">
@@ -431,13 +433,25 @@
                 <?php else: ?>
                     <?php
                     $_showPrice = $_inclTax;
+                    $_showMinimalPrice = $_minimalPriceInclTax;
                     if (!$_taxHelper->displayPriceIncludingTax()) {
                         $_showPrice = $_exclTax;
+                        $_showMinimalPrice = $_minimalPriceExclTax;
                     }
                     ?>
-                <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
-                    <?php echo $_coreHelper->currency($_showPrice, true, false) ?>
-                </span>
+                    <?php if ($_showPrice > $_showMinimalPrice):?>
+                    <p class="old-price">
+                        <span class="price" id="product-minimal-old-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>"><?php echo $_coreHelper->currency($_showPrice, true, false) ?></span>
+                    </p>
+                    <p class="special-price">
+                        <span class="price-label">Now</span>
+                        <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>"><?php echo $_coreHelper->currency($_showMinimalPrice, true, false) ?></span>
+                    </p>
+                    <?php else:?>
+                    <span class="price" id="product-minimal-price-<?php echo $_id ?><?php echo $this->getIdSuffix() ?>">
+                        <?php echo $_coreHelper->currency($_showPrice, true, false) ?>
+                    </span>
+                    <?php endif; ?>
                 <?php endif; ?>
             </p>
         </div>
