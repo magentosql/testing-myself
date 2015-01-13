@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_UltimoModifications>
+            <version>0.1.0</version>
+        </Wsnyc_UltimoModifications>
+    </modules>
+    <global>
+        <blocks>
+            <ultimomodifications>
+                <class>Wsnyc_UltimoModifications_Block</class>
+            </ultimomodifications>
+            <ultimo>
+                <rewrite>
+                    <navigation>Wsnyc_UltimoModifications_Block_Navigation</navigation>
+                </rewrite>
+            </ultimo>
+        </blocks>
+        <helpers>
+            <ultimomodifications>
+                <class>Wsnyc_UltimoModifications_Helper</class>
+            </ultimomodifications>
+        </helpers>
+    </global>
+</config> 

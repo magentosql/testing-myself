@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_UltimoModifications>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Infortis_Ultimo/>
+            </depends>
+        </Wsnyc_UltimoModifications>
+    </modules>
+</config>
