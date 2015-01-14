@@ -135,7 +135,8 @@
             <?php endif; ?>
             <?php if(!Mage::getStoreConfig('advanced/modules_disable_output/Wsnyc_PromoModals')) : ?>
                 <div class="item item-right hide-below-960">
-                <?php echo $this->getChildHtml('promomodals-links'); ?>
+                    <?php echo $this->getChildHtml('promomodals-links'); ?>
+                    <?php echo $this->getChildHtml('flash_promo_counter');?>
                 </div>
             <?php endif; ?>
             <?php echo $this->getChildHtml('currency'); ?>
