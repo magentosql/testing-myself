@@ -9,6 +9,12 @@ $pageContent = <<< EOT
 <p><img style="position: absolute; top: 0; right: -50px; z-index: 0;" src="{{media url='wysiwyg/contactus/contactus.jpg'}}" alt="" /></p>
 EOT;
 
+$pageXmlUpdate = <<< EOT
+<reference name="left">
+        <block type="core/template" name="contact_sidebar" template="contact/sidebar.phtml" ></block> 
+</reference>
+EOT;
+
 $page = Mage::getModel('cms/page')->load('customer-service','identifier')
         ->setStores(array('1'))
         ->save();
@@ -21,5 +27,6 @@ $page = Mage::getModel('cms/page')
         ->setStores(array('2'))
         ->setContent($pageContent)
         ->setContentHeading('Customer Service')
+        ->setLayoutUpdateXml($pageXmlUpdate)
         ->save();
 	 
