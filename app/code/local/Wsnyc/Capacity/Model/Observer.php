@@ -52,7 +52,8 @@ class Wsnyc_Capacity_Model_Observer {
          * @var Mage_Sales_Model_Order_Shipment $shipment
          */
         $shipment = $observer->getEvent()->getShipment();
-        //$shipment = Mage::getModel('sales/order_shipment')->load(31);
+//        $shipment = Mage::getModel('sales/order_shipment')->load(31);
+//        $shipment->setCapacitySendStatus(0);
         if (!$this->_shouldSendInfo($shipment)) {
             //shipment already send or not yet shipped
             return;
@@ -175,8 +176,8 @@ class Wsnyc_Capacity_Model_Observer {
      * @return string
      */
     protected function _getFilename(Mage_Sales_Model_Order_Shipment $shipment) {        
-        return Mage::getStoreConfig(self::XML_PATH_FTP_FILENAME)
-                . '_'. $shipment->getIncrementId()
+        return  $shipment->getIncrementId()
+                . '_' .Mage::getStoreConfig(self::XML_PATH_FTP_FILENAME)
                 . '_' . date('Ymd\TGis')
                 .'.txt';
     }
