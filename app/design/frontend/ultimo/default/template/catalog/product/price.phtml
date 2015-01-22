@@ -397,18 +397,13 @@
     $_associatedProducts = $_product->getTypeInstance(true)->getAssociatedProducts($_product);
     $_firstproduct = false;
 
-    foreach($_associatedProducts as $key => $subprod) {
-        if ($subprod->getFinalPrice() == $_minimalPriceValue) {
-            $_firstproduct = $subprod;
-            break;
-        }
+    if(isset($_associatedProducts[0])) {
+        $_firstproduct = $_associatedProducts[0];
+        $_minimalPriceValue = $_firstproduct->getFinalPrice();
+    } else {
+        $_firstproduct = false;
     }
 
-//    if(isset($_associatedProducts[0])) {
-//        $_firstproduct = $_associatedProducts[0];
-//    } else {
-//        $_firstproduct = false;
-//    }
     if(!method_exists($_firstproduct, 'getSpecialPrice')) {
         $_firstproduct = $_product;        
     }
