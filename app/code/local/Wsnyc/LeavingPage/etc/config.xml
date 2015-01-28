@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_LeavingPage>
+            <version>0.1.0</version>
+        </Wsnyc_LeavingPage>
+    </modules>
+    <global>
+        <blocks>
+            <leavingpage>
+                <class>Wsnyc_LeavingPage_Block</class>
+            </leavingpage>
+        </blocks>
+        <helpers>
+            <leavingpage>
+                <class>Wsnyc_LeavingPage_Helper</class>
+            </leavingpage>
+        </helpers>
+        <resources>
+            <leavingpage_setup>
+                <setup>
+                    <module>Wsnyc_LeavingPage</module>
+                </setup>
+            </leavingpage_setup>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <leavingpage>
+                    <file>wsnyc/leavingpage.xml</file>
+                </leavingpage>
+            </updates>
+        </layout>
+    </frontend>
+</config> 
