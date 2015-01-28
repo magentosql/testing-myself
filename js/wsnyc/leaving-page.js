@@ -25,14 +25,17 @@ jQuery(function ($) {
         width: 760,
         height: 470,
         closeButton: false,
-        className: 'pageleave-colorbox'
+        className: 'pageleave-colorbox',
+        onCleanup: function() {
+            jQuery('body').css({overflow: ''});
+            jQuery('body > .wrapper').removeClass('blurred');
+        },
+        onComplete: function() {
+            jQuery('body').css({overflow: 'hidden'});
+            jQuery('body > .wrapper').addClass('blurred');
+            jQuery('#stay-on-page').click(function(e) {
+                jQuery.colorbox.close();
+            });
+        },
     });
-
-});
-jQuery(document).on('cbox_open', function () {
-    jQuery('body').css({overflow: 'hidden'});
-    jQuery('body > .wrapper').addClass('blurred');
-}).on('cbox_closed', function () {
-    jQuery('body').css({overflow: ''});
-    jQuery('body > .wrapper').removeClass('blurred');
 });
