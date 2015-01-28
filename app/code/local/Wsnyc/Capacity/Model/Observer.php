@@ -40,14 +40,16 @@ class Wsnyc_Capacity_Model_Observer {
      * @param Varien_Event_Observer $observer
      */
     public function processShipment($observer = null) {
-        
+        Mage::log('Started Capacity module execution', null, 'capacity.log');
         if (0 !== self::$_run) {
             //since we are saving the shipment after upload 
             //we need to make sure not to go into the loop
+            Mage::log('Already executed', null, 'capacity.log');
+            Mage::log('---------------------------', null, 'capacity.log');
             return;
         }        
         self::$_run = 1;
-        
+        Mage::log('After the check if execute or not', null, 'capacity.log');
         /**
          * @var Mage_Sales_Model_Order_Shipment $shipment
          */
@@ -56,10 +58,14 @@ class Wsnyc_Capacity_Model_Observer {
 //        $shipment->setCapacitySendStatus(0);
         if (!$this->_shouldSendInfo($shipment)) {
             //shipment already send or not yet shipped
+            Mage::log('shipment already send or not yet shipped', null, 'capacity.log');
+            Mage::log('---------------------------', null, 'capacity.log');
             return;
         }        
         $filename = $this->_prepareData($shipment);
         $this->_sendData($filename);
+        Mage::log('All good - finishing', null, 'capacity.log');
+        Mage::log('---------------------------', null, 'capacity.log');
         $shipment->setCapacitySendStatus(1)->save();
     }
     
@@ -73,7 +79,7 @@ class Wsnyc_Capacity_Model_Observer {
         $this->_checkDir();
         $filename = $this->_tmpCsvDir . DS . $this->_getFilename($shipment);
         $fp = fopen($filename, 'w');
-        fputcsv($fp, $this->_cols, "\t", '"');
+        $this->_putCsv($fp, $this->_cols, "\t", '"');
         $i = 1;        
         $shipping = $shipment->getOrder()->getShippingAddress();
         $billing = $shipment->getOrder()->getBillingAddress();
@@ -144,7 +150,7 @@ class Wsnyc_Capacity_Model_Observer {
                 null, //BuyerItemNumber
                 "EOL" //EndOfLine
             );
-            fputcsv($fp, $fields, "\t", '"');
+            $this->_putCsv($fp, $fields, "\t", '"');
         }
         fclose($fp);
         
@@ -215,5 +221,15 @@ class Wsnyc_Capacity_Model_Observer {
      */
     protected function helper() {
         return Mage::helper('capacity');
+    }
+    
+    protected function _putCsv($handle, array $fields, $delimiter = ",", $enclosure = '"') {
+        $result = fputcsv($handle, $fields, $delimiter, $enclosure);
+        if (!$result) {
+            Mage::log('Error when handling the file', null, 'capacity.log');
+            throw new Exception('Unable to handle the file');
+        }
+        
+        return $result;
     }
 }

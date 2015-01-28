@@ -60,6 +60,7 @@ class Wsnyc_Capacity_Model_Ftp {
             $this->close();
             $this->_ftpConnection = ftp_connect($server, 21, 30);
             if (false === $this->_ftpConnection) {
+                Mage::log('Unable to connect to the FTP server. Connection timeout', null, 'capacity.log');
                 throw new Exception('Unable to connect to the FTP server. Connection timeout');
             }
             $this->login($this->getFtpLogin(), $this->getFtpPassword());            
@@ -78,6 +79,7 @@ class Wsnyc_Capacity_Model_Ftp {
      */
     public function login($user, $password) {
         if (!ftp_login($this->_ftpConnection, $user, $password)) {
+            Mage::log('Unable to connect to the FTP server. Credentials are invalid', null, 'capacity.log');
             throw new Exception('Unable to connect to the FTP server. Credentials are invalid');
         }
         
@@ -104,8 +106,9 @@ class Wsnyc_Capacity_Model_Ftp {
     public function upload($filePath) {
         $this->setFtpPasv();
         $fileName = 'IN/' . basename($filePath);
-        
+        Mage::log('Filename: ' . $filename, null, 'capacity.log');
         if (!ftp_put($this->_ftpConnection, $fileName, $filePath, FTP_BINARY)) {
+            Mage::log('Error while uploading the file', null, 'capacity.log');
             throw new Exception('Error while uploading the file');
         }
         
