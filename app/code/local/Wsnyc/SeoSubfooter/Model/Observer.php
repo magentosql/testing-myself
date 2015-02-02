@@ -18,14 +18,6 @@ class Wsnyc_SeoSubfooter_Model_Observer {
             'options' => Mage::getModel('eav/entity_attribute_source_boolean')->getOptionArray(),
         ));
         
-        $blurbSelection = Mage::getModel('seosubfooter/source_blurbs')->getAllOptions();        
-        $fieldset->addField('seosubfooter_blurb', 'multiselect', array(
-            'name' => 'seosubfooter_blurb[]',
-            'label' => Mage::helper('cms')->__('Limit Blurbs Selection'),
-            'title' => Mage::helper('cms')->__('Limit Blurbs Selection'),
-            'values' => $blurbSelection,
-        ));
-
         $fieldset->addField('seosubfooter_text', 'editor', array(
             'name' => 'seosubfooter_text',
             'label' => Mage::helper('cms')->__('SEO Subfooter Text'),

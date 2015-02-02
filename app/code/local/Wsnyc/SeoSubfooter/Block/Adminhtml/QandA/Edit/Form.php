@@ -52,15 +52,6 @@ class Wsnyc_SeoSubfooter_Block_Adminhtml_QandA_Edit_Form extends Wsnyc_Questions
             'values' => array(1 => Mage::helper('seosubfooter')->__('Yes'), 0 => Mage::helper('seosubfooter')->__('No'))
         ));
         
-        $blurbSelection = Mage::getModel('seosubfooter/source_blurbs')->getAllOptions();
-        $fieldset->addField('seosubfooter_blurb', 'multiselect', array(
-            'name' => 'seosubfooter_blurb[]',
-            'label' => Mage::helper('seosubfooter')->__('Limit Blurbs Selection'),
-            'title' => Mage::helper('seosubfooter')->__('Limit Blurbs Selection'),
-            'required' => false,
-            'values' => $blurbSelection
-        ));
-
         $fieldset->addField('image', 'image', array(
             'label' => Mage::helper('wsnyc_questionsanswers')->__('Index Category Image'),
             'required' => false,

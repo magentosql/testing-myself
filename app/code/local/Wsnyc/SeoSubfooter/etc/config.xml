@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_SeoSubfooter>
-            <version>0.4</version>
+            <version>0.5</version>
         </Wsnyc_SeoSubfooter>
     </modules>
     <global>
@@ -86,25 +86,7 @@
             </controller_action_predispatch_asklaundress_questions_index>
         </events>
     </frontend>
-    <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <Wsnyc_SeoSubfooter after="Mage_Adminhtml">Wsnyc_SeoSubfooter_Adminhtml</Wsnyc_SeoSubfooter>
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
     <adminhtml>
-        <layout>
-            <updates>
-                <seosubfooter>
-                    <file>wsnyc/seosubfooter.xml</file>
-                </seosubfooter>
-            </updates>
-        </layout>
         <translate>
             <modules>
                 <seosubfooter>

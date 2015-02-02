@@ -50,7 +50,7 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
                 ));
             }
             else {
-                $blurb = $this->_getRandomBlurb();
+                $blurb = Mage::getModel('seosubfooter/blurb');
             }
 
             $this->_blurb = $blurb;
@@ -95,15 +95,6 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
         }
 
         return $object;
-    }
-
-    protected function _getRandomBlurb() {
-        $collection = Mage::getModel('seosubfooter/blurb')->getCollection()->setCurPage(1)->setPageSize(1)->addStatusFilter();
-        $collection->getSelect()->order(new Zend_Db_Expr('RAND()'));
-        if ($blurbs = $this->_getSelectedBlurbs()) {
-            $collection->addFieldToFilter('blurb_id', array('in' => $blurbs));
-        }
-        return $collection->getFirstItem();
     }
     
     protected function _getSelectedBlurbs() {
