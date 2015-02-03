@@ -10,7 +10,9 @@
                 <div class="pageleave-cms-content">
                     <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_block->getContent()) ?>
                 </div>
-
+                
+                <div class="pageleave-code"><?php echo Mage::helper('leavingpage')->generatePromoCode() ?></div>
+                
                 <div class="pageleave-button">
                     <button class="btn button btn-inline effect modal-close" id="stay-on-page">
                         <span>

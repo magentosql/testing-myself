@@ -10,7 +10,8 @@
 #page_leave_modal p {padding: 5px 0px 5px 0px}
 #page_leave_modal ul {padding: 10px 0px 10px 25px}
 #page_leave_modal ul, #inline_colorbox ul li {list-style: circle;}
-#page_leave_modal .pageleave-cms-content {width: 340px; padding: 0 17px; font-family: 'GillSansMTStd',sans-serif; word-spacing: 1px; font-size: 0.875rem;}
+#page_leave_modal .pageleave-cms-content  {width: 340px; padding: 0 17px; font-family: 'GillSansMTStd',sans-serif; word-spacing: 1px; font-size: 0.875rem;}
+#page_leave_modal .pageleave-code  {width: 340px; padding: 0 17px; font-family: 'GillSansMTStd',sans-serif; word-spacing: 1px; font-size: 1.25rem; text-align: center; margin-top: 10px;}
 #page_leave_modal .social-media-icon-set {position: absolute; bottom: 17px; left: 5px; padding: 0 20px; text-align: center; width: 340px; font-size: 1.5rem;}
 #page_leave_modal .social-media-icon-set a {margin: 0 10px; color: #000; transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -moz-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -webkit-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -o-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;}
 #page_leave_modal .social-media-icon-set a:hover {color: #777777;}
