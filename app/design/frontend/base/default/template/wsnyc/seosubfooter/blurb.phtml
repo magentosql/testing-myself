@@ -7,7 +7,7 @@
 ?>
 <?php if ($this->shouldShowBlurb()): ?>
 <div class="blurb std container">
-    <?php if ($this->getBlurb()->getId()):?>
+    <?php if ($this->getBlurb()->getShow()):?>
     <h4>
         <?php if ($this->getBlurb()->getUrl()):?>
             <a href="<?php echo $this->getBlurb()->getUrl();?>"><?php echo $this->getBlurb()->getTitle();?></a>

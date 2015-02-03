@@ -27,16 +27,16 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
     public function shouldShowBlurb() {
         
         if (Mage::registry('product')) {            
-            return Mage::registry('product')->getSeosubfooterShow();
+            return true;
         }
-        elseif (Mage::registry('current_category')) {            
-            return Mage::registry('current_category')->getSeosubfooterShow();
+        elseif (Mage::registry('current_category')) {
+            return true;
         }        
         elseif (Mage::registry('current_page')) {
-            return Mage::registry('current_page')->getSeosubfooterShow();
+            return true;
         }
         elseif (Mage::registry('ask_category')) {
-            return Mage::registry('ask_category')->getSeosubfooterShow();
+            return true;
         }
         return false;
     }
@@ -46,7 +46,8 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
             $text = trim($this->_getCurrentObject()->getSeosubfooterText());
             if ($text) {
                 $blurb = Mage::getModel('seosubfooter/blurb')->setData(array(
-                    'blurb_content' => $text
+                    'blurb_content' => $text,
+                    'show' => $this->_getCurrentObject()->getSeosubfooterShow()
                 ));
             }
             else {
@@ -95,24 +96,5 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
         }
 
         return $object;
-    }
-    
-    protected function _getSelectedBlurbs() {
-        
-        $blurbs = false;
-         if (Mage::registry('product')) {
-            $blurbs = Mage::getResourceModel('catalog/product')->getAttributeRawValue(Mage::registry('product')->getId(), 'seosubfooter_blurb', Mage::app()->getStore());            
-        }
-        elseif (Mage::registry('current_category')) {
-            $blurbs = Mage::getResourceModel('catalog/category')->getAttributeRawValue(Mage::registry('current_category')->getId(), 'seosubfooter_blurb', Mage::app()->getStore());            
-        }        
-        elseif (Mage::registry('current_page')) {
-            $blurbs = Mage::registry('current_page')->getSeosubfooterBlurb();            
-        }
-        elseif (Mage::registry('ask_category')) {
-            $blurbs = Mage::registry('ask_category')->getSeosubfooterBlurb();
-        }
-        
-        return $blurbs ? explode(',',$blurbs) : false;
     }
 }
