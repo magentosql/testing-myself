@@ -189,8 +189,9 @@ class Wsnyc_Capacity_Model_Observer {
      * @return boolean
      */
     protected function _shouldSendInfo(Mage_Sales_Model_Order_Shipment $shipment) {        
-        
-        $udropship = Mage::getConfig()->getModuleConfig('Unirgy_Dropship')->is('active', 'true') ? $shipment->getUdropshipStatus() : 1;
+
+        //as due request shipments should be sent when the order is created
+        $udropship = 1;//Mage::getConfig()->getModuleConfig('Unirgy_Dropship')->is('active', 'true') ? $shipment->getUdropshipStatus() : 1;
         
         return $udropship && !$shipment->getCapacitySendStatus();
     }
