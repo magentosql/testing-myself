@@ -7,17 +7,19 @@
 ?>
 <?php if ($this->shouldShowBlurb()): ?>
 <div class="blurb std container">
+    <?php if ($this->getBlurb()->getShow()):?>
     <h4>
-    <?php if ($this->getBlurb()->getUrl()):?>
-        <a href="<?php echo $this->getBlurb()->getUrl();?>"><?php echo $this->getBlurb()->getTitle();?></a>
-    <?php else: ?>
-        <?php echo $this->getBlurb()->getTitle();?>
-    <?php endif; ?>        
+        <?php if ($this->getBlurb()->getUrl()):?>
+            <a href="<?php echo $this->getBlurb()->getUrl();?>"><?php echo $this->getBlurb()->getTitle();?></a>
+        <?php else: ?>
+            <?php echo $this->getBlurb()->getTitle();?>
+        <?php endif; ?>
     </h4>
     <div>
         <?php echo $this->getBlurb()->getFilteredContent();?>
     </div>
-    
+    <?php endif; ?>
+
     <ul class="seo-links">
         <?php foreach($this->getLinks() as $page):?>
         <li><a href="<?php echo $this->getPageUrl($page);?>"><?php echo $page->getTitle();?></a></li>

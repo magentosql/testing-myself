@@ -27,30 +27,39 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
     public function shouldShowBlurb() {
         
         if (Mage::registry('product')) {            
-            return Mage::registry('product')->getSeosubfooterShow();
+            return true;
         }
-        elseif (Mage::registry('current_category')) {            
-            return Mage::registry('current_category')->getSeosubfooterShow();
+        elseif (Mage::registry('current_category')) {
+            return true;
         }        
         elseif (Mage::registry('current_page')) {
-            return Mage::registry('current_page')->getSeosubfooterShow();
+            return true;
         }
-        elseif (Mage::registry('show_blurb')) {
-            return Mage::registry('show_blurb');
+        elseif (Mage::registry('ask_category')) {
+            return true;
         }
         return false;
     }
-    
+
     public function getBlurb() {
         if (null === $this->_blurb) {
-            $collection = Mage::getModel('seosubfooter/blurb')->getCollection()->setCurPage(1)->setPageSize(1)->addStatusFilter();
-            $collection->getSelect()->order(new Zend_Db_Expr('RAND()'));
-            $this->_blurb = $collection->getFirstItem();
+            $text = trim($this->_getCurrentObject()->getSeosubfooterText());
+            if ($text) {
+                $blurb = Mage::getModel('seosubfooter/blurb')->setData(array(
+                    'blurb_content' => $text,
+                    'show' => $this->_getCurrentObject()->getSeosubfooterShow()
+                ));
+            }
+            else {
+                $blurb = Mage::getModel('seosubfooter/blurb');
+            }
+
+            $this->_blurb = $blurb;
         }
-        
+
         return $this->_blurb;
     }
-    
+
     public function getLinks() {
         if (null === $this->_links) {
             $this->_links = Mage::getModel('cms/page')->getCollection()
@@ -63,5 +72,29 @@ class Wsnyc_SeoSubfooter_Block_Footer extends Mage_Core_Block_Template {
     
     public function getPageUrl(Mage_Cms_Model_Page $page) {
         return Mage::getUrl(null, array('_direct' => $page->getIdentifier()));
+    }
+
+    /**
+     * Get object of the current page
+     *
+     * @return bool|Varien_Object
+     */
+    protected function _getCurrentObject() {
+
+        $object = false;
+        if (Mage::registry('product')) {
+            $object = Mage::registry('product');
+        }
+        elseif (Mage::registry('current_category')) {
+            $object = Mage::registry('current_category');
+        }
+        elseif (Mage::registry('current_page')) {
+            $object = Mage::registry('current_page');
+        }
+        elseif (Mage::registry('ask_category')) {
+            $object = Mage::registry('ask_category');
+        }
+
+        return $object;
     }
 }

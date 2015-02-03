@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_SeoSubfooter>
-            <version>0.2.1</version>
+            <version>0.5</version>
         </Wsnyc_SeoSubfooter>
     </modules>
     <global>
@@ -86,25 +86,7 @@
             </controller_action_predispatch_asklaundress_questions_index>
         </events>
     </frontend>
-    <admin>
-        <routers>
-            <adminhtml>
-                <args>
-                    <modules>
-                        <Wsnyc_SeoSubfooter after="Mage_Adminhtml">Wsnyc_SeoSubfooter_Adminhtml</Wsnyc_SeoSubfooter>
-                    </modules>
-                </args>
-            </adminhtml>
-        </routers>
-    </admin>
     <adminhtml>
-        <layout>
-            <updates>
-                <seosubfooter>
-                    <file>wsnyc/seosubfooter.xml</file>
-                </seosubfooter>
-            </updates>
-        </layout>
         <translate>
             <modules>
                 <seosubfooter>
@@ -133,6 +115,24 @@
                     </add_seosubfooter_link_field>
                 </observers>
             </adminhtml_cms_page_edit_tab_main_prepare_form>
+            <cms_page_prepare_save>
+                <observers>
+                    <prepare_limit_form_data>
+                        <type>singleton</type>
+                        <model>seosubfooter/observer</model>
+                        <method>prepareCmsLimitFieldData</method>
+                    </prepare_limit_form_data>
+                </observers>
+            </cms_page_prepare_save>
+            <questionsanswers_category_save_before>
+                <observers>
+                    <prepare_limit_form_data>
+                        <type>singleton</type>
+                        <model>seosubfooter/observer</model>
+                        <method>prepareAskLimitFieldData</method>
+                    </prepare_limit_form_data>
+                </observers>
+            </questionsanswers_category_save_before>
         </events>
     </adminhtml>
 </config>
