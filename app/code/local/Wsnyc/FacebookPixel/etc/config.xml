@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_FacebookPixel>
+            <version>1.0.0</version>
+        </Wsnyc_FacebookPixel>
+    </modules>
+    <global>
+        <blocks>
+            <wsnyc_fbpixel>
+                <class>Wsnyc_FacebookPixel_Block</class>
+            </wsnyc_fbpixel>            
+        </blocks>
+        <helpers>
+            <wsnyc_fbpixel>
+                <class>Wsnyc_FacebookPixel_Helper</class>
+            </wsnyc_fbpixel>            
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <wsnyc_amazonpixel>
+                    <file>wsnyc/fbpixel.xml</file>
+                </wsnyc_amazonpixel>
+            </updates>
+        </layout>
+    </frontend>
+</config>

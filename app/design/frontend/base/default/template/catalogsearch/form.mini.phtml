@@ -26,7 +26,10 @@
 /* @var $this Mage_Core_Block_Template */
 /* @var $catalogSearchHelper Mage_Catalogsearch_Helper_Data */
 $catalogSearchHelper =  $this->helper('catalogsearch');
-?>
+
+
+
+/* pre-searchspring form:
 <form id="search_mini_form" action="<?php echo $catalogSearchHelper->getResultUrl() ?>" method="get">
     <div class="form-search">
         <label for="search"><?php echo $this->__('Search:') ?></label>
@@ -41,3 +44,120 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
         </script>
     </div>
 </form>
+*/
+
+?>
+<form id="search_mini_form" action="/search" method="get">
+    <div class="form-search">
+        <label for="search"><?php echo $this->__('Search:') ?></label>
+        <input id="search" type="text" name="q" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="input-text searchspring-query" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" autocomplete="off"/>
+        <button type="submit" title="<?php echo $this->__('Search') ?>" class="button"><span><span><?php echo $this->__('Search') ?></span></span></button>
+    </div>
+</form>
+
+
+<link rel="stylesheet" type="text/css" href="//cdn.searchspring.net/autocomplete/autocomplete-v2.css">
+<script type="text/javascript" src="//cdn.searchspring.net/autocomplete/searchspring-autocomplete.min.js"></script>
+<script type="text/javascript">
+    SearchSpring.Autocomplete.init({
+        offsetX: -5,
+        offsetY: 0,
+        siteId: 'bucx94',
+        queryClass : 'searchspring-query'
+    });
+</script>
+<style type="text/css">
+
+    body #searchspring-autocomplete_results:before {
+        left: 13px;
+    }
+
+    body #searchspring-autocomplete_results {
+        width: 322px;
+        font-family: 'GillSansMTStd',sans-serif;
+        z-index: 10000;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.57);
+        padding: 0;
+        border-radius: 0;
+    }
+
+    body #searchspring-autocomplete_results div.sku{
+        display: none;
+    }
+
+    body #searchspring-autocomplete_results .ac_term_result,
+    body #searchspring-autocomplete_results div.name {
+        color: #444;
+        font-weight: normal;
+        font-size: 14px;
+    }
+
+    body #searchspring-autocomplete_results div.price {
+        color: #333;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    body #searchspring-autocomplete_results .ac_term_result em,
+    body #searchspring-autocomplete_results div.name em {
+        color: #000;
+    }
+
+    body #searchspring-autocomplete_results .image {
+        text-align: center;
+    }
+
+    body #searchspring-autocomplete_results .ac_result {
+        background-color: #fff;
+    }
+
+    body #searchspring-autocomplete_results .ac_result.highlight,
+    body #searchspring-autocomplete_results .ac_result:hover {
+        background-color: #f5f5f5;
+    }
+
+    body #searchspring-autocomplete_results .ac_result:hover div.name,
+    body #searchspring-autocomplete_results .ac_result:hover div.name em {
+    }
+
+    body #searchspring-autocomplete_results .ac_title {
+        margin: 10px 0;
+        border-bottom: solid 3px #222;
+        font-family: 'Sorts Mill Goudy Regular',serif;
+    }
+
+    body #searchspring-autocomplete_results .ac_title, 
+    body #searchspring-autocomplete_results .ac_powered {
+        background: inherit;
+        font-size: 13px;
+        color: #222;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    body #searchspring-autocomplete_results .ac_powered {
+        background-color: #454545;
+    }
+    body #searchspring-autocomplete_results .ac_term_suggest {
+        background-color: #454545;
+        border-top: solid 3px #222;
+        color: #fff;
+    }
+
+    body #searchspring-autocomplete_results .ac_term_suggest:hover,
+    body #searchspring-autocomplete_results .ac_term_suggest.highlight {
+        background-color: #222;
+
+    }
+
+    body #searchspring-autocomplete_results .ac_powered {
+        background-color: #222;
+        border-radius: 0;
+        padding-top: 10px;
+    }
+
+    body #searchspring-autocomplete_results .ac_powered {
+        display: none;
+    }
+
+</style>

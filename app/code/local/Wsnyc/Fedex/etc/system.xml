@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <carriers>
+            <groups>
+                <fedex>
+                    <fields>
+                        <flatrate_method translate="label">
+                            <label>Flat Rate Method</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>usa/shipping_carrier_fedex_source_freemethod</source_model>
+                            <sort_order>183</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </flatrate_method>
+                        <flatrate_enable translate="label">
+                            <label>Flat Rate with Minimum Order Amount</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>184</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </flatrate_enable>
+                        <flatrate_subtotal translate="label">
+                            <label>Maximum Order Amount for Flat Rate</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>185</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </flatrate_subtotal>
+                        <flatrate_price translate="label">
+                            <label>Flat Rate Price</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number validate-zero-or-greater</validate>
+                            <sort_order>186</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </flatrate_price>
+                        <order_base translate="label">
+                            <label>Check Order Amount after discount</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>187</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </order_base>
+                    </fields>
+                </fedex>
+            </groups>
+        </carriers>
+    </sections>
+</config>

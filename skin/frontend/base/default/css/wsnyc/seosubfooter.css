@@ -1,0 +1,35 @@
+.blurb {
+    margin: 150px 0px 10px 0px;    
+}
+
+.blurb.std {
+    font-size: 1.15em;
+    line-height: 1.5em;
+}
+
+.seo-links {
+    overflow: hidden;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 35px;
+    -moz-column-count: 3;
+    -moz-column-gap: 35px;
+    column-count: 3;
+    column-gap: 35px;
+}
+.seo-links li {
+    margin: 10px 0px;
+}
+.seo-links li:first-child {
+    margin-top: 0px;
+}
+.seosubfooter-page .page-title {
+    display: none;
+}
+.seosubfooter-page .col-main .std {
+    margin: 30px auto;
+    width: 70%;
+}
+.seosubfooter-page .col-main .std p {
+    font-size: 1.5em;
+    line-height: initial;
+}

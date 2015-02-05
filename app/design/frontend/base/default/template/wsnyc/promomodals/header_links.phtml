@@ -1,31 +1,3 @@
-<?php if (!Mage::getStoreConfig('advanced/modules_disable_output/Wsnyc_HotelModal')) : ?>
-    <div  class="welcome-msg free-bag-msg"><a href="#inline_hotel_colorbox" class="openHotelPopup"><b class="no-italic"><?php echo $this->__('FREE Hotel Laundry Bag with Every Purchase!') ?></b></a></div>
-<?php endif; ?>
-<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/freeshipping_may_2014_enabled')): ?>
-    <div  class="welcome-msg"><a href="#inline_freeshipping_colorbox" class="openFreeshippingPopup"><b class="no-italic"><?php echo $this->__('FREE SHIPPING on all purchases through May 31st using code FREESHIPSPRING') ?></b></a></div>
-<?php endif; ?>
-<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/freeshipping_over_100_enabled')): ?>
-    <div class="header-msg"><a href="#modal_freeshipping_over_100"><b class="no-italic"><?php echo $this->__('Free Shipping on Orders over $100') ?></b></a></div>
-<?php endif; ?>
-<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/freeshipping_over_50_enabled')): ?>
-    <div class="header-msg"><a href="#modal_freeshipping_over_50"><b class="no-italic"><?php echo $this->__('Free shipping on orders of $50 or more') ?></b></a></div>
-<?php endif; ?>
-<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/photocontest_june_2014_enabled')): ?>
-    <div class="header-msg"><a href="#modal_photocontest_june_2014"><b class="no-italic"><?php echo $this->__('Vote Now to Choose Your Favorite Stainfighters for our Wash & Win Photo Contest') ?></b></a></div>
-<?php endif; ?>
-<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/lindsey14_enabled')): ?>
-    <div class="header-msg"><a href="#modal_lindsey14"><b class="no-italic"><?php echo $this->__('Save 25% on your order using code LINDSEY14') ?></b></a></div>
-<?php endif; ?>
-<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/woolinitiative_enabled')): ?>
-    <div class="header-msg"><a href="#modal_woolinitiative"><b class="no-italic"><?php echo $this->__("We're donating $1 for every Wool & Cashmere Shampoo!") ?></b></a></div>
-<?php endif; ?>
-<?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/novembergift_enabled')): ?>
-    <div class="header-msg"><a href="#modal_novembergift"><b class="no-italic"><?php echo $this->__("Our gift to you: 15% off with code NOVEMBERGIFT") ?></b></a></div>
-<?php endif; ?>
-    <?php if (Mage::getStoreConfig('wsnyc_promotions/promotions/blackfriday_enabled')): ?>
-    <div class="header-msg"><a href="#modal_blackfriday"><b class="no-italic"><?php echo $this->__("Black Friday & Cyber Monday: 25% off with code HOLIDAY until 12/2") ?></b></a></div>
-<?php endif; ?>
-<?php $holidayPage = Mage::getModel('cms/page')->load('holiday-shipping-information', 'identifier'); ?>
-<?php if ($holidayPage && $holidayPage->getData('is_active')): ?>
-    <div class="welcome-msg" style="background: none; margin-top: -8px;"><b class="no-italic"><a href="#inline_colorbox" class="openHolidayPopup"><?php echo $this->__('Holiday shipping information') ?></a></b></div>
-<?php endif; ?>
+<?php foreach($this->getModals() as $modal):?>
+    <div class="header-msg"><a href="#modal_<?php echo $modal->getId();?>"><b class="no-italic"><?php echo $this->__($modal->getModalLinkName()) ?></b></a></div>
+<?php endforeach;?>

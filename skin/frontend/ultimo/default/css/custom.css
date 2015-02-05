@@ -64,7 +64,7 @@ body.wishlist-index-index .grid-col2-main{width:74%;margin-right:0}
 .gen-tabs .tabs a{transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-moz-transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-webkit-transition:color 300ms ease-in-out,background-color 300ms ease-in-out;-o-transition:color 300ms ease-in-out,background-color 300ms ease-in-out}
 body.cms-customer-service-shipping .std ul{list-style:disc;font-family:"GillSansMTStd",sans-serif;padding-left:30px}
 html{text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
-body{border-top:5px solid black;border-bottom:5px solid black;width:100%;min-width:1024px}
+body{border-top:5px solid black;width:100%;min-width:1024px}
 .wrapper{border-top:0}
 .header{padding-bottom:20px}
 #nav li a{padding:0}
@@ -114,7 +114,7 @@ body.cms-index-index div.blog-category{color:#222;font-family:"GillSansMTStd";fo
 .footer-top ul li a{font-family:"Georgia";font-size:13px;font-style:italic;color:#222}
 .footer-top ul li a:hover{background-color:transparent;color:#64b96a}
 .link-rss{background:0}
-.footer-container{background-color:white;background-image:none}
+.footer-container{background-color:white;background-image:none;border-bottom:5px solid black;}
 .footer-primary-container{background:url('../images/footer_tile.gif') repeat-x;height:385px}
 .footer-top{text-align:center}
 ul.links{margin:auto}
@@ -145,7 +145,7 @@ ul.links li a{display:inline-block}
 #footer-card .social-icons ul li a.pintrest,.add-to-links li.social a.pintrest{width: 28px;background: url('../images/pintrest.png') 0 0 no-repeat;position:relative}
 .add-to-links li.social a.pintrest{margin-left: 0px;}
 #footer-card .social-icons ul li a.facebook,.add-to-links li.social a.facebook{width: 28px;background: url('../images/facebook.png') 0 0 no-repeat;margin-left:19px;position:relative}
-#footer-card .social-icons ul li a.facebook,.add-to-links li.social a.google {width: 28px; background: url('../images/gooleplus.png') 0 0 no-repeat;}
+#footer-card .social-icons ul li a.google,.add-to-links li.social a.google {width: 28px; background: url('../images/gooleplus.png') 0 0 no-repeat;margin-left: 19px;}
 .add-to-links li.social a.facebook{margin-left:0}
 #footer-card .social-icons ul li a.twitter,.add-to-links li.social a.twitter{width: 28px;background: url('../images/twitter.png') 0 0 no-repeat;margin-left:20px;position:relative}
 .add-to-links li.social a.twitter{margin-left: 0px;}

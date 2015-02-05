@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_FlatRateExt>
+            <version>1.0.0</version>
+        </Wsnyc_FlatRateExt>
+    </modules>
+    <global>
+        <models>
+            <shipping>
+                <rewrite>
+                    <carrier_flatrate>Wsnyc_FlatRateExt_Model_Carrier_Flatrate</carrier_flatrate>
+                </rewrite>
+            </shipping>
+        </models>
+    </global>
+</config>
