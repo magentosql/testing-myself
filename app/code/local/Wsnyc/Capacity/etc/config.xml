@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Capacity>
-            <version>0.1</version>
+            <version>0.2</version>
         </Wsnyc_Capacity>
     </modules>
     <global>
@@ -38,7 +38,7 @@
             </capacity_read>
         </resources>
         <events>
-            <sales_order_shipment_save_after>
+            <sales_order_invoice_pay>
                 <observers>
                     <send_shipment_to_capacity>
                         <type>singleton</type>
@@ -46,17 +46,17 @@
                         <method>processShipment</method>
                     </send_shipment_to_capacity>
                 </observers>
-            </sales_order_shipment_save_after>
+            </sales_order_invoice_pay>
         </events>
     </global>
-    <!--<crontab>-->
+    <crontab>
         <!--<jobs>-->
             <!--<shipment_test>-->
                 <!--<schedule><cron_expr>0 1 * * *</cron_expr></schedule>-->
                 <!--<run><model>capacity/observer::processShipment</model></run>-->
             <!--</shipment_test>-->
         <!--</jobs>-->
-    <!--</crontab>-->
+    </crontab>
     <default>
         <shipping>
             <capacity>
