@@ -64,11 +64,19 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
     /**
      * Get Capacity shipping method code for magento shipping
      *
-     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @param Mage_Sales_Model_Order $order
      * @return string
      */
-    public function getShippingMethod(Mage_Sales_Model_Order_Shipment $shipment) {
-        $method = $shipment->getUdropshipMethod();
+    public function getShippingMethod(Mage_Sales_Model_Order $order) {
+        if ($order->getUdropshipStatus() != null) {
+            //udropship module installed.
+            $dropship = json_decode($order->getUdropshipShippingDetails());
+            $method = $dropship->methods->{1}->code;
+
+        }
+        else {
+            //standard magento
+        }
         if (strstr($method, 'fedex_')) {
             $fedexMethod = str_replace('fedex_', null, $method);        
             if (array_key_exists($fedexMethod, $this->_fedexMethods)) {

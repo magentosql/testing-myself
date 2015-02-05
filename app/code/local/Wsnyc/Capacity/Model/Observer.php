@@ -5,6 +5,7 @@ class Wsnyc_Capacity_Model_Observer {
     /**
      * Xpath for settings parameters
      */
+    const XML_PATH_ENABLED = 'shipping/capacity/active';
     const XML_PATH_RETAILER_CODE = 'shipping/capacity/retailer_code';
     const XML_PATH_CLIENT_CODE = 'shipping/capacity/client_code';
     const XML_PATH_FTP_FILENAME = 'shipping/capacity/ftp_filename';
@@ -14,12 +15,7 @@ class Wsnyc_Capacity_Model_Observer {
      * @var string
      */
     protected $_tmpCsvDir;
-    
-    /**
-     * @var int
-     */
-    protected static $_run = 0;
-    
+
     protected $_cols = array('PickTicketID', 'MasterOrderID', 'ReleaseFlag', 'Reship850Flag', 'OrderType', 'SpecialProcessingFlag', 
         'CapacityImportID', 'PONumber', 'RetailerCode', 'StoreNumber', 'ShipToLocation', 'ClientCode', 'DropshipID', 
         'ExternalCustomerID', 'ShipBusinessName', 'ShipName', 'ShipAddress1', 'ShipAddress2', 'ShipCity', 'ShipState', 
@@ -40,56 +36,46 @@ class Wsnyc_Capacity_Model_Observer {
      * @param Varien_Event_Observer $observer
      */
     public function processShipment($observer = null) {
-        Mage::log('Started Capacity module execution', null, 'capacity.log');
-        if (0 !== self::$_run) {
-            //since we are saving the shipment after upload 
-            //we need to make sure not to go into the loop
-            Mage::log('Already executed', null, 'capacity.log');
-            Mage::log('---------------------------', null, 'capacity.log');
+        if (!Mage::getStoreConfig(self::XML_PATH_ENABLED)) {
             return;
-        }        
-        self::$_run = 1;
-        Mage::log('After the check if execute or not', null, 'capacity.log');
+        }
+
         /**
-         * @var Mage_Sales_Model_Order_Shipment $shipment
+         * @var Mage_Sales_Model_Order_Invoice $invoice
          */
-        $shipment = $observer->getEvent()->getShipment();
-//        $shipment = Mage::getModel('sales/order_shipment')->load(31);
-//        $shipment->setCapacitySendStatus(0);
-        if (!$this->_shouldSendInfo($shipment)) {
+        $invoice = $observer->getEvent()->getInvoice();
+        if (!$this->_shouldSendInfo($invoice)) {
             //shipment already send or not yet shipped
             Mage::log('shipment already send or not yet shipped', null, 'capacity.log');
             Mage::log('---------------------------', null, 'capacity.log');
             return;
         }        
-        $filename = $this->_prepareData($shipment);
+        $filename = $this->_prepareData($invoice);
         $this->_sendData($filename);
-        Mage::log('All good - finishing', null, 'capacity.log');
-        Mage::log('---------------------------', null, 'capacity.log');
-        $shipment->setCapacitySendStatus(1)->save();
+        $invoice->getOrder()->setCapacitySendStatus(1)->save();
     }
     
     /**
-     * Prepare shipment data
+     * Prepare data
      * 
-     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @param Mage_Sales_Model_Order_Invoice $invoice
      * @return string
      */
-    protected function _prepareData(Mage_Sales_Model_Order_Shipment $shipment) {
+    protected function _prepareData(Mage_Sales_Model_Order_Invoice $invoice) {
         $this->_checkDir();
-        $filename = $this->_tmpCsvDir . DS . $this->_getFilename($shipment);
+        $filename = $this->_tmpCsvDir . DS . $this->_getFilename($invoice);
         $fp = fopen($filename, 'w');
         $this->_putCsv($fp, $this->_cols, "\t", '"');
         $i = 1;        
-        $shipping = $shipment->getOrder()->getShippingAddress();
-        $billing = $shipment->getOrder()->getBillingAddress();
-        foreach($shipment->getAllItems() as $item) {
+        $shipping = $invoice->getOrder()->getShippingAddress();
+        $billing = $invoice->getOrder()->getBillingAddress();
+        foreach($invoice->getAllItems() as $item) {
             /**
              * @var Mage_Sales_Model_Order_Shipment_Item $item
              */
             $fields = array(
-                $shipment->getIncrementId(), //PickTicketID
-                $shipment->getOrder()->getIncrementId(), //MasterOrderID
+                $invoice->getOrder()->getIncrementId(), //PickTicketID
+                $invoice->getOrder()->getIncrementId(), //MasterOrderID
                 'N', //ReleaseFlag
                 'N', //Reship850Flag
                 null, //OrderType
@@ -113,9 +99,9 @@ class Wsnyc_Capacity_Model_Observer {
                 $shipping->getTelephone(), //ShipPhone
                 $shipping->getEmail(), //ShipEmail
                 'Y', //ShipResidentialFlag
-                $this->helper()->getShippingMethod($shipment), //ShipMethod
+                $this->helper()->getShippingMethod($invoice->getOrder()), //ShipMethod
                 null, //ThirdPartyAccount
-                substr($shipment->getOrder()->getSignatureRequired(),0,1), //SignatureRequired
+                substr($invoice->getOrder()->getSignatureRequired(),0,1), //SignatureRequired
                 null, //ShipComment
                 null, //GiftWrapFlag
                 null, //GiftFrom
@@ -131,12 +117,12 @@ class Wsnyc_Capacity_Model_Observer {
                 $billing->getCountry(), //BillCountry
                 $billing->getTelephone(), //BillPhone
                 null, //PaymentTerms
-                $shipment->getOrder()->getCreatedAt(), //OrderDate
+                $invoice->getOrder()->getCreatedAt(), //OrderDate
                 null, //RequestedShipDate
                 null, //CancelDate
                 null, //RequestedDeliveryDate
                 null, //DeliveryByDate
-                $shipment->getShippingAmount(), //ShippingAmount
+                $invoice->getShippingAmount(), //ShippingAmount
                 null, //ShippingTaxRate
                 null, //OrderDiscountRate
                 null, //OrderDiscountAmount
@@ -178,28 +164,24 @@ class Wsnyc_Capacity_Model_Observer {
     /**
      * Create filename
      * 
-     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @param Mage_Sales_Model_Order_Invoice $invoice
      * @return string
      */
-    protected function _getFilename(Mage_Sales_Model_Order_Shipment $shipment) {        
-        return  $shipment->getIncrementId()
+    protected function _getFilename(Mage_Sales_Model_Order_Invoice $invoice) {
+        return  $invoice->getOrder()->getIncrementId()
                 . '_' .Mage::getStoreConfig(self::XML_PATH_FTP_FILENAME)
                 . '_' . date('Ymd\TGis')
                 .'.txt';
     }
     
     /**
-     * Check if shipment info should be sent
+     * Check if info should be sent
      * 
-     * @param Mage_Sales_Model_Order_Shipment $shipment
+     * @param Mage_Sales_Model_Order_Invoice $invoice
      * @return boolean
      */
-    protected function _shouldSendInfo(Mage_Sales_Model_Order_Shipment $shipment) {        
-
-        //as due request shipments should be sent when the order is created
-        $udropship = 1;//Mage::getConfig()->getModuleConfig('Unirgy_Dropship')->is('active', 'true') ? $shipment->getUdropshipStatus() : 1;
-        
-        return $udropship && !$shipment->getCapacitySendStatus();
+    protected function _shouldSendInfo(Mage_Sales_Model_Order_Invoice $invoice) {
+        return $invoice->getState() == Mage_Sales_Model_Order_Invoice::STATE_PAID && !$invoice->getOrder()->getCapacitySendStatus();
     }
     
     /**
