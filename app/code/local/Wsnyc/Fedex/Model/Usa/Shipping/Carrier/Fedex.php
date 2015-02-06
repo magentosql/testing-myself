@@ -125,7 +125,7 @@ class Wsnyc_Fedex_Model_Usa_Shipping_Carrier_Fedex extends Mage_Usa_Model_Shippi
     
 
     public function getMethodPrice($cost, $method = '') {
-        $value = $this->getConfigData('order_base') ? $this->_request->getValueWithDiscount() : $this->_request->getPackageValue();
+        $value = $this->getConfigData('order_base') ? $this->_request->getPackageValueWithDiscount() : $this->_request->getPackageValue();
         if ($method == $this->getConfigData($this->_freeMethod)
             && $this->getConfigData('free_shipping_enable')
             && $this->getConfigData('free_shipping_subtotal') <= $value
