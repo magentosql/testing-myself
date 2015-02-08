@@ -11,4 +11,5 @@ $cmsPage = Mage::getModel('cms/page')->getCollection()
         ->getFirstItem();
         
 $cmsPage->setStores(array($retailStore->getId()))
+        ->setIdentifier('customer-service/terms')
         ->save();
