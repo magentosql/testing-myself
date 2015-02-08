@@ -46,6 +46,13 @@
         </events>
     </global>
     <frontend>
+        <layout>
+            <updates>
+                <multiplewebsites>
+                    <file>wsnyc/wholesalewebsite.xml</file>
+                </multiplewebsites>
+            </updates>
+        </layout>
         <events>
             <controller_action_postdispatch>
                 <observers>
