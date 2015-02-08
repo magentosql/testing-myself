@@ -1,0 +1,141 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Catalog_Block_Navigation
+ */
+?>
+<?php
+/**
+ * $this->renderCategoriesMenuHtml() supports optional arguments:
+ * bool Add opener if menu is used as accordion
+ * int Level number for list item class to start from
+ * string Extra class of outermost list items
+ * string If specified wraps children list in div with this class  
+ */
+?>
+<?php $_menu = $this->renderCategoriesMenuHtml(FALSE, 0,'level-top', '', array(7 => 'block_header_nav_home', 10 => 'block_header_nav_fabric')); ?>
+<?php //$_menu = $this->getHtml('level-top'); ?>
+
+<?php
+$theme = $this->helper('ultimo');
+$d = $theme->getDesignCfgSection();
+
+$navContainerCss = array();
+$menuCss = array();
+if ($theme->getCfg('mainmenu/standard_menu')) {
+    $menuCss[] = 'classic';
+}
+if ($theme->getCfg('mainmenu/wide_menu')) {
+    $menuCss[] = 'wide';
+
+    $navContainerCss[] = 'itemgrid';
+    $navContainerCss[] = 'itemgrid-' . $theme->getCfg('mainmenu/level2_column_count') . 'cols';
+}
+
+$navCss = array();
+if ($d['nav']['stretched'])
+    $navCss[] = 'stretched';
+
+//If header or main have bg color
+if ($theme->isColor($d['header']['inner_bg_color'])) {
+    $navCss[] = 'show-bg';
+} elseif ($theme->isColor($d['main']['inner_bg_color'])) {
+    $navCss[] = 'show-bg';
+}
+?>
+
+<div class="nav-container<?php if($navContainerCss) echo " " . implode(" ", $navContainerCss); ?>">
+	<div class="nav container clearer<?php if($navCss) echo " " . implode(" ", $navCss); ?>">
+    
+    	<ul id="nav" class="<?php if($menuCss) echo " " . implode(" ", $menuCss); ?>">
+        
+                <?php //Display "Home" link, if enabled ?>
+                <?php if ($theme->getCfg('mainmenu/home')): ?>
+                    <li id="nav-home-link" class="level0 level-top">
+                        <?php if ($theme->getCfg('mainmenu/home_img')): ?>
+                        <a class="home-img level-top" href="<?php echo $this->getBaseUrl(); ?>"><?php echo $this->__('Home'); ?></a>
+                        <?php else: ?>
+                        <a class="level-top" href="<?php echo $this->getBaseUrl(); ?>"><span><?php echo $this->__('Home'); ?></span></a>
+                        <?php endif; ?>
+                    </li>
+                <?php endif; ?>
+        
+                <?php echo $_menu; //Main menu ?>
+				
+				<li class="level0 nav-4 level-top parent">
+					<a href="/asklaundress/" class="level-top">
+						<span><?php echo $this->__('Ask The Laundress'); ?></span>
+					</a>
+				</li>
+				<li class="level0 nav-5 level-top parent">
+					<a href="http://blog.thelaundress.com/wordpress/" class="level-top">
+						<span><?php echo $this->__('Clean Talk Blog'); ?></span>
+					</a>
+				</li>
+				<li class="level0 nav-6 level-top last parent">
+					<a href="/customer-service/" class="level-top">
+						<span><?php echo $this->__('Contact'); ?></span>
+					</a>
+					<ul class="level0" style="display: none; ">
+						<div class="nested-container"><div class="grid12-3">
+							<h4>Contact</h4>
+							<ul class="childcategories">
+								<li class="first"><a href="/our-story/"><?php echo $this->__('Our Story'); ?></a></li>
+								<li><a href="/customer-service/"><span><?php echo $this->__('Customer Service'); ?></span></a></li>
+								<li><a href="/customer-service/contact-us"><?php echo $this->__('Contact Us'); ?></a></li>
+							</ul>
+						</div>
+						<div class="grid12-3">
+							<h4><?php echo $this->__('Our Policies'); ?></h4>
+							<ul class="childcategories">
+								<li class="first"><a href="/faq/"> <span><?php echo $this->__('FAQ for Orders'); ?></span> </a></li>
+								<li><a href="/customer-service/shipping/"><?php echo $this->__('Shipping'); ?></a></li>
+								<li><a href="/customer-service/privacypolicy/"><?php echo $this->__('Privacy Policy'); ?></a></li>
+								<li><a href="/customer-service/terms/"><?php echo $this->__('Terms &amp; Conditions'); ?></a></li>
+							</ul>
+						</div>
+						<div class="grid12-3">
+							<div>&nbsp;</div>
+						</div>
+						<div class="grid12-3">
+							<div class="custom-block">
+								<?php echo $this->getChildHtml('block_header_nav_whatsnew') ?>
+							</div>
+							<div class="custom-block">
+								<?php echo $this->getChildHtml('block_header_nav_featured') ?>
+							</div>
+						</div>
+					</ul>
+				</li>
+				
+            </ul>
+
+	</div> <!-- end: nav -->
+</div> <!-- end: nav-container -->
