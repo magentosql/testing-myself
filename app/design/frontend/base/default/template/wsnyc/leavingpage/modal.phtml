@@ -1,4 +1,6 @@
-<?php $_block = $this->getCmsBlock(); ?>
+<?php $_block = $this->getCmsBlock();
+$_code = Mage::helper('leavingpage')->generatePromoCode();
+?>
 <div style='display:none'>
     <div id="page_leave_modal" class="pageleave-popup">
         <div>
@@ -11,12 +13,12 @@
                     <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_block->getContent()) ?>
                 </div>
                 
-                <div class="pageleave-code"><?php echo Mage::helper('leavingpage')->generatePromoCode() ?></div>
+                <div class="pageleave-code"><?php echo $_code ?></div>
                 
                 <div class="pageleave-button">
-                    <button class="btn button btn-inline effect modal-close" id="stay-on-page">
+                    <button data-href="<?php echo Mage::helper('wsnyc_couponparam')->generateCartCodeUrl($_code) ?>" class="btn button btn-inline effect modal-close" id="stay-on-page">
                         <span>
-                            <span><?php echo $this->__('Got it!'); ?></span>
+                            <span><?php echo $this->__('Redeem Now'); ?></span>
                         </span>
                     </button>
                 </div>

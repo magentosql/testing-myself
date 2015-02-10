@@ -1,12 +1,10 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Wsnyc_LeavingPage>
+        <Wsnyc_CouponParam>
             <active>true</active>
             <codePool>local</codePool>
-            <depends>
-                <Wsnyc_CouponParam />
-            </depends>
-        </Wsnyc_LeavingPage>
+            <depends></depends>
+        </Wsnyc_CouponParam>
     </modules>
 </config>

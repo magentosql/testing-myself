@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <wsnyc translate="label" module="wsnyc_couponparam">
+            <label>Web Solutions NYC</label>            
+        </wsnyc>
+    </tabs>
+    <sections>
+        <couponparam  translate="label" module="wsnyc_couponparam">                    
+            <label>Coupons</label>
+            <tab>wsnyc</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>      
+            <groups>                
+                <general translate="label"> 
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <expanded>1</expanded>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active>
+                            <label>Active</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </active>
+                        <param_name translate="label comment">
+                            <label>Param name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Provide name of the parameter from which coupon code will be applied</comment>
+                        </param_name>
+                    </fields>
+                </general>
+            </groups>
+        </couponparam>
+    </sections>
+</config>

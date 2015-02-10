@@ -35,7 +35,8 @@ jQuery(function ($) {
             jQuery('body > .wrapper').addClass('blurred');
             jQuery('#stay-on-page').click(function(e) {
                 jQuery.colorbox.close();
+                window.location.href = $(this).data('href');
             });
-        },
+        }
     });
 });
