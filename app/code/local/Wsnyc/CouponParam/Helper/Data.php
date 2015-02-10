@@ -11,7 +11,7 @@ class Wsnyc_CouponParam_Helper_Data extends Mage_Core_Helper_Abstract {
     public function generateCartCodeUrl($coupon) {
         return Mage::getUrl('checkout/cart', array(
             'secure' => Mage::app()->getRequest()->isSecure(),
-            'coupon' => $coupon
+            Mage::getStoreConfig(Wsnyc_CouponParam_Model_Observer::XML_PARAM_PATH) => $coupon
         ));
     }
 }
