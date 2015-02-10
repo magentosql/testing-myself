@@ -210,10 +210,6 @@
 
 		</reference>
 
-        <reference name="before_body_end">
-            <block type="core/template" name="google.remarketing" template="tracking/remarketing.phtml" />
-        </reference>
-
         <reference name="after_body_start">
             <block type="core/template" name="tracking.metrics" template="tracking/metrics.phtml" />
         </reference>
