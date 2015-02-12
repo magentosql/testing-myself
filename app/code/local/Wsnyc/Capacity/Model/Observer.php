@@ -46,8 +46,6 @@ class Wsnyc_Capacity_Model_Observer {
         $invoice = $observer->getEvent()->getInvoice();
         if (!$this->_shouldSendInfo($invoice)) {
             //shipment already send or not yet shipped
-            Mage::log('shipment already send or not yet shipped', null, 'capacity.log');
-            Mage::log('---------------------------', null, 'capacity.log');
             return;
         }        
         $filename = $this->_prepareData($invoice);
@@ -146,7 +144,7 @@ class Wsnyc_Capacity_Model_Observer {
     /**
      * Upload data to the server 
      * 
-     * @param Mage_Sales_Model_Order_Shipment $filename
+     * @param string $filename
      * @return boolean
      */
     protected function _sendData($filename) {
