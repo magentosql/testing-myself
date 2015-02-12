@@ -22,7 +22,7 @@
 
     <ul class="seo-links">
         <?php foreach($this->getLinks() as $page):?>
-        <li><a href="<?php echo $this->getPageUrl($page);?>"><?php echo $page->getTitle();?></a></li>
+        <li><a href="<?php echo $this->getPageUrl($page);?>"><?php echo $page->getContentHeading();?></a></li>
         <?php endforeach;?>        
     </ul>
 </div>
