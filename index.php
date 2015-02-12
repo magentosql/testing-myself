@@ -79,11 +79,15 @@ ini_set('display_errors', 1);
 
 umask(0);
 
-/* Store or website code */
-$mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
+if(strpos($_SERVER['HTTP_HOST'], 'wholesale') !== false) {
+    $mageRunCode = 'wholesaledefault';
+} else {
+    $mageRunCode = 'default';
+}
+//$mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
 
 /* Run store or run website */
-$mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
+//$mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 
-Mage::run($mageRunCode, $mageRunType);
+Mage::run($mageRunCode, 'store');
 

@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_NoShippingNeeded>
+            <version>0.1.0</version>
+        </Wsnyc_NoShippingNeeded>
+    </modules>
+    <global>
+        <blocks>
+            <noshippingneeded>
+                <class>Wsnyc_NoShippingNeeded_Block</class>
+            </noshippingneeded>
+            <checkout>
+                <rewrite>
+                    <onepage>Wsnyc_NoShippingNeeded_Block_Checkout_Onepage</onepage>
+                </rewrite>
+            </checkout>
+        </blocks>
+        <helpers>
+            <noshippingneeded>
+                <class>Wsnyc_NoShippingNeeded_Helper</class>
+            </noshippingneeded>
+        </helpers>
+        <models>
+            <noshippingneeded>
+                <class>Wsnyc_NoShippingNeeded_Model</class>
+            </noshippingneeded>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_postdispatch_checkout_onepage_saveBilling>
+                <observers>
+                    <ignoreshippingmethod>
+                        <class>noshippingneeded/observer</class>
+                        <method>checkIfShippingMethodStepIsIgnored</method>
+                    </ignoreshippingmethod>
+                </observers>
+            </controller_action_postdispatch_checkout_onepage_saveBilling> 
+            <controller_action_postdispatch_checkout_onepage_savePayment>
+                <observers>
+                    <ignoreshippingmethod>
+                        <class>noshippingneeded/observer</class>
+                        <method>setNoShipping</method>
+                    </ignoreshippingmethod>
+                </observers>
+            </controller_action_postdispatch_checkout_onepage_savePayment> 
+        </events>
+    </frontend>
+    <default>
+        <carriers>
+            <noshippingneeded>
+                <active>0</active>
+                <model>noshippingneeded/carrier_noshippingneeded</model>
+                <name>No Shipping Needed</name>
+                <title>No Shipping Needed</title>
+                <description>No Shipping Needed</description>
+                <sort_order>0</sort_order>
+            </noshippingneeded>
+        </carriers>
+    </default>
+</config> 

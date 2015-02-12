@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <adminhtml_customer_edit>
+        <reference name="head">
+            <action method="addJs">
+                <file>wsnyc/adminCustomerEdit.js</file>
+            </action>
+        </reference>
+    </adminhtml_customer_edit>
+</layout>

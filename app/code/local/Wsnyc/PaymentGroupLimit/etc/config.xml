@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_PaymentGroupLimit>
+            <version>0.2.0</version>
+        </Wsnyc_PaymentGroupLimit>
+    </modules>
+    <global>
+        <helpers>
+            <paymentgrouplimit>
+                <class>Wsnyc_PaymentGroupLimit_Helper</class>
+            </paymentgrouplimit>
+        </helpers>
+        <models>
+            <paymentgrouplimit>
+                <class>Wsnyc_PaymentGroupLimit_Model</class>
+            </paymentgrouplimit>
+        </models>
+        <events>
+            <payment_method_is_active>
+                <observers>
+                    <customergroupcheck>
+                        <class>paymentgrouplimit/observer</class>
+                        <method>onPaymentMethodIsActive</method>
+                    </customergroupcheck>
+                </observers>
+            </payment_method_is_active>
+        </events>
+    </global>
+</config> 

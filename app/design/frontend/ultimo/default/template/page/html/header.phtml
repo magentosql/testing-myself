@@ -133,11 +133,12 @@
             <?php if ($tmp = $this->getChildHtml('block_header_top_help')): ?>
             	<div class="block_header_top_help item item-left"><?php echo $tmp; ?></div>
             <?php endif; ?>
-            <div class="item item-right hide-below-960">
-                <?php echo $this->getChildHtml('promomodals-links'); ?>
-                <?php echo $this->getChildHtml('flash_promo_counter');?>
-            </div>
-            
+            <?php if(!Mage::getStoreConfig('advanced/modules_disable_output/Wsnyc_PromoModals')) : ?>
+                <div class="item item-right hide-below-960">
+                    <?php echo $this->getChildHtml('promomodals-links'); ?>
+                    <?php echo $this->getChildHtml('flash_promo_counter');?>
+                </div>
+            <?php endif; ?>
             <?php echo $this->getChildHtml('currency'); ?>
             <?php echo $this->getChildHtml('store_language'); ?>
             <?php if ($tmp = $this->getChildHtml('block_header_top_right')): ?>

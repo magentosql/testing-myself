@@ -1,0 +1,66 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if (!$this->getQuote()->isVirtual()): ?>
+    <?php echo $this->helper('giftmessage/message')->getInline('onepage_checkout', $this->getQuote(), $this->getDontDisplayContainer()) ?>
+<?php endif; ?>
+
+<div class="onestepcheckout-comment">
+    <label for="onestepcheckout_comment"><?php echo $this->__('Add Comments for The Laundress');?></label><br/>
+    <textarea id="onestepcheckout_comment" name="laundress_comment" col="15"></textarea>
+</div>
+
+<?php if(Mage::getStoreConfigFlag('carriers/billtoaccountnumber/active')) : ?>
+    
+    <script type="text/javascript">
+        jQuery('label[for="s_method_billtoaccountnumber_billtoaccountnumber"]').after('<div id="billtoaccountnumber-input"><input type="text" name="third_party_shipping_number" placeholder="<?php echo $this->__("Insert Third Party Shipping Number Here") ?>" /></div>');
+        var thirdPartyNumberContainer = jQuery('#billtoaccountnumber-input');
+        var thirdPartyNumber = jQuery('#billtoaccountnumber-input input');
+        jQuery('input[name="shipping_method"]').change(function() {
+            if(jQuery('#s_method_billtoaccountnumber_billtoaccountnumber').attr("checked")) {
+                thirdPartyNumberContainer.show();
+                thirdPartyNumber.addClass('required-entry');
+            } else {
+                thirdPartyNumberContainer.hide();
+                thirdPartyNumber.removeClass('required-entry');
+            }
+        });
+        thirdPartyNumber.blur(function() {
+            if(thirdPartyNumber.val() != '') {
+                thirdPartyNumberProcessing(thirdPartyNumber.val());
+            }
+        });
+        function thirdPartyNumberProcessing(value) {
+            jQuery.ajax({
+                <?php if(Mage::app()->getStore()->isCurrentlySecure()) : ?>
+                    url: "<?php echo Mage::getUrl('billtoaccountnumber/index/process/',array('_forced_secure'=>true)); ?>number/" + value,
+                <?php else : ?>
+                    url: "<?php echo Mage::getUrl('billtoaccountnumber/index/process/'); ?>number/" + value,
+                <?php endif; ?>
+            });
+        }
+    </script>
+<?php endif; ?>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_PercentPriceShipping>
+            <version>0.1.0</version>
+        </Wsnyc_PercentPriceShipping>
+    </modules>
+    <global>
+        <helpers>
+            <percentpriceshipping>
+                <class>Wsnyc_PercentPriceShipping_Helper</class>
+            </percentpriceshipping>
+        </helpers>
+        <models>
+            <percentpriceshipping>
+                <class>Wsnyc_PercentPriceShipping_Model</class>
+            </percentpriceshipping>
+        </models>
+    </global>    
+    <default>
+        <carriers>
+            <percentageprice>
+                <active>0</active>
+                <price>1</price>
+                <model>percentpriceshipping/carrier_percentageprice</model>
+                <name>Percentage Price</name>
+                <title>Percentage Price</title>
+                <description>This is a percentage of a subtotal</description>
+                <sort_order>0</sort_order>
+            </percentageprice>
+        </carriers>
+    </default>
+</config> 
