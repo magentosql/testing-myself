@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_SeoSubfooter>
-            <version>0.5</version>
+            <version>0.5.1</version>
         </Wsnyc_SeoSubfooter>
     </modules>
     <global>
