@@ -17,12 +17,12 @@ class Wsnyc_PaymentGroupLimit_Model_Observer {
             }
         } elseif ($method->getCode() == 'checkmo') { 
             $availableForGroups = explode(',', Mage::getStoreConfig('payment/checkmo/customergroups'));
-            if(!in_array($customerGroupId, $availableForGroups)) {
+            if(!in_array($customerGroupId, $availableForGroups) && $customerGroupId != 0) {
                 $result->isAvailable = false;
             }
         } elseif ($method->getCode() == 'authorizenet') { 
             $availableForGroups = explode(',', Mage::getStoreConfig('payment/authorizenet/customergroups'));
-            if(!in_array($customerGroupId, $availableForGroups)) {
+            if(!in_array($customerGroupId, $availableForGroups) && $customerGroupId != 0) {
                 $result->isAvailable = false;
             }
         }
