@@ -2,15 +2,20 @@
 
 class Wsnyc_LeavingPage_Helper_Data extends Mage_Core_Helper_Abstract {
 
+    const XML_CONF_LENGTH = 'promo/leavingpage/length';
+    const XML_CONF_PREFIX = 'promo/leavingpage/prefix';
+    const XML_CONF_SUFFIX = 'promo/leavingpage/suffix';
+    const XML_CONF_RULE = 'promo/leavingpage/rule_id';
+
     public function generatePromoCode() {
-        $rule = Mage::getModel('salesrule/rule')->load(Mage::getStoreConfig('wsnyc/leavingpage/rule_id'));
+        $rule = Mage::getModel('salesrule/rule')->load(Mage::getStoreConfig(self::XML_CONF_RULE));
 
         $generator = Mage::getModel('salesrule/coupon_massgenerator');
         $generator->setFormat(Mage_SalesRule_Helper_Coupon::COUPON_FORMAT_ALPHANUMERIC);
-        $generator->setDash(4);
-        $generator->setLength(12);
-        $generator->setPrefix('LV-');
-        $generator->setSuffix('');
+        $generator->setDash(null);
+        $generator->setLength(Mage::getStoreConfig(self::XML_CONF_LENGTH));
+        $generator->setPrefix(Mage::getStoreConfig(self::XML_CONF_PREFIX));
+        $generator->setSuffix(Mage::getStoreConfig(self::XML_CONF_SUFFIX));
 
         $rule->setCouponCodeGenerator($generator);
         $rule->setCouponType(Mage_SalesRule_Model_Rule::COUPON_TYPE_AUTO);
