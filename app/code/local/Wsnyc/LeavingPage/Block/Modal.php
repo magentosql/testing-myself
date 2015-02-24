@@ -20,6 +20,16 @@ class Wsnyc_LeavingPage_Block_Modal extends Mage_Core_Block_Template {
             return false;
         }
 
+        //generate only for new customers
+        if (Mage::getStoreConfig('promo/leavingpage/only_new') && Mage::getSingleton('customer/session')->isLoggedIn()) {
+            return false;
+        }
+
+        //check if customer already used this promotion
+        if (Mage::helper('leavingpage')->couponUsed()) {
+            return false;
+        }
+
         return true;
     }
 }
