@@ -1,73 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
-	<default>
+    <default>
 
-		<reference name="head">
+        <reference name="head">
 
             <!-- Add a CSS file called local.css. This is so we can override the default gravitywell.css changes in other theme variants -->
 
-			<!-- jQuery -->
-			<action method="addJs"><script>infortis/jquery/jquery-1.7.2.min.js</script></action>
-			<action method="addJs"><file>infortis/jquery/jquery-noconflict.js</file></action>
+            <!-- jQuery -->
+            <action method="addJs">
+                <script>infortis/jquery/jquery-1.7.2.min.js</script>
+            </action>
+            <action method="addJs">
+                <file>infortis/jquery/jquery-noconflict.js</file>
+            </action>
 
-			<!-- jQuery plugins -->
-			<action method="addJs"><script>infortis/jquery/plugins/jquery.easing.1.3.js</script></action>
-			<action method="addJs"><script>infortis/jquery/plugins/jquery.flexslider-min.js</script></action>
-			<action method="addJs"><script>infortis/jquery/plugins/tabs.min.js</script></action>
-			<action method="addJs"><script>infortis/jquery/plugins/jquery.accordion.js</script></action>
-            <action method="addJs"><script>ultimo/jquery/plugins/jquery.hover.js</script></action>
-            <action method="addJs"><script>slidesjs/jquery.slides.min.js</script></action>
-            <action method="addJs"><script>socialshare/share.js</script></action>
+            <!-- jQuery plugins -->
+            <action method="addJs">
+                <script>infortis/jquery/plugins/jquery.easing.1.3.js</script>
+            </action>
+            <action method="addJs">
+                <script>infortis/jquery/plugins/jquery.flexslider-min.js</script>
+            </action>
+            <action method="addJs">
+                <script>infortis/jquery/plugins/tabs.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>infortis/jquery/plugins/jquery.accordion.js</script>
+            </action>
+            <action method="addJs">
+                <script>ultimo/jquery/plugins/jquery.hover.js</script>
+            </action>
+            <action method="addJs">
+                <script>slidesjs/jquery.slides.min.js</script>
+            </action>
+            <action method="addJs">
+                <script>socialshare/share.js</script>
+            </action>
 
-			<!-- Other JS scripts -->
-            <action method="addJs"><script>infortis/jquery/plugins/jquery.accordion.js</script></action>
-            <action method="addJs"><script>ultimo/jquery/plugins/jquery.hover.js</script></action>
-            <action method="addJs"><script>masonry/masonry.min.js</script></action>
-			<!--<action method="addItem"><type>skin_js</type><name>js/scripts.js</name></action>-->
-			<action ifconfig="ultimo/mainmenu/wide_menu" method="removeItem"><type>js</type><name>varien/menu.js</name><params/></action>
+            <!-- Other JS scripts -->
+            <action method="addJs">
+                <script>infortis/jquery/plugins/jquery.accordion.js</script>
+            </action>
+            <action method="addJs">
+                <script>ultimo/jquery/plugins/jquery.hover.js</script>
+            </action>
+            <action method="addJs">
+                <script>masonry/masonry.min.js</script>
+            </action>
+            <!--<action method="addItem"><type>skin_js</type><name>js/scripts.js</name></action>-->
+            <action ifconfig="ultimo/mainmenu/wide_menu" method="removeItem">
+                <type>js</type>
+                <name>varien/menu.js</name>
+                <params/>
+            </action>
 
-			<!-- CSS -->
-			<action method="addItem"><type>skin_css</type><name>css/fonts.css</name><params/></action>
-			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-nav.css</name><params/></action>
-			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/generic-cck.css</name><params/></action>
-			<action method="addItem"><type>skin_css</type><name>css/infortis/_shared/itemslider.css</name><params/></action>
-            <action method="addItem"><type>skin_css</type><name>css/skin.css</name><params/></action>
-			<action method="addItem"><type>skin_css</type><name>css/skin.css</name><params/></action>
-            <action method="addItem"><type>skin_css</type><name>css/colorbox.css</name><params/></action>
+            <!-- CSS -->
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/fonts.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/infortis/_shared/generic-nav.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/infortis/_shared/generic-cck.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/infortis/_shared/itemslider.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/skin.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/skin.css</name>
+                <params/>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/colorbox.css</name>
+                <params/>
+            </action>
 
-			<action method="addItem" ifconfig="ultimo/mainmenu/standard_menu"><type>skin_css</type><name>css/menu-classic.css</name><params/></action>
-			<action method="addItem" ifconfig="ultimo/mainmenu/wide_menu"><type>skin_css</type><name>css/menu-wide.css</name><params/></action>
+            <action method="addItem" ifconfig="ultimo/mainmenu/standard_menu">
+                <type>skin_css</type>
+                <name>css/menu-classic.css</name>
+                <params/>
+            </action>
+            <action method="addItem" ifconfig="ultimo/mainmenu/wide_menu">
+                <type>skin_css</type>
+                <name>css/menu-wide.css</name>
+                <params/>
+            </action>
 
-			<!-- CSS for IE -->
-			<action method="addCssIe"><css>css/styles-ie.css</css></action>
-			<action method="addItem"><type>skin_css</type><name>css/styles-ie7.css</name><params/><if>lte IE 7</if></action>
-			<action method="addItem"><type>skin_css</type><name>css/styles-ie8.css</name><params/><if>lte IE 8</if></action>
+            <!-- CSS for IE -->
+            <action method="addCssIe">
+                <css>css/styles-ie.css</css>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/styles-ie7.css</name>
+                <params/>
+                <if>lte IE 7</if>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/styles-ie8.css</name>
+                <params/>
+                <if>lte IE 8</if>
+            </action>
 
-			<action method="addItem"><type>skin_js</type><name>flipclock/flipclock.js</name></action>
-			<action method="addItem"><type>skin_css</type><name>flipclock/flipclock.css</name></action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>flipclock/flipclock.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>flipclock/flipclock.css</name>
+            </action>
 
-		</reference>
+        </reference>
 
 
-		<!-- Root containers ====================================================================== -->
-		<reference name="root">
-			<action method="addBodyClass" ifconfig="ultimo_design/effects/shadow">
-				<classname>shadow</classname>
-			</action>
+        <!-- Root containers ====================================================================== -->
+        <reference name="root">
+            <action method="addBodyClass" ifconfig="ultimo_design/effects/shadow">
+                <classname>shadow</classname>
+            </action>
 
-			<block type="core/text_list" name="preface" as="preface" translate="label">
+            <block type="core/text_list" name="preface" as="preface" translate="label">
                 <label>Page Preface</label>
             </block>
-			<block type="core/text_list" name="postscript" as="postscript" translate="label">
+            <block type="core/text_list" name="postscript" as="postscript" translate="label">
                 <label>Page Postscript</label>
             </block>
-		</reference>
+        </reference>
 
 
-		<!-- Remove sidebar blocks ====================================================================== -->
+        <!-- Remove sidebar blocks ====================================================================== -->
 
-		<!-- Uncomment these tags to remove selected blocks -->
-		<!--
+        <!-- Uncomment these tags to remove selected blocks -->
+        <!--
 		<remove name="right.reports.product.viewed" />
 		<remove name="left.reports.product.viewed" />
 		<remove name="catalog.compare.sidebar"/>
@@ -78,222 +160,332 @@
 		<remove name="paypal.partner.right.logo"/>
 		<remove name="reorder"/>
 		-->
-		<remove name="right.permanent.callout"/>
-		<remove name="left.permanent.callout"/>
-		<remove name="product.clone_prices"/>
+        <remove name="right.permanent.callout"/>
+        <remove name="left.permanent.callout"/>
+        <remove name="product.clone_prices"/>
 
 
-		<!-- Right ====================================================================== -->
-		<reference name="right">
+        <!-- Right ====================================================================== -->
+        <reference name="right">
 
-			<action method="unsetChild"><name>cart_sidebar</name></action>
-			<action method="unsetChild"><name>catalog.compare.sidebar</name></action>
-			<action method="unsetChild"><name>right.reports.product.compared</name></action>
-			<action method="unsetChild"><name>right.reports.product.viewed</name></action>
-			<action method="unsetChild"><name>wishlist</name></action>
-			<action method="unsetChild"><name>sale.reorder.sidebar</name></action>
-			<action method="unsetChild"><name>right.poll</name></action>
-			<action method="unsetChild"><name>paypal.partner.right.logo</name></action>
+            <action method="unsetChild">
+                <name>cart_sidebar</name>
+            </action>
+            <action method="unsetChild">
+                <name>catalog.compare.sidebar</name>
+            </action>
+            <action method="unsetChild">
+                <name>right.reports.product.compared</name>
+            </action>
+            <action method="unsetChild">
+                <name>right.reports.product.viewed</name>
+            </action>
+            <action method="unsetChild">
+                <name>wishlist</name>
+            </action>
+            <action method="unsetChild">
+                <name>sale.reorder.sidebar</name>
+            </action>
+            <action method="unsetChild">
+                <name>right.poll</name>
+            </action>
+            <action method="unsetChild">
+                <name>paypal.partner.right.logo</name>
+            </action>
 
-			<!-- Custom static blocks -->
-			<block type="cms/block" name="block_right_top" before="-">
-				<action method="setBlockId"><block_id>block_right_top</block_id></action>
-			</block>
+            <!-- Custom static blocks -->
+            <block type="cms/block" name="block_right_top" before="-">
+                <action method="setBlockId">
+                    <block_id>block_right_top</block_id>
+                </action>
+            </block>
 
-			<block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml" />
+            <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist"
+                   template="wishlist/sidebar.phtml"/>
 
-			<block type="cms/block" name="block_right_bottom" after="-">
-				<action method="setBlockId"><block_id>block_right_bottom</block_id></action>
-			</block>
-
-		</reference>
-
-
-		<!-- Left ====================================================================== -->
-		<reference name="left">
-
-			<remove name="left.newsletter"/> <!-- Move newsletter to the footer -->
-			<action method="unsetChild"><name>tags_popular</name></action>
-
-			<block type="reports/product_viewed" name="left.reports.product.viewed" template="reports/product_viewed.phtml" />
-
-			<block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>
+            <block type="cms/block" name="block_right_bottom" after="-">
+                <action method="setBlockId">
+                    <block_id>block_right_bottom</block_id>
+                </action>
+            </block>
 
         </reference>
 
 
-		<!-- Header ====================================================================== -->
-		<reference name="header">
+        <!-- Left ====================================================================== -->
+        <reference name="left">
 
-			<!-- Add mini cart to the header -->
-			<!-- IMPORTANT: new template file -->
-			<block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/mini.phtml" before="-">
-				<action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
-				<action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
-				<action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
-				<block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
-					<label>Shopping Cart Sidebar Extra Actions</label>
-				</block>
-				<block type="cms/block" name="block_mini_cart_above_products">
-					<action method="setBlockId"><block_id>block_mini_cart_above_products</block_id></action>
-				</block>
-			</block>
+            <remove name="left.newsletter"/>
+            <!-- Move newsletter to the footer -->
+            <action method="unsetChild">
+                <name>tags_popular</name>
+            </action>
 
-			<!-- Add currency switcher to the header -->
-			<block type="directory/currency" name="currency" template="directory/currency.phtml"/>
+            <block type="reports/product_viewed" name="left.reports.product.viewed"
+                   template="reports/product_viewed.phtml"/>
 
-			<!--<block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+            <block type="tag/popular" name="tags_popular" template="tag/popular.phtml"/>
+
+        </reference>
+
+
+        <!-- Header ====================================================================== -->
+        <reference name="header">
+
+            <!-- Add mini cart to the header -->
+            <!-- IMPORTANT: new template file -->
+            <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/mini.phtml" before="-">
+                <action method="addItemRender">
+                    <type>simple</type>
+                    <block>checkout/cart_item_renderer</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>grouped</type>
+                    <block>checkout/cart_item_renderer_grouped</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>configurable</type>
+                    <block>checkout/cart_item_renderer_configurable</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label"
+                       module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+                <block type="cms/block" name="block_mini_cart_above_products">
+                    <action method="setBlockId">
+                        <block_id>block_mini_cart_above_products</block_id>
+                    </action>
+                </block>
+            </block>
+
+            <!-- Add currency switcher to the header -->
+            <block type="directory/currency" name="currency" template="directory/currency.phtml"/>
+
+            <!--<block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
 			<action ifconfig="ultimo/header/compare" method="unsetChild"><name>catalog.compare.sidebar</name></action>-->
 
-			<!-- Custom top links - override default Magento top links -->
-			<block type="cms/block" name="block_header_top_links">
-				<action method="setBlockId"><block_id>block_header_top_links</block_id></action>
-			</block>
+            <!-- Custom top links - override default Magento top links -->
+            <block type="cms/block" name="block_header_top_links">
+                <action method="setBlockId">
+                    <block_id>block_header_top_links</block_id>
+                </action>
+            </block>
 
-			<!-- Custom static blocks -->
-			<block type="cms/block" name="block_header_top_links2">
-				<action method="setBlockId"><block_id>block_header_top_links2</block_id></action>
-			</block>
+            <!-- Custom static blocks -->
+            <block type="cms/block" name="block_header_top_links2">
+                <action method="setBlockId">
+                    <block_id>block_header_top_links2</block_id>
+                </action>
+            </block>
 
-			<block type="cms/block" name="block_header_top_help">
-				<action method="setBlockId"><block_id>block_header_top_help</block_id></action>
-			</block>
+            <block type="cms/block" name="block_header_top_help">
+                <action method="setBlockId">
+                    <block_id>block_header_top_help</block_id>
+                </action>
+            </block>
 
-			<block type="cms/block" name="block_header_links_upper">
-				<action method="setBlockId"><block_id>block_header_links_upper</block_id></action>
-			</block>
+            <block type="cms/block" name="block_header_links_upper">
+                <action method="setBlockId">
+                    <block_id>block_header_links_upper</block_id>
+                </action>
+            </block>
 
-			<block type="cms/block" name="block_header_top_right">
-				<action method="setBlockId"><block_id>block_header_top_right</block_id></action>
-			</block>
+            <block type="cms/block" name="block_header_top_right">
+                <action method="setBlockId">
+                    <block_id>block_header_top_right</block_id>
+                </action>
+            </block>
 
-			<block type="core/template" name="flash_promo_counter" template="page/html/header_counter.phtml" />
+            <block type="core/template" name="flash_promo_counter" template="page/html/header_counter.phtml"/>
 
-		</reference>
-
-
-		<!-- Top links (user menu) ====================================================================== -->
-		<reference name="top.links">
-
-			<!-- Remove "checkout" and "cart" links -->
-			<remove name="checkout_cart_link" />
-			<remove name="wishlist_link" />
-                        <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
-
-		</reference>
-
-		<!-- Main menu ====================================================================== -->
-		<reference name="top.menu">
-
-			<action method="unsetChild"><name>catalog.topnav</name></action>
-			<block type="ultimo/navigation" name="catalog.topnav.menu" template="page/html/topmenu.phtml"/>
-
-                </reference>
-
-		<reference name="catalog.topnav.menu">
-
-                        <block type="cms/block" name="block_header_nav_home">
-				<action method="setBlockId"><block_id>block_header_nav_home</block_id></action>
-			</block>
-			<block type="cms/block" name="block_header_nav_fabric">
-				<action method="setBlockId"><block_id>block_header_nav_fabric</block_id></action>
-			</block>
-                        <block type="cms/block" name="block_header_nav_laundry_featured">
-				<action method="setBlockId"><block_id>block_header_nav_laundry_featured</block_id></action>
-			</block>
-                        <block type="cms/block" name="block_header_nav_whatsnew">
-				<action method="setBlockId"><block_id>block_header_nav_whatsnew</block_id></action>
-			</block>
-                        <block type="cms/block" name="block_header_nav_featured">
-				<action method="setBlockId"><block_id>block_header_nav_featured</block_id></action>
-			</block>
-
-		</reference>
-
-        <reference name="after_body_start">
-            <block type="core/template" name="tracking.metrics" template="tracking/metrics.phtml" />
         </reference>
 
 
-		<!-- Add blocks to the footer ====================================================================== -->
-		<reference name="footer">
+        <!-- Top links (user menu) ====================================================================== -->
+        <reference name="top.links">
 
-			<!-- Move newsletter to the footer -->
+            <!-- Remove "checkout" and "cart" links -->
+            <remove name="checkout_cart_link"/>
+            <remove name="wishlist_link"/>
+            <action method="removeLinkByUrl">
+                <url helper="customer/getLoginUrl"/>
+            </action>
+
+        </reference>
+
+        <!-- Main menu ====================================================================== -->
+        <reference name="top.menu">
+
+            <action method="unsetChild">
+                <name>catalog.topnav</name>
+            </action>
+            <block type="ultimo/navigation" name="catalog.topnav.menu" template="page/html/topmenu.phtml"/>
+
+        </reference>
+
+        <reference name="catalog.topnav.menu">
+
+            <block type="cms/block" name="block_header_nav_home">
+                <action method="setBlockId">
+                    <block_id>block_header_nav_home</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_header_nav_fabric">
+                <action method="setBlockId">
+                    <block_id>block_header_nav_fabric</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_header_nav_laundry_featured">
+                <action method="setBlockId">
+                    <block_id>block_header_nav_laundry_featured</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_header_nav_whatsnew">
+                <action method="setBlockId">
+                    <block_id>block_header_nav_whatsnew</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_header_nav_featured">
+                <action method="setBlockId">
+                    <block_id>block_header_nav_featured</block_id>
+                </action>
+            </block>
+
+        </reference>
+
+        <reference name="after_body_start">
+            <block type="core/template" name="tracking.metrics" template="tracking/metrics.phtml"/>
+        </reference>
+
+
+        <!-- Add blocks to the footer ====================================================================== -->
+        <reference name="footer">
+
+            <!-- Move newsletter to the footer -->
             <block type="newsletter/subscribe" name="newsletter" as="newsletter" template="newsletter/subscribe.phtml"/>
 
-			<!-- Custom footer links - override default Magento footer links (id: footer_links) -->
-			<block type="cms/block" name="block_footer_links">
-				<action method="setBlockId"><block_id>block_footer_links</block_id></action>
-			</block>
-
-			<!-- Custom static blocks -->
-			<block type="cms/block" name="block_footer_links2">
-				<action method="setBlockId"><block_id>block_footer_links2</block_id></action>
-			</block>
-			<block type="cms/block" name="block_footer_primary_bottom_left">
-                <action method="setBlockId"><block_id>block_footer_primary_bottom_left</block_id></action>
-            </block>
-			<block type="cms/block" name="block_footer_primary_bottom_right">
-                <action method="setBlockId"><block_id>block_footer_primary_bottom_right</block_id></action>
+            <!-- Custom footer links - override default Magento footer links (id: footer_links) -->
+            <block type="cms/block" name="block_footer_links">
+                <action method="setBlockId">
+                    <block_id>block_footer_links</block_id>
+                </action>
             </block>
 
-			<block type="cms/block" name="block_footer_column1">
-                <action method="setBlockId"><block_id>block_footer_column1</block_id></action>
+            <!-- Custom static blocks -->
+            <block type="cms/block" name="block_footer_links2">
+                <action method="setBlockId">
+                    <block_id>block_footer_links2</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_column2">
-                <action method="setBlockId"><block_id>block_footer_column2</block_id></action>
+            <block type="cms/block" name="block_footer_primary_bottom_left">
+                <action method="setBlockId">
+                    <block_id>block_footer_primary_bottom_left</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_column3">
-                <action method="setBlockId"><block_id>block_footer_column3</block_id></action>
-            </block>
-			<block type="cms/block" name="block_footer_column4">
-                <action method="setBlockId"><block_id>block_footer_column4</block_id></action>
-            </block>
-			<block type="cms/block" name="block_footer_column5">
-                <action method="setBlockId"><block_id>block_footer_column5</block_id></action>
-            </block>
-			<block type="cms/block" name="block_footer_column6">
-                <action method="setBlockId"><block_id>block_footer_column6</block_id></action>
+            <block type="cms/block" name="block_footer_primary_bottom_right">
+                <action method="setBlockId">
+                    <block_id>block_footer_primary_bottom_right</block_id>
+                </action>
             </block>
 
-			<block type="cms/block" name="block_footer_row2_column1">
-                <action method="setBlockId"><block_id>block_footer_row2_column1</block_id></action>
+            <block type="cms/block" name="block_footer_column1">
+                <action method="setBlockId">
+                    <block_id>block_footer_column1</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_row2_column2">
-                <action method="setBlockId"><block_id>block_footer_row2_column2</block_id></action>
+            <block type="cms/block" name="block_footer_column2">
+                <action method="setBlockId">
+                    <block_id>block_footer_column2</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_row2_column3">
-                <action method="setBlockId"><block_id>block_footer_row2_column3</block_id></action>
+            <block type="cms/block" name="block_footer_column3">
+                <action method="setBlockId">
+                    <block_id>block_footer_column3</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_row2_column4">
-                <action method="setBlockId"><block_id>block_footer_row2_column4</block_id></action>
+            <block type="cms/block" name="block_footer_column4">
+                <action method="setBlockId">
+                    <block_id>block_footer_column4</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_row2_column5">
-                <action method="setBlockId"><block_id>block_footer_row2_column5</block_id></action>
+            <block type="cms/block" name="block_footer_column5">
+                <action method="setBlockId">
+                    <block_id>block_footer_column5</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_row2_column6">
-                <action method="setBlockId"><block_id>block_footer_row2_column6</block_id></action>
+            <block type="cms/block" name="block_footer_column6">
+                <action method="setBlockId">
+                    <block_id>block_footer_column6</block_id>
+                </action>
             </block>
 
-			<block type="cms/block" name="block_footer_payment">
-                <action method="setBlockId"><block_id>block_footer_payment</block_id></action>
+            <block type="cms/block" name="block_footer_row2_column1">
+                <action method="setBlockId">
+                    <block_id>block_footer_row2_column1</block_id>
+                </action>
             </block>
-			<block type="cms/block" name="block_footer_bottom">
-                <action method="setBlockId"><block_id>block_footer_bottom</block_id></action>
+            <block type="cms/block" name="block_footer_row2_column2">
+                <action method="setBlockId">
+                    <block_id>block_footer_row2_column2</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_footer_row2_column3">
+                <action method="setBlockId">
+                    <block_id>block_footer_row2_column3</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_footer_row2_column4">
+                <action method="setBlockId">
+                    <block_id>block_footer_row2_column4</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_footer_row2_column5">
+                <action method="setBlockId">
+                    <block_id>block_footer_row2_column5</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_footer_row2_column6">
+                <action method="setBlockId">
+                    <block_id>block_footer_row2_column6</block_id>
+                </action>
             </block>
 
-			<block type="core/template" name="footer.additional" template="page/html/footer_additional.phtml">
-				<block type="cms/block" name="block_edgebox_right">
-					<action method="setBlockId"><block_id>block_edgebox_right</block_id></action>
-				</block>
-				<block type="cms/block" name="block_edgebox_left">
-					<action method="setBlockId"><block_id>block_edgebox_left</block_id></action>
-				</block>
-				<block type="cms/block" name="block_edgebox_bottom_right">
-					<action method="setBlockId"><block_id>block_edgebox_bottom_right</block_id></action>
-				</block>
-			</block>
-		</reference>
+            <block type="cms/block" name="block_footer_payment">
+                <action method="setBlockId">
+                    <block_id>block_footer_payment</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="block_footer_bottom">
+                <action method="setBlockId">
+                    <block_id>block_footer_bottom</block_id>
+                </action>
+            </block>
+
+            <block type="core/template" name="footer.additional" template="page/html/footer_additional.phtml">
+                <block type="cms/block" name="block_edgebox_right">
+                    <action method="setBlockId">
+                        <block_id>block_edgebox_right</block_id>
+                    </action>
+                </block>
+                <block type="cms/block" name="block_edgebox_left">
+                    <action method="setBlockId">
+                        <block_id>block_edgebox_left</block_id>
+                    </action>
+                </block>
+                <block type="cms/block" name="block_edgebox_bottom_right">
+                    <action method="setBlockId">
+                        <block_id>block_edgebox_bottom_right</block_id>
+                    </action>
+                </block>
+            </block>
+        </reference>
+
+        <reference name="before_body_end">
+            <block type="core/template" name="livechat" template="livechat/script.phtml" />
+        </reference>
 
     </default>
 

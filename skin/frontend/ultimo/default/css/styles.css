@@ -3824,3 +3824,7 @@ pading-left:5px;
 }
 #billtoaccountnumber-input {display: none; margin: 5px 0 0 19px;}
 #billtoaccountnumber-input input {width: 120px; padding: 1px 3px;}
+
+.std.blurb {
+    max-width: calc(100% - 2*168px);
+}
