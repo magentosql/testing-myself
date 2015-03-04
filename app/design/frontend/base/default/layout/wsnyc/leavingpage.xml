@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss" ifconfig="promo/leavingpage/active">
+                <file>css/wsnyc/leavingpage.css</file>
+            </action>
+            <action method="addJs" ifconfig="promo/leavingpage/active">
+                <script>wsnyc/leaving-page.js</script>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="leavingpage/modal" name="leavingpage-modal" as="leavingpage-modal" after="-" />
+        </reference>
+    </default>
+</layout>

@@ -1,0 +1,39 @@
+<?php $_block = $this->getCmsBlock();
+$_code = Mage::helper('leavingpage')->generatePromoCode();
+?>
+<div style='display:none'>
+    <div id="page_leave_modal" class="pageleave-popup">
+        <div>
+            <div>
+                <div class="logo-wrapper v-item">
+                    <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
+                </div>
+
+                <div class="pageleave-cms-content">
+                    <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_block->getContent()) ?>
+                </div>
+                
+                <div class="pageleave-code"><?php echo $_code ?></div>
+                
+                <div class="pageleave-button">
+                    <button data-href="<?php echo Mage::helper('wsnyc_couponparam')->generateCartCodeUrl($_code) ?>" class="btn button btn-inline effect modal-close" id="stay-on-page">
+                        <span>
+                            <span><?php echo $this->__('Redeem Now'); ?></span>
+                        </span>
+                    </button>
+                </div>
+
+                <div class="social-media-icon-set">
+                    <a href="http://www.pinterest.com/thelaundressny/"><i class="fa fa-pinterest"></i></a>
+                    <a href="https://www.facebook.com/thelaundressnyc"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/TheLaundressNY"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.youtube.com/user/TheLaundressnyc"><i class="fa fa-youtube"></i></a>
+                    <a href="http://blog.thelaundress.com/wordpress/"><i class="fa fa-rss"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="#page_leave_modal" class="openPromoPopup cboxElement"></a>

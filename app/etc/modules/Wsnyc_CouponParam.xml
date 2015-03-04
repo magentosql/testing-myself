@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_CouponParam>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends></depends>
+        </Wsnyc_CouponParam>
+    </modules>
+</config>
