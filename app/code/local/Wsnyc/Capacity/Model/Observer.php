@@ -53,6 +53,11 @@ class Wsnyc_Capacity_Model_Observer {
         $invoice->getOrder()->setCapacitySendStatus(1)->save();
     }
     
+    public function handleShipmentResponse() {
+        $shipment = Mage::getModel('capacity/shipment');
+        $shipment->handleShipmentResponse();
+    }
+    
     /**
      * Prepare data
      * 

@@ -115,6 +115,17 @@ class Wsnyc_Capacity_Model_Ftp {
         return true;
     }
     
+    public function getDirContent($dir) {
+        $this->setFtpPasv();
+        return ftp_nlist($this->_ftpConnection, $dir);
+    }
+    
+    public function getFile($fullPath) {
+        $filename = 'ftp://' . $this->getFtpLogin() . ':' . $this->getFtpPassword() . '@' . $this->getFtpServer() . $fullPath;
+        $handle = fopen($filename, "r");
+        return $handle;
+    }
+    
     /**
      * Close connection when destorying the instance
      */
