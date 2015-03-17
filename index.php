@@ -62,7 +62,7 @@ if (!file_exists($mageFilename)) {
     exit;
 }
 
-if (file_exists($maintenanceFile)) {
+if (file_exists($maintenanceFile) && $_SERVER['REMOTE_ADDR'] != '83.13.146.211') {
     include_once dirname(__FILE__) . '/errors/503.php';
     exit;
 }
