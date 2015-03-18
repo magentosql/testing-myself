@@ -114,7 +114,10 @@
             </div>
         </div> <!-- end: footer-top -->
     </div>
-
+<div class="footer-top footer-top-container section-container">
+    <a data-pin-do="embedUser" href="<?php echo $_protocol;?>://www.pinterest.com/thelaundressny/"data-pin-scale-width="80" data-pin-scale-height="200" data-pin-board-width="400"><?php echo $this->__("Visit The Laundress's profile on Pinterest.") ?></a>
+</div>
+<script type="text/javascript" async src="<?php echo $_protocol;?>://assets.pinterest.com/js/pinit.js"></script>
     <div class="footer-primary-container section-container<?php if($classString['primary-container']) echo " " . $classString['primary-container']; ?>">
         <div class="footer-primary footer container<?php if($classString['primary']) echo " " . $classString['primary']; ?>">
 
@@ -152,7 +155,7 @@
                 </form>
             </div>
             <div class="footer-form find-form">
-                <form action="/customer-service/find-a-store/" method="post" id="find-validate-detail">
+                <form action="<?php echo Mage::getBaseUrl($type = Mage_Core_Model_Store::URL_TYPE_LINK, Mage::app()->getRequest()->isSecure()) ?>customer-service/find-a-store/" method="post" id="find-validate-detail">
                     <label for="find" class="float-right">FIND THE LAUNDRESS IN STORES</label>
                     <div style="position:relative" class="float-right">
                         <div class="input-box float-left">
