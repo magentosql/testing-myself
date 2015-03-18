@@ -9,6 +9,8 @@
  */
 class Wsnyc_LeavingPage_Block_Modal extends Mage_Core_Block_Template {
 
+    const COOKIE_NAME = 'leaving_page_displayed';
+
     protected function _construct() {
         $this->setCmsBlock(Mage::getModel('cms/block')->load('pageleave-modal', 'identifier'));
 
@@ -25,6 +27,10 @@ class Wsnyc_LeavingPage_Block_Modal extends Mage_Core_Block_Template {
         // enabled in store
         $storeAllowed = array_intersect(array(Mage::app()->getStore()->getStoreId(), '0'), $this->getCmsBlock()->getStoreId()); 
         if(!$this->getCmsBlock()->getIsActive() || empty($storeAllowed)) {
+            return false;
+        }
+
+        if ($this->_wasAlreadyDisplayed()) {
             return false;
         }
 
@@ -62,5 +68,10 @@ class Wsnyc_LeavingPage_Block_Modal extends Mage_Core_Block_Template {
         } else {
             return false;
         }
+    }
+
+    protected function _wasAlreadyDisplayed()
+    {
+        return Mage::getModel('core/cookie')->get(self::COOKIE_NAME);
     }
 }
