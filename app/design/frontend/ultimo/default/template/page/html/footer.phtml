@@ -27,6 +27,7 @@
 <?php
     $theme = $this->helper('ultimo');
     $d = $theme->getDesignCfgSection();
+    $_protocol = Mage::app()->getRequest()->isSecure() ? 'https' : 'http';
 
     //Get skin settings
     $footerContainerCss = array();
@@ -135,7 +136,7 @@
             </div>
 
             <div class="footer-form newsletter-form">
-                <form action="http://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form-footer" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <form action="<?php echo $_protocol?>://thelaundress.us6.list-manage.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form-footer" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <label for="mce-EMAIL" class="float-left">Sign Up For Updates By Email</label>
                     <div>
                         <div class="input-box float-left effect">
@@ -151,7 +152,7 @@
                 </form>
             </div>
             <div class="footer-form find-form">
-                <form action="<?php echo Mage::getBaseUrl() ?>customer-service/find-a-store/" method="post" id="find-validate-detail">
+                <form action="/customer-service/find-a-store/" method="post" id="find-validate-detail">
                     <label for="find" class="float-right">FIND THE LAUNDRESS IN STORES</label>
                     <div style="position:relative" class="float-right">
                         <div class="input-box float-left">
@@ -240,7 +241,7 @@
         }
         var script = document.createElement('script');
         script.type = 'text/javascript';
-        script.src = 'http://downloads.mailchimp.com/js/jquery.form-n-validate.js';
+        script.src = '<?php echo $_protocol?>://downloads.mailchimp.com/js/jquery.form-n-validate.js';
         head.appendChild(script);
         try {
             var validatorLoaded=jQuery("#fake-form").validate({});
@@ -256,7 +257,7 @@
             var mce_validator = $("#mc-embedded-subscribe-form").validate(options);
             $("#mc-embedded-subscribe-form").unbind('submit');//remove the validator so we can get into beforeSubmit on the ajaxform, which then calls the validator
             options = { 
-                url: 'http://thelaundress.us6.list-manage1.com/subscribe/post-json?u=d3d48e75efd637e646b0beb3c&id=dbfb7e7934&c=?', 
+                url: '<?php echo $_protocol?>://thelaundress.us6.list-manage.com/subscribe/post-json?u=d3d48e75efd637e646b0beb3c&id=dbfb7e7934&c=?',
                 type: 'GET', 
                 dataType: 'json', 
                 contentType: "application/json; charset=utf-8",

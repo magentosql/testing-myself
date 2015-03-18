@@ -35,8 +35,11 @@ class Wsnyc_QuestionsAnswers_QuestionsController
             } catch(Exception $e) {
                 Mage::getSingleton('core/session')->addError($this->__('There was an error sending the question, please try again later'));
             }
+
+            $protocol = Mage::app()->getRequest()->isSecure() ? 'https' : 'http';
+
             if($request->getParam('ask_newsletter') == true) {
-                $client = new Varien_Http_Client('http://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&id=dbfb7e7934');
+                $client = new Varien_Http_Client($protocol . '://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&id=dbfb7e7934');
                 $client->setMethod(Varien_Http_Client::POST);
                 $client->setParameterPost('FNAME', $request->getParam('ask_name'))
                         ->setParameterPost('EMAIL', $request->getParam('ask_email'))

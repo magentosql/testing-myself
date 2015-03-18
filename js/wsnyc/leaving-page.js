@@ -1,3 +1,4 @@
+topCursor = false;
 $(window).mouseleave(function (e) {
     if (e.pageY < 5) {
         topCursor = true;
