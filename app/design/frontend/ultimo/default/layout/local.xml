@@ -36,6 +36,9 @@
             <action method="addJs">
                 <script>socialshare/share.js</script>
             </action>
+            <action method="addJs">
+                <script>jquery/jquery.form-n-validate.js</script>
+            </action>
 
             <!-- Other JS scripts -->
             <action method="addJs">

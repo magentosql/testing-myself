@@ -117,7 +117,6 @@
 <div class="footer-top footer-top-container section-container">
     <a data-pin-do="embedUser" href="<?php echo $_protocol;?>://www.pinterest.com/thelaundressny/"data-pin-scale-width="80" data-pin-scale-height="200" data-pin-board-width="400"><?php echo $this->__("Visit The Laundress's profile on Pinterest.") ?></a>
 </div>
-<script type="text/javascript" async src="<?php echo $_protocol;?>://assets.pinterest.com/js/pinit.js"></script>
     <div class="footer-primary-container section-container<?php if($classString['primary-container']) echo " " . $classString['primary-container']; ?>">
         <div class="footer-primary footer container<?php if($classString['primary']) echo " " . $classString['primary']; ?>">
 
@@ -242,10 +241,6 @@
             setTimeout('mce_preload_check();', 250);
             return;
         }
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = '<?php echo $_protocol?>://downloads.mailchimp.com/js/jquery.form-n-validate.js';
-        head.appendChild(script);
         try {
             var validatorLoaded=jQuery("#fake-form").validate({});
         } catch(err) {
