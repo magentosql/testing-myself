@@ -1,5 +1,7 @@
-<?php $block = Mage::getModel('cms/block')->load('newsletter-info'); ?>
-<?php if($block->getIsActive()): ?>
+<?php /** @var $this Wsnyc_NewsletterModal_Block_Newsletter */?>
+<?php $newsletterBlockContent = $this->getLayout()->createBlock('cms/block')->setBlockId('newsletter-info')->toHtml();?>
+<?php if($newsletterBlockContent): ?>
+    <?php $_protocol = Mage::app()->getRequest()->isSecure() ? 'https' : 'http';?>
     <?php $cookie = Mage::getSingleton('core/cookie'); ?>
     <?php $cookie->set('newsletter-info', '1' ,time()+31536000,'/'); ?>
         <div style='display:none'>
@@ -9,12 +11,12 @@
             <div class="logo-wrapper v-item">
                 <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
             </div>
-            <div class="newsletter-cms-content"><?php echo $block->getContent() ?></div>
+            <div class="newsletter-cms-content"><?php echo $newsletterBlockContent ?></div>
 
             <!-- Begin MailChimp Signup Form -->
-            <link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+            <link href="<?php echo $_protocol;?>//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
             <div id="mc_embed_signup">
-                <form action="http://thelaundress.us6.list-manage1.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <form action="<?php echo $_protocol;?>://thelaundress.us6.list-manage.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                     <div class="mc-field-group">
                         <label for="mce-FNAME">First Name </label>
                         <input type="text" value="" name="FNAME" class="" id="mce-FNAME">

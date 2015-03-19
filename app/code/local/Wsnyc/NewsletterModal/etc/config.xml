@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_NewsletterModal>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Wsnyc_NewsletterModal>
     </modules>
     <global>
@@ -16,6 +16,26 @@
                 <class>Wsnyc_NewsletterModal_Helper</class>
             </newslettermodal>
         </helpers>
+        <resources>
+            <newslettermodal_setup>
+                <setup>
+                    <module>Wsnyc_NewsletterModal</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </newslettermodal_setup>
+            <newslettermodal_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </newslettermodal_write>
+            <newslettermodal_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </newslettermodal_read>
+        </resources>
     </global>
     <frontend>
         <layout>
