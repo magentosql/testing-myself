@@ -25,6 +25,7 @@
  */
 ?>
 <?php
+    /** @var Wsnyc_CacheFixes_Block_Page_Html_Footer $this */
     $theme = $this->helper('ultimo');
     $d = $theme->getDesignCfgSection();
     $_protocol = Mage::app()->getRequest()->isSecure() ? 'https' : 'http';
@@ -114,6 +115,13 @@
             </div>
         </div> <!-- end: footer-top -->
     </div>
+
+    <?php if ($this->canRenderPinterest()):?>
+        <div class="footer-top footer-top-container section-container">
+            <a data-pin-do="embedUser" href="<?php echo $_protocol;?>://www.pinterest.com/thelaundressny/"data-pin-scale-width="80" data-pin-scale-height="200" data-pin-board-width="400"><?php echo $this->__("Visit The Laundress's profile on Pinterest.") ?></a>
+        </div>
+        <script type="text/javascript" async src="<?php echo $_protocol;?>://assets.pinterest.com/js/pinit.js"></script>
+    <?php endif;?>
     <div class="footer-primary-container section-container<?php if($classString['primary-container']) echo " " . $classString['primary-container']; ?>">
         <div class="footer-primary footer container<?php if($classString['primary']) echo " " . $classString['primary']; ?>">
 
