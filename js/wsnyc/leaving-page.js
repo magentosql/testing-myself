@@ -1,3 +1,5 @@
+var topCursor = false;
+var wasAlreadyDisplayed = false;
 $(window).mouseleave(function (e) {
     if (e.pageY < 5) {
         topCursor = true;
@@ -9,12 +11,16 @@ $(window).mouseenter(function (e) {
 
 jQuery(window).blur(function(e) {
     if (topCursor == true) {
-        invokePromoModal();    
+        invokePromoModal();
     }
 });
 
 function invokePromoModal() {
-    jQuery('.openPromoPopup').click();
+    if (!wasAlreadyDisplayed) {
+        jQuery('.openPromoPopup').click();
+        wasAlreadyDisplayed = true;
+        remeberCustomerAction();
+    }
 }
 
 jQuery(function ($) {
@@ -29,9 +35,10 @@ jQuery(function ($) {
         onCleanup: function() {
             jQuery('body').css({overflow: ''});
             jQuery('body > .wrapper').removeClass('blurred');
+
         },
         onComplete: function() {
-            jQuery('body').css({overflow: 'hidden'});
+             jQuery('body').css({overflow: 'hidden'});
             jQuery('body > .wrapper').addClass('blurred');
             jQuery('#stay-on-page').click(function(e) {
                 jQuery.colorbox.close();
@@ -43,3 +50,10 @@ jQuery(function ($) {
         }
     });
 });
+
+function remeberCustomerAction() {
+    var date = new Date();
+    date.setTime(date.getTime()+(365*24*60*60*1000));
+    var expires = "; expires="+date.toGMTString();
+    document.cookie = "leaving_page_displayed=1"+expires+"; path=/";
+}

@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_LeavingPage>
-            <version>0.4.2</version>
+            <version>0.4.3</version>
         </Wsnyc_LeavingPage>
     </modules>
     <global>
@@ -49,4 +49,11 @@
             </updates>
         </layout>
     </frontend>
+    <default>
+        <promo>
+            <leavingpage>
+                <allowed_pages>checkout-cart,catalog-category,catalog-product,asklaundress-index</allowed_pages>
+            </leavingpage>
+        </promo>
+    </default>
 </config> 
