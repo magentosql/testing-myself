@@ -49,7 +49,7 @@ class Wsnyc_Capacity_Model_Observer {
             return;
         }        
         $filename = $this->_prepareData($invoice);
-        $this->_sendData($filename);
+        $this->_sendData($filename, $invoice->getStoreId());
         $invoice->getOrder()->setCapacitySendStatus(1)->save();
     }
     
@@ -65,6 +65,7 @@ class Wsnyc_Capacity_Model_Observer {
      * @return string
      */
     protected function _prepareData(Mage_Sales_Model_Order_Invoice $invoice) {
+        $storeId = $invoice->getStoreId();
         $this->_checkDir();
         $filename = $this->_tmpCsvDir . DS . $this->_getFilename($invoice);
         $fp = fopen($filename, 'w');
@@ -85,10 +86,10 @@ class Wsnyc_Capacity_Model_Observer {
                 'N', //SpecialProcessingFlag
                 null, //CapacityImportID
                 null, //PONumber
-                Mage::getStoreConfig(self::XML_PATH_RETAILER_CODE), //RetailerCode
+                Mage::getStoreConfig(self::XML_PATH_RETAILER_CODE, $storeId), //RetailerCode
                 null, //StoreNumber
                 null, //ShipToLocation
-                Mage::getStoreConfig(self::XML_PATH_CLIENT_CODE), //ClientCode
+                Mage::getStoreConfig(self::XML_PATH_CLIENT_CODE, $storeId), //ClientCode
                 null, //DropshipID
                 null, //ExternalCustomerID
                 null, //ShipBusinessName
@@ -152,12 +153,12 @@ class Wsnyc_Capacity_Model_Observer {
      * @param string $filename
      * @return boolean
      */
-    protected function _sendData($filename) {
+    protected function _sendData($filename, $storeId) {
         
         /**
          * @var Wsnyc_Capacity_Model_Ftp $ftp
          */
-        $ftp = Mage::getModel('capacity/ftp');
+        $ftp = Mage::getModel('capacity/ftp', array('store_id' => $storeId));
         $ftp->connect($ftp->getFtpServer());
         $success = $ftp->upload($filename);
         $ftp->close();
