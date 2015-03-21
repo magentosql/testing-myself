@@ -36,14 +36,14 @@ class Wsnyc_Capacity_Model_Observer {
      * @param Varien_Event_Observer $observer
      */
     public function processShipment($observer = null) {
-        if (!Mage::getStoreConfig(self::XML_PATH_ENABLED)) {
+        $invoice = $observer->getEvent()->getInvoice();
+        if (!Mage::getStoreConfig(self::XML_PATH_ENABLED, $invoice->getStoreId())) {
             return;
         }
 
         /**
          * @var Mage_Sales_Model_Order_Invoice $invoice
          */
-        $invoice = $observer->getEvent()->getInvoice();
         if (!$this->_shouldSendInfo($invoice)) {
             //shipment already send or not yet shipped
             return;
@@ -173,7 +173,7 @@ class Wsnyc_Capacity_Model_Observer {
      */
     protected function _getFilename(Mage_Sales_Model_Order_Invoice $invoice) {
         return  $invoice->getOrder()->getIncrementId()
-                . '_' .Mage::getStoreConfig(self::XML_PATH_FTP_FILENAME)
+                . '_' .Mage::getStoreConfig(self::XML_PATH_FTP_FILENAME, $invoice->getStoreId())
                 . '_' . date('Ymd\TGis')
                 .'.txt';
     }
