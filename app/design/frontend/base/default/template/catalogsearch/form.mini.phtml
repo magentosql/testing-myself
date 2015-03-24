@@ -58,12 +58,35 @@ $catalogSearchHelper =  $this->helper('catalogsearch');
 
 <link rel="stylesheet" type="text/css" href="//cdn.searchspring.net/autocomplete/autocomplete-v2.css">
 <script type="text/javascript" src="//cdn.searchspring.net/autocomplete/searchspring-autocomplete.min.js"></script>
+
+
+<?php 
+	$store = Mage::app()->getStore()->getCode();
+	$siteID = null;
+	if ($store == "wholesaledefault") {
+		$siteID = 'htq3su';
+	}
+	else {
+		$siteID = 'bucx94';
+	}
+	$mult = Mage::helper('multiplewebsites')->getCustomerGroupPriceModifier();
+?>
+
 <script type="text/javascript">
+
+	var mult = "<?php echo $mult ?>";
+
     SearchSpring.Autocomplete.init({
         offsetX: -5,
         offsetY: 0,
-        siteId: 'bucx94',
-        queryClass : 'searchspring-query'
+        siteId: '<?php echo $siteID ?>',
+        queryClass : 'searchspring-query',
+        modifyResults: function(r) {
+        	for(var i = 0; i < r.products.length; i++) {
+        		r.products[i].price = (Math.round(r.products[i].price * parseFloat(mult) * 100) / 100); 
+        	}
+        	return r;
+        }
     });
 </script>
 <style type="text/css">
