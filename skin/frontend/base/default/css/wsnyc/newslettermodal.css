@@ -45,4 +45,5 @@
 .footer-container .footer-top-container .footer .newsletter-msg {height: 16px; position: relative; top: 2px;color: #000; font-style: italic; border-left: 1px solid #d9d9d9; margin-left: -3px; padding-left: 8px; display: inline-block; font-family: "Georgia"; font-size: 13px;}
 .footer-container .footer-top-container .footer .newsletter-msg a {color: #222; position: relative; bottom: 2px;}
 #inline_newsletter_colorbox.newsletter-popup .email-error-message {display: inline-block; visibility: hidden; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
-.footer-form.newsletter-form button#mc-embedded-subscribe {clear: none; width: auto; display: block; margin: 0; display: inline-block; float: left;}
+.newsletter-form button#mc-embedded-subscribe {clear: none; width: auto; display: block; margin: 0; display: inline-block; float: left;}
+.newsletter-form {margin-top: 11px; margin-bottom: -26px;  float: right;}
