@@ -78,7 +78,8 @@
 
 <?php if ($_order->getId()):?>
     <script>
-        qcgdata.orderid='<?php echo $_order->getIncrementId()?>';
+        var qcdata = {};
+        qcdata.orderid='<?php echo $_order->getIncrementId()?>';
         qcdata.revenue='<?php echo $_order->getGrandTotal();?>';
     </script>
 <?php endif; ?>
