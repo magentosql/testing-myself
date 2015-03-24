@@ -71,3 +71,14 @@
 <div class="buttons-set">
     <button type="button" class="button" title="<?php echo $this->__('Continue Shopping') ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
 </div>
+<?php
+    $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+    $_order = Mage::getModel('sales/order')->load($lastOrderId);
+?>
+
+<?php if ($_order->getId()):?>
+    <script>
+        qcgdata.orderid='<?php echo $_order->getIncrementId()?>';
+        qcdata.revenue='<?php echo $_order->getGrandTotal();?>';
+    </script>
+<?php endif; ?>
