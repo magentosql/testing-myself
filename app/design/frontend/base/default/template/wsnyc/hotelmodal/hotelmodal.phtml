@@ -29,6 +29,7 @@
                 speed   : 300,
                 width   : 510,
                 height  : 460,
+                returnFocus: false,
                 closeButton : true,
                 className: 'hotel-colorbox',
                 onCleanup: function() {
@@ -36,8 +37,7 @@
                 },
                 onComplete: function() {
                     jQuery('#inline_hotel_colorbox').parent().siblings( "#cboxClose" ).attr('class','hotel-close');
-                },
-                
+                }
             });
         });
         
