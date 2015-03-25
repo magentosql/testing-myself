@@ -16,6 +16,11 @@
                 <class>Wsnyc_NewsletterModal_Helper</class>
             </newslettermodal>
         </helpers>
+        <models>
+            <newslettermodal>
+                <class>Wsnyc_NewsletterModal_Model</class>
+            </newslettermodal>
+        </models>
         <resources>
             <newslettermodal_setup>
                 <setup>
@@ -45,5 +50,25 @@
                 </newslettermodal>
             </updates>
         </layout>
+        <events>
+            <controller_action_predispatch_checkout_onepage_saveBilling>
+                <observers>
+                    <setSubscriptionStatus>
+                        <type>singleton</type>
+                        <class>newslettermodal/observer</class>
+                        <method>setSubscriptionStatus</method>
+                    </setSubscriptionStatus>
+                </observers>
+            </controller_action_predispatch_checkout_onepage_saveBilling>
+            <checkout_submit_all_after>
+                <observers>
+                    <subscribe_customer_to_newsletter>
+                        <type>singleton</type>
+                        <class>newslettermodal/observer</class>
+                        <method>sentSubscription</method>
+                    </subscribe_customer_to_newsletter>
+                </observers>
+            </checkout_submit_all_after>
+        </events>
     </frontend>
 </config> 
