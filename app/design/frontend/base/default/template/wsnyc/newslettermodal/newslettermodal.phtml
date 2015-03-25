@@ -61,6 +61,10 @@
             });
 
             <?php if(!$cookie->get('newsletter-info')): ?>$('.openNewsletterPopup').click();<?php endif; ?>
+
+            $('.newsletter-signup').on('click', function() {
+                $('.openNewsletterPopup').click();
+            });
         });
         
         jQuery('#dummy-email').blur(function() {
@@ -85,7 +89,7 @@
         function validateEmail(email) { 
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
-        } 
+        }
     </script>
 <?php endif; ?>
 
