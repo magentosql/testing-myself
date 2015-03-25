@@ -3,36 +3,38 @@
 #cboxLoadedContent {width: 720px !important; overflow: auto; height: 428px !important;}
 #cboxContent #cboxClose {position: absolute; top: 3px; left: 703px; background: url('../../images/colorbox/colorbox-controls.png') no-repeat -54px -29px; width: 13px; height: 13px; text-indent: -9999px; display: block;}
 #cboxContent #cboxClose:hover {background: url('../../images/colorbox/colorbox-controls.png') no-repeat -54px -4px;}
-#inline_newsletter_colorbox.newsletter-popup .logo-wrapper {margin-left: 36px; padding-top: 5px;}
-#inline_newsletter_colorbox.newsletter-popup .logo-wrapper .logo {padding: 0 10px 20px; border-bottom: 1px solid gray; display: inline-block;}
+#inline_newsletter_colorbox.newsletter-popup .logo-wrapper {margin-left: 0px; padding-top: 5px;}
+#inline_newsletter_colorbox.newsletter-popup .logo-wrapper .logo {padding: 0 10px 10px; border-bottom: 0px; display: inline-block;}
 #inline_newsletter_colorbox.newsletter-popup .page-title {display: none;}
-#inline_newsletter_colorbox.newsletter-popup form { width: 350px; display: inline-block;}
+#inline_newsletter_colorbox.newsletter-popup form { width: 330px; display: inline-block;}
 #inline_newsletter_colorbox.newsletter-popup .fieldset {border: none; width: 300px; padding-top: 0; margin-top: 0;}
 #inline_newsletter_colorbox.newsletter-popup {height: 428px !important; overflow: hidden;}
-#inline_newsletter_colorbox.newsletter-popup > div {width: 704px !important; height: 412px !important; background: #fff; padding: 5px 4px 5px 5px; border: 3px solid #000;}
-#inline_newsletter_colorbox.newsletter-popup > div > div {border: 1px solid #000; text-align: left; width: 700px; height: 410px;background: #fff url('../../../../../../media/wysiwyg/newsletter-image.jpg') no-repeat 99% center;}
+#inline_newsletter_colorbox.newsletter-popup > div.wrapper {width: 704px !important; height: 412px !important; background: #fff; padding: 5px 4px 5px 5px; border: 3px solid #000;}
+#inline_newsletter_colorbox.newsletter-popup .main-content {border: 1px solid #000; text-align: left; width: auto; height: 410px;background: #fff url('../../../../../../media/wysiwyg/newsletter-image.jpg') no-repeat 99% center;}
+#inline_newsletter_colorbox.newsletter-popup .image-left {float: left; margin-right: 0px;}
+#inline_newsletter_colorbox.newsletter-popup .content {width: auto;float: left;}
 #inline_newsletter_colorbox.newsletter-popup p {padding: 5px 0px 5px 0px}
 #inline_newsletter_colorbox.newsletter-popup ul {padding: 10px 0px 10px 25px}
 #inline_newsletter_colorbox.newsletter-popup ul, #inline_colorbox ul li {list-style: circle;}
-#inline_newsletter_colorbox.newsletter-popup .newsletter-cms-content {width: 340px; padding: 0 17px;}
+#inline_newsletter_colorbox.newsletter-popup .newsletter-cms-content {width: 340px; padding: 0px;}
 #inline_newsletter_colorbox.newsletter-popup .monkey-additional-lists {list-style: none;}
 #inline_newsletter_colorbox.newsletter-popup .buttons-set .button {background: #000; height: 30px; line-height: 30px;}
 #inline_newsletter_colorbox.newsletter-popup .monkey-additional-lists .listdata input {float: left; margin-top: 3px; margin-right: 5px;}
-#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup {position: absolute; bottom: 90px; left: 5px; width: 340px; padding: 0 10px;clear:left; font:14px Helvetica,Arial,sans-serif; }
-#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group input {width: 70%;padding: 3px 0;text-indent: 2%;display: inline-block;}
+#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup {position: relative;     font:14px Helvetica,Arial,sans-serif; }
+#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group input {width: 80%;padding: 3px 0;text-indent: 2%;display: inline-block;height: 24px;}
 #inline_newsletter_colorbox.newsletter-popup .mc-field-group {text-align: right;}
-#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group label {font-size: 0.75rem; display: inline-block; text-transform: uppercase; margin-bottom: 8px; font-family: Arial,Helvetica,sans-serif; font-weight: bold;}
-#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group {clear: left; position: relative; width: 96%; padding-bottom: 3%; min-height: 20px;}
+#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group label {font-size: 0.75rem; display: none; text-transform: uppercase; margin-bottom: 8px; font-family: Arial,Helvetica,sans-serif; font-weight: bold;}
+#inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group {clear: left; position: relative;  padding-bottom: 3%; min-height: 20px;text-align: center;}
 #inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group + .mc-field-group + .mc-field-group {padding-bottom: 0; margin-bottom: -5px;}
 #inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .button, #inline_newsletter_colorbox.newsletter-popup .thanks-button  {width: 130px; border-radius: 0; border-width:0; line-height: 30px; height: 30px; background: #000; color: #fff; text-transform: uppercase; font-weight: bold; margin:2px}
 #inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .mc-field-group .asterisk {display: none;}
 #inline_newsletter_colorbox.newsletter-popup #mc-embedded-subscribe-form {padding: 15px 0 0;}
-#inline_newsletter_colorbox.newsletter-popup #mc-embedded-subscribe-form .clear {text-align: center; display: inline-block; padding-left: 10px;}
+#inline_newsletter_colorbox.newsletter-popup #mc-embedded-subscribe-form .clear {text-align: center; height: auto;display: block; overflow: hidden;margin-top: 7px;}
 #inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .no-thanks-button, #inline_newsletter_colorbox.newsletter-popup .thanks-button, #inline_newsletter_colorbox.newsletter-popup .no-thanks-button + input {font-size: 0.75rem; transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -moz-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -webkit-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -o-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;}
 #inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .no-thanks-button:hover, #inline_newsletter_colorbox.newsletter-popup .thanks-button:hover, #inline_newsletter_colorbox.newsletter-popup #mc_embed_signup .button:hover {background: #777777;}
 #inline_newsletter_colorbox.newsletter-popup .thanks-button {position: absolute; left: 130px; bottom: 70px;}
 #inline_newsletter_colorbox.newsletter-popup .thank-you-message {position: relative; left: 10px; top: 25px;}
-#inline_newsletter_colorbox.newsletter-popup .newsletter-icon-set {position: absolute; bottom: 17px; left: 5px; padding: 0 20px; text-align: center; width: 340px; font-size: 1.5rem;}
+#inline_newsletter_colorbox.newsletter-popup .newsletter-icon-set {display: none;}
 #inline_newsletter_colorbox.newsletter-popup .newsletter-icon-set a {margin: 0 10px; color: #000; transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -moz-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -webkit-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -o-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;}
 #inline_newsletter_colorbox.newsletter-popup .newsletter-icon-set a:hover {color: #777777;}
 #inline_newsletter_colorbox.newsletter-popup .newsletter-cms-content p {padding: 5px 15px;}
@@ -44,5 +46,5 @@
 .footer-container .footer-top-container .footer .links {display: inline-block;}
 .footer-container .footer-top-container .footer .newsletter-msg {height: 16px; position: relative; top: 2px;color: #000; font-style: italic; border-left: 1px solid #d9d9d9; margin-left: -3px; padding-left: 8px; display: inline-block; font-family: "Georgia"; font-size: 13px;}
 .footer-container .footer-top-container .footer .newsletter-msg a {color: #222; position: relative; bottom: 2px;}
-#inline_newsletter_colorbox.newsletter-popup .email-error-message {display: inline-block; visibility: hidden; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
+#inline_newsletter_colorbox.newsletter-popup .email-error-message {display: none; visibility: hidden; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
 .footer-form.newsletter-form button#mc-embedded-subscribe {clear: none; width: auto; display: block; margin: 0; display: inline-block; float: left;}
