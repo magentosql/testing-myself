@@ -51,7 +51,9 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
             $item = new Varien_Object;
             $item->setOrdered($data[17])
                     ->setShipped($data[19])
-                    ->setTrackingNumbers($data[26]); //can a be comma-limited list
+                    ->setTrackingNumbers($data[26]) //can a be comma-limited list
+                    ->setCarrierCode($this->_getCarrier($data[25]))
+                    ->setCarrierName($data[24]);
             if($item->getOrdered() == $item->getShipped()) {
                 $item->setIsCorrect(true);
             } else {
@@ -82,13 +84,12 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
                 continue;
             }
             $shippedItems = array();
+            $trackingCodes = array();
             foreach($magentoOrder->getAllItems() as $item) {
                 foreach($orderData as $sku => $data) {
-                    echo $sku . "<br />" ;
-                    echo $item->getSku() . "<br />" ;
                     if($sku == $item->getSku()) {
-                        echo "here";
                         $shippedItems[$item->getItemId()] = $data->getShipped();
+                        $trackingCodes[] = array('name' => $data->getCarrierName(), 'code' => $data->getCarrierCode(), 'numbers' => $data->getTrackingNumbers());
                     }
                 }
             }
@@ -99,6 +100,20 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
             } catch(Exception $e) {
                 Mage::log('There was a problem with creating a shipment for order ' . $orderId, 0, 'capacity-shipconfirm.log');
             }
+            if($shipment->getId()) {
+                foreach($trackingCodes as $code) {
+                    $numbers = explode(',', $code['numbers']);
+                    if(!empty($numbers)) {
+                        foreach($numbers as $number) {
+                            try {
+                                Mage::getModel('sales/order_shipment_api')->addTrack($shipment->getId(), $code['code'], $code['name'], $number);
+                            } catch (Exception $ex) {
+                                Mage::log('There was a problem with creating a tracking number for shipment ' . $shipment->getId() . ' : ' . $ex->getMessage(), 0, 'capacity-shipconfirm.log');
+                            }
+                        }
+                    }                
+                }
+            }
         }
     }
     
@@ -107,5 +122,22 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
             ->addAttributeToFilter('state', array('neq' => Mage_Sales_Model_Order::STATE_CANCELED))
             ->addAttributeToFilter('increment_id', $incrementId)
             ->getFirstItem();
+    }
+    
+    protected function _getCarrier($code) {
+        if(empty($code)) {
+            return 'custom';
+        }
+        if(strpos($code, 'FED') !== false) {
+            return 'fedex';
+        } elseif(strpos($code, 'UPS') !== false) {
+            return 'ups';
+        } elseif(strpos($code, 'USPS') !== false) {
+            return 'usps';
+        } elseif(strpos($code, 'DHL') !== false) {
+            return 'dhlint';
+        } else {
+            return 'custom';
+        }
     }
 }
