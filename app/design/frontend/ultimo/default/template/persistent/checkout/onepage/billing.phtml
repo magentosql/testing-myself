@@ -58,10 +58,18 @@
         <?php endif; ?>
                 </li>
         <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
-                <li class="wide">
-                    <label for="billing:street1" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
-                    <div class="input-box">
-                        <input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                <li class="fields">
+                    <div class="field">
+                        <label for="billing:street1" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
+                        <div class="input-box">
+                            <input type="text" title="<?php echo $this->__('Street Address') ?>" name="billing[street][]" id="billing:street1" value="<?php echo $this->escapeHtml($this->getAddress()->getStreet(1)) ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="input-box" style="margin-top: 25px;">
+                            <input type="checkbox" id="billing:newsletter" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1"  class="checkbox" />
+                            <label for="billing:newsletter" style="float: none;"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+                        </div>
                     </div>
                 </li>
         <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
@@ -189,10 +197,6 @@
             <input type="radio" name="billing[use_for_shipping]" id="billing:use_for_shipping_no" value="0"<?php if (!$this->isUseBillingAddressForShipping()) {?> checked="checked"<?php }?> title="<?php echo $this->__('Ship to different address') ?>" onclick="$('shipping:same_as_billing').checked = false;" class="radio" /><label for="billing:use_for_shipping_no"><?php echo $this->__('Ship to different address') ?></label>
         </li>
     <?php endif; ?>
-        <li class="control">
-            <input type="checkbox" id="billing:newsletter" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1"  checked="checked" class="checkbox" />
-            <label for="billing:newsletter"><?php echo $this->__('Sign Up for Newsletter') ?></label>
-        </li>
     </ul>
     <?php if (!$this->canShip()): ?>
         <input type="hidden" name="billing[use_for_shipping]" value="1" />
