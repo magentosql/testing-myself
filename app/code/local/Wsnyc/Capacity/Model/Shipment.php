@@ -2,12 +2,17 @@
 
 class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
     public function handleShipmentResponse() {
-        $ftp = Mage::getModel('capacity/ftp');
-        $ftp->connect($ftp->getFtpServer());
-        $content = $ftp->getDirContent('/OUT/Shipconfirm/');
-        $ftp->close();
-        rsort($content);
-        $file = $this->getShipmentFile($content[0]);
+        if($this->getLocalDebug() == true) {
+            $filePath = Mage::getBaseDir() . '/' . $this->getPathToFile();
+            $file = fopen($filePath, "r");
+        } else {
+            $ftp = Mage::getModel('capacity/ftp');
+            $ftp->connect($ftp->getFtpServer());
+            $content = $ftp->getDirContent('/OUT/Shipconfirm/');
+            $ftp->close();
+            rsort($content);
+            $file = $this->getShipmentFile($content[0]);
+        }
         $shippedOrders = $this->processShipmentFile($file);
         $result = $this->createMagentoShipments($shippedOrders);
         return $result;
@@ -59,7 +64,6 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
             } else {
                 $item->setIsCorrect(false);
             }
-            
             $content[$data[1]][$data[22]] = $item;             
             unset($data);
         }
@@ -89,7 +93,7 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
                 foreach($orderData as $sku => $data) {
                     if($sku == $item->getSku()) {
                         $shippedItems[$item->getItemId()] = $data->getShipped();
-                        $trackingCodes[] = array('name' => $data->getCarrierName(), 'code' => $data->getCarrierCode(), 'numbers' => $data->getTrackingNumbers());
+                        $trackingCodes[$data->getTrackingNumbers()] = array('name' => $data->getCarrierName(), 'code' => $data->getCarrierCode(), 'numbers' => $data->getTrackingNumbers());
                     }
                 }
             }
@@ -113,6 +117,10 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
                         }
                     }                
                 }
+                Mage::getModel('sales/order_shipment_api')->sendInfo($shipment->getIncrementId());
+                        
+            } else {
+                Mage::log('There was a problem with creating tracking numbers for order ' . $orderId, 0, 'capacity-shipconfirm.log');
             }
         }
     }
@@ -125,16 +133,17 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
     }
     
     protected function _getCarrier($code) {
+        $code = strtolower($code);
         if(empty($code)) {
             return 'custom';
         }
-        if(strpos($code, 'FED') !== false) {
+        if(strpos($code, 'fed') !== false) {
             return 'fedex';
-        } elseif(strpos($code, 'UPS') !== false) {
+        } elseif(strpos($code, 'ups') !== false) {
             return 'ups';
-        } elseif(strpos($code, 'USPS') !== false) {
+        } elseif(strpos($code, 'usps') !== false) {
             return 'usps';
-        } elseif(strpos($code, 'DHL') !== false) {
+        } elseif(strpos($code, 'dhl') !== false) {
             return 'dhlint';
         } else {
             return 'custom';
