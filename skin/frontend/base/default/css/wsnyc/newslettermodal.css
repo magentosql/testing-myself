@@ -47,5 +47,6 @@
 #inline_newsletter_colorbox.newsletter-popup .email-error-message {display: inline-block; visibility: hidden; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;}
 .newsletter-form button#mc-embedded-subscribe {clear: none; width: auto; display: block; margin: 0; display: inline-block; float: left;}
 .newsletter-form {margin-top: 11px; margin-bottom: -26px;  float: right;}
+.footer-form.newsletter-form{margin-top:0}
 .newsletter-signup {cursor: pointer;}
 .footer-form .newsletter-signup {font-family:'Sorts Mill Goudy Regular',serif;font-size:14px;line-height:1em;padding:0 0 9px 2px;text-transform:uppercase;}

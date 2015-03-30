@@ -123,7 +123,7 @@ ul.links li a{display:inline-block}
 .footer-container ul.links li,.footer-container ul.links li a{display:inline}
 .footer-primary{background-color:transparent;width:564px;position:relative;padding-top:33px}
 .footer-primary>div{width:50%;float:left;position:relative;z-index:2}
-.footer-form label{font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;line-height:1em;padding:0 0 9px 2px;text-transform:uppercase}
+.footer-form label{font-family:'Sorts Mill Goudy Regular',serif;font-size:12px;line-height:1em;padding:0 0 9px 2px;text-transform:uppercase; height:19px}
 .footer-form .input-box{margin:0 0 5px 0;width:160px;overflow:hidden}
 .footer-form .input-text{width:100%;margin:0;padding:0 7px;height:34px;color:#999;border-top:1px solid #dfdfdf;border-left:1px solid #dfdfdf;border-bottom:1px solid #dfdfdf;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}
 .footer-form:hover .input-text{border-color:#64b96a}
