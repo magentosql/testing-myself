@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Capacity>
-            <version>0.2</version>
+            <version>0.3.0</version>
         </Wsnyc_Capacity>
     </modules>
     <global>
@@ -50,12 +50,12 @@
         </events>
     </global>
     <crontab>
-        <!--<jobs>-->
-            <!--<shipment_test>-->
-                <!--<schedule><cron_expr>0 1 * * *</cron_expr></schedule>-->
-                <!--<run><model>capacity/observer::processShipment</model></run>-->
-            <!--</shipment_test>-->
-        <!--</jobs>-->
+        <jobs>
+            <shipment_test>
+                <schedule><cron_expr>15 1 * * *</cron_expr></schedule>
+                <run><model>capacity/observer::handleShipmentResponse</model></run>
+            </shipment_test>
+        </jobs>
     </crontab>
     <default>
         <shipping>

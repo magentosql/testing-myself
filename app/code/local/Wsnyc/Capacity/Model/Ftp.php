@@ -3,7 +3,7 @@
 /**
  * Class for making FTP connection and file transferring
  */
-class Wsnyc_Capacity_Model_Ftp {
+class Wsnyc_Capacity_Model_Ftp extends Varien_Object {
     
     /**
      * Paths to configurable data
@@ -20,13 +20,18 @@ class Wsnyc_Capacity_Model_Ftp {
     protected $_ftpConnection = false;
 
 
+    protected function _construct() {
+        if(!$this->getStoreId()) {
+            $this->setStoreId('0');
+        }
+    }
     /**
      * FTP login getter
      * 
      * @return string
      */
     public function getFtpLogin() {
-        return Mage::helper('core')->decrypt(Mage::getStoreConfig(self::XML_PATH_FTP_LOGIN));
+        return Mage::helper('core')->decrypt(Mage::getStoreConfig(self::XML_PATH_FTP_LOGIN, $this->getStoreId()));
     }
     
     /**
@@ -35,7 +40,7 @@ class Wsnyc_Capacity_Model_Ftp {
      * @return string
      */
     public function getFtpPassword() {
-        return Mage::helper('core')->decrypt(Mage::getStoreConfig(self::XML_PATH_FTP_PASSWORD));
+        return Mage::helper('core')->decrypt(Mage::getStoreConfig(self::XML_PATH_FTP_PASSWORD, $this->getStoreId()));
     }
     
     /**
@@ -44,7 +49,7 @@ class Wsnyc_Capacity_Model_Ftp {
      * @return string
      */
     public function getFtpServer() {
-        return Mage::getStoreConfig(self::XML_PATH_FTP_SERVER);
+        return Mage::getStoreConfig(self::XML_PATH_FTP_SERVER, $this->getStoreId());
     }
     
     /**
@@ -113,6 +118,17 @@ class Wsnyc_Capacity_Model_Ftp {
         }
         
         return true;
+    }
+    
+    public function getDirContent($dir) {
+        $this->setFtpPasv();
+        return ftp_nlist($this->_ftpConnection, $dir);
+    }
+    
+    public function getFile($fullPath) {
+        $filename = 'ftp://' . $this->getFtpLogin() . ':' . $this->getFtpPassword() . '@' . $this->getFtpServer() . $fullPath;
+        $handle = fopen($filename, "r");
+        return $handle;
     }
     
     /**
