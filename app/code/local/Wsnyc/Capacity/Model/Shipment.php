@@ -106,7 +106,7 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
                     if(!empty($numbers)) {
                         foreach($numbers as $number) {
                             try {
-                                Mage::getModel('sales/order_shipment_api')->addTrack($shipment->getId(), $code['code'], $code['name'], $number);
+                                Mage::getModel('sales/order_shipment_api')->addTrack($shipment->getIncrementId(), $code['code'], $code['name'], $number);
                             } catch (Exception $ex) {
                                 Mage::log('There was a problem with creating a tracking number for shipment ' . $shipment->getId() . ' : ' . $ex->getMessage(), 0, 'capacity-shipconfirm.log');
                             }
