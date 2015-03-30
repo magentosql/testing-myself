@@ -118,7 +118,8 @@ class Wsnyc_Capacity_Model_Shipment extends Mage_Core_Model_Abstract {
                     }                
                 }
                 Mage::getModel('sales/order_shipment_api')->sendInfo($shipment->getIncrementId());
-                        
+                $shipment->setStatus('1')
+                        ->save();
             } else {
                 Mage::log('There was a problem with creating tracking numbers for order ' . $orderId, 0, 'capacity-shipconfirm.log');
             }
