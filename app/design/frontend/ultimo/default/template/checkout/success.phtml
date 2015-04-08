@@ -79,6 +79,7 @@
 <?php if ($_order->getId()):?>
     <script>
         var qcdata = {};
+        qcdata.qacct = 'p-54cQ3KvY_6sYb',
         qcdata.orderid='<?php echo $_order->getIncrementId()?>';
         qcdata.revenue='<?php echo $_order->getGrandTotal();?>';
     </script>
