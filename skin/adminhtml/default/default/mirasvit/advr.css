@@ -1,0 +1,155 @@
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.advr-report-block-container .content-header {
+  position: relative;
+}
+.advr-report-block-container .advr-widget-toolbar {
+  *zoom: 1;
+  position: relative;
+  border: 1px solid #dadfe0;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+}
+.advr-report-block-container .advr-widget-toolbar:before,
+.advr-report-block-container .advr-widget-toolbar:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.advr-report-block-container .advr-widget-toolbar:after {
+  clear: both;
+}
+.advr-report-block-container .advr-widget-toolbar .field-row {
+  margin-bottom: 0px;
+}
+.advr-report-block-container .advr-widget-toolbar .custom {
+  float: left;
+  margin-right: 10px;
+}
+.advr-report-block-container .advr-widget-toolbar .custom input[type="checkbox"] {
+  margin-left: 10px;
+}
+.advr-report-block-container .advr-widget-toolbar .custom.custom-filter_by_sku input {
+  margin-left: 10px;
+}
+.advr-report-block-container .advr-widget-toolbar .range {
+  margin-right: 40px;
+  margin-bottom: 20px;
+  float: left;
+}
+.advr-report-block-container .advr-widget-toolbar .range input[type="radio"] {
+  margin-left: 20px;
+  cursor: pointer;
+}
+.advr-report-block-container .advr-widget-toolbar .range label.inline {
+  padding-left: 10px;
+  cursor: pointer;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol {
+  float: right;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary {
+  *zoom: 1;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary:before,
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary:after {
+  clear: both;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary .interval {
+  float: left;
+  width: 200px;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary .interval select {
+  margin-left: 10px;
+  width: 150px;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary .refresh {
+  float: left;
+  margin-left: 10px;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary .date-from,
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary .date-to {
+  margin-left: 10px;
+  float: left;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary .date-from label,
+.advr-report-block-container .advr-widget-toolbar .datecontrol .primary .date-to label {
+  display: none;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare {
+  *zoom: 1;
+  margin-top: 5px;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare:before,
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare:after {
+  clear: both;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare .compare-checkbox {
+  float: left;
+  text-align: right;
+  width: 200px;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare .date-from,
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare .date-to {
+  margin-left: 10px;
+  float: left;
+}
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare .date-from label,
+.advr-report-block-container .advr-widget-toolbar .datecontrol .compare .date-to label {
+  display: none;
+}
+.advr-report-block-container .grid .percent {
+  max-width: 200px;
+  min-width: 100px;
+  position: relative;
+}
+.advr-report-block-container .grid .percent .percent-bar {
+  height: 100%;
+  background: #62b054;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  min-width: 1px;
+  z-index: 10;
+}
+.advr-report-block-container .grid .percent .percent-value {
+  z-index: 100;
+  position: relative;
+}
+.advr-report-block-container .grid small.discount {
+  font-size: 10px;
+  float: left;
+  display: inline-block;
+  text-align: left;
+}
+.advr-report-block-container .grid tfoot tr td {
+  border-top: 0px;
+}
+.advr-report-block-container .advr-report-block-switcher {
+  position: absolute;
+  right: 0px;
+  top: 2px;
+}
+.advr-report-block-container .advr-report-block-switcher label {
+  margin-right: 5px;
+}
