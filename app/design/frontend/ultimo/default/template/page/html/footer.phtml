@@ -238,7 +238,10 @@
 </script>
 <!--  Quantcast Tag -->
 <script>
-    qcdata = qcdata || { qacct: 'p-54cQ3KvY_6sYb'} ;
+    if (typeof gcdata === 'undefined') {
+        var qcdata = qcdata || { qacct: 'p-54cQ3KvY_6sYb'} ;
+    }
+
     (function(){
         var elem = document.createElement('script');
         elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://pixel") + ".quantserve.com/aquant.js?a=p-54cQ3KvY_6sYb";
