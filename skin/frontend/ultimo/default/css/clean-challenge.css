@@ -1,10 +1,10 @@
-body.cms-30-day-clean-home-challenge .main {padding-top: 0px;}
+body.cms-30-day-clean-home-challenge .main {padding-top: 0;}
 .main-banner {margin-bottom: 40px;}
-.cms-30-day-clean-home-challenge h1 {text-align: center;width: 610px;text-transform: none;margin: 0px auto;}
+.cms-30-day-clean-home-challenge h1 {text-align: center;width: 610px;text-transform: none;margin: 0px auto;font-family: 'Bentham';font-size: 36px;}
 .clean-challenge-separator {height: 5px;width: 100px;background: #e6e6e6;border:0px;margin: 20px auto 40px;}
-.main-description {margin: 0px 0px 30px;}
-.main-description p {text-align: center;font-size: 16px;max-width: 870px;margin: 20px auto;line-height: 1.5em;}
-.alternatives {width: 750px;margin: 20px auto 0px;padding: 0px 0px 35px 0px;overflow: hidden;}
+.main-description {margin: 0px 0px 30px;font-family: "Raleway"}
+.cms-page-view .main-description p {text-align: center;font-size: 16px;max-width: 870px;margin: 20px auto;line-height: 1.5em;font-family: "Raleway";}
+.alternatives {width: 750px;margin: 20px auto 0px;padding: 0px 0px 35px 0px;overflow: hidden;background: transparent url('../images/challenge/arrow.png') no-repeat 80% bottom;}
 .alternatives .circle {
     -webkit-border-radius: 400px;
     -moz-border-radius: 400px;
@@ -25,15 +25,37 @@ body.cms-30-day-clean-home-challenge .main {padding-top: 0px;}
 .alternative-separator:before {content:"";display:block;width: 30px;height:1px;background-color: #999;position: absolute;top: 147px;left: 20%;}
 .alternative-separator {width: 155px;float:left;text-align: center;height: 295px;line-height: 295px;font-size: 16px;color: #999999;position: relative;}
 .alternative-separator:after {content:"";display:block;width: 30px;height:1px;background-color: #999;position: absolute;top: 147px;right: 20%;}
-.alternatives .circle span {font-size: 14px;display: block;margin: 5px 0px;line-height: 2em;}
-.alternatives .circle .fancy {}
-.alternatives .circle .big {text-transform: uppercase;font-size: 32px;font-weight: bold;line-height: 1em;}
+.alternatives .circle span {display: block;margin: 15px 0;line-height: 1.6em;font-family: "Raleway";font-size: 16px;}
+.alternatives .circle .fancy {font-family: "Jenna-Sue";font-size: 33px;line-height: 1em;margin: 0px;}
+.alternatives .circle .big {font-variant: small-caps;text-transform: lowercase;font-size: 56px;font-weight: normal;line-height: 33px;font-family: "Bentham";margin-top: 0px;}
 .product-view {text-align: center;}
 .product-view .btn-cart {margin-top: 10px;}
 button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-family: "GillSansMTStd-Bold",sans-serif;text-transform: uppercase;}
 
-.details {margin: 0px;text-align: center;}
+.widgets {overflow: hidden;margin: 60px 0;}
+.widgets > div {float: left;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin: 0 11px;max-width: 49%;}
+.widgets span.label {font-family: "Bentham";text-transform: uppercase;font-size: 21px;margin-bottom: 15px;display: block;text-align: center;}
+.widgets .widget-left {margin-left: 0;background: #f4f4f4;padding: 40px 45px 40px 45px;text-align: center;}
+.widgets .widget-left p {font-family: "Raleway";font-size: 14px;color: #000;text-align: center;margin-bottom: 35px;}
+.widgets .widget-left img {margin: 0 auto;}
+.widgets .widget-left .tag {margin: 30px 0 0 0;font-weight: bold;}
+.widgets .widget-left .tag span {color: #339900;}
+.widgets .widget-right {margin-right: 0;}
+.widgets .widget-right .widget-tips {text-align: center;border: 5px solid #e6e6e6;padding: 0px 70px;box-sizing: border-box;width: 460px;}
+.widgets .widget-right .widget-tips .label {margin-top: 40px;}
+.widgets .widget-right .widget-tips ul {}
+.widgets .widget-right .widget-tips ul li {margin: 15px 0;}
+.widgets .widget-right .widget-tips ul li span {display: block;font-family: "Bentham";font-size: 20px;font-variant: small-caps;text-transform: lowercase;}
+.widgets .widget-right .widget-tips ul li a {font-family: "Raleway";font-size: 14px;}
+.widgets .widget-right .widget-tips .divider {height: 3px;background: #e6e6e6;border: 0;width: 50px;margin: 30px auto 20px;}
+.widgets .widget-right .widget-tips .social-link {font-family: "Raleway";color: #000;font-size: 14px;margin-bottom: 33px;}
+.widgets .widget-right .widget-newsletter {background: #000;color: #fff;border: 1px solid #fff;box-shadow: 0px 0px 0px 5px #000;width: calc(100% - 10px);margin: 20px auto 0;padding: 40px 0;text-align: center;}
+.widgets .widget-right .widget-newsletter .label {}
+.widgets .widget-right .widget-newsletter p {font-family: "Raleway";font-size: 14px;}
+.widgets .widget-right .widget-newsletter .button {color: #000;background: #fff;padding: 10px;display: inline-block;font-family: "Raleway";text-transform: uppercase;font-weight: bold;}
+
+.details {margin: 0;text-align: center;font-family: "Raleway";}
 .details .label {font-weight: bold;font-size: 14px;text-transform: uppercase;}
 .details ul {list-style-type: disc;list-style-position: inside;font-size: 13px;}
-.details ul li {color: #999;margin: 3px 0px;}
+.details ul li {color: #7f7f7f;margin: 3px 0;}
 .details .call {font-weight: bold;font-size: 13px;margin-top: 20px;display: block;}
