@@ -55,7 +55,6 @@ $cmsPageData = array(
     'title' => '30 Day Clean Home Challenge',
     'root_template' => 'one_column',
     'identifier' => '30-day-clean-home-challenge',
-    'content_heading' => 'content heading',
     'stores' => array(0),//available for all store views
     'content' => $pageContent,
     'custom_layout_update_xml' => '<remove name="breadcrumbs" /><reference name="head"><action method="addItem"><type>skin_css</type><file>css/clean-challenge.css</file></action></reference>'
