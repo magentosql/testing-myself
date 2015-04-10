@@ -47,8 +47,8 @@ button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-
 .widgets .widget-right .widget-tips ul li {margin: 15px 0;}
 .widgets .widget-right .widget-tips ul li span {display: block;font-family: "Bentham";font-size: 20px;font-variant: small-caps;text-transform: lowercase;}
 .widgets .widget-right .widget-tips ul li a {font-family: "Raleway";font-size: 14px;}
-.widgets .widget-right .widget-tips .divider {height: 3px;background: #e6e6e6;border: 0;width: 50px;margin: 30px auto 20px;}
-.widgets .widget-right .widget-tips .social-link {font-family: "Raleway";color: #000;font-size: 14px;margin-bottom: 33px;}
+.widgets .widget-right .widget-tips .divider {height: 3px;background: #e6e6e6;border: 0;width: 50px;margin: 20px auto 15px;}
+.widgets .widget-right .widget-tips .social-link {font-family: "Raleway";color: #000;font-size: 14px;margin-bottom: 5px;}
 .widgets .widget-right .widget-newsletter {background: #000;color: #fff;border: 1px solid #fff;box-shadow: 0px 0px 0px 5px #000;width: calc(100% - 10px);margin: 20px auto 0;padding: 40px 0;text-align: center;}
 .widgets .widget-right .widget-newsletter .label {}
 .widgets .widget-right .widget-newsletter p {font-family: "Raleway";font-size: 14px;}
@@ -59,3 +59,7 @@ button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-
 .details ul {list-style-type: disc;list-style-position: inside;font-size: 13px;}
 .details ul li {color: #7f7f7f;margin: 3px 0;}
 .details .call {font-weight: bold;font-size: 13px;margin-top: 20px;display: block;}
+
+.social-icons {margin-bottom: 6px;}
+.social-icons li {display: inline-block; margin: 0 !important;}
+.social-icons li a {margin: 0 !important;}
