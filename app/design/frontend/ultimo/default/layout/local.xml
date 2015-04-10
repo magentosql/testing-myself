@@ -487,7 +487,8 @@
         </reference>
 
         <reference name="before_body_end">
-            <block type="core/template" name="livechat" template="livechat/script.phtml" />
+            <block type="core/template" name="livechat" template="livechat/script.phtml"/>
+            <block type="core/template" name="yahoo.analytics" template="yahoo/conversion.phtml"/>
         </reference>
 
     </default>
@@ -755,8 +756,10 @@
 
     <checkout_onepage_success>
         <reference name="before_body_end">
-            <block type="core/template" name="google.conversion" template="tracking/conversion.phtml" />
-            <block type="core/template" name="ppc.conversion" template="tracking/ppc-conversion.phtml" />
+            <block type="core/template" name="google.conversion" template="tracking/conversion.phtml"/>
+            <block type="core/template" name="ppc.conversion" template="tracking/ppc-conversion.phtml"/>
+            <block type="core/template" name="yahoo.retargeting" template="yahoo/retargeting.phtml"/>
+            <remove name="yahoo.analytics"/>
         </reference>
     </checkout_onepage_success>
 
@@ -856,6 +859,9 @@
 		<reference name="breadcrumbs">
                     <action method="addCrumb"><crumbName>Home</crumbName><crumbInfo><label>Home</label><title>Home</title><link>/home</link></crumbInfo></action>
                     <action method="addCrumb"><crumbName>My Account</crumbName><crumbInfo><label>My Account</label><title>My Account</title><link>/customer/account/</link></crumbInfo></action>
+        </reference>
+        <reference name="before_body_end">
+            <remove name="yahoo.analytics" />
         </reference>
 
 	</customer_account>
