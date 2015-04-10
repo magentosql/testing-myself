@@ -158,6 +158,15 @@
                     </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                     <div style="position: absolute; left: -5000px;"><input type="text" name="b_d3d48e75efd637e646b0beb3c_dbfb7e7934" value=""></div>
                 </form>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    $('mc-embedded-subscribe-form-footer').observe('submit', function() {
+                        if(window.ga) {
+                            ga('send', 'event', 'newsletter', 'signup', 'Footer Newsletter Signup');
+                        }
+                    })
+                    //]]>
+                </script>
             </div>
             <div class="footer-form find-form">
                 <form action="<?php echo Mage::getBaseUrl($type = Mage_Core_Model_Store::URL_TYPE_LINK, Mage::app()->getRequest()->isSecure()) ?>customer-service/find-a-store/" method="post" id="find-validate-detail">
