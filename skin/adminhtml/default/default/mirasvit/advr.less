@@ -1,0 +1,161 @@
+.clearfix {
+    *zoom: 1;
+    &:before,
+    &:after {
+        display: table;
+        content: "";
+        line-height: 0;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.advr-report-block-container {
+    .content-header {
+        position: relative;
+    }
+
+    .advr-widget-toolbar {
+        .clearfix();
+
+        position: relative;
+        border: 1px solid #dadfe0;
+        padding: 10px 10px;
+        margin-bottom: 10px;
+
+        .field-row {
+            margin-bottom: 0px;
+        }
+
+        .custom {
+            float: left;
+            margin-right: 10px;
+            
+            input[type="checkbox"] {
+                margin-left: 10px;
+            }
+
+            &.custom-filter_by_sku {
+                // position: absolute;
+                // left: 10px;
+                // bottom: 10px;
+
+                input {
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        .range {
+            margin-right: 40px;
+            margin-bottom: 20px;
+            float: left;
+
+            input[type="radio"] {
+                margin-left: 20px;
+                cursor: pointer;
+            }
+
+            label.inline {
+                padding-left: 10px;
+                cursor: pointer;
+            }
+        }
+
+        .datecontrol {
+            float: right;
+
+            .primary {
+                .clearfix();
+                .interval {
+                    float: left;
+                    width: 200px;
+
+                    select {
+                        margin-left: 10px;
+                        width: 150px;
+                    }
+                }
+                
+                .refresh {
+                    float: left;
+                    margin-left: 10px;
+                }
+
+                .date-from, .date-to {
+                    margin-left: 10px;
+                    float: left;
+                    label {
+                        display: none;
+                    }
+                }
+            }
+
+            .compare {
+                .clearfix();
+                margin-top: 5px;
+
+                .compare-checkbox {
+                    float: left;
+                    text-align: right;
+                    width: 200px;
+                } 
+
+                .date-from, .date-to {
+                    margin-left: 10px;
+                    float: left;
+                    label {
+                        display: none;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .grid {
+        .percent {
+            max-width: 200px;
+            min-width: 100px;
+            position: relative;
+
+            .percent-bar {
+                height: 100%;
+                background: #62b054;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                min-width: 1px;
+                z-index: 10;
+            }
+
+            .percent-value {
+                z-index: 100;
+                position: relative;
+            }
+        }
+
+        small.discount {
+            font-size: 10px;
+            float: left;
+            display: inline-block;
+            text-align: left;
+        }
+
+        tfoot tr td {
+            border-top: 0px;
+        }
+    }
+
+    
+    .advr-report-block-switcher {
+        position: absolute;
+        right: 0px;
+        top: 2px;
+
+        label {
+            margin-right: 5px;
+        }
+    }
+}

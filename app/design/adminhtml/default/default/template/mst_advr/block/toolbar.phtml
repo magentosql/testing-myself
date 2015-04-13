@@ -1,0 +1,266 @@
+<?php if ($this->getVisibility()): ?>
+    <div class="advr-widget-toolbar">
+
+        <?php if ($this->getRangesVisibility()): ?>
+        <div class="range">
+            <?php echo $this->getForm()->getElement('range')->toHtml() ?>
+        </div>
+        <?php endif ?>
+
+        <?php foreach ($this->getCustomElements() as $_element): ?>
+        <div class="custom custom-<?php echo $_element->getId() ?>">
+            <?php echo $_element->toHtml() ?>
+        </div>
+        <?php endforeach ?>
+
+        <?php if ($this->getIntervalsVisibility()): ?>
+        <div class="datecontrol">
+            
+            <div class="primary">
+                <div class="interval">
+                    <?php echo $this->getForm()->getElement('interval')->toHtml() ?>
+                </div>
+
+                <div class="date-from">
+                    <?php echo $this->getForm()->getElement('from')->toHtml() ?>
+                </div>
+                
+                <div class="date-to">
+                    <?php echo $this->getForm()->getElement('to')->toHtml() ?>
+                </div>
+
+                <button type="button" class="refresh scalable task" onclick="advnGridJsObject.doFilter();">
+                    <span><span><span>Refresh</span></span></span>
+                </button>
+            </div>
+            
+            <?php if ($this->getCompareVisibility()): ?>
+            <div class="compare">
+                <div class="compare-checkbox">
+                    <?php echo $this->getForm()->getElement('compare')->toHtml() ?>
+                </div>
+
+                <div class="date-from">
+                    <?php echo $this->getForm()->getElement('compare_from')->toHtml() ?>
+                </div>
+                <div class="date-to">
+                    <?php echo $this->getForm()->getElement('compare_to')->toHtml() ?>
+                </div>
+            </div>
+            <?php endif ?>
+        </div>
+        <?php endif ?>
+
+<!--         <div class="custom filter">
+            <input type="text" name="sku">
+        </div> -->
+    </div>
+
+    <script type="text/javascript">
+    var AdvrToolbar = Class.create({
+
+        calendarDateFormat: '<?php echo Mage::helper('core')->jsQuoteEscape(Mage::getSingleton('advr/config')->calendarDateFormat()) ?>',
+        intervals:          <?php echo json_encode($this->getIntervals()) ?>,
+
+        initialize: function()
+        {
+            var self = this;
+
+            var inputs = $$('.range input, .range select, .custom input, .custom select');
+            inputs.forEach(function(input) {
+                input.observe('change', function() {
+                    self.apply();
+                });
+            });
+
+            self._initRanges();
+        },
+
+        _initRanges: function()
+        {
+            var self = this;
+
+            if ($('toolbar_interval')) {
+                $('toolbar_interval').observe('change', function(e) {
+                    self._updateInterval();
+                    self._updateCompareInterval();
+
+                    self.apply();
+                });
+            }
+
+            if ($('toolbar_compare')) {
+                $('toolbar_compare').observe('change', function(e) {
+                    self._updateCompareInterval();
+                });
+
+                $('toolbar_compare_from').observe('change', function(e) {
+                    self._updateCompareTo();
+                });
+
+                $('toolbar_compare_to').observe('change', function(e) {
+                    self._updateCompareFrom();
+                });
+            }
+
+            if ($('toolbar_from') && $('toolbar_to')) {
+                $('toolbar_from').observe('change', function(e) {
+                    self._updateCompareInterval();
+                    self._updateIntervalType();
+                });
+
+                $('toolbar_to').observe('change', function(e) {
+                    self._updateCompareInterval();
+                    self._updateIntervalType();
+                });
+    
+                // self._updateCompareInterval();
+                self._updateIntervalType();
+            }
+
+        },
+
+        _updateInterval: function()
+        {
+            var self = this;
+            var interval = $('toolbar_interval').value;
+            var from = '';
+            var to = '';
+
+            if (self.intervals[interval]) {
+                $('toolbar_from').value = self.intervals[interval][0];
+                $('toolbar_to').value   = self.intervals[interval][1];
+            }
+        },
+
+        _updateCompareInterval: function()
+        {
+            if (!$('toolbar_compare')) {
+                return;
+            }
+            var self = this;
+            
+            var from = $('toolbar_from').value;
+            var to   = $('toolbar_to').value;
+
+            var fromDate = Date.parseDate(from, self.calendarDateFormat);
+            var toDate   = Date.parseDate(to, self.calendarDateFormat);
+
+            var diff = Math.abs(toDate.getTime() - fromDate.getTime()); 
+            
+            toDate = new Date(fromDate - 1);
+            fromDate = new Date(toDate - diff);
+
+            
+            $('toolbar_compare_from').value = fromDate.print(self.calendarDateFormat);
+            $('toolbar_compare_to').value = toDate.print(self.calendarDateFormat);
+
+            if ($('toolbar_compare').checked) {
+                $('toolbar_compare_from').parentElement.setOpacity(1);
+                $('toolbar_compare_to').parentElement.setOpacity(1);
+            } else {
+                $('toolbar_compare_from').parentElement.setOpacity(0.2);
+                $('toolbar_compare_to').parentElement.setOpacity(0.2);
+            }
+        },
+
+        _updateCompareTo: function()
+        {
+            var self = this;
+            
+            var fromCompare = Date.parseDate($('toolbar_compare_from').value, self.calendarDateFormat);
+
+            var fromDate = Date.parseDate($('toolbar_from').value, self.calendarDateFormat);
+            var toDate   = Date.parseDate($('toolbar_to').value, self.calendarDateFormat);
+
+            var diff = Math.abs(toDate.getTime() - fromDate.getTime()); 
+
+            toDate = new Date(fromCompare.getTime() + diff);
+            $('toolbar_compare_to').value = toDate.print(self.calendarDateFormat);
+        },
+
+        _updateCompareFrom: function()
+        {
+            var self = this;
+            
+            var toCompare = Date.parseDate($('toolbar_compare_to').value, self.calendarDateFormat);
+
+            var fromDate = Date.parseDate($('toolbar_from').value, self.calendarDateFormat);
+            var toDate   = Date.parseDate($('toolbar_to').value, self.calendarDateFormat);
+
+            var diff = Math.abs(toDate.getTime() - fromDate.getTime()); 
+
+            fromDate = new Date(toCompare.getTime() - diff);
+            $('toolbar_compare_from').value = fromDate.print(self.calendarDateFormat);
+        },
+
+        _updateIntervalType: function()
+        {
+            var self = this;
+
+            var isCustom = true;
+            for(var i in self.intervals) {
+                if ($('toolbar_from').value == self.intervals[i][0]
+                    && $('toolbar_to').value == self.intervals[i][1]) {
+
+                    $('toolbar_interval').value = i;
+                    isCustom = false;
+                }
+            }
+
+            if (isCustom) {
+                $('toolbar_interval').value = 'custom';
+            }
+        },
+
+        apply: function()
+        {
+            advnGridJsObject.doFilter();
+        },
+
+        getFilterValues: function()
+        {
+            var inputs = $$('.advr-widget-toolbar input, .advr-widget-toolbar select');
+            var values = [];
+
+            for(var i in inputs) {
+                if(inputs[i].value && inputs[i].value.length) {
+                    values.push(inputs[i]);
+                }
+            }
+            return encode_base64(Form.serializeElements(values));
+        }
+    });
+    advnToolbar = new AdvrToolbar();
+
+    varienGrid.prototype.doSort = function(event)
+    {
+        var element = Event.findElement(event, 'a');
+        if(element.name && element.title){
+            this.addVarToUrl(this.sortVar, element.name);
+            this.addVarToUrl(this.dirVar, element.title);
+            this.addVarToUrl(this.filterVar, advnToolbar.getFilterValues());
+            this.reload(this.url);
+        }
+        Event.stop(event);
+     
+        return false;
+    }
+
+    varienGrid.prototype.doFilter = function()
+    {
+        var filters = $$('#'+this.containerId+' .filter input',
+            '#' + this.containerId +' .filter select',
+            '.advr-widget-toolbar input',
+            '.advr-widget-toolbar select');
+        var elements = [];
+        
+        for(var i in filters){
+            if(filters[i].value && filters[i].value.length) elements.push(filters[i]);
+        }
+        if (!this.doFilterCallback || (this.doFilterCallback && this.doFilterCallback())) {
+            this.reload(this.addVarToUrl(this.filterVar, encode_base64(Form.serializeElements(elements))));
+        }
+    }
+    </script>
+<?php endif ?>
