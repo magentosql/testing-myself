@@ -6,7 +6,7 @@ $installer->startSetup();
 
 $productFormInputs = '';
 $_product = Mage::getModel('catalog/product')->loadByAttribute('sku', 'K-15');
-if ($_product->getId()) {
+if ($_product && $_product->getId()) {
     $productFormInputs .= '<input type="hidden" name="product" value="' . $_product->getId() . '" />';
     $productFormInputs .= '<input type="hidden" name="qty" value="1" />';
 
