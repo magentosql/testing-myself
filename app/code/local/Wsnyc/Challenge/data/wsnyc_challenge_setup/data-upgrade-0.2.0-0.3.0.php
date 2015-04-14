@@ -53,17 +53,19 @@ $pageContent = <<< EOT
 <div class="widgets">
     <div class="widget-left"><span class="label">Join us On Facebook &amp; Instagram</span>
         <p>to show off your 30 Day experience and see the results other Laundress customers are having!</p>
-        <img src="{{media url="wysiwyg/30daychallenge/social-media.png"}}" alt="Social Media" width="351" height="271" />
+        <a href="https://instagram.com/thelaundress/">
+            <img src="{{media url="wysiwyg/30daychallenge/social-media.png"}}" alt="Social Media" width="351" height="271" />
+        </a>
         <p class="tag">
             <a href="https://instagram.com/thelaundress/">Be sure to tag</a><br />
             <a href="https://instagram.com/thelaundress/"><span>#TL30dayclean @thelaundress</span></a>
         </p>
     </div>
     <div class="widget-right">
-        <div class="widget-tips"><span class="label">Top 30 Cleaning Tips</span>
+        <div class="widget-tips"><span class="label">Top Cleaning Tips</span>
             <ul>
-                <li><span>No. 12</span><a>How Tos for Spring Cleaning</a></li>
-                <li><span>No. 8</span><a>Clean Stinky Washing Machines</a></li>
+                <li><a href="http://blog.thelaundress.com/wordpress/2014/09/16/how-to-wash-wool-cashmere/">How To Wash Wool and Cashmere</a></li>
+                <li><a href="http://blog.thelaundress.com/wordpress/2014/08/18/the-ultimate-how-to-for-cleaning-the-toilet/">The Ultimate 'How To' for Cleaning the Toilet</a></li>
             </ul>
             <hr class="divider" />
             <p class="social-link">Visit us on social media for more tips to help you make the most of the challenge.</p>
@@ -84,9 +86,9 @@ $pageContent = <<< EOT
 <div class="details"><span class="label">Promotion Details</span>
     <ul>
         <li>Promotional offer period begins April 20, 2015 at 12:01am EST and ends June 10, 2015 at 11:59pm EST</li>
-        <li>Coupon code 30DAYCLEAN required for discoun redemption</li>
+        <li>Coupon code 30DAYCLEAN required for discount redemption</li>
         <li>Discount available on orders containing 3 or more Laundress home cleaning and/or laundry products</li>
-        <li>Offer not valid on the Jiffy Steamer &amp; the Beckel Canvas storage</li>
+        <li>Offer not valid on the Jiffy Steamer</li>
         <li>One sample per user and sample offer valid while supplies last</li>
         <li>This offer cannot be combined with any additional promotions or discounts</li>
     </ul>
@@ -116,7 +118,7 @@ $sampleContent = <<< EOT
     <p>Not quite ready to commit to the 30-Day Challenge? That's okay.<br/> <strong>Sign up for our newsletter</strong> and we'll send you a Free Sample of a Laundry or Home Cleaning Product &ndash; your choice!</p>
 
     <p>Once you've ready to start spring cleaning, come back and enjoy 20% off any purchase<br/>
-        of three or more products by using the code: <strong>30DAYCLEAN</strong> or pick up the <strong><a>Spring Cleaning Bundle</a></strong><br/>
+        of three or more products by using the code: <strong>30DAYCLEAN</strong> or pick up the <strong><a href="{{store url="spring-cleaning-bundle"}}">Spring Cleaning Bundle</a></strong><br/>
         - a $120 value for $80 - to get you started!</p>
 </div>
 <div class="request-form">
