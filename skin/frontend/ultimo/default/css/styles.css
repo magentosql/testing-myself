@@ -3829,7 +3829,7 @@ pading-left:5px;
     max-width: calc(100% - 2*168px);
 }
 
-.product-view.challenge .availability, .product-view.challenge .price-box-bundle {
+.product-view.challenge .availability, .product-view.challenge .price-box-bundle, .product-view.challenge .product-options {
     display: none
 }
 .product-view.challenge .box-additional {
