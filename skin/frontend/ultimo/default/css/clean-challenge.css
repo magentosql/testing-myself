@@ -1,0 +1,103 @@
+.main {padding-top: 0 !important;}
+.main-banner {margin-bottom: 40px;}
+.main h1 {text-align: center;width: 610px;text-transform: none;margin: 0px auto;font-family: 'Bentham';font-size: 36px;}
+.clean-challenge-separator {height: 5px;width: 100px;background: #e6e6e6;border:0px;margin: 20px auto 40px;}
+.main-description {margin: 0px 0px 30px;font-family: "Raleway"}
+.cms-page-view .main-description p {text-align: center;font-size: 16px;max-width: 870px;margin: 20px auto;line-height: 1.5em;font-family: "Raleway";}
+.alternatives {width: 750px;margin: 20px auto 0px;padding: 0px 0px 35px 0px;overflow: hidden;background: transparent url('../images/challenge/arrow.png') no-repeat 80% bottom;}
+.alternatives .circle {
+    -webkit-border-radius: 400px;
+    -moz-border-radius: 400px;
+    border-radius: 400px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    width: 295px;
+    height: 295px;
+    border: 1px solid #000;
+    padding: 60px 50px;
+    color: #000;
+    text-align: center;
+}
+.circle.bg-black {background: #000;color: #fff;}
+.alternative-separator:before {content:"";display:block;width: 30px;height:1px;background-color: #999;position: absolute;top: 147px;left: 20%;}
+.alternative-separator {width: 155px;float:left;text-align: center;height: 295px;line-height: 295px;font-size: 16px;color: #999999;position: relative;}
+.alternative-separator:after {content:"";display:block;width: 30px;height:1px;background-color: #999;position: absolute;top: 147px;right: 20%;}
+.alternatives .circle span {display: block;margin: 15px 0;line-height: 1.6em;font-family: "Raleway";font-size: 16px;}
+.alternatives .circle .fancy {font-family: "Jenna-Sue";font-size: 33px;line-height: 1em;margin: 0px;}
+.alternatives .circle .big {font-variant: small-caps;text-transform: lowercase;font-size: 56px;font-weight: normal;line-height: 33px;font-family: "Bentham";margin-top: 0px;}
+.product-view {text-align: center;}
+.product-view .btn-cart {margin-top: 10px;}
+button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-family: "GillSansMTStd-Bold",sans-serif;text-transform: uppercase;}
+
+.widgets {overflow: hidden;margin: 60px 0;}
+.widgets > div {float: left;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin: 0 11px;max-width: 49%;}
+.widgets span.label {font-family: "Bentham";text-transform: uppercase;font-size: 21px;margin-bottom: 15px;display: block;text-align: center;}
+.widgets .widget-left {margin-left: 0;background: #f4f4f4;padding: 40px 45px 40px 45px;text-align: center;}
+.widgets .widget-left p {font-family: "Raleway";font-size: 14px;color: #000;text-align: center;margin-bottom: 35px;}
+.widgets .widget-left img {margin: 0 auto;}
+.widgets .widget-left .tag {margin: 30px 0 0 0;font-weight: bold;}
+.widgets .widget-left .tag span {color: #339900;}
+.widgets .widget-right {margin-right: 0;}
+.widgets .widget-right .widget-tips {text-align: center;border: 5px solid #e6e6e6;padding: 0px 70px;box-sizing: border-box;width: 460px;}
+.widgets .widget-right .widget-tips .label {margin-top: 40px;}
+.widgets .widget-right .widget-tips ul {}
+.widgets .widget-right .widget-tips ul li {margin: 15px 0;}
+.widgets .widget-right .widget-tips ul li span {display: block;font-family: "Bentham";font-size: 20px;font-variant: small-caps;text-transform: lowercase;}
+.widgets .widget-right .widget-tips ul li a {font-family: "Raleway";font-size: 14px;}
+.widgets .widget-right .widget-tips .divider {height: 3px;background: #e6e6e6;border: 0;width: 50px;margin: 20px auto 15px;}
+.widgets .widget-right .widget-tips .social-link {font-family: "Raleway";color: #000;font-size: 14px;margin-bottom: 5px;}
+.widgets .widget-right .widget-newsletter {background: #000;color: #fff;border: 1px solid #fff;box-shadow: 0px 0px 0px 5px #000;width: calc(100% - 10px);margin: 20px auto 0;padding: 40px 0;text-align: center;}
+.widgets .widget-right .widget-newsletter .label {}
+.widgets .widget-right .widget-newsletter p {font-family: "Raleway";font-size: 14px;}
+.widgets .widget-right .widget-newsletter .button {color: #000;background: #fff;padding: 10px;display: inline-block;font-family: "Raleway";text-transform: uppercase;font-weight: bold;}
+
+.details {margin: 0;text-align: center;font-family: "Raleway";}
+.details .label {font-weight: bold;font-size: 14px;text-transform: uppercase;}
+.details ul {list-style-type: disc;list-style-position: inside;font-size: 13px;}
+.details ul li {color: #7f7f7f;margin: 3px 0;}
+.details .call {font-weight: bold;font-size: 13px;margin-top: 20px;display: block;}
+
+.social-icons {margin-bottom: 6px;}
+.social-icons li {display: inline-block; margin: 0 !important;}
+.social-icons li a {margin: 0 !important;}
+
+.request-form {width: 822px;margin: 40px auto;}
+.request-form .form-list {position: relative;overflow: hidden;}
+.request-form .form-list .fields {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.request-form .form-list .fields .field {width: 100%;}
+.request-form .form-list .fields .field .input-text {
+    height: 45px;width: 100%;background: #eaeaea;border: 0;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+.request-form .form-list label,
+.request-form .form-list select option.label {color: #999;text-transform: uppercase;font-family: "Raleway";}
+.request-form .form-list .fields .field .row-field {float: left;}
+.request-form .form-list select {height: 45px;background: #eaeaea;border: 0;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;width: 390px;box-sizing: border-box;}
+.request-form .form-list .fields .field .row-field select {width: 250px;}
+.width-30 {width: 30% !important;}
+.width-70 {width: 70% !important;}
+.request-form .form-list .control,
+.request-form .form-list .wide {clear: both;text-align: center;}
+.request-form .form-list .control {margin: 0px auto 25px;padding-top: 20px;}
+.request-form .form-list .control label {color: #000;text-transform: none;font-weight: normal;font-size: 13px;}
+.request-form .form-list .control .checkbox:checked {display: none}
+.request-form .form-list .control .checkbox:checked + label {background: transparent url('../images/challenge/checkbox.png') no-repeat;padding-left: 22px;}
+.request-form .buttons-set {text-align: center;}
+.request-form .buttons-set button.button {float:none;width: 390px;margin: 0;}
+.request-form .buttons-set button.button span {display: block;width: 100%;margin: 0;padding: 0;}
+
+.cms-30-day-clean-home-challenge-sample-request .details .label {font-weight: normal;font-size: 12px;color: #000;}
+.cms-30-day-clean-home-challenge-sample-request .details ul li {color: #000;font-size: 12px;}
+.cms-30-day-clean-home-challenge-sample-request .main-description a {color: #000;text-decoration: underline;}
+.cms-30-day-clean-home-challenge-sample-request-success .call {font-weight: normal;}
+
+.messages {margin-bottom: 0px;}
+.messages li {margin-bottom: 0px;}

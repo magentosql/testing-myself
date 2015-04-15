@@ -30,7 +30,6 @@ class Wsnyc_NewsletterModal_Model_Observer {
             'Content-type' => 'application/x-www-form-urlencoded',
             'Connection' => 'close'
         ));
-        $response = $client->request();
-        Mage::log($response->getBody());
+        $client->request();
     }
 }

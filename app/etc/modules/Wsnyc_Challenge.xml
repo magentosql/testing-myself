@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Challenge>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Wsnyc_Challenge>
+    </modules>
+</config>
