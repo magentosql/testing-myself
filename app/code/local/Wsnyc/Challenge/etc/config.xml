@@ -11,6 +11,11 @@
                 <class>Wsnyc_Challenge_Helper</class>
             </wsnyc_challenge>
         </helpers>
+        <models>
+            <wsnyc_challenge>
+                <class>Wsnyc_Challenge_Model</class>
+            </wsnyc_challenge>
+        </models>
         <resources>
             <wsnyc_challenge_setup>
                 <setup>

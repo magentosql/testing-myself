@@ -101,3 +101,10 @@ button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-
 
 .messages {margin-bottom: 0px;}
 .messages li {margin-bottom: 0px;}
+
+.product-view.challenge .availability, .product-view.challenge .price-box-bundle {
+    display: none
+}
+.product-view.challenge .box-additional {
+    margin-top: 0;
+}
