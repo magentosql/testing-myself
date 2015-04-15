@@ -3828,3 +3828,10 @@ pading-left:5px;
 .std.blurb {
     max-width: calc(100% - 2*168px);
 }
+
+.product-view.challenge .availability, .product-view.challenge .price-box-bundle {
+    display: none
+}
+.product-view.challenge .box-additional {
+    margin-top: 0;
+}
