@@ -46,7 +46,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
         <?php endif; ?>
         </h2>
 
-        <?php if ($_options = $this->getOptionList()):?>
+        <?php if ($_item->getProduct()->getTypeId() != 'bundle' && $_options = $this->getOptionList()):?>
 
         <dl class="item-options">
             <?php foreach ($_options as $_option) : ?>
