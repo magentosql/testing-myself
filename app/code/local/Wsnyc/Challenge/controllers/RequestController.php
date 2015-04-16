@@ -55,6 +55,40 @@ class Wsnyc_Challenge_RequestController extends Mage_Core_Controller_Front_Actio
             return false;
         }
 
+        if ($this->_findAnotherSampleOrder()) {
+            Mage::getSingleton('core/session')->addError(Mage::helper('core')->__('An order for this customer has already been placed'));
+            $this->_redirect('30-day-clean-home-challenge-sample-request');
+            return false;
+        }
+
         return true;
+    }
+
+    /**
+     * Try to detect if given customer has already placed a sample request order
+     *
+     * @return bool
+     */
+    protected function _findAnotherSampleOrder() {
+        $request = $this->getRequest()->getPost();
+        $_sampleProducts = array('Bleach-PQ', 'Dish-PQ', 'Sport-PQ', 'Denim-PQ', 'ClassicConditioner-PQ');
+
+        /** @var Mage_Sales_Model_Resource_Order_Collection $collection */
+        $collection = Mage::getModel('sales/order')->getCollection();
+
+        $collection->join(array('items' => 'sales/order_item'), 'items.order_id=main_table.entity_id')
+                    ->join(array('address' => 'sales/order_address'), 'address.parent_id=main_table.entity_id')
+                    ->addFieldToFilter('main_table.base_grand_total', array('eq' => 0.0000))
+                    ->addFieldToFilter('items.sku', array('ub' => $_sampleProducts))
+                    ->addFieldToFilter(
+                        array('main_table.customer_email','CONCAT(address.postcode, address.city,address.street)'),
+                        array(
+                            array('eq' => $request['email']),
+                            array('eq' => $request['postcode'].$request['city'].$request['street'][0]),
+                            )
+                    );
+
+
+        return ($collection->count() > 0);
     }
 }
