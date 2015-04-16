@@ -31,6 +31,8 @@ class Wsnyc_Challenge_RequestController extends Mage_Core_Controller_Front_Actio
         //subscribe to newsletter
         Mage::getSingleton('checkout/session')->setSubscriptionStatus($request['newsletter']);
         Mage::dispatchEvent('submit_sample_request', array('quote' => $service->getQuote()));
+
+        Mage::getSingleton('checkout/session')->setLastRealOrderId($service->getOrder()->getIncrementId());
         $this->_redirect('30-day-clean-home-challenge-sample-request-success');
     }
 
