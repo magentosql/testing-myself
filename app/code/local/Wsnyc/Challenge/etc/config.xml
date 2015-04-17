@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Challenge>
-            <version>0.3.7</version>
+            <version>0.3.8</version>
         </Wsnyc_Challenge>
     </modules>
     <global>
