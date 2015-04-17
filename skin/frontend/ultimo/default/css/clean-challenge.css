@@ -37,6 +37,7 @@
 .alternatives .bg-white a.button span {color: #fff;background: #000;}
 .alternatives .circle .fancy {font-family: "Jenna-Sue";font-size: 33px;line-height: 1em;margin: 0px;}
 .alternatives .circle .big {font-variant: small-caps;text-transform: lowercase;font-size: 56px;font-weight: normal;line-height: 33px;font-family: "Bentham";margin-top: 0px;}
+.ismac .alternatives .circle .big {letter-spacing: -5px;}
 .alternatives .circle.bg-white .big {font-size: 52px;}
 .product-view {text-align: center;}
 .product-view .btn-cart {margin-top: 10px;}
@@ -114,3 +115,4 @@ button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-
 
 .messages {margin-bottom: 0px;}
 .messages li {margin-bottom: 0px;}
+
