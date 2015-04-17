@@ -24,9 +24,20 @@
 .alternative-separator:before {content:"";display:block;width: 30px;height:1px;background-color: #999;position: absolute;top: 147px;left: 20%;}
 .alternative-separator {width: 155px;float:left;text-align: center;height: 295px;line-height: 295px;font-size: 16px;color: #999999;position: relative;}
 .alternative-separator:after {content:"";display:block;width: 30px;height:1px;background-color: #999;position: absolute;top: 147px;right: 20%;}
-.alternatives .circle span {display: block;margin: 15px 0;line-height: 1.6em;font-family: "Raleway";font-size: 16px;}
+.alternatives .circle span {display: block;margin: 15px 0;line-height: 1.6em;font-family: "Raleway";font-size: 15px;}
+.alternatives .circle a.button {display: block;width: 60%;margin: 0px auto;}
+.alternatives .circle.bg-white a.button {margin-top: -5px;}
+.alternatives .circle a.button span {text-transform: uppercase;font-weight: bold;padding: 2px 0px;margin: 0px;
+    transition:			color 300ms ease-in-out, background-color 300ms ease-in-out;
+    -moz-transition:	color 300ms ease-in-out, background-color 300ms ease-in-out;
+    -webkit-transition:	color 300ms ease-in-out, background-color 300ms ease-in-out;
+    -o-transition:		color 300ms ease-in-out, background-color 300ms ease-in-out;}
+.alternatives .circle a.button:hover span {background: #64b96a;color: #fff;}
+.alternatives .bg-black a.button span {color: #000;background: #fff;}
+.alternatives .bg-white a.button span {color: #fff;background: #000;}
 .alternatives .circle .fancy {font-family: "Jenna-Sue";font-size: 33px;line-height: 1em;margin: 0px;}
 .alternatives .circle .big {font-variant: small-caps;text-transform: lowercase;font-size: 56px;font-weight: normal;line-height: 33px;font-family: "Bentham";margin-top: 0px;}
+.alternatives .circle.bg-white .big {font-size: 52px;}
 .product-view {text-align: center;}
 .product-view .btn-cart {margin-top: 10px;}
 button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-family: "GillSansMTStd-Bold",sans-serif;text-transform: uppercase;}
@@ -34,6 +45,7 @@ button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-
 .widgets {overflow: hidden;margin: 60px 0;}
 .widgets > div {float: left;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin: 0 11px;max-width: 49%;}
 .widgets span.label {font-family: "Bentham";text-transform: uppercase;font-size: 21px;margin-bottom: 15px;display: block;text-align: center;}
+.widgets span.label a {color: #000;}
 .widgets .widget-left {margin-left: 0;background: #f4f4f4;padding: 40px 45px 40px 45px;text-align: center;}
 .widgets .widget-left p {font-family: "Raleway";font-size: 14px;color: #000;text-align: center;margin-bottom: 35px;}
 .widgets .widget-left img {margin: 0 auto;}
@@ -90,6 +102,7 @@ button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-
 .request-form .form-list .control label {color: #000;text-transform: none;font-weight: normal;font-size: 13px;}
 .request-form .form-list .control .checkbox:checked {display: none}
 .request-form .form-list .control .checkbox:checked + label {background: transparent url('../images/challenge/checkbox.png') no-repeat;padding-left: 22px;}
+.request-form .form-list .control span {display: block;font-family: "Raleway";font-size: 12px;color: #000;}
 .request-form .buttons-set {text-align: center;}
 .request-form .buttons-set button.button {float:none;width: 390px;margin: 0;}
 .request-form .buttons-set button.button span {display: block;width: 100%;margin: 0;padding: 0;}

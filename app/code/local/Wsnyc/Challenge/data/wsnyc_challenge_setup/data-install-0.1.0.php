@@ -93,10 +93,13 @@ $rule = Mage::getModel('salesrule/rule')->setName('30 Day Challenge')
     ->setWebsiteIds(array(1))
     ->setStoreLabels(array('30 Day Challenge'))
     ->save();
-$coupon = Mage::getModel('salesrule/coupon')->setRule($rule)
-                    ->setCode('30DAYCLEAN')
-                    ->setExpirationDate('2015-05-20 00:00:00')
-                    ->setIsPrimary(1)
-                    ->setType(0)
-                    ->save();
+try {
+    $coupon = Mage::getModel('salesrule/coupon')->setRule($rule)
+        ->setCode('30DAYCLEAN')
+        ->setExpirationDate('2015-05-20 00:00:00')
+        ->setIsPrimary(1)
+        ->setType(0)
+        ->save();
+}
+catch (Exception $e) {}
 $installer->endSetup();
