@@ -32,9 +32,9 @@
     -moz-transition:	color 300ms ease-in-out, background-color 300ms ease-in-out;
     -webkit-transition:	color 300ms ease-in-out, background-color 300ms ease-in-out;
     -o-transition:		color 300ms ease-in-out, background-color 300ms ease-in-out;}
-.alternatives .circle a.button:hover span {background: #64b96a;color: #fff;}
-.alternatives .bg-black a.button span {color: #000;background: #fff;}
-.alternatives .bg-white a.button span {color: #fff;background: #000;}
+.alternatives .circle a.button:hover span {text-decoration: none;}
+.alternatives .bg-black a.button span {color: #fff;background: transparent;text-decoration: underline;}
+.alternatives .bg-white a.button span {color: #000;text-decoration: underline;}
 .alternatives .circle .fancy {font-family: "Jenna-Sue";font-size: 33px;line-height: 1em;margin: 0px;}
 .alternatives .circle .big {font-variant: small-caps;text-transform: lowercase;font-size: 56px;font-weight: normal;line-height: 33px;font-family: "Bentham";margin-top: 0px;}
 .ismac .alternatives .circle .big {letter-spacing: -5px;}
