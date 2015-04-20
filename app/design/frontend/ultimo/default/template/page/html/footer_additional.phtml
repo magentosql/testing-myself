@@ -92,35 +92,6 @@
         $('body.blog-as-seen-in .post-list li:nth-child(2n+2)').addClass('row-end');
         $('body.blog-as-seen-in .post-list li:nth-child(3n+3)').removeClass('row-end');
 
-        // Mailchimp AJAX
-        var $newsletterForm = $('#mc-embedded-subscribe-form');
-
-        $('#mc-embedded-subscribe-form button[type="submit"]').click(function(e){
-            e.preventDefault();
-            if($('#mc-embedded-subscribe-form input').val().length == 0 ){
-
-            } else {
-                $.ajax({
-                    type: $newsletterForm.attr('method'),
-                    url: $newsletterForm.attr('action'),
-                    data: $newsletterForm.serialize(),
-                    cache: false,
-                    dataType: 'json',
-                    contentType: "application/json; charset=utf-8",
-                    error: function(err) {alert('Please try again later.');},
-                    success: function(data){
-                        if(data.result != "success") {
-                            responseMsg = data.msg.slice(4);
-                            alert(responseMsg);
-                        } else {
-                            $('#mc-embedded-subscribe-form input.input-text').val('').attr("placeholder", "Thank you for subscribing!");
-                        }
-                    }
-                });
-            }
-
-        });
-
         // Blog Slidebar level 2
         $('.blog .sidebar ul.level1 li.active').next('ul.level2').css('display','block')
 

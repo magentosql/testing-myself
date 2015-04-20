@@ -53,6 +53,8 @@
     </div>
     <script type="text/javascript">
         jQuery(function($) {
+            window.SignupEventName = 'Newsletter Popup Signup';
+
             $(".openNewsletterPopup").colorbox({
                 inline  : true,
                 opacity : 0.5,
@@ -67,6 +69,7 @@
             <?php if(!$cookie->get('newsletter-info')): ?>$('.openNewsletterPopup').click();<?php endif; ?>
 
             $('.newsletter-signup').on('click', function() {
+                window.SignupEventName = 'Header Link Newsletter Signup';
                 $('.openNewsletterPopup').click();
             });
         });
@@ -81,13 +84,13 @@
                 return false;
             } else {
                 if(window.ga) {
-                    ga('send', 'event', 'newsletter', 'signup', 'Newsletter Signup');
+                    ga('send', 'event', 'newsletter', 'signup', window.SignupEventName);
                 }
 
                 jQuery('#cboxContent .newsletter-cms-content').html('<img class="thank-you-message" src="<?php echo Mage::getBaseUrl('media') ?>wysiwyg/newsletter-thankyou.png" alt="<?php echo $this->__('Thank you for subscribing!'); ?>" /><button class="button thanks-button" onclick="jQuery.colorbox.close(); return false;"><?php echo $this->__('Close'); ?></button>');
                 jQuery('#cboxContent .clear').hide();
                 jQuery('#cboxContent .mc-field-group').hide();
-                jQuery('#cboxContent .#mce-responses').html('');
+                jQuery('#cboxContent #mce-responses').html('');
             }
         });
         function validateEmail(email) { 
