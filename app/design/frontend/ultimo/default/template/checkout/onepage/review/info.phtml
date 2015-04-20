@@ -89,6 +89,29 @@
     <script type="text/javascript">
     //<![CDATA[
         review = new Review('<?php echo $this->getUrl('checkout/onepage/saveOrder') ?>', '<?php echo $this->getUrl('checkout/onepage/success') ?>', $('checkout-agreements'));
+        review.save = function(){
+            if (checkout.loadWaiting!=false) return;
+            if ($('billing\:newsletter').checked && typeof ga == "function") {
+                ga('send', 'event', 'newsletter', 'signup', 'Checkout Newsletter Signup');
+            }
+
+            checkout.setLoadWaiting('review');
+            var params = Form.serialize(payment.form);
+            if (this.agreementsForm) {
+                params += '&'+Form.serialize(this.agreementsForm);
+            }
+            params.save = true;
+            var request = new Ajax.Request(
+                this.saveUrl,
+                {
+                    method:'post',
+                    parameters:params,
+                    onComplete: this.onComplete,
+                    onSuccess: this.onSave,
+                    onFailure: checkout.ajaxFailure.bind(checkout)
+                }
+            );
+        }
     //]]>
     </script>
 </div>
