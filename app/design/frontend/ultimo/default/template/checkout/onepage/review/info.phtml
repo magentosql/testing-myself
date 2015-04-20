@@ -91,7 +91,8 @@
         review = new Review('<?php echo $this->getUrl('checkout/onepage/saveOrder') ?>', '<?php echo $this->getUrl('checkout/onepage/success') ?>', $('checkout-agreements'));
         review.save = function(){
             if (checkout.loadWaiting!=false) return;
-            if ($('billing\:newsletter').checked && typeof ga == "function") {
+            var newsletterSignup = $('billing\:newsletter');
+            if (newsletterSignup != null && newsletterSignup.checked && typeof ga == "function") {
                 ga('send', 'event', 'newsletter', 'signup', 'Checkout Newsletter Signup');
             }
 
