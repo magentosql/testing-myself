@@ -4,7 +4,7 @@
     <catalog_product_view>
         <reference name="head"><action method="addItem"><type>skin_css</type><file>css/clean-challenge.css</file></action></reference>
         <reference name="product.info.extrahint">
-            <block type="core/template" name="challenge-description" template="wsnyc/challenge/description.phtml"/>
+            <block type="catalog/product_view_attributes" name="challenge-description" template="wsnyc/challenge/description.phtml"/>
         </reference>
     </catalog_product_view>
 </layout>

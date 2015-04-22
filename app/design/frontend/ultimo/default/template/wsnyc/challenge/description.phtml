@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var Mage_Catalog_Block_Product_View_Attributes $this
+ */
+if ($this->getProduct()->getIsChallenge()):?>
 <div class="challenge">
     <a title="Spring Cleaning Bundle" href="<?php echo $this->getUrl('spring-cleaning-bundle');?>">
         <img title="Pick up the Spring Cleaning Bundle" src="<?php echo $this->getUrl('media/wysiwyg/30daychallenge') . 'icon.jpg'; ?>" alt="Spring Clean Bundle"/>
@@ -8,3 +13,4 @@
         Stain Brush and Black & White Shopper.
     </span>
 </div>
+<?php endif;?>
