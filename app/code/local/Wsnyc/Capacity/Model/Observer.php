@@ -74,6 +74,10 @@ class Wsnyc_Capacity_Model_Observer {
         $shipping = $invoice->getOrder()->getShippingAddress();
         $billing = $invoice->getOrder()->getBillingAddress();
         foreach($invoice->getAllItems() as $item) {
+            if (!$this->_isVisibleItem($item)) {
+                continue;
+            }
+
             /**
              * @var Mage_Sales_Model_Order_Shipment_Item $item
              */
@@ -218,5 +222,10 @@ class Wsnyc_Capacity_Model_Observer {
         }
         
         return $result;
+    }
+
+    protected function _isVisibleItem(Mage_Sales_Model_Order_Invoice_Item $item)
+    {
+        return !($item->getParentId() > 0);
     }
 }
