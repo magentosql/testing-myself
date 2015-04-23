@@ -5,7 +5,7 @@ $installer = $this;
 $installer->startSetup();
 
 $collection = Mage::getModel('catalog/product')->getCollection()
-                ->addAttributeToFilter('sku', array('in' => array('sh-01')));
+                ->addAttributeToFilter('sku', array('in' => array('Sh-01')));
 foreach($collection as $product) {
     $product->setIsChallenge(true)->save();
 }
