@@ -226,6 +226,6 @@ class Wsnyc_Capacity_Model_Observer {
 
     protected function _isVisibleItem(Mage_Sales_Model_Order_Invoice_Item $item)
     {
-        return !($item->getOrderItem()->getParentId() > 0);
+        return !($item->getOrderItem()->getParentItemId() > 0);
     }
 }
