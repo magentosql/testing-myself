@@ -46,7 +46,7 @@ class Wsnyc_Capacity_Model_Observer {
          */
         if (!$this->_shouldSendInfo($invoice)) {
             //shipment already send or not yet shipped
-            return;
+            //return;
         }        
         $filename = $this->_prepareData($invoice);
         $this->_sendData($filename, $invoice->getStoreId());
@@ -226,6 +226,6 @@ class Wsnyc_Capacity_Model_Observer {
 
     protected function _isVisibleItem(Mage_Sales_Model_Order_Invoice_Item $item)
     {
-        return !($item->getParentId() > 0);
+        return !($item->getOrderItem()->getParentId() > 0);
     }
 }
