@@ -2629,7 +2629,7 @@ a.email2friend:hover { background-position: -54px -27px; }
 .gen-tabs-style1 .tabs a:hover,
 .gen-tabs-style1 .tabs a:focus   { color:#333; background-color:#e5e5e5; border-color:#e5e5e5; }
 .gen-tabs-style1 .tabs a:hover, .gen-tabs-style1 .tabs a.current { color:#333; background-color:#ffffff; border-color:#ddd; border-bottom:1px solid #fff; margin-bottom:-1px; }
-.gen-tabs-style1 .tabs-panels { border-top:1px solid #ddd; }
+.gen-tabs-style1 .tabs-panels { border-top:1px solid #ddd; text-align: left; }
 .gen-tabs-style1.accor .tabs-panels { border-top:none; }
 
 
