@@ -771,7 +771,12 @@ h1 span{text-transform:none}
 .product-view .btn-cart span,button.btn-checkout span{font-family:"GillSansMTStd-Bold",sans-serif;text-transform:uppercase}
 .product-view .add-to-box{border:0}
 .product-view .action-box{background-image:url('../images/product-view_shadow.jpg');background-repeat:no-repeat;font-family:"GillSansMTStd",sans-serif;padding:35px 0 0 0}
-.product-view .product-shop .product-name h1{font-family:"Sorts Mill Goudy Regular",serif;font-size:22px;text-transform:uppercase}
+.product-view .product-shop .product-name h1{font-family:"Sorts Mill Goudy Regular",serif;font-size:22px;text-transform:uppercase;text-align: left}
+.product-view .product-shop .short-description{text-align: left}
+.product-view .product-shop .fragrance{text-align: left}
+.product-view .product-shop .fragrance{text-align: left}
+.product-view .product-shop .challenge{text-align: left}
+
 .product-view #zoom-btn{font-family:"Sorts Mill Goudy Regular";font-size:14px;line-height:1em;text-transform:uppercase;padding:10px 1em 5px}
 .product-view .tbl-ingridients{width:100%}
 .product-view .tbl-ingridients td{padding:10px}
