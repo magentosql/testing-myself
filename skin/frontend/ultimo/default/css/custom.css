@@ -771,15 +771,20 @@ h1 span{text-transform:none}
 .product-view .btn-cart span,button.btn-checkout span{font-family:"GillSansMTStd-Bold",sans-serif;text-transform:uppercase}
 .product-view .add-to-box{border:0}
 .product-view .action-box{background-image:url('../images/product-view_shadow.jpg');background-repeat:no-repeat;font-family:"GillSansMTStd",sans-serif;padding:35px 0 0 0}
-.product-view .product-shop .product-name h1{font-family:"Sorts Mill Goudy Regular",serif;font-size:22px;text-transform:uppercase}
+.product-view .product-shop .product-name h1{font-family:"Sorts Mill Goudy Regular",serif;font-size:22px;text-transform:uppercase;text-align: left}
+.product-view .product-shop .short-description{text-align: left}
+.product-view .product-shop .fragrance{text-align: left}
+.product-view .product-shop .fragrance{text-align: left}
+.product-view .product-shop .challenge{text-align: left}
+
 .product-view #zoom-btn{font-family:"Sorts Mill Goudy Regular";font-size:14px;line-height:1em;text-transform:uppercase;padding:10px 1em 5px}
 .product-view .tbl-ingridients{width:100%}
 .product-view .tbl-ingridients td{padding:10px}
 .product-view .tbl-ingridients td:first-child{font-weight:bold;width:30%;border-right:1px solid #ddd}
 .product-view .tbl-ingridients tr:nth-child(2n){background-color:#f1f1f1}
 .product-view .tbl-ingridients tr:last-child td{border-bottom:1px solid #ddd}
-.product-view .fragrance{padding-left:160px;position:relative}
-.product-view .fragrance img{position:absolute;top:0;left:0}
+.product-view .fragrance{padding-left:107px;position:relative; }
+.product-view .fragrance img{position:absolute;top:0;left:0; text-align: left;}
 .product-view .fragrance p{color:#999;font-family:"Arial";font-style:italic}
 .product-view .fragrance p a{color:#222;font-style:italic;font-weight:bold}
 .product-view .fragrance{overflow:hidden}
