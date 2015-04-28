@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_sales_order_free>
+        <reference name="content">
+            <block type="wsnyc_ordersreport/adminhtml_sales_order" name="sales_order.grid.container"/>
+        </reference>
+    </adminhtml_sales_order_free>
+    <adminhtml_sales_order_gridfree>
+        <update handle="formkey"/>
+        <block type="wsnyc_ordersreport/adminhtml_sales_order_grid" name="sales_order.grid" output="toHtml"/>
+    </adminhtml_sales_order_gridfree>
+</layout>
