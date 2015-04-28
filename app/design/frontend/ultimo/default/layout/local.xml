@@ -755,6 +755,7 @@
 
     <checkout_onepage_success>
         <reference name="before_body_end">
+            <remove name="remarketing.checkout" />
             <block type="core/template" name="google.conversion" template="tracking/conversion.phtml" />
             <block type="core/template" name="ppc.conversion" template="tracking/ppc-conversion.phtml" />
         </reference>
