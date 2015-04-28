@@ -42,7 +42,7 @@ class Wsnyc_OrdersReport_Adminhtml_Sales_OrderController extends Mage_Adminhtml_
     /**
      * Export order grid to CSV format
      */
-    public function exportCsvAction()
+    public function exportFreeCsvAction()
     {
         $fileName   = 'orders.csv';
         $grid       = $this->getLayout()->createBlock('wsnyc_ordersreport/adminhtml_sales_order_grid');
@@ -52,7 +52,7 @@ class Wsnyc_OrdersReport_Adminhtml_Sales_OrderController extends Mage_Adminhtml_
     /**
      *  Export order grid to Excel XML format
      */
-    public function exportExcelAction()
+    public function exportFreeExcelAction()
     {
         $fileName   = 'orders.xml';
         $grid       = $this->getLayout()->createBlock('wsnyc_ordersreport/adminhtml_sales_order_grid');

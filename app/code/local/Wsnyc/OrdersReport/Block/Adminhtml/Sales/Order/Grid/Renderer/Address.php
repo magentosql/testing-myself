@@ -4,7 +4,7 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid_Renderer_Address exten
 {
     protected function _getValue(Varien_Object $row)
     {
-        $sep = "<br>";
+        $sep = "\r\n";
         return $row['street'] . $sep . $row['city'] . $sep . $row['region'] . $sep . $row['postcode'] . $sep . $row['country'];
     }
 

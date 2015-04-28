@@ -19,7 +19,7 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
         $select->joinLeft(
             'sales_flat_order_item',
             'sales_flat_order_item.order_id = main_table.entity_id',
-            array('skus' => new Zend_Db_Expr('group_concat(sales_flat_order_item.sku SEPARATOR "<br> ")'))
+            array('skus' => new Zend_Db_Expr('group_concat(sales_flat_order_item.sku SEPARATOR "\r\n ")'))
         );
         $select->group('main_table.entity_id');
 
@@ -146,8 +146,8 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
             );
         }
 
-        $this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV'));
-        $this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel XML'));
+        $this->addExportType('*/*/exportFreeCsv', Mage::helper('sales')->__('CSV'));
+        $this->addExportType('*/*/exportFreeExcel', Mage::helper('sales')->__('Excel XML'));
 
         return Mage_Adminhtml_Block_Widget_Grid::_prepareColumns();
     }
