@@ -7,7 +7,7 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
         /** @var $collection Mage_Sales_Model_Resource_Order_Collection */
         $collection = Mage::getResourceModel($this->_getCollectionClass());
         $collection->addFieldToFilter('grand_total', 0)
-            ->addFieldToFilter('main_table.created_at', array('gteq' => '2015-04-20'));
+            ->addFieldToFilter('main_table.created_at', array('gteq' => '2013-04-20'));
 
         $select = $collection->getSelect();
         $select->joinLeft(
@@ -78,6 +78,8 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
                 'width' => '160px',
                 'type' => 'text',
                 'index' => 'skus',
+                'filter' => false,
+                'sortable' => false,
                 'filter_condition_callback' => array('Wsnyc_OrdersReport_Model_Filter', 'filterSkus'),
             )
         );
@@ -87,7 +89,7 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
             'billing_name',
             array(
                 'header' => Mage::helper('sales')->__('Bill to Name'),
-                'index' => 'main_table.billing_name',
+                'index' => 'billing_name',
             )
         );
 
@@ -95,7 +97,7 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
             'shipping_name',
             array(
                 'header' => Mage::helper('sales')->__('Ship to Name'),
-                'index' => 'main_table.shipping_name',
+                'index' => 'shipping_name',
             )
         );
 
