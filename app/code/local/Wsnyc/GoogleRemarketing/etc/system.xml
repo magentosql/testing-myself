@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config>
+  <sections>
+    <googleremarketing>
+      <label>Google Remarketing</label>
+      <tab>sales</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>4000</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>      
+      <groups>
+        <options translate="label" module="remarketing">
+          <label>Options</label>
+          <frontend_type>text</frontend_type>
+          <sort_order>1</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>0</show_in_store>
+          <expanded>1</expanded>
+          <fields>
+            <google_conversion_id translate="label">
+              <label>Google Conversion ID</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>1</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </google_conversion_id>
+            <google_conversion_label translate="label">
+              <label>Google Conversion Label</label>
+              <frontend_type>text</frontend_type>
+              <sort_order>2</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </google_conversion_label>
+            <google_remarketing_only translate="label">
+              <label>Remarketing Only Flag</label>
+              <frontend_type>select</frontend_type>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <sort_order>3</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+            </google_remarketing_only>            
+          </fields>
+        </options>
+      </groups>
+    </googleremarketing>
+  </sections>
+</config>

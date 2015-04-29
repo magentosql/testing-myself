@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+  
+  <default>
+    <reference name="before_body_end">
+      <block type="remarketing/abstract" name="remarketing" template="remarketing/script.phtml" />
+    </reference>
+  </default>
+  
+  <cms_index_index>
+    <reference name="before_body_end">
+      <remove name="remarketing" />
+      <block type="remarketing/homepage" name="remarketing.homepage" template="remarketing/script.phtml" />
+    </reference>
+  </cms_index_index>
+  
+  <catalog_product_view>
+    <reference name="before_body_end">
+      <remove name="remarketing" />
+      <block type="remarketing/product" name="remarketing.product" template="remarketing/script.phtml" />
+    </reference>
+  </catalog_product_view>
+  
+  <catalog_category_default>
+    <reference name="before_body_end">
+      <remove name="remarketing" />
+      <block type="remarketing/category" name="remarketing.category" template="remarketing/script.phtml" />
+    </reference>
+  </catalog_category_default>
+  
+  <catalog_category_layered>
+    <reference name="before_body_end">
+      <remove name="remarketing" />
+      <block type="remarketing/category" name="remarketing.category" template="remarketing/script.phtml" />
+    </reference>
+  </catalog_category_layered>
+  
+  <catalogsearch_result_index>
+    <reference name="before_body_end">
+      <remove name="remarketing" />
+      <block type="remarketing/search" name="remarketing.search" template="remarketing/script.phtml" />
+    </reference>
+  </catalogsearch_result_index>
+  
+  <checkout_cart_index>
+    <reference name="before_body_end">
+      <remove name="remarketing" />
+      <block type="remarketing/cart" name="remarketing.cart" template="remarketing/script.phtml" />
+    </reference>
+  </checkout_cart_index>
+  
+  <checkout_onepage_success>
+    <reference name="before_body_end">
+      <remove name="remarketing" />
+      <block type="remarketing/checkout" name="remarketing.checkout" template="remarketing/script.phtml" />
+    </reference>
+  </checkout_onepage_success>
+</layout>
