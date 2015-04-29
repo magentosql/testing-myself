@@ -231,6 +231,9 @@
 
         </reference>
 
+        <reference name="after_body_start">
+            <block type="core/template" name="google.tagmanager" template="google/gtm.phtml"></block>
+        </reference>
 
         <!-- Header ====================================================================== -->
         <reference name="header">
@@ -488,7 +491,7 @@
 
         <reference name="before_body_end">
             <block type="core/template" name="livechat" template="livechat/script.phtml"/>
-            <block type="core/template" name="crazy-egg" template="crazyegg/script.phtml" />
+            <block type="core/template" name="crazy-egg" template="crazyegg/script.phtml"/>
             <block type="core/template" name="yahoo.analytics" template="yahoo/conversion.phtml"/>
         </reference>
 
