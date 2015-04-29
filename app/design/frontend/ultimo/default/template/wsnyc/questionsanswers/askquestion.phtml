@@ -11,7 +11,7 @@
     <br />
     <p class="button">
       <img id="ask-loader" src="/skin/frontend/ultimo/default/images/ajax-loader.gif">
-      <input type="submit" id="ask-question-submit" value="ASK QUESTION">
+      <input type="submit" id="ask-question-submit" value="ASK QUESTION" onclick="askForm.send()">
     </p>
     <input type="checkbox" name="ask_newsletter" id="ask_newsletter">
     <label for="ask_newsletter">
@@ -21,6 +21,15 @@
 </form>
 <script>
     var askForm = new VarienForm('questionsanswers-question-ask-form');
+    askForm.send = function() {
+        if(this.validator && this.validator.validate()) {
+            if ($('ask_newsletter') != null && $('ask_newsletter').checked && typeof ga == "function") {
+                ga('send', 'event', 'newsletter', 'signup', 'Ask The Laundress Newsletter Signup');
+            }
+            return this.submit();
+        }
+        return false;
+    }
     <?php if ($this->getEvent() == 'question_subscription'):?>
     _gaq.push(['_trackEvent', 'asklaundres', 'signup', 'Ask Laundress Singup',, false]);
     <?php endif; ?>
