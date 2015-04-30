@@ -5,8 +5,8 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
     protected function _prepareCollection()
     {
         /** @var $collection Mage_Sales_Model_Resource_Order_Collection */
-        $collection = Mage::getResourceModel($this->_getCollectionClass());
-        $collection->addFieldToFilter('grand_total', 0)
+        $collection = Mage::getResourceModel($this->_getCollectionClass())
+       // $collection->addFieldToFilter('grand_total', 0)
             ->addFieldToFilter('main_table.created_at', array('gteq' => '2013-04-20'));
 
         $select = $collection->getSelect();
