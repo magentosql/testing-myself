@@ -6,14 +6,14 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
     {
         /** @var $collection Mage_Sales_Model_Resource_Order_Collection */
         $collection = Mage::getResourceModel($this->_getCollectionClass())
-            ->addFieldToFilter('grand_total', 0)
-            ->addFieldToFilter('main_table.created_at', array('gteq' => '2015-04-20'));
+      //      ->addFieldToFilter('grand_total', 0)
+            ->addFieldToFilter('main_table.created_at', array('gteq' => '2013-04-20'));
 
         $select = $collection->getSelect();
         $select->joinLeft(
             array('sfoa' => 'sales_flat_order_address'),
             'main_table.entity_id = sfoa.parent_id AND sfoa.address_type="shipping"',
-            array('sfoa.lastname','sfoa.firstname','sfoa.street', 'sfoa.city', 'sfoa.region', 'sfoa.postcode')
+            array('sfoa.lastname','sfoa.firstname','sfoa.street', 'sfoa.city', 'sfoa.region_id', 'sfoa.postcode')
         );
 
         $select->joinLeft(
