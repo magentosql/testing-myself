@@ -136,6 +136,7 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
                 'header' => Mage::helper('sales')->__('State'),
                 'index' => 'region_id',
                 'type' => 'options',
+                'filter_index' => 'sfoa.region_id',
                 'options' => $regions,
             )
         );
