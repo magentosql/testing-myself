@@ -13,7 +13,7 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
         $select->joinLeft(
             array('sfoa' => 'sales_flat_order_address'),
             'main_table.entity_id = sfoa.parent_id AND sfoa.address_type="shipping"',
-            array('sfoa.street', 'sfoa.city', 'sfoa.region', 'sfoa.postcode', 'sfoa.telephone')
+            array('sfoa.lastname','sfoa.firstname','sfoa.street', 'sfoa.city', 'sfoa.region', 'sfoa.postcode')
         );
 
         $select->joinLeft(
@@ -46,19 +46,6 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
             )
         );
 
-        if (!Mage::app()->isSingleStoreMode()) {
-            $this->addColumn(
-                'store_id',
-                array(
-                    'header' => Mage::helper('sales')->__('Purchased From (Store)'),
-                    'index' => 'main_table.store_id',
-                    'type' => 'store',
-                    'store_view' => true,
-                    'display_deleted' => true,
-                )
-            );
-        }
-
         $this->addColumn(
             'created_at',
             array(
@@ -84,7 +71,6 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
             )
         );
 
-
         $this->addColumn(
             'billing_name',
             array(
@@ -94,25 +80,75 @@ class Wsnyc_OrdersReport_Block_Adminhtml_Sales_Order_Grid extends Mage_Adminhtml
         );
 
         $this->addColumn(
-            'shipping_name',
+            'shipping_firstname',
             array(
-                'header' => Mage::helper('sales')->__('Ship to Name'),
-                'index' => 'shipping_name',
+                'header' => Mage::helper('sales')->__('Ship to First Name'),
+                'index' => 'firstname',
+                'filter_index' => 'sfoa.firstname',
+            )
+        );
+        $this->addColumn(
+            'shipping_lastname',
+            array(
+                'header' => Mage::helper('sales')->__('Ship to Last Name'),
+                'index' => 'lastname',
+                'filter_index' => 'sfoa.lastname',
             )
         );
 
         $this->addColumn(
-            'shipping_address',
+            'shipping_address1',
             array(
-                'header' => Mage::helper('sales')->__('Shipping Address'),
-                'index' => 'addr',
+                'header' => Mage::helper('sales')->__('Address 1'),
                 'filter' => false,
                 'sortable' => false,
-                'renderer' => 'wsnyc_ordersreport/adminhtml_sales_order_grid_renderer_address',
-                'filter_condition_callback' => array('Wsnyc_OrdersReport_Model_Filter', 'filterAddress'),
+                'renderer' => 'wsnyc_ordersreport/adminhtml_sales_order_grid_renderer_address1',
 
             )
         );
+        $this->addColumn(
+            'shipping_address2',
+            array(
+                'header' => Mage::helper('sales')->__('Address 2'),
+                'filter' => false,
+                'sortable' => false,
+                'renderer' => 'wsnyc_ordersreport/adminhtml_sales_order_grid_renderer_address2',
+            )
+        );
+
+        $this->addColumn(
+            'shipping_city',
+            array(
+                'header' => Mage::helper('sales')->__('City'),
+                'index' => 'city',
+                'filter_index' => 'sfoa.city',
+            )
+        );
+
+        $regions = array();
+        foreach (Mage::getModel('directory/region_api')->items('US') as $region) {
+            $regions[$region['region_id']] = $region['code'];
+        }
+
+        $this->addColumn(
+            'shipping_state',
+            array(
+                'header' => Mage::helper('sales')->__('State'),
+                'index' => 'region_id',
+                'type' => 'options',
+                'options' => $regions,
+            )
+        );
+
+        $this->addColumn(
+            'shipping_zip',
+            array(
+                'header' => Mage::helper('sales')->__('ZIP'),
+                'index' => 'postcode',
+                'filter_index' => 'sfoa.postcode',
+            )
+        );
+
 
         $this->addColumn(
             'status',
