@@ -5,7 +5,7 @@
       <version>0.1.0</version>
     </Wsnyc_GoogleRemarketing>
   </modules>
-  <global>	
+  <global>
     <blocks>
       <remarketing>
         <class>Wsnyc_GoogleRemarketing_Block</class>
@@ -40,7 +40,7 @@
           <file>googleremarketing.xml</file>
         </Wsnyc_GoogleRemarketing>
       </updates>
-    </layout>    
+    </layout>
   </frontend>
   <adminhtml>
     <acl>
@@ -61,6 +61,6 @@
           </children>
         </admin>
       </resources>
-    </acl>                
+    </acl>
   </adminhtml>
 </config>
