@@ -3,9 +3,7 @@
     <default>
         <reference name="head"><action method="addItem"><type>skin_css</type><file>css/clean-challenge.css</file></action></reference>
         <reference name="after_body_start">
-            <block type="core/text" name="challenge-notice">
-                <action method="setText"><text><![CDATA[<p class="challenge-notice">Take the 30-Day Clean Home Challenge and Save 20% Off Your Next Purchase with Code 30DayClean</p>]]></text></action>
-            </block>
+            <block type="core/template" name="challenge-notice" template="wsnyc/challenge/notice.phtml" />
         </reference>
     </default>
     <catalog_product_view>
