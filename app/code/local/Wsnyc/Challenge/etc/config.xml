@@ -54,4 +54,11 @@
             </submit_sample_request>
         </events>
     </frontend>
+    <default>
+        <design>
+            <head>
+                <challenge_notice><![CDATA[Take the 30-Day Clean Home Challenge and Save 20% Off Your Next Purchase with Code 30DayClean]]></challenge_notice>
+            </head>
+        </design>
+    </default>
 </config>
