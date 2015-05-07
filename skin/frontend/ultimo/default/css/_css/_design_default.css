@@ -275,7 +275,7 @@ button.button:hover span
 .product-view .btn-cart span,
 button.btn-checkout span
 {
-	background-color: #333333;
+	background-color: #999;
 	color: #ffffff;
 }
 .product-view .btn-cart:hover span,
