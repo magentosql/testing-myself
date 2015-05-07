@@ -30,8 +30,9 @@ body.checkout-cart-index .cart .cart-collaterals .totals td:last-of-type {paddin
 body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tfoot td {padding: 7px 5px 1px 0; border-top: 1px solid #ddd; }
 body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tfoot strong{font-size: 0.875rem;}
 body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tbody tr:last-child th, body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tbody tr:last-child td {margin-bottom: 5px;}
-body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types button {width: 100%;}
+body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types button {width: 100%;float: none;}
 body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types button + button {margin-top: 10px;}
+body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types #AmazonPayButtonMethod {margin-top: 10px;text-align: center;clear: both;overflow: hidden;}
 body.checkout-cart-index .cart .cart-free-shipping {height: 75px; padding: 11px 25px 20px 13px; border: 10px solid #ddd; font-family: Bitter, georgia, serif; margin: 10px 0 5px;}
 body.checkout-cart-index .cart .cart-free-shipping h3 {font-size: 1.5rem; font-weight: normal;}
 body.checkout-cart-index .cart .cart-free-shipping p {text-transform: none; font-size: 1.2rem;}
@@ -41,13 +42,13 @@ body.checkout-cart-index .cart-table .standard-items .col-img a {border: none;}
 body.checkout-cart-index .data-table tr th {border: none;}
 body.checkout-cart-index .data-table tr td {border: none;}
 body.checkout-cart-index .data-table tr {background: none;}
-body.checkout-cart-index .data-table tr.product-row > th:first-child, 
+body.checkout-cart-index .data-table tr.product-row > th:first-child,
 body.checkout-cart-index .data-table tr.product-row > td:first-child,
-body.checkout-cart-index .data-table tr.heading-row > th:first-child, 
+body.checkout-cart-index .data-table tr.heading-row > th:first-child,
 body.checkout-cart-index .data-table tr.heading-row > td:first-child {border-left: 3px solid #ddd;}
-body.checkout-cart-index .data-table tr.product-row > th:last-child, 
-body.checkout-cart-index .data-table tr.product-row > td:last-child, 
-body.checkout-cart-index .data-table tr.heading-row > th:last-child, 
+body.checkout-cart-index .data-table tr.product-row > th:last-child,
+body.checkout-cart-index .data-table tr.product-row > td:last-child,
+body.checkout-cart-index .data-table tr.heading-row > th:last-child,
 body.checkout-cart-index .data-table tr.heading-row > td:last-child {border-right: 3px solid #ddd;}
 body.checkout-cart-index .data-table tr.product-row > td {padding-top: 45px;}
 body.checkout-cart-index .data-table tr.product-row > td:first-child {padding-top: 15px;}
