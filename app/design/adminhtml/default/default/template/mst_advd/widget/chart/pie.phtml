@@ -16,6 +16,9 @@ $_id = 'chart'.rand(0, 100000);
         
         var options = {
             backgroundColor: 'transparent',
+            // is3D: true,
+            pieHole: 0.4,
+            sliceVisibilityThreshold: 0.01,
 
             chartArea: {
                 width: '100%',
@@ -40,7 +43,7 @@ $_id = 'chart'.rand(0, 100000);
 
         google.visualization.events.addListener(chart, 'select', function(e) {
             var sel = chart.getSelection();
-            if (sel.length > 0) {
+            if (sel.length > 0 && series[sel[0].row + 1][2]) {
                 window.location.href = series[sel[0].row + 1][2];
             }
         });

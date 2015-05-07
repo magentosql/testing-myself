@@ -3,9 +3,6 @@
         <reference name="head">
             <action method="addCss"><script>mirasvit/advr.css</script></action>
 
-            <action method="addJs"><script>mirasvit/core/jquery.min.js</script></action>
-            <action method="addJs"><script>mirasvit/core/underscore.js</script></action>
-            <action method="addJs"><script>mirasvit/core/backbone.js</script></action>
         </reference>
     </advradmin_adminhtml>
 
@@ -56,6 +53,22 @@
             <block type="advr/adminhtml_order_country" name="container" as="container" />
         </reference>
     </advradmin_adminhtml_order_country>
+
+    <advradmin_adminhtml_order_state>
+        <update handle="advradmin_adminhtml" />
+
+        <reference name="content">
+            <block type="advr/adminhtml_order_state" name="container" as="container" />
+        </reference>
+    </advradmin_adminhtml_order_state>
+
+    <advradmin_adminhtml_order_city>
+        <update handle="advradmin_adminhtml" />
+
+        <reference name="content">
+            <block type="advr/adminhtml_order_city" name="container" as="container" />
+        </reference>
+    </advradmin_adminhtml_order_city>
 
     <advradmin_adminhtml_order_zip>
         <update handle="advradmin_adminhtml" />
@@ -137,6 +150,30 @@
         </reference>
     </advradmin_adminhtml_product_bestseller>
 
+    <advradmin_adminhtml_product_products>
+        <update handle="advradmin_adminhtml" />
+
+        <reference name="content">
+            <block type="advr/adminhtml_product_products" name="container" as="container" />
+        </reference>
+    </advradmin_adminhtml_product_products>
+
+    <advradmin_adminhtml_product_productdetail>
+        <update handle="advradmin_adminhtml" />
+
+        <reference name="content">
+            <block type="advr/adminhtml_product_detail" name="container" as="container" />
+        </reference>
+    </advradmin_adminhtml_product_productdetail>
+
+    <advradmin_adminhtml_product_attributedetail>
+        <update handle="advradmin_adminhtml" />
+
+        <reference name="content">
+            <block type="advr/adminhtml_product_attribute_detail" name="container" as="container" />
+        </reference>
+    </advradmin_adminhtml_product_attributedetail>
+
     <advradmin_adminhtml_product_attribute>
         <update handle="advradmin_adminhtml" />
 
@@ -168,5 +205,13 @@
             <block type="advr/adminhtml_review_reviews" name="container" as="container" />
         </reference>
     </advradmin_adminhtml_review_reviews>
+
+    <advradmin_adminhtml_customer_customers>
+        <update handle="advradmin_adminhtml" />
+
+        <reference name="content">
+            <block type="advr/adminhtml_customer_customers" name="container" as="container" />
+        </reference>
+    </advradmin_adminhtml_customer_customers>
 
 </layout>

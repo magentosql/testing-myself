@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -89,6 +89,10 @@ class Mirasvit_Advr_Block_Adminhtml_Block_Container extends Mage_Adminhtml_Block
 
         foreach ($this->getColumns() as $index => $column) {
             $column['header'] = Mage::helper('advr')->__($column['header']);
+
+            if (!isset($column['type'])) {
+                $column['type'] = 'text';
+            }
 
             if ($column['type'] == 'currency') {
                 $column['currency_code'] = $this->_grid->getCurrentCurrencyCode();

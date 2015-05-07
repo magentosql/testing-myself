@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -63,7 +63,8 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Plain extends Mirasvit_Advr_Block_Admi
 
         if (count($filterData->getStoreIds())) {
             $orders->getSelect()
-                ->where('main_table.store_id IN('.implode(',', $filterData->getStoreIds()).')');
+                ->where('main_table.store_id IN('.implode(',', $filterData->getStoreIds()).')')
+                ;
         }
 
         $collection = Mage::getModel('advr/collection');
@@ -74,147 +75,135 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Plain extends Mirasvit_Advr_Block_Admi
         return $collection;
     }
 
-    public function afterGridCollectionLoad()
-    {
-        $totals = $this->getGrid()->getCollection()->getTotals();
-
-        if ($totals && $totals != $this->getGrid()->getTotals()) {
-            $this->getGrid()->setTotals($totals);
-            $this->getGrid()->setCountTotals(1);
-        }
-
-        return $this;
-    }
-
     public function getColumns()
     {
+
+        $groups = Mage::getResourceModel('customer/group_collection')
+            ->addFieldToFilter('customer_group_id', array('gt'=> 0))
+            ->load()
+            ->toOptionHash();
+
         $columns = array(
             'increment_id' => array(
                 'header'       => Mage::helper('advr')->__('Order #'),
-                'type'         => 'text',
-                'index'        => 'increment_id',
                 'totals_label' => Mage::helper('advr')->__('Totals')
             ),
 
             'invoice_id' => array(
-                'header'       => Mage::helper('advr')->__('Invoice #'),
-                'type'         => 'text',
-                'index'        => 'invoice_id',
-                'sortable'     => false,
-                'filter'       => false,
-                'totals_label' => '',
-                'frame_callback' => array($this, 'invoice'),
-                'hidden'         => true,
+                'header'          => Mage::helper('advr')->__('Invoice #'),
+                'sortable'        => false,
+                'filter'          => false,
+                'frame_callback'  => array($this, 'invoice'),
+                'export_callback' => array($this, 'invoice'),
+                'hidden'          => true,
             ),
 
             'customer_firstname' => array(
-                'header'       => Mage::helper('advr')->__('Customer Firstname'),
-                'type'         => 'text',
-                'index'        => 'customer_firstname',
-                'totals_label' => '',
+                'header'            => Mage::helper('advr')->__('Firstname'),
+                'column_css_class'  => 'nobr',
             ),
 
             'customer_lastname' => array(
-                'header'       => Mage::helper('advr')->__('Customer Lastname'),
-                'type'         => 'text',
-                'index'        => 'customer_lastname',
-                'totals_label' => '',
+                'header'            => Mage::helper('advr')->__('Lastname'),
+                'column_css_class'  => 'nobr',
             ),
 
+            'customer_email' => array(
+                'header'            => Mage::helper('advr')->__('Email'),
+                'column_css_class'  => 'nobr',
+            ),
+
+            'customer_group_id' => array(
+                'header'            => Mage::helper('advr')->__('Customer Group'),
+                'type'              => 'options',
+                'options'           =>  $groups,
+                'column_css_class'  => 'nobr',
+            ),
+            
             'customer_taxvat' => array(
                 'header'       => Mage::helper('advr')->__('Tax/VAT number'),
-                'type'         => 'text',
-                'index'        => 'customer_taxvat',
-                'totals_label' => '',
                 'hidden'       => true,
             ),
 
             'created_at' => array(
                 'header'            => Mage::helper('advr')->__('Purchased On'),
-                'index'             => 'created_at',
                 'type'              => 'datetime',
                 'column_css_class'  => 'nobr',
-                'totals_label'      => '',
             ),
 
             'state' => array(
                 'header'       => Mage::helper('advr')->__('State'),
-                'index'        => 'state',
                 'type'         => 'options',
                 'options'      => Mage::getSingleton('sales/order_config')->getStates(),
-                'totals_label' => '',
                 'hidden'       => true,
             ),
 
             'status' => array(
                 'header'       => Mage::helper('advr')->__('Status'),
-                'index'        => 'status',
                 'type'         => 'options',
                 'options'      => Mage::getSingleton('sales/order_config')->getStatuses(),
-                'totals_label' => '',
             ),
 
             'products' => array(
-                'header'         => Mage::helper('advr')->__('Item(s)'),
-                'type'           => 'text',
-                'sortable'       => false,
-                'filter'         => false,
-                'totals_label'   => '',
-                'frame_callback' => array($this, 'products'),
-                'hidden'         => true,
+                'header'          => Mage::helper('advr')->__('Item(s)'),
+                'sortable'        => false,
+                'filter'          => false,
+                'frame_callback'  => array($this, 'products'),
+                'export_callback' => array($this, 'products'),
+                'hidden'          => true,
             ),
 
             'tracking_number' => array(
-                'header'         => Mage::helper('advr')->__('Tracking Number'),
-                'type'           => 'text',
-                'sortable'       => false,
-                'filter'         => false,
-                'totals_label'   => '',
-                'frame_callback' => array($this, 'trackingNumber'),
-                'hidden'         => true,
+                'header'          => Mage::helper('advr')->__('Tracking Number'),
+                'sortable'        => false,
+                'filter'          => false,
+                'frame_callback'  => array($this, 'trackingNumber'),
+                'export_callback' => array($this, 'trackingNumber'),
+                'hidden'          => true,
             ),
 
             'total_qty_ordered' => array(
-                'header'    => Mage::helper('advr')->__('Items Ordered'),
-                'type'      => 'number',
-                'index'     => 'total_qty_ordered',
+                'header'        => Mage::helper('advr')->__('Quantity Ordered'),
+                'type'          => 'number',
             ),
 
             'tax_amount' => array(
                 'header'        => Mage::helper('advr')->__('Tax'),
                 'type'          => 'currency',
-                'index'         => 'tax_amount',
+                'hidden'        => true,
             ),
 
             'shipping_amount' => array(
                 'header'        => Mage::helper('advr')->__('Shipping'),
                 'type'          => 'currency',
-                'index'         => 'shipping_amount',
+                'hidden'        => true,
             ),
 
             'discount_amount' => array(
                 'header'        => Mage::helper('advr')->__('Discount'),
                 'type'          => 'currency',
-                'index'         => 'discount_amount',
             ),
 
             'total_refunded' => array(
                 'header'        => Mage::helper('advr')->__('Refunded'),
                 'type'          => 'currency',
-                'index'         => 'total_refunded',
             ),
 
             'total_paid' => array(
                 'header'        => Mage::helper('advr')->__('Paid'),
                 'type'          => 'currency',
-                'index'         => 'total_paid',
+                'hidden'        => true,
+            ),
+
+            'base_total_invoiced' => array(
+                'header'        => Mage::helper('advr')->__('Total Invoiced'),
+                'type'          => 'currency',
                 'hidden'        => true,
             ),
 
             'grand_total' => array(
                 'header'        => Mage::helper('advr')->__('Grand Total'),
                 'type'          => 'currency',
-                'index'         => 'grand_total',
             ),
         );
 
@@ -233,6 +222,7 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Plain extends Mirasvit_Advr_Block_Admi
         foreach ($collection as $invoice) {
             $data[] = $invoice->getIncrementId();
         }
+
         return implode(' ', $data);
     }
 
@@ -240,8 +230,11 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Plain extends Mirasvit_Advr_Block_Admi
     {
         $collection = $row->getAllVisibleItems();
         foreach ($collection as $item) {
-            $data[] = '<a href="'.$this->getUrl('adminhtml/catalog_product/edit', array('id' => $item->getProductId())).'">'
-                .$item->getProduct()->getName()
+            $data[] = '<a class="nobr" href="'.$this->getUrl('adminhtml/catalog_product/edit', array('id' => $item->getProductId())).'">'
+                    .$item->getSku()
+                    .' / '
+                    .Mage::helper('core/string')->truncate($item->getName(), 50)
+                    .' / '.intval($item->getQtyOrdered()).' × '.Mage::helper('core')->currency($item->getBasePrice())
                 .'</a>';
         }
 

@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -37,6 +37,15 @@ class Mirasvit_Advr_Adminhtml_ProductController extends Mirasvit_Advr_Controller
         $this->renderLayout();
     }
 
+    public function productsAction()
+    {
+        $this->_initAction();
+
+        $this->_title($this->__('All Products'));
+
+        $this->renderLayout();
+    }
+
     public function attributeAction()
     {
         $this->_initAction();
@@ -51,6 +60,47 @@ class Mirasvit_Advr_Adminhtml_ProductController extends Mirasvit_Advr_Controller
         $this->_initAction();
 
         $this->_title($this->__('Low stock'));
+
+        $this->renderLayout();
+    }
+
+    public function productdetailAction()
+    {
+        if ($id = $this->getRequest()->getParam('id')) {
+            $product = Mage::getModel('catalog/product')->load($id);
+            Mage::register('current_product', $product);
+        }
+
+        $this->_initAction();
+
+        $this->_title($this->__('Product Detail'));
+
+        $this->renderLayout();
+    }
+
+    public function attributedetailAction()
+    {
+        if ($attrCode = $this->getRequest()->getParam('attribute')) {
+            $attribute = Mage::getSingleton('eav/config')->getAttribute('catalog_product', $attrCode);
+            Mage::register('current_attribute', $attribute);
+
+            $value = $this->getRequest()->getParam('value');
+            Mage::register('current_value', $value);
+
+            $option = null;
+            $options = $attribute->getSource()->getAllOptions(false);
+            foreach ($options as $opt) {
+                if ($opt['value'] == $value) {
+                    $option = $opt['label'];
+                }
+            }
+
+            Mage::register('current_option', $option);
+        }
+
+        $this->_initAction();
+
+        $this->_title($this->__('Attribute Detail'));
 
         $this->renderLayout();
     }

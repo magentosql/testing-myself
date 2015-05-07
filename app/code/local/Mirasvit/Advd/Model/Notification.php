@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -91,17 +91,22 @@ class Mirasvit_Advd_Model_Notification extends Mage_Core_Model_Abstract
         
         $email = Mage::getModel('core/email_template');
         $email->setTemplateFilter(Mage::helper('advd/email_filter'));
-        $email->sendTransactional(
-            'advd_notification_template',
-            'support',
-            $this->getRecipientEmail(),
-            $this->getRecipientEmail(),
-            array(
-                'email'   => $this,
-                'subject' => $this->getEmailSubject().' ['.Mage::getModel('core/date')->date('M d, Y H:i').']',
-                'content' => $content,
-            )
-        );
+
+        $recipientEmails = explode(',', $this->getRecipientEmail());
+
+        foreach ($recipientEmails as $recipientEmail) {
+            $email->sendTransactional(
+                'advd_notification_template',
+                'support',
+                $recipientEmail,
+                $recipientEmail,
+                array(
+                    'email'   => $this,
+                    'subject' => $this->getEmailSubject().' ['.Mage::getModel('core/date')->date('M d, Y H:i').']',
+                    'content' => $content,
+                )
+            );
+        }
 
         $translate->setTranslateInline(true);
 

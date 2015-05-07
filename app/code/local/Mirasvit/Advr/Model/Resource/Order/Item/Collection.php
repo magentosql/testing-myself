@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -38,36 +38,6 @@ class Mirasvit_Advr_Model_Resource_Order_Item_Collection extends Mirasvit_Advr_M
             array()
         );
 
-        $this->getSelect()
-            ->columns(array('quantity'              => 'COUNT(DISTINCT(main_table.order_id))'))
-            ->columns(array('sum_total_qty_ordered' => 'COUNT(main_table.qty_ordered)'))
-            ;
-
-        $this
-            ->addSumColumn('main_table', 'base_discount_amount', 'sum_discount_amount')
-            ->addSumColumn('main_table', 'base_tax_amount', 'sum_tax_amount')
-            ->addSumColumn('main_table', 'base_row_total', 'sum_subtotal')
-            ->addSumColumn('main_table', new Zend_Db_Expr('base_row_total - base_discount_amount'), 'sum_grand_total')
-            ->addSumColumn('main_table', 'base_row_invoiced', 'sum_total_invoiced')
-            ->addSumColumn('main_table', 'base_amount_refunded', 'sum_total_refunded')
-
-            ->addAvgColumn('main_table', 'base_discount_amount', 'avg_discount_amount')
-            ->addAvgColumn('main_table', 'base_tax_amount', 'avg_tax_amount')
-            ->addAvgColumn('main_table', 'base_row_total', 'avg_subtotal')
-            ->addAvgColumn('main_table', new Zend_Db_Expr('base_row_total - base_discount_amount'), 'avg_grand_total')
-            ->addAvgColumn('main_table', 'base_row_invoiced', 'avg_total_invoiced')
-            ->addAvgColumn('main_table', 'base_amount_refunded', 'avg_total_refunded')
-            ;
-
-        return $this;
-    }
-
-    public function joinOrder()
-    {
-        if ($this->_orderJoined) {
-            return $this;
-        }
-
         $this->_internalSelect
             ->joinLeft(
                 array('order_table' => $this->getTable('sales/order')),
@@ -76,6 +46,37 @@ class Mirasvit_Advr_Model_Resource_Order_Item_Collection extends Mirasvit_Advr_M
 
         $this->_orderJoined = true;
 
+        $statuses = Mage::getSingleton('advr/config')->getProcessOrderStatuses();
+
+        $this->_internalSelect
+            ->where('order_table.status IN(?)', $statuses);
+
+        $this->getSelect()
+            ->columns(array('quantity'              => 'COUNT(DISTINCT(main_table.order_id))'))
+            ->columns(array('sum_total_qty_ordered' => 'COUNT(main_table.qty_ordered)'))
+            ;
+
+        $this
+            ->addSumColumn('main_table', 'base_discount_amount')
+            ->addSumColumn('main_table', 'base_tax_amount')
+            ->addSumColumn('main_table', 'base_row_total')
+            ->addSumColumn('main_table', new Zend_Db_Expr('base_row_total - base_discount_amount'), 'sum_grand_total')
+            ->addSumColumn('main_table', 'base_row_invoiced')
+            ->addSumColumn('main_table', 'base_amount_refunded')
+
+            ->addAvgColumn('main_table', 'base_discount_amount')
+            ->addAvgColumn('main_table', 'base_tax_amount')
+            ->addAvgColumn('main_table', 'base_row_total')
+            ->addAvgColumn('main_table', new Zend_Db_Expr('base_row_total - base_discount_amount'), 'avg_grand_total')
+            ->addAvgColumn('main_table', 'base_row_invoiced')
+            ->addAvgColumn('main_table', 'base_amount_refunded')
+            ;
+
+        return $this;
+    }
+
+    public function joinOrder()
+    {
         return $this;
     }
 
@@ -89,7 +90,11 @@ class Mirasvit_Advr_Model_Resource_Order_Item_Collection extends Mirasvit_Advr_M
                 'address_table.entity_id = order_table.billing_address_id',
                 array(
                     'country_id' => 'address_table.country_id',
-                    'postcode'   => 'address_table.postcode'
+                    'region_id'  => 'IFNULL(address_table.region_id, address_table.region)',
+                    'city'       => 'address_table.city',
+                    'postcode'   => 'address_table.postcode',
+                    'postcode'   => 'address_table.postcode',
+                    'company'    => 'address_table.company',
                 )
             )
             ;
@@ -207,6 +212,32 @@ class Mirasvit_Advr_Model_Resource_Order_Item_Collection extends Mirasvit_Advr_M
         return $this;
     }
 
+    public function groupByState()
+    {
+        $this->joinBillingAddress();
+        $expression = new Zend_Db_Expr('main_table.region_id');
+
+        $this->getSelect()
+            ->group($expression)
+            ->columns(array('region_id' => 'main_table.region_id'))
+            ;
+
+        return $this;
+    }
+
+    public function groupByCity()
+    {
+        $this->joinBillingAddress();
+        $expression = new Zend_Db_Expr('main_table.city');
+
+        $this->getSelect()
+            ->group($expression)
+            ->columns(array('city' => 'main_table.city'))
+            ;
+
+        return $this;
+    }
+
     public function groupByZIP()
     {
         $expression = new Zend_Db_Expr('postcode');
@@ -288,6 +319,35 @@ class Mirasvit_Advr_Model_Resource_Order_Item_Collection extends Mirasvit_Advr_M
         return $this;
     }
 
+    public function addFilterByProductId($id)
+    {
+        $this->_internalSelect->where('item_table.product_id = ?', intval($id));
+
+        return $this;
+    }
+
+    public function addFilterByAttributeOptionId($attribute, $value)
+    {
+        $product  = Mage::getResourceSingleton('catalog/product');
+        
+        $joinExprProductName       = array(
+            'attribute_table.entity_id = item_table.product_id',
+            'attribute_table.entity_type_id = '.$product->getTypeId(),
+            'attribute_table.attribute_id = '.$attribute->getId(),
+            'attribute_table.store_id = 0'
+        );
+
+        $this->_internalSelect
+            ->joinLeft(
+                array('attribute_table' => $attribute->getBackend()->getTable()),
+                implode(' AND ', $joinExprProductName),
+                array()
+            )
+            ->where('attribute_table.value = ?', $value);
+
+        return $this;
+    }
+
     public function joinProduct()
     {
         $this->getSelect()
@@ -306,12 +366,12 @@ class Mirasvit_Advr_Model_Resource_Order_Item_Collection extends Mirasvit_Advr_M
 
         if ($this->_filterData->getFrom()) {
             $this->_internalSelect
-                ->where($this->getTZDate('item_table.created_at')." >= '".$this->_filterData->getFrom()."'");
+                ->where($this->getTZDate('order_table.created_at')." >= '".$this->_filterData->getFrom()."'");
         }
 
         if ($this->_filterData->getTo()) {
             $this->_internalSelect
-                ->where($this->getTZDate('item_table.created_at')." < '".$this->_filterData->getTo()."'");
+                ->where($this->getTZDate('order_table.created_at')." < '".$this->_filterData->getTo()."'");
         }
 
         return $this;
