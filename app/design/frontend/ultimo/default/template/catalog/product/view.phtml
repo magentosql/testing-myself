@@ -268,9 +268,11 @@ if ($_count) {
                     <div class="container1-wrapper"><?php echo $container1_html; ?></div>
                 <?php endif; ?>
             <?php endif;?>
-            
 
-            
+            <?php if ($this->helper('wsnyc_shippingcta')->isActive()):?>
+            <p class="shipping-cta"><?php echo $this->helper('wsnyc_shippingcta')->getShippingCtaText();?></p>
+            <?php endif;?>
+
             <?php echo $this->getChildHtml('alert_urls'); //alerts ?>
             <?php echo $this->getChildHtml('other'); ?>
             <?php echo $this->getChildHtml('product_primary_bottom_placeholder'); //Placeholder for extensions ?>
