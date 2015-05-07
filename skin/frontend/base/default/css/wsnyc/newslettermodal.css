@@ -1,8 +1,8 @@
 /*#cboxContent {height: 428px !important;}
 #cboxLoadedContent {width: 704px !important; height: 412px !important; background: #fff; padding: 5px 4px 5px 5px; border: 3px solid #000;}*/
 #cboxLoadedContent {width: 720px !important; overflow: auto; height: 428px !important;}
-#cboxContent #cboxClose {position: absolute; top: 3px; left: 703px; background: url('../../images/colorbox/colorbox-controls.png') no-repeat -54px -29px; width: 13px; height: 13px; text-indent: -9999px; display: block;}
-#cboxContent #cboxClose:hover {background: url('../../images/colorbox/colorbox-controls.png') no-repeat -54px -4px;}
+#cboxContent #cboxClose.newsletter-close {position: absolute; top: 3px; left: 703px; background: url('../../images/colorbox/colorbox-controls.png') no-repeat -54px -29px; width: 13px; height: 13px; text-indent: -9999px; display: block;}
+#cboxContent #cboxClose.newsletter-close:hover {background: url('../../images/colorbox/colorbox-controls.png') no-repeat -54px -4px;}
 #inline_newsletter_colorbox.newsletter-popup .logo-wrapper {margin-left: 0px; padding-top: 5px;}
 #inline_newsletter_colorbox.newsletter-popup .logo-wrapper .logo {padding: 0 10px 10px; border-bottom: 0px; display: inline-block;}
 #inline_newsletter_colorbox.newsletter-popup .page-title {display: none;}
@@ -12,7 +12,7 @@
 #inline_newsletter_colorbox.newsletter-popup > div.wrapper {width: 704px !important; height: 412px !important; background: #fff; padding: 5px 4px 5px 5px; border: 3px solid #000;}
 #inline_newsletter_colorbox.newsletter-popup .main-content {border: 1px solid #000; text-align: left; width: auto; height: 410px;background: #fff url('../../../../../../media/wysiwyg/newsletter-image.jpg') no-repeat 99% center;}
 #inline_newsletter_colorbox.newsletter-popup .image-left {float: left; margin-right: 0px;}
-#inline_newsletter_colorbox.newsletter-popup .content {width: auto;float: left;}
+#inline_newsletter_colorbox.newsletter-popup .content {width: auto;float: left;margin-top: 40px;}
 #inline_newsletter_colorbox.newsletter-popup p {padding: 5px 0px 5px 0px}
 #inline_newsletter_colorbox.newsletter-popup ul {padding: 10px 0px 10px 25px}
 #inline_newsletter_colorbox.newsletter-popup ul, #inline_colorbox ul li {list-style: circle;}
@@ -39,6 +39,7 @@
 #inline_newsletter_colorbox.newsletter-popup .newsletter-icon-set a:hover {color: #777777;}
 #inline_newsletter_colorbox.newsletter-popup .newsletter-cms-content p {padding: 5px 15px;}
 #inline_newsletter_colorbox.newsletter-popup .newsletter-content-image {position: relative; top: -15px; left: -1px;}
+#inline_newsletter_colorbox .logo-wrapper {display: none;}
 .catalog-product-view #cboxLoadedContent {position: relative;bottom: 10px;right: 10px;}
 .header .welcome-msg.newsletter-msg {background: none; padding-left: 0;}
 .header .welcome-msg.newsletter-msg .newsletter-modal-launcher-icon {margin-right: 11px; color: black; margin-left: 2px; font-size: 1rem;}
