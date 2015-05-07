@@ -26,7 +26,7 @@ class Amazon_Payments_Block_Checkout extends Mage_Core_Block_Template
      */
     public function getQuoteBaseGrandTotal()
     {
-        return (float)Mage::getSinglewton('checkout/session')->getQuote()->getBaseGrandTotal();
+        return (float)Mage::getSingleton('checkout/session')->getQuote()->getBaseGrandTotal();
     }
 
     /**
