@@ -83,4 +83,15 @@
             </totals_sort>
         </sales>
     </default>
+    <frontend>
+        <events>
+            <checkout_allow_guest>
+                <observers>
+                    <persistent>
+                        <type>disabled</type>
+                    </persistent>
+                </observers>
+            </checkout_allow_guest>
+        </events>
+    </frontend>
 </config>
