@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -135,6 +135,16 @@ class Mirasvit_Advr_Helper_Callback
     public function country($value, $row, $column)
     {
         return Mage::app()->getLocale()->getCountryTranslation($value);
+    }
+
+    public function region($value, $row, $column)
+    {
+        if (intval($value) > 0) {
+            $value = Mage::getModel('directory/region')->load($value)->getName();
+        }
+
+        return $value;
+        // return Mage::app()->getLocale()->getRegionTranslation($value);
     }
 
     public function paymentMethod($value, $row, $column)

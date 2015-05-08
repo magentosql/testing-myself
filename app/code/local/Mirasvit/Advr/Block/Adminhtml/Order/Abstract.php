@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -71,19 +71,22 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Abstract extends Mirasvit_Advr_Block_A
                 'header'         => 'Refunded',
                 'type'           => 'currency',
             ),
-            'sum_subtotal' => array(
-                'header'         => 'Subtotal',
-                'type'           => 'currency',
-            ),
-            'sum_total_paid' => array(
-                'header'         => 'Total Paid',
-                'type'           => 'currency',
-                'hidden'         => true,
-            ),
             'sum_grand_total' => array(
                 'header'         => 'Grand Total',
                 'type'           => 'currency',
                 'chart'          => true,
+            ),
+            'sum_total_invoiced_cost' => array(
+                'header'         => 'Invoiced Cost',
+                'type'           => 'currency',
+                'chart'          => true,
+                'hidden'         => true,
+            ),
+            'sum_gross_profit' => array(
+                'header'         => 'Gross Profit',
+                'type'           => 'currency',
+                'chart'          => true,
+                'hidden'         => true,
             ),
 
             'avg_total_qty_ordered' => array(
@@ -120,16 +123,6 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Abstract extends Mirasvit_Advr_Block_A
             ),
             'avg_total_refunded' => array(
                 'header'         => 'Average Refunded',
-                'type'           => 'currency',
-                'hidden'         => true,
-            ),
-            'avg_subtotal' => array(
-                'header'         => 'Average Subtotal',
-                'type'           => 'currency',
-                'hidden'         => true,
-            ),
-            'avg_total_paid' => array(
-                'header'         => 'Average Total Paid',
                 'type'           => 'currency',
                 'hidden'         => true,
             ),

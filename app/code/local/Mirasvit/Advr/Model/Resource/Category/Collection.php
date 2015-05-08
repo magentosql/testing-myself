@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -89,10 +89,6 @@ class Mirasvit_Advr_Model_Resource_Category_Collection extends Mirasvit_Advr_Mod
                 array()
             );
 
-        // foreach ($fields as $field) {
-        //     $this->getSelect()->columns(array($field => $field), 'parent_table');
-        // }
-
         return $this;
     }
 
@@ -114,7 +110,19 @@ class Mirasvit_Advr_Model_Resource_Category_Collection extends Mirasvit_Advr_Mod
                 array('order_item' => $this->getTable('sales/order_item')),
                 implode(' AND ', $onConditions),
                 array()
-            );
+            )
+            ->joinLeft(
+                array('order_table' => $this->getTable('sales/order')),
+                'order_table.entity_id = order_item.order_id',
+                array()
+            )
+            ;
+
+        $statuses = Mage::getSingleton('advr/config')->getProcessOrderStatuses();
+
+        $this->getSelect()
+            ->where('order_table.status IN(?)', $statuses)
+            ;
 
         if ($this->_filterData->getFrom()) {
             $from = $this->_filterData->getFrom();

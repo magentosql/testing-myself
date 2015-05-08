@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -60,7 +60,7 @@ class Mirasvit_Advr_Model_Collection
         if (count($this->_items) == 0) {
             return $this;
         }
-        $ts = microtime(true);
+
         foreach ($this->_items as $key => $item) {
             foreach ($this->_resourceCollection as $dataItem) {
                 if ($item->getData($this->_columnGroupBy) == $dataItem->getData($this->_columnGroupBy)) {
@@ -150,7 +150,7 @@ class Mirasvit_Advr_Model_Collection
 
         $select = clone $this->_resourceCollection->getSelect();
         $select->limit(1000000);
-        // pr(get_class_methods($select));die();
+
         $rows = $this->_resourceCollection->getConnection()->fetchAll($select);
 
         foreach ($rows as $row) {

@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -22,7 +22,11 @@ class Mirasvit_Advr_Model_Resource_Collection_Abstract extends Mage_Core_Model_R
     public function addSumColumn($table, $column, $as = null)
     {
         if ($as == null) {
-            $as = "sum_$column";
+            $as = $column;
+            if (substr($as, 0, 5) == 'base_') {
+                $as = substr($as, 5);
+            }
+            $as = "sum_$as";
         }
         
         $this->getSelect()->columns(array($as => "IFNULL(SUM($table.$column), 0)"));
@@ -40,7 +44,11 @@ class Mirasvit_Advr_Model_Resource_Collection_Abstract extends Mage_Core_Model_R
     public function addAvgColumn($table, $column, $as = null)
     {
         if ($as == null) {
-            $as = "avg_$column";
+            $as = $column;
+            if (substr($as, 0, 5) == 'base_') {
+                $as = substr($as, 5);
+            }
+            $as = "avg_$as";
         }
         
         $this->getSelect()->columns(array($as => "IFNULL(AVG($table.$column), 0)"));

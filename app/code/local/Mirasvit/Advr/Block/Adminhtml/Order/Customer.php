@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -55,8 +55,10 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Customer
         $orders
             ->setFilterData($filterData)
             ->joinCustomerGroup()
+            ->joinBillingAddress()
             ->groupByCustomer()
             ;
+
 
         $collection = Mage::getModel('advr/collection');
 
@@ -94,7 +96,6 @@ class Mirasvit_Advr_Block_Adminhtml_Order_Customer
                 'totals_label'         => '',
                 'filter_totals_label'  => '',
                 'chart'                => false,
-                'filter'               => false,
             ),
 
             'percent' => array(

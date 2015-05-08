@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -69,6 +69,24 @@ class Mirasvit_Advr_Adminhtml_OrderController extends Mirasvit_Advr_Controller_R
         $this->_initAction();
 
         $this->_title($this->__('By Country'));
+
+        $this->renderLayout();
+    }
+
+    public function stateAction()
+    {
+        $this->_initAction();
+
+        $this->_title($this->__('By State'));
+
+        $this->renderLayout();
+    }
+
+    public function cityAction()
+    {
+        $this->_initAction();
+
+        $this->_title($this->__('By City'));
 
         $this->renderLayout();
     }

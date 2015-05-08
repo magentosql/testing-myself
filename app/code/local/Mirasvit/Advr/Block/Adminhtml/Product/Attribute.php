@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -51,7 +51,7 @@ class Mirasvit_Advr_Block_Adminhtml_Product_Attribute
         $attribute = $filterData->getGroupByAttribute();
 
         if (!$attribute) {
-            $attribute = 'status';
+            $attribute = 'status'; 
         }
 
         $categories = Mage::getSingleton('advr/system_config_source_category')->toOptionArray();
@@ -110,6 +110,15 @@ class Mirasvit_Advr_Block_Adminhtml_Product_Attribute
         );
 
         $columns += $this->getBaseColumns();
+
+        $columns['detail'] = array(
+            'header'          => 'Actions',
+            'type'            => 'text',
+            'totals_label'    => '',
+            'frame_callback'  => array($this, 'frameDetailUrlCallback'),
+            'filter'          => false,
+            'sortable'        => false,
+        );
 
         return $columns;
     }
@@ -190,5 +199,28 @@ class Mirasvit_Advr_Block_Adminhtml_Product_Attribute
         }
 
         return null;
+    }
+
+     public function frameDetailUrlCallback($value, $row, $column)
+    {
+        $format = Mage::getSingleton('advr/config')->dateFormat();
+
+        $from = new Zend_Date(strtotime($this->getFilterData()->getFrom()), null, Mage::app()->getLocale()->getLocaleCode());
+        $to   = new Zend_Date(strtotime($this->getFilterData()->getTo()), null, Mage::app()->getLocale()->getLocaleCode());
+
+        $filter = array(
+            'from' => $from->toString($format),
+            'to'   => $to->toString($format)
+        );
+
+        $filter = base64_encode(http_build_query($filter));
+        $url = $this->getUrl('advradmin/adminhtml_product/attributeDetail', array(
+                'attribute' => $this->_getAttribute()->getAttributeCode(),
+                'value'     => $row->getAttribute(),
+                'filter'    => $filter
+            )
+        );
+
+        return '<a href="'.$url.'">'.Mage::helper('advr')->__('Detail').'</a>';
     }
 }

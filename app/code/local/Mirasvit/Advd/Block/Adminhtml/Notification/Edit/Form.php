@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -34,8 +34,9 @@ class Mirasvit_Advd_Block_Adminhtml_Notification_Edit_Form extends Mage_Adminhtm
         $this->setForm($form);
 
         $general = $form->addFieldset('general', array(
-            'legend' => Mage::helper('advd')->__('Email'),
-            'class' => 'fieldset-wide')
+                'legend' => Mage::helper('advd')->__('Email'),
+                'class' => 'fieldset-wide'
+            )
         );
 
         if ($model->getId()) {
@@ -64,7 +65,8 @@ class Mirasvit_Advd_Block_Adminhtml_Notification_Edit_Form extends Mage_Adminhtm
             'label'    => Mage::helper('advd')->__('Email To'),
             'required' => true,
             'name'     => 'recipient_email',
-            'value'    => $model->getRecipientEmail()
+            'value'    => $model->getRecipientEmail(),
+            'note'     => Mage::helper('advd')->__('Comma-separated')
         ));
 
         $general->addField('email_widgets', 'multiselect', array(

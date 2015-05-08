@@ -1,6 +1,5 @@
 .clearfix {
   *zoom: 1;
-  *zoom:1;
 }
 .clearfix:before,
 .clearfix:after {
@@ -117,6 +116,23 @@
 }
 .gridster .gs-w > div.loading {
   opacity: 0.1;
+}
+@media (max-device-width: 1024px) {
+  .gridster > ul {
+    width: 100% !important;
+    height: auto !important;
+    position: relative;
+  }
+  .gridster > ul .gs-w {
+    width: 100% !important;
+    height: auto !important;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    margin-bottom: 15px;
+  }
 }
 .gridster .player {
   background: #f3f3f3;
