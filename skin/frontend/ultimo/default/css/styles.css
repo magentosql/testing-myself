@@ -2291,7 +2291,7 @@ a.email2friend:hover { background-position: -54px -27px; }
 .product-view .short-description { margin:15px 0; line-height:1.25em; /*15px*/ }
 .product-view .short-description ul { margin-top:5px; margin-bottom:5px; }
 .product-view .add-to-cart { margin-top:15px; }
-.product-view .shipping-cta { margin: 0 0 30px 0; font-size: 16px; font-family: "Georgia","Times New Roman"; text-shadow: 1px 2px 1px #eaeaea;}
+.product-view .shipping-cta { margin: 0 0 30px 0; font-size: 14px; font-family: "Georgia","Times New Roman"; text-shadow: 1px 2px 1px #eaeaea; text-align: left; margin-top: -15px;}
 /* Price box inside "Add-to-cart" box */ /*deprecated*/
 .product-view .add-to-box .price-box { float:left; margin:7px 0 0; }
 
