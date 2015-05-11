@@ -22,7 +22,8 @@ class Wsnyc_Redirects_Model_Observer {
             if(ltrim($request->getPathInfo(),'/') == ltrim($request->getOriginalPathInfo(),'/')) {
                 $redirectCollection = Mage::getModel('core/url_rewrite')->getCollection()
                         ->addFieldToFilter('target_path', array('eq' => ltrim($request->getPathInfo(),'/')))
-                        ->addFieldToFilter('store_id', array('in' => array(Mage::app()->getStore()->getStoreId(),0)));
+                        ->addFieldToFilter('store_id', array('in' => array(Mage::app()->getStore()->getStoreId(),0)))
+                        ->addFieldToFilter('options', array('nlike' => '%RP%'));
                 if(count($redirectCollection)) {
                     $redirect = $redirectCollection->getFirstItem();
                     $rewrittenUrl = Mage::getBaseUrl() . $redirect->getRequestPath();
@@ -48,7 +49,7 @@ class Wsnyc_Redirects_Model_Observer {
                         ->save();
                 $newRewrite = Mage::getModel('core/url_rewrite')->load($newUrl, 'request_path');                
                 $newRewrite->setIsSystem(0)
-                        ->setOptions()
+                        ->setOptions(null)
                         ->setIdPath($newUrl.'-custom-redirect-2')
                         ->setTargetPath('cms/page/view/id/'.$page->getId())
                         ->setRequestPath($newUrl)
