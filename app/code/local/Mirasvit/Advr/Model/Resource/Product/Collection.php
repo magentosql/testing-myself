@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -99,7 +99,7 @@ class Mirasvit_Advr_Model_Resource_Product_Collection extends Mirasvit_Advr_Mode
         $product  = Mage::getResourceSingleton('catalog/product');
         $attr     = $product->getAttribute($attribute);
         $joinExprProductName       = array(
-            'attribute_table.entity_id = IFNULL((SELECT product_id FROM '.$this->getTable('sales/order_item').' WHERE parent_item_id=order_item.item_id), order_item.product_id)',
+            'attribute_table.entity_id = order_item.product_id',
             'attribute_table.entity_type_id = '.$product->getTypeId(),
             'attribute_table.attribute_id = '.$attr->getAttributeId(),
             'attribute_table.store_id = 0'
@@ -154,31 +154,31 @@ class Mirasvit_Advr_Model_Resource_Product_Collection extends Mirasvit_Advr_Mode
             $stores = implode(',', $this->_filterData->getStoreIds());
             $onConditions[] = "order_item.store_id IN($stores)";
         }
-
+        
         $this->getSelect()
             ->joinLeft(
                 array('order_item' => $this->getTable('sales/order_item')),
                 implode(' AND ', $onConditions),
                 array()
-            )
-            ->where('order_item.parent_item_id IS NULL')
-            ;
+            );
 
+        $this->getSelect()->where('order_item.parent_item_id IS NULL')
+            ;
 
         $this->addSumColumn('order_item', 'qty_ordered')
             ->addSumColumn('order_item', 'qty_refunded')
-            ->addSumColumn('order_item', 'base_tax_amount', 'sum_tax_amount')
-            ->addSumColumn('order_item', 'base_discount_amount', 'sum_discount_amount')
-            ->addSumColumn('order_item', 'base_amount_refunded', 'sum_amount_refunded')
-            ->addSumColumn('order_item', 'base_row_total', 'sum_row_total')
+            ->addSumColumn('order_item', 'base_tax_amount')
+            ->addSumColumn('order_item', 'base_discount_amount')
+            ->addSumColumn('order_item', 'base_amount_refunded')
+            ->addSumColumn('order_item', 'base_row_total')
             ;
 
-        $this->getSelect()->columns(array('quantity' => 'COUNT(DISTINCT(order_item.order_id))'));
+        $this->getSelect()->columns(array('gross_profit' => 'SUM(base_row_total - qty_ordered * base_cost)'));
 
         return $this;
     }
 
-    public function joinOrder()
+    public function joinOrder($null = false)
     {
 
         $this->getSelect()
@@ -190,8 +190,13 @@ class Mirasvit_Advr_Model_Resource_Product_Collection extends Mirasvit_Advr_Mode
 
         $statuses = Mage::getSingleton('advr/config')->getProcessOrderStatuses();
 
-        $this->getSelect()
-            ->where('order_table.status IN(?)', $statuses);
+        if ($null) {
+            $this->getSelect()
+                ->where('(order_table.status IN(?) OR order_table.status IS NULL)', $statuses);
+        } else {
+            $this->getSelect()
+                ->where('order_table.status IN(?)', $statuses);
+        }
 
         return $this;
     }
@@ -275,6 +280,15 @@ class Mirasvit_Advr_Model_Resource_Product_Collection extends Mirasvit_Advr_Mode
     public function setFilterData($data)
     {
         $this->_filterData = $data;
+
+        return $this;
+    }
+
+    public function addFilterByProductId($id)
+    {
+        $this->getSelect()
+            ->where('main_table.entity_id = ?', intval($id))
+            ;
 
         return $this;
     }

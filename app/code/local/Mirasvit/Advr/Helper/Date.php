@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -196,8 +196,8 @@ class Mirasvit_Advr_Helper_Date extends Mage_Core_Helper_Abstract
 
             case self::PREVIOUS_MONTH:
                 $from->setDay(1)
-                    ->setTime('00:00:00')
-                    ->subMonth(1);
+                    ->subMonth(1)
+                    ->setTime('00:00:00');
 
                 $to->setDay(1)
                     ->setTime('23:59:59')

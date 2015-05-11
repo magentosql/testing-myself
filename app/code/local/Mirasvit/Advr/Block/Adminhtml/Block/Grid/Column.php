@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -22,10 +22,12 @@ class Mirasvit_Advr_Block_Adminhtml_Block_Grid_Column extends Mage_Adminhtml_Blo
         $renderedValue = $row->getData($this->getIndex());
 
         # if need format column value
-        $exporCallback = $this->getExportCallback();
-        if (is_array($exporCallback)) {
-            $renderedValue = call_user_func($exporCallback, $renderedValue, $row, $this, false);
+        $exportCallback = $this->getExportCallback();
+        if (is_array($exportCallback)) {
+            $renderedValue = call_user_func($exportCallback, $renderedValue, $row, $this, false);
         }
+
+        $renderedValue = strip_tags($renderedValue);
 
         return $renderedValue;
     }

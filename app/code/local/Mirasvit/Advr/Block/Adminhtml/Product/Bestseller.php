@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -78,8 +78,6 @@ class Mirasvit_Advr_Block_Adminhtml_Product_Bestseller
             $products->groupByProduct();
         }
 
-        // echo $products->getSelect();#die();
-
         $collection = Mage::getModel('advr/collection');
 
         $collection->setResourceCollection($products)
@@ -141,6 +139,24 @@ class Mirasvit_Advr_Block_Adminhtml_Product_Bestseller
 
         $columns += $this->getBaseColumns();
 
+        $columns['gross_profit'] = array(
+            'header'          => 'Gross profit',
+            'type'            => 'currency',
+            'index'           => 'gross_profit',
+            'filter'          => false,
+            'hidden'          => true,
+            'sortable'        => true,
+        );
+
+        $columns['detail'] = array(
+            'header'          => 'Actions',
+            'type'            => 'text',
+            'totals_label'    => '',
+            'frame_callback'  => array($this, 'frameDetailUrlCallback'),
+            'filter'          => false,
+            'sortable'        => false,
+        );
+
         return $columns;
     }
 
@@ -170,5 +186,28 @@ class Mirasvit_Advr_Block_Adminhtml_Product_Bestseller
     public function rowUrlCallback($row)
     {
         return $this->getUrl('adminhtml/catalog_product/edit', array('id' => $row->getEntityId()));
+    }
+
+    public function frameDetailUrlCallback($value, $row, $column)
+    {
+        $format = Mage::getSingleton('advr/config')->dateFormat();
+
+        $from = new Zend_Date(strtotime($this->getFilterData()->getFrom()), null, Mage::app()->getLocale()->getLocaleCode());
+        $to   = new Zend_Date(strtotime($this->getFilterData()->getTo()), null, Mage::app()->getLocale()->getLocaleCode());
+
+        $filter = array(
+            'from' => $from->toString($format),
+            'to'   => $to->toString($format)
+        );
+
+        $filter = base64_encode(http_build_query($filter));
+
+        $url = $this->getUrl('advradmin/adminhtml_product/productDetail', array(
+                'id'     => $row->getEntityId(),
+                'filter' => $filter
+            )
+        );
+
+        return '<a href="'.$url.'">'.Mage::helper('advr')->__('Detail').'</a>';
     }
 }

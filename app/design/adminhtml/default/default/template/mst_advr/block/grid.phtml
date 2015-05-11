@@ -25,15 +25,15 @@ $numColumns = sizeof($this->getColumns());
                 </tr>
             </thead>
             <tbody>
-            <?php foreach ($this->getAllColumns() as $_index => $_column): ?>
+            <?php foreach ($this->getAllColumns() as $_column): ?>
                 <tr class="even">
                     <td class="a-center" width="50px">
                         <input name="columns[<?php echo $_column->getIndex() ?>][visible]" type="checkbox"<?php if (!$_column->getHidden()): ?>checked<?php endif ?> value="1">
                     </td>
                     <td>
-                        <input name="columns[<?php echo $_column->getIndex() ?>][header]" type="text" class="input-text" value="<?php echo $_column->getHeader() ?>">
+                        <input name="columns[<?php echo $_column->getIndex() ?>][header]" type="text" class="input-text" value="<?php echo $_column->getHeader() ?>" style="width:100%;">
                     </td>
-                    <td class="last" width="100px">
+                    <td class="last" width="50px">
                         <input name="columns[<?php echo $_column->getIndex() ?>][position]" type="text" class="input-text" value="<?php echo $_column->getPosition() ?>">
                     </td>
                 </tr>
@@ -174,7 +174,7 @@ $numColumns = sizeof($this->getColumns());
 
         <tbody>
         <?php if (($this->getCollection()->getSize()>0) && (!$this->getIsCollapsed())): ?>
-        <?php foreach ($this->getCollection() as $_index=>$_item): ?>
+        <?php foreach ($this->getCollection() as $_idx=>$_item): ?>
             <tr title="<?php echo $this->getRowUrl($_item) ?>"<?php if ($_class = $this->getRowClass($_item)):?> class="<?php echo $_class; ?>"<?php endif;?> >
             <?php $i=0;foreach ($this->getColumns() as $_column): ?>
 

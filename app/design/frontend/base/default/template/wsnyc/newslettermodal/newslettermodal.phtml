@@ -63,7 +63,13 @@
                 height  : 470,
                 returnFocus: false,
                 closeButton : true,
-                className: 'newsletter-colorbox'
+                className: 'newsletter-colorbox',
+                onCleanup: function() {
+                    jQuery('#inline_newsletter_colorbox').parent().siblings( "#cboxClose" ).attr('class','noclass');
+                },
+                onComplete: function() {
+                    jQuery('#inline_newsletter_colorbox').parent().siblings( "#cboxClose" ).attr('class','newsletter-close');
+                }
             });
 
             <?php if(!$cookie->get('newsletter-info')): ?>$('.openNewsletterPopup').click();<?php endif; ?>

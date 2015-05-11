@@ -304,8 +304,6 @@ DashboardWidget = Backbone.View.extend({
                     self.loader(false);
                 }
             });
-        } else {
-            self.settings();
         }
 
         return false;

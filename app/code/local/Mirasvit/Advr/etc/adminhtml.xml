@@ -34,6 +34,16 @@
                             <sort_order>40</sort_order>
                             <action>advradmin/adminhtml_order/country</action>
                         </country>
+                        <state module="advr">
+                            <title>Sales By State</title>
+                            <sort_order>42</sort_order>
+                            <action>advradmin/adminhtml_order/state</action>
+                        </state>
+                        <city module="advr">
+                            <title>Sales By City</title>
+                            <sort_order>44</sort_order>
+                            <action>advradmin/adminhtml_order/city</action>
+                        </city>
                         <zip module="advr">
                             <title>Sales By ZIP Code</title>
                             <sort_order>45</sort_order>
@@ -90,6 +100,11 @@
                             <sort_order>10</sort_order>
                             <action>advradmin/adminhtml_product/bestseller</action>
                         </bestseller>
+                        <products module="advr">
+                            <title>All Products</title>
+                            <sort_order>20</sort_order>
+                            <action>advradmin/adminhtml_product/products</action>
+                        </products>
                         <attribute module="advr">
                             <title>Sales By Attribute</title>
                             <sort_order>30</sort_order>
@@ -113,6 +128,17 @@
                         </reviews>
                     </children>
                 </review>
+                <customer module="advr">
+                    <title>Customers</title>
+                    <sort_order>40</sort_order>
+                    <children>
+                        <customers module="advr">
+                            <title>Customers</title>
+                            <sort_order>10</sort_order>
+                            <action>advradmin/adminhtml_customer/customers</action>
+                        </customers>
+                    </children>
+                </customer>
             </children>
         </advr>
     </menu>
@@ -151,6 +177,14 @@
                                         <title>Sales By Country</title>
                                         <sort_order>40</sort_order>
                                     </country>
+                                    <state module="advr">
+                                        <title>Sales By State</title>
+                                        <sort_order>42</sort_order>
+                                    </state>
+                                    <city module="advr">
+                                        <title>Sales By City</title>
+                                        <sort_order>44</sort_order>
+                                    </city>
                                     <zip module="advr">
                                         <title>Sales By ZIP Code</title>
                                         <sort_order>45</sort_order>
@@ -193,6 +227,10 @@
                                         <title>Bestsellers</title>
                                         <sort_order>10</sort_order>
                                     </bestseller>
+                                    <products module="advr">
+                                        <title>All Products</title>
+                                        <sort_order>20</sort_order>
+                                    </products>
                                     <attribute module="advr">
                                         <title>Sales By Attribute</title>
                                         <sort_order>30</sort_order>
@@ -213,6 +251,16 @@
                                     </reviews>
                                 </children>
                             </review>
+                            <customer module="advr">
+                                <title>Customers</title>
+                                <sort_order>40</sort_order>
+                                <children>
+                                    <customers module="advr">
+                                        <title>Customers</title>
+                                        <sort_order>10</sort_order>
+                                    </customers>
+                                </children>
+                            </customer>
                         </children>
                     </advr>
                     <system>

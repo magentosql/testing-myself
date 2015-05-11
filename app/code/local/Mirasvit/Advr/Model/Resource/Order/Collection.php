@@ -10,7 +10,7 @@
  * @category  Mirasvit
  * @package   Advanced Reports
  * @version   1.0.0
- * @build     345
+ * @build     370
  * @copyright Copyright (C) 2015 Mirasvit (http://mirasvit.com/)
  */
 
@@ -37,29 +37,32 @@ class Mirasvit_Advr_Model_Resource_Order_Collection extends Mirasvit_Advr_Model_
         );
 
         $this->getSelect()->columns(array('quantity' => 'COUNT(main_table.entity_id)'));
+        $this->getSelect()->columns(array('sum_gross_profit' => 'SUM(main_table.base_subtotal_invoiced - main_table.base_total_invoiced_cost)'));
 
         $this
             ->addSumColumn('main_table', 'total_qty_ordered')
-            ->addSumColumn('main_table', 'base_discount_amount', 'sum_discount_amount')
-            ->addSumColumn('main_table', 'base_shipping_amount', 'sum_shipping_amount')
-            ->addSumColumn('main_table', 'base_tax_amount', 'sum_tax_amount')
-            ->addSumColumn('main_table', 'base_shipping_tax_amount', 'sum_shipping_tax_amount')
-            ->addSumColumn('main_table', 'base_subtotal', 'sum_subtotal')
-            ->addSumColumn('main_table', 'base_total_paid', 'sum_total_paid')
-            ->addSumColumn('main_table', 'base_grand_total', 'sum_grand_total')
-            ->addSumColumn('main_table', 'base_total_invoiced', 'sum_total_invoiced')
-            ->addSumColumn('main_table', 'base_total_refunded', 'sum_total_refunded')
+            ->addSumColumn('main_table', 'base_discount_amount')
+            ->addSumColumn('main_table', 'base_shipping_amount')
+            ->addSumColumn('main_table', 'base_tax_amount')
+            ->addSumColumn('main_table', 'base_shipping_tax_amount')
+            ->addSumColumn('main_table', 'base_subtotal')
+            ->addSumColumn('main_table', 'base_total_paid')
+            ->addSumColumn('main_table', 'base_grand_total')
+            ->addSumColumn('main_table', 'base_total_invoiced')
+            ->addSumColumn('main_table', 'base_total_refunded')
+            ->addSumColumn('main_table', 'base_total_invoiced_cost')
 
             ->addAvgColumn('main_table', 'total_qty_ordered')
-            ->addAvgColumn('main_table', 'base_discount_amount', 'avg_discount_amount')
-            ->addAvgColumn('main_table', 'base_shipping_amount', 'avg_shipping_amount')
-            ->addAvgColumn('main_table', 'base_tax_amount', 'avg_tax_amount')
-            ->addAvgColumn('main_table', 'base_shipping_tax_amount', 'avg_shipping_tax_amount')
-            ->addAvgColumn('main_table', 'base_subtotal', 'avg_subtotal')
-            ->addAvgColumn('main_table', 'base_total_paid', 'avg_total_paid')
-            ->addAvgColumn('main_table', 'base_grand_total', 'avg_grand_total')
-            ->addAvgColumn('main_table', 'base_total_invoiced', 'avg_total_invoiced')
-            ->addAvgColumn('main_table', 'base_total_refunded', 'avg_total_refunded')
+            ->addAvgColumn('main_table', 'base_discount_amount')
+            ->addAvgColumn('main_table', 'base_shipping_amount')
+            ->addAvgColumn('main_table', 'base_tax_amount')
+            ->addAvgColumn('main_table', 'base_shipping_tax_amount')
+            ->addAvgColumn('main_table', 'base_subtotal')
+            ->addAvgColumn('main_table', 'base_total_paid')
+            ->addAvgColumn('main_table', 'base_grand_total')
+            ->addAvgColumn('main_table', 'base_total_invoiced')
+            ->addAvgColumn('main_table', 'base_total_refunded')
+            ->addAvgColumn('main_table', 'base_total_invoiced_cost')
             ;
 
         $statuses = Mage::getSingleton('advr/config')->getProcessOrderStatuses();
@@ -160,6 +163,32 @@ class Mirasvit_Advr_Model_Resource_Order_Collection extends Mirasvit_Advr_Model_
         return $this;
     }
 
+    public function groupByState()
+    {
+        $this->joinBillingAddress();
+        $expression = new Zend_Db_Expr('main_table.region_id');
+
+        $this->getSelect()
+            ->group($expression)
+            ->columns(array('region_id' => 'main_table.region_id'))
+            ;
+
+        return $this;
+    }
+
+    public function groupByCity()
+    {
+        $this->joinBillingAddress();
+        $expression = new Zend_Db_Expr('main_table.city');
+
+        $this->getSelect()
+            ->group($expression)
+            ->columns(array('city' => 'main_table.city'))
+            ;
+
+        return $this;
+    }
+
     public function groupByPaymentMethod()
     {
         $this->joinPayment();
@@ -180,7 +209,6 @@ class Mirasvit_Advr_Model_Resource_Order_Collection extends Mirasvit_Advr_Model_
 
         $this->getSelect()
             ->group($expression)
-            // ->columns(array('number_of_customers' => new Zend_Db_Expr('COUNT(DISTINCT(main_table.customer_id))')))
             ;
 
         return $this;
@@ -207,10 +235,13 @@ class Mirasvit_Advr_Model_Resource_Order_Collection extends Mirasvit_Advr_Model_
 
         $this->getSelect()
             ->group($expression)
-            ->columns(array('customer_id' => $expression))
-            ->columns(array(
+            ->columns(
+                array(
+                    'customer_id' => $expression,
                     'customer_email',
-                    'customer_name' => 'CONCAT(main_table.customer_firstname, " ", main_table.customer_lastname)')
+                    'last_order_date' => new Zend_Db_Expr('MAX(main_table.created_at)'),
+                    'customer_name' => 'CONCAT(main_table.customer_firstname, " ", main_table.customer_lastname)'
+                )
             )
             ;
 
@@ -230,15 +261,23 @@ class Mirasvit_Advr_Model_Resource_Order_Collection extends Mirasvit_Advr_Model_
 
     public function joinBillingAddress()
     {
-        $this->_internalSelect
+         $this->_internalSelect
             ->joinLeft(
                 array('address' => $this->getTable('sales/order_address')),
                 'address.entity_id = order_table.billing_address_id',
                 array(
                     'country_id' => 'address.country_id',
-                    'postcode'   => 'address.postcode'
+                    'region_id'  => 'IFNULL(address.region_id, address.region)',
+                    'city'       => 'address.city',
+                    'postcode'   => 'address.postcode',
+                    'postcode'   => 'address.postcode',
+                    'company'    => 'address.company',
                 )
             )
+            ;
+
+        $this->getSelect()
+            ->columns(array('postcode', 'company'))
             ;
 
         return $this;
