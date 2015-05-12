@@ -2,8 +2,9 @@
 <?php $newsletterBlockContent = $this->getLayout()->createBlock('cms/block')->setBlockId('newsletter-info')->toHtml();?>
 <?php if($newsletterBlockContent): ?>
     <?php $_protocol = Mage::app()->getRequest()->isSecure() ? 'https' : 'http';?>
-    <?php $cookie = Mage::getSingleton('core/cookie'); ?>
-    <?php $cookie->set('newsletter-info', '1' ,time()+31536000,'/'); ?>
+    <?php $cookie = Mage::getSingleton('core/cookie');?>
+    <?php $visit = (int)$cookie->get('newsletter-info') + 1;?>
+    <?php $cookie->set('newsletter-info', $visit, time()+2678400,'/'); //31 days ?>
     <div style='display:none'>
         <div id="inline_newsletter_colorbox" class="newsletter-popup">
             <div class="wrapper">
@@ -18,7 +19,7 @@
                         <div class="newsletter-cms-content"><?php echo $newsletterBlockContent ?></div>
 
                         <!-- Begin MailChimp Signup Form -->
-                        <link href="<?php echo $_protocol;?>//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
+                        <link href="<?php echo $_protocol;?>://cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
                         <div id="mc_embed_signup">
                             <form action="<?php echo $_protocol;?>://thelaundress.us6.list-manage.com/subscribe/post?u=d3d48e75efd637e646b0beb3c&amp;id=dbfb7e7934" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                                 <div class="mc-field-group">
@@ -72,7 +73,7 @@
                 }
             });
 
-            <?php if(!$cookie->get('newsletter-info')): ?>$('.openNewsletterPopup').click();<?php endif; ?>
+            <?php if($visit == 2): ?>$('.openNewsletterPopup').click();<?php endif; ?>
 
             $('.newsletter-signup').on('click', function() {
                 window.SignupEventName = 'Header Link Newsletter Signup';
