@@ -87,6 +87,7 @@
             <div class="buttons-set">
                 <button type="button" title="<?php echo $this->__('Create an Account') ?>" class="button" onclick="window.location='<?php echo Mage::helper('persistent')->getCreateAccountUrl($this->getCreateAccountUrl()) ?>';"><span><span><?php echo $this->__('Create an Account') ?></span></span></button>
             </div>
+            <?php echo $this->getChildHtml('amazon_login.button');?>
         </div>
         
         <?php if (Mage::helper('checkout')->isContextCheckout()): ?>

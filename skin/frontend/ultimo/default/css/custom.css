@@ -547,7 +547,9 @@ body.customer-account-login label{color:#222;font-family:'Sorts Mill Goudy Regul
 body.customer-account-login .social-login{margin-left:0}
 p.required,.product-options dt label.required em,.form-list label.required em,p.required{color:#64b96a}
 body.customer-account-login button.button span,body.customer-account-create button.button span,.my-account button.button span{background-color:#222;color:white;font-family:"GillSansMTStd-Bold",sans-serif;font-size:12px;text-transform:uppercase}
-body.customer-account-login .registered-users button.button,body.customer-account-login .new-users button.button{position:absolute;bottom:10px;right:20px;left:20px}
+body.customer-account-login .registered-users button.button {position:absolute;bottom:10px;right:20px;left:20px}
+body.customer-account-login .new-users button.button {margin-top: 65px;}
+body.customer-account-login .new-users .amazon-login-button-wrapper {text-align: center;}
 body.customer-account-login .registered-users .required{font-weight:normal}
 body.customer-account-login .registered-users p.required{font-weight:normal;text-align:right;font-size:11px;margin-top:-26px;margin-right:7px;color:#64b96a}
 body.customer-account-login .registered-users .content{margin-left:11px}
