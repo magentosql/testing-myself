@@ -743,20 +743,11 @@
         </checkout_cart_index>
 
 
-	<!-- CHECKOUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<!--<checkout_onepage_index>-->
-		<!---->
-		<!--&lt;!&ndash; Block below progress block, inserted directly &ndash;&gt;-->
-		<!--<reference name="right">-->
-			<!--<block type="page/html_wrapper" name="i_block_opc_below_progress">-->
-				<!--<action method="setElementClass"><value>block block_opc_below_progress std</value></action>-->
-				<!--<block type="cms/block" name="block_opc_below_progress" after="checkout.progress.wrapper">-->
-                	<!--<action method="setBlockId"><block_id>block_opc_below_progress</block_id></action>-->
-            	<!--</block>-->
-			<!--</block>-->
-		<!--</reference>-->
-	<!---->
-	<!--</checkout_onepage_index>-->
+	<checkout_onepage_index>
+		<reference name="right">
+            <block type="core/template" name="shipping.info" template="checkout/onepage/review/shipping.phtml"/>
+        </reference>
+	</checkout_onepage_index>
 
     <checkout_onepage_success>
         <reference name="before_body_end">
