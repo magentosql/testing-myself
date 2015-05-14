@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_ShippingCta>
+            <version>0.1.0</version>
+        </Wsnyc_ShippingCta>
+    </modules>
+    <global>
+        <helpers>
+            <wsnyc_shippingcta>
+                <class>Wsnyc_ShippingCta_Helper</class>
+            </wsnyc_shippingcta>
+        </helpers>
+    </global>
+    <default>
+        <shipping>
+            <option>
+                <shipping_cta_active>1</shipping_cta_active>
+                <shipping_cta_text><![CDATA[$5 flat-rate shipping & free shipping on orders of $50+]]></shipping_cta_text>
+            </option>
+        </shipping>
+    </default>
+</config>
