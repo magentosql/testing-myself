@@ -275,13 +275,13 @@ button.button:hover span
 .product-view .btn-cart span,
 button.btn-checkout span
 {
-	background-color: #64b96a;
+	background-color: #018226;
 	color: #ffffff;
 }
 .product-view .btn-cart:hover span,
 button.btn-checkout:hover span
 {
-	background-color: #64B96A;
+	background-color: #018226;
 	color: #333333;
 }
 
