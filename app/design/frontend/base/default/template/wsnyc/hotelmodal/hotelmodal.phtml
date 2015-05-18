@@ -1,7 +1,7 @@
 <?php $block = Mage::getModel('cms/block')->load('hotel-info'); ?>
 <?php if($block->getIsActive()): ?>
     <?php $cookie = Mage::getSingleton('core/cookie'); ?>
-    <?php $cookie->set('newsletter-info', '1' ,time()+31536000,'/'); ?>
+    <?php $cookie->set('hotel-info', '1' ,time()+31536000,'/'); ?>
     <div style='display:none'>
         <div id="inline_hotel_colorbox" class="hotel-popup">
             <div>
