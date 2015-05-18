@@ -71,4 +71,11 @@
             </checkout_submit_all_after>
         </events>
     </frontend>
+    <default>
+        <newslettermodal>
+            <general>
+                <active>1</active>
+            </general>
+        </newslettermodal>
+    </default>
 </config> 
