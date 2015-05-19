@@ -128,12 +128,10 @@ if ($_count) {
 
             <div class="product-name">
                 <?php
-                
                     $title = $_helper->productAttribute($_product, nl2br($_product->getProductTitleLinebreak()), 'product_title_linebreak');
                     if(empty($title)) {
                         $title = $_helper->productAttribute($_product, $_product->getName(), 'name');
                     }
-               
                 ?>
                 <h1><?php echo $title ?></h1>
             </div>
@@ -147,110 +145,15 @@ if ($_count) {
             <?php endif;?>
             
             <?php echo $this->getChildHtml('fragrance');?>
-            <script type="text/javascript">
-                jQuery(function($){
 
-                    constainerHeight = $('div.fragrance').height();
-                    logoHeight = $('img','div.fragrance').height();
-
-                    if(constainerHeight <= logoHeight)
-                    {
-                        $('div.fragrance').css({'height' : logoHeight + 'px'})
-                    }
-
-                });
-
-            </script>
             <?php if ($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
                 <div class="extrahint-wrapper"><?php echo $extrahint_html; ?></div>
             <?php endif; ?>
             
-            <div class="product-type-data"><?php echo $this->getChildHtml('product_type_data'); ?>
-            
-            <?php if($_product->getMonogram()) { ?>
-            <div class="add-monogram" >                
-                <input type="checkbox" name="monogram-check" id="monogram-check" />
+            <div class="product-type-data">
+                <?php echo $this->getChildHtml('product_type_data'); ?>
+                <?php echo $this->getChildHtml('monogram');?>
             </div>
-                
-            <?php
-                
-                $monogram_types = array(
-                    '3 letter',
-                    '3 letter with dots',
-                    'Block',
-                    'Cursive',
-                    'Diamond',
-                    'Letter with Circle',
-                    'Natural Circle',
-                    'Park Avenue',
-                    'Traditional Mono',
-                    'Letter with Side Dots',
-                    'Library',
-                    'Mono 2'
-                );
-            
-            ?>
-            <div class="add-monogram-content" id="monogram-content">  
-                
-                <img src="/media/wysiwyg/monograms/monogram-logo.gif" alt="Monograms" border="0" id="monogram-logo" />
-		<?php 
-		$monogramPrice = $_product->getMonogramCustomPrice();
-		if($monogramPrice <=0 ){
-			$monogramPrice = 16;
-		}
-		$monogramPrice = Mage::helper('core')->currency($monogramPrice);
-		 ?>
-                <h3>THE MONOGRAM SHOP (+<?php echo $monogramPrice ?>)</h3>
-                <p class="subline">Item ships in 1-2 weeks. All monogram sales are final.</p>
-                
-                <ol class="add-monogram-process">
-                    <li class="monogram-step-1">
-                    	<label for="monogram-type" >Choose a Style</label>
-                        <ul class="add-monogram-list" >
-                            <?php foreach($monogram_types AS $type) { ?>
-                            <?php $typeCleaned = str_replace(' ', '-', $type); ?>
-                            <li><img src="/media/wysiwyg/monograms/<?php print strtolower($typeCleaned); ?>.gif" border="0" alt="<?php print $type; ?>" /></li>                     
-                            <?php } ?>
-                        </ul>
-                        <input type="hidden" name="monogram-type" data-name="monogram-type" id="monogram-type" value="" />
-                        <!-- select name="monogram-type" id="monogram-type" style="display: none;">
-                            <?php foreach($monogram_types AS $type) { ?>
-                            <option value="<?php print $type; ?>"><?php print $type; ?></option>
-                            <?php } ?>
-                        </select -->
-                    </li>
-                    <li class="monogram-step-2 monogram-step-disabled">
-                    	<label class="monogram-color" for="monogram-color">Choose a color</label>
-                        <select name="monogram-color" data-name="monogram-color">
-                            <option data-color="#000000" value="Black">Black</option>
-                            <option data-color="#FFFFFF" value="White">White</option>
-                            <option data-color="#022e6b" value="Navy">Navy</option>
-                            <option data-color="#fe0000" value="Red">Red</option>
-                            <option data-color="#00b700" value="Kelly Green">Kelly Green</option>
-                            <option data-color="#f9bec4" value="Light Pink">Light Pink</option>
-                            <option data-color="#b8d2ed" value="Light Blue">Light Blue</option>
-                            <option data-color="#fff452" value="Light Blue">Yellow</option>
-                            <option data-color="#543018" value="Brown">Brown</option>
-                            <option data-color="#b1b6ba" value="Silver">Silver</option>
-                            <option data-color="#e6d07d" value="Beige">Beige</option>
-                            <option data-color="#01503a" value="Dark Green">Dark Green</option>
-                            <option data-color="#f40093" value="Fuschia">Fuschia</option>
-                            <option data-color="#cc99fe" value="Lavender">Lavender</option>
-                            <option data-color="#ff6600" value="Orange">Orange</option>
-                            <option data-color="#3399fe" value="Turquoise">Turquoise</option>
-                        </select>
-                    </li>
-                    <li class="monogram-step-3 monogram-step-disabled">
-                    	<label for="monogram-initials" >For monograms featuring 3 initials, enter the letters in  
-                            the order you'd like them to appear.</label>
-                        <input type="text" name="monogram-initials" data-name="monogram-initials" id="monogram-initials" placeholder="Enter monogram text&hellip;" />
-                    </li>
-                </ol>               
-                
-            </div>
-            <?php } ?>
-            
-           </div>
             
             <?php echo $this->getTierPriceHtml(); //tier prices ?>           
             
@@ -269,7 +172,7 @@ if ($_count) {
                 <?php endif; ?>
             <?php endif;?>
 
-            <?php if ($this->helper('wsnyc_shippingcta')->isActive()):?>
+            <?php if (!$this->hasOptions() && $this->helper('wsnyc_shippingcta')->isActive()):?>
             <p class="shipping-cta"><?php echo $this->helper('wsnyc_shippingcta')->getShippingCtaText();?></p>
             <?php endif;?>
 
@@ -303,22 +206,25 @@ if ($_count) {
             </div> <!-- end: product-secondary-column -->
         <?php endif; ?>
         <div style="float: left; width: 565px;">
-        <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
-			<?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
-        		<div class="box-additional grid-full">
-					<div class="container2-wrapper"><?php echo $container2_html; ?></div>
-				</div>
-        	<?php endif; ?>
-        <?php endif; ?>
-
-        <?php if ($addtoBoxHtml = $this->getChildHtml('addto')): //compare, wishlist ?>
-            <div class="action-box addto-textlink clearer">
-                <?php if ($this->canEmailToFriend()): ?>
-                    <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                <?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
+                    <div class="box-additional grid-full">
+                        <div class="container2-wrapper"><?php echo $container2_html; ?></div>
+                    </div>
                 <?php endif; ?>
-                <?php echo $addtoBoxHtml; ?>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
+            <?php if ($this->hasOptions() && $this->helper('wsnyc_shippingcta')->isActive()):?>
+                <p class="shipping-cta"><?php echo $this->helper('wsnyc_shippingcta')->getShippingCtaText();?></p>
+            <?php endif;?>
+
+            <?php if ($addtoBoxHtml = $this->getChildHtml('addto')): //compare, wishlist ?>
+                <div class="action-box addto-textlink clearer">
+                    <?php if ($this->canEmailToFriend()): ?>
+                        <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+                    <?php endif; ?>
+                    <?php echo $addtoBoxHtml; ?>
+                </div>
+            <?php endif; ?>
         </div>
 
     </form>

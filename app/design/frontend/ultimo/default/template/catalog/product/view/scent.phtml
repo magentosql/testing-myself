@@ -1,3 +1,16 @@
-<div class="fragrance" >       
+<?php if ($this->getScentBlock()):?>
+<div class="fragrance" >
     <?php echo $this->getScentBlock();?>
 </div>
+<script type="text/javascript">
+    jQuery(function($){
+        constainerHeight = $('div.fragrance').height();
+        logoHeight = $('img','div.fragrance').height();
+
+        if(constainerHeight <= logoHeight) {
+            $('div.fragrance').css({'height' : logoHeight + 'px'})
+        }
+    });
+
+</script>
+<?php endif;?>
