@@ -5,7 +5,8 @@
 .cms-30-day-clean-home-challenge-sample-request .main, .cms-30-day-clean-home-challenge .main {padding-top: 0 !important;}
 .catalog-product-view .main {padding-top: 20px!important;}
 .main-banner {margin-bottom: 40px;}
-.main h1 {text-align: center;width: 610px;text-transform: none;margin: 0px auto;font-family: 'Bentham';font-size: 36px;}
+.cms-30-day-clean-home-challenge-sample-request .main h1,
+.cms-30-day-clean-home-challenge .main h1 {text-align: center;width: 610px;text-transform: none;margin: 0px auto;font-family: 'Bentham';font-size: 36px;}
 .clean-challenge-separator {height: 5px;width: 100px;background: #e6e6e6;border:0px;margin: 20px auto 40px;}
 .main-description {margin: 0px 0px 30px;font-family: "Raleway"}
 .cms-page-view .main-description p {text-align: center;font-size: 16px;max-width: 870px;margin: 20px auto;line-height: 1.5em;font-family: "Raleway";}
@@ -46,7 +47,7 @@
 .alternatives .circle.bg-white .big {font-size: 52px;}
 .product-view {text-align: center;}
 .product-view .btn-cart {margin-top: 10px;}
-button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-family: "GillSansMTStd-Bold",sans-serif;text-transform: uppercase;}
+.cms-30-day-clean-home-challenge button.button.btn-cart span span {background-color: #333333;color: #ffffff;font-family: "GillSansMTStd-Bold",sans-serif;text-transform: uppercase;}
 
 .widgets {overflow: hidden;margin: 60px 0;}
 .widgets > div {float: left;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;margin: 0 11px;max-width: 49%;}
