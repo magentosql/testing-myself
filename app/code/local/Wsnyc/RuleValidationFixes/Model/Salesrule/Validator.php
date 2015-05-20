@@ -49,7 +49,7 @@ class Wsnyc_RuleValidationFixes_Model_Salesrule_Validator extends Mage_SalesRule
         }
         
         $cond = unserialize($rule->getConditionsSerialized());
-        if ($cond) {            
+        if ($cond && isset($cond['conditions'])) {
             foreach($cond['conditions'] as $condition) {            
                 if($condition['attribute'] == 'quote_id') {
                     $discount = 0;
