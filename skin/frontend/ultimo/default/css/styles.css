@@ -2932,6 +2932,9 @@ a.email2friend:hover { background-position: -54px -27px; }
 .block-progress dd.complete {}
 .block-progress p { margin:0; }
 
+.checkout-onepage-index .cart-free-shipping {border: 8px solid #ddd;padding: 10px 15px;}
+.checkout-onepage-index .cart-free-shipping p {font-family: "GillSansMTStd",sans-serif;font-size: 22px;line-height: 28px;}
+
 .opc .buttons-set { margin-top:0; padding-top:2em; }
 .opc .buttons-set p.required { margin:0; padding:0 0 10px; }
 .opc .buttons-set.disabled button.button { display:none; }
