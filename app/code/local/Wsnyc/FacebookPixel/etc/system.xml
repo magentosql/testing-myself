@@ -44,6 +44,14 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </track_conversion>
+                        <conversion_pixel_id translate="label"  module="wsnyc_fbpixel">
+                            <label>Conversion Pixel ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </conversion_pixel_id>
                     </fields>
                 </general>                
             </groups>
