@@ -83,4 +83,10 @@
         qcdata.orderid='<?php echo $_order->getIncrementId()?>';
         qcdata.revenue='<?php echo $_order->getGrandTotal();?>';
     </script>
+
+    <script type = "text/javascript">
+        adroll_conversion_value_in_dollars = <?php echo $_order->getGrandTotal();?>;
+        adroll_custom_data = {"ORDER_ID": "<?php echo $this->__($this->escapeHtml($_order->getId())) ?>"};
+    </script>
 <?php endif; ?>
+
