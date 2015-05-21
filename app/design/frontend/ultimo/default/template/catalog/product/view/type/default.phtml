@@ -27,36 +27,18 @@
 
  */
 ?>
-<?php /* @var $this Mage_Catalog_Block_Product_View_Abstract */?>
-<?php $_product = $this->getProduct() ?>
+<?php
+/* @var $this Mage_Catalog_Block_Product_View_Abstract */
+$_product = $this->getProduct();
+$has_options = $_product->getTypeInstance(true)->hasOptions($_product);
+?>
 
 <?php echo $this->getChildHtml('product_type_data_extra') ?>
-<?php if ($_product->isAvailable()): ?>
-    <!-- p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p -->
-<?php else: ?>
-    <?php
-	$productAlertHelper = $this->helper('productalert')->setProduct($_product);
-	?>	
+<?php if (!$_product->isAvailable()): ?>
+    <?php $productAlertHelper = $this->helper('productalert')->setProduct($_product);?>
     <p class="availability out-of-stock">
-	<span> <a href="
-	<?php echo Mage::helper('productalert')->getSaveUrl('stock',$_product); ?>
-	"> <?php echo $this->__('Get a Stock Alert') ?></a> </span></p>
+	    <span>
+            <a href="<?php echo Mage::helper('productalert')->getSaveUrl('stock',$_product); ?>"> <?php echo $this->__('Get a Stock Alert') ?></a>
+        </span>
+    </p>
 <?php endif; ?>
-<?php echo $this->getPriceHtml($_product) ?>
-
-
-<?php
-//////////////////////////////////////////////////////////////////////////////
-?>
-<?php /*?>
-<?php $_product = $this->getProduct() ?>
-<?php if($_extraData = $this->getChildHtml('product_type_data_extra')): ?>
-	<?php echo $_extraData; ?>
-	<div class="mclear"></div>
-<?php endif; ?>
-
-<?php if ($_product->isAvailable() == false): ?>
-    <p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
-    <?php echo $this->getPriceHtml($_product) ?>
-<?php endif; ?>
-<?php */?>
