@@ -83,9 +83,10 @@ class Wsnyc_CartCouponCodeMessages_Checkout_CartController extends Mage_Checkout
         
         if (strlen($couponCode)) {
                 
-                $oCoupon = Mage::getModel('salesrule/coupon')->load($couponCode, 'code');
-                $rule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
-                $cond = unserialize($rule->getConditionsSerialized());
+            $oCoupon = Mage::getModel('salesrule/coupon')->load($couponCode, 'code');
+            $rule = Mage::getModel('salesrule/rule')->load($oCoupon->getRuleId());
+            $cond = unserialize($rule->getConditionsSerialized());
+            if ($cond && isset($cond['conditions'])) {
                 foreach($cond['conditions'] as $condition) {
                     if($condition['attribute'] == 'quote_id') {
                         $quote = Mage::getModel('checkout/session')->getQuote();                        
@@ -118,6 +119,7 @@ class Wsnyc_CartCouponCodeMessages_Checkout_CartController extends Mage_Checkout
                         }
                     }
                 }
+            }
         }
         
 
@@ -150,5 +152,35 @@ class Wsnyc_CartCouponCodeMessages_Checkout_CartController extends Mage_Checkout
         }
 
         $this->_goBack();
+    }
+
+    /**
+     * Set back redirect url to response
+     *
+     * @return Mage_Checkout_CartController
+     */
+    protected function _goBack()
+    {
+        $returnUrl = $this->getRequest()->getParam('return_url');
+        if ($returnUrl) {
+
+            if (!$this->_isUrlInternal($returnUrl)) {
+                throw new Mage_Exception('External urls redirect to "' . $returnUrl . '" denied!');
+            }
+
+            $this->_getSession()->getMessages(true);
+            $this->getResponse()->setRedirect($returnUrl);
+        } elseif (!Mage::getStoreConfig('checkout/cart/redirect_to_cart')
+            && !$this->getRequest()->getParam('in_cart')
+            && $backUrl = $this->_getRefererUrl()
+        ) {
+            $this->getResponse()->setRedirect($backUrl);
+        } else {
+            if (($this->getRequest()->getActionName() == 'add') && !$this->getRequest()->getParam('in_cart')) {
+                $this->_getSession()->setContinueShoppingUrl($this->_getRefererUrl());
+            }
+            $this->_redirect('checkout/cart', array('_secure' => true));
+        }
+        return $this;
     }
 }
