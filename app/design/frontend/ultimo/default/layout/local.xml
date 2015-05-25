@@ -131,6 +131,7 @@
                 <name>flipclock/flipclock.css</name>
             </action>
 
+            <block type="core/template" name="pinterest.verification" template="page/html/pinterest.phtml" />
         </reference>
 
 
