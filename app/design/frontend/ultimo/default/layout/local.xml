@@ -593,6 +593,15 @@
             <block type="scent/scent" name="product.fragrance" as="fragrance" template="catalog/product/view/scent.phtml" />
 
             <block type="catalog/product_view_attributes" name="product.monogram" as="monogram" template="catalog/product/view/monogram.phtml" />
+
+            <block type="review/product_view_list" name="product.tab.reviews" as="reviews-tab" template="review/product/view/list.phtml">
+                <block type="review/form" name="product.review.form" as="review_form">
+                    <block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
+                        <label>Review Form Fields Before</label>
+                        <action method="setMayBeInvisible"><value>1</value></action>
+                    </block>
+                </block>
+            </block>
 		</reference> <!-- end: product.info -->
 
 		<!-- Second part of adding reviews to tabs. See the first part in product.info section in info_tabs block -->

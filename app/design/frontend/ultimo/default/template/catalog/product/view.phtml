@@ -390,6 +390,8 @@ if ($_count) {
                 $sTabMadeofLabel = $_product->getResource()->getAttribute('made_of')->getStoreLabel();
                 $sTabMonogram = $this->getChildHtml('block_product_monogram_shop');
                 $sTabMonogramLabel = "Monogram Shop";
+                $sTabReviews = $this->getChildHtml('reviews-tab');
+                $sTabReviewsLabel = "Reviews";
                 
                 // filter tab contents
                 $sTabIngredients = parseTabDetail($sTabIngredients);
@@ -426,6 +428,9 @@ if ($_count) {
                                     <?php if(!empty($sTabMonogram)) : ?>
                                     <li><a href="#" class=""><?php print $sTabMonogramLabel; ?></a></li>        
                                     <?php endif; ?>
+                                <?php endif; ?>
+                                <?php if(!empty($sTabReviews)) : ?>
+                                    <li><a href="#" class=""><?php print $sTabReviewsLabel; ?></a></li>
                                 <?php endif; ?>
                         </ul>
                 
@@ -532,6 +537,14 @@ if ($_count) {
                                     </div>                                
                                 </div>
                                 <?php endif; ?>
+                            <?php endif; ?>
+                            <?php if(!empty($sTabReviews)) : ?>
+                                <h2 class="acctab"><?php print $sTabReviewsLabel; ?></h2>
+                                <div class="panel" style="display: none;">
+                                    <div class="std">
+                                        <?php print $sTabReviews; ?>
+                                    </div>
+                                </div>
                             <?php endif; ?>
                         </div>                    
                 </div>
