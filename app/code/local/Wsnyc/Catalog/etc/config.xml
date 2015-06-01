@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_Catalog>
+            <version>0.1.0</version>
+        </Wsnyc_Catalog>
+    </modules>
+    <global>
+        <blocks>
+            <wsnyc_catalog>
+                <class>Wsnyc_Catalog_Block</class>
+            </wsnyc_catalog>
+        </blocks>
+        <helpers>
+            <wsnyc_catalog>
+                <class>Wsnyc_Catalog_Helper</class>
+            </wsnyc_catalog>
+        </helpers>
+        <resources>
+            <wsnyc_catalog_setup>
+                <setup>
+                    <module>Wsnyc_Catalog</module>
+                </setup>
+            </wsnyc_catalog_setup>
+        </resources>
+    </global>
+</config>

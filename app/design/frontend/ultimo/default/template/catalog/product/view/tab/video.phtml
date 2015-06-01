@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var Mage_Catalog_Block_Product_View_Attributes $this
+ */
+$_product = $this->getProduct();
+if ($_product->getHowToVideoDescription()):
+?>
+<div class="std clearer">
+    <div class="grid12-4" >
+        <h3><?php print $_product->getHowToVideoTitle(); ?></h3>
+        <p><?php print $_product->getHowToVideoDescription(); ?></p>
+    </div>
+    <div class="grid12-4" style="text-align: center;" >
+        <?php if($_product->getHowToVideo() != null) { ?>
+            <iframe width="250" height="187" src="<?php print str_replace('http://youtu.be/', '//www.youtube.com/embed/', $_product->getHowToVideo()); ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <h4 class="label-category" ><?php print $_product->getHowToVideo1Category(); ?></h4>
+            <h3><?php print $_product->getHowToVideo1Title(); ?></h3>
+        <?php } ?>
+    </div>
+    <div class="grid12-4" style="text-align: center;" >
+        <?php if($_product->getHowToVideo2() != null) : ?>
+            <iframe width="250" height="187" src="<?php print str_replace('http://youtu.be/', '//www.youtube.com/embed/', $_product->getHowToVideo2()); ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
+            <h4 class="label-category" ><?php print $_product->getHowToVideo2Category(); ?></h4>
+            <h3><?php print $_product->getHowToVideo2Title(); ?></h3>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif;?>
