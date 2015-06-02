@@ -32,6 +32,6 @@ class Wsnyc_LeavingPage_Model_Observer {
         $writeConnection->query("DELETE FROM {$tableName} WHERE rule_id = ? AND times_used > 0", array($rule_id));
 
         //remove unused old coupons
-        $writeConnection->query("SELECT * FROM {$tableName} WHERE rule_id = ? AND times_used = 0 AND created_at < (NOW() - INTERVAL 1 DAY)", array($rule_id));
+        $writeConnection->query("DELETE FROM {$tableName} WHERE rule_id = ? AND times_used = 0 AND created_at < (NOW() - INTERVAL 1 DAY)", array($rule_id));
     }
 }
