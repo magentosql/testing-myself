@@ -45,7 +45,7 @@
     </ul>
     <div class="tabs-panels">
         <?php foreach($this->getTabs() as $_index => $_tab): ?>
-            <?php Mage::log($_tab);?>
+            <?php Mage::log(get_class($this->getChild($_tab['alias'])));?>
             <?php if($tabContent = $this->getChildHtml($_tab['alias'])): ?>
             <h2 class="acctab" id="acctab-<?php echo $_tab['alias'];?>"><?php echo $this->__($_tab['title']) ?></h2>
             <div class="panel" style="display: none;">
