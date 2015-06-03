@@ -26,7 +26,7 @@ class Wsnyc_LeavingPage_Model_Observer {
         $resource = Mage::getSingleton('core/resource');
         $writeConnection = $resource->getConnection('core_write');
         $tableName = $resource->getTableName('salesrule/coupon');
-        $rule_id = Mage::getStoreConfig('wsnyc/leavingpage/rule_id', 0);
+        $rule_id = Mage::getStoreConfig('promo/leavingpage/rule_id', 0);
 
         //remove used coupons
         $writeConnection->query("DELETE FROM {$tableName} WHERE rule_id = ? AND times_used > 0", array($rule_id));
