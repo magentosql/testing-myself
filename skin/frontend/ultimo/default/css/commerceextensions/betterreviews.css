@@ -1,5 +1,5 @@
-.rating-links a{float:none !important; display: inline !important;}
-.rating-links span{margin-top: 0 !important;display: inline !important;}
+.no-rating a, .rating-links a{float:none !important;}
+.rating-links span{margin-top: 0 !important;}
 #customer-reviews .pager .limiter{float: right;}
 #customer-reviews .pager span, #customer-reviews .amount span{margin-top: 0;}
 #customer-reviews #product-review-table, #customer-reviews h4{margin-top: 20px;}
