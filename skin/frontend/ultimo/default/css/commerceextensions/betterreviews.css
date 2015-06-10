@@ -1,0 +1,9 @@
+#customer-reviews a, .rating-links a{float:none !important; display: inline !important;}
+#customer-reviews span, .rating-links span{margin-top: 0 !important;display: inline !important;}
+#customer-reviews .pager .limiter{float: right;}
+#customer-reviews #product-review-table, #customer-reviews h4{margin-top: 20px;}
+#customer-reviews h4{text-align: left;}
+.ratings .rating-links .separator{background: none !important;}
+.product-view .box-reviews .form-add .form-list .input-box {clear:none !important; margin-left: 200px !important; text-align: left !important;}
+.product-view .box-reviews .form-add .form-list input.input-text{float:left !important;}
+.product-view .box-reviews .buttons-set button.button { float: left; margin-left: 224px; }
