@@ -89,14 +89,6 @@ $pageContent = <<< EOT
 </ul>
 <div id="billing-buttons-container" class="buttons-set"><button class="button btn-cart" title="Subscribe" type="submit"><span><span>Subscribe Now</span></span></button></div>
 </fieldset></form></div>
-<div class="details"><span class="label">Promotion Details</span>
-<ul>
-<li>Promotional offer period begins April 20, 2015 at 12:01am EST and ends June 10, 2015 at 11:59pm EST</li>
-<li>One sample per user</li>
-<li>Valid while supplies last</li>
-<li>The Spring Cleaning Bundle is available while supplies last</li>
-</ul>
-<span class="call">Please call us at (212) 209-0074 with any questions</span></div>
 <script type="text/javascript">
 //<![CDATA[
     var form = new VarienForm('request-form');
