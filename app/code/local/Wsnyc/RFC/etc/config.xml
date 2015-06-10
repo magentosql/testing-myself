@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_RFC>
+            <version>0.1.0</version>
+        </Wsnyc_RFC>
+    </modules>
+    <global>
+        <blocks>
+            <wsnyc_rfc>
+                <class>Wsnyc_RFC_Block</class>
+            </wsnyc_rfc>
+        </blocks>
+        <helpers>
+            <wsnyc_rfc>
+                <class>Wsnyc_RFC_Helper</class>
+            </wsnyc_rfc>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <promomodals>
+                    <file>wsnyc/rfc.xml</file>
+                </promomodals>
+            </updates>
+        </layout>
+    </frontend>
+</config>
