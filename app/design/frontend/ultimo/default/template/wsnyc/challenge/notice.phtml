@@ -1,1 +1,3 @@
+<?php if (time() < Mage::getStoreConfig('design/head/switchtime')):?>
 <p class="challenge-notice"><a href="<?php echo $this->getUrl('30-day-clean-home-challenge');?>"><?php echo Mage::getStoreConfig('design/head/challenge_notice')?></a></p>
+<?php endif;?>
