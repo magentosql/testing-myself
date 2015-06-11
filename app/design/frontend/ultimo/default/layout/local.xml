@@ -513,14 +513,31 @@
 
 
 	<!-- USER LOGGED IN/OUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<customer_logged_out>
+    <customer_logged_out>
+        <reference name="top.links">
+        	<action method="removeLinkByUrl" module="customer"><url helper="customer/getAccountUrl"/></action>
+        	<action method="removeLinkByUrl" module="customer"><url>customer/account/create</url></action>
+        	<action method="addLink" translate="label title" module="customer">
+                <label>Create Account</label>
+                <url>customer/account/create</url><title>Create Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
+        		<beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
+        	</action>
+        </reference>
+    </customer_logged_out>
 
-            <reference name="top.links">
-                <action method="addLink" translate="label title"><label>Create Account</label><url>customer/account/create</url><title>Create Account</title><prepare>true</prepare><urlParams/><position>30</position></action>
-                <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
-            </reference>
-
-	</customer_logged_out>
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl" module="customer"><url helper="customer/getAccountUrl"/></action>
+            <action method="removeLinkByUrl" module="customer"><url>customer/account/create</url></action>
+            <action method="addLink" translate="label title" module="customer">
+	            <label>Account</label>
+	            <url helper="customer/getAccountUrl"/><title>Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
+	            <beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
+            </action>
+        </reference>
+    </customer_logged_in>
 
 	<!-- PRODUCT VIEW %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<catalog_product_view>
