@@ -13,6 +13,15 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </challenge_notice>
+                        <switchtime>
+                            <label>Challenge Switch Time</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>610</sort_order>
+                            <comment>Provide Unix Timestamp when to do the switch</comment>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </switchtime>
                     </fields>
                 </head>
             </groups>

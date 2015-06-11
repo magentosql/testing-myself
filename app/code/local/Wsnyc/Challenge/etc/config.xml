@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_Challenge>
-            <version>0.4.3</version>
+            <version>0.4.6</version>
         </Wsnyc_Challenge>
     </modules>
     <global>
@@ -58,7 +58,20 @@
         <design>
             <head>
                 <challenge_notice><![CDATA[Take the 30-Day Clean Home Challenge and Save 20% Off Your Next Purchase with Code 30DayClean]]></challenge_notice>
+                <switchtime>1434038400</switchtime>
             </head>
         </design>
     </default>
+    <crontab>
+        <jobs>
+            <challenge_end_switch>
+                <schedule>
+                    <cron_expr>0 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>wsnyc_challenge/observer::switchChallengePages</model>
+                </run>
+            </challenge_end_switch>
+        </jobs>
+    </crontab>
 </config>
