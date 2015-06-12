@@ -1,4 +1,4 @@
-.no-rating a, .rating-links a{float:none !important;}
+.no-rating a, .rating-links a{float:none !important; display: inline !important;}
 .rating-links{text-align: left;}
 .rating-links span{margin-top: 0 !important;}
 #customer-reviews .pager .limiter{float: right;}
