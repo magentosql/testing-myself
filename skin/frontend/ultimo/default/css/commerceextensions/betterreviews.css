@@ -1,0 +1,13 @@
+.no-rating a, .rating-links a{float:none !important;}
+.rating-links{text-align: left;}
+.rating-links span{margin-top: 0 !important;}
+#customer-reviews .pager .limiter{float: right;}
+#customer-reviews .pager span, #customer-reviews .amount span{margin-top: 0;}
+#customer-reviews #product-review-table, #customer-reviews h4{margin-top: 20px;}
+#customer-reviews h4{text-align: left;}
+#customer-reviews dl dd small span{display: inline; margin-top: 0;}
+.ratings .rating-links .separator{background: none !important; display:inline !important;}
+.product-view .box-reviews .form-add .form-list .input-box {clear:none !important; margin-left: 200px !important; text-align: left !important;}
+.product-view .box-reviews .form-add .form-list input.input-text{float:left !important;}
+.product-view .box-reviews .buttons-set button.button { float: left; margin-left: 224px; }
+#review-form h3 span{display: inline !important;}

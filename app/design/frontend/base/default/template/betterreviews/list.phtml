@@ -1,0 +1,72 @@
+<?php $_items = $this->getReviewsCollection()->getItems();?>
+<?php $displayAttribute = (bool)$this->getCanDisplayAttribute(); ?>
+<?php $richSnippets = (bool)$this->getAddRichSnippets(); ?>
+<div class="box-collateral box-reviews" id="customer-reviews">
+    <?php if (count($_items)):?>
+        <h2><?php echo $this->__('Customer Reviews') ?></h2>
+        <?php echo $this->getChildHtml('toolbar') ?>
+        <dl>
+        <?php foreach ($_items as $_review):?>
+          <?php if($richSnippets): ?>
+            <span itemprop="review" itemscope itemtype="http://schema.org/Review">
+          <?php endif; ?>
+            <dt>
+                <a href="<?php echo $this->getReviewUrl($_review->getId()) ?>" <?php if($richSnippets): ?>itemprop="name"<?php endif; ?>><?php echo $this->htmlEscape($_review->getTitle()) ?></a> 
+				<?php $author = $richSnippets ? 'itemprop="author"' : null; ?>
+				<?php echo $this->__('Review by <span %s>%s</span>',$author, $this->htmlEscape($_review->getNickname())) ?>
+                <?php if($displayAttribute): ?>
+                  <?php $itemReviewed = $this->getReviewedItem($_review->getEntityPkValue())->getData($this->getProductAttribute()); ?>
+                  <?php if($itemReviewed): ?>
+                    <p><small <?php if($richSnippets): ?>itemprop="itemReviewed"<?php endif; ?>><?php echo $itemReviewed; ?></small></p>
+                  <?php endif; ?>
+                <?php endif; ?>
+            </dt>
+            <dd>
+                <?php $_votes = $_review->getRatingVotes(); ?>
+                <?php if (count($_votes)): ?>
+                <?php if($richSnippets): ?>
+                <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"> 
+                <?php endif; ?>               
+                <table class="ratings-table">
+                    <col width="1" />
+                    <col />
+                    <tbody>
+                        <?php $count = 0; $percent = 0; ?>
+                        <?php foreach ($_votes as $_vote): ?>
+                        <?php $percent = $percent+$_vote->getPercent(); $count++; ?>
+                        <tr>
+                            <th><?php echo $this->escapeHtml($_vote->getRatingCode()) ?></th>
+                            <td>
+                                <div class="rating-box">
+                                    <div class="rating" style="width:<?php echo $_vote->getPercent() ?>%;"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>                                  
+                <?php if($richSnippets): ?>
+                    <meta itemprop="worstRating" content="1" />
+                    <meta itemprop="ratingValue" content="<?php echo round(($percent/$count)/20,1); ?>"/>
+                    <meta itemprop="bestRating" content="5"/>                
+                  </span>
+                <?php endif; ?>
+                <?php unset($count); unset($percent); ?>
+                <?php endif; ?>
+                <?php if($richSnippets): ?><span itemprop="reviewBody"><?php endif; ?>
+                <?php echo nl2br($this->htmlEscape($_review->getDetail())) ?>
+                <?php if($richSnippets): ?></span><?php endif; ?>
+                
+                <?php $date = $richSnippets ? 'itemprop="datePublished"' : null; ?>
+                <?php $content = $richSnippets ? 'content="'.date("Y-m-d",strtotime($_review->getCreatedAt())).'"' : null; ?>
+                <small class="date"><?php echo $this->__('(Posted on <span %s %s>%s</span>)',$date,$content, $this->formatDate($_review->getCreatedAt()), 'long') ?></small>
+            </dd>
+          <?php if($richSnippets): ?>
+            </span>
+          <?php endif; ?>            
+        <?php endforeach; ?>
+        </dl>
+        <?php echo $this->getChildHtml('toolbar') ?>
+    <?php endif;?>
+    <?php echo $this->getChildHtml('review_form') ?>
+</div>
