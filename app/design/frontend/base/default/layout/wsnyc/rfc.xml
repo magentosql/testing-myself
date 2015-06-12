@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="0.1.0">
+    <default>
+        <reference name="before_body_end">
+            <block type="wsnyc_rfc/pixel" name="rfc_pixel" template="wsnyc/rfc/pixel.phtml" />
+        </reference>
+    </default>
+    <checkout_onepage_success>
+        <reference name="before_body_end">
+            <remove name="rfc_pixel" />
+            <block type="wsnyc_rfc/pixel" name="rfc_conversion_pixel" template="wsnyc/rfc/conversion.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+</layout>

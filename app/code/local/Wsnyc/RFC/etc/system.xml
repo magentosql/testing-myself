@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <wsnyc translate="label">
+            <label>Web Solutions NYC</label>
+            <sort_order>500</sort_order>
+        </wsnyc>
+    </tabs>
+    <sections>
+        <rfc_pixel translate="label" module="wsnyc_rfc">
+            <tab>wsnyc</tab>
+            <label>Rocket Fuel Pixel</label>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <enabled translate="label"  module="wsnyc_rfc">
+                            <label>Enable Rocket Fuel Pixel</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <user_id translate="label"  module="wsnyc_rfc">
+                            <label>User ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </user_id>
+                        <pixel_id translate="label"  module="wsnyc_rfc">
+                            <label>Conversion Action ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pixel_id>
+                        <track_conversion translate="label"  module="wsnyc_rfc">
+                            <label>Enable Rocket Fuel Conversion Tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </track_conversion>
+                        <conversion_pixel_id translate="label"  module="wsnyc_rfc">
+                            <label>Conversion Action ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </conversion_pixel_id>
+
+                    </fields>
+                </general>
+            </groups>
+        </rfc_pixel>
+    </sections>
+</config>
