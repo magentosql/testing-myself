@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var Mage_Catalog_Block_Product_View_Attributes $this
+ */
+if ($this->getProduct()->getData($this->getCheckAttribute())) {
+
+    $block = Mage::getModel('cms/block')->load($this->getBlockId());
+    if ($block->getIsActive()) {
+        $helper = Mage::helper('cms');
+        $processor = $helper->getBlockTemplateProcessor();
+        echo $processor->filter($block->getContent());
+    }
+}
+

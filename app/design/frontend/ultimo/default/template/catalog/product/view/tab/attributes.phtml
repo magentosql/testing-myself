@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var Mage_Catalog_Block_Product_View_Attributes $this
+ */
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+$value = $_helper->productAttribute($_product, nl2br($_product->getData($this->getDisplayAttribute())), $this->getDisplayAttribute());
+if ($value):
+?>
+<div class="std">
+    <?php if ($this->getSimpleDisplay()):?>
+        <?php echo $value;?>
+    <?php else:?>
+        <?php echo $this->helper('wsnyc_catalog')->parseTabDetail($value);?>
+    <?php endif;?>
+</div>
+<?php endif;?>

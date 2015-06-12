@@ -1,0 +1,46 @@
+<?php
+/**
+ * @var Mage_Catalog_Block_Product_View_Description $this
+ */
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+
+$title = $_helper->productAttribute($_product, nl2br($_product->getProductTitleLinebreak()), 'product_title_linebreak');
+if(empty($title)) {
+    $title = $_helper->productAttribute($_product, $_product->getName(), 'name');
+}
+
+$description = nl2br($_product->getDescription());
+$shippingNote = $_product->getShippingNote();
+if(!empty($shippingNote))
+{
+    $description .=  nl2br('<p class="shipping-note">' . $shippingNote .'</p>');
+}
+?>
+<div class="std">
+    <h3><?php echo $title; ?></h3>
+    <p><?php echo $this->helper('wsnyc_catalog')->parseTabDetail($_helper->productAttribute($_product, $description , 'short_description')); ?></p>
+    <?php $find = array(' ', ':', ''); ?>
+    <?php $blockname = strtolower('block_attribute_scent_' . str_replace($find, '_', $_product->getAttributeText('scent'))); ?>
+    <?php $blockcontent = strip_tags($this->getChildHtml($blockname)); ?>
+    <?php if(!empty($blockcontent)) : ?>
+        <div class="fragrance-details" >
+            <h4><?php echo Mage::getModel('cms/block')->load($blockname)->getTitle(); ?></h4>
+            <?php echo strip_tags($this->getChildHtml($blockname));  ?>
+        </div>
+    <?php endif; ?>
+    <?php if($_product->getMoreDescription()) : ?>
+        <div class="more-description-button"><?php echo $this->__('More Info'); ?></div>
+        <div class="more-description-content" style="display: none;">
+            <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getMoreDescription()) ?>
+        </div>
+        <script type="text/javascript">
+            jQuery('.more-description-button').click(function() {
+                jQuery('.more-description-content').toggle();
+                jQuery(this).text(function(i, text) {
+                    return text === "<?php echo $this->__('More Info'); ?>" ? "<?php echo $this->__('Less Info'); ?>" : "<?php echo $this->__('More Info'); ?>";
+                })
+            });
+        </script>
+    <?php endif; ?>
+</div>
