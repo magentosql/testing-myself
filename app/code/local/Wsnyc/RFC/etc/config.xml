@@ -20,9 +20,9 @@
     <frontend>
         <layout>
             <updates>
-                <promomodals>
+                <wsnyc_rfc>
                     <file>wsnyc/rfc.xml</file>
-                </promomodals>
+                </wsnyc_rfc>
             </updates>
         </layout>
     </frontend>
