@@ -90,11 +90,14 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit_Form
             'required'  => true,
         ));
 
-        $fieldset->addField('answer_text', 'textarea', array(
+        $config = Mage::getSingleton('cms/wysiwyg_config')->getConfig();
+        $config->setHidden(true);
+        $fieldset->addField('answer_text', 'editor', array(
             'name'      => 'answer_text',
             'label'     => Mage::helper('checkout')->__('Answer'),
             'title'     => Mage::helper('checkout')->__('Answer'),
             'required'  => true,
+            'config'    => $config
         ));
 
         $fieldset->addField('products', 'textarea', array(
@@ -131,4 +134,14 @@ class Wsnyc_QuestionsAnswers_Block_Adminhtml_Questionsanswersquestion_Edit_Form
 
         return parent::_prepareForm();
     }
+
+    protected function _prepareLayout() {
+        $return = parent::_prepareLayout();
+        if(Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+        }
+
+        return $return;
+    }
+
 }

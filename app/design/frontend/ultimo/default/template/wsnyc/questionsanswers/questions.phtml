@@ -46,7 +46,7 @@ $theme = $this->helper('ultimo');
             </div>
             <div class="wsnyc-questionsanswers-answer">
                 <span class="big-letter">A:</span><?php foreach($answers as $answer): ?>
-                    <span class="wsnyc-questionsanswers-answer-text"><?php echo nl2br($answer->getAnswerText());?></span>
+                    <span class="wsnyc-questionsanswers-answer-text"><?php echo $answer->hasHtml() ? $answer->getAnswerText() : nl2br($answer->getAnswerText());?></span>
                 <?php endforeach; ?>
             </div>
             <br/>
