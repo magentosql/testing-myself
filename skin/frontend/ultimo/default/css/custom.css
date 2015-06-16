@@ -156,13 +156,13 @@ ul.links li a{display:inline-block}
 .footer-bottom-container{padding:53px 0 25px 0}
 .footer-bottom{width:558px;margin:0 auto}
 .copyright-ul{line-height:12px}
-.copyright-ul li{display:inline;font-family:'Georgia',sans-serif;font-size:12px;font-style:italic;color:#aaabad}
+.copyright-ul li{display:inline;font-family:'Georgia',sans-serif;font-size:12px;font-style:italic;color:#aaabad;line-height: 60px;}
 .copyright-ul li a{color:inherit}
 .copyright-ul li a:hover{text-decoration:underline}
 .copyright-ul li.first{padding-right:25px}
 .copyright-ul li.terms{padding-right:5px;border-right:1px solid #aaabad}
-.copyright-ul li.privacy{padding-left:3px}
-.copyright-ul li.madeby{font-size:11px;color:#d7d7d7;font-style:normal}
+.copyright-ul li.privacy{padding-left:3px;padding-right: 15px;}
+.copyright-ul li.madeby{font-size:11px;color:#d7d7d7;font-style:normal;line-height: 12px;}
 #bottom-cap{width:100%;height:5px}
 #bottom-cap>div{width:558px;margin:0 auto;position:relative}
 #scroll-to-top{display:none;width:110px;height:22px;position:absolute;bottom:0;right:-147px;z-index:9999;background-color:#222;color:white;text-indent:inherit;font-family:"GillSansMTStd",sans-serif;font-size:12px;font-weight:bold;line-height:22px;text-align:center;transition:opacity 300ms ease-in-out;-moz-transition:opacity 300ms ease-in-out;-webkit-transition:opacity 300ms ease-in-out;-o-transition:opacity 300ms ease-in-out}
