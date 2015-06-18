@@ -96,7 +96,7 @@ if ($_count) {
     <a href="<?php echo $prev_url; ?>" class="next i-next effect" ><?php echo $this->__('NEXT PRODUCT') ?> <span></span></a>
     <?php endif; ?>    
 </div>
-<div class="product-view nested-container <?php echo Mage::getSingleton('wsnyc_challenge/decorator')->getCss($_product);?>">
+<div class="product-view nested-container <?php echo Mage::getSingleton('wsnyc_challenge/decorator')->getCss($_product);?>" itemscope itemtype="http://schema.org/Product">
 
     <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" class="clearer custom" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
     
@@ -135,16 +135,17 @@ if ($_count) {
                     }
                
                 ?>
-                <h1><?php echo $title ?></h1>
+                <h1 itemprop="name"><?php echo $title ?></h1>
             </div>
             
             <?php echo $this->getReviewsSummaryHtml($_product, false, true); //reviews ?>
             
             <?php if ($_product->getShortDescription()): ?>
-                <div class="short-description">
-                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                <div class="short-description" >
+                    <div class="std" itemprop="description"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                 </div>
             <?php endif;?>
+            <meta itemprop="url" content="<?php echo $_product->getProductUrl(); ?>" />
             
             <?php echo $this->getChildHtml('fragrance');?>
             <script type="text/javascript">
@@ -262,6 +263,18 @@ if ($_count) {
                 <?php endif; ?>
                 <?php echo $this->getChildHtml('extra_buttons') ?>
             <?php endif; ?>
+
+
+            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                <?php $_finalPrice = $this->helper('tax')->getPrice($_product, $_product->getFinalPrice()); ?>
+                <span itemprop="price"><?php echo $this->helper('core')->currency($_finalPrice, true, false) ?></span>
+                <meta itemprop="priceCurrency" content="USD" />
+            <?php if ($_product->isSaleable()): ?>
+                <meta itemprop="availability" content="InStock" />
+            <?php else: ?>
+                <meta itemprop="availability" content="OutOfStock" />
+            <?php endif; ?>
+            </div>
 
             <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
                 <?php if ($container1_html = $this->getChildChildHtml('container1', '', true, true)): ?>

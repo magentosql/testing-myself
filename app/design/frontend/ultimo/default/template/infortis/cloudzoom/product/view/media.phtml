@@ -66,7 +66,7 @@
         <p class="product-image<?php echo $zoomClasses; ?>">
 
 			<a href="<?php echo $zoomHelper->createImgUrl($this, $_product, $bigImageWidth, $bigImageHeight); ?>" class="cloud-zoom" id="zoom1" rel="<?php echo $zoomHelper->getCloudZoomOptions(); ?>">
-            	<img src="<?php echo $zoomHelper->createImgUrl($this, $_product, $imgWidth, $imgHeight); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>" title="<?php echo $this->htmlEscape($this->getImageLabel());?>" />
+            	<img itemprop="image" src="<?php echo $zoomHelper->createImgUrl($this, $_product, $imgWidth, $imgHeight); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>" title="<?php echo $this->htmlEscape($this->getImageLabel());?>" />
 			</a>
             
             <?php //TODO: removed code:  $zoomHelper->useCloudZoom() && ?>
@@ -86,7 +86,7 @@
     <?php else: //Show images in Magento default style ?>
     
         <p class="product-image">
-        	<img src="<?php echo $zoomHelper->createImgUrl($this, $_product, $imgWidth, $imgHeight); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>" title="<?php echo $this->htmlEscape($this->getImageLabel());?>" />
+        	<img itemprop="image" src="<?php echo $zoomHelper->createImgUrl($this, $_product, $imgWidth, $imgHeight); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel());?>" title="<?php echo $this->htmlEscape($this->getImageLabel());?>" />
 		</p>
     
     <?php endif; ?>
@@ -95,7 +95,8 @@
 
     <p class="product-image">
         <?php
-            $_img = '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imgWidth).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
+        $_imgSrc = $this->helper('catalog/image')->init($_product, 'image')->resize($imgWidth);
+            $_img = '<img itemprop="image" src="'.$this->helper('catalog/image')->init($_product, 'image')->resize($imgWidth).'" alt="'.$this->htmlEscape($this->getImageLabel()).'" title="'.$this->htmlEscape($this->getImageLabel()).'" />';
             echo $_helper->productAttribute($_product, $_img, 'image');
         ?>
     </p>
@@ -135,7 +136,7 @@
                 if ($_image->getFile() == NULL)
                     continue; ?>
             <li>
-                <a href="<?php echo $zoomHelper->createImgUrl($this, $_product, $bigImageWidth, $bigImageHeight, 'image', $_image->getFile()); ?>" class="cloud-zoom-gallery lightbox-group" title="<?php echo $this->htmlEscape($_image->getLabel()); ?>"
+                <a itemprop="image" href="<?php echo $zoomHelper->createImgUrl($this, $_product, $bigImageWidth, $bigImageHeight, 'image', $_image->getFile()); ?>" class="cloud-zoom-gallery lightbox-group" title="<?php echo $this->htmlEscape($_image->getLabel()); ?>"
                 	rel="useZoom:'zoom1', smallImage: '<?php echo $zoomHelper->createImgUrl($this, $_product, $imgWidth, $imgHeight, 'image', $_image->getFile()); ?>'">
                     
                     <img src="<?php echo $zoomHelper->createImgUrl($this, $_product, $thumbImgWidth, $thumbImgHeight, 'thumbnail', $_image->getFile()); ?>" alt="<?php echo $this->htmlEscape($_image->getLabel()); ?>"/>
