@@ -4,6 +4,7 @@ class Wsnyc_KeepGclid_Model_Observer extends Varien_Event_Observer
 {
   public function keepParam(Varien_Event_Observer $observer)
   {
+      //this might be session initialization so make sure to use correct session name for frontend
       $session = Mage::getSingleton('core/session', array('name' => Mage_Core_Controller_Front_Action::SESSION_NAMESPACE))->start();
 
       $param = $observer->getEvent()->getData('front')->getRequest()->getParam('gclid');
