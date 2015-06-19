@@ -46,6 +46,7 @@ error_reporting(E_ALL | E_STRICT);
  */
 define('MAGENTO_ROOT', getcwd());
 
+include MAGENTO_ROOT . '/ua-categorizer.php';
 $compilerConfig = MAGENTO_ROOT . '/includes/config.php';
 if (file_exists($compilerConfig)) {
     include $compilerConfig;
