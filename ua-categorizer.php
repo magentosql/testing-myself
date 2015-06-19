@@ -1,6 +1,6 @@
 <?php
 
-@include_once MAGENTO_ROOT .'/lib/Mobile/Detect.php';
+@include_once dirname(__FILE__) .'/lib/Mobile/Detect.php';
 
 if (class_exists('Mobile_Detect', false) === true and array_key_exists('HTTP_USER_AGENT', $_SERVER) === true) {
 	$device = 'desktop';

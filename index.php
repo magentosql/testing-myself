@@ -1,4 +1,5 @@
 <?php
+include_once dirname(__FILE__). '/ua-categorizer.php';
 include_once dirname(__FILE__) . '/shell/extendware/ewpagecache/misc/loader.php';
 /**
  * Magento
@@ -46,7 +47,6 @@ error_reporting(E_ALL | E_STRICT);
  */
 define('MAGENTO_ROOT', getcwd());
 
-include MAGENTO_ROOT . '/ua-categorizer.php';
 $compilerConfig = MAGENTO_ROOT . '/includes/config.php';
 if (file_exists($compilerConfig)) {
     include $compilerConfig;
