@@ -819,6 +819,7 @@ h1 span{text-transform:none}
 .add-to-cart label{color:#999;font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px}
 .add-to-cart button.btn-cart{margin-right:40px}
 .product-view .btn-cart span span{padding:0 50px}
+.product-view div[itemprop="offers"] {display: none;}
 .ratings,.no-rating{color:#222}
 .availability{color:#666;font-family:"GillSansMTStd-Bold",sans-serif;font-size:14px;text-transform:uppercase}
 .gen-tabs-style1 .tabs a.current{box-shadow:0 -6px 15px #f7f7f7;color:#64b96a}
