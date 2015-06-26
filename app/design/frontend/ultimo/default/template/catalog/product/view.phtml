@@ -96,7 +96,7 @@ if($_count) {
     <a href="<?php echo $prev_url; ?>" class="next i-next effect"><?php echo $this->__('NEXT PRODUCT') ?> <span></span></a>
   <?php endif; ?>
 </div>
-<div class="product-view nested-container <?php echo Mage::getSingleton('wsnyc_challenge/decorator')->getCss($_product); ?>" itemscope itemtype="http://schema.org/Product">>
+<div class="product-view nested-container <?php echo Mage::getSingleton('wsnyc_challenge/decorator')->getCss($_product); ?>" itemscope itemtype="http://schema.org/Product">
 
   <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" class="clearer custom" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 
