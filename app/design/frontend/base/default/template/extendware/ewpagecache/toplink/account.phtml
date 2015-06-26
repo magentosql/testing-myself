@@ -1,0 +1,11 @@
+<?php
+$text = $url = '';
+if ($this->getIsLoggedIn()) {
+	$text = $this->__('Account');
+	$url = Mage::helper('customer')->getAccountUrl();
+} else {
+	$text = $this->__('Create Account');
+	$url = Mage::getUrl('customer/account/create', array('_secure' => true));
+}
+?>
+<a href="<?php echo $url; ?>" title="<?php echo $text; ?>"><?php echo $text; ?></a>
