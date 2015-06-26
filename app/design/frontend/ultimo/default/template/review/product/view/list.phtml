@@ -67,3 +67,15 @@
     <?php endif;?>
     <?php echo $this->getChildHtml('review_form') ?>
 </div>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        $("#goto-reviews, #goto-reviews-form").click(function () {
+            if ($("#product-tabs").hasClass("accor")) {
+                $("#product-tabs .tabs-panels").data("tabs").click($(".tabs-panels .acctab").index($("#acctab-tabreviews")))
+            } else {
+                $("#product-tabs .tabs").data("tabs").click($("#tab-tabreviews").index())
+            }
+        })
+    });
+</script>

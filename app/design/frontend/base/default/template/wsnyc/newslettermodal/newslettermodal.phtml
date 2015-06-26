@@ -3,8 +3,8 @@
 <?php if($newsletterBlockContent): ?>
     <?php $_protocol = Mage::app()->getRequest()->isSecure() ? 'https' : 'http';?>
     <?php $cookie = Mage::getSingleton('core/cookie');?>
-    <?php $visit = (int)$cookie->get('newsletter-info') + 1;?>
-    <?php $cookie->set('newsletter-info', $visit, time()+2678400,'/'); //31 days ?>
+    <?php $visit = (int)$cookie->get('newslettermodal-info') + 1;?>
+    <?php $cookie->set('newslettermodal-info', $visit, time()+2678400,'/'); //31 days ?>
     <div style='display:none'>
         <div id="inline_newsletter_colorbox" class="newsletter-popup">
             <div class="wrapper">

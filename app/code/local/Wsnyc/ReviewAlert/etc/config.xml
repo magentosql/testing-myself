@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Wsnyc_ReviewAlert>
+      <version>1.0.0</version>
+    </Wsnyc_ReviewAlert>
+  </modules>
+  <global>
+    <models>
+      <wsnyc_reviewalert>
+        <class>Wsnyc_ReviewAlert_Model</class>
+      </wsnyc_reviewalert>
+    </models>
+    <helpers>
+      <wsnyc_reviewalert>
+        <class>Wsnyc_ReviewAlert_Helper</class>
+      </wsnyc_reviewalert>
+    </helpers>
+    <template>
+      <email>
+        <catalog_review_template_pending module="wsnyc_reviewalert">
+          <label><![CDATA[Pending Review Alert Email]]></label>
+          <file>wsnyc/reviewalert/pending.html</file>
+          <type>html</type>
+        </catalog_review_template_pending>
+      </email>
+    </template>
+  </global>
+  <frontend>
+    <events>
+      <review_save_commit_after>
+        <observers>
+          <reviewSave>
+            <class>wsnyc_reviewalert/observer</class>
+            <method>sendEmail</method>
+          </reviewSave>
+        </observers>
+      </review_save_commit_after>
+    </events>
+  </frontend>
+</config>

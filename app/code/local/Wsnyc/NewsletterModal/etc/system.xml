@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <wsnyc>
+            <label>Web Solutions NYC</label>            
+        </wsnyc>
+    </tabs>
+    <sections>
+        <newslettermodal  translate="label" module="newslettermodal">
+            <label>Newsletter Popup</label>
+            <tab>wsnyc</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>80</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>      
+            <groups>                
+                <general translate="label"> 
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <expanded>1</expanded>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active>
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </active>
+                    </fields>
+                </general>
+            </groups>
+        </newslettermodal>
+    </sections>
+</config>

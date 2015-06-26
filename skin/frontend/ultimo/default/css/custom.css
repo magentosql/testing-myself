@@ -786,9 +786,9 @@ h1 span{text-transform:none}
 .product-view .tbl-ingridients td:first-child{font-weight:bold;width:30%;border-right:1px solid #ddd}
 .product-view .tbl-ingridients tr:nth-child(2n){background-color:#f1f1f1}
 .product-view .tbl-ingridients tr:last-child td{border-bottom:1px solid #ddd}
-.product-view .fragrance{padding-left:107px;position:relative; }
-.product-view .fragrance img{position:absolute;top:0;left:0; text-align: left;}
-.product-view .fragrance p{color:#999;font-family:"Arial";font-style:italic}
+.product-view .fragrance{position:relative; }
+.product-view .fragrance img{top:0;left:0; text-align: left;padding-right: 10px;}
+.product-view .fragrance p{color:#999;font-family:"Arial";font-style:italic; display: inline-flex;}
 .product-view .fragrance p a{color:#222;font-style:italic;font-weight:bold}
 .product-view .fragrance{overflow:hidden}
 .product-view .gen-slider-arrows3 .direction-nav .next,.product-view .gen-slider-arrows3 .direction-nav .prev{top:42px}

@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<config>
+  <sections>
+	<productpagereviews translate="label" module="betterreviews">
+	  <label>Product Page Reviews</label>
+	  <tab>commerceextensions</tab>
+	  <frontend_type>text</frontend_type>
+	  <sort_order>225</sort_order>
+	  <show_in_default>1</show_in_default>
+	  <show_in_website>1</show_in_website>
+	  <show_in_store>1</show_in_store>	 
+		<groups>
+		  <general translate="label">
+			<label>General Options</label>
+			<frontend_type>text</frontend_type>
+			<sort_order>100</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store> 
+			  <fields>
+				<enabled translate="label">
+				  <label>Display Reviews on Product Page</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>100</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>                    
+				</enabled>																							
+				<update_block_title translate="label">
+				  <label>Change Reviews Block Heading</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>200</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>  
+				  <comment><![CDATA[Do you want to change the H2 heading of the reviews block from "Customer Reviews" to something a little more creative and possibly SEO friendly? If so, select Yes and then use the option below to begin crafting your block title.]]></comment>					                    
+				</update_block_title>
+				<block_title_pattern_simple translate="label">
+				  <label>Block Title Pattern</label>
+				  <frontend_type>text</frontend_type>	  
+				  <sort_order>300</sort_order>
+				  <comment><![CDATA[Create a basic pattern that will apply to your reviews block title. Please note, this is not a regex pattern, it is a simple string replacement. Entering a placeholder for product_name or sku will trigger a replacement with the actual product name. For example, to show the block title as "Reviews for Red T-Shirt", you would enter into this field "Reviews for {{product_name}}". Please note that currently this field is only set up to work with "product_name" and "sku". More variables may be added later. <strong>This pattern applies to all product types except for grouped and configurable.</strong>]]></comment>
+				  <validate>validate-no-html-tags</validate>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>
+				  <depends><update_block_title>1</update_block_title></depends>  				
+				</block_title_pattern_simple>
+				<block_title_pattern_grouped translate="label">
+				  <label><![CDATA[Block Title Pattern: Grouped & Configurable]]></label>
+				  <frontend_type>text</frontend_type>	  
+				  <sort_order>400</sort_order>
+				  <comment><![CDATA[Block title pattern for grouped and configurable products.]]></comment>
+				  <validate>validate-no-html-tags</validate>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>
+				  <depends><update_block_title>1</update_block_title></depends>  				
+				</block_title_pattern_grouped>
+				<list_order translate="label">
+				  <label><![CDATA[Reviews Sort Order]]></label>
+				  <frontend_type>select</frontend_type>	  
+				  <sort_order>500</sort_order>
+				  <validate>required-entry validate-select</validate>
+				  <source_model>betterreviews/adminhtml_system_config_source_form_order</source_model>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>			
+				</list_order>	
+				<list_dir translate="label">
+				  <label><![CDATA[Reviews Sort Direction]]></label>
+				  <frontend_type>select</frontend_type>	  
+				  <sort_order>600</sort_order>
+				  <validate>required-entry validate-select</validate>
+				  <source_model>betterreviews/adminhtml_system_config_source_form_direction</source_model>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>			
+				</list_dir>	
+				<richsnippets_enabled translate="label">
+				  <label>Add Google Rich Snippets</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>700</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>  
+				  <comment><![CDATA[Add Google Rich Snippets Tags to Reviews and Review Summary?]]></comment>					                    
+				</richsnippets_enabled>																																								
+			  </fields> 			               
+		  </general>		  
+		</groups>	   
+	</productpagereviews>
+	<associatedproductreviews translate="label" module="betterreviews">
+	  <label>Associated Product Reviews</label>
+	  <tab>commerceextensions</tab>
+	  <frontend_type>text</frontend_type>
+	  <sort_order>226</sort_order>
+	  <show_in_default>1</show_in_default>
+	  <show_in_website>1</show_in_website>
+	  <show_in_store>1</show_in_store>	 
+		<groups>
+		  <general translate="label">
+			<label>General Options</label>
+			<frontend_type>text</frontend_type>
+			<sort_order>100</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store> 
+			<comment><![CDATA[<p><strong>The Associated Product Reviews extension allows you to display product reviews from the individual associated products on the parent Grouped / Configurable product pages. Magento's default configuration is to display reviews only from the parent product, not the child products. This adds the reviews to the list and adds them into the star ratings and review count as well.</strong></p>]]></comment>				
+			  <fields>
+				<enabled translate="label">
+				  <label>Enabled</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>100</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <validate>required-entry validate-select</validate>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store> 
+				  <comment><![CDATA[Master on/off Switch]]></comment>				                     
+				</enabled>
+				<grouped_enabled translate="label">
+				  <label>Enabled for Grouped Products</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>200</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <validate>required-entry validate-select</validate>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>                    
+				</grouped_enabled>	
+				<configurable_enabled translate="label">
+				  <label>Enabled for Configurable Products</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>300</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <validate>required-entry validate-select</validate>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>                    
+				</configurable_enabled>
+				<attribute_enabled translate="label">
+				  <label>Display Item Specific Attribute In Review?</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>400</sort_order>
+				  <source_model>adminhtml/system_config_source_yesno</source_model>
+				  <validate>required-entry validate-select</validate>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store>                    
+				</attribute_enabled>		
+				<attribute translate="label">
+				  <label>Which Attribute To Display</label>
+				  <frontend_type>select</frontend_type>
+				  <sort_order>500</sort_order>
+				  <source_model>betterreviews/adminhtml_system_config_source_form_attribute</source_model>
+				  <validate>required-entry validate-select</validate>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>1</show_in_store> 
+				  <comment><![CDATA[Select data to display as part of the review, such as the SKU, Title, etc. This way, your users will know which child product a review was left for.]]></comment> 
+				  <depends><attribute_enabled>1</attribute_enabled></depends>                  
+				</attribute>																																					
+			  </fields> 			               
+		  </general>
+		</groups>	   
+	</associatedproductreviews>	
+  </sections>   
+</config>

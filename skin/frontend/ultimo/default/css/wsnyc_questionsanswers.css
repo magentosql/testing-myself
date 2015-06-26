@@ -1,11 +1,12 @@
 .wsnyc-questionsanswers-title{
     width: 739px;
     height: 96px;
-    margin: -7px 0 22px;
+    margin: 0 auto 22px auto;
     background: url('../images/ask-the-laundress.jpg') no-repeat center center;
     text-align: center;
     font-size: 1px;
     color: white;
+    text-indent: -99999px;
 }
 
 .wsnyc-questionanswers-cartoon{
@@ -304,9 +305,7 @@
 .cms-home .wsnyc-questionsanswers-middle{ 
     background: url('../images/ask-thelaundress-homepage-h.png') no-repeat center center;
 }
-.asklaundress-index-index .wsnyc-questionsanswers-middle{ 
-    margin: -7px 0 22px 111px;
-}
+
 
 #wsnyc-questionsanswers-container{
     width:100%;

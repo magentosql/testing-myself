@@ -131,6 +131,7 @@
                 <name>flipclock/flipclock.css</name>
             </action>
 
+            <block type="core/template" name="pinterest.verification" template="page/html/pinterest.phtml" />
         </reference>
 
 
@@ -512,14 +513,31 @@
 
 
 	<!-- USER LOGGED IN/OUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<customer_logged_out>
+    <customer_logged_out>
+        <reference name="top.links">
+        	<action method="removeLinkByUrl" module="customer"><url helper="customer/getAccountUrl"/></action>
+        	<action method="removeLinkByUrl" module="customer"><url>customer/account/create</url></action>
+        	<action method="addLink" translate="label title" module="customer">
+                <label>Create Account</label>
+                <url>customer/account/create</url><title>Create Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
+        		<beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
+        	</action>
+        </reference>
+    </customer_logged_out>
 
-            <reference name="top.links">
-                <action method="addLink" translate="label title"><label>Create Account</label><url>customer/account/create</url><title>Create Account</title><prepare>true</prepare><urlParams/><position>30</position></action>
-                <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
-            </reference>
-
-	</customer_logged_out>
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl" module="customer"><url helper="customer/getAccountUrl"/></action>
+            <action method="removeLinkByUrl" module="customer"><url>customer/account/create</url></action>
+            <action method="addLink" translate="label title" module="customer">
+	            <label>Account</label>
+	            <url helper="customer/getAccountUrl"/><title>Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
+	            <beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
+            </action>
+        </reference>
+    </customer_logged_in>
 
 	<!-- PRODUCT VIEW %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<catalog_product_view>
@@ -529,6 +547,11 @@
 			<action method="setTemplate"><template>page/1column.phtml</template></action>
 		</reference>
 
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><file>js/srka.review.stars.min.js</file></action>
+            <action method="addItem"><type>skin_css</type><file>css/srka.review.stars.css</file></action>
+        </reference>
+
 		<!-- Insert related products into product view (section "product.info") and remove them from the right column -->
 		<!-- IMPORTANT: new template file -->
 		<reference name="right">
@@ -536,38 +559,23 @@
 		</reference>
 		<reference name="product.info">
 			<block type="catalog/product_list_related" name="catalog.product.related" template="catalog/product/list/related.phtml"/>
-		</reference>
-
-		<reference name="product.info">
 
 			<!-- Change review summary template: removed links to review page. IMPORTANT: new template file. -->
 			<action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/summary_nolinks.phtml</template></action>
 
-			<!-- Uncomment to use default Magento image style -->
-			<!--
-			<block type="catalog/product_view_media" name="product.info.media" as="media" template="catalog/product/view/media.phtml"/>
-			-->
-
 			<!-- Add tabs -->
 			<block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
-				<action method="addTab" translate="title" module="catalog"><alias>description</alias><title>Details</title><block>catalog/product_view_description</block><template>catalog/product/view/description.phtml</template></action>
-				<!-- action method="addTab" translate="title" module="catalog"><alias>additional</alias><title>Additional Information</title><block>catalog/product_view_attributes</block><template>catalog/product/view/attributes.phtml</template></action -->
+				<action method="addTab" translate="title" module="catalog"><alias>description</alias><title>Details</title><block>catalog/product_view_description</block><template>catalog/product/view/tab/description.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>video</alias><title>How to Video</title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/video.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>for_best_results</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>for_best_results</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>ingredients</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>ingredients</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>washing_chart</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>washing_chart</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
+                <action method="addTab" translate="title" module="catalog"><alias>made_of</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>made_of</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
+                <action method="addTab" translate="title" module="cms"><alias>block_product_monogram_shop</alias><title>Monogram Shop</title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/cms.phtml</template></action>
 
-				<!-- Add reviews (first part). IMPORTANT: see the second part: reference name="tabreviews" -->
+                <!-- Add reviews (first part). IMPORTANT: see the second part: reference name="tabreviews" -->
 				<!-- IMPORTANT: Do not change 'tabreviews' alias. It is needed in JS script in catalog/product/view.phtml -->
-				<!-- action method="addTab" translate="title" module="catalog"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action -->
-
-				<!-- Add tags -->
-				<!-- action method="addTab" translate="title" module="tag"><alias>product.tags</alias><title>Product Tags</title><block>tag/product_list</block><template>tag/list.phtml</template></action -->
-
-				<!-- Add custom tabs -->
-				<block type="cms/block" name="block_product_tab2">
-					<action method="setBlockId"><block_id>block_product_tab2</block_id></action>
-				</block>
-                                <block type="cms/block" name="block_product_tab1">
-					<action method="setBlockId"><block_id>block_product_tab1</block_id></action>
-				</block>
-
+				<action method="addTab" translate="title" module="catalog"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action>
 			</block>
 			<!-- end: Add tabs -->
 
@@ -578,9 +586,6 @@
 			</block>
 
 			<!-- Custom static blocks -->
-            <block type="cms/block" name="block_product_monogram_shop">
-                <action method="setBlockId"><block_id>block_product_monogram_shop</block_id></action>
-            </block>
             <block type="cms/block" name="block_product_primary_bottom">
                 <action method="setBlockId"><block_id>block_product_primary_bottom</block_id></action>
             </block>
@@ -594,6 +599,9 @@
                 <action method="setBlockId"><block_id>block_product_replace_upsell</block_id></action>
             </block>
             <block type="scent/scent" name="product.fragrance" as="fragrance" template="catalog/product/view/scent.phtml" />
+
+            <block type="catalog/product_view_attributes" name="product.monogram" as="monogram" template="catalog/product/view/monogram.phtml" />
+
 		</reference> <!-- end: product.info -->
 
 		<!-- Second part of adding reviews to tabs. See the first part in product.info section in info_tabs block -->
@@ -605,6 +613,22 @@
 				</block>
 			</block>
         </reference>
+        <reference name="for_best_results">
+            <action method="setDisplayAttribute"><attr>for_best_results</attr></action>
+        </reference>
+        <reference name="ingredients">
+            <action method="setDisplayAttribute"><attr>ingredients</attr></action>
+        </reference>
+        <reference name="washing_chart">
+            <action method="setDisplayAttribute"><attr>washing_chart</attr></action>
+        </reference>
+        <reference name="made_of">
+            <action method="setDisplayAttribute"><attr>made_of</attr></action>
+        </reference>
+        <reference name="block_product_monogram_shop">
+            <action method="setCheckAttribute"><attr>monogram</attr></action>
+            <action method="setBlockId"><block_id>block_product_monogram_shop</block_id></action>
+        </reference>
 
 		<!-- Remove product tags block (tags are already inserted as a tab) -->
 		<reference name="product.info.additional">
@@ -615,6 +639,10 @@
 		<reference name="product.info.options.wrapper.bottom">
 			<action method="unsetChild"><name>product.info.addto</name></action>
 		</reference>
+
+        <reference name="product.info.addtocart">
+            <block type="catalog/product_view" name="product.bottom_clone_prices" as="prices" template="catalog/product/view/price_clone.phtml"/>
+        </reference>
 
 	</catalog_product_view>
 
@@ -743,20 +771,11 @@
         </checkout_cart_index>
 
 
-	<!-- CHECKOUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<!--<checkout_onepage_index>-->
-		<!---->
-		<!--&lt;!&ndash; Block below progress block, inserted directly &ndash;&gt;-->
-		<!--<reference name="right">-->
-			<!--<block type="page/html_wrapper" name="i_block_opc_below_progress">-->
-				<!--<action method="setElementClass"><value>block block_opc_below_progress std</value></action>-->
-				<!--<block type="cms/block" name="block_opc_below_progress" after="checkout.progress.wrapper">-->
-                	<!--<action method="setBlockId"><block_id>block_opc_below_progress</block_id></action>-->
-            	<!--</block>-->
-			<!--</block>-->
-		<!--</reference>-->
-	<!---->
-	<!--</checkout_onepage_index>-->
+	<checkout_onepage_index>
+		<reference name="right">
+            <block type="core/template" name="shipping.info" template="checkout/onepage/review/shipping.phtml"/>
+        </reference>
+	</checkout_onepage_index>
 
     <checkout_onepage_success>
         <reference name="before_body_end">

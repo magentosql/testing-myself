@@ -17,12 +17,12 @@
     })();
     window._fbq = window._fbq || [];
     window._fbq.push(['track', 
-                        '<?php echo $_order->getIncrementId();?>', 
+                        '<?php echo $this->getConversionPixelId();?>',
                         {
                             'value': '<?php echo round($_order->getBaseGrandTotal(),2); ?>', 
                             'currency': '<?php echo Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE);?>'
                         }
                     ]);
 </script>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=<?php echo $_order->getIncrementId();?>&cd[value]=<?php echo round($_order->getBaseGrandTotal(),2); ?>&cd[currency]=<?php echo Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE);?>&noscript=1" /></noscript>
+<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=<?php echo $this->getConversionPixelId();?>&cd[value]=<?php echo round($_order->getBaseGrandTotal(),2); ?>&cd[currency]=<?php echo Mage::getStoreConfig(Mage_Directory_Model_Currency::XML_PATH_CURRENCY_BASE);?>&noscript=1" /></noscript>
 <?php endif; ?>

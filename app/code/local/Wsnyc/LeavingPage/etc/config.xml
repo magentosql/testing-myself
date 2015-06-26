@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_LeavingPage>
-            <version>0.4.3</version>
+            <version>0.4.4</version>
         </Wsnyc_LeavingPage>
     </modules>
     <global>
@@ -56,4 +56,12 @@
             </leavingpage>
         </promo>
     </default>
+    <crontab>
+        <jobs>
+            <clear_old_coupons>
+                <schedule><cron_expr>0 1 * * *</cron_expr></schedule>
+                <run><model>leavingpage/observer::clearCouponCodes</model></run>
+            </clear_old_coupons>
+        </jobs>
+    </crontab>
 </config> 

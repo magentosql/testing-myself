@@ -2219,7 +2219,7 @@ a.email2friend:hover { background-position: -54px -27px; }
 /* Add to Cart
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 */
-.add-to-cart .qty-wrapper { float:left; margin-top:12px; }
+.add-to-cart .qty-wrapper { float:left; margin-top:12px; margin-right: 40px;}
 .add-to-cart label { float:left; margin:0 5px 0 0; line-height:31px; }
 .add-to-cart .qty { float:left; margin:0; text-align:center; }
 .add-to-cart button.button { float:left; }
@@ -2228,6 +2228,8 @@ a.email2friend:hover { background-position: -54px -27px; }
 .add-to-cart .paypal-logo .paypal-or { clear:both; display:block; margin:5px 60px 5px 0; }
 .product-view .add-to-cart .paypal-logo { margin:0; }
 
+.product-view .add-to-box .add-to-cart .price-box,
+.product-options-bottom .add-to-cart .price-box {margin-top: 18px;}
 /* Add to Links*/
 .add-to-box .or { float:left; font-weight:bold; margin:0 7px; }
 
@@ -2244,7 +2246,7 @@ a.email2friend:hover { background-position: -54px -27px; }
 /* Basic product page sections
 -------------------------------------------------------------- */
 /* Generic wrapper for product page collaterals */
-.product-view .box-additional { margin-top:30px; }
+.product-view .box-additional { margin-top: 0px; }
 .product-view .box-tabs {}
 .product-view .box-sidebar {}
 .product-view .box-up-sell {}
@@ -2931,6 +2933,9 @@ a.email2friend:hover { background-position: -54px -27px; }
 .block-progress dt.complete a { font-weight:normal; }
 .block-progress dd.complete {}
 .block-progress p { margin:0; }
+
+.checkout-onepage-index .cart-free-shipping {border: 8px solid #ddd;padding: 10px 15px;}
+.checkout-onepage-index .cart-free-shipping p {font-family: "GillSansMTStd",sans-serif;font-size: 22px;line-height: 28px;}
 
 .opc .buttons-set { margin-top:0; padding-top:2em; }
 .opc .buttons-set p.required { margin:0; padding:0 0 10px; }

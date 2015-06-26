@@ -8,7 +8,8 @@ class Wsnyc_LeavingPage_Helper_Data extends Mage_Core_Helper_Abstract {
     const XML_CONF_RULE = 'promo/leavingpage/rule_id';
 
     public function generatePromoCode() {
-        if (!$code = Mage::getSingleton('customer/session')->getLeavingPageCoupon()) {
+        $code = Mage::getSingleton('customer/session')->getLeavingPageCoupon();
+        if (!$code || !$this->_isCouponStillActive($code)) {
             $code = $this->_getNewCoupon();
             Mage::getSingleton('customer/session')->setLeavingPageCoupon($code);
         }
@@ -55,6 +56,12 @@ class Wsnyc_LeavingPage_Helper_Data extends Mage_Core_Helper_Abstract {
         $code = $coupon->getCode();
 
         return $code;
+    }
+
+    protected function _isCouponStillActive($code) {
+        $coupon = Mage::getModel('salesrule/coupon')->load($code, 'code');
+
+        return $coupon->getId() != null;
     }
 
 }
