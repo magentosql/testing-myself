@@ -38,7 +38,7 @@ jQuery(function ($) {
 
         },
         onComplete: function() {
-             jQuery('body').css({overflow: 'hidden'});
+            jQuery('body').css({overflow: 'hidden'});
             jQuery('body > .wrapper').addClass('blurred');
             jQuery('#stay-on-page').click(function(e) {
                 jQuery.colorbox.close();
@@ -46,6 +46,9 @@ jQuery(function ($) {
                     ga('send', 'event', 'button', 'click', 'exit popup');
                 }
                 window.location.href = $(this).data('href');
+            });
+            jQuery('#no-redeem').click(function(e) {
+                jQuery.colorbox.close();
             });
         }
     });
