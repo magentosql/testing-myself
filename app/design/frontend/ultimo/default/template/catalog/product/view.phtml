@@ -169,6 +169,7 @@ if($_count) {
         <?php $_finalPrice = $this->helper('tax')->getPrice($_product, $_product->getFinalPrice()); ?>
         <span itemprop="price"><?php echo $this->helper('core')->currency($_finalPrice, true, false) ?></span>
         <meta itemprop="priceCurrency" content="USD" />
+          <meta itemprop="itemCondition" content="new" />
         <?php if ($_product->isSaleable()): ?>
         <meta itemprop="availability" content="InStock" />
         <?php else: ?>
