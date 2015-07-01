@@ -20,12 +20,12 @@ body.checkout-cart-index .cart #discount-coupon-form .buttons-set {display: inli
 body.checkout-cart-index .cart #discount-coupon-form .buttons-set button span span {height: 30px; line-height: 30px; padding: 0 15px; font-weight: bold; text-transform: uppercase;}
 body.checkout-cart-index .cart #discount-coupon-form .buttons-set button.one-of-two span span {padding: 0 7px;}
 body.checkout-cart-index .cart #discount-coupon-form .buttons-set button + button.one-of-two span span {padding: 0 5px;}
-body.checkout-cart-index .cart .cart-collaterals {text-transform: uppercase; width: 273px; margin-left: 15px; background: #f8f8f8; padding-top: 10px; display: inline-block; margin-top: 88px;}
+body.checkout-cart-index .cart .cart-collaterals {text-transform: uppercase; width: 273px; margin-left: 15px; background: transparent; padding-top: 10px; display: inline-block; margin-top: 88px;}
 body.checkout-cart-index .cart .empty-cart-message + .cart-collaterals {margin-top: 0; padding-top: 0;}
 body.checkout-cart-index .cart script + .cart-collaterals {margin-top: 0; padding-top: 0;}
 body.checkout-cart-index .messages {margin-top: 40px; margin-bottom: -45px;}
 body.checkout-cart-index .cart .cart-collaterals * {max-width: 252px;}
-body.checkout-cart-index .cart .cart-collaterals .totals {width: 252px; font-weight: normal; font-size: 0.875rem; color: #000;}
+body.checkout-cart-index .cart .cart-collaterals .totals {width: 252px; font-weight: normal; font-size: 0.875rem; color: #000;margin: 0;padding: 0 10px 15px;background-color: #f8f8f8;}
 body.checkout-cart-index .cart .cart-collaterals .totals td:last-of-type {padding: 1px 5px 1px 0}
 body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tfoot td {padding: 7px 5px 1px 0; border-top: 1px solid #ddd; }
 body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-table tfoot strong{font-size: 0.875rem;}
@@ -33,7 +33,7 @@ body.checkout-cart-index .cart .cart-collaterals .totals #shopping-cart-totals-t
 body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types button {width: 100%;float: none;}
 body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types button + button {margin-top: 10px;}
 body.checkout-cart-index .cart .cart-collaterals .totals .checkout-types #AmazonPayButtonMethod {margin-top: 10px;text-align: center;clear: both;overflow: hidden;}
-body.checkout-cart-index .cart .cart-free-shipping {border: 8px solid #ddd;padding: 10px 31px;}
+body.checkout-cart-index .cart .cart-free-shipping {border: 8px solid #ddd;padding: 10px 31px;margin-top: 10px;}
 body.checkout-cart-index .cart .cart-free-shipping h3 {font-size: 1.5rem; font-weight: normal;}
 body.checkout-cart-index .cart .cart-free-shipping p {  font-family: "GillSansMTStd",sans-serif;font-size: 22px;line-height: 28px;text-transform: none;}
 body.checkout-cart-index .item-remove {display: block; color: #000; text-decoration: underline; font-size: 0.75rem; text-transform: uppercase; margin: 40px 0 10px;}
