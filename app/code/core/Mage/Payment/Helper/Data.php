@@ -72,19 +72,15 @@ class Mage_Payment_Helper_Data extends Mage_Core_Helper_Abstract
                 $logs[] = 'No model instance for ' . $code;
                 continue;
             }
+            /** @var Mage_Payment_Model_Method_Checkmo $methodInstance */
             $methodInstance->setStore($store);
             if (!$methodInstance->isAvailable($quote)) {
-                $logs[] = $code. '('. get_class($methodInstance) .') is not available';
                 /* if the payment method cannot be used at this time */
                 continue;
             }
             $sortOrder = (int)$methodInstance->getConfigData('sort_order', $store);
             $methodInstance->setSortOrder($sortOrder);
             $res[] = $methodInstance;
-        }
-
-        if (count($res) == 1) {
-            Mage::log($logs, null, 'paymentmethods.log');
         }
 
         usort($res, array($this, '_sortMethods'));
