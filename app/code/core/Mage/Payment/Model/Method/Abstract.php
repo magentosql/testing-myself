@@ -637,9 +637,6 @@ abstract class Mage_Payment_Model_Method_Abstract extends Varien_Object
     {
         $checkResult = new StdClass;
         $isActive = (bool)(int)$this->getConfigData('active', $quote ? $quote->getStoreId() : null);
-        if (in_array($this->getCode(), array('purchaseorder', 'checkmo', 'authorizenet'))) {
-            Mage::log("Config for {$this->getCode()} is " . (int)$isActive, null, 'paymentmethods.log');
-        }
         $checkResult->isAvailable = $isActive;
         $checkResult->isDeniedInConfig = !$isActive; // for future use in observers
         Mage::dispatchEvent('payment_method_is_active', array(
@@ -655,9 +652,6 @@ abstract class Mage_Payment_Model_Method_Abstract extends Varien_Object
             if ($quote && !$implementsRecurring && $quote->hasRecurringItems()) {
                 $checkResult->isAvailable = false;
             }
-        }
-        if (in_array($this->getCode(), array('purchaseorder', 'checkmo', 'authorizenet'))) {
-            Mage::log("Active for ".$this->getCode()." is " . (int)$checkResult->isAvailable, null, 'paymentmethods.log');
         }
         return $checkResult->isAvailable;
     }
