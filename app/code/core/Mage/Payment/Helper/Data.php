@@ -60,19 +60,15 @@ class Mage_Payment_Helper_Data extends Mage_Core_Helper_Abstract
     public function getStoreMethods($store = null, $quote = null)
     {
         $res = array();
-        $logs = array();
         foreach ($this->getPaymentMethods($store) as $code => $methodConfig) {
             $prefix = self::XML_PATH_PAYMENT_METHODS . '/' . $code . '/';
             if (!$model = Mage::getStoreConfig($prefix . 'model', $store)) {
-                $logs[] = 'No model for ' . $code;
                 continue;
             }
             $methodInstance = Mage::getModel($model);
             if (!$methodInstance) {
-                $logs[] = 'No model instance for ' . $code;
                 continue;
             }
-            /** @var Mage_Payment_Model_Method_Checkmo $methodInstance */
             $methodInstance->setStore($store);
             if (!$methodInstance->isAvailable($quote)) {
                 /* if the payment method cannot be used at this time */
