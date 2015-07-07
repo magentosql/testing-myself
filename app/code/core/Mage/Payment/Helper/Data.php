@@ -84,7 +84,7 @@ class Mage_Payment_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
         if (count($res) == 1) {
-            Mage::log($logs, null, 'paymentmethods.log');
+            Mage::log($logs);
         }
 
         usort($res, array($this, '_sortMethods'));
