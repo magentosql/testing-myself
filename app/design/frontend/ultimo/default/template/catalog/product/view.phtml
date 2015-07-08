@@ -171,10 +171,6 @@ if($_count) {
         <?php endif; ?>
       <?php endif; ?>
 
-      <?php if(!$this->hasOptions() && $this->helper('wsnyc_shippingcta')->isActive()): ?>
-        <p class="shipping-cta"><?php echo $this->helper('wsnyc_shippingcta')->getShippingCtaText(); ?></p>
-      <?php endif; ?>
-
       <?php echo $this->getChildHtml('alert_urls'); //alerts ?>
       <?php echo $this->getChildHtml('other'); ?>
       <?php echo $this->getChildHtml('product_primary_bottom_placeholder'); //Placeholder for extensions ?>
@@ -212,9 +208,6 @@ if($_count) {
             <div class="container2-wrapper"><?php echo $container2_html; ?></div>
           </div>
         <?php endif; ?>
-      <?php endif; ?>
-      <?php if($this->hasOptions() && $this->helper('wsnyc_shippingcta')->isActive()): ?>
-        <p class="shipping-cta"><?php echo $this->helper('wsnyc_shippingcta')->getShippingCtaText(); ?></p>
       <?php endif; ?>
 
       <?php if($addtoBoxHtml = $this->getChildHtml('addto')): //compare, wishlist ?>
@@ -606,5 +599,5 @@ if(isset($section['related']))
 if(isset($section['upsell']))
   echo '<div class="box-additional box-up-sell ' . $upsellGridClass . ' ' . $upsellClasses . '">' . $section['upsell'] . '</div>';
 ?>
-    
-                           
+
+
