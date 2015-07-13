@@ -2292,11 +2292,11 @@ a.email2friend:hover { background-position: -54px -27px; }
 .product-view .product-shop .ratings-table { margin:15px 0 5px; }
 .product-view .short-description { margin:15px 0; line-height:1.25em; /*15px*/ }
 .product-view .short-description ul { margin-top:5px; margin-bottom:5px; }
-.product-view .add-to-cart { margin-top: 0; }
-.product-view .shipping-cta { margin: 0; font-size: 12px; font-family: "Georgia","Times New Roman"; color: #9e9e9e; text-align: left; font-style: italic;}
+.product-view .add-to-cart { margin-top: 20px; }
+.product-view .shipping-cta { margin: 0; font-size: 12px; font-family: "Georgia","Times New Roman"; color: #9e9e9e; text-align: left; font-style: italic; float: left;}
 .product-view .add-to-box + .shipping-cta {margin-top: -15px;}
 .product-view .add-to-cart .amazon-badge { margin: 0; clear: both; text-align: left; color: #9e9e9e; font-family: "Georgia","Times New Roman"; line-height: 57px; font-style: italic;}
-/* Price box inside "Add-to-cart" box */ /*deprecated*/
+.product-view .add-to-cart .button {float: right; margin-top: 0;margin-right: 0;}
 .product-view .add-to-box .price-box { float:left; margin:7px 0 0; }
 
 /* Add-to links */
