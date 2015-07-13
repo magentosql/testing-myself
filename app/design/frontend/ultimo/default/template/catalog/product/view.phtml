@@ -84,7 +84,7 @@ if($_count) {
 <?php $_product = $this->getProduct(); ?>
 <?php $theme = $this->helper('ultimo'); ?>
 <script type="text/javascript">
-  var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
 </script>
 <div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
 
@@ -96,7 +96,7 @@ if($_count) {
     <a href="<?php echo $prev_url; ?>" class="next i-next effect"><?php echo $this->__('NEXT PRODUCT') ?> <span></span></a>
   <?php endif; ?>
 </div>
-<div class="product-view nested-container <?php echo Mage::getSingleton('wsnyc_challenge/decorator')->getCss($_product); ?>">
+<div class="product-view nested-container <?php echo Mage::getSingleton('wsnyc_challenge/decorator')->getCss($_product); ?>" itemscope itemtype="http://schema.org/Product">
 
   <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" class="clearer custom" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
 
@@ -132,17 +132,17 @@ if($_count) {
           $title = $_helper->productAttribute($_product, $_product->getName(), 'name');
         }
         ?>
-        <h1><?php echo $title ?></h1>
+        <h1 itemprop="name"><?php echo $title ?></h1>
       </div>
 
       <?php echo $this->getReviewsSummaryHtml($_product, false, true); //reviews ?>
 
       <?php if($_product->getShortDescription()): ?>
         <div class="short-description">
-          <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+          <div class="std" itemprop="description"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
         </div>
       <?php endif; ?>
-
+      <meta itemprop="url" content="<?php echo $_product->getProductUrl(); ?>" />
       <?php echo $this->getChildHtml('fragrance'); ?>
 
       <?php if($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
@@ -164,6 +164,18 @@ if($_count) {
         <?php endif; ?>
         <?php echo $this->getChildHtml('extra_buttons') ?>
       <?php endif; ?>
+
+      <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <?php $_finalPrice = $this->helper('tax')->getPrice($_product, $_product->getFinalPrice()); ?>
+        <span itemprop="price"><?php echo $this->helper('core')->currency($_finalPrice, true, false) ?></span>
+        <meta itemprop="priceCurrency" content="USD" />
+          <meta itemprop="itemCondition" content="new" />
+        <?php if ($_product->isSaleable()): ?>
+        <meta itemprop="availability" content="InStock" />
+        <?php else: ?>
+        <meta itemprop="availability" content="OutOfStock" />
+        <?php endif; ?>
+      </div>
 
       <?php if($_product->isSaleable() && $this->hasOptions()): ?>
         <?php if($container1_html = $this->getChildChildHtml('container1', '', true, true)): ?>
@@ -337,260 +349,8 @@ if($_count) {
   //--------------------------------------------------------------------------- ?>
 
   <div class="box-additional box-tabs <?php echo $tabsGridClass; ?>">
-    <?php // $info_tabs_html = $this->getChildHtml('info_tabs');
-    //	if (trim($info_tabs_html)) echo $info_tabs_html;
-
-    function parseTabDetail($content)
-    {
-
-      if(empty($content)) {
-        return null;
-      }
-
-      $lines = explode("\n", $content);
-
-      foreach($lines AS $no => $line) {
-        if(strlen($line) < 60) {
-          $lines[$no] = "<h4>" . $line . "</h4>";
-        }
-      }
-
-      $html = implode("\n", $lines);
-
-      return $html;
-    }
-
-    $description = nl2br($_product->getDescription());
-    $shippingNote = $_product->getShippingNote();
-    if(!empty($shippingNote)) {
-      $description .= nl2br('<p class="shipping-note">' . $shippingNote . '</p>');
-    }
-
-    $sTabDetails = $_helper->productAttribute($_product, $description, 'short_description');
-    $sTabDetailsLabel = "Details";
-    $sTabResults = $_helper->productAttribute($_product, nl2br($_product->getForBestResults()), 'for_best_results');
-    $sTabResultsLabel = $_product->getResource()->getAttribute('for_best_results')->getStoreLabel();
-    $sTabIngredients = $_helper->productAttribute($_product, nl2br($_product->getIngredients()), 'ingredients');
-    $sTabIngredientsLabel = $_product->getResource()->getAttribute('ingredients')->getStoreLabel('');
-    $sTabHowtouse = $_helper->productAttribute($_product, nl2br($_product->getWashingChart()), 'washing_chart');
-    $sTabHowtouseLabel = $_product->getResource()->getAttribute('washing_chart')->getStoreLabel();
-    $sTabHowtovideo = $_product->getHowToVideoDescription();
-    $sTabHowtovideoLabel = "How to Video";
-    $sTabMadeof = $_helper->productAttribute($_product, nl2br($_product->getMadeOf()), 'made_of');
-    $sTabMadeofLabel = $_product->getResource()->getAttribute('made_of')->getStoreLabel();
-    $sTabMonogram = $this->getChildHtml('block_product_monogram_shop');
-    $sTabMonogramLabel = "Monogram Shop";
-
-    // filter tab contents
-    $sTabIngredients = parseTabDetail($sTabIngredients);
-    $sTabMadeof = parseTabDetail($sTabMadeof);
-    $sTabDetails = parseTabDetail($sTabDetails);
-    $sTabHowtouse = parseTabDetail($sTabHowtouse);
-    $sTabResults = parseTabDetail($sTabResults);
-
-    ?>
-
-
-    <div id="product-tabs" class="gen-tabs gen-tabs-style1">
-
-      <ul class="tabs clearer">
-        <?php if(!empty($sTabDetails)) : ?>
-          <li id="tab-description"><a href="#" class="current">Details</a></li>
-        <?php endif; ?>
-        <?php if(!empty($sTabHowtovideo)) : ?>
-          <li><a href="#" class=""><?php print $sTabHowtovideoLabel; ?></a></li>
-        <?php endif; ?>
-        <?php if(!empty($sTabResults)) : ?>
-          <li><a href="#" class=""><?php print $sTabResultsLabel; ?></a></li>
-        <?php endif; ?>
-        <?php if(!empty($sTabIngredients)) : ?>
-          <li><a href="#" class=""><?php print $sTabIngredientsLabel; ?></a></li>
-        <?php endif; ?>
-        <?php if(!empty($sTabHowtouse)) : ?>
-          <li><a href="#" class=""><?php print $sTabHowtouseLabel; ?></a></li>
-        <?php endif; ?>
-        <?php if(!empty($sTabMadeof)) : ?>
-          <li><a href="#" class=""><?php print $sTabMadeofLabel; ?></a></li>
-        <?php endif; ?>
-        <?php if($_product->getMonogram()) : ?>
-          <?php if(!empty($sTabMonogram)) : ?>
-            <li><a href="#" class=""><?php print $sTabMonogramLabel; ?></a></li>
-          <?php endif; ?>
-        <?php endif; ?>
-
-        <?php if($reviewsHtml = $this->getChildHtml('reviews_wrapper')): ?>
-          <li><a href="#" class="">Reviews</a></li>
-        <?php endif; ?>
-      </ul>
-
-      <div class="tabs-panels">
-        <?php if(!empty($sTabDetails)) : ?>
-          <h2 class="acctab" id="acctab-description"><?php echo $this->__('Details') ?></h2>
-          <div class="panel" style="display: block;">
-            <h2><?php echo $this->__('Details') ?></h2>
-
-            <div class="std">
-              <h3><?php print $title; ?></h3>
-
-              <p><?php print $sTabDetails; ?></p>
-              <?php $find = array(' ', ':', ''); ?>
-              <?php $blockname = strtolower('block_attribute_scent_' . str_replace($find, '_', $_product->getAttributeText('scent'))); ?>
-              <?php $blockcontent = strip_tags($this->getChildHtml($blockname)); ?>
-              <?php if(!empty($blockcontent)) : ?>
-                <div class="fragrance-details">
-                  <h4><?php echo Mage::getModel('cms/block')->load($blockname)->getTitle(); ?></h4>
-                  <?php echo strip_tags($this->getChildHtml($blockname)); ?>
-                </div>
-              <?php endif; ?>
-              <?php if($_product->getMoreDescription()) : ?>
-                <div class="more-description-button"><?php echo $this->__('More Info'); ?></div>
-                <div class="more-description-content" style="display: none;">
-                  <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getMoreDescription()) ?>
-                </div>
-                <script type="text/javascript">
-                  jQuery('.more-description-button').click(function(){
-                    jQuery('.more-description-content').toggle();
-                    jQuery(this).text(function(i, text){
-                      return text === "<?php echo $this->__('More Info'); ?>" ? "<?php echo $this->__('Less Info'); ?>" : "<?php echo $this->__('More Info'); ?>";
-                    })
-                  });
-                </script>
-              <?php endif; ?>
-            </div>
-          </div>
-        <?php endif; ?>
-
-        <?php if(!empty($sTabHowtovideo)) : ?>
-          <h2 class="acctab"><?php print $sTabHowtovideoLabel; ?></h2>
-          <div class="panel" style="display: none;">
-            <div class="std clearer">
-              <div class="grid12-4">
-                <h3><?php print $_product->getHowToVideoTitle(); ?></h3>
-
-                <p><?php print $_product->getHowToVideoDescription(); ?></p>
-              </div>
-              <div class="grid12-4" style="text-align: center;">
-                <?php if($_product->getHowToVideo() != null) { ?>
-                  <iframe width="250" height="187" src="<?php print str_replace('http://youtu.be/', '//www.youtube.com/embed/', $_product->getHowToVideo()); ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
-                  <h4 class="label-category"><?php print $_product->getHowToVideo1Category(); ?></h4>
-                  <h3><?php print $_product->getHowToVideo1Title(); ?></h3>
-                <?php } ?>
-              </div>
-              <div class="grid12-4" style="text-align: center;">
-                <?php if($_product->getHowToVideo2() != null) : ?>
-                  <iframe width="250" height="187" src="<?php print str_replace('http://youtu.be/', '//www.youtube.com/embed/', $_product->getHowToVideo2()); ?>?showinfo=0" frameborder="0" allowfullscreen></iframe>
-                  <h4 class="label-category"><?php print $_product->getHowToVideo2Category(); ?></h4>
-                  <h3><?php print $_product->getHowToVideo2Title(); ?></h3>
-                <?php endif; ?>
-              </div>
-            </div>
-          </div>
-        <?php endif; ?>
-
-        <?php if(!empty($sTabResults)) : ?>
-          <h2 class="acctab"><?php print $sTabResultsLabel; ?></h2>
-          <div class="panel" style="display: none;">
-            <div class="std">
-              <?php print $sTabResults; ?>
-            </div>
-          </div>
-        <?php endif; ?>
-        <?php if(!empty($sTabIngredients)) : ?>
-          <h2 class="acctab"><?php print $sTabIngredientsLabel; ?></h2>
-          <div class="panel" style="display: none;">
-            <div class="std">
-              <?php print $sTabIngredients; ?>
-            </div>
-          </div>
-        <?php endif; ?>
-        <?php if(!empty($sTabHowtouse)) : ?>
-          <h2 class="acctab"><?php print $sTabHowtouseLabel; ?></h2>
-          <div class="panel" style="display: none;">
-            <div class="std clearer">
-              <?php print $sTabHowtouse; ?>
-            </div>
-          </div>
-        <?php endif; ?>
-
-        <?php if(!empty($sTabMadeof)) : ?>
-          <h2 class="acctab"><?php print $sTabMadeofLabel; ?></h2>
-          <div class="panel" style="display: none;">
-            <div class="std">
-              <?php print $sTabMadeof; ?>
-            </div>
-          </div>
-        <?php endif; ?>
-        <?php if($_product->getMonogram()) : ?>
-          <?php if(!empty($sTabMonogram)) : ?>
-            <h2 class="acctab"><?php print $sTabMonogramLabel; ?></h2>
-            <div class="panel tab-monogram-shop" style="display: none;">
-              <div class="std">
-                <?php print $sTabMonogram; ?>
-              </div>
-            </div>
-          <?php endif; ?>
-        <?php endif; ?>
-
-        <?php if($reviewsHtml) : ?>
-          <div class="panel reviews" style="display: none;">
-            <div class="std">
-              <?php echo $reviewsHtml; ?>
-            </div>
-          </div>
-        <?php endif; ?>
-      </div>
-    </div>
+    <?php echo $this->getChildHtml('info_tabs');?>
   </div>
-  <script type="text/javascript">
-    jQuery(function($){
-      var p = $(window).width() >= 0x3C0;
-      if($(window).width() >= 0x3C0){
-        $(".gen-tabs > .tabs").tabs(".tabs-panels .panel")
-      } else{
-        $(".gen-tabs").addClass("accor");
-        $(".tabs-panels").tabs(".tabs-panels .panel", {tabs: '.acctab', effect: 'slide'})
-      }
-      var t;
-      $(window).resize(function(){
-        clearTimeout(t);
-        t = setTimeout(function(){
-          if($(window).width() < 0x3C0){
-            if(p){
-              var a = $(".tabs").data("tabs");
-              var b = a.getIndex();
-              a.destroy();
-              $(".gen-tabs").addClass("accor");
-              $(".tabs-panels").tabs(".tabs-panels .panel", {tabs: '.acctab', effect: 'slide', initialIndex: b})
-            }
-            p = false
-          } else{
-            if(!p){
-              var a = $(".tabs-panels").data("tabs");
-              var b = a.getIndex();
-              a.destroy();
-              $(".gen-tabs").removeClass("accor");
-              $(".gen-tabs > .tabs").tabs(".tabs-panels .panel", {initialIndex: b})
-            }
-            p = true
-          }
-        }, 500)
-      })
-    });
-  </script>
-
-  <?php //Open the "Reviews" tab, when "X Review(s)" or "Be the first to review this product" links are clicked ?>
-  <script type="text/javascript">
-    jQuery(function($){
-      $("#goto-reviews, #goto-reviews-form").click(function(){
-        if($("#product-tabs").hasClass("accor")){
-          $("#product-tabs .tabs-panels").data("tabs").click($(".tabs-panels .acctab").index($("#acctab-tabreviews")))
-        } else{
-          $("#product-tabs .tabs").data("tabs").click($("#tab-tabreviews").index())
-        }
-      })
-    });
-  </script>
-
 </div> <!-- end: box-tabs -->
 
 <?php

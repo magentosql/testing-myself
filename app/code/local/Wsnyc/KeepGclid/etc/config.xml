@@ -4,26 +4,28 @@ the purpose of this module is to address the issue where a redirect strips param
 gclid tracking parameter is stripped from the url when a redirect occurs. this module forces the gclid to stay in the url
 -->
 <config>
-  <modules>
-    <Wsnyc_KeepGclid>
-      <version>1.0.0</version>
-    </Wsnyc_KeepGclid>
-  </modules>
-  <global>
-    <models>
-      <wsnyc_keepgclid>
-        <class>Wsnyc_KeepGclid_Model</class>
-      </wsnyc_keepgclid>
-    </models>
-    <events>
-      <controller_front_init_routers>
-        <observers>
-          <keepParam>
-            <class>wsnyc_keepgclid/observer</class>
-            <method>keepParam</method>
-          </keepParam>
-        </observers>
-      </controller_front_init_routers>
-    </events>
-  </global>
+    <modules>
+        <Wsnyc_KeepGclid>
+            <version>1.0.0</version>
+        </Wsnyc_KeepGclid>
+    </modules>
+    <global>
+        <models>
+            <wsnyc_keepgclid>
+                <class>Wsnyc_KeepGclid_Model</class>
+            </wsnyc_keepgclid>
+        </models>
+    </global>
+    <frontend>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <keepParam>
+                        <class>wsnyc_keepgclid/observer</class>
+                        <method>keepParam</method>
+                    </keepParam>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </frontend>
 </config>

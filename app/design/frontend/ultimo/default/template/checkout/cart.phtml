@@ -170,6 +170,8 @@
         <?php if ($tmpHtml = $this->getChildHtml('block_cart_below_totals')): ?>
             <div class="block_cart_below_totals"><?php echo $tmpHtml; ?></div>
         <?php endif; ?>
+
+        <?php echo $this->getChildHtml('shipping');?>
         <!--
 
         <?php if ($tmpHtml = $this->getChildHtml('block_cart_below_table')): ?>

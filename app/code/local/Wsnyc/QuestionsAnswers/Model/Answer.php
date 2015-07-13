@@ -7,4 +7,8 @@ class Wsnyc_QuestionsAnswers_Model_Answer extends Mage_Core_Model_Abstract {
     {
         $this->_init('wsnyc_questionsanswers/answer');
     }
+
+    public function hasHtml() {
+        return trim($this->getAnswerText()) != trim(strip_tags($this->getAnswerText()));
+    }
 }

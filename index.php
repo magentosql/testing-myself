@@ -1,4 +1,6 @@
 <?php
+include_once dirname(__FILE__). '/ua-categorizer.php';
+include_once dirname(__FILE__) . '/shell/extendware/ewpagecache/misc/loader.php';
 /**
  * Magento
  *

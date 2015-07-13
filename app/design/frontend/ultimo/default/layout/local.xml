@@ -513,14 +513,31 @@
 
 
 	<!-- USER LOGGED IN/OUT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-	<customer_logged_out>
+    <customer_logged_out>
+        <reference name="top.links">
+        	<action method="removeLinkByUrl" module="customer"><url helper="customer/getAccountUrl"/></action>
+        	<action method="removeLinkByUrl" module="customer"><url>customer/account/create</url></action>
+        	<action method="addLink" translate="label title" module="customer">
+                <label>Create Account</label>
+                <url>customer/account/create</url><title>Create Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
+        		<beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
+        	</action>
+        </reference>
+    </customer_logged_out>
 
-            <reference name="top.links">
-                <action method="addLink" translate="label title"><label>Create Account</label><url>customer/account/create</url><title>Create Account</title><prepare>true</prepare><urlParams/><position>30</position></action>
-                <action method="removeLinkByUrl"><url helper="customer/getAccountUrl"/></action>
-            </reference>
-
-	</customer_logged_out>
+    <customer_logged_in>
+        <reference name="top.links">
+            <action method="removeLinkByUrl" module="customer"><url helper="customer/getAccountUrl"/></action>
+            <action method="removeLinkByUrl" module="customer"><url>customer/account/create</url></action>
+            <action method="addLink" translate="label title" module="customer">
+	            <label>Account</label>
+	            <url helper="customer/getAccountUrl"/><title>Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
+	            <beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
+            </action>
+        </reference>
+    </customer_logged_in>
 
 	<!-- PRODUCT VIEW %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 	<catalog_product_view>
@@ -558,7 +575,7 @@
 
                 <!-- Add reviews (first part). IMPORTANT: see the second part: reference name="tabreviews" -->
 				<!-- IMPORTANT: Do not change 'tabreviews' alias. It is needed in JS script in catalog/product/view.phtml -->
-				<action method="addTab" translate="title" module="catalog"><alias>tabreviews</alias><title>Reviews</title><block>review/product_view_list</block><template>review/product/view/list.phtml</template></action>
+				<action method="addTab" translate="title" module="catalog"><alias>tabreviews</alias><title>Reviews</title><block>core/template</block><template>catalog/product/view/tab/review.phtml</template></action>
 			</block>
 			<!-- end: Add tabs -->
 
@@ -588,13 +605,21 @@
 		</reference> <!-- end: product.info -->
 
 		<!-- Second part of adding reviews to tabs. See the first part in product.info section in info_tabs block -->
-		<reference name="tabreviews">
-			<block type="review/form" name="product.review.form" as="review_form">
-				<block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
-					<label>Review Form Fields Before</label>
-					<action method="setMayBeInvisible"><value>1</value></action>
-				</block>
-			</block>
+        <reference name="tabreviews">
+            <block type="page/html_pager" name="product_review_list.toolbar"/>
+            <block type="review/product_view_list" name="product.page.reviews" as="reviews" template="review/product/view/list.phtml">
+                <block type="review/form" name="product.review.form" as="review_form">
+                    <block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
+                        <label>Review Form Fields Before</label>
+                        <action method="setMayBeInvisible">
+                            <value>1</value>
+                        </action>
+                    </block>
+                </block>
+                <action method="addToParentGroup">
+                    <group>detailed_info</group>
+                </action>
+            </block>
         </reference>
         <reference name="for_best_results">
             <action method="setDisplayAttribute"><attr>for_best_results</attr></action>
@@ -720,39 +745,40 @@
 
 
 	<!-- CART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-        <checkout_cart_index>
-            <reference name="root">
-                <action method="setTemplate"><template>page/1column.phtml</template></action>
-            </reference>
-            <reference name="head">
-                <action method="addCss">
-                    <file>css/wsnyc/checkout.css</file>
+    <checkout_cart_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <file>css/wsnyc/checkout.css</file>
+            </action>
+        </reference>
+        <reference name="checkout.cart.form.before">
+            <block type="cms/block" name="holiday-message">
+                <action method="setBlockId"><blockId>holiday-message</blockId></action>
+            </block>
+        </reference>
+        <!-- Custom static blocks -->
+        <reference name="checkout.cart">
+            <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
+            <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+
+            <block type="cms/block" name="block_cart_below_table">
+                <action method="setBlockId">
+                    <block_id>block_cart_below_table</block_id>
                 </action>
-            </reference>
-            <reference name="checkout.cart.form.before">
-                <block type="cms/block" name="holiday-message">
-                    <action method="setBlockId"><blockId>holiday-message</blockId></action>
-                </block>
-            </reference>
-            <!-- Custom static blocks -->
-            <reference name="checkout.cart">
-                <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
-                <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+            </block>
+            <block type="cms/block" name="block_cart_below_totals">
+                <action method="setBlockId">
+                    <block_id>block_cart_below_totals</block_id>
+                </action>
+            </block>
+            <block type="core/template" name="cart.shipping.info" as="shipping" template="checkout/onepage/review/shipping.phtml"/>
 
-                <block type="cms/block" name="block_cart_below_table">
-                    <action method="setBlockId">
-                        <block_id>block_cart_below_table</block_id>
-                    </action>
-                </block>
-                <block type="cms/block" name="block_cart_below_totals">
-                    <action method="setBlockId">
-                        <block_id>block_cart_below_totals</block_id>
-                    </action>
-                </block>
+        </reference>
 
-            </reference>
-
-        </checkout_cart_index>
+    </checkout_cart_index>
 
 
 	<checkout_onepage_index>
