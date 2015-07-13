@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wsnyc_CheckoutAccount>
+            <version>0.1.0</version>
+        </Wsnyc_CheckoutAccount>
+    </modules>
+    <global>
+        <models>
+            <wsnyc_checkoutaccount>
+                <class>Wsnyc_CheckoutAccount_Model</class>
+            </wsnyc_checkoutaccount>
+        </models>
+        <helpers>
+            <wsnyc_checkoutaccount>
+                <class>Wsnyc_CheckoutAccount_Helper</class>
+            </wsnyc_checkoutaccount>
+        </helpers>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_postdispatch_checkout_onepage_saveBilling>
+                <observers>
+                    <wsnyc_checkoutaccount_create>
+                        <type>singleton</type>
+                        <class>wsnyc_checkoutaccount/observer</class>
+                        <method>registerCustomer</method>
+                    </wsnyc_checkoutaccount_create>
+                </observers>
+            </controller_action_postdispatch_checkout_onepage_saveBilling>
+        </events>
+    </frontend>
+</config>
