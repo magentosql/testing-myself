@@ -29,5 +29,12 @@
                 </observers>
             </controller_action_postdispatch_checkout_onepage_saveBilling>
         </events>
+        <layout>
+            <updates>
+                <wsnyc_checkoutaccount>
+                    <file>wsnyc/checkoutaccount.xml</file>
+                </wsnyc_checkoutaccount>
+            </updates>
+        </layout>
     </frontend>
 </config>

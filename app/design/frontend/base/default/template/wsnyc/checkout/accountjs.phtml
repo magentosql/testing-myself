@@ -1,0 +1,30 @@
+<script type="text/javascript">
+    //<![CDATA[
+    window.billing.nextStep = function(transport) {
+        Billing.prototype.nextStep.call(this, transport);
+        if (transport && transport.responseText){
+            try{
+                response = eval('(' + transport.responseText + ')');
+            }
+            catch (e) {
+                response = {};
+            }
+        }
+        if (response.top_links) {
+            $$('.top-links .links').first().update(response.top_links);
+            $('opc-login').removeClassName('allow');
+            window.reloadCheckout = true;
+        }
+    };
+
+    window.checkout._onSectionClick = function(event) {
+        var section = $(Event.element(event).up().up());
+        if (window.reloadCheckout && section.readAttribute('id') == 'opc-billing') {
+            window.location.reload();
+        }
+        else {
+            Checkout.prototype._onSectionClick.call(this, event);
+        }
+    },
+    //]]>
+</script>
