@@ -14,6 +14,10 @@
             $$('.top-links .links').first().update(response.top_links);
             $('opc-login').removeClassName('allow');
             window.reloadCheckout = true;
+            window.checkout.accordion.sections.each(function(section) {
+                Event.stopObserving($(section).down('.step-title'), 'click');
+                Event.observe($(section).down('.step-title'), 'click', checkout._onSectionClick.bindAsEventListener(this));
+            }.bind(window.checkout));
         }
     };
 
@@ -23,8 +27,13 @@
             window.location.reload();
         }
         else {
-            Checkout.prototype._onSectionClick.call(this, event);
+            var section = $(Event.element(event).up().up());
+            if (section.hasClassName('allow')) {
+                Event.stop(event);
+                this.gotoSection(section.readAttribute('id').replace('opc-', ''));
+                return false;
+            }
         }
-    },
+    };
     //]]>
 </script>
