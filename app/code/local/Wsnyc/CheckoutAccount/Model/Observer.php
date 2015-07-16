@@ -91,7 +91,7 @@ class Wsnyc_CheckoutAccount_Model_Observer
      * @throws Mage_Core_Exception
      */
     protected function _renderHeader() {
-        $layout = Mage::app()->getLayout();
+        $layout = Mage::getModel('core/layout');
         $update = $layout->getUpdate();
         $update->load(array('default', 'customer_logged_in'));
         $layout->generateXml();
