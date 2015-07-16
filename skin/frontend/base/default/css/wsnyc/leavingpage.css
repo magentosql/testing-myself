@@ -17,10 +17,10 @@
 #page_leave_modal .social-media-icon-set a:hover {color: #777777;}
 #page_leave_modal .social-media-icon-set p {font-size: 12px;margin-bottom: 7px;}
 #page_leave_modal .pageleave-cms-content p {padding: 5px 15px;text-align: center;font-size: 1.5em;line-height: 1.5em;font-family: serif;}
-#page_leave_modal .pageleave-cms-content h3 {text-transform: uppercase; text-align: center; padding: 5px 15px 10px 15px; font-size: 44px;font-weight: normal;font-family: "Sorts Mill Goudy Regular";}
-#page_leave_modal .pageleave-button {width: 100%; padding: 0 17px; font-family: 'GillSansMTStd',sans-serif; text-align: center;}
-#page_leave_modal #stay-on-page {text-transform: uppercase; margin-top: 20px;}
-#page_leave_modal #stay-on-page span span {font-size: 1rem; font-family: 'GillSansMTStd',sans-serif;width: 250px;}
+#page_leave_modal .pageleave-cms-content h3 {text-transform: uppercase; text-align: center; padding: 5px 15px 10px 15px; font-size: 44px;height: auto;line-height: initial;font-weight: normal;font-family: "Sorts Mill Goudy Regular";}
+#page_leave_modal .pageleave-button {width: 100%; padding: 0 17px; font-family: 'GillSansMTStd',sans-serif; text-align: center;box-sizing: border-box;}
+#page_leave_modal #stay-on-page {text-transform: uppercase; margin-top: 20px;box-sizing: border-box;}
+#page_leave_modal #stay-on-page span span {font-size: 1rem; font-family: 'GillSansMTStd',sans-serif;max-width: 250px;width: 60%;display: inline-block;}
 #page_leave_modal button.button span {background-color: #000;color: #fff;}
 #page_leave_modal button.button:hover span {color: #fff;background-color: #64B96A;}
 #no-redeem {display: block;margin: 10px 0;cursor: pointer;text-decoration: underline;font-size: 14px;}
