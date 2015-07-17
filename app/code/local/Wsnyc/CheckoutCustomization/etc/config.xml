@@ -92,6 +92,15 @@
                     </persistent>
                 </observers>
             </checkout_allow_guest>
+            <controller_action_predispatch_checkout_onepage_index>
+                <observers>
+                    <check_quote_customer>
+                        <type>singleton</type>
+                        <class>wsnyc_checkoutcustomization/observer</class>
+                        <method>checkQuoteCustomer</method>
+                    </check_quote_customer>
+                </observers>
+            </controller_action_predispatch_checkout_onepage_index>
         </events>
     </frontend>
 </config>
