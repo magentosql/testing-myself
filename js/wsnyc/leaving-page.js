@@ -16,7 +16,7 @@ jQuery(window).blur(function(e) {
 });
 
 function invokePromoModal() {
-    if (!wasAlreadyDisplayed) {
+    if (!wasAlreadyDisplayed && jQuery('.openPromoPopup').length > 0) {
         jQuery('.openPromoPopup').click();
         wasAlreadyDisplayed = true;
         remeberCustomerAction();
