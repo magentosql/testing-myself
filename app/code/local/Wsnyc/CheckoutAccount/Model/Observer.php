@@ -53,7 +53,7 @@ class Wsnyc_CheckoutAccount_Model_Observer
         $customer->setEmail($data['email']);
         $customer->setPassword($data['customer_password']);
         $customer->save();
-        //$customer->sendNewAccountEmail('confirmed');
+        $customer->sendNewAccountEmail('confirmed');
     }
 
     /**
