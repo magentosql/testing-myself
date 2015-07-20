@@ -10,21 +10,21 @@
 #page_leave_modal p {padding: 5px 0px 5px 0px}
 #page_leave_modal ul {padding: 10px 0px 10px 25px}
 #page_leave_modal ul, #inline_colorbox ul li {list-style: circle;}
-#page_leave_modal .pageleave-cms-content  {width: 100%; padding: 0 17px; font-family: "Times New Roman"; word-spacing: 1px; font-size: 0.875rem;}
-#page_leave_modal .pageleave-code  {width: 100%;  font-family: 'GillSansMTStd',sans-serif; word-spacing: 1px; font-size: 1.25rem; text-align: center; margin: 20px 0;}
-#page_leave_modal .social-media-icon-set {width: 100%;position: absolute; bottom: 20px; left: 5px; padding: 0 20px; text-align: center; font-size: 1.5rem;}
+#page_leave_modal .pageleave-cms-content  {width: 100%; padding: 0 17px; font-family: "Times New Roman"; word-spacing: 1px; font-size: 0.875rem;box-sizing: border-box;}
+#page_leave_modal .pageleave-code  {width: 100%;  font-family: Arial,sans-serif; word-spacing: 1px; font-size: 26px; text-align: center; margin: 20px 0;}
+#page_leave_modal .social-media-icon-set {width: 100%;position: absolute; bottom: 20px; left: 5px; padding: 0 20px; text-align: center; font-size: 1.5rem;box-sizing: border-box;}
 #page_leave_modal .social-media-icon-set a {margin: 0 10px; color: #000; transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -moz-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -webkit-transition: color 450ms ease-in-out, background-color 450ms ease-in-out; -o-transition: color 450ms ease-in-out, background-color 450ms ease-in-out;}
 #page_leave_modal .social-media-icon-set a:hover {color: #777777;}
-#page_leave_modal .social-media-icon-set p {font-size: 12px;margin-bottom: 7px;font-weight: normal;}
-#page_leave_modal .pageleave-cms-content p {padding: 5px 15px;text-align: center;font-size: 1.5em;line-height: 1.5em;font-family: serif;color: #000;}
-#page_leave_modal .pageleave-cms-content h3 {text-transform: uppercase; text-align: center; padding: 5px 15px 10px 15px; font-size: 44px;height: auto;line-height: initial;font-weight: normal;}
+#page_leave_modal .social-media-icon-set p {font-size: 12px;margin-bottom: 7px;font-weight: normal;font-family: Arial, sans-serif;}
+#page_leave_modal .pageleave-cms-content p {padding: 5px 15px;text-align: center;font-size: 26px;line-height: 1.5em;font-family: serif;color: #000;}
+#page_leave_modal .pageleave-cms-content h3 {text-transform: uppercase; text-align: center; padding: 5px 15px 10px 15px; font-size: 50px;height: auto;line-height: initial;font-weight: normal;font-family: "Times New Roman";}
 #page_leave_modal .pageleave-button {width: 100%; padding: 0 17px; font-family: Verdana, Geneva,sans-serif; text-align: center;box-sizing: border-box;}
-#page_leave_modal #stay-on-page {text-transform: uppercase; margin-top: 20px;box-sizing: border-box;}
-#page_leave_modal #stay-on-page span span {font-size: 1rem; max-width: 250px;width: 60%;display: inline-block;}
-#no-redeem {display: block;margin: 10px 0;cursor: pointer;text-decoration: underline;font-size: 14px;}
+#page_leave_modal #stay-on-page {text-transform: uppercase; margin-top: 20px;box-sizing: border-box;font-family: Arial, sans-serif;font-size: 16px;}
+#page_leave_modal #stay-on-page span span { width: auto; display: inline; float: none; font-size: 14px;}
+#no-redeem {display: block;margin: 10px 0;cursor: pointer;text-decoration: underline;font-size: 16px;font-family: Arial, sans-serif;}
 .catalog-product-view #cboxLoadedContent {position: relative;bottom: 10px;right: 10px;}
 .openPromoPopup {display: none;}
 .blurred {-webkit-filter: blur(5px); -moz-filter: blur(5px); -o-filter: blur(5px); -ms-filter: blur(5px); filter: blur(5px);}
 
-#page_leave_modal button.button span {background-color: #000;color: #fff;}
+#page_leave_modal button.button span {background-color: #000;color: #fff;width: 350px;text-align: center;}
 #page_leave_modal button.button:hover span {background-color: #64B96A;}
