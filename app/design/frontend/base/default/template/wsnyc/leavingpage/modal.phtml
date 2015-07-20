@@ -5,10 +5,6 @@ $_code = Mage::helper('leavingpage')->generatePromoCode();
     <div id="page_leave_modal" class="pageleave-popup">
         <div>
             <div>
-                <div class="logo-wrapper v-item">
-                    <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><?php echo $this->getLogoAlt() ?></a></h1>
-                </div>
-
                 <div class="pageleave-cms-content">
                     <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_block->getContent()) ?>
                 </div>
@@ -21,9 +17,11 @@ $_code = Mage::helper('leavingpage')->generatePromoCode();
                             <span><?php echo $this->__('Redeem Now'); ?></span>
                         </span>
                     </button>
+                    <span id="no-redeem"><?php echo $this->__('No, thanks. I would rather pay full price.'); ?></span>
                 </div>
 
                 <div class="social-media-icon-set">
+                    <p class="exclude"><?php echo $this->__('*Discount excludes Beckel Canvas, Jiffy Steamer, and Jess Brown for the Laundress Doll'); ?></p>
                     <a href="http://www.pinterest.com/thelaundressny/"><i class="fa fa-pinterest"></i></a>
                     <a href="https://www.facebook.com/thelaundressnyc"><i class="fa fa-facebook"></i></a>
                     <a href="https://twitter.com/TheLaundressNY"><i class="fa fa-twitter"></i></a>
