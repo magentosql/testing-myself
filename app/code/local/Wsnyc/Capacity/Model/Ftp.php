@@ -111,7 +111,6 @@ class Wsnyc_Capacity_Model_Ftp extends Varien_Object {
     public function upload($filePath) {
         $this->setFtpPasv();
         $fileName = 'IN/' . basename($filePath);
-        Mage::log('Filename: ' . $filename, null, 'capacity.log');
         if (!ftp_put($this->_ftpConnection, $fileName, $filePath, FTP_BINARY)) {
             Mage::log('Error while uploading the file', null, 'capacity.log');
             throw new Exception('Error while uploading the file');
