@@ -5,4 +5,10 @@
             <action method="addCss"><name>css/wsnyc/wholesalewebsite.css</name></action>
         </reference>
     </default>
+
+    <checkout_onepage_index>
+        <reference name="right">
+            <remove name="shipping.info" />
+        </reference>
+    </checkout_onepage_index>
 </layout>

@@ -69,9 +69,14 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
      */
     public function getShippingMethod(Mage_Sales_Model_Order $order) {
 
-        //udropship module installed.
-        $dropship = json_decode($order->getUdropshipShippingDetails());
-        $method = $dropship->methods->{1}->code;
+        if ($order->getShippingMethod() == 'udsplit_total') {
+            //udropship module installed.
+            $dropship = json_decode($order->getUdropshipShippingDetails());
+            $method = $dropship->methods->{1}->code;
+        }
+        else {
+            $method = $order->getShippingMethod();
+        }
 
         if (strstr($method, 'fedex_')) {
             $fedexMethod = str_replace('fedex_', null, $method);        

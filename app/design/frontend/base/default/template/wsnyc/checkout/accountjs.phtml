@@ -1,0 +1,39 @@
+<script type="text/javascript">
+    //<![CDATA[
+    window.billing.nextStep = function(transport) {
+        Billing.prototype.nextStep.call(this, transport);
+        if (transport && transport.responseText){
+            try{
+                response = eval('(' + transport.responseText + ')');
+            }
+            catch (e) {
+                response = {};
+            }
+        }
+        if (response.top_links) {
+            $$('.top-links .links').first().update(response.top_links);
+            $('opc-login').removeClassName('allow');
+            window.reloadCheckout = true;
+            window.checkout.accordion.sections.each(function(section) {
+                Event.stopObserving($(section).down('.step-title'), 'click');
+                Event.observe($(section).down('.step-title'), 'click', checkout._onSectionClick.bindAsEventListener(this));
+            }.bind(window.checkout));
+        }
+    };
+
+    window.checkout._onSectionClick = function(event) {
+        var section = $(Event.element(event).up().up());
+        if (window.reloadCheckout && section.readAttribute('id') == 'opc-billing') {
+            window.location.reload();
+        }
+        else {
+            var section = $(Event.element(event).up().up());
+            if (section.hasClassName('allow')) {
+                Event.stop(event);
+                this.gotoSection(section.readAttribute('id').replace('opc-', ''));
+                return false;
+            }
+        }
+    };
+    //]]>
+</script>

@@ -169,6 +169,7 @@ if($_count) {
         <?php $_finalPrice = $this->helper('tax')->getPrice($_product, $_product->getFinalPrice()); ?>
         <span itemprop="price"><?php echo $this->helper('core')->currency($_finalPrice, true, false) ?></span>
         <meta itemprop="priceCurrency" content="USD" />
+          <meta itemprop="itemCondition" content="new" />
         <?php if ($_product->isSaleable()): ?>
         <meta itemprop="availability" content="InStock" />
         <?php else: ?>
@@ -180,10 +181,6 @@ if($_count) {
         <?php if($container1_html = $this->getChildChildHtml('container1', '', true, true)): ?>
           <div class="container1-wrapper"><?php echo $container1_html; ?></div>
         <?php endif; ?>
-      <?php endif; ?>
-
-      <?php if(!$this->hasOptions() && $this->helper('wsnyc_shippingcta')->isActive()): ?>
-        <p class="shipping-cta"><?php echo $this->helper('wsnyc_shippingcta')->getShippingCtaText(); ?></p>
       <?php endif; ?>
 
       <?php echo $this->getChildHtml('alert_urls'); //alerts ?>
@@ -223,9 +220,6 @@ if($_count) {
             <div class="container2-wrapper"><?php echo $container2_html; ?></div>
           </div>
         <?php endif; ?>
-      <?php endif; ?>
-      <?php if($this->hasOptions() && $this->helper('wsnyc_shippingcta')->isActive()): ?>
-        <p class="shipping-cta"><?php echo $this->helper('wsnyc_shippingcta')->getShippingCtaText(); ?></p>
       <?php endif; ?>
 
       <?php if($addtoBoxHtml = $this->getChildHtml('addto')): //compare, wishlist ?>
@@ -365,5 +359,5 @@ if(isset($section['related']))
 if(isset($section['upsell']))
   echo '<div class="box-additional box-up-sell ' . $upsellGridClass . ' ' . $upsellClasses . '">' . $section['upsell'] . '</div>';
 ?>
-    
-                           
+
+

@@ -519,7 +519,7 @@
         	<action method="removeLinkByUrl" module="customer"><url>customer/account/create</url></action>
         	<action method="addLink" translate="label title" module="customer">
                 <label>Create Account</label>
-                <url>customer/account/create</url><title>Create Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
+                <url>/customer/account/create</url><title>Create Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
         		<beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
           		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
         	</action>
@@ -650,6 +650,7 @@
 
         <reference name="product.info.addtocart">
             <block type="catalog/product_view" name="product.bottom_clone_prices" as="prices" template="catalog/product/view/price_clone.phtml"/>
+            <block type="core/template" name="product.amazon-badge" template="catalog/product/view/amazon.phtml"/>
         </reference>
 
 	</catalog_product_view>
@@ -744,39 +745,40 @@
 
 
 	<!-- CART %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-        <checkout_cart_index>
-            <reference name="root">
-                <action method="setTemplate"><template>page/1column.phtml</template></action>
-            </reference>
-            <reference name="head">
-                <action method="addCss">
-                    <file>css/wsnyc/checkout.css</file>
+    <checkout_cart_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <file>css/wsnyc/checkout.css</file>
+            </action>
+        </reference>
+        <reference name="checkout.cart.form.before">
+            <block type="cms/block" name="holiday-message">
+                <action method="setBlockId"><blockId>holiday-message</blockId></action>
+            </block>
+        </reference>
+        <!-- Custom static blocks -->
+        <reference name="checkout.cart">
+            <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
+            <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+
+            <block type="cms/block" name="block_cart_below_table">
+                <action method="setBlockId">
+                    <block_id>block_cart_below_table</block_id>
                 </action>
-            </reference>
-            <reference name="checkout.cart.form.before">
-                <block type="cms/block" name="holiday-message">
-                    <action method="setBlockId"><blockId>holiday-message</blockId></action>
-                </block>
-            </reference>
-            <!-- Custom static blocks -->
-            <reference name="checkout.cart">
-                <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon" template="checkout/cart/coupon.phtml"/>
-                <block type="checkout/cart_totals" name="checkout.cart.totals" as="totals" template="checkout/cart/totals.phtml"/>
+            </block>
+            <block type="cms/block" name="block_cart_below_totals">
+                <action method="setBlockId">
+                    <block_id>block_cart_below_totals</block_id>
+                </action>
+            </block>
+            <block type="core/template" name="cart.shipping.info" as="shipping" template="checkout/onepage/review/shipping.phtml"/>
 
-                <block type="cms/block" name="block_cart_below_table">
-                    <action method="setBlockId">
-                        <block_id>block_cart_below_table</block_id>
-                    </action>
-                </block>
-                <block type="cms/block" name="block_cart_below_totals">
-                    <action method="setBlockId">
-                        <block_id>block_cart_below_totals</block_id>
-                    </action>
-                </block>
+        </reference>
 
-            </reference>
-
-        </checkout_cart_index>
+    </checkout_cart_index>
 
 
 	<checkout_onepage_index>
