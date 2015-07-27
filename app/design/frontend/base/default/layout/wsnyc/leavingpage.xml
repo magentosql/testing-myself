@@ -6,6 +6,9 @@
                 <file>css/wsnyc/leavingpage.css</file>
             </action>
             <action method="addJs" ifconfig="promo/leavingpage/active">
+                <script>wsnyc/cookies.js</script>
+            </action>
+            <action method="addJs" ifconfig="promo/leavingpage/active">
                 <script>wsnyc/leaving-page.js</script>
             </action>
         </reference>

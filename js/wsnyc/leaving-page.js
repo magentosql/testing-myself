@@ -1,5 +1,5 @@
 var topCursor = false;
-var wasAlreadyDisplayed = false;
+var wasAlreadyDisplayed = docCookies.hasItem('leaving_page_displayed') == 1;
 $(window).mouseleave(function (e) {
     if (e.pageY < 5) {
         topCursor = true;
@@ -58,5 +58,5 @@ function remeberCustomerAction() {
     var date = new Date();
     date.setTime(date.getTime()+(365*24*60*60*1000));
     var expires = "; expires="+date.toGMTString();
-    document.cookie = "leaving_page_displayed=1"+expires+"; path=/";
+    docCookies.setItem('leaving_page_displayed', 1, expires, '/');
 }
