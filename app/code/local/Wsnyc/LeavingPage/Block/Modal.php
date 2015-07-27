@@ -43,14 +43,14 @@ class Wsnyc_LeavingPage_Block_Modal extends Mage_Core_Block_Template {
             return false;
         }
 
-        //if there is cache we need to render in order it is later fetched from cache. Js will check whether to show it
-        if (Mage::helper('core')->isModuleEnabled('Extendware_EWCore')) {
-            return true;
-        }
-
         // check is allowed page
         if (!$this->_isAllowedPage()) {
             return false;
+        }
+
+        //if there is cache we need to render in order it is later fetched from cache. Js will check whether to show it
+        if (Mage::helper('core')->isModuleEnabled('Extendware_EWCore')) {
+            return true;
         }
 
         if ($this->_wasAlreadyDisplayed()) {
