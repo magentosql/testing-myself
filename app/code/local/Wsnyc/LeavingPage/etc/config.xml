@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_LeavingPage>
-            <version>0.4.9</version>
+            <version>0.4.10</version>
         </Wsnyc_LeavingPage>
     </modules>
     <global>
