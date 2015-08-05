@@ -13,7 +13,7 @@
             </action>
         </reference>
         <reference name="before_body_end">
-            <block type="leavingpage/modal" name="leavingpage-modal" as="leavingpage-modal" after="-" />
+            <block type="leavingpage/modal" name="leavingpage-modal" as="leavingpage-modal" after="-"/>
         </reference>
     </default>
 </layout>

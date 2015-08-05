@@ -40,14 +40,28 @@ jQuery(function ($) {
         onComplete: function() {
             jQuery('body').css({overflow: 'hidden'});
             jQuery('body > .wrapper').addClass('blurred');
-            jQuery('#stay-on-page').click(function(e) {
-                jQuery.colorbox.close();
-                if(window.ga) {
-                    ga('send', 'event', 'button', 'click', 'exit popup');
-                }
-                window.location.href = $(this).data('href');
+            jQuery('#mc-embedded-subscribe-modal').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var form = jQuery('#mc-embedded-subscribe-form-modal');
+                jQuery.get('/leavingpage', form.serialize(), function(response) {
+                    if (response.success == true) {
+                        jQuery('#page_leave_modal').addClass('redeem');
+                        jQuery('#page_leave_modal').html(response.content);
+                        jQuery('#stay-on-page').on('click', function(e) {
+                            jQuery.colorbox.close();
+                            if(window.ga) {
+                                ga('send', 'event', 'button', 'click', 'exit popup');
+                            }
+                            window.location.href = $(this).data('href');
+                        });
+                    }
+                    else {
+                        alert("An error occurred: \n" + response.message);
+                    }
+                }, 'json');
             });
-            jQuery('#no-redeem').click(function(e) {
+            jQuery('#no-redeem').on('click', function(e) {
                 jQuery.colorbox.close();
             });
         }
