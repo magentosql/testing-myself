@@ -28,7 +28,8 @@ $installer->addAttribute(Mage_Catalog_Model_Product::ENTITY, 'hide_bundle_items'
   'comparable'        => false,
   'visible_on_front'  => false,
   'unique'            => false,
-  'is_configurable'   => false
+  'is_configurable'   => false,
+  'note'              => 'Hides bundled products on the frontend product page.'
 ));
 $installer->updateAttribute(Mage_Catalog_Model_Product::ENTITY, 'hide_bundle_items', 'is_visible', 1);
 $installer->updateAttribute(Mage_Catalog_Model_Product::ENTITY, 'hide_bundle_items', 'apply_to', Mage_Catalog_Model_Product_Type::TYPE_BUNDLE);
