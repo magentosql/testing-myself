@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <!-- the purpose of this module is to hide the Bundled Items on the product page based on a product attribute calls hide_bundle_items -->
+    <Wsnyc_HideBundledItems>
+      <version>1.0.0</version>
+    </Wsnyc_HideBundledItems>
+  </modules>
+  <global>
+    <models>
+      <wsnyc_hidebundleditems>
+        <class>Wsnyc_HideBundledItems_Model</class>
+      </wsnyc_hidebundleditems>
+    </models>
+    <resources>
+      <wsnyc_hidebundleditems_setup>
+        <setup>
+          <module>Wsnyc_HideBundledItems</module>
+          <class>Mage_Eav_Model_Entity_Setup</class>
+        </setup>
+      </wsnyc_hidebundleditems_setup>
+    </resources>
+  </global>
+  <frontend>
+    <events>
+      <controller_action_layout_generate_blocks_after>
+        <observers>
+          <addHandle>
+            <class>wsnyc_hidebundleditems/observer</class>
+            <method>addHandle</method>
+          </addHandle>
+        </observers>
+      </controller_action_layout_generate_blocks_after>
+    </events>
+  </frontend>
+</config>
