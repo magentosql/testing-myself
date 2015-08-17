@@ -35,16 +35,17 @@
 </script>
 <?php endif; ?>
 
+<!--
 <?php if ($_product->isAvailable()): ?>
     <p class="availability in-stock"><?php echo $this->helper('catalog')->__('Availability:') ?> <span><?php echo $this->helper('catalog')->__('In stock') ?></span></p>
 <?php else: ?>
     <p class="availability out-of-stock"><?php echo $this->helper('catalog')->__('Availability:') ?> <span><?php echo $this->helper('catalog')->__('Out of stock') ?></span></p>
 <?php endif; ?>
-<?php echo $this->getPriceHtml($_product) ?>
+<?php //echo $this->getPriceHtml($_product) ?>
 <div class="price-box-bundle">
 	<?php echo $this->getChildHtml('bundle_prices') ?>
 </div>
-
+-->
 
 
 <?php /*?>
@@ -64,5 +65,5 @@
 <div class="price-box-bundle">
     <?php echo $this->getPriceHtml($_product) ?>
 </div>
-<?php echo $this->getChildHtml('bundle_prices') ?>
+<?php //echo $this->getChildHtml('bundle_prices') ?>
 <?php */?>
