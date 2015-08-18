@@ -11,7 +11,9 @@ class Wsnyc_LeavingPage_IndexController extends Mage_Core_Controller_Front_Actio
                 'maxredirects' => 0,
                 'timeout' => 30,
             ));
-        $iClient->setRawData($this->getRequest()->getParams());
+        $params = $this->getRequest()->getParams();
+        $params['submit'] = 'Subscribe';
+        $iClient->setRawData(http_build_query($params));
         $response = $iClient->request();
         $str = $response->getBody();
         if (strstr($str, 'Almost finished...')) {
