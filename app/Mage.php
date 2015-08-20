@@ -24,9 +24,9 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-define('DS', DIRECTORY_SEPARATOR);
-define('PS', PATH_SEPARATOR);
-define('BP', dirname(dirname(__FILE__)));
+if (defined('DS') === false) define('DS', DIRECTORY_SEPARATOR);
+if (defined('PS') === false) define('PS', PATH_SEPARATOR);
+if (defined('BP') === false) define('BP', dirname(dirname(__FILE__)));
 
 Mage::register('original_include_path', get_include_path());
 
