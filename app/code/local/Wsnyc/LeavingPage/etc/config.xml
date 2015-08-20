@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Wsnyc_LeavingPage>
-            <version>0.4.6</version>
+            <version>0.4.11</version>
         </Wsnyc_LeavingPage>
     </modules>
     <global>
@@ -48,6 +48,15 @@
                 </leavingpage>
             </updates>
         </layout>
+        <routers>
+            <leavingpage_coupon>
+                <use>standard</use>
+                <args>
+                    <module>Wsnyc_LeavingPage</module>
+                    <frontName>leavingpage</frontName>
+                </args>
+            </leavingpage_coupon>
+        </routers>
     </frontend>
     <default>
         <promo>

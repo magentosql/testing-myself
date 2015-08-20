@@ -23,7 +23,7 @@ body.checkout-cart-index .cart #discount-coupon-form .buttons-set button + butto
 body.checkout-cart-index .cart .cart-collaterals {text-transform: uppercase; width: 273px; margin-left: 15px; background: transparent; padding-top: 10px; display: inline-block; margin-top: 88px;}
 body.checkout-cart-index .cart .empty-cart-message + .cart-collaterals {margin-top: 0; padding-top: 0;}
 body.checkout-cart-index .cart script + .cart-collaterals {margin-top: 0; padding-top: 0;}
-body.checkout-cart-index .messages {margin-top: 40px; margin-bottom: -45px;}
+body.checkout-cart-index .messages {margin-top: 0px; margin-bottom: 35px;}
 body.checkout-cart-index .cart .cart-collaterals * {max-width: 252px;}
 body.checkout-cart-index .cart .cart-collaterals .totals {width: 252px; font-weight: normal; font-size: 0.875rem; color: #000;margin: 0;padding: 0 10px 15px;background-color: #f8f8f8;}
 body.checkout-cart-index .cart .cart-collaterals .totals td:last-of-type {padding: 1px 5px 1px 0}

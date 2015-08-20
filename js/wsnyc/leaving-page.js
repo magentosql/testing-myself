@@ -1,5 +1,5 @@
 var topCursor = false;
-var wasAlreadyDisplayed = false;
+var wasAlreadyDisplayed = docCookies.hasItem('leaving_page_displayed') == 1;
 $(window).mouseleave(function (e) {
     if (e.pageY < 5) {
         topCursor = true;
@@ -40,14 +40,28 @@ jQuery(function ($) {
         onComplete: function() {
             jQuery('body').css({overflow: 'hidden'});
             jQuery('body > .wrapper').addClass('blurred');
-            jQuery('#stay-on-page').click(function(e) {
-                jQuery.colorbox.close();
-                if(window.ga) {
-                    ga('send', 'event', 'button', 'click', 'exit popup');
-                }
-                window.location.href = $(this).data('href');
+            jQuery('#mc-embedded-subscribe-modal').click(function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var form = jQuery('#mc-embedded-subscribe-form-modal');
+                jQuery.get('/leavingpage', form.serialize(), function(response) {
+                    if (response.success == true) {
+                        jQuery('#page_leave_modal').addClass('redeem');
+                        jQuery('#page_leave_modal').html(response.content);
+                        jQuery('#stay-on-page').on('click', function(e) {
+                            jQuery.colorbox.close();
+                            if(window.ga) {
+                                ga('send', 'event', 'button', 'click', 'exit popup');
+                            }
+                            window.location.href = $(this).data('href');
+                        });
+                    }
+                    else {
+                        alert("An error occurred: \n" + response.message);
+                    }
+                }, 'json');
             });
-            jQuery('#no-redeem').click(function(e) {
+            jQuery('#no-redeem').on('click', function(e) {
                 jQuery.colorbox.close();
             });
         }
@@ -58,5 +72,5 @@ function remeberCustomerAction() {
     var date = new Date();
     date.setTime(date.getTime()+(365*24*60*60*1000));
     var expires = "; expires="+date.toGMTString();
-    document.cookie = "leaving_page_displayed=1"+expires+"; path=/";
+    docCookies.setItem('leaving_page_displayed', 1, expires, '/');
 }

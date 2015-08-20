@@ -1,0 +1,23 @@
+<?php $_block = $this->getCmsBlock();
+$_code = Mage::helper('leavingpage')->generatePromoCode();
+?>
+<div>
+    <div>
+        <div class="pageleave-cms-content">
+            <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_block->getContent()) ?>
+        </div>
+        <div class="pageleave-code"><?php echo $_code ?></div>
+        <div class="pageleave-button">
+            <button data-href="<?php echo Mage::helper('wsnyc_couponparam')->generateCartCodeUrl($_code) ?>" class="btn button btn-inline effect modal-close" id="stay-on-page">
+                <span>
+                    <span><?php echo $this->__('Redeem Now'); ?></span>
+                </span>
+            </button>
+        </div>
+
+        <div class="social-media-icon-set">
+            <p class="exclude"><?php echo $this->__('*Discount excludes Beckel Canvas, Jiffy Steamer, and Jess Brown for the Laundress Doll'); ?></p>
+        </div>
+
+    </div>
+</div>
