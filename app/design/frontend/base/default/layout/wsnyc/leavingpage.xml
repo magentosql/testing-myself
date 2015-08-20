@@ -6,11 +6,14 @@
                 <file>css/wsnyc/leavingpage.css</file>
             </action>
             <action method="addJs" ifconfig="promo/leavingpage/active">
+                <script>wsnyc/cookies.js</script>
+            </action>
+            <action method="addJs" ifconfig="promo/leavingpage/active">
                 <script>wsnyc/leaving-page.js</script>
             </action>
         </reference>
         <reference name="before_body_end">
-            <block type="leavingpage/modal" name="leavingpage-modal" as="leavingpage-modal" after="-" />
+            <block type="leavingpage/modal" name="leavingpage-modal" as="leavingpage-modal" after="-"/>
         </reference>
     </default>
 </layout>
