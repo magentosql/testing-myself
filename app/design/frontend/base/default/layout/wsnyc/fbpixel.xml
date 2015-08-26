@@ -3,12 +3,42 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
-            <block type="wsnyc_fbpixel/pixel" name="facbook_pixel" template="wsnyc/fbpixel/pixel.phtml" />            
+            <block type="wsnyc_fbpixel/pixel" name="facbook_pixel" template="wsnyc/fbpixel/pixel.phtml"/>
         </reference>
     </default>
+    <catalog_product_view>
+        <reference name="facbook_pixel">
+            <action method="setAdditionalTrackCode"><event>ViewContent</event></action>
+        </reference>
+    </catalog_product_view>
+
+    <catalog_category_default>
+        <reference name="facbook_pixel">
+            <action method="setAdditionalTrackCode"><event>ViewContent</event></action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="facbook_pixel">
+            <action method="setAdditionalTrackCode"><event>ViewContent</event></action>
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_result_index>
+        <reference name="facbook_pixel">
+            <action method="setAdditionalTrackCode"><event>Search</event></action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <checkout_onepage_index>
+        <reference name="facbook_pixel">
+            <action method="setAdditionalTrackCode"><event>InitiateCheckout</event></action>
+        </reference>
+    </checkout_onepage_index>
+
     <checkout_onepage_success>
-        <reference name="head">            
-            <block type="wsnyc_fbpixel/pixel" name="facbook_conversion_pixel" template="wsnyc/fbpixel/conversion.phtml" />
+        <reference name="facbook_pixel">
+            <action method="setAdditional"><event>purchase</event></action>
         </reference>
     </checkout_onepage_success>
 </layout>

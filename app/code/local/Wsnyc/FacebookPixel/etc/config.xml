@@ -9,13 +9,18 @@
         <blocks>
             <wsnyc_fbpixel>
                 <class>Wsnyc_FacebookPixel_Block</class>
-            </wsnyc_fbpixel>            
+            </wsnyc_fbpixel>
         </blocks>
         <helpers>
             <wsnyc_fbpixel>
                 <class>Wsnyc_FacebookPixel_Helper</class>
-            </wsnyc_fbpixel>            
+            </wsnyc_fbpixel>
         </helpers>
+        <models>
+            <wsnyc_fbpixel>
+                <class>Wsnyc_FacebookPixel_Model</class>
+            </wsnyc_fbpixel>
+        </models>
     </global>
     <frontend>
         <layout>
@@ -25,5 +30,15 @@
                 </wsnyc_amazonpixel>
             </updates>
         </layout>
+        <events>
+            <customer_register_success>
+                <observers>
+                    <wsnyc_facebookpixel_register_success>
+                        <type>singleton</type>
+                        <class>wsnyc_fbpixel/observer</class>
+                    </wsnyc_facebookpixel_register_success>
+                </observers>
+            </customer_register_success>
+        </events>
     </frontend>
 </config>
