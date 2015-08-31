@@ -557,52 +557,122 @@
 		<reference name="right">
 			<action method="unsetChild"><name>catalog.product.related</name></action>
 		</reference>
-		<reference name="product.info">
-			<block type="catalog/product_list_related" name="catalog.product.related" template="catalog/product/list/related.phtml"/>
+        <reference name="product.info">
+            <block type="catalog/product_list_related" name="catalog.product.related"
+                   template="catalog/product/list/related.phtml"/>
 
-			<!-- Change review summary template: removed links to review page. IMPORTANT: new template file. -->
-			<action method="addReviewSummaryTemplate"><type>default</type><template>review/helper/summary_nolinks.phtml</template></action>
+            <!-- Change review summary template: removed links to review page. IMPORTANT: new template file. -->
+            <action method="addReviewSummaryTemplate">
+                <type>default</type>
+                <template>review/helper/summary_nolinks.phtml</template>
+            </action>
 
-			<!-- Add tabs -->
-			<block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs" template="catalog/product/view/tabs.phtml" >
-				<action method="addTab" translate="title" module="catalog"><alias>description</alias><title>Details</title><block>catalog/product_view_description</block><template>catalog/product/view/tab/description.phtml</template></action>
-                <action method="addTab" translate="title" module="catalog"><alias>video</alias><title>How to Video</title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/video.phtml</template></action>
-                <action method="addTab" translate="title" module="catalog"><alias>for_best_results</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>for_best_results</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
-                <action method="addTab" translate="title" module="catalog"><alias>ingredients</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>ingredients</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
-                <action method="addTab" translate="title" module="catalog"><alias>washing_chart</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>washing_chart</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
-                <action method="addTab" translate="title" module="catalog"><alias>made_of</alias><title helper="wsnyc_catalog/getAttributeStoreLabel"><attr>made_of</attr></title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/attributes.phtml</template></action>
-                <action method="addTab" translate="title" module="cms"><alias>block_product_monogram_shop</alias><title>Monogram Shop</title><block>catalog/product_view_attributes</block><template>catalog/product/view/tab/cms.phtml</template></action>
+            <!-- Add tabs -->
+            <block type="catalog/product_view_tabs" name="product.info.tabs" as="info_tabs"
+                   template="catalog/product/view/tabs.phtml">
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>description</alias>
+                    <title>Details</title>
+                    <block>catalog/product_view_description</block>
+                    <template>catalog/product/view/tab/description.phtml</template>
+                </action>
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>video</alias>
+                    <title>How to Video</title>
+                    <block>catalog/product_view_attributes</block>
+                    <template>catalog/product/view/tab/video.phtml</template>
+                </action>
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>for_best_results</alias>
+                    <title helper="wsnyc_catalog/getAttributeStoreLabel">
+                        <attr>for_best_results</attr>
+                    </title>
+                    <block>catalog/product_view_attributes</block>
+                    <template>catalog/product/view/tab/attributes.phtml</template>
+                </action>
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>ingredients</alias>
+                    <title helper="wsnyc_catalog/getAttributeStoreLabel">
+                        <attr>ingredients</attr>
+                    </title>
+                    <block>catalog/product_view_attributes</block>
+                    <template>catalog/product/view/tab/attributes.phtml</template>
+                </action>
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>washing_chart</alias>
+                    <title helper="wsnyc_catalog/getAttributeStoreLabel">
+                        <attr>washing_chart</attr>
+                    </title>
+                    <block>catalog/product_view_attributes</block>
+                    <template>catalog/product/view/tab/attributes.phtml</template>
+                </action>
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>made_of</alias>
+                    <title helper="wsnyc_catalog/getAttributeStoreLabel">
+                        <attr>made_of</attr>
+                    </title>
+                    <block>catalog/product_view_attributes</block>
+                    <template>catalog/product/view/tab/attributes.phtml</template>
+                </action>
+                <action method="addTab" translate="title" module="cms">
+                    <alias>block_product_monogram_shop</alias>
+                    <title>Monogram Shop</title>
+                    <block>catalog/product_view_attributes</block>
+                    <template>catalog/product/view/tab/cms.phtml</template>
+                </action>
 
                 <!-- Add reviews (first part). IMPORTANT: see the second part: reference name="tabreviews" -->
-				<!-- IMPORTANT: Do not change 'tabreviews' alias. It is needed in JS script in catalog/product/view.phtml -->
-				<action method="addTab" translate="title" module="catalog"><alias>tabreviews</alias><title>Reviews</title><block>core/template</block><template>catalog/product/view/tab/review.phtml</template></action>
-			</block>
-			<!-- end: Add tabs -->
+                <!-- IMPORTANT: Do not change 'tabreviews' alias. It is needed in JS script in catalog/product/view.phtml -->
+                <action method="addTab" translate="title" module="catalog">
+                    <alias>tabreviews</alias>
+                    <title>Reviews</title>
+                    <block>core/template</block>
+                    <template>catalog/product/view/tab/review.phtml</template>
+                </action>
+            </block>
+            <!-- end: Add tabs -->
 
-			<!-- Up-sells: set columns count and max number of displayed items -->
-			<block type="catalog/product_list_upsell" name="product.info.upsell" as="upsell_products" template="catalog/product/list/upsell.phtml">
-				<action method="setColumnCount"><columns>4</columns></action>
-				<action method="setItemLimit"><type>upsell</type><limit>24</limit></action>
-			</block>
+            <!-- Up-sells: set columns count and max number of displayed items -->
+            <block type="catalog/product_list_upsell" name="product.info.upsell" as="upsell_products"
+                   template="catalog/product/list/upsell.phtml">
+                <action method="setColumnCount">
+                    <columns>4</columns>
+                </action>
+                <action method="setItemLimit">
+                    <type>upsell</type>
+                    <limit>24</limit>
+                </action>
+            </block>
 
-			<!-- Custom static blocks -->
+            <!-- Custom static blocks -->
             <block type="cms/block" name="block_product_primary_bottom">
-                <action method="setBlockId"><block_id>block_product_primary_bottom</block_id></action>
+                <action method="setBlockId">
+                    <block_id>block_product_primary_bottom</block_id>
+                </action>
             </block>
             <block type="cms/block" name="block_product_secondary_bottom">
-                <action method="setBlockId"><block_id>block_product_secondary_bottom</block_id></action>
+                <action method="setBlockId">
+                    <block_id>block_product_secondary_bottom</block_id>
+                </action>
             </block>
             <block type="cms/block" name="block_product_replace_related">
-                <action method="setBlockId"><block_id>block_product_replace_related</block_id></action>
+                <action method="setBlockId">
+                    <block_id>block_product_replace_related</block_id>
+                </action>
             </block>
             <block type="cms/block" name="block_product_replace_upsell">
-                <action method="setBlockId"><block_id>block_product_replace_upsell</block_id></action>
+                <action method="setBlockId">
+                    <block_id>block_product_replace_upsell</block_id>
+                </action>
             </block>
-            <block type="scent/scent" name="product.fragrance" as="fragrance" template="catalog/product/view/scent.phtml" />
+            <block type="scent/scent" name="product.fragrance" as="fragrance"
+                   template="catalog/product/view/scent.phtml"/>
 
-            <block type="catalog/product_view_attributes" name="product.monogram" as="monogram" template="catalog/product/view/monogram.phtml" />
+            <block type="catalog/product_view_attributes" name="product.monogram" as="monogram"
+                   template="catalog/product/view/monogram.phtml"/>
 
-		</reference> <!-- end: product.info -->
+            <remove name="product.info.upsell"/>
+        </reference> <!-- end: product.info -->
 
 		<!-- Second part of adding reviews to tabs. See the first part in product.info section in info_tabs block -->
         <reference name="tabreviews">
@@ -652,6 +722,8 @@
             <block type="catalog/product_view" name="product.bottom_clone_prices" as="prices" template="catalog/product/view/price_clone.phtml"/>
             <block type="core/template" name="product.amazon-badge" template="catalog/product/view/amazon.phtml"/>
         </reference>
+
+
 
 	</catalog_product_view>
 
