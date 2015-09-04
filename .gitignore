@@ -2,6 +2,9 @@
 app/etc/local.xml
 downloader/*
 media/catalog/product/cache/*
+/js/commercebug
+/app/code/local/Shawnabramson
+app/etc/modules/Shawnabramson_Commercebug.xml
 media/tmp/*
 media/*
 sitemap.xml
