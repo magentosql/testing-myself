@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Wsnyc_AnalyticsYoutube>
+      <version>1.0.0</version>
+    </Wsnyc_AnalyticsYoutube>
+  </modules>
+  <global>
+    <blocks>
+      <wsnyc_analytics_youtube>
+        <class>Wsnyc_AnalyticsYoutube_Block</class>
+      </wsnyc_analytics_youtube>
+    </blocks>
+    <helpers>
+      <wsnyc_analytics_youtube>
+        <class>Wsnyc_AnalyticsYoutube_Helper</class>
+      </wsnyc_analytics_youtube>
+    </helpers>
+  </global>
+  <frontend>
+    <layout>
+      <updates>
+        <wsnyc_analytics_youtube>
+          <file>wsnyc/analytics/youtube.xml</file>
+        </wsnyc_analytics_youtube>
+      </updates>
+    </layout>
+  </frontend>
+</config>
