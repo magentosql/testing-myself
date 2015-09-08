@@ -40,7 +40,10 @@ jQuery(function ($) {
         onComplete: function() {
             jQuery('body').css({overflow: 'hidden'});
             jQuery('body > .wrapper').addClass('blurred');
-            jQuery('#mc-embedded-subscribe-modal').click(function(e) {
+            jQuery('#mc-embedded-subscribe-form-modal').submit(function(e) {
+                if(window.ga) {
+                    ga('send', 'event', 'form', 'submit', 'Leaving page modal submission');
+                }
                 e.preventDefault();
                 e.stopPropagation();
                 var form = jQuery('#mc-embedded-subscribe-form-modal');
