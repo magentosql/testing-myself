@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+  <sections>
+    <wsnyc_video_analytics translate="label comment" module="wsnyc_analytics_vimeo">
+      <label><![CDATA[Video Analytics]]></label>
+      <tab>wsnyc</tab>
+      <frontend_type>text</frontend_type>
+      <sort_order>100</sort_order>
+      <show_in_default>1</show_in_default>
+      <show_in_website>1</show_in_website>
+      <show_in_store>1</show_in_store>
+      <groups>
+        <vimeo translate="label comment">
+          <label><![CDATA[Vimeo Tracking]]></label>
+          <frontend_type>text</frontend_type>
+          <sort_order>100</sort_order>
+          <show_in_default>1</show_in_default>
+          <show_in_website>1</show_in_website>
+          <show_in_store>1</show_in_store>
+          <fields>
+            <enabled translate="label comment">
+              <label><![CDATA[Enabled]]></label>
+              <frontend_type>select</frontend_type>
+              <sort_order>100</sort_order>
+              <show_in_default>1</show_in_default>
+              <show_in_website>1</show_in_website>
+              <show_in_store>1</show_in_store>
+              <source_model>adminhtml/system_config_source_yesno</source_model>
+              <comment><![CDATA[Track Vimeo video interactions in Google Analytics]]></comment>
+            </enabled>
+          </fields>
+        </vimeo>
+      </groups>
+    </wsnyc_video_analytics>
+  </sections>
+</config>

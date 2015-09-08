@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Wsnyc_AnalyticsVimeo>
+      <version>1.0.0</version>
+    </Wsnyc_AnalyticsVimeo>
+  </modules>
+  <global>
+    <blocks>
+      <wsnyc_analytics_vimeo>
+        <class>Wsnyc_AnalyticsVimeo_Block</class>
+      </wsnyc_analytics_vimeo>
+    </blocks>
+    <helpers>
+      <wsnyc_analytics_vimeo>
+        <class>Wsnyc_AnalyticsVimeo_Helper</class>
+      </wsnyc_analytics_vimeo>
+    </helpers>
+  </global>
+  <frontend>
+    <layout>
+      <updates>
+        <wsnyc_analytics_vimeo>
+          <file>wsnyc/analytics/vimeo.xml</file>
+        </wsnyc_analytics_vimeo>
+      </updates>
+    </layout>
+  </frontend>
+</config>
