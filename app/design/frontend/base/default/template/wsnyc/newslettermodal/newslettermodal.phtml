@@ -36,7 +36,7 @@
                                 <div style="position: absolute; left: -5000px;"><input type="text" name="b_d3d48e75efd637e646b0beb3c_dbfb7e7934" value=""></div>
                                 <div class="clear">
                                     <button class="button no-thanks-button" onclick="jQuery.colorbox.close(); return false;"><?php echo $this->__('No thanks') ?></button>
-                                    <input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe" class="button">
+                                    <input type="submit" value="Submit" name="subscribe" id="mc-embedded-subscribe-modal" class="button">
                                 </div>
                             </form>
                         </div>
@@ -83,7 +83,7 @@
             jQuery('.real-email-wrapper').html('<input type="hidden" name="EMAIL" value="' + jQuery('#dummy-email').val() + '" class="required email" id="mce-EMAIL">')
         });
         
-        jQuery('#mc-embedded-subscribe').click(function() {
+        jQuery('#mc-embedded-subscribe-modal').click(function() {
             if(!validateEmail(jQuery('#dummy-email').val())) {
                 jQuery('.email-error-message').css('visibility', 'visible');
                 return false;
