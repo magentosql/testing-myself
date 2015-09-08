@@ -1218,4 +1218,8 @@
             <action method="append"><name>amazon_login.button</name></action>
         </reference>
     </customer_account_login>
+
+    <THEME_frontend_ultimo_wholesale>
+        <remove name="product.amazon-badge"/>
+    </THEME_frontend_ultimo_wholesale>
 </layout>
