@@ -520,8 +520,8 @@
         	<action method="addLink" translate="label title" module="customer">
                 <label>Create Account</label>
                 <url>/customer/account/create</url><title>Create Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
-        		<!--<beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
-          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>-->
+        		<beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
         	</action>
         </reference>
     </customer_logged_out>
@@ -533,8 +533,8 @@
             <action method="addLink" translate="label title" module="customer">
 	            <label>Account</label>
 	            <url helper="customer/getAccountUrl"/><title>Account</title><prepare/><urlParams/><position>30</position><liParams/><aParams/>
-	            <!--<beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
-          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>-->
+	            <beforeText helper="ewpagecache/getBeginMarker"><key>toplink_account</key></beforeText>
+          		<afterText helper="ewpagecache/getEndMarker"><key>toplink_account</key></afterText>
             </action>
         </reference>
     </customer_logged_in>
