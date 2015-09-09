@@ -16,7 +16,8 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
         'INTERNATIONAL_ECONOMY' => 'International Economy',
         'INTERNATIONAL_GROUND' => 'International Ground',
         'INTERNATIONAL_PRIORITY' => 'International Priority',
-        'SMART_POST' => 'Other'
+        'SMART_POST' => 'Other',
+        'percentageprice' => 'Fedex Ground' /** Wsnyc_PercentPriceShipping_Model_Carrier_Percentageprice */
     );
 
     /**
