@@ -2,10 +2,10 @@
 <config>
     <modules>
         <Wsnyc_Seo>
-            <active>true</active>
+            <active>false</active>
             <codePool>local</codePool>
             <depends>
-                <Diglin_UIOptimization />
+                <Diglin_UIOptimization/>
             </depends>
         </Wsnyc_Seo>
     </modules>
