@@ -87,8 +87,9 @@ class Wsnyc_Capacity_Helper_Data extends Mage_Core_Helper_Abstract {
             else {
                 return $this->_otherMethod;
             }
-        }
-        elseif('freeshipping_freeshipping' === $method) {
+        } elseif(strstr($method,'percentageprice_')){
+            return $this->_fedexMethods['percentageprice'];
+        } elseif('freeshipping_freeshipping' === $method) {
             return $this->_fedexMethods['FEDEX_GROUND'];
         }
         
