@@ -6,11 +6,16 @@
         </Wsnyc_Capacity>
     </modules>
     <global>
+        <blocks>
+            <capacity>
+                <class>Wsnyc_Capacity_Block</class>
+            </capacity>
+        </blocks>
         <helpers>
             <capacity>
                 <class>Wsnyc_Capacity_Helper</class>
             </capacity>
-        </helpers>        
+        </helpers>
         <models>
             <capacity>
                 <class>Wsnyc_Capacity_Model</class>
@@ -49,6 +54,17 @@
             </sales_order_invoice_pay>
         </events>
     </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Wsnyc_Capacity after="Mage_Adminhtml">Wsnyc_Capacity_Adminhtml</Wsnyc_Capacity>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
     <crontab>
         <jobs>
             <shipment_test>

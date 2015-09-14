@@ -32,8 +32,9 @@ class Wsnyc_Capacity_Model_Observer {
 
     /**
      * Process shipment object on save
-     * 
+     *
      * @param Varien_Event_Observer $observer
+     * @return bool
      */
     public function processShipment($observer = null) {
         $invoice = $observer->getEvent()->getInvoice();
@@ -49,8 +50,15 @@ class Wsnyc_Capacity_Model_Observer {
             //return;
         }        
         $filename = $this->_prepareData($invoice);
-        $this->_sendData($filename, $invoice->getStoreId());
-        $invoice->getOrder()->setCapacitySendStatus(1)->save();
+        try {
+            $this->_sendData($filename, $invoice->getStoreId());
+            $invoice->getOrder()->setCapacitySendStatus(1)->save();
+        }
+        catch (Exception $e) {
+            return false;
+        }
+
+        return  true;
     }
     
     public function handleShipmentResponse() {

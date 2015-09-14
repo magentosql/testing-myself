@@ -62,6 +62,15 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </client_code>
+                        <action translate="label">
+                            <label>Resend</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>capacity/adminhtml_config_resend</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </action>
                     </fields>
                 </capacity>
             </groups>
