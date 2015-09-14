@@ -15,31 +15,28 @@ class Wsnyc_Capacity_Adminhtml_CapacityController extends Mage_Adminhtml_Control
             foreach ($order->getInvoiceCollection() as $invoice) {
                 /** @var Mage_Sales_Model_Order_Invoice $invoice */
                 if ($invoice->getState() == Mage_Sales_Model_Order_Invoice::STATE_PAID) {
-                    try {
-                        $this->_sendInvoice($invoice);
-                        $i++;
-                    }
-                    catch (Exception $e) {
-                        $errors++;
-                        Mage::log($e->getMessage(), null, 'capacity.log');
-                    }
+                    $this->_sendInvoice($invoice) ? $i++ : $errors++;
                 }
             }
         }
-        if ($errors == 0) {
-            Mage::getSingleton('core/session')->addSuccess(Mage::helper('core')->__('%s orders were succesfully sent to capacity server.', $i));
+        if ($i == 0 && $errors == 0) {
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('core')->__('All orders are already sent to capacity'));
+        }
+        elseif ($errors == 0) {
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('core')->__('%s order(s) were succesfully sent to capacity server.', $i));
         }
         elseif ($i > 0) {
-            Mage::getSingleton('core/session')->addWarning(Mage::helper('core')->__('%s orders were succesfully sent to capacity server but %s orders encountered some errors.', $i, $errors));
+            Mage::getSingleton('core/session')->addWarning(Mage::helper('core')->__('%s order(s) were succesfully sent to capacity server but %s order(s) encountered some errors.', $i, $errors));
         }
         else {
-            Mage::getSingleton('core/session')->addError(Mage::helper('core')->__('%s orders were encountered errors when sending to capacity server.', $errors));
+            Mage::getSingleton('core/session')->addError(Mage::helper('core')->__('%s order(s) were encountered errors when sending to capacity server.', $errors));
         }
         $this->_redirect('adminhtml/system_config/edit/section/shipping');
     }
 
     /**
      * @param Mage_Sales_Model_Order_Invoice $invoice
+     * @return bool
      */
     protected function _sendInvoice(Mage_Sales_Model_Order_Invoice $invoice)
     {
@@ -47,7 +44,7 @@ class Wsnyc_Capacity_Adminhtml_CapacityController extends Mage_Adminhtml_Control
         $event->setInvoice($invoice);
         $observer = new Varien_Object();
         $observer->setEvent($event);
-        Mage::getSingleton('capacity/observer')->processShipment($observer);
+        return Mage::getSingleton('capacity/observer')->processShipment($observer);
     }
 
     /**
