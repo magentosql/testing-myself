@@ -49,8 +49,13 @@ class Wsnyc_Capacity_Model_Observer {
             //return;
         }        
         $filename = $this->_prepareData($invoice);
-        $this->_sendData($filename, $invoice->getStoreId());
-        $invoice->getOrder()->setCapacitySendStatus(1)->save();
+        try {
+            $this->_sendData($filename, $invoice->getStoreId());
+            $invoice->getOrder()->setCapacitySendStatus(1)->save();
+        }
+        catch (Exception $e) {
+            return;
+        }
     }
     
     public function handleShipmentResponse() {
