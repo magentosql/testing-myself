@@ -1,0 +1,644 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+
+
+<?php // prev- / next-link...
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$prev_url = $next_url = $url = $_product->getProductUrl();
+
+if ($this->helper('catalog/data')->getCategory()) {
+    $category = $this->helper('catalog/data')->getCategory();
+} else {
+    $_ccats = $this->helper('catalog/data')->getProduct()->getCategoryIds();
+    $category = Mage::getModel('catalog/category')->load($_ccats[0]);
+}
+
+$children = $category->getProductCollection();
+$_count = is_array($children) ? count($children) : $children->count();
+if ($_count) {
+    foreach ($children as $product) {
+        $plist[] = $product->getId();
+    }
+
+    /**
+     * Determine the previous/next link and link to current category
+     */
+    $current_pid  = $this->helper('catalog/data')->getProduct()->getId();
+    $curpos   = array_search($current_pid, $plist);
+    // get link for prev product
+    $previd   = isset($plist[$curpos+1])? $plist[$curpos+1] : $current_pid;
+    $product  = Mage::getModel('catalog/product')->load($previd);
+    $prevpos  = $curpos;
+    while (!$product->isVisibleInCatalog()) {
+        $prevpos += 1;
+        $nextid   = isset($plist[$prevpos])? $plist[$prevpos] : $current_pid;
+        $product  = Mage::getModel('catalog/product')->load($nextid);
+    }
+    $prev_url = $product->getProductUrl();
+    // get link for next product
+    $nextid   = isset($plist[$curpos-1])? $plist[$curpos-1] : $current_pid;
+    $product  = Mage::getModel('catalog/product')->load($nextid);
+    $nextpos  = $curpos;
+    while (!$product->isVisibleInCatalog()) {
+        $nextpos -= 1;
+        $nextid   = isset($plist[$nextpos])? $plist[$nextpos] : $current_pid;
+        $product  = Mage::getModel('catalog/product')->load($nextid);
+    }
+    $next_url = $product->getProductUrl();
+}
+?>
+
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $theme = $this->helper('ultimo'); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+
+<div class="product-nav" >
+    <?php if($url <> $prev_url): ?>
+    <a href="<?php echo $prev_url; ?>" class="effect" ><span></span> <?php echo $this->__('PREVIOUS PRODUCT') ?></a>
+    <?php endif; ?>
+    <?php if($url <> $next_url): ?>    
+    <a href="<?php echo $next_url; ?>" class="next i-next effect" ><?php echo $this->__('NEXT PRODUCT') ?> <span></span></a>
+    <?php endif; ?>    
+</div>
+<div class="product-view nested-container">
+
+    <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" class="clearer custom" id="product_addtocart_form"<?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+    
+        <div class="no-display">
+            <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+            <input type="hidden" name="related_product" id="related-products-field" value="" />
+        </div>
+
+		<?php
+			//Calculate the width (in grid units) of the product page columns
+			$imgColUnits = $theme->getCfg('product_page/image_column');
+			$primaryColUnits = $theme->getCfg('product_page/primary_column');
+			$secondaryColUnits = $theme->getCfg('product_page/secondary_column');
+			
+			if (empty($secondaryColUnits))
+			{
+				$primaryColUnits += 12 - ($imgColUnits + $primaryColUnits);
+			}
+		?>
+
+        <div class="product-img-box grid12-<?php echo $imgColUnits; ?>">
+            <?php echo $this->getChildHtml('media') ?>
+            <?php //Product labels
+				echo $this->helper('ultimo/labels')->getLabels($_product);
+			?>
+        </div>
+        
+        <div class="product-shop grid12-<?php echo $primaryColUnits; ?>">
+
+            <div class="product-name">
+                <?php
+                
+                    $title = $_helper->productAttribute($_product, nl2br($_product->getProductTitleLinebreak()), 'product_title_linebreak');
+                    if(empty($title)) {
+                        $title = $_helper->productAttribute($_product, $_product->getName(), 'name');
+                    }
+               
+                ?>
+                <h1><?php echo $title ?></h1>
+            </div>
+            
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true); //reviews ?>
+            
+            <?php if ($_product->getShortDescription()): ?>
+                <div class="short-description">
+                    <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                </div>
+            <?php endif;?>
+            
+            <div class="fragrance" >       
+                <?php                    
+                    $find = array(' ', ':', '');
+                    $blockname = strtolower('block_attribute_scent_' . str_replace($find, '_', $_product->getAttributeText('scent')));                    
+                    echo $this->getChildHtml($blockname);                    
+                ?>                
+            </div>
+            <script type="text/javascript">
+                jQuery(function($){
+
+                    constainerHeight = $('div.fragrance').height();
+                    logoHeight = $('img','div.fragrance').height();
+
+                    if(constainerHeight <= logoHeight)
+                    {
+                        $('div.fragrance').css({'height' : logoHeight + 'px'})
+                    }
+
+                });
+
+            </script>
+            <?php if ($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
+                <div class="extrahint-wrapper"><?php echo $extrahint_html; ?></div>
+            <?php endif; ?>
+            
+            <div class="product-type-data"><?php echo $this->getChildHtml('product_type_data'); ?>
+            
+            <?php if($_product->getMonogram()) { ?>
+            <div class="add-monogram" >                
+                <input type="checkbox" name="monogram-check" id="monogram-check" />
+                <label for="">Add Monogram</label>
+            </div>
+                
+            <?php
+                
+                $monogram_types = array(
+                    '3 letter',
+                    '3 letter with dots',
+                    'Block',
+                    'Cursive',
+                    'Diamond',
+                    'Letter with Circle',
+                    'Natural Circle',
+                    'Park Avenue',
+                    'Traditional Mono',
+                    'Letter with Side Dots',
+                    'Library',
+                    'Mono 2'
+                );
+            
+            ?>
+            <div class="add-monogram-content" id="monogram-content">  
+                
+                <img src="/media/wysiwyg/monograms/monogram-logo.gif" alt="Monograms" border="0" id="monogram-logo" />
+                
+                <h3>THE MONOGRAM SHOP (+$16.00)</h3>
+                <p class="subline">Item ships in 1-2 weeks. All monogram sales are final.</p>
+                
+                <ol class="add-monogram-process">
+                    <li class="monogram-step-1">
+                    	<label for="monogram-type" >Choose a Style</label>
+                        <ul class="add-monogram-list" >
+                            <?php foreach($monogram_types AS $type) { ?>
+                            <?php $typeCleaned = str_replace(' ', '-', $type); ?>
+                            <li><img src="/media/wysiwyg/monograms/<?php print strtolower($typeCleaned); ?>.gif" border="0" alt="<?php print $type; ?>" /></li>                     
+                            <?php } ?>
+                        </ul>
+                        <input type="hidden" name="monogram-type" data-name="monogram-type" id="monogram-type" value="" />
+                        <!-- select name="monogram-type" id="monogram-type" style="display: none;">
+                            <?php foreach($monogram_types AS $type) { ?>
+                            <option value="<?php print $type; ?>"><?php print $type; ?></option>
+                            <?php } ?>
+                        </select -->
+                    </li>
+                    <li class="monogram-step-2 monogram-step-disabled">
+                    	<label class="monogram-color" for="monogram-color">Choose a color</label>
+                        <select name="monogram-color" data-name="monogram-color">
+                            <option data-color="#000000" value="Black">Black</option>
+                            <option data-color="#FFFFFF" value="White">White</option>
+                            <option data-color="#022e6b" value="Navy">Navy</option>
+                            <option data-color="#fe0000" value="Red">Red</option>
+                            <option data-color="#00b700" value="Kelly Green">Kelly Green</option>
+                            <option data-color="#f9bec4" value="Light Pink">Light Pink</option>
+                            <option data-color="#b8d2ed" value="Light Blue">Light Blue</option>
+                            <option data-color="#fff452" value="Light Blue">Yellow</option>
+                            <option data-color="#543018" value="Brown">Brown</option>
+                            <option data-color="#b1b6ba" value="Silver">Silver</option>
+                            <option data-color="#e6d07d" value="Beige">Beige</option>
+                            <option data-color="#01503a" value="Dark Green">Dark Green</option>
+                            <option data-color="#f40093" value="Fuschia">Fuschia</option>
+                            <option data-color="#cc99fe" value="Lavender">Lavender</option>
+                            <option data-color="#ff6600" value="Orange">Orange</option>
+                            <option data-color="#3399fe" value="Turquoise">Turquoise</option>
+                        </select>
+                    </li>
+                    <li class="monogram-step-3 monogram-step-disabled">
+                    	<label for="monogram-initials" >For monograms featuring 3 initials, enter the letters in  
+                            the order you'd like them to appear.</label>
+                        <input type="text" name="mongram-initials" data-name="mongram-initials" id="monogram-initials" placeholder="Enter monogram text&hellip;" />
+                    </li>
+                </ol>               
+                
+            </div>
+            <?php } ?>
+            
+           </div>
+            
+            <?php echo $this->getTierPriceHtml(); //tier prices ?>           
+            
+            <?php if (!$this->hasOptions()): //add to cart when no options ?>
+                <?php if($_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addtocart') ?>
+                    </div>
+                <?php endif; ?>
+                <?php echo $this->getChildHtml('extra_buttons') ?>
+            <?php endif; ?>
+
+            <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                <?php if ($container1_html = $this->getChildChildHtml('container1', '', true, true)): ?>
+                    <div class="container1-wrapper"><?php echo $container1_html; ?></div>
+                <?php endif; ?>
+            <?php endif;?>
+            
+
+            
+            <?php echo $this->getChildHtml('alert_urls'); //alerts ?>
+            <?php echo $this->getChildHtml('other'); ?>
+            <?php echo $this->getChildHtml('product_primary_bottom_placeholder'); //Placeholder for extensions ?>
+            
+            <?php if ($tmpHtml = $this->getChildHtml('block_product_primary_bottom')): ?>
+                <div class="block_product_primary_bottom"><?php echo $tmpHtml; ?></div>
+            <?php endif; ?>
+
+        </div> <!-- end: product-shop -->
+        
+        
+        <?php if (!empty($secondaryColUnits)): ?>
+            <div class="product-secondary-column grid12-<?php echo $secondaryColUnits; ?>">
+            	<div class="inner">
+
+					<?php //Placeholder for extensions ?>
+					<?php if ($tmpHtml = trim($this->getChildHtml('product_secondary_top_placeholder'))): ?>
+						<div class="feature-wrapper bottom-border"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+                    
+                    <?php if ($tmpHtml = $this->getChildHtml('block_product_secondary_bottom')): ?>
+                        <div class="block_product_secondary_bottom"><?php echo $tmpHtml; ?></div>
+                    <?php endif; ?>
+                    
+                    <?php //echo $this->getChildHtml('additional'); ?>
+
+				</div>
+            </div> <!-- end: product-secondary-column -->
+        <?php endif; ?>
+        <div style="float: left">
+        <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+			<?php if ($container2_html = $this->getChildChildHtml('container2', '', true, true)): ?>
+        		<div class="box-additional grid-full">
+					<div class="container2-wrapper"><?php echo $container2_html; ?></div>
+				</div>
+        	<?php endif; ?>
+        <?php endif; ?>
+
+        <?php if ($addtoBoxHtml = $this->getChildHtml('addto')): //compare, wishlist ?>
+            <div class="action-box addto-textlink clearer">
+                <?php if ($this->canEmailToFriend()): ?>
+                    <p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+                <?php endif; ?>
+                <?php echo $addtoBoxHtml; ?>
+            </div>
+        <?php endif; ?>
+        </div>
+
+    </form>
+    
+    <script type="text/javascript">
+    //<![CDATA[
+        var productAddToCartForm = new VarienForm('product_addtocart_form');
+        productAddToCartForm.submit = function(button, url) {
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                   form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(productAddToCartForm);
+
+        productAddToCartForm.submitLight = function(button, url){
+            if(this.validator) {
+                var nv = Validation.methods;
+                delete Validation.methods['required-entry'];
+                delete Validation.methods['validate-one-required'];
+                delete Validation.methods['validate-one-required-by-name'];
+                if (this.validator.validate()) {
+                    if (url) {
+                        this.form.action = url;
+                    }
+                    this.form.submit();
+                }
+                Object.extend(Validation.methods, nv);
+            }
+        }.bind(productAddToCartForm);
+    //]]>
+    </script>
+    <!-- end of product-essential (class was removed) -->
+
+        <?php // laundress recommends ?>
+
+	<?php //Product collaterals ?>
+    <?php
+    	$section = array();
+		
+		//Related products 
+		//---------------------------------------------------------------------------
+		$replaceRelated = $theme->getCfg('product_page/replace_related');
+		if ($replaceRelated == 1) //don't replace with static block
+		{
+			if ($tmpHtml = trim($this->getChildHtml('catalog.product.related')))
+				$section['related'] = $tmpHtml;
+			//$section['related'] = trim($this->getChildHtml('catalog.product.related'));
+		}
+		elseif ($replaceRelated == 2) //if related is empty, replace with static block
+		{
+			if ($tmpHtml = trim($this->getChildHtml('catalog.product.related')))
+				$section['related'] = $tmpHtml;
+			else //related empty
+				if ($tmpHtml = $this->getChildHtml('block_product_replace_related'))
+					$section['related'] = '<div class="block_product_replace_related">'. $tmpHtml .'</div>';
+		}
+		elseif ($replaceRelated == 3) //replace with static block
+		{
+			if ($tmpHtml = $this->getChildHtml('block_product_replace_related'))
+				$section['related'] = '<div class="block_product_replace_related">'. $tmpHtml .'</div>';
+		}
+
+		//Up-sell products
+		//---------------------------------------------------------------------------
+		$replaceUpsell = $theme->getCfg('product_page/replace_upsell');
+		if ($replaceUpsell == 1) //don't replace with static block
+		{
+			if ($tmpHtml = trim($this->getChildHtml('upsell_products')))
+				$section['upsell'] = $tmpHtml;
+			//$section['upsell'] = $this->getChildHtml('upsell_products');
+		}
+		elseif ($replaceUpsell == 2) //if upsell is empty, replace with static block
+		{
+			if ($tmpHtml = trim($this->getChildHtml('upsell_products')))
+				$section['upsell'] = $tmpHtml;
+			else //upsell empty
+				if ($tmpHtml = $this->getChildHtml('block_product_replace_upsell'))
+					$section['upsell'] = '<div class="block_product_replace_upsell">'. $tmpHtml .'</div>';
+		}
+		elseif ($replaceUpsell == 3) //replace with static block
+		{
+			if ($tmpHtml = $this->getChildHtml('block_product_replace_upsell'))
+				$section['upsell'] = '<div class="block_product_replace_upsell">'. $tmpHtml .'</div>';
+		}
+		
+		//Compute grid units etc. for collateral blocks
+		//---------------------------------------------------------------------------
+		$sidebarGridClass 	= 'grid12-3';
+		$tabsGridClass 		= 'grid-full';
+		$upsellGridClass 	= 'grid-full';
+		$upsellClasses = '';
+		
+		if (isset($section['related']))
+		{
+			$tabsGridClass		= 'grid12-12';
+			$upsellGridClass	= 'grid12-12';
+			$upsellClasses = 'in-col2'; //If sidebar displayed, upsell slider is narrow
+		}
+	?>
+    
+    
+    <?php //Display collateral blocks
+		  //--------------------------------------------------------------------------- ?>
+    
+	<div class="box-additional box-tabs <?php echo $tabsGridClass; ?>">
+    	<?php // $info_tabs_html = $this->getChildHtml('info_tabs');
+		//	if (trim($info_tabs_html)) echo $info_tabs_html; 
+         
+                function parseTabDetail($content) {
+
+                    if(empty($content)) {
+                        return null;
+                    }
+                    
+                    $lines = explode("\n", $content);
+
+                    foreach($lines AS $no=>$line) {
+                        if(strlen($line) < 60) {
+                            $lines[$no] = "<h4>" . $line . "</h4>";
+                        }
+                    }
+
+                    $html = implode("\n", $lines);
+
+                    return $html;
+                }
+
+                $description = nl2br($_product->getDescription());
+                $shippingNote = $_product->getShippingNote();
+                if(!empty($shippingNote))
+                {
+                    $description .=  nl2br('<p class="shipping-note">' . $shippingNote .'</p>');
+                }
+
+                $sTabDetails = $_helper->productAttribute($_product, $description , 'short_description');
+                $sTabDetailsLabel = "Details";
+                $sTabResults = $_helper->productAttribute($_product, nl2br($_product->getForBestResults()), 'for_best_results');        
+                $sTabResultsLabel = $_product->getResource()->getAttribute('for_best_results')->getStoreLabel();
+                $sTabIngredients = $_helper->productAttribute($_product, nl2br($_product->getIngredients()), 'ingredients');
+                $sTabIngredientsLabel = $_product->getResource()->getAttribute('ingredients')->getStoreLabel('');
+                $sTabHowtouse = $_helper->productAttribute($_product, nl2br($_product->getWashingChart()), 'washing_chart');                                
+                $sTabHowtouseLabel = $_product->getResource()->getAttribute('washing_chart')->getStoreLabel();
+                $sTabHowtovideo = $_product->getHowToVideoDescription();
+                $sTabHowtovideoLabel = "How to Video";
+                $sTabMadeof = $_helper->productAttribute($_product, nl2br($_product->getMadeOf()), 'made_of');                                
+                $sTabMadeofLabel = $_product->getResource()->getAttribute('made_of')->getStoreLabel();
+                $sTabMonogram = $this->getChildHtml('block_product_monogram_shop');
+                $sTabMonogramLabel = "Monogram Shop";
+                
+                // filter tab contents
+                $sTabIngredients = parseTabDetail($sTabIngredients);
+                $sTabMadeof = parseTabDetail($sTabMadeof);
+                $sTabDetails = parseTabDetail($sTabDetails);
+                $sTabHowtouse = parseTabDetail($sTabHowtouse);
+                $sTabResults = parseTabDetail($sTabResults);                             
+                
+        ?>
+            
+                
+                <div id="product-tabs" class="gen-tabs gen-tabs-style1">
+
+		        <ul class="tabs clearer">    
+                                <?php if(!empty($sTabDetails)) { ?>
+                                <li id="tab-description"><a href="#" class="current">Details</a></li>
+                                <?php } ?>
+                                <?php if(!empty($sTabHowtovideo)) { ?> 
+                                <li><a href="#" class=""><?php print $sTabHowtovideoLabel; ?></a></li>        
+                                <?php } ?>
+                                <?php if(!empty($sTabResults)) { ?>
+                                <li><a href="#" class=""><?php print $sTabResultsLabel; ?></a></li>
+                                <?php } ?>
+                                <?php if(!empty($sTabIngredients)) { ?> 
+                                <li><a href="#" class=""><?php print $sTabIngredientsLabel; ?></a></li>        
+                                <?php } ?>
+                                <?php if(!empty($sTabHowtouse)) { ?> 
+                                <li><a href="#" class=""><?php print $sTabHowtouseLabel; ?></a></li>        
+                                <?php } ?>                                
+                                <?php if(!empty($sTabMadeof)) { ?>
+                                <li><a href="#" class=""><?php print $sTabMadeofLabel; ?></a></li>        
+                                <?php } ?>
+                                <?php if($_product->getMonogram()) { ?>
+                                    <?php if(!empty($sTabMonogram)) { ?>
+                                    <li><a href="#" class=""><?php print $sTabMonogramLabel; ?></a></li>        
+                                    <?php } ?>
+                                <?php } ?>
+                        </ul>
+                
+                        <div class="tabs-panels">
+                            <?php if(!empty($sTabDetails)) { ?>
+                            <h2 class="acctab" id="acctab-description">Details</h2>
+                            <div class="panel" style="display: block;">    
+                                <h2>Details</h2>
+                                <div class="std">                                    
+                                    <h3><?php print $title; ?></h3> 
+                                    <p><?php print $sTabDetails; ?></p>                                   
+                                        <?php                    
+                                            $find = array(' ', ':', '');
+                                            $blockname = strtolower('block_attribute_scent_' . str_replace($find, '_', $_product->getAttributeText('scent')));
+                                            $blockcontent = strip_tags($this->getChildHtml($blockname));
+                                            $block = Mage::getModel('cms/block')->load($blockname);                                            
+                                            if(!empty($blockcontent)) { ?>
+                                            <div class="fragrance-details" >                                                   
+                                                <h4><?php echo $block->getTitle(); ?></h4>
+                                                <?php echo strip_tags($this->getChildHtml($blockname));  ?>
+                                            </div>
+                                        <?php 
+                                            }
+                                        ?>                                                    
+                                </div>
+                            </div>
+                            <?php } ?>
+                            
+                            <?php if(!empty($sTabHowtovideo)) { ?>
+                            <h2 class="acctab"><?php print $sTabHowtovideoLabel; ?></h2>
+                            <div class="panel" style="display: none;">
+                                <div class="std clearer">                                                                        
+                                    <div class="grid12-4" >
+                                        <?php /*
+                                        <h3><?php print $_product->getHowToVideoTitle(); ?></h3>
+                                        <p><?php print $_product->getHowToVideoDescription(); ?></p>
+                                        */ ?>
+                                    </div>                                    
+                                    <div class="grid12-4" style="float: left" >
+                                        <?php if($_product->getHowToVideo() != null) { ?>
+                                        <iframe  width="560" height="315" src="<?php print $_product->getHowToVideo(); ?>" frameborder="0" scrolling="no"></iframe>
+                                        <h4 class="label-category" ><?php print $_product->getHowToVideo1Category(); ?></h4>
+                                        <h3><?php print $_product->getHowToVideo1Title(); ?></h3>
+                                        <?php } ?>
+                                    </div>
+                                    <div style="clear: both">&nbsp;</div>
+                                    <div class="grid12-4" style="float: left" >
+                                        <?php if($_product->getHowToVideo2() != null) { ?>
+                                        <iframe  width="560" height="315" src="<?php print $_product->getHowToVideo2(); ?>" frameborder="0" scrolling="no"></iframe>
+                                        <h4 class="label-category" ><?php print $_product->getHowToVideo2Category(); ?></h4>
+                                        <h3><?php print $_product->getHowToVideo2Title(); ?></h3>
+                                        <?php } ?>
+                                    </div>                                                           
+                                </div>                                
+                            </div>
+                            <?php } ?>   
+                            
+                            <?php if(!empty($sTabResults)) { ?>
+                            <h2 class="acctab"><?php print $sTabResultsLabel; ?></h2>
+                            <div class="panel" style="display: none;">
+                                <div class="std">                                    
+                                    <?php print $sTabResults; ?>                                  
+                                </div>                                
+                            </div>   
+                            <?php } ?>
+                            <?php if(!empty($sTabIngredients)) { ?>
+                            <h2 class="acctab"><?php print $sTabIngredientsLabel; ?></h2>
+                            <div class="panel" style="display: none;">
+                                <div class="std">
+                                    <?php print $sTabIngredients; ?>
+                                </div>                                
+                            </div>
+                            <?php } ?>
+                            <?php if(!empty($sTabHowtouse)) { ?>
+                            <h2 class="acctab"><?php print $sTabHowtouseLabel; ?></h2>
+                            <div class="panel" style="display: none;">
+                                <div class="std clearer">                                                                        
+                                    <?php print $sTabHowtouse; ?>                                    
+                                </div>                                
+                            </div>
+                            <?php } ?>                                                                               
+                            
+                            <?php if(!empty($sTabMadeof)) { ?>
+                            <h2 class="acctab"><?php print $sTabMadeofLabel; ?></h2>
+                            <div class="panel" style="display: none;">
+                                <div class="std">
+                                    <?php print $sTabMadeof; ?>
+                                </div>                                
+                            </div>
+                            <?php } ?>
+                            <?php if($_product->getMonogram()) { ?>
+                                <?php if(!empty($sTabMonogram)) { ?>
+                                <h2 class="acctab"><?php print $sTabMonogramLabel; ?></h2>
+                                <div class="panel tab-monogram-shop" style="display: none;">
+                                    <div class="std">
+                                        <?php print $sTabMonogram; ?>
+                                    </div>                                
+                                </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>                    
+                </div>
+</div>
+            <script type="text/javascript">
+		jQuery(function($){var p=$(window).width()>=0x3C0;if($(window).width()>=0x3C0){$(".gen-tabs > .tabs").tabs(".tabs-panels .panel")}else{$(".gen-tabs").addClass("accor");$(".tabs-panels").tabs(".tabs-panels .panel",{tabs:'.acctab',effect:'slide'})}var t;$(window).resize(function(){clearTimeout(t);t=setTimeout(function(){if($(window).width()<0x3C0){if(p){var a=$(".tabs").data("tabs");var b=a.getIndex();a.destroy();$(".gen-tabs").addClass("accor");$(".tabs-panels").tabs(".tabs-panels .panel",{tabs:'.acctab',effect:'slide',initialIndex:b})}p=false}else{if(!p){var a=$(".tabs-panels").data("tabs");var b=a.getIndex();a.destroy();$(".gen-tabs").removeClass("accor");$(".gen-tabs > .tabs").tabs(".tabs-panels .panel",{initialIndex:b})}p=true}},500)})});
+            </script>
+            
+		<?php //Open the "Reviews" tab, when "X Review(s)" or "Be the first to review this product" links are clicked ?>
+		<script type="text/javascript">
+			jQuery(function($){$("#goto-reviews, #goto-reviews-form").click(function(){if($("#product-tabs").hasClass("accor")){$("#product-tabs .tabs-panels").data("tabs").click($(".tabs-panels .acctab").index($("#acctab-tabreviews")))}else{$("#product-tabs .tabs").data("tabs").click($("#tab-tabreviews").index())}})});
+		</script>
+
+	</div> <!-- end: box-tabs -->
+    
+    <?php
+		if (isset($section['related']))
+			// echo '<div class="box-additional '. $sidebarGridClass .'"><div class="box-additional-inner">'. $section['related'] .'</div></div>';	
+                    echo '<div class="box-additional box-up-sell '. $upsellGridClass .' '. $upsellClasses .'">'. $section['related'] .'</div>';
+		if (isset($section['upsell']))
+			echo '<div class="box-additional box-up-sell '. $upsellGridClass .' '. $upsellClasses .'">'. $section['upsell'] .'</div>';
+	?>
+    
+                           
